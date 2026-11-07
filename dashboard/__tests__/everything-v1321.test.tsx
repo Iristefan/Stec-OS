@@ -84,9 +84,9 @@ describe("the surface manifest", () => {
   // v1.406.0 (part 1 + 5, moved on purpose): the cap is FIVE — Chat joined
   // (its Chat | Code switch holds the coding sessions), and the automation
   // and admin rooms are pinned OUT (sidebar-rooms-v1406 has the rest).
-  it("the sidebar has at most five items: Chat, Build, Projects, Everything, Settings", () => {
-    expect(SIDEBAR_HREFS.length).toBeLessThanOrEqual(5);
-    expect([...SIDEBAR_HREFS]).toEqual(["/chat", "/terminals", "/projects", "/everything", "/settings"]);
+  it("the sidebar has at most six items (Stec OS adds Folders): Chat, Folders, Build, Projects, Everything, Settings", () => {
+    expect(SIDEBAR_HREFS.length).toBeLessThanOrEqual(6);
+    expect([...SIDEBAR_HREFS]).toEqual(["/chat", "/folders", "/terminals", "/projects", "/everything", "/settings"]);
     for (const h of SIDEBAR_HREFS) expect(surfaceFor(h)).toBeTruthy();
   });
 });

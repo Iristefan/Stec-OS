@@ -74,7 +74,7 @@ describe("the four items", () => {
       .getAllByRole("link")
       .map((a) => a.textContent);
     // v1.406.0 (part 1 + 5, moved on purpose): Chat leads (its Code switch).
-    expect(labels).toEqual(["Chat", "Build", "Projects", "Everything", "Settings"]);
+    expect(labels).toEqual(["Chat", "Folders", "Build", "Projects", "Everything", "Settings"]);
     expect(within(navEl).queryByTestId("sidebar-pins")).toBeNull();
   });
 
@@ -190,7 +190,7 @@ describe("the phone drawer and the title bar", () => {
       .getAllByRole("link")
       .map((a) => a.textContent);
     // v1.406.0 (part 1 + 5, moved on purpose): Chat leads (its Code switch).
-    expect(labels).toEqual(["Chat", "Build", "Projects", "Everything", "Settings"]);
+    expect(labels).toEqual(["Chat", "Folders", "Build", "Projects", "Everything", "Settings"]);
     expect(within(drawer).getByRole("group", { name: /theme/i })).toBeTruthy();
   });
 

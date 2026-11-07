@@ -40,7 +40,7 @@ export interface Surface extends NavEntry {
  *  workflows, schedules, rules, watchers, fleet, the session board,
  *  self-development …) is NOT here: it is on Everything and in Ctrl K
  *  (SIDEBAR_EXCLUDED pins the list). */
-export const SIDEBAR_HREFS = ["/chat", "/terminals", "/projects", "/everything", "/settings"] as const;
+export const SIDEBAR_HREFS = ["/chat", "/folders", "/terminals", "/projects", "/everything", "/settings"] as const;
 
 /** v1.406.0 (part 5): the automation and admin rooms that must never be
  *  sidebar items (they stay on Everything and in Ctrl K). */
@@ -74,6 +74,7 @@ export const EVERYTHING_GROUPS: { key: Exclude<SurfaceGroup, "primary">; label: 
 const GROUP_OF: Readonly<Record<string, SurfaceGroup>> = {
   "/": "primary",
   "/chat": "primary",
+  "/folders": "primary",
   "/terminals": "primary",
   [CODE_VIEW_HREF]: "primary",
   "/projects": "primary",
