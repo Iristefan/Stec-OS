@@ -186,7 +186,7 @@ const RAIL: ReadonlyArray<readonly [string, readonly string[]]> = [
   // v1.151.1: /projects joins the catalogue — it is named a hero surface in
   // nav.ts's own header comment and is the product's context spine, yet it had
   // no rail row, no search entry and no tile until now.
-  ["Work", ["/", "/chat", "/terminals", "/projects", "/sessions", "/activity", "/creative"]],
+  ["Work", ["/", "/chat", "/folders", "/terminals", "/projects", "/sessions", "/activity", "/creative"]],
   [
     "Automate",
     [

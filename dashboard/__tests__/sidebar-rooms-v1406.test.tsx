@@ -57,7 +57,7 @@ describe("the sidebar's items", () => {
     const hrefs = within(navEl)
       .getAllByRole("link")
       .map((a) => a.getAttribute("href"));
-    expect(hrefs).toEqual(["/chat", "/terminals", "/projects", "/everything", "/settings"]);
+    expect(hrefs).toEqual(["/chat", "/folders", "/terminals", "/projects", "/everything", "/settings"]);
     for (const room of SIDEBAR_EXCLUDED) {
       expect(hrefs, room).not.toContain(room);
       expect((SIDEBAR_HREFS as readonly string[]).includes(room), room).toBe(false);

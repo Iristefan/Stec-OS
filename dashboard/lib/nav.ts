@@ -32,6 +32,7 @@ import {
   UserRound,
   GraduationCap,
   FolderKanban,
+  FolderTree,
   SquareKanban,
   type LucideIcon,
 } from "lucide-react";
@@ -111,6 +112,24 @@ export const NAV: NavSectionDef[] = [
           "harness",
         ],
         blurb: CHAT_BLURB,
+      },
+      {
+        // Stec OS: every local folder as one tree, in the centre window.
+        href: "/folders",
+        label: "Folders",
+        icon: FolderTree,
+        aliases: [
+          "folders",
+          "folder tree",
+          "files",
+          "my files",
+          "file explorer",
+          "explorer",
+          "browse folders",
+          "my computer",
+          "drives",
+        ],
+        blurb: "All your local folders as one tree. Pick one to see inside, chat about it, or open a terminal there.",
       },
       {
         href: "/terminals",
