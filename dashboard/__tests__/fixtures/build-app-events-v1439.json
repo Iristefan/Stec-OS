@@ -977,7 +977,7 @@
     "type": "user",
     "text": "do it",
     "files": [
-     "<WORK>\\word.png"
+     "<WORK>/word.png"
     ],
     "turn": "turn-1"
    },
