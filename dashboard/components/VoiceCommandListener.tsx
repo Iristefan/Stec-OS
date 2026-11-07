@@ -166,7 +166,7 @@ export function VoiceCommandListener() {
       role="status"
       aria-live="polite"
       data-testid="voice-command-pill"
-      className="pointer-events-none fixed bottom-4 left-1/2 z-50 max-w-[calc(100vw-32px)] -translate-x-1/2 rounded-full border border-cyan-400/40 bg-slate-950/90 px-4 py-2 text-sm text-cyan-100 shadow-lg"
+      className="pointer-events-none fixed bottom-4 left-1/2 z-50 max-w-[calc(100vw-32px)] -translate-x-1/2 rounded-full border border-cyan-400/40 bg-slate-950/90 px-4 py-2 text-sm text-cyan-200 shadow-lg"
     >
       {phase === "listening" ? (
         <span>
