@@ -41,6 +41,7 @@ import { MotionProvider } from "@/components/MotionProvider";
 // press it the chunk is already in memory, and a press that beats the idle
 // callback simply awaits the same import.
 import { Overlays } from "@/components/Overlays";
+import { VoiceCommandListener } from "@/components/VoiceCommandListener";
 
 export const metadata: Metadata = {
   // Base title; NotificationBell mutates document.title at runtime to surface
@@ -152,6 +153,8 @@ export default function RootLayout({
           {/* Redesign S0: one POST /ui/visit per page change (usage counts). */}
           <RouteVisitBeacon />
           <ModelMenuBridge />
+          {/* v1.443.0: Ctrl+Shift+V voice commands on every page. */}
+          <VoiceCommandListener />
           </MotionProvider>
           </FaceStylesProvider>
           </EventsProvider>
