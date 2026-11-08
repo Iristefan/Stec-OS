@@ -1,7 +1,7 @@
 # Iron Jarvis — The Handbook
 
 *The user guide. What this app is, how to work it daily, and the rules it
-holds itself to. Current as of v1.442.0 (2026-11-06).*
+holds itself to. Current as of v1.443.2 (2026-11-06).*
 
 ---
 
@@ -1996,6 +1996,29 @@ reads; it never writes, runs commands, or starts work on its own.
   newest one is younger than the auto-backup interval (24 h by default).
 - **Something wrote the wrong thing** → Activity page (or the file's row in
   chat) → Undo. Session-level revert exists for whole runs.
+
+## Voice commands: Ctrl+Shift+V (v1.443.0)
+
+Press **Ctrl+Shift+V** on any page and say a command. A small pill at the
+bottom of the window shows what it heard, and the answer is spoken aloud.
+Press the keys again, or Escape, to cancel. If you say nothing for 12
+seconds, it stops by itself.
+
+- **Open a page:** "open chat", "go to settings", "show me my folders",
+  "terminal", "take me home". The pages are Home, Chat, Folders, Build,
+  Agents, Workflows, Projects, Documents, Memory, Schedules, Skills, Tools,
+  Settings, Updates and Help.
+- **New chat:** "new chat".
+- **Ask something:** "ask Jarvis what's on my plate today". This puts the
+  question in the chat box. It never sends it: you press Enter.
+- **Time and date:** "what time is it", "what day is it".
+- **Help:** "what can I say". **Stop:** "stop" or "never mind".
+
+You can start with "Jarvis" or "hey Jarvis". When it doesn't understand,
+it says so instead of guessing. Inside a text box, Ctrl+Shift+V still means
+paste as plain text. Click outside the box first. The microphone works the
+same way as the chat mic: your browser's speech service in Chrome or Edge,
+and this install's own transcription in the desktop app.
 
 ## The approvals menu shows names only (v1.430.0)
 

@@ -77,6 +77,8 @@ def canonical(events: list[dict], work: Path) -> list[dict]:
     for ev in events:
         text = json.dumps(ev, ensure_ascii=False)
         text = text.replace(json.dumps(str(work))[1:-1], "<WORK>")
+        # One golden for every OS: a Windows path under the folder reads like a POSIX one.
+        text = text.replace("<WORK>\\\\", "<WORK>/")
         ev = {k: v for k, v in json.loads(text).items() if k != "at"}
         for key, table, prefix in (("request_id", asks, "ask"), ("item", items, "item")):
             if ev.get(key):
