@@ -2501,10 +2501,10 @@ function handleCorruptInstall(result) {
       child.unref();
     } catch (err) {
       desktopLog("error", "[integrity] could not launch repair installer:", err && err.message);
-      shell.openExternal("https://github.com/RealDealCPA-VR/Iron-Jarvis/releases/latest");
+      shell.openExternal("https://github.com/Iristefan/Stec-OS/releases/latest");
     }
   } else if (choice === (cached ? 1 : 0)) {
-    shell.openExternal("https://github.com/RealDealCPA-VR/Iron-Jarvis/releases/latest");
+    shell.openExternal("https://github.com/Iristefan/Stec-OS/releases/latest");
   }
   shutdown();
   app.quit();
@@ -4580,13 +4580,13 @@ const UPDATE_RETRY_MS = 5 * 60 * 1000;
 // missing or stale branch degrades to exactly the pre-v1.260.0 behaviour.
 // Keep owner/repo in step with desktop/package.json's publish config — a test
 // reads both.
-const UPDATE_MANIFEST_URL = "https://raw.githubusercontent.com/RealDealCPA-VR/Iron-Jarvis/updates";
-const UPDATE_GITHUB_FEED = { provider: "github", owner: "RealDealCPA-VR", repo: "Iron-Jarvis" };
+const UPDATE_MANIFEST_URL = "https://raw.githubusercontent.com/Iristefan/Stec-OS/updates";
+const UPDATE_GITHUB_FEED = { provider: "github", owner: "Iristefan", repo: "Stec-OS" };
 // v1.405.0: THE STABLE CHANNEL. A release reaches this branch only once it has
 // been out for a day with its commit's Tests run green and nobody held it back
 // (.github/workflows/stable.yml + scripts/promote_stable.py write it, nothing
 // else). Owner/repo pinned equal to UPDATE_MANIFEST_URL's by a test.
-const UPDATE_STABLE_MANIFEST_URL = "https://raw.githubusercontent.com/RealDealCPA-VR/Iron-Jarvis/updates-stable";
+const UPDATE_STABLE_MANIFEST_URL = "https://raw.githubusercontent.com/Iristefan/Stec-OS/updates-stable";
 let _autoUpdater = null;
 let _updateSource = "manifest"; // "manifest" | "stable" | "feed" — which source the NEXT check reads
 let _updateRetryTimer = null;
@@ -6002,7 +6002,7 @@ function handleStartupFailure(title, message, pendingUpdate, context) {
         "Your data (settings, sessions, keys) is untouched.",
     });
     if (choice === 0) {
-      shell.openExternal("https://github.com/RealDealCPA-VR/Iron-Jarvis/releases");
+      shell.openExternal("https://github.com/Iristefan/Stec-OS/releases");
     }
   } else {
     const info = classifyStartupFailure({

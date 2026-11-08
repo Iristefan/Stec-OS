@@ -81,7 +81,7 @@ def test_every_folder_in_backgrounds_is_in_the_catalog():
 def test_the_download_address_is_pinned_to_the_running_versions_tag():
     url = catalog.source_url("aurora")
     assert url == (
-        f"https://raw.githubusercontent.com/RealDealCPA-VR/Iron-Jarvis/v{__version__}/backgrounds/aurora/index.html"
+        f"https://raw.githubusercontent.com/Iristefan/Stec-OS/v{__version__}/backgrounds/aurora/index.html"
     )
     assert "/master/" not in url and "/main/" not in url
 

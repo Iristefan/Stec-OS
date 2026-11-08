@@ -53,7 +53,7 @@ _SCRIPTS = _ROOT / "scripts"
 
 requires_node = pytest.mark.skipif(shutil.which("node") is None, reason="node not on PATH")
 
-REPO = "RealDealCPA-VR/Iron-Jarvis"
+REPO = "Iristefan/Stec-OS"
 NOW = datetime(2026, 10, 29, 12, 0, tzinfo=timezone.utc)
 
 
@@ -770,7 +770,7 @@ def test_stable_reads_its_own_manifest_and_never_falls_back_to_the_feed(tmp_path
     assert bad["armed"] is False
 
     missing = ("Cannot find latest.yml in the latest release artifacts "
-               "(https://raw.githubusercontent.com/RealDealCPA-VR/Iron-Jarvis/updates-stable/latest.yml): "
+               "(https://raw.githubusercontent.com/Iristefan/Stec-OS/updates-stable/latest.yml): "
                "HttpError: 404 Not Found")
     none = _node(_harness(), tmp_path, "s3", "check",
                  _cases(tmp_path, {"channel": "stable", "plan": {"stable": "fail", "msg": missing}}, "c3.json"))
@@ -797,8 +797,8 @@ def test_update_channels_reads_both_versions_bounded_and_never_throws(tmp_path):
                 _cases(tmp_path, {"fresh": "version: 1.405.2\nfiles: []\n", "stable": "version: '1.404.0'\n"}))
     assert got["out"] == {"fresh": "1.405.2", "stable": "1.404.0"}
     assert sorted(got["asked"]) == sorted([
-        "https://raw.githubusercontent.com/RealDealCPA-VR/Iron-Jarvis/updates/latest.yml",
-        "https://raw.githubusercontent.com/RealDealCPA-VR/Iron-Jarvis/updates-stable/latest.yml",
+        "https://raw.githubusercontent.com/Iristefan/Stec-OS/updates/latest.yml",
+        "https://raw.githubusercontent.com/Iristefan/Stec-OS/updates-stable/latest.yml",
     ])
     got = _node(_harness(), tmp_path, "c2", "channels", _cases(tmp_path, {"fresh": "throw", "stable": "hang"}, "c2.json"))
     assert got["out"] == {"fresh": None, "stable": None}

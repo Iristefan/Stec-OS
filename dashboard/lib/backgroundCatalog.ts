@@ -16,7 +16,7 @@
  * small swatch in Settings follows the colours being picked.
  */
 
-export const BACKGROUND_REPO = "RealDealCPA-VR/Iron-Jarvis";
+export const BACKGROUND_REPO = "Iristefan/Stec-OS";
 
 export interface BackgroundEntry {
   id: string;
