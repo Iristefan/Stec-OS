@@ -19,7 +19,7 @@ from dataclasses import dataclass
 from .. import __version__
 
 #: The public repository the files are downloaded from.
-REPO = "RealDealCPA-VR/Iron-Jarvis"
+REPO = "Iristefan/Stec-OS"
 RAW_HOST = "raw.githubusercontent.com"
 
 

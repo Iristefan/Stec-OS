@@ -1,7 +1,7 @@
 {
   "name": "iron-jarvis-desktop",
   "productName": "Iron Jarvis",
-  "version": "1.443.2",
+  "version": "1.443.3",
   "private": true,
   "description": "Native desktop wrapper for Iron Jarvis. Boots the local Python daemon (uv run ironjarvis serve) and the Next.js dashboard (pnpm start), then opens them in a native window.",
   "main": "main.js",
@@ -67,8 +67,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "RealDealCPA-VR",
-        "repo": "Iron-Jarvis",
+        "owner": "Iristefan",
+        "repo": "Stec-OS",
         "releaseType": "release"
       }
     ]

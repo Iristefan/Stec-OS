@@ -27,7 +27,7 @@ from typing import Any
 
 #: The repository the desktop app updates from — pinned equal to
 #: desktop/package.json's publish config and main.js's manifest URLs.
-STABLE_REPO = "RealDealCPA-VR/Iron-Jarvis"
+STABLE_REPO = "Iristefan/Stec-OS"
 #: The workflow that writes updates-stable.
 STABLE_WORKFLOW = "stable.yml"
 ACTIONS_URL = f"https://github.com/{STABLE_REPO}/actions/workflows/{STABLE_WORKFLOW}"
