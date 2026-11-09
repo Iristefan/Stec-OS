@@ -337,7 +337,7 @@ def getting_started(platform) -> list[dict]:
         "key": "first_session",
         "title": "Give it your first task",
         "detail": (
-            "You've given Iron Jarvis its first task — nice."
+            "You've given STEC OS its first task — nice."
             if gave_task
             else "Ask anything in Chat — that counts. Bigger tasks escalate to a "
             "full agent all by themselves."
@@ -355,7 +355,7 @@ def getting_started(platform) -> list[dict]:
         "detail": (
             "You've read or produced a document/artifact."
             if touched_doc
-            else "Ask Iron Jarvis to read or create a file — PDF, Word, Excel, "
+            else "Ask STEC OS to read or create a file — PDF, Word, Excel, "
             "PowerPoint, CSV, or Markdown all work."
         ),
         "done": touched_doc,
@@ -369,7 +369,7 @@ def getting_started(platform) -> list[dict]:
         "key": "teach_style",
         "title": "Teach it your style",
         "detail": (
-            "Iron Jarvis has started learning how you like to work."
+            "STEC OS has started learning how you like to work."
             if taught
             # v1.320.0: the user could not follow the old line ("…or rate a
             # finished session" — the rating lived on a page Simple mode no
@@ -409,7 +409,7 @@ def getting_started(platform) -> list[dict]:
     else:
         voice_detail = (
             "Optional: add an OpenAI API key or connect a speech-to-text server "
-            "to talk to Iron Jarvis hands-free. You can skip this and set it up "
+            "to talk to STEC OS hands-free. You can skip this and set it up "
             "later."
         )
     step_voice = {

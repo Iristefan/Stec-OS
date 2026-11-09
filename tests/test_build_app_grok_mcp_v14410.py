@@ -80,7 +80,7 @@ def test_the_driver_keeps_its_reported_list_apart_from_the_servers_iron_jarvis_h
     d.mcp_servers = [{"type": "http", "name": "iron-jarvis-code", "url": "http://127.0.0.1:8787/mcp", "headers": []}]
     for f in NOTES:
         d.on_extension(f["method"], f["params"])
-    assert d.mcp_servers[0]["name"] == "iron-jarvis-code", "Iron Jarvis's own tools are left alone"
+    assert d.mcp_servers[0]["name"] == "iron-jarvis-code", "STEC OS's own tools are left alone"
     assert d.reported_mcp == _fold(NOTES)
     setups = [e for e in said if e.get("type") == "setup"]
     assert len(setups) == 3 and setups[-1]["mcp_servers"] == _fold(NOTES)

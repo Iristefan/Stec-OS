@@ -13,7 +13,7 @@
 
 ```
 ┌──────────────────────────┐
-│ ◉ Iron Jarvis      [⇤]   │  ← collapse to icons
+│ ◉ STEC OS      [⇤]   │  ← collapse to icons
 │                          │
 │ (  + New chat        )   │  ← the sidebar's one primary action
 │ [ 🔍 Search   Ctrl K ]   │  ← opens the command palette (not a nav item)
@@ -77,7 +77,7 @@
 
 ```
 ┌──────────────────────────┐
-│ ◉ Iron Jarvis       [✕]  │
+│ ◉ STEC OS       [✕]  │
 │ ( + New chat )           │
 │ [ 🔍 Search ]            │
 │  ⌂ Build                 │

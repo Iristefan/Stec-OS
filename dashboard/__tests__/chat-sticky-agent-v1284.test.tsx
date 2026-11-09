@@ -13,7 +13,7 @@
  *     addressees on the side (`mentions`), the words verbatim;
  *  2. the panel body carries the chat so far (`history`, attributed) and the
  *     room the last round answered with (`panel_thread_id`);
- *  3. "Back to Jarvis" ends it, and the panel reply that Iron Jarvis then reads
+ *  3. "Back to Jarvis" ends it, and the panel reply that STEC OS then reads
  *     is LABELLED as the agent's, not sent as Jarvis's own earlier words;
  *  4. a `mode: "session"` verdict opens the tooled session lane on that agent
  *     (POST /sessions, agent_type builder, the address stripped off the task)
@@ -291,7 +291,7 @@ describe("the conversation stays with the agent (v1.284.0)", () => {
     await screen.findByText("Here is the brief.");
     fireEvent.click(await screen.findByRole("button", { name: "Back to Jarvis" }));
     await waitFor(() => expect(screen.queryByTestId("addressee-strip")).toBeNull());
-    expect(box().placeholder).toMatch(/^Message Iron Jarvis/);
+    expect(box().placeholder).toMatch(/^Message STEC OS/);
 
     await type("thanks, what next?");
     await screen.findByText("Noted.");
@@ -301,7 +301,7 @@ describe("the conversation stays with the agent (v1.284.0)", () => {
     const labelled = msgs.find((m) => m.content.includes("Here is the brief."));
     expect(labelled?.role).toBe("assistant");
     expect(labelled?.content).toBe(
-      "[Reply from the agent builder, on the agent panel — not Iron Jarvis]\nHere is the brief.",
+      "[Reply from the agent builder, on the agent panel — not STEC OS]\nHere is the brief.",
     );
     // the user's own lines are untouched
     expect(msgs.find((m) => m.role === "user")?.content).toBe("@builder draft the brief");

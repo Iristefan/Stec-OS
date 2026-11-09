@@ -2,7 +2,7 @@
 Agent Client Protocol (the same JSON-RPC core OpenCode speaks,
 :mod:`hosted.acp`) — with ALL of Grok's own tools, MCP servers, skills,
 plugins, hooks, AGENTS.md and config on. The same Grok the user runs in a
-terminal; Iron Jarvis only starts it, draws what it does, relays messages and
+terminal; STEC OS only starts it, draws what it does, relays messages and
 turns every permission question Grok asks into a card.
 
 WHY ``agent stdio`` (``grok agent --help``: "stdio — Run the agent over
@@ -55,7 +55,7 @@ one-word prompts on grok-4.5 effort low; masked recordings in
   Grok's docs), ``allow-once``, ``reject-once``; a command offers
   ``always-allow`` ("don't ask again for bash commands") and
   ``reject-always`` — both SAVED by Grok for the project ("Interactive
-  approvals ... persist", its docs). Iron Jarvis never picks a saved option:
+  approvals ... persist", its docs). STEC OS never picks a saved option:
   Allow for this session is only ``allow-edits-session``, Deny only
   ``reject-once``; a command's card is Allow once only.
 * A ``reject-once`` ENDS the turn: the prompt answers ``stopReason:
@@ -132,10 +132,10 @@ MODE_ABOUT: dict[str, str] = {
 #: Grok's effort names (``reasoningEfforts``), low to high.
 EFFORTS: tuple[str, ...] = ("low", "medium", "high", "xhigh")
 
-#: How Iron Jarvis starts Grok: its agent over stdio, never a shared leader.
+#: How STEC OS starts Grok: its agent over stdio, never a shared leader.
 ARGV: tuple[str, ...] = ("agent", "--no-leader", "stdio")
 
-#: The ONLY option Iron Jarvis's "Allow for this session" may choose: Grok
+#: The ONLY option STEC OS's "Allow for this session" may choose: Grok
 #: keeps it in memory for the process. Every other "always" option Grok saves.
 SESSION_ONLY_OPTIONS: frozenset[str] = frozenset({"allow-edits-session"})
 
@@ -145,7 +145,7 @@ STOPPED_TOOL = "Stopped when you pressed Stop."
 USD_TICKS = 10_000_000_000
 MAX_MODELS = 300
 
-#: When set (non-blank), the ONLY Grok home Iron Jarvis READS for its own
+#: When set (non-blank), the ONLY Grok home STEC OS READS for its own
 #: listings — saved sessions, the model list, the sign-in file (the test
 #: suite points it at an empty folder: a test must never read the developer's
 #: real Grok). The Grok PROCESS is not told.
@@ -193,7 +193,7 @@ def failure_event(said: str) -> dict[str, Any]:
 # Where Grok keeps things (read-only)
 # --------------------------------------------------------------------------- #
 def default_home(environ: Any = None) -> Path:
-    """The Grok home Iron Jarvis reads: :data:`HOME_ENV`, else ``GROK_HOME``,
+    """The Grok home STEC OS reads: :data:`HOME_ENV`, else ``GROK_HOME``,
     else ``~/.grok``."""
     env = os.environ if environ is None else environ
     override = str(env.get(HOME_ENV) or "").strip()
@@ -351,7 +351,7 @@ def save_models(path: Path, rows: list[dict[str, Any]], default: str = "") -> No
 
 def cached_models(path: Path | None, home: Path | None = None) -> tuple[list[dict[str, Any]], str]:
     """BLOCKING-light: ``(the models Grok last listed, its default)`` —
-    memory, else Iron Jarvis's own copy, else the list Grok keeps itself
+    memory, else STEC OS's own copy, else the list Grok keeps itself
     (``models_cache.json``: names only, efforts not known). Never a start."""
     if LAST_MODELS:
         return list(LAST_MODELS), (LAST_DEFAULT[0] if LAST_DEFAULT else "")
@@ -669,7 +669,7 @@ class GrokDriver(AcpDriver):
                 return
             fold = grok_servers if method.endswith("servers_updated") else grok_status
             # NOT ``self.mcp_servers``: on an ACP driver that is the list of
-            # servers Iron Jarvis hands Grok (its own tools, ``acp_servers``).
+            # servers STEC OS hands Grok (its own tools, ``acp_servers``).
             note_servers(self, fold(self.reported_mcp, params), attr="reported_mcp")
         elif method == "_x.ai/session/interjection":
             text = str(params.get("text") or "")

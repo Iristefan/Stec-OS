@@ -91,7 +91,7 @@ def _use_model_refusal(d, name: str) -> str | None:
             return (
                 f"{tool} isn't installed on this PC, so it can't answer for you "
                 "yet. A subscription you use in the web or desktop app can't be "
-                "shared with Iron Jarvis — only the command-line tool can."
+                "shared with STEC OS — only the command-line tool can."
             )
         return SIGN_IN_FIX[binary]
     if name == "ollama":
@@ -641,7 +641,7 @@ def register(app: FastAPI, d) -> None:
 
     @app.get("/maintenance/storage")
     def maintenance_storage(older_than_days: int = 30) -> dict[str, Any]:
-        """What Iron Jarvis is keeping on disk, by category (v1.256.0, R-01).
+        """What STEC OS is keeping on disk, by category (v1.256.0, R-01).
 
         THE SILENT GROWTH THIS ANSWERS: measured on the live install, 783 MB of
         814 MB was generated media nothing pruned and no screen reported. This is

@@ -16,7 +16,7 @@ import { RESTART_WORDS } from "@/lib/restartWords";
 /** v1.356.0 (G77): where a "restart" setting is applied, said on its tag.
  *  "after a restart" never said HOW; the tag now names the place, and with
  *  `onOpenMaintenance` it opens it. Settings › System › Maintenance holds
- *  "Restart Iron Jarvis" (lib/restartWords). */
+ *  "Restart STEC OS" (lib/restartWords). */
 export const MAINTENANCE_PLACE = "Settings › System › Maintenance";
 export const RESTART_TAG_TITLE = `${RESTART_WORDS.tagTitle}. Use “${RESTART_WORDS.label}” in ${MAINTENANCE_PLACE}.`;
 export const RESTART_TAG_LINK_TITLE = `${RESTART_WORDS.tagTitle}. Press to open ${MAINTENANCE_PLACE}, where “${RESTART_WORDS.label}” is.`;

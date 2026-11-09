@@ -14,7 +14,7 @@
  *    reuses) its member (`POST /team/members/from-model`) THEN sets the
  *    session's team (`PATCH /build/sessions/{id} {team}`); Remove, "No team"
  *    and the folder's default (`PUT /build/folders/team`) send exactly their
- *    shapes; a refusal is one sentence in the panel; a 404 (an Iron Jarvis
+ *    shapes; a refusal is one sentence in the panel; a 404 (a STEC OS
  *    without teams) hides the control entirely;
  *  - while a team is set the Try on chip says it runs each model alone;
  *  - a team reply says who led, worked and reviewed, and — in the warn tone,
@@ -211,7 +211,7 @@ async function pickModel(group: string, model: string) {
 
 /* ---------------------------------------------------------------- tests */
 
-describe("an Iron Jarvis without teams", () => {
+describe("a STEC OS without teams", () => {
   it("a 404 from the folder's team read hides the Team control entirely", async () => {
     api.gets[FOLDER_PATH] = new api.ApiError("Not Found", 404);
     renderSession();
@@ -462,7 +462,7 @@ describe("the Team panel", () => {
     expect(err.textContent).toBe(sentence);
     expect(err.getAttribute("role")).toBe("alert");
     expect(callsOf("PATCH", "/build/sessions/s1")).toHaveLength(0);
-    // The control stays (a refusal is not an older Iron Jarvis).
+    // The control stays (a refusal is not an older STEC OS).
     expect(screen.getByTestId("harness-team")).toBeTruthy();
   });
 

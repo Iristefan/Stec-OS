@@ -25,7 +25,7 @@ ALLOW_LIKE: tuple[str, ...] = ("allow", "allow_session", "allow_commands")
 #: v1.422.0 (the code host): while a tool's line is handed to its driver, the
 #: line's own name (``[<tool>-<seq>, n]``, set by ``hostlink.RemoteProcess``).
 #: A card raised by that line then gets an id DERIVED from it, so the same
-#: line read again after an Iron Jarvis restart raises the SAME card — the
+#: line read again after a STEC OS restart raises the SAME card — the
 #: one the session's log already shows, and the one the user's answer names.
 ASK_SEED: ContextVar[list[Any] | None] = ContextVar("ij_hosted_ask_seed", default=None)
 
@@ -42,7 +42,7 @@ class ControlRefused(RuntimeError):
 class Ask:
     """One open permission question or question to the user."""
 
-    #: Iron Jarvis's own id (the card's ``request_id``) — never the harness's.
+    #: STEC OS's own id (the card's ``request_id``) — never the harness's.
     id: str
     #: ``approval`` | ``question``.
     kind: str
@@ -67,7 +67,7 @@ def new_ask_id() -> str:
 
 
 # --------------------------------------------------------------------------- #
-# v1.422.0: a driver's state, kept across an Iron Jarvis restart
+# v1.422.0: a driver's state, kept across a STEC OS restart
 # --------------------------------------------------------------------------- #
 #: A dict attribute keeps at most this many (newest) entries in a snapshot —
 #: maps that grow for a whole session (Claude Code's tool inputs, every
@@ -252,7 +252,7 @@ class Driver:
     def on_exit(self) -> None:
         """The process ended: fail every pending control request."""
 
-    # -- v1.422.0: kept across an Iron Jarvis restart (the code host) -----------
+    # -- v1.422.0: kept across a STEC OS restart (the code host) -----------
     #: Attributes never kept (whatever their value). Callables, futures,
     #: timers, waiters and paths are never kept anyway (no JSON form); a
     #: subclass names what it re-makes itself in :meth:`after_restore`.
@@ -265,7 +265,7 @@ class Driver:
 
     def state(self) -> dict[str, Any]:
         """Everything this driver knows that has a JSON form — a snapshot the
-        code host keeps, so a restarted Iron Jarvis carries the tool's
+        code host keeps, so a restarted STEC OS carries the tool's
         conversation on from it (``hosted/adopt.py``). An attribute with no
         JSON form is left out and keeps its fresh value after a restore."""
         out: dict[str, Any] = {}
@@ -293,7 +293,7 @@ class Driver:
 
     def quiet_frame(self, obj: dict[str, Any]) -> bool:
         """v1.441.0 review: True for a frame that is only the answer to a
-        background read Iron Jarvis made itself (Codex's terminal list): it
+        background read STEC OS made itself (Codex's terminal list): it
         never counts as hearing from the tool, or the reaper's two silent
         hours (``BACKGROUND_SILENT_MAX_S``) would never run out."""
         return False

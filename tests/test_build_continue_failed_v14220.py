@@ -130,7 +130,7 @@ async def test_a_failed_reply_keeps_its_rounds_and_its_line_offers_continue(home
     line = _reply(app, sid, "bt-f")
     assert line.get("canContinue") is True and line.get("error")
     # How long it kept trying is said on the line.
-    assert "Iron Jarvis tried 5 times" in line["error"]
+    assert "STEC OS tried 5 times" in line["error"]
 
 
 async def test_the_boot_resume_pass_never_carries_a_failed_reply_on(home, work):

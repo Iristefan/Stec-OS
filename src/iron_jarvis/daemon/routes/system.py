@@ -530,7 +530,7 @@ def register(app: FastAPI, d) -> None:
 
     @app.get("/self-dev")
     def self_dev_status() -> dict[str, Any]:
-        """Whether agents may edit Iron Jarvis's own source (opt-in, review-gated)."""
+        """Whether agents may edit STEC OS's own source (opt-in, review-gated)."""
         from ...core.self_dev import self_dev_status as _status
 
         return _status(d.platform.config)
@@ -631,9 +631,9 @@ def register(app: FastAPI, d) -> None:
         connection; the desktop app then waits for process exit and only
         force-kills as a fallback.
 
-        v1.422.0: ``{"restart": true}`` — Iron Jarvis is coming straight back:
+        v1.422.0: ``{"restart": true}`` — STEC OS is coming straight back:
         the coding tools the code host runs for Build › Code keep running and
-        the next Iron Jarvis carries them on. With no body (every older
+        the next STEC OS carries them on. With no body (every older
         desktop, the desktop's Quit and its update stop) it is a QUIT: they
         are stopped (their conversations saved) and the host goes too.
         """
@@ -642,8 +642,8 @@ def register(app: FastAPI, d) -> None:
         if isinstance(body, dict) and body.get("restart") is True:
             d.platform.code_host_keep = True
         _threading.Timer(0.2, _app._graceful_stop).start()
-        return {"ok": True, "detail": "Iron Jarvis is restarting" if getattr(d.platform, "code_host_keep", False)
-                else "Iron Jarvis is shutting down"}
+        return {"ok": True, "detail": "STEC OS is restarting" if getattr(d.platform, "code_host_keep", False)
+                else "STEC OS is shutting down"}
 
     @app.get("/schedules")
     def list_schedules() -> dict[str, Any]:

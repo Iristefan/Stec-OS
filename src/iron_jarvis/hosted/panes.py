@@ -24,7 +24,7 @@ name on the pane:
   command (a script, ``sed -i``) are not listed; a diff is cut at the event's
   own bound; lines may have moved since.
 
-No Undo on either: Iron Jarvis did not make these writes and keeps no copy of
+No Undo on either: STEC OS did not make these writes and keeps no copy of
 what was there before (the tool's own undo, or git, is the way back).
 
 USAGE — cached only: the session's Iron-Proxy account row (the cached
@@ -431,7 +431,7 @@ TURN_WORDS_START = (
     "includes changes you or another program made meanwhile."
 )
 TURN_WORDS_SEEN = (
-    "What changed in this folder since Iron Jarvis last read it before this message "
+    "What changed in this folder since STEC OS last read it before this message "
     "started ({at}): new files included, files git ignores left out. Changes made between "
     "that read and the message are counted here too."
 )
@@ -440,7 +440,7 @@ TURN_WORDS_FIRST = (
     "started here (the same list as the whole session)."
 )
 TURN_UNKNOWN = (
-    "This message's own changes cannot be told apart: Iron Jarvis did not read the folder "
+    "This message's own changes cannot be told apart: STEC OS did not read the folder "
     "just before it started. The whole session's changes are listed instead."
 )
 TURN_NOT_GIT = (
@@ -455,7 +455,7 @@ REVERT_WORDS = (
 )
 WHEN_SESSION = "when the session started here"
 WHEN_TURN = "when this message started"
-WHEN_SEEN = "when Iron Jarvis last read the folder before this message"
+WHEN_SEEN = "when STEC OS last read the folder before this message"
 REVERT_NOT_REPO = (
     "This folder is not in a git repository, so a file cannot be put back from here: "
     "use {tool} to take a change back."
@@ -470,7 +470,7 @@ REVERT_ADDED = (
     "{name} was added to git's staging area, so it is left as it is: use git to take it back."
 )
 REVERT_NO_TURN = (
-    "Iron Jarvis did not read the folder just before this message started, so it cannot "
+    "STEC OS did not read the folder just before this message started, so it cannot "
     "tell what to put {name} back to. Revert it from the whole session's list instead."
 )
 REVERT_DONE = (
@@ -478,7 +478,7 @@ REVERT_DONE = (
     "every other file are as they were."
 )
 REVERT_MOVED = (
-    "{name} did not exist {when}, so it was moved to Iron Jarvis's trash ({trash}). The "
+    "{name} did not exist {when}, so it was moved to STEC OS's trash ({trash}). The "
     "branch, its commits and every other file are as they were."
 )
 REVERT_FAILED = "git could not put {name} back: {why}."

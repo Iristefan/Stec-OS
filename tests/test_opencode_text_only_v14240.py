@@ -115,7 +115,7 @@ def _layout(root: Path, case: dict[str, Any]) -> dict[str, Path]:
 
 def _reader_env(dirs: dict[str, Path], case: dict[str, Any]) -> dict[str, str]:
     """The environment the adapter would read: the user's own OpenCode
-    variables, and Iron Jarvis's reader pointed at the scratch global folder."""
+    variables, and STEC OS's reader pointed at the scratch global folder."""
     env = {k: v for k, v in os.environ.items()
            if not k.startswith("OPENCODE_") and k not in ("XDG_CONFIG_HOME", "XDG_DATA_HOME")}
     env.update(case.get("env") or {})
@@ -164,7 +164,7 @@ def _regenerate(tmp_path: Path, monkeypatch) -> dict[str, Any]:
         runs = {
             # What the old adapter ran: the user's default agent, nothing added.
             "before": _resolve(dirs, user_env, case["default"]),
-            # Iron Jarvis's agent and rules (what the adapter runs now).
+            # STEC OS's agent and rules (what the adapter runs now).
             "ours": _resolve(dirs, {**user_env, **ours}, FIXED_AGENT),
             # If ``--agent`` ever fell back: the user's default agent under our rules.
             "fallback": _resolve(dirs, {**user_env, "OPENCODE_PERMISSION": ours["OPENCODE_PERMISSION"]},
@@ -175,7 +175,7 @@ def _regenerate(tmp_path: Path, monkeypatch) -> dict[str, Any]:
             runs["star-only"] = _resolve(dirs, {"OPENCODE_PERMISSION": json.dumps({"*": "deny"})}, "build")
         out["cases"][name] = {"env": ours, "runs": runs}
     # ``opencode run`` itself (a model that does not exist: no model call):
-    # does it take Iron Jarvis's agent, and what does it say when it cannot?
+    # does it take STEC OS's agent, and what does it say when it cannot?
     dirs = _layout(tmp_path / "run-check", CASES["permissive"])
     ours = _ours(dirs, CASES["permissive"], monkeypatch)
     out["run"] = {"ours": _run_check(dirs, ours), "undefined": _run_check(dirs, {})}
@@ -333,7 +333,7 @@ def test_star_alone_lost_to_a_users_later_allow(recorded):
 
 
 def test_an_agents_own_rules_come_after_the_environment(recorded):
-    """Why Iron Jarvis runs an agent of its own: the user's
+    """Why STEC OS runs an agent of its own: the user's
     ``agent.build.permission`` beat every deny in OPENCODE_PERMISSION."""
     tools = recorded["cases"]["agent-level"]["runs"]["fallback"]["tools"]
     assert tools["bash"] and tools["edit"]

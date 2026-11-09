@@ -10,7 +10,7 @@
    requested`` with ``surface: "build"``), and the phone's approve answers it
    ONCE; never a question, a once-only card or any card in Full access.
 2. IRON JARVIS'S OWN TOOLS, WITH CONSENT: the session's Capabilities (all off
-   by default) hand the REAL tool Iron Jarvis's MCP connection per process —
+   by default) hand the REAL tool STEC OS's MCP connection per process —
    Claude Code ``--mcp-config`` (our own file, a token REFERENCE), Codex
    ``-c mcp_servers…``, Pi ``-e <extension>``, OpenCode ACP ``mcpServers``
    (the token on stdin, never its env) — and NOTHING without a ticked box.
@@ -266,7 +266,7 @@ def test_the_phone_never_gets_a_question_a_once_only_card_or_a_full_access_card(
 
 
 # --------------------------------------------------------------------------- #
-# 2. Iron Jarvis's own tools, with consent
+# 2. STEC OS's own tools, with consent
 # --------------------------------------------------------------------------- #
 async def _say(c, sid, turn_id="t1", text="ready?"):
     r = await c.post(f"/build/app/sessions/{sid}/turn", json={"text": text, "turn_id": turn_id})

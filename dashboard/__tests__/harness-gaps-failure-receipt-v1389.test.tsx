@@ -157,7 +157,7 @@ const RESTART_CUT = {
   turnId: "t1",
   interrupted: true,
   error:
-    "Iron Jarvis stopped while answering (a restart or a crash). What it had written so far is kept; press Retry to ask again.",
+    "STEC OS stopped while answering (a restart or a crash). What it had written so far is kept; press Retry to ask again.",
 };
 
 function sse(frames: [string, unknown][]): Response {

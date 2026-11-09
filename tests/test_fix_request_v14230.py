@@ -1,6 +1,6 @@
 """v1.423.0 (Wave 3 lane B): "Copy as a fix request" — the problems Iron
 Jarvis's coding sessions and model team ran into, as a report a coding agent
-working on Iron Jarvis can act on (``agents/fix_request``,
+working on STEC OS can act on (``agents/fix_request``,
 ``GET /team/fix-request``).
 
 The seeded database is shaped like the owner's real rows (read-only from the
@@ -124,7 +124,7 @@ def _seed_done_means(engine) -> None:
                   at=T0 + timedelta(minutes=2 + i))
         _call(db, iid="tool_ok1", sid=HELPER, tool="shell", ok=True, output="ok",
               args={"command": "git status"}, at=T0 + timedelta(minutes=6))
-        # A test command that RAN and failed: the user's tests, not Iron Jarvis.
+        # A test command that RAN and failed: the user's tests, not STEC OS.
         _call(db, iid="tool_ran", sid=HELPER, tool="shell", ok=False,
               args={"command": "python -m pytest -q tests/test_cart.py"},
               output=_failure("exit 1", "FAILED tests/test_cart.py::test_total - assert 3 == 4",
@@ -196,7 +196,7 @@ def test_the_report_lists_the_three_problems_and_leaves_out_the_users_choices(tm
     assert "Programs it could not find: head (2), tail (1)." in text
     assert "The team router found no one for a piece" in text
     assert "A tool call written as text" in text
-    # ...and the three that are not Iron Jarvis's problems are nowhere.
+    # ...and the three that are not STEC OS's problems are nowhere.
     assert "git push" not in text and "declined" not in text
     assert "npm run dev" not in text and "stopped by you" not in text
     assert "pytest" not in text and "1 failed" not in text
@@ -207,7 +207,7 @@ def test_nothing_found_is_one_line_saying_so(tmp_path):
     out = _report(engine)
     assert out["problems"] == 0
     assert out["text"] == (
-        "Nothing to report: Iron Jarvis ran into no problems in the coding sessions and their model "
+        "Nothing to report: STEC OS ran into no problems in the coding sessions and their model "
         "team in the last 7 days."
     )
     assert "\n" not in out["text"]
@@ -261,7 +261,7 @@ def test_only_the_users_choices_and_ordinary_work_is_nothing_to_report(tmp_path)
         ("shell", "low trust needs the sandbox; Docker is not reachable", "", None),
         ("shell", TURN_STOPPED_LEDGER_NOTE, "", None),
         ("shell", "the run was cancelled while the tool was running — its effect may have landed", "", None),
-        ("read_file", "Iron Jarvis stopped while this was running (a restart or a crash), so it", "", None),
+        ("read_file", "STEC OS stopped while this was running (a restart or a crash), so it", "", None),
         ("delegate", "Emergency stop is on, so work that starts on its own … cannot start.", "", None),
         ("shell", "left for the user: run a command — nobody answered in 15 minutes", "", None),
         ("shell", "denied by policy", "permission denied", None),
@@ -271,7 +271,7 @@ def test_only_the_users_choices_and_ordinary_work_is_nothing_to_report(tmp_path)
         ("browser_create_tab", "browser_create_tab needs approval and nothing here could ask — grant it",
          "permission denied", "ask_not_carried"),
         ("shell", "requires approval; no resolver in headless mode", "permission denied", "ask_not_carried"),
-        # Iron Jarvis refusing a malformed call.
+        # STEC OS refusing a malformed call.
         ("write_file", "`write_file` is not one of this agent's tools — it was not run", "not armed",
          "tool_not_given"),
         ("frobnicate", "unknown tool 'frobnicate'", "", "tool_not_given"),
@@ -405,7 +405,7 @@ def test_low_trust_left_out_is_said_beside_a_report(tmp_path):
               at=T0 + timedelta(minutes=3))
         db.commit()
     text = _report(engine)["text"]
-    assert ("- Left out: 1 reply or helper run that ended at low trust (Iron Jarvis never reads "
+    assert ("- Left out: 1 reply or helper run that ended at low trust (STEC OS never reads "
             "their text)") in text
     assert "session_low00000" not in text
     assert "Seen 3 times" in text  # the low-trust run's call is not counted
@@ -531,7 +531,7 @@ def test_helper_runs_replies_and_the_review_are_read_from_their_own_records(tmp_
     msgs = [
         {"role": "user", "content": "q", "at": T0.isoformat()},
         {"role": "assistant", "content": "", "at": t.isoformat(),
-         "error": "Claude Code couldn't finish this answer. Iron Jarvis tried 5 times over 4 min. Press Retry.",
+         "error": "Claude Code couldn't finish this answer. STEC OS tried 5 times over 4 min. Press Retry.",
          "errorTitle": "Claude Code couldn't finish this answer", "errorDetail": "overloaded_error 529"},
         {"role": "assistant", "content": "Half", "at": (t + timedelta(minutes=1)).isoformat(),
          "route": {"provider": "custom", "model": "glm-5.3-flash", "cut_off": {"times": 2, "recovered": False}},
@@ -544,7 +544,7 @@ def test_helper_runs_replies_and_the_review_are_read_from_their_own_records(tmp_
         {"role": "assistant", "content": "", "at": (t + timedelta(minutes=3)).isoformat(),
          "error": "Claude declined to answer.", "errorKind": "refusal"},
         {"role": "assistant", "content": "x", "at": (t + timedelta(minutes=4)).isoformat(),
-         "error": "Iron Jarvis stopped while answering (a restart or a crash). What it had written so far is kept."},
+         "error": "STEC OS stopped while answering (a restart or a crash). What it had written so far is kept."},
         # A review the user stopped, and one not run in low trust: left out.
         {"role": "assistant", "content": "y", "at": (t + timedelta(minutes=5)).isoformat(),
          "finish": {"review": {"state": "stopped", "why": "the reply was stopped during the review"}}},
@@ -579,7 +579,7 @@ def test_helper_runs_replies_and_the_review_are_read_from_their_own_records(tmp_
 
 
 def test_every_owner_module_named_in_the_report_exists():
-    """"Where in Iron Jarvis" points a coding agent at real files."""
+    """"Where in STEC OS" points a coding agent at real files."""
     for kind, row in FR.KIND_TABLE.items():
         for path in row["owners"]:
             assert (REPO / path).is_file(), (kind, path)
@@ -589,8 +589,8 @@ def test_every_owner_module_named_in_the_report_exists():
 
 def test_the_instruction_is_the_owners_words():
     assert FR.INSTRUCTION == (
-        "These are problems Iron Jarvis's coding sessions and model team ran into. Fix them in the "
-        "Iron Jarvis repository; each problem says where it happened, what was seen, what was "
+        "These are problems STEC OS's coding sessions and model team ran into. Fix them in the "
+        "STEC OS repository; each problem says where it happened, what was seen, what was "
         "expected and the evidence."
     )
 

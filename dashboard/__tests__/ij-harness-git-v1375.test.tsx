@@ -394,7 +394,7 @@ describe("the Branch view", () => {
 
   it("Merge takes two presses, then offers to remove the worktree (two presses), which archives the session", async () => {
     api.posts["POST /build/sessions/s1/git/merge"] = { merged: true, into: "main", where: REPO, commit: "aa11", offer_remove: true };
-    api.posts["POST /build/sessions/s1/git/discard"] = { moved: true, trash: "C:\\home\\trash\\x", note: `The worktree is in Iron Jarvis's trash and the branch ${BRANCH} is kept.` };
+    api.posts["POST /build/sessions/s1/git/discard"] = { moved: true, trash: "C:\\home\\trash\\x", note: `The worktree is in STEC OS's trash and the branch ${BRANCH} is kept.` };
     const { onGone } = renderBranch();
     await screen.findByText("cart.py");
     const merge = screen.getByRole("button", { name: "Merge into main" });

@@ -1589,7 +1589,7 @@ async def _pointed_section(d, body) -> str:
         lines = [
             POINTED_HEADING,
             f"The user clicked this element{where} to show you what they mean; the "
-            "click went to Iron Jarvis, not to the page, so nothing on the page "
+            "click went to STEC OS, not to the page, so nothing on the page "
             "changed. " + how,
             POINTED_UNTRUSTED_LINE,
             wrap_untrusted(scan.text),
@@ -1856,7 +1856,7 @@ def model_where_line(platform: Any, provider: str, model: str = "") -> str:
         except Exception:  # noqa: BLE001 — the prompt must never break a turn
             place = _egress.PLACE_CLOUD
     return (
-        f"- Iron Jarvis runs on the user's machine; their home directory is "
+        f"- STEC OS runs on the user's machine; their home directory is "
         f"{Path.home()}. The model answering (you) "
         f"{_MODEL_PLACE_WORDS.get(place, _MODEL_PLACE_WORDS[_egress.PLACE_CLOUD])}.\n"
     )
@@ -3731,7 +3731,7 @@ def with_page_door(
 
 def page_steps_block(body: Any) -> str:
     """The plain lines the model is given for a step only a page can do and
-    for what Iron Jarvis does not offer (v1.436.0, Wave 5 B3 —
+    for what STEC OS does not offer (v1.436.0, Wave 5 B3 —
     ``daemon/page_doors.prompt_block``), read from the user's last message;
     ``""`` when nothing matches, so the system prompt is byte-identical.
     Joined to the query tail right after the grounding's query sections,
@@ -5289,7 +5289,7 @@ _BROWSER_ACTING_TOOLS: frozenset[str] = frozenset(
 #: (v1.262.0). Working a page is read → act → read → act — a form is five or
 #: six of those, a search-and-pick task more — and six rounds ended every such
 #: turn on the last-round escalation, which the sidebar cannot follow ("ask
-#: again in the Iron Jarvis window"). The user's words for the result: "acts
+#: again in the STEC OS window"). The user's words for the result: "acts
 #: as a chat bot next to the window". Twenty-four is room for a real task;
 #: the deny floor still asks before each page action, so the budget is not
 #: autonomy, it is not being cut off mid-task.
@@ -5347,7 +5347,7 @@ BROWSER_FORM_LINE = (
 BROWSER_LOOK_ONLY_LINE = (
     "Browser access is Read only: you can look at tabs and pages but not click, "
     "type or navigate. If the user asks you to act on a page, say that plainly "
-    "and tell them the switch is on the Browser page in Iron Jarvis, under "
+    "and tell them the switch is on the Browser page in STEC OS, under "
     "Interactive."
 )
 
@@ -6756,7 +6756,7 @@ async def finish_for_turn(d, body, harness_turn, *, tool_session: str, tool_ws,
     except Exception:  # noqa: BLE001 — no registry here: nothing is known as custom
         custom = frozenset()
     # v1.401.0 (TEAM REVIEW AT THE FINISH): "Hand work to my team first",
-    # read live as the reply begins — Iron Jarvis then hands the reply's
+    # read live as the reply begins — STEC OS then hands the reply's
     # change to the team's reviewer itself (harness/finish). Off: no review.
     from ..agents.model_team import team_first_on as _team_first_on
 
@@ -7526,7 +7526,7 @@ def _claimed_write_note(reply: str, tools_used: list[str], *, custom_tools=(), r
 #: shows them since it reads the lane's whole reply: it has no Tools menu, and
 #: a sidebar turn can never arm a document tool (its ceiling is the browser
 #: tools, ``browser/panel.browser_tool_ceiling``).
-SIDEBAR_NO_FILES = "The browser sidebar can't write documents; ask in the Iron Jarvis window."
+SIDEBAR_NO_FILES = "The browser sidebar can't write documents; ask in the STEC OS window."
 
 
 def _in_the_sidebar() -> bool:
@@ -10800,7 +10800,7 @@ async def run_chat_turn(
             # stream lane's `_turn_tools`.
             _gate_now = round_gate(set(armed), _finish, calls)
             # v1.407.2: the posture rides along — Ask first's guard for Git's
-            # and Iron Jarvis's own files is dropped under "Don't ask"; under
+            # and STEC OS's own files is dropped under "Don't ask"; under
             # any other posture this lane, which cannot card, REFUSES it.
             # MIRROR NOTE (lock-step): the stream lane passes its own.
             _spend = await _spend_checks_for(

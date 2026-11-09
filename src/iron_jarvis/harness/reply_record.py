@@ -17,7 +17,7 @@ agent run's id, and the session id is the key every tool call of the turn is
 ledgered under, so a cut-off call's own ledger row can be found. The list is
 the turn's OWN part of the model's conversation — its question first, then
 every round (the assistant turn with its tool calls and its ``role="tool"``
-results, always as ONE unit), steer notes and Iron Jarvis's own notes — in
+results, always as ONE unit), steer notes and STEC OS's own notes — in
 the store's shape (``agents/transcript._encode``: images become its marker;
 native blocks are not kept). The history BEFORE the question is not kept: it
 is the session's transcript, and a resumed turn plans it again like any turn.
@@ -117,7 +117,7 @@ KEEP_DAYS = 7
 #: The model's own note at the end of a resumed reply's conversation
 #: (agents/transcript.RESUME_NOTE's idea, in a coding session's words).
 RESUME_NOTE = (
-    "[Iron Jarvis stopped while you were working on this reply (an update, a restart or a"
+    "[STEC OS stopped while you were working on this reply (an update, a restart or a"
     " crash) and has started again. Your work so far is above, exactly as it was. A tool call"
     " that was cut off says so in its result: a call that only reads is safe to run again; for"
     " anything else, check whether it took effect before doing it again. Carry on with the"
@@ -126,7 +126,7 @@ RESUME_NOTE = (
 #: The resumed turn's question line (a daemon continuation: the screen hides
 #: it; a later turn's history reads it).
 RESUME_QUESTION = (
-    "Carry on with the reply that stopped when Iron Jarvis restarted, from where it stopped."
+    "Carry on with the reply that stopped when STEC OS restarted, from where it stopped."
 )
 #: v1.422.0 (B1): the model's note at the end of a FAILED reply's kept
 #: conversation, when the user pressed "Continue from where it stopped".
@@ -215,7 +215,7 @@ def _fingerprint(m: Any) -> tuple[int, str, int, int, bool, int]:
 #: had to leave its EARLIEST steps out to stay under the cap (see
 #: :func:`_fit`). The model reads it on a resume.
 LEFT_OUT_NOTE = (
-    "[Iron Jarvis kept this reply's record small by leaving out its earliest {n} tool calls "
+    "[STEC OS kept this reply's record small by leaving out its earliest {n} tool calls "
     "(above this note they are not shown). What they did is already in the folder: check the "
     "files before doing any of that work again.]"
 )

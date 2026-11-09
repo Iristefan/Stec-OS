@@ -1,7 +1,7 @@
 """Brain Profile records, validation, and the ONE resolve rule (v1.406.0).
 
 A profile names a memory base (by its NAME — the identity every other surface
-uses) as the user's primary durable brain, and says how Iron Jarvis treats it.
+uses) as the user's primary durable brain, and says how STEC OS treats it.
 ``resolve(platform, project_id)`` is the only place that decides which profile
 applies to a turn or a run: the project's own choice, else the app's.
 """
@@ -31,7 +31,7 @@ MAX_SKILLS = 12
 
 #: Plain names for the built-in bases (a custom base is named by the user).
 BUILTIN_LABELS = {
-    "brain": "Iron Jarvis memory",
+    "brain": "STEC OS memory",
     "obsidian": "Obsidian vault",
     "notion": "Notion",
 }

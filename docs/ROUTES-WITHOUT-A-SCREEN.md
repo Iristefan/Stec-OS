@@ -55,7 +55,7 @@ are routes the check counts as called that have no caller.
 | GET | `/docs` | KEEP | FastAPI's own API browser (developer use). |
 | GET | `/docs/oauth2-redirect` | KEEP | Part of FastAPI's API browser. |
 | GET | `/redoc` | KEEP | FastAPI's own API reference (developer use). |
-| GET | `/mcp` | KEEP | Iron Jarvis's MCP server: the CLIs in Build terminals and the Code view's tools call it (by hand: the check counts a placeholder address as a caller). |
+| GET | `/mcp` | KEEP | STEC OS's MCP server: the CLIs in Build terminals and the Code view's tools call it (by hand: the check counts a placeholder address as a caller). |
 | POST | `/mcp` | KEEP | The same MCP server (by hand, as above). |
 | DELETE | `/mcp` | KEEP | The same MCP server: ends an MCP session (by hand, as above). |
 | POST | `/comm/slack/events/{name}` | KEEP | Slack calls it (Events API). |

@@ -322,7 +322,7 @@ describe("failures are one plain sentence", () => {
     hooks.probe = () => Promise.reject(new hooks.FakeApiError("Failed to fetch", 0));
     render(<Host />);
     fireEvent.click(link());
-    expect(await screen.findByText(/Iron Jarvis is not answering right now/)).toBeTruthy();
+    expect(await screen.findByText(/STEC OS is not answering right now/)).toBeTruthy();
   });
 
   it("a list that lands after the address changed is dropped", async () => {

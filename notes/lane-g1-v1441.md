@@ -10,9 +10,9 @@
 - **Codex's background terminals keep the session alive.** The idle reaper and the six-session pool no longer stop a Codex session that still runs a command the model left in the background. This is the v1.418.0 rule Claude Code's tasks already had (two silent hours still end it).
 - **MCP servers: one ⋯ menu per row, only what fits.**
   - Claude Code: **Reconnect**, **Turn off** and **Turn on** (Claude Code remembers "off" for this folder, as its own `/mcp` does).
-  - Codex: **Sign in…** on a server waiting for a sign-in. It opens Codex's own sign-in page in the browser. Iron Jarvis never signs in. Codex starts the server again when the sign-in finishes, and the conversation says so.
+  - Codex: **Sign in…** on a server waiting for a sign-in. It opens Codex's own sign-in page in the browser. STEC OS never signs in. Codex starts the server again when the sign-in finishes, and the conversation says so.
   - The list re-reads at once after an action.
-- **Older versions are left alone.** An older Iron Jarvis, or a tool without these features, shows the tab exactly as before: no menus, no list.
+- **Older versions are left alone.** An older STEC OS, or a tool without these features, shows the tab exactly as before: no menus, no list.
 
 ## What was measured, and how (no real model call, no sign-in)
 
@@ -80,7 +80,7 @@ Probes and stand-ins live in the scratchpad (`g1/probe_claude.py`, `probe2.py`, 
 
 - Claude Code's `mcp_authenticate` (its OAuth sign-in for an HTTP server) is not wired. Claude still signs in through "Open in terminal, /mcp".
 - Codex has no Reconnect or Turn off here: the app-server has `config/mcpServer/reload` but no per-server toggle.
-- Not driven end-to-end through the Iron Jarvis daemon with the real CLIs. The raw protocol was measured on the real CLIs, and the driver/route logic is pinned with doubles.
+- Not driven end-to-end through the STEC OS daemon with the real CLIs. The raw protocol was measured on the real CLIs, and the driver/route logic is pinned with doubles.
 - Codex `thread/backgroundTerminals/clean` ("stop all") is measured (`{}`) but not offered.
 - A background terminal's later output still reaches the conversation through Codex's `outputDelta` (unchanged behaviour).
 - OpenCode, Pi, Grok and Antigravity offer neither list nor MCP actions (the driver hooks are generic, ready for them).
@@ -111,7 +111,7 @@ Probes and stand-ins live in the scratchpad (`g1/probe_claude.py`, `probe2.py`, 
 **Background work and MCP servers in a coding session (Build › Code).** The Session tab lists what the coding tool still runs in the background: Claude Code's helpers and background commands, and Codex's background terminals. To stop one, open its ⋯ menu and choose Stop. Only that one stops; a reply that is running goes on, and the conversation says what you stopped. Each of the tool's own MCP servers has a ⋯ menu too, holding only what that tool can do:
 
 - Claude Code: Reconnect, Turn off and Turn on. Like its own `/mcp`, it remembers "off" for this folder.
-- Codex: Sign in… on a server that needs it. Codex opens its sign-in page in your browser; Iron Jarvis never signs in for you.
+- Codex: Sign in… on a server that needs it. Codex opens its sign-in page in your browser; STEC OS never signs in for you.
 
 Changing Claude Code's effort now takes effect at once, even while it works.
 
@@ -122,7 +122,7 @@ Re-measured on Claude Code 2.1.316 (scratch `CLAUDE_CONFIG_DIR` and `USERPROFILE
 Defects found, each pinned red first (`tests/test_session_controls_review_v14410.py`, 9 pins; one dashboard case in `dashboard/__tests__/session-controls-v1441-0.test.tsx`):
 
 1. **"Now works at high effort" was not true mid-reply.** The running reply keeps its effort (measured above). `ClaudeDriver.set_effort` still answers `now` (no restart is needed) but, while a reply runs (`turn_open` or `_alone`), says `EFFORT_NEXT_WORDS` ("… from your next message; the reply running now keeps its effort."). `xhigh` is said "extra" (`EFFORT_SAID`, the chip's own word).
-2. **Iron Jarvis's own Codex terminal reads kept the session alive for ever.** Every answer to `thread/backgroundTerminals/list` passed through the service's `on_message`, which stamps `last_heard`, so the 30 s poll reset the v1.418.0 two-silent-hours rule (`BACKGROUND_SILENT_MAX_S`) on every read: a forgotten dev server held the process for ever. `Driver.quiet_frame(obj)` (base: False), `CodexDriver._quiet_ids` (the read's own request id, taken before any await), and `service.heard_from(driver, obj)` used by BOTH `on_message`s (the service's and the code host's adopt path).
+2. **STEC OS's own Codex terminal reads kept the session alive for ever.** Every answer to `thread/backgroundTerminals/list` passed through the service's `on_message`, which stamps `last_heard`, so the 30 s poll reset the v1.418.0 two-silent-hours rule (`BACKGROUND_SILENT_MAX_S`) on every read: a forgotten dev server held the process for ever. `Driver.quiet_frame(obj)` (base: False), `CodexDriver._quiet_ids` (the read's own request id, taken before any await), and `service.heard_from(driver, obj)` used by BOTH `on_message`s (the service's and the code host's adopt path).
 3. **Two presses of Stop on one Claude Code task** sent two `stop_task`s and said "You stopped …" twice. A task in `_stopping` is refused (`TASK_ALREADY_STOPPING`) and left out of the list.
 4. **Codex's stale-id refusal reached the screen raw** ("Codex did not stop it: invalid background terminal process id"): now `TERMINAL_ALREADY_ENDED`.
 5. **The Stop route waited unbounded on a list read** (only for the row's kind; up to Codex's 60 s request timeout): now `LIST_TIMEOUT_S`, falling back to "task".
@@ -131,6 +131,6 @@ Defects found, each pinned red first (`tests/test_session_controls_review_v14410
 
 Mutations: 8 of my fixes broken one at a time → each red; 5 of the builder's claims → 3 red, 2 survived (item 7) and are now red.
 
-Checked and fine: both new routes are found by master's dead-code caller scan (`tests/test_wave6_dead_code_v14390.py` at `7abc8d31`, run against this branch; a made-up route reads uncalled); `safe_sign_in_url` and `openableSignIn` refuse `javascript:`, `file:`, `data:` and user:password addresses, the desktop opens a `window.open` through `openExternalIfSafe`, and the URL is never in a notice or the event log; Iron Jarvis writes nothing to `.claude.json` (only Claude Code's own `mcp_toggle` does); a stop is scoped to the session's own driver (Claude's task ids, Codex's `threadId`).
+Checked and fine: both new routes are found by master's dead-code caller scan (`tests/test_wave6_dead_code_v14390.py` at `7abc8d31`, run against this branch; a made-up route reads uncalled); `safe_sign_in_url` and `openableSignIn` refuse `javascript:`, `file:`, `data:` and user:password addresses, the desktop opens a `window.open` through `openExternalIfSafe`, and the URL is never in a notice or the event log; STEC OS writes nothing to `.claude.json` (only Claude Code's own `mcp_toggle` does); a stop is scoped to the session's own driver (Claude's task ids, Codex's `threadId`).
 
 Still OPEN: an effort change sent while Claude Code is stuck can hold the PATCH up to 2 × 30 s before it falls back; the "remembers this for this folder" words are in a hover title (the notice after says it too); Codex terminal output still stamps `last_heard` (it is the tool speaking); `stop_background` and the sign-in are written mid-turn for Codex (a user press; `turn/started` names the turn, so a code-host restart in that window is safe).

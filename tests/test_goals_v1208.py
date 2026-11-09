@@ -473,7 +473,7 @@ async def test_rehydrate_reconciles_a_goal_stranded_mid_iteration(
     assert record.state == "active"
     breaker = record.decoded_breaker()
     assert len(breaker["failures"]) == 1
-    assert breaker["last_reason"] == "stopped when Iron Jarvis restarted"  # v1.354.0 G30: words changed on purpose
+    assert breaker["last_reason"] == "stopped when STEC OS restarted"  # v1.354.0 G30: words changed on purpose
     checkpoint = record.decoded_checkpoint()
     assert "running_session_id" not in checkpoint
     assert checkpoint["last_session_id"] == session.id
@@ -704,7 +704,7 @@ async def test_provider_crash_is_a_breaker_failure_with_the_real_reason(
     # raised RuntimeError: provider down"; the raw text is the run's own
     # folded detail.
     own = (
-        "Iron Jarvis couldn't finish this task. Run it again. "
+        "STEC OS couldn't finish this task. Run it again. "
         "If it happens again, open the run to see the details."
     )
     assert result["reason"] == own

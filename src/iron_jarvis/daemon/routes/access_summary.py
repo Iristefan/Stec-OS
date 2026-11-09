@@ -19,7 +19,7 @@ live ONLY in the daemon, so this one read-only route hands them over:
   ``limited`` is true for either.
 * ``writes`` — ``chat_files_dir``: where a chat outside a project keeps its
   folder (``config.chat_files_dir``: the "Chat files folder" setting, else
-  ``<Documents>\\Iron Jarvis``). "" when it cannot be worked out.
+  ``<Documents>\\STEC OS``). "" when it cannot be worked out.
 
 No path to a protected folder rides here; the block names them in words.
 A sync handler on purpose: resolving the Documents folder and canonicalising

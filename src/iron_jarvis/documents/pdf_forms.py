@@ -151,7 +151,7 @@ def fill_form(src: Path, dst: Path, values: dict[str, Any]) -> dict[str, Any]:
     if not described:
         raise FormError(
             f"{src.name} has no fillable form fields — it is a flat PDF, so there "
-            "is nothing to fill in. (Iron Jarvis does not type text on top of a "
+            "is nothing to fill in. (STEC OS does not type text on top of a "
             "page; fill it in a PDF editor, or ask for the answers as a list.)"
         )
     fields = {f["name"]: f for f in described}
@@ -188,7 +188,7 @@ def fill_form(src: Path, dst: Path, values: dict[str, Any]) -> dict[str, Any]:
         raise FormError(
             f"{src.name} lists fillable fields, but this app could not write to "
             f"them ({type(exc).__name__}: {exc}) — the form is damaged or built "
-            "in a way Iron Jarvis cannot fill. Nothing was written."
+            "in a way STEC OS cannot fill. Nothing was written."
         ) from exc
     dst.parent.mkdir(parents=True, exist_ok=True)
     tmp = dst.with_name(f".{dst.name}.tmp-{os.getpid()}")

@@ -63,7 +63,7 @@ MORE = [
     ("deep/er/.ironjarvis/x.md", "jarvis"), ("pkg\\.claude\\commands\\x.md", "claude"),
 ]
 #: The rules files the user named ("CLAUDE.md/AGENTS.md rules files") and
-#: Iron Jarvis's own (``.ironjarvis.md``) — at the root and nested (Claude
+#: STEC OS's own (``.ironjarvis.md``) — at the root and nested (Claude
 #: Code and Codex read nested ones), any case.
 RULES = [
     ("AGENTS.md", "rules"), (".ironjarvis.md", "rules"),
@@ -97,7 +97,7 @@ def test_an_ordinary_file_is_not_guarded(tmp_path, path):
 
 def test_the_words_say_plainly_why():
     assert "Git's own settings" in A.GUARD_WHY["git"]
-    assert "Iron Jarvis's own safety rules" in A.GUARD_WHY["jarvis"]
+    assert "STEC OS's own safety rules" in A.GUARD_WHY["jarvis"]
 
 
 def test_every_edit_tool_is_read_and_a_patch_by_its_heads(tmp_path):

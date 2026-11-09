@@ -179,17 +179,17 @@ SUPPORTED_METHODS: tuple[str, ...] = (
 #: pane is the remedy — the user ticks Browser in that pane's Capabilities — so
 #: the sentence names the surface rather than the setting.
 NO_CAPABILITY_MESSAGE = (
-    "this Build terminal grants no capability Iron Jarvis serves over MCP — only "
+    "this Build terminal grants no capability STEC OS serves over MCP — only "
     "Browser and Memory are served in this version; tick one of them in the "
     "terminal's Capabilities in Build, then start the coding tool again"
 )
 
 #: v1.414.0 review: the same 403 for a Build › Code session's grant. Its
-#: remedy is the session's own "Iron Jarvis tools" chip — a Code session has no
+#: remedy is the session's own "STEC OS tools" chip — a Code session has no
 #: terminal Capabilities to tick.
 CODE_NO_CAPABILITY_MESSAGE = (
-    "this Build › Code session has none of Iron Jarvis's tools turned on — turn on "
-    "Memory or Browser under Iron Jarvis tools in the session's header in Build"
+    "this Build › Code session has none of STEC OS's tools turned on — turn on "
+    "Memory or Browser under STEC OS tools in the session's header in Build"
 )
 
 
@@ -285,7 +285,7 @@ MCP_NOT_CONNECTED_LINE = (
 #: is ONE HTTP round trip that the harness is blocked on, and
 #: ``mcpserver/stdio_shim.py:DEFAULT_TIMEOUT_S`` bounds that trip at 60 seconds.
 #: A pause that outlives the client's own ceiling does not read to the user as
-#: "still waiting" — the shim reports "cannot reach Iron Jarvis" while their
+#: "still waiting" — the shim reports "cannot reach STEC OS" while their
 #: approval card is still on screen, and answering it then resolves nothing. So
 #: this must stay strictly under that ceiling with room for the call itself; the
 #: relationship is pinned by a test rather than left as a comment.
@@ -304,15 +304,15 @@ MCP_NO_ASK_SURFACE_MESSAGE = (
 
 #: The refusal when the user answered the card with Deny. Says WHO refused, so
 #: the harness's model does not retry the call a human just declined.
-MCP_ASK_DENIED_MESSAGE = "the user declined this call when Iron Jarvis asked them"
+MCP_ASK_DENIED_MESSAGE = "the user declined this call when STEC OS asked them"
 
 #: The refusal when nobody answered in :data:`MCP_APPROVAL_TIMEOUT_S`. An honest
 #: timeout, never a run: the harness is told the question went out and names the
 #: standing grant that avoids the next one.
 MCP_ASK_TIMEOUT_MESSAGE = (
-    "Iron Jarvis asked the user to approve this call and nobody answered in "
+    "STEC OS asked the user to approve this call and nobody answered in "
     f"{int(MCP_APPROVAL_TIMEOUT_S)}s, so nothing was done — ask them to approve "
-    "it in Iron Jarvis (the bell), or to set this tool to allow in Settings"
+    "it in STEC OS (the bell), or to set this tool to allow in Settings"
 )
 
 
@@ -320,7 +320,7 @@ def capability_refused_message(tool_name: str, pane_id: str = "") -> str:
     """The 403 sentence for one tool the pane may not use.
 
     v1.414.0 review: a Build › Code session's grant (``pane_id`` "code:…") is
-    told about the session's own "Iron Jarvis tools" chip, and that a box
+    told about the session's own "STEC OS tools" chip, and that a box
     turned on there applies at once (its token reads the session LIVE) — a
     terminal's words are unchanged.
 
@@ -341,7 +341,7 @@ def capability_refused_message(tool_name: str, pane_id: str = "") -> str:
             if session_of(pane_id):
                 return (
                     f"{tool_name} is not available to this Build › Code session: {label} is not "
-                    "turned on for it. The user can turn it on under Iron Jarvis tools in the "
+                    "turned on for it. The user can turn it on under STEC OS tools in the "
                     "session's header in Build."
                 )
             return (
@@ -349,7 +349,7 @@ def capability_refused_message(tool_name: str, pane_id: str = "") -> str:
                 f"include {label}. Tick it in Build and start the coding tool again."
             )
     return (
-        f"{tool_name} is not served over MCP by Iron Jarvis: only Browser tools "
+        f"{tool_name} is not served over MCP by STEC OS: only Browser tools "
         "and Memory's read-only tools are, and no pane Capability unlocks this one."
     )
 
@@ -366,8 +366,8 @@ def instructions_heading(pane_id: str) -> str:
     code = session_of(pane_id)
     if code:
         # v1.414.0: a Build › Code session's grant.
-        return f"Iron Jarvis tools for Build › Code session {code}."
-    return f"Iron Jarvis tools for Build pane {pane_id}."
+        return f"STEC OS tools for Build › Code session {code}."
+    return f"STEC OS tools for Build pane {pane_id}."
 
 
 @dataclass(frozen=True)

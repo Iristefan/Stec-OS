@@ -29,7 +29,7 @@ screenshot module are all the real ones.
 
 The last section pins Ship 2's docs deliverable for the same reason: the Guide
 answers out of ``docs/COMPUTER-USE.md`` (it is in ``guide/corpus.BUNDLED_DOCS``),
-so a stale sentence there is not a stale sentence — it is Iron Jarvis telling a
+so a stale sentence there is not a stale sentence — it is STEC OS telling a
 user, confidently, to open a nav item that no longer exists.
 
 No assertion here measures elapsed time, every spy takes ``*args, **kw``, and

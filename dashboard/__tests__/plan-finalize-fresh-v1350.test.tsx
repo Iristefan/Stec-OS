@@ -185,7 +185,7 @@ afterEach(() => {
 describe("v1.350.0: finalize asks for a plan only when it needs one", () => {
   it("a fresh hand-off that made no plan finishes without reading GET /sessions/{id}/plan", async () => {
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     await waitFor(() => expect(box).toBeEnabled());
     fireEvent.change(box, { target: { value: "do the long thing" } });
     fireEvent.keyDown(box, { key: "Enter" });

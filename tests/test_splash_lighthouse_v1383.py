@@ -92,9 +92,9 @@ def _reduce_block(css: str) -> str:
 
 def test_the_words_are_the_ones_the_app_always_had():
     page = _page()
-    assert "<title>Starting Iron Jarvis…</title>" in page
-    assert '<h1>Starting Iron Jarvis<span class="dots"></span></h1>' in page
-    assert "<p>Getting Iron Jarvis ready — this can take a few seconds.</p>" in page
+    assert "<title>Starting STEC OS…</title>" in page
+    assert '<h1>Starting STEC OS<span class="dots"></span></h1>' in page
+    assert "<p>Getting STEC OS ready — this can take a few seconds.</p>" in page
     assert "daemon" not in page.lower()
 
 
@@ -228,7 +228,7 @@ def test_the_window_is_the_same_window_in_the_pages_colour():
     body = _loading_window()
     assert "width: 520," in body and "height: 380," in body
     assert "frame: false," in body and "resizable: false," in body
-    assert 'title: "Starting Iron Jarvis…",' in body
+    assert 'title: "Starting STEC OS…",' in body
     assert 'loadFile(path.join(__dirname, "loading.html"))' in body
     # No flash of another colour before the page paints.
     assert 'backgroundColor: "#041027",' in body

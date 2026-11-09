@@ -234,7 +234,7 @@ def test_a_repositorys_own_fsmonitor_program_never_runs(tmp_path):
     """``git ls-files`` runs the repository's ``core.fsmonitor`` program
     (measured on this PC with git 2.50: the hook wrote its file). The
     snapshot switches it off — a repository's own config must not start a
-    program when Iron Jarvis only reads which files there are."""
+    program when STEC OS only reads which files there are."""
     repo = _repo(tmp_path / "repo")
     _put(repo, "a.txt")
     _git(repo, "add", "a.txt")

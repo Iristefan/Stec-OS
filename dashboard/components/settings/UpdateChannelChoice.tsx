@@ -159,7 +159,7 @@ export function UpdateChannelChoice({
       {pc && <HoldThisVersion version={pc} stable={versions?.stable ?? null} />}
 
       <p className="text-[11px] leading-relaxed text-zinc-600">
-        The day&apos;s wait is time only: Iron Jarvis cannot see whether another PC ran a version. You can hold a
+        The day&apos;s wait is time only: STEC OS cannot see whether another PC ran a version. You can hold a
         version back.
       </p>
     </div>
@@ -189,7 +189,7 @@ function HoldThisVersion({ version, stable }: { version: string; stable: string 
     setDone("");
     try {
       const v = asHoldView(await get<unknown>(`/update/stable-hold?version=${encodeURIComponent(version)}`));
-      if (!v) throw new Error("Iron Jarvis did not answer about holding a version back.");
+      if (!v) throw new Error("STEC OS did not answer about holding a version back.");
       setView(v);
       setArmed(v.can_run);
     } catch (err) {

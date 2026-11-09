@@ -133,7 +133,7 @@ def fake(tmp_path):
 
 @pytest.fixture
 def proj(tmp_path):
-    # An Iron Jarvis home with a space AND an apostrophe in it: the handoff
+    # A STEC OS home with a space AND an apostrophe in it: the handoff
     # path and --add-dir must survive every shell's quoting.
     root = tmp_path / "J's work dir"
     root.mkdir()

@@ -10,7 +10,7 @@
  * `iron_proxy/choice` — and pins every lease of the turn to it; a refusal is
  * a 409 in words) and is kept in the chat's setup.
  *
- * Iron-Proxy off, an older Iron Jarvis (a 404), or no account for a CLI: no
+ * Iron-Proxy off, an older STEC OS (a 404), or no account for a CLI: no
  * entries — the menu is exactly what it was. Pure except
  * {@link readChatAccounts} (one GET, every failure answers null).
  */
@@ -134,7 +134,7 @@ export function accountForTurn(pick: ChatAccountPick | null, choice: string): st
   return provider && provider === pick.provider ? pick.id : "";
 }
 
-/** The account list for the chat's menu: null when this Iron Jarvis has none
+/** The account list for the chat's menu: null when this STEC OS has none
  *  (a 404) or it cannot be read — never an error on the page. */
 export async function readChatAccounts(): Promise<AccountsView | null> {
   try {

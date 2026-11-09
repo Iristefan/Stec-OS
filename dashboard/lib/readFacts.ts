@@ -17,7 +17,7 @@
  *     current the moment the user comes back to a chat.
  *   - `useReadFacts()` is the chip's subscription.
  *
- * An answer without `reads` (an older Iron Jarvis, a stand-in) changes
+ * An answer without `reads` (an older STEC OS, a stand-in) changes
  * nothing, and a failed read keeps what was known: the chip then says what it
  * said before (lib/permissionLevels READS_LINE), never a guess.
  *
@@ -65,7 +65,7 @@ export function noteReadFacts(reads: unknown, now: number = Date.now()): void {
   emit();
 }
 
-/** Ask Iron Jarvis again when the last answer is stale. Never throws. */
+/** Ask STEC OS again when the last answer is stale. Never throws. */
 export function refreshReadFacts(now: number = Date.now()): void {
   if (inFlight) return;
   if (triedAt && now - triedAt < READ_FACTS_TTL_MS) return;

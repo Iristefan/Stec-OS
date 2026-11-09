@@ -288,7 +288,7 @@ describe("WorkflowRunChip — a PRUNED run record settles, never spins", () => {
     });
     expect(
       // v1.354.0 (G30, on purpose): the app's name, not "the daemon".
-      screen.getByText(/Iron Jarvis no longer has this run.s record/i),
+      screen.getByText(/STEC OS no longer has this run.s record/i),
     ).toBeInTheDocument();
     const settled = api.gets.filter((p) => p === "/workflows/runs/gone1").length;
     await act(async () => {
@@ -315,7 +315,7 @@ describe("WorkflowRunChip — a PRUNED run record settles, never spins", () => {
       ),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText(/Iron Jarvis no longer has this run.s record/i),
+      screen.queryByText(/STEC OS no longer has this run.s record/i),
     ).not.toBeInTheDocument();
   });
 });

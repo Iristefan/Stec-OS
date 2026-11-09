@@ -191,7 +191,7 @@ afterEach(() => {
 });
 
 async function send(text: string, reply: string) {
-  const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   H.stream.replies.push(reply);
   fireEvent.change(el, { target: { value: text } });
   fireEvent.keyDown(el, { key: "Enter" });
@@ -258,7 +258,7 @@ describe("a half-typed message waits for its own conversation (v1.323.0)", () =>
     window.history.replaceState({}, "", "/chat?thread=t1");
     render(<ChatPage />);
     await screen.findByText("hello");
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "half a question about the K-1" } });
     await act(async () => {
       window.dispatchEvent(new Event(NEW_CHAT_EVENT));
@@ -412,7 +412,7 @@ describe("follow-up questions are a suggestion, never a send (v1.323.0)", () => 
     expect(ask.body).toMatchObject({ provider: "ollama", model: "glm" });
     const sentBefore = H.stream.bodies.length;
     fireEvent.click(chip);
-    const box = screen.getByPlaceholderText(/Message Iron Jarvis/) as HTMLTextAreaElement;
+    const box = screen.getByPlaceholderText(/Message STEC OS/) as HTMLTextAreaElement;
     expect(box.value).toBe("What about state returns?");
     expect(H.stream.bodies.length).toBe(sentBefore);
     expect(screen.queryByTestId("followup-chip")).toBeNull();

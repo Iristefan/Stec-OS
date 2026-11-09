@@ -207,7 +207,7 @@ afterEach(() => {
 
 async function startTurn(text: string) {
   const expected = wires.length + 1;
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   await waitFor(() => expect(box).toBeEnabled());
   fireEvent.change(box, { target: { value: text } });
   fireEvent.keyDown(box, { key: "Enter" });
@@ -293,7 +293,7 @@ describe("POST lane (the stream answers 404): the same field off the response", 
     streamAbsent = true;
     H.api.postResponses["/chat"] = { reply: "Posted reply.", route: ROUTE, brain: BRAIN };
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     await waitFor(() => expect(box).toBeEnabled());
     fireEvent.change(box, { target: { value: "remember the Q4 plan" } });
     fireEvent.keyDown(box, { key: "Enter" });
@@ -308,7 +308,7 @@ describe("POST lane (the stream answers 404): the same field off the response", 
     streamAbsent = true;
     H.api.postResponses["/chat"] = { reply: "Posted reply.", route: ROUTE };
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     await waitFor(() => expect(box).toBeEnabled());
     fireEvent.change(box, { target: { value: "hello" } });
     fireEvent.keyDown(box, { key: "Enter" });

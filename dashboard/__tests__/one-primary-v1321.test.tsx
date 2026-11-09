@@ -160,7 +160,7 @@ function primaries(root: ParentNode = document): HTMLElement[] {
 describe("one primary action per view (AUDIT §8, redesign S11)", () => {
   it("home: the composer's Send is the only solid primary in the conversation", async () => {
     render(<HomePage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     const room = (box.closest("[data-testid='chat-room']") ?? document) as ParentNode;
     // Nothing to send yet: no solid primary competes for the eye.
     expect(primaries(room).length).toBeLessThanOrEqual(1);

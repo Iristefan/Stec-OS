@@ -666,7 +666,7 @@ def test_a_widened_hit_is_damped_below_an_exact_hit(client):
 def test_chats_are_global_on_purpose_and_say_which_project_they_came_from(client):
     """DECISION, pinned: the ``chats`` source is NOT project-filtered.
 
-    Reviewed as a privacy question and accepted as a scoping one. Iron Jarvis is
+    Reviewed as a privacy question and accepted as a scoping one. STEC OS is
     single-user and local-first — there is no second reader for a conversation to
     leak TO — and every other global store (notes, memory, lessons, sessions)
     already searches everything the user has; ``knowledge`` is the one

@@ -27,7 +27,7 @@
     "href": "",
     "action": "",
     "built_in": "Files & documents",
-    "built_in_note": "Iron Jarvis already reads and writes your files without this. This is a separate folder tool, fenced to the one folder you pick.",
+    "built_in_note": "STEC OS already reads and writes your files without this. This is a separate folder tool, fenced to the one folder you pick.",
     "connected": false,
     "status": "disconnected",
     "detail": "",
@@ -58,7 +58,7 @@
     "href": "",
     "action": "",
     "built_in": "Web",
-    "built_in_note": "Iron Jarvis already searches the web and reads pages without this. This is a separate page reader.",
+    "built_in_note": "STEC OS already searches the web and reads pages without this. This is a separate page reader.",
     "connected": false,
     "status": "disconnected",
     "detail": "",
@@ -89,7 +89,7 @@
     "href": "",
     "action": "",
     "built_in": "Memory",
-    "built_in_note": "Iron Jarvis already remembers things in its own memory without this. This is a separate knowledge graph.",
+    "built_in_note": "STEC OS already remembers things in its own memory without this. This is a separate knowledge graph.",
     "connected": false,
     "status": "disconnected",
     "detail": "",
@@ -213,7 +213,7 @@
       {
         "name": "MS365_MCP_CLIENT_ID",
         "label": "Your firm's app ID (needed for a work account)",
-        "help": "The Application (client) ID of the app your Microsoft 365 admin registered for Iron Jarvis (the Handbook has the steps). A personal account can leave it empty.",
+        "help": "The Application (client) ID of the app your Microsoft 365 admin registered for STEC OS (the Handbook has the steps). A personal account can leave it empty.",
         "kind": "env",
         "optional": true
       }
@@ -310,7 +310,7 @@
       {
         "name": "MS365_MCP_CLIENT_ID",
         "label": "Your firm's app ID (needed for a work account)",
-        "help": "The Application (client) ID of the app your Microsoft 365 admin registered for Iron Jarvis (the Handbook has the steps). A personal account can leave it empty.",
+        "help": "The Application (client) ID of the app your Microsoft 365 admin registered for STEC OS (the Handbook has the steps). A personal account can leave it empty.",
         "kind": "env",
         "optional": true
       }

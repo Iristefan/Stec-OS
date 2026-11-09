@@ -570,7 +570,7 @@ class CapabilityProposalStore:
             return {
                 "can_apply": False,
                 "note": (
-                    "Iron Jarvis can’t add an MCP server for you: it needs a "
+                    "STEC OS can’t add an MCP server for you: it needs a "
                     "command and credentials only you have, and its tools answer "
                     "to `mcp_call`, which can never be raised to allow. Add it on "
                     "the Connections page if you want it."

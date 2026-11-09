@@ -194,7 +194,7 @@ test("a / ⇄ /chat remount never pings for the card that comes straight back", 
       await page.waitForTimeout(30);
     }
   })();
-  await page.getByRole("link", { name: "Iron Jarvis — home" }).click();
+  await page.getByRole("link", { name: "STEC OS — home" }).click();
   await page.waitForURL((u) => u.pathname === "/");
   await expect(card(page)).toBeVisible({ timeout: 60_000 });
   await settle(page, 3000);

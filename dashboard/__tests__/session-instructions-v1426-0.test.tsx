@@ -8,7 +8,7 @@
  * (v1.366.0) on its saved line; nothing on screen read it.
  *
  *  - the newest reply's instructions in words: whose tool names the model was
- *    shown, for which model family, what they were built from (Iron Jarvis's
+ *    shown, for which model family, what they were built from (STEC OS's
  *    defaults, the tool words, this folder's own instructions, kept lessons),
  *    "planning only" for a planning turn;
  *  - a folder whose own instruction files were NOT used says so, in the
@@ -109,7 +109,7 @@ describe("the newest reply's instructions, in words", () => {
       "Claude Code's tool names, for a Claude model",
     );
     expect(screen.getByTestId("session-rail-instructions-layers").textContent).toBe(
-      "The newest reply's instructions came from Iron Jarvis's defaults, Claude Code's tool words, this folder's own instructions, lessons kept for this folder.",
+      "The newest reply's instructions came from STEC OS's defaults, Claude Code's tool words, this folder's own instructions, lessons kept for this folder.",
     );
     expect(screen.queryByTestId("session-rail-instructions-note")).toBeNull();
   });
@@ -134,7 +134,7 @@ describe("the newest reply's instructions, in words", () => {
     ]);
     show(v);
     expect(screen.getByTestId("session-rail-instructions-tools").textContent).toBe(
-      "Iron Jarvis's own tool names, for a GLM model · planning only",
+      "STEC OS's own tool names, for a GLM model · planning only",
     );
   });
 
@@ -188,7 +188,7 @@ describe("Show the instructions", () => {
   });
 
   it("a failure is said, never an empty box", async () => {
-    api.gets[HARNESS] = new api.ApiError("Iron Jarvis isn't responding", 0);
+    api.gets[HARNESS] = new api.ApiError("STEC OS isn't responding", 0);
     show(view([QUESTION]));
     fireEvent.click(screen.getByTestId("session-rail-instructions-show"));
     const err = await screen.findByTestId("session-rail-instructions-error");
@@ -221,7 +221,7 @@ describe("the readings", () => {
       "Qwen Code's tool names",
     );
     expect(instructionLayerWords(["default", "family:nope", "mystery", "project"])).toBe(
-      "Iron Jarvis's defaults, this folder's own instructions",
+      "STEC OS's defaults, this folder's own instructions",
     );
   });
 

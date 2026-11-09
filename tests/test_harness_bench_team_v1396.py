@@ -577,9 +577,9 @@ def test_a_team_file_names_the_planner_and_the_members(tmp_path):
      "names no particular model"),
     ("[planner]\nprovider='claude-cli'\nmodel='m'\n", "at least one [[members]]"),
     ("[planner]\nprovider='claude-cli'\nmodel='m'\n[[members]]\nname='a'\nprovider='p'\nmodel='m'\nroles=['fly']\n",
-     "roles Iron Jarvis does not know: fly"),
+     "roles STEC OS does not know: fly"),
     ("[planner]\nprovider='claude-cli'\nmodel='m'\n[[members]]\nname='builder'\nprovider='p'\nmodel='m'\nroles=['code']\n",
-     "one of Iron Jarvis's own agents"),
+     "one of STEC OS's own agents"),
     ("[planner]\nprovider='claude-cli'\nmodel='m'\n[[members]]\nname='a'\nprovider='p'\nmodel='m'\nroles=['code']\n"
      "[[members]]\nname='a'\nprovider='p'\nmodel='m'\nroles=['code']\n", "names 'a' twice"),
     ("[planner]\nprovider='claude-cli'\nmodel='m'\nmodle='x'\n[[members]]\nname='a'\nprovider='p'\nmodel='m'\nroles=['code']\n",

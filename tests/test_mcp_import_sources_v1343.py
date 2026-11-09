@@ -91,7 +91,7 @@ TOKEN = "ghp_SECRET_v1343i"
 TOKEN_2 = "ghp_SECRET_second_v1343i"
 HEADER_VALUE = "Bearer hdr-SECRET-v1343i"
 PLAIN_VALUE = "plain-env-value-v1343i"
-OWN_EXE = "C:/Apps/Iron Jarvis/resources/daemon/ironjarvis.exe"
+OWN_EXE = "C:/Apps/STEC OS/resources/daemon/ironjarvis.exe"
 
 
 def _claude_json(token: str = TOKEN) -> str:

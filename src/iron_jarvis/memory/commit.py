@@ -19,7 +19,7 @@ mock refusal, the failover hop, the one-shot call, and the degrade-don't-refuse
 outcome. NOT shared, and deliberately so:
 
 * **The transcript renderer.** Chat's speaker vocabulary is two words wide
-  ("You" / "Iron Jarvis") because a chat has two speakers; flattening five
+  ("You" / "STEC OS") because a chat has two speakers; flattening five
   panelists into one voice would discard the only thing a round table produces
   that a chat cannot — who concluded what.
 * **The system prompt**, which is why it is a PARAMETER here and not a constant.

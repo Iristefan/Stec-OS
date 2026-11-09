@@ -295,7 +295,7 @@ export const NAV: NavSectionDef[] = [
         label: "Autonomy",
         icon: Gauge,
         aliases: ["trust", "on its own", "suggestions", "proposals", "kill switch"],
-        blurb: "What Iron Jarvis wants to do on its own — and the switch that stops it.",
+        blurb: "What STEC OS wants to do on its own — and the switch that stops it.",
       },
       {
         href: "/sentinels",
@@ -353,7 +353,7 @@ export const NAV: NavSectionDef[] = [
           "source",
           "repo",
         ],
-        blurb: "Let Iron Jarvis improve its own source — every change review-gated.",
+        blurb: "Let STEC OS improve its own source — every change review-gated.",
       },
     ],
   },
@@ -361,7 +361,7 @@ export const NAV: NavSectionDef[] = [
     label: "Knowledge",
     items: [
       // "You" sits at the head of Knowledge because everything under it is what
-      // Iron Jarvis knows, and this is the part that is about the PERSON. It is
+      // STEC OS knows, and this is the part that is about the PERSON. It is
       // an ESSENTIAL href (Sidebar.tsx): a page that decides how every answer
       // is written must not be Advanced-only — that mistake is on record from
       // v1.101.0, where "it's in the sidebar" turned out to mean "in the
@@ -551,7 +551,7 @@ export const NAV: NavSectionDef[] = [
           "two-way",
           "message jarvis from my phone",
         ],
-        blurb: "Where alerts go, and how you chat with Iron Jarvis from your phone.",
+        blurb: "Where alerts go, and how you chat with STEC OS from your phone.",
       },
     ],
   },
@@ -579,7 +579,7 @@ export const NAV: NavSectionDef[] = [
         label: "Settings",
         icon: Settings,
         aliases: ["preferences", "options", "config", "setup", "change theme"],
-        blurb: "Tune how Iron Jarvis behaves — your preferences, saved across restarts.",
+        blurb: "Tune how STEC OS behaves — your preferences, saved across restarts.",
       },
       {
         href: "/help",
@@ -591,15 +591,16 @@ export const NAV: NavSectionDef[] = [
           "docs",
           "guide",
           "getting started",
-          // v1.223.0: the built-in Iron Jarvis Guide lives on this page.
+          // v1.223.0: the built-in STEC OS Guide lives on this page.
           "ask the guide",
           "ask about iron jarvis",
+          "ask about stec os",
           "how do i",
           "what does",
           "expert",
         ],
         blurb:
-          "What Iron Jarvis is, how to get your first result out of it, and the Guide — ask it anything about this app.",
+          "What STEC OS is, how to get your first result out of it, and the Guide — ask it anything about this app.",
       },
     ],
   },

@@ -6,7 +6,7 @@
  *  1. Phone title bar (390 px): no overlap. jsdom has no layout, so the pins
  *     are the CLASSES that decide it — the search box is ONE button visible at
  *     every width whose word + Ctrl K keycap hide below `sm`; no bare 200 px
- *     floor; the "/ Page" crumb and the "Iron Jarvis" wordmark hide below
+ *     floor; the "/ Page" crumb and the "STEC OS" wordmark hide below
  *     `sm` (still in the DOM); the brand link keeps an accessible name when
  *     its words are hidden; every bar control shares ONE height.
  *  2. `noModelChosen` is the one rule for "replies are a scripted demo" (the
@@ -302,12 +302,12 @@ describe("phone title bar — nothing overlaps at 390 px", () => {
     S.pathname = "/settings";
     const { container } = render(<TitleBar />);
     const header = container.querySelector("header")!;
-    const buttons = screen.getAllByRole("button", { name: /search iron jarvis/i });
+    const buttons = screen.getAllByRole("button", { name: /search stec os/i });
     // One results surface, one door: an icon twin would make two buttons
     // with one name (and break titlebar.test's getByRole).
     expect(buttons).toHaveLength(1);
     const search = buttons[0];
-    expect(search.getAttribute("aria-label")).toBe("Search Iron Jarvis (Ctrl K)");
+    expect(search.getAttribute("aria-label")).toBe("Search STEC OS (Ctrl K)");
     expect(visibleAtEveryWidth(search, header)).toBe(true);
     // RED today: `min-w-[200px]` unprefixed is what pushes it over the brand.
     for (const el of chain(search, header)) {
@@ -322,7 +322,7 @@ describe("phone title bar — nothing overlaps at 390 px", () => {
   it("below sm the search shows only its icon: the word and the Ctrl K keycap hide (still in the DOM)", () => {
     const { container } = render(<TitleBar />);
     const header = container.querySelector("header")!;
-    const search = screen.getByRole("button", { name: /search iron jarvis/i });
+    const search = screen.getByRole("button", { name: /search stec os/i });
     const word = within(search).getByText("Search");
     const kbd = search.querySelector("kbd");
     expect(kbd?.textContent).toMatch(/Ctrl\s*K/);
@@ -347,7 +347,7 @@ describe("phone title bar — nothing overlaps at 390 px", () => {
     S.pathname = "/settings";
     const { container } = render(<TitleBar />);
     const header = container.querySelector("header")!;
-    const word = within(header).getByText("Iron Jarvis");
+    const word = within(header).getByText("STEC OS");
     const link = word.closest("a")!;
     expect(link.getAttribute("href")).toBe("/");
     expect(visibleAtEveryWidth(link, header)).toBe(true);
@@ -355,7 +355,7 @@ describe("phone title bar — nothing overlaps at 390 px", () => {
     expect(hiddenBelowSmOnly(word, header)).toBe(true);
     // CSS `hidden` drops the words from the accessible name, so the link
     // names itself (RED today: no aria-label).
-    expect(link.getAttribute("aria-label") ?? "").toMatch(/Iron Jarvis.*Overview/);
+    expect(link.getAttribute("aria-label") ?? "").toMatch(/STEC OS.*Overview/);
     expect((link.style as unknown as Record<string, string>).WebkitAppRegion).toBe("no-drag");
   });
 
@@ -365,7 +365,7 @@ describe("phone title bar — nothing overlaps at 390 px", () => {
     mockDaemon(health("anthropic"));
     render(<TitleBar />);
     const nav = screen.getByLabelText("Open navigation");
-    const search = screen.getByRole("button", { name: /search iron jarvis/i });
+    const search = screen.getByRole("button", { name: /search stec os/i });
     cleanup();
 
     const orb = render(<MoodOrb />).container.firstElementChild as HTMLElement;
@@ -396,12 +396,12 @@ describe("phone title bar — nothing overlaps at 390 px", () => {
   it("CONTROL: every bar control is still there and still wired", () => {
     const { container } = render(<TitleBar right={<button data-testid="injected">x</button>} />);
     expect(screen.getByLabelText("Open navigation")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /search iron jarvis/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /search stec os/i })).toBeInTheDocument();
     expect(screen.getByTestId("injected")).toBeInTheDocument();
     expect(container.querySelector('a[href="/"]')).not.toBeNull();
     const seen = vi.fn();
     window.addEventListener("ij:open-palette", seen);
-    fireEvent.click(screen.getByRole("button", { name: /search iron jarvis/i }));
+    fireEvent.click(screen.getByRole("button", { name: /search stec os/i }));
     window.removeEventListener("ij:open-palette", seen);
     expect(seen).toHaveBeenCalledTimes(1);
   });

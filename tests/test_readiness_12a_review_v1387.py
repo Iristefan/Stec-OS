@@ -216,7 +216,7 @@ def test_a_fire_that_failed_before_any_run_never_records_the_raw_text(tmp_path, 
 
 
 def test_an_own_failure_before_any_run_never_points_at_a_run(tmp_path, monkeypatch):
-    """Iron Jarvis's own fault before a run existed: plain words that never
+    """STEC OS's own fault before a run existed: plain words that never
     say "open the run" (there is none — the row has no link)."""
     app = create_app(str(tmp_path))
     client = TestClient(app)
@@ -232,7 +232,7 @@ def test_an_own_failure_before_any_run_never_points_at_a_run(tmp_path, monkeypat
     detail = body["last_detail"]
     assert "disk I/O" not in detail and "0x7ff3" not in detail and "OperationalError" not in detail, detail
     assert "open the run" not in detail, detail
-    assert "Iron Jarvis couldn't start this task" in detail, detail
+    assert "STEC OS couldn't start this task" in detail, detail
 
 
 def test_the_schedules_own_worded_refusals_keep_their_sentence(tmp_path):
@@ -373,7 +373,7 @@ async def test_the_finalizer_names_the_runs_provider_when_the_failure_names_none
     """The orchestrator hands the RUN's provider to the rule (survived the
     mutation round: the lane's pins only fed the hint to ``plain_reason``
     directly). A typed provider failure with no provider in its words names
-    the run's provider, never "Iron Jarvis"."""
+    the run's provider, never "STEC OS"."""
     from iron_jarvis.agents.orchestrator import Orchestrator
     from iron_jarvis.core.models import AgentType, Session
     from iron_jarvis.platform import build_platform

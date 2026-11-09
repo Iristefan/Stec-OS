@@ -342,7 +342,7 @@ async def test_three_attempts_three_models_side_by_side_and_keep_merges_only_the
     assert (session_wt / "calc.py").read_text(encoding="utf-8").replace("\r\n", "\n") == FIXED
     log = git("log", "--format=%s", "-3", cwd=session_wt)
     assert f"Merge branch '{codex['branch']}' into {session_branch}" in log
-    # Iron Jarvis committed the attempt's work on ITS branch first.
+    # STEC OS committed the attempt's work on ITS branch first.
     assert git("log", "-1", "--format=%s", codex["branch"], cwd=repo).startswith("fix the add function")
     # The others' (and the merged one's) folders went to the trash; every
     # branch stays.
@@ -664,7 +664,7 @@ async def test_a_merge_conflict_is_said_in_words_and_nothing_moves(app, fake, re
     assert status == 409, body
     assert "would conflict in calc.py" in body["detail"] and "Nothing was changed" in body["detail"]
     # Nothing moved: the session's branch, every attempt's folder, the
-    # attempt's own branch (Iron Jarvis's commit taken back: its work is in
+    # attempt's own branch (STEC OS's commit taken back: its work is in
     # its folder, not committed, exactly as before the press), the card.
     assert git("rev-parse", "HEAD", cwd=wt) == session_head
     assert git("rev-parse", "HEAD", cwd=attempt_wt) == attempt_head

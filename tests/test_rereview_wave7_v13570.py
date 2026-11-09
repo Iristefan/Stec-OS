@@ -3,7 +3,7 @@ between two computers.
 
 R1 A door address saved with a trailing slash. ``task_door.is_task_door_url``
    accepts ``http://desk:8787/agents/task-door/task/`` (the remote-agent form
-   says "another computer running Iron Jarvis" for it, and registering it
+   says "another computer running STEC OS" for it, and registering it
    turns message-back on), but the install-bearer exemption in
    ``daemon/auth._is_exempt`` is an EXACT match on ``TASK_DOOR_PATH``. Dialled
    as typed, every task and every Test met the install guard (401), and the

@@ -132,7 +132,7 @@ beforeEach(() => {
   window.history.replaceState(null, "", "/chat");
   api.calls = [];
   api.gets = {
-    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis" },
+    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\STEC OS" },
     "/build/sessions?archived=1": { folders: [] },
   };
   vi.stubGlobal(

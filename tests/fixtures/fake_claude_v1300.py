@@ -206,7 +206,7 @@ def main() -> int:
     if scenario == "relay_refusal":
         # v1.378.0: the upstream (the test's fake Anthropic) answered a 200
         # whose stop_reason is "refusal". Native renders it as an error of its
-        # own; Iron Jarvis must read the RELAY's capture (stop_reason,
+        # own; STEC OS must read the RELAY's capture (stop_reason,
         # stop_details), never these words. FAKE_CLAUDE_STREAMED: the text
         # native had streamed before the refusal (default none).
         streamed = os.environ.get("FAKE_CLAUDE_STREAMED", "")

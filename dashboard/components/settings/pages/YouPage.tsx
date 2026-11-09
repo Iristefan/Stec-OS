@@ -4,7 +4,7 @@
  * /you — the identity spine's control surface (v1.144.0).
  *
  * This is not a settings page for one feature: what is saved here is injected
- * into EVERY system prompt Iron Jarvis builds — chat, the streamed chat, your
+ * into EVERY system prompt STEC OS builds — chat, the streamed chat, your
  * phone, agent sessions, and the round table — so it is what makes the app
  * sound like one assistant regardless of which model answered.
  *
@@ -316,7 +316,7 @@ export default function YouPage() {
       <Reveal>
         <PageHeader
           title="You"
-          subtitle="How Iron Jarvis writes to you — applied to every model it uses, local or cloud, in chat and in agent runs."
+          subtitle="How STEC OS writes to you — applied to every model it uses, local or cloud, in chat and in agent runs."
           actions={
             !known ? undefined : (
             <div className="flex items-center gap-2">
@@ -519,7 +519,7 @@ export default function YouPage() {
         <Card title="Your voice" icon={<MessageSquareQuote size={15} />}>
           <TextArea
             label="How you write"
-            hint="Describe your own rhythm and vocabulary and Iron Jarvis will match it — without ever answering less of your question because of it."
+            hint="Describe your own rhythm and vocabulary and STEC OS will match it — without ever answering less of your question because of it."
             rows={4}
             placeholder="Short sentences. Plain words. No throat-clearing before the point."
             value={draft.voice_card}
@@ -533,7 +533,7 @@ export default function YouPage() {
             <Link href="/train" className="text-accent-soft hover:underline">
               Paste a few things you wrote
             </Link>{" "}
-            and Iron Jarvis will work it out — you edit the result before it is saved.
+            and STEC OS will work it out — you edit the result before it is saved.
           </p>
         </Card>
       </Reveal>

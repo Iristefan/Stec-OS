@@ -316,7 +316,7 @@ def test_control_the_tray_restart_kills_the_live_dashboard(tmp_path):
 @requires_node
 def test_restart_from_the_window_respawns_only_the_capped_daemon(tmp_path):
     out = _restart("daemon-only", tmp_path)
-    assert out["cappedBefore"] is True and "Restart Iron Jarvis" in out["menuBefore"], f"harness setup: {out}"
+    assert out["cappedBefore"] is True and "Restart STEC OS" in out["menuBefore"], f"harness setup: {out}"
     assert out["lifted"], "main.js has no top-level function restartDaemonFromShell"
     assert out["ret"] is True, f"restartDaemonFromShell must return true when it respawned: {out['ret']!r}"
     assert out["dSpawns"] == out["dSpawnsBefore"] + 1, f"the capped daemon was not respawned exactly once: {out}"
@@ -325,8 +325,8 @@ def test_restart_from_the_window_respawns_only_the_capped_daemon(tmp_path):
     assert out["bSpawns"] == out["bSpawnsBefore"] == 1, out
     # The daemon's ladder starts over and the tray stops offering a Restart.
     assert out["daemon"] == {"restarts": 0, "capped": False, "restartTimes": 0}, out["daemon"]
-    assert "Restart Iron Jarvis" not in out["menuAfter"], out["menuAfter"]
-    assert out["lastTooltip"] == "tooltip:Iron Jarvis — running", out["lastTooltip"]
+    assert "Restart STEC OS" not in out["menuAfter"], out["menuAfter"]
+    assert out["lastTooltip"] == "tooltip:STEC OS — running", out["lastTooltip"]
 
 
 _PENDING = r"""
@@ -591,32 +591,32 @@ def test_a_tripped_watchdog_breaker_is_stalled_not_restarting_and_the_tray_offer
     out = _breaker("restart", tmp_path)
     # Anti-vacuity: the harness really reached the breaker, and it killed nothing.
     assert out["tripped"] is True and out["killedAtTrip"] == [], out
-    assert "Restart Iron Jarvis" not in out["menuBefore"], out["menuBefore"]
+    assert "Restart STEC OS" not in out["menuBefore"], out["menuBefore"]
     assert out["stateBefore"]["stalled"] is False, out["stateBefore"]
     d = out["stalled"]
     # The daemon was spawned a moment ago (inside its boot allowance), so only
     # the stalled verdict keeps this from reading as "restarting".
     assert d["stalled"] is True and d["restarting"] is False, d
     assert d["capped"] is False, d
-    assert "Restart Iron Jarvis" in out["menuStalled"], out["menuStalled"]
+    assert "Restart STEC OS" in out["menuStalled"], out["menuStalled"]
     # The toast points at that tray item, never at Quit.
     assert out["toast"] and "stopped answering repeatedly" in out["toast"], out
-    assert "Restart Iron Jarvis" in out["toast"] and "Quit" not in out["toast"], out["toast"]
+    assert "Restart STEC OS" in out["toast"] and "Quit" not in out["toast"], out["toast"]
     # The window's Restart clears the breaker and restarts the LIVE daemon.
     assert out["ret"] is True, out
     assert out["killed"] == ["daemon:restart"], out["killed"]
     assert out["dSpawns"] == 2, out
     assert out["breakerAfter"] == {"tripped": False, "kills": 0}, out["breakerAfter"]
     assert out["after"]["stalled"] is False, out["after"]
-    assert "Restart Iron Jarvis" not in out["menuAfter"], out["menuAfter"]
+    assert "Restart STEC OS" not in out["menuAfter"], out["menuAfter"]
 
 
 @requires_node
 def test_a_stalled_daemon_that_answers_again_is_no_longer_stalled(tmp_path):
     out = _breaker("recovers", tmp_path)
-    assert out["stalled"]["stalled"] is True and "Restart Iron Jarvis" in out["menuStalled"], out
+    assert out["stalled"]["stalled"] is True and "Restart STEC OS" in out["menuStalled"], out
     assert out["after"]["stalled"] is False, out["after"]
-    assert "Restart Iron Jarvis" not in out["menuAfter"], out["menuAfter"]
+    assert "Restart STEC OS" not in out["menuAfter"], out["menuAfter"]
     assert out["killed"] == [], out["killed"]
 
 
@@ -646,9 +646,9 @@ def test_a_refused_window_restart_changes_nothing(tmp_path):
     so a restart that could not run must not have removed it first."""
     script = _ADOPTED_REFUSED.replace("__EXTRACT__", _EXTRACT).replace("__STUBS__", _STUBS)
     out = _run(script, tmp_path, "adopted_refused", "clean")
-    assert out["before"]["capped"] is True and "Restart Iron Jarvis" in out["before"]["menu"], out
+    assert out["before"]["capped"] is True and "Restart STEC OS" in out["before"]["menu"], out
     assert out["ret"] is False, out
-    assert out["capped"] is True and "Restart Iron Jarvis" in out["menu"], out
+    assert out["capped"] is True and "Restart STEC OS" in out["menu"], out
 
 
 @requires_node

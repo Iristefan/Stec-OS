@@ -637,7 +637,7 @@ class ProjectCheckers:
         POST lane never auto-grants a call, so it needs no twin).
 
         v1.417.0 (C1.3, decision D1): False under "Don't ask" (``posture``
-        "yolo") — the person's own standing answer covers Iron Jarvis's own
+        "yolo") — the person's own standing answer covers STEC OS's own
         checker run; every other posture as before."""
         if str(posture or "") == "yolo":
             return False
@@ -824,7 +824,7 @@ class ProjectCheckers:
 
     async def note_text(self, fence: "Callable[[str], Awaitable[str]] | None" = None) -> str:
         """The finish note's "## The project's checkers" body: each checker's
-        head line as Iron Jarvis wrote it, and the findings under it — the
+        head line as STEC OS wrote it, and the findings under it — the
         PROGRAM's text (it quotes the project's files), so fenced and scanned
         by the lane's own fence (``fence``). "" when there is nothing."""
         out: list[str] = []

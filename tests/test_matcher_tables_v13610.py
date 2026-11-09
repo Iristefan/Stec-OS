@@ -2,7 +2,7 @@
 
 The final regression hunt over v1.359.0..v1.360.1 found that v1.360.0's
 "the Connect door only for the user's own data" and "the Guide only for a
-question about Iron Jarvis" (lane 10B) fixed one direction by breaking the
+question about STEC OS" (lane 10B) fixed one direction by breaking the
 other:
 
 (1) the door was gone for everyday own-data requests that say "on <app>",
@@ -983,7 +983,7 @@ GUIDE_ROWS = [
     # "the spark" is the DGX Spark, never a plug or a cluster
     ('how do I connect the spark plug wires', False),
     ('how do I set up the spark cluster for my team', False),
-    # --- v1.420.0 (C6.1): a feature question about Iron Jarvis asks the
+    # --- v1.420.0 (C6.1): a feature question about STEC OS asks the
     # Guide; the everyday senses (a mission in the Bible, a software build,
     # another program's code view, "you" as anyone) do not.
     ('what apps can you work with?', True),
@@ -1026,7 +1026,7 @@ GUIDE_ROWS = [
     ('what is Build.ps1 for?', False),
     ('What can Jarvis connect to?', True),
     ('what apps does Jarvis work with?', True),
-    ('which services can Iron Jarvis connect to?', True),
+    ('which services can STEC OS connect to?', True),
 ]
 
 #: v1.420.0 (C6.1): ``(text, web armed)`` — the user's own mail never arms
@@ -1117,10 +1117,10 @@ CODING = [
     ('make me a dark mode app', True),
     ('build the app that we planned', True),
     ('write the app in Python', True),
-    # --- v1.433.0 review: "the Iron Jarvis / Jarvis / desktop app" is this
+    # --- v1.433.0 review: "the STEC OS / Jarvis / desktop app" is this
     # app too; and a causative "make the app <do>" that names the code it is
     # written in is the user's own software, so the door stays.
-    ('make the Iron Jarvis app start with Windows', False),
+    ('make the STEC OS app start with Windows', False),
     ('make the Jarvis app open when my computer starts', False),
     ('make the desktop app start with Windows', False),
     ('make the app use React and TypeScript', True),

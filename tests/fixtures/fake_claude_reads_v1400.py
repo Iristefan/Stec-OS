@@ -6,9 +6,9 @@ It is started exactly as the claude-cli adapter starts Claude Code
 Claude Code does with those files before it asks the model anything:
 
 * reads the system prompt from ``--system-prompt-file``;
-* reads the tools Iron Jarvis advertises to the API from ``--settings``
+* reads the tools STEC OS advertises to the API from ``--settings``
   (``env.CLAUDE_CODE_EXTRA_BODY``);
-* STARTS the one MCP server ``--mcp-config`` names (Iron Jarvis's inert
+* STARTS the one MCP server ``--mcp-config`` names (STEC OS's inert
   inventory) and asks it ``tools/list`` — the tool descriptions the model is
   shown arrive through that listing.
 

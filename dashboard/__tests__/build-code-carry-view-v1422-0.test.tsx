@@ -105,7 +105,7 @@ describe("Build › Code's page", () => {
     seed({
       events: [
         { type: "user", at: "2026-11-01T10:00:00Z", text: "fix the cart", turn: "t1" },
-        { type: "error", at: "2026-11-01T10:01:00Z", title: "Iron Jarvis stopped while this was working",
+        { type: "error", at: "2026-11-01T10:01:00Z", title: "STEC OS stopped while this was working",
           fix: "Send the message again — the conversation is kept.", technical: "", turn: "t1" },
         { type: "done", at: "2026-11-01T10:01:00Z", stop: "interrupted", turn: "t1" },
       ],

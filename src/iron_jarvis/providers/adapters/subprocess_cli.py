@@ -4,14 +4,14 @@
 support headless print-mode: prompt in, answer out, billed to the FLAT-RATE
 subscription the CLI is already logged into. This is the SANCTIONED way to use a
 subscription programmatically — the CLI owns auth, model churn, and token
-refresh; Iron Jarvis never sees or stores the credential. There is no in-app
+refresh; STEC OS never sees or stores the credential. There is no in-app
 account login: the app simply inherits the login you already performed in the
 provider's own CLI.
 
 The ``claude`` adapter (v1.300.0) speaks the CLI's NATIVE stream-json
 protocol (``claude_native/``): the conversation is replayed turn by turn, tools
 are real ``tool_use`` blocks offered through an inert MCP inventory (the app
-still executes every tool — Iron Jarvis's own perceive→act loop, tool registry
+still executes every tool — STEC OS's own perceive→act loop, tool registry
 and permission engine stay in charge), text streams as it is written, images
 ride the user turn, and usage carries the cache buckets and the CLI's own
 list-price cost. One fresh process per step, cancellable as a tree — except
@@ -523,7 +523,7 @@ _EFFORTS = ("low", "medium", "high", "xhigh", "max")
 
 
 def _claude_model_arg(model: str | None) -> str | None:
-    """The ``--model`` argument for an Iron Jarvis model id, or None (send no
+    """The ``--model`` argument for a STEC OS model id, or None (send no
     ``--model``: the CLI's own default).
 
     The mapping lives in ``providers/claude_models.native_model`` (the live
@@ -639,7 +639,7 @@ def note_thinking_dropped() -> None:
 class ClaudeCliAdapter(LLMAdapter):
     """Claude via the inherited `claude` CLI, spoken natively over stream-json:
     replayed history, native tool calls, streaming, images, token + cost
-    accounting. Iron Jarvis still executes every tool."""
+    accounting. STEC OS still executes every tool."""
 
     provider = "claude-cli"
     #: v1.425.0 (C4): a tool's picture rides inside its ``tool_result``

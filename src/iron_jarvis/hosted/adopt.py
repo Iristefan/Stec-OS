@@ -1,7 +1,7 @@
-"""Build › Code sessions carried across an Iron Jarvis restart (v1.422.0).
+"""Build › Code sessions carried across a STEC OS restart (v1.422.0).
 
 The tools run in the CODE HOST (``iron_jarvis/codehost.py``), which outlives
-a restart. This module is how a restarted Iron Jarvis takes each of them back
+a restart. This module is how a restarted STEC OS takes each of them back
 WITHOUT starting anything, resuming anything, or showing anything twice:
 
 1. WHAT IS KEPT. About a second after a tool's lines arrive and just after
@@ -9,7 +9,7 @@ WITHOUT starting anything, resuming anything, or showing anything twice:
    the driver's own state (``Driver.state`` — every attribute with a JSON
    form: the tool's session id, request counters, the stream it is in, its
    open steps, its helper agents …) and the session's (the running reply's
-   id and start, the cards still open, the title, the Iron Jarvis tools'
+   id and start, the cards still open, the title, the STEC OS tools'
    token BY ITS DIGEST). The host keeps the newest state and only the lines
    after it.
 
@@ -80,7 +80,7 @@ STAMP_SEQ = "hseq"
 #: How much of a session's log is read to learn what was shown.
 LOG_TAIL_BYTES = 8 * 1024 * 1024
 
-GAVE_UP_TITLE = "Iron Jarvis restarted while this was working"
+GAVE_UP_TITLE = "STEC OS restarted while this was working"
 GAVE_UP_OVERFLOW = ("The reply went on too long to pick up again, so {label} was stopped with the "
                     "conversation saved. It carries on from there by itself, or says why not.")
 GAVE_UP_PLAIN = ("{label} could not be picked up again, so it was stopped with the conversation saved. "
@@ -266,7 +266,7 @@ async def at_boot(platform: Any, keep: Any) -> list[str]:
     going), so a session whose adoption raised, ran out of
     :data:`BOOT_ADOPT_WAIT_S`, or whose host went away in between used to
     keep its reply open in the log forever, and (a timeout) its tool running
-    in the host under an attached Iron Jarvis that did not know it (the
+    in the host under an attached STEC OS that did not know it (the
     host's orphan rules never run while a daemon is attached): the next
     message then started a SECOND process for the same conversation. Never
     raises; returns the sessions carried on."""

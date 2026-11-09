@@ -166,7 +166,7 @@ PINNED_PICK_FEATURE = "pick-pinned"
 #: running Iron-Proxy advertises it (docs/ADOPTING.md).
 PLAN_USAGE_FEATURE = "plan-usage"
 
-#: Every health ``feature`` Iron Jarvis knows; the BUNDLED Iron-Proxy's own set
+#: Every health ``feature`` STEC OS knows; the BUNDLED Iron-Proxy's own set
 #: is read from the bundle text (``_bundle_features``).
 KNOWN_FEATURES = (REQUIRED_FEATURE, PICK_PROFILE_FEATURE, PINNED_PICK_FEATURE, PLAN_USAGE_FEATURE)
 
@@ -189,31 +189,31 @@ RECHECK_STATES = frozenset({"unauthenticated", "unknown"})
 #: would flip it back to ready and lease it into the same 401 again.
 SIGNIN_WINDOW_S = 180.0
 #: A stale Iron-Jarvis-started proxy is replaced at most this many times per
-#: :data:`REPLACE_WINDOW_S` (two Iron Jarvis copies sharing one data dir —
+#: :data:`REPLACE_WINDOW_S` (two STEC OS copies sharing one data dir —
 #: a source run and the installed app — would otherwise kill each other's).
 REPLACE_LIMIT = 2
 REPLACE_WINDOW_S = 600.0
 
-#: Iron Jarvis provider id -> the Iron-Proxy provider whose CLI accounts it runs as.
+#: STEC OS provider id -> the Iron-Proxy provider whose CLI accounts it runs as.
 #: v1.426.0 (E5): read from THE table (``providers/subscription_clis``).
 JARVIS_TO_PROXY = dict(_SUBS.PROVIDER_TO_PROXY)
 
 NOT_ANSWERING = (
-    "Iron-Proxy is on but not answering — Iron Jarvis will not use this PC's own "
+    "Iron-Proxy is on but not answering — STEC OS will not use this PC's own "
     "login behind your back; turn Iron-Proxy off in Connections to use it."
 )
 OUTDATED = (
-    "The Iron-Proxy running on this PC is older than this Iron Jarvis needs — "
-    "update it, or close it so Iron Jarvis starts its own."
+    "The Iron-Proxy running on this PC is older than this STEC OS needs — "
+    "update it, or close it so STEC OS starts its own."
 )
 #: OUTDATED when the running proxy's process can be named (v1.303.3).
 OUTDATED_NAMED = (
     "The Iron-Proxy running on this PC (process {pid}, {what}) is older than this "
-    "Iron Jarvis needs and was not started by this Iron Jarvis — close that "
+    "STEC OS needs and was not started by this STEC OS — close that "
     "process (or update it), then turn Iron-Proxy off and on in Connections."
 )
 TOKEN_REFUSED = (
-    "Iron-Proxy refused Iron Jarvis's access token; turn Iron-Proxy off and on again."
+    "Iron-Proxy refused STEC OS's access token; turn Iron-Proxy off and on again."
 )
 
 #: A lease that finds nothing running starts Iron-Proxy itself — but not more
@@ -282,8 +282,8 @@ def _cmdline(pid: int) -> list[str]:
         return []
 
 
-#: The executable an Iron Jarvis install keeps beside ``resources/``.
-_IJ_EXE_NAMES = ("Iron Jarvis.exe", "Iron Jarvis", "iron-jarvis")
+#: The executable a STEC OS install keeps beside ``resources/``.
+_IJ_EXE_NAMES = ("STEC OS.exe", "STEC OS", "iron-jarvis")
 
 
 def _repo_bundle_dir() -> Path:
@@ -306,11 +306,11 @@ def _script_arg(cmdline: list[str]) -> str | None:
 
 
 def iron_jarvis_owner(cmdline: list[str]) -> Path | None:
-    """The Iron Jarvis whose bundle this command line runs — the folder of THIS
+    """The STEC OS whose bundle this command line runs — the folder of THIS
     repo (a source run) or of an install — or ``None``. The bundle must be the
     FIRST script argument after the runtime and live in this repo's
     ``desktop/vendor/iron-proxy``, or in an install's ``resources/iron-proxy``
-    whose install folder holds the Iron Jarvis executable. Reads the disk."""
+    whose install folder holds the STEC OS executable. Reads the disk."""
     script = _script_arg(cmdline)
     if not script:
         return None
@@ -331,21 +331,21 @@ def iron_jarvis_owner(cmdline: list[str]) -> Path | None:
 
 
 def is_iron_jarvis_bundle(cmdline: list[str]) -> bool:
-    """Does this command line run the Iron-Proxy bundle an Iron Jarvis ships
+    """Does this command line run the Iron-Proxy bundle a STEC OS ships
     (:func:`iron_jarvis_owner`)?"""
     return iron_jarvis_owner(cmdline) is not None
 
 
 def _another_iron_jarvis(where: Path | str) -> str:
     return (
-        f"Another Iron Jarvis on this PC ({where}) keeps starting an older Iron-Proxy, so "
-        "this one stopped replacing it — update or close that copy of Iron Jarvis."
+        f"Another STEC OS on this PC ({where}) keeps starting an older Iron-Proxy, so "
+        "this one stopped replacing it — update or close that copy of STEC OS."
     )
 
 
 def _could_not_stop(pid: int) -> str:
     return (
-        f"Iron Jarvis could not stop the older Iron-Proxy (pid {pid}) — close it, then "
+        f"STEC OS could not stop the older Iron-Proxy (pid {pid}) — close it, then "
         "press Turn on again."
     )
 
@@ -389,7 +389,7 @@ class IronProxyService:
         self._bundle_features: frozenset[str] = frozenset()
         self._bundle_features_key: tuple[Any, ...] | None = None
         #: A located Iron-Proxy that lacks a bundled feature and is NOT one an
-        #: Iron Jarvis started (the tray app, a user-run serve): said in
+        #: STEC OS started (the tray app, a user-run serve): said in
         #: ``status().error``, never stopped.
         self._stale_foreign = False
         #: Pids this daemon tried to stop as stale Iron-Jarvis-started proxies,
@@ -481,7 +481,7 @@ class IronProxyService:
         return repo / "desktop" / "vendor" / "iron-proxy" / "iron-proxy.mjs"
 
     def bundled(self) -> bool:
-        """True when Iron Jarvis has an Iron-Proxy it could start itself
+        """True when STEC OS has an Iron-Proxy it could start itself
         (a live stat — call off the loop; ``status()`` reads the cached fact)."""
         try:
             p = self._bundle_path()
@@ -521,16 +521,16 @@ class IronProxyService:
         bundle = self._bundle_path()
         if bundle is None or not bundle.is_file():
             raise _StartProblem(
-                "This copy of Iron Jarvis does not include Iron-Proxy, so it cannot start "
+                "This copy of STEC OS does not include Iron-Proxy, so it cannot start "
                 "one itself; start Iron-Proxy yourself (the tray app or `iron-proxy serve`) "
-                "and Iron Jarvis will use it."
+                "and STEC OS will use it."
             )
         node_env = os.environ.get("IRONJARVIS_IRON_PROXY_NODE", "").strip()
         node = node_env or shutil.which("node")
         if not node:
             raise _StartProblem(
-                "Iron Jarvis could not find Node.js to run Iron-Proxy; install Node.js "
-                "or start Iron-Proxy yourself and Iron Jarvis will use it."
+                "STEC OS could not find Node.js to run Iron-Proxy; install Node.js "
+                "or start Iron-Proxy yourself and STEC OS will use it."
             )
         extra: dict[str, str] = {}
         if Path(node).stem.lower() != "node":
@@ -708,12 +708,12 @@ class IronProxyService:
     def _replace_if_stale(self, pid: int | None) -> bool:
         """v1.303.3 (a LIVE bug): the running Iron-Proxy (``pid``, health
         already noted) lacks a feature the bundle has. When its command line
-        runs an Iron Jarvis bundle (:func:`iron_jarvis_owner`) — this or
-        another Iron Jarvis started it, owned record or not — stop that tree
+        runs a STEC OS bundle (:func:`iron_jarvis_owner`) — this or
+        another STEC OS started it, owned record or not — stop that tree
         and start the current bundle; True when it did. Never: our OWN child
         of this run (it IS the current bundle); a pid twice; the same (bundle,
         version) twice, or more than :data:`REPLACE_LIMIT` times in
-        :data:`REPLACE_WINDOW_S` (another Iron Jarvis sharing the data dir
+        :data:`REPLACE_WINDOW_S` (another STEC OS sharing the data dir
         keeps starting it — said in ``status().error``, naming it); a process
         that did not die (its descriptor is kept, said). Anyone else's proxy
         is never touched and reads as outdated. Caller holds the lock."""
@@ -745,7 +745,7 @@ class IronProxyService:
             self._stale_error = _another_iron_jarvis(owner)
             return False
         log.warning(
-            "iron-proxy pid %s runs an older Iron Jarvis bundle (missing %s); restarting it",
+            "iron-proxy pid %s runs an older STEC OS bundle (missing %s); restarting it",
             pid, ", ".join(sorted(missing)),
         )
         self._replaced.add(int(pid))
@@ -833,7 +833,7 @@ class IronProxyService:
             kwargs["start_new_session"] = True  # so the tree kill reaches the group
         with open(log_path, "ab") as logf:
             logf.write(
-                f"\n--- {time.strftime('%Y-%m-%d %H:%M:%S')} Iron Jarvis starting Iron-Proxy\n".encode()
+                f"\n--- {time.strftime('%Y-%m-%d %H:%M:%S')} STEC OS starting Iron-Proxy\n".encode()
             )
             logf.flush()
             proc = subprocess.Popen(  # noqa: S603 — fixed argv, no shell
@@ -957,7 +957,7 @@ class IronProxyService:
                 self._clear_owned_record()
                 self._forget()
                 self._error = (
-                    f"Iron-Proxy (started by Iron Jarvis) stopped (exit code {rc}); "
+                    f"Iron-Proxy (started by STEC OS) stopped (exit code {rc}); "
                     f"its log is at {self.log_path()}."
                 )
             loc = self.locate()
@@ -1163,7 +1163,7 @@ class IronProxyService:
 
     def has_usable_account(self, ij_provider: str) -> bool:
         """Does Iron-Proxy (on, running, current) have an enabled CLI account
-        for this Iron Jarvis provider that does not need sign-in? CACHED — reads
+        for this STEC OS provider that does not need sign-in? CACHED — reads
         the last snapshot only; safe on the event loop (provider availability,
         ``/health``)."""
         try:

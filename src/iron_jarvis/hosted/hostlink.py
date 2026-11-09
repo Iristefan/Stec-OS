@@ -69,8 +69,8 @@ SNAP_AFTER_LINE_S = 1.0
 #: … and this long after a write (the caller's bookkeeping runs first).
 SNAP_AFTER_WRITE_S = 0.05
 
-NO_HOST_NOTE = ("Iron Jarvis could not start the helper that keeps coding tools running across a restart, "
-                "so this session stops if Iron Jarvis restarts. Your conversation is kept either way.")
+NO_HOST_NOTE = ("STEC OS could not start the helper that keeps coding tools running across a restart, "
+                "so this session stops if STEC OS restarts. Your conversation is kept either way.")
 HOST_GONE = "the helper that runs the coding tools stopped"
 
 
@@ -211,7 +211,7 @@ class HostLink:
         # v1.422.0 review: a connection that BROKE (a socket error, a frame
         # that could not be read) while the host may still be running: each
         # of its tools is told "stopped" below, so each must really stop — a
-        # host keeps running whatever an attached Iron Jarvis does not know
+        # host keeps running whatever an attached STEC OS does not know
         # about (its orphan rules wait for NO daemon), and the next message
         # would start a SECOND process for the same conversation. They are
         # stopped through the next link (made at once, in the background).
@@ -423,7 +423,7 @@ def live_session_ids(home: Any) -> list[str]:
 
 
 def quit_host(home: Any, timeout: float = RETIRE_WAIT_S) -> bool:
-    """BLOCKING: Iron Jarvis is QUITTING — the host (ours or one a crash left)
+    """BLOCKING: STEC OS is QUITTING — the host (ours or one a crash left)
     stops every tool gracefully and exits. True when one was told."""
     with _REG_LOCK:
         lk = _LINKS.pop(_key(home), None)
@@ -440,7 +440,7 @@ def quit_host(home: Any, timeout: float = RETIRE_WAIT_S) -> bool:
 
 
 def detach_host(home: Any) -> bool:
-    """BLOCKING: Iron Jarvis is RESTARTING — leave the host and its tools."""
+    """BLOCKING: STEC OS is RESTARTING — leave the host and its tools."""
     with _REG_LOCK:
         lk = _LINKS.pop(_key(home), None)
     if lk is None or not lk.alive:
@@ -723,7 +723,7 @@ class RemoteProcess:
         self._want_snapshot(0.0)
 
     def final_snapshot(self) -> None:
-        """ON THE LOOP: Iron Jarvis is restarting — keep the state now (not
+        """ON THE LOOP: STEC OS is restarting — keep the state now (not
         in the middle of a line: then the last kept one stands)."""
         if self._snap_timer is not None:
             self._snap_timer.cancel()

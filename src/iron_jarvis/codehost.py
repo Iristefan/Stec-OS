@@ -2,7 +2,7 @@
 
 THE PROBLEM (audit gap B3, the owner's decision of 2026-11-01): every tool the
 Code view drives (Claude Code, Codex, Pi, OpenCode, Grok) was a child of the
-daemon in its own kill-on-close Job, so an Iron Jarvis restart — an update,
+daemon in its own kill-on-close Job, so a STEC OS restart — an update,
 the desktop watchdog, the tray's Restart, a crash — killed every one of them:
 a 40-minute reply was cut off, a dev server Claude Code started went with it,
 and nothing offered to carry on. The owner chose "the option that would allow
@@ -782,11 +782,11 @@ class Host:
             alive = [t for t in self.tools.values() if not t.exited]
         away = now - since
         if not alive:
-            return "it holds no running tool and no Iron Jarvis is attached" if away >= EMPTY_EXIT_S else ""
+            return "it holds no running tool and no STEC OS is attached" if away >= EMPTY_EXIT_S else ""
         if away >= ORPHAN_MAX_S:
-            return "no Iron Jarvis came back within the hard bound"
+            return "no STEC OS came back within the hard bound"
         if away >= ORPHAN_GRACE_S and not any(t.working(now) for t in alive):
-            return "no Iron Jarvis came back and nothing it holds is working"
+            return "no STEC OS came back and nothing it holds is working"
         return ""
 
     def tick(self) -> None:

@@ -81,7 +81,7 @@ beforeEach(() => {
   H.put.mockResolvedValue({ changed: [] });
   H.notify.mockReset();
   H.eventsRef.current = [];
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
 });
 afterEach(() => {
   cleanup();

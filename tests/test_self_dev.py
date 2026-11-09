@@ -1,4 +1,4 @@
-"""Self-development: an Iron Jarvis agent can read/edit/fix Iron Jarvis's OWN
+"""Self-development: a STEC OS agent can read/edit/fix STEC OS's OWN
 source, gated (opt-in) and review-only (never auto-merge).
 
 Offline: drives the real ``git`` binary in ``tmp_path``; no network/provider.
@@ -28,7 +28,7 @@ def _run(args, cwd):
 
 
 def _make_fake_ij_repo(path: Path) -> Path:
-    """A throwaway git repo that looks like the Iron Jarvis project."""
+    """A throwaway git repo that looks like the STEC OS project."""
     path.mkdir(parents=True, exist_ok=True)
     _run(["init"], path)
     _run(["config", "user.email", "t@t"], path)
@@ -116,7 +116,7 @@ async def test_self_dev_session_edits_own_source_review_gated(tmp_path):
 
 
 def test_self_dev_root_requires_iron_jarvis_identity(tmp_path):
-    # A plain git repo that is NOT Iron Jarvis must be rejected by the override.
+    # A plain git repo that is NOT STEC OS must be rejected by the override.
     other = tmp_path / "other"
     other.mkdir()
     _run(["init"], other)

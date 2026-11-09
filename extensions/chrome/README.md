@@ -1,34 +1,34 @@
-# The Iron Jarvis browser add-on
+# The STEC OS browser add-on
 
-This folder is the Chrome/Edge half of Iron Jarvis's Browser feature. Loading it
-lets Iron Jarvis, running on this computer, work in the tabs you are already
+This folder is the Chrome/Edge half of STEC OS's Browser feature. Loading it
+lets STEC OS, running on this computer, work in the tabs you are already
 signed in to — no second browser, no re-logging in, no copied cookies.
 
-It is called **the Iron Jarvis browser add-on** everywhere a user can read it.
-Never "extension": inside Iron Jarvis that word already means an MCP server.
+It is called **the STEC OS browser add-on** everywhere a user can read it.
+Never "extension": inside STEC OS that word already means an MCP server.
 
 **If you just want to load it, read the next section and stop there.** Everything
 after *Site access* is for people working on the add-on's source.
 
 ## Load it into Chrome or Edge
 
-You are most likely reading this file from inside your Iron Jarvis installation,
+You are most likely reading this file from inside your STEC OS installation,
 because the installer ships this whole folder with the app. That is the folder to
 load — the one this README is sitting in, beside `manifest.json`. On a default
 Windows install it is:
 
 ```
-%LOCALAPPDATA%\Programs\Iron Jarvis\resources\browser-addon
+%LOCALAPPDATA%\Programs\STEC OS\resources\browser-addon
 ```
 
-If you chose a different location when you installed Iron Jarvis, it is
+If you chose a different location when you installed STEC OS, it is
 `resources\browser-addon` underneath the folder you chose.
 
 1. In Chrome, open `chrome://extensions`; in Edge, open `edge://extensions`.
 2. Turn on **Developer mode**, top right.
 3. Press **Load unpacked** and select this folder — the one holding
    `manifest.json`, not `dist/`.
-4. Open Iron Jarvis, go to the **Browser** page, and press **Pair**.
+4. Open STEC OS, go to the **Browser** page, and press **Pair**.
 5. Press **Grant site access**. A tab opens with one button; press it and accept
    Chrome's prompt.
 
@@ -43,11 +43,11 @@ be switched off from this side.
 The add-on's id is pinned by the `key` field in `manifest.json`, so it is the
 same on every machine and the daemon admits exactly that one origin. If
 `chrome://extensions` shows an id other than `lgihfomaieifpnemakmpadmggjnoojmm`,
-the folder you loaded is not the one that shipped with your Iron Jarvis.
+the folder you loaded is not the one that shipped with your STEC OS.
 
 ## What it can do
 
-The add-on is the transport. What Iron Jarvis may actually do through it is set
+The add-on is the transport. What STEC OS may actually do through it is set
 by the **Browser access** control on the Browser page, which ships **off**:
 
 - **Off** — nothing at all. No browser tool exists.
@@ -61,15 +61,15 @@ by the **Browser access** control on the Browser page, which ships **off**:
   identified well enough to judge.
 
 No field's value is ever collected, password or not, and the stripping happens
-inside the page before anything is sent. Whatever Iron Jarvis types is redacted
+inside the page before anything is sent. Whatever STEC OS types is redacted
 in its own records.
 
-When Iron Jarvis clicks something that starts a download, Chrome saves it exactly
+When STEC OS clicks something that starts a download, Chrome saves it exactly
 where your own Chrome settings say, and the add-on reports the completed file's
-real path back so Iron Jarvis can read it or copy it into a project. Where Chrome
+real path back so STEC OS can read it or copy it into a project. Where Chrome
 saves a download cannot be changed from here — that is Chrome's own setting.
 
-`docs/BROWSER.md`, which the Iron Jarvis Guide answers from, covers all of this
+`docs/BROWSER.md`, which the STEC OS Guide answers from, covers all of this
 at length. Ask the Guide about the browser and it reads from that file.
 
 ## Site access, and why it is a separate page
@@ -93,19 +93,19 @@ rather than as empty text, because "this tab has no title" is a lie and "not
 readable yet, and here is why" is not.
 
 You can narrow the grant afterwards in Chrome's own controls
-(`chrome://extensions` → this add-on → **Site access**). Iron Jarvis cannot grant
+(`chrome://extensions` → this add-on → **Site access**). STEC OS cannot grant
 or narrow it per site from its own screens.
 
 ## The side panel
 
-Minimal by rule (v1.267.0, v1.269.0): the Iron Jarvis mark with the connection
+Minimal by rule (v1.267.0, v1.269.0): the STEC OS mark with the connection
 dot on it, the access mode as a pill (hover it for what it means), the
 conversation, and one composer. At the bottom right of the composer sit two
 small icons: the **model** (the same list Jarvis offers — Default names the
 model Jarvis would use anyway, a model that is not connected is greyed out,
 your pick is remembered in this browser and shown in the icon's tooltip) and
 the **microphone**, which becomes the **send arrow** the moment you type.
-Dictation goes through Iron Jarvis's own speech engine — the bundled offline
+Dictation goes through STEC OS's own speech engine — the bundled offline
 model when it is present, else the transcription endpoint you configured — and
 never through a browser vendor's speech service; the words land in the box for
 you to read before you send. The first press opens the add-on's microphone page
@@ -118,10 +118,10 @@ The browser owns the key: `chrome://extensions/shortcuts` (in Edge,
 `edge://extensions/shortcuts`) shows it, lets you change it, and is where you
 would notice another add-on already holds it. In the box, **Enter** sends,
 **Shift+Enter** starts a new line, and **Esc** stops a running turn. **Open
-Jarvis** in the footer brings the Iron Jarvis tab you already have to the
+Jarvis** in the footer brings the STEC OS tab you already have to the
 front — on any of its pages — and opens one only when there is none.
 
-It remembers (v1.270.0): the conversation lives in Iron Jarvis, so a second
+It remembers (v1.270.0): the conversation lives in STEC OS, so a second
 message can refer to the first, and reopening the panel shows it; the **+**
 icon in the header starts a new one. The header's **Auto-allow** switch (shown
 at Interactive) is the one control for page-action approvals: on, Jarvis acts
@@ -173,7 +173,7 @@ the **×** forgets it.
   the app itself stops (it restarts during an update), the panel says so and
   reconnects when it is back; nothing needs re-pairing.
 - **Access mode is only as fresh as the daemon's last word.** The add-on cannot
-  read Iron Jarvis's `browser_access` setting itself, so the popup shows "Set in
+  read STEC OS's `browser_access` setting itself, so the popup shows "Set in
   Jarvis" until the daemon reports a mode. It never guesses one.
 - **Where Chrome saves a download cannot be changed** from here. The completed
   file's real path is reported; redirecting it is the browser's own setting.
@@ -184,7 +184,7 @@ the **×** forgets it.
   one cannot even be counted. Pointing works the same way: a click over an
   embedded frame points at the frame itself, never at what is inside it.
 - **A pick in progress lives in the worker's memory.** If the browser unloads the
-  worker in the middle of a pick (it does not while Iron Jarvis is connected —
+  worker in the middle of a pick (it does not while STEC OS is connected —
   the heartbeat above keeps it), the click is dropped; press the crosshair again.
 
 ---

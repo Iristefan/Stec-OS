@@ -170,7 +170,7 @@ afterEach(() => {
 });
 
 async function pickModel(model: string) {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.click(await screen.findByTitle("Switch model"));
   // The provider row's accessible name carries its badge; the model row's text
   // is the id itself. Both are reached by their visible words, then clicked as
@@ -186,7 +186,7 @@ async function pickModel(model: string) {
 }
 
 async function send(text: string) {
-  const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  const box = await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.change(box, { target: { value: text } });
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
   await waitFor(() => expect(H.stream.bodies.length).toBeGreaterThan(0));
@@ -196,7 +196,7 @@ async function send(text: string) {
 describe("the reasoning control exists only where it is an option (v1.263.0)", () => {
   it("is absent for the default model and for a model with no knob", async () => {
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     expect(screen.queryByTestId("reasoning-level")).toBeNull();
     await pickModel("gpt-4o");
     await waitFor(() => expect(screen.queryByTestId("reasoning-level")).toBeNull());

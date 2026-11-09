@@ -10,7 +10,7 @@
  *   POST /brain/profiles/{id}/check
  *     {steps: [{step: "reach"|"search"|"guide"|"save", ok: boolean|null, words}]}
  *   POST /brain/profiles/{id}/test-save   {ok: boolean, words} | 409/400 {detail}
- *   404 on either = an older Iron Jarvis: the buttons are not drawn.
+ *   404 on either = an older STEC OS: the buttons are not drawn.
  */
 
 export const CHECK_STEPS = ["reach", "search", "guide", "save"] as const;

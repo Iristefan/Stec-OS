@@ -7,7 +7,7 @@ approves things for me. My own command files can follow the session's
 setting."
 
 A Claude Code command file (``harness/claude_commands``) may hold shell lines
-(``!`…``` and ```` ```! ```` blocks). Iron Jarvis never runs them itself — the
+(``!`…``` and ```` ```! ```` blocks). STEC OS never runs them itself — the
 expansion asks the MODEL to run them with its own shell tool — so under
 "Approve for me" or "Don't ask" (yolo) a repository's command file could have
 the model run whatever it says with no card. A personal command

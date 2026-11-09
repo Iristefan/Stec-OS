@@ -1,7 +1,7 @@
 """v1.439.0: Build › Code parity fixes on the daemon side.
 
 1. Grok's ``/always-approve`` and ``/auto`` are never offered or sent (they
-   would change what Grok runs without asking, outside Iron Jarvis's cards).
+   would change what Grok runs without asking, outside STEC OS's cards).
 2. An ACP command keeps its argument hint (OpenCode's ``/review`` "commit").
 3. OpenCode's kept ``/`` list is its FOLDER's; its model rows are grouped by
    provider.
@@ -176,7 +176,7 @@ def test_opencodes_model_rows_are_grouped_by_provider_in_a_stable_order(tmp_path
     assert [(r["id"], r.get("group")) for r in rows] == [
         ("plain", None), ("anthropic/b", "anthropic"), ("anthropic/a", "anthropic"),
         ("zeta/one", "zeta"), ("zeta/two", "zeta")]
-    # A list kept by an older Iron Jarvis (no groups) is read with them.
+    # A list kept by an older STEC OS (no groups) is read with them.
     path = tmp_path / "opencode_models.json"
     path.write_text(json.dumps({"models": [{"id": "zeta/one", "label": "Zeta/One"},
                                            {"id": "lab/fleet", "label": "Lab/Fleet"}]}), encoding="utf-8")
@@ -209,7 +209,7 @@ async def test_codexs_warnings_and_a_failed_hook_are_one_masked_notice_each(app,
         "Codex's postToolUse hook failed: exit code 2. lint.sh exited 2.",
     ], notices
     assert not any("sk-abcdef" in n for n in notices), "a key must be masked"
-    assert not any("excludeTurns" in n or "hydration" in n for n in notices), "Iron Jarvis's own call: logged"
+    assert not any("excludeTurns" in n or "hydration" in n for n in notices), "STEC OS's own call: logged"
     assert not any("sub-agent" in n for n in notices), "another thread's warning"
     await stop_all(app)
 

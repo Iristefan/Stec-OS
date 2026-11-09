@@ -16,7 +16,7 @@ TWO HALVES, two small files beside the session's ``events.jsonl``:
 * ``cut.json`` — a reply a RESTART cut off (an update, a PC restart, a
   crash, a host that is gone). :func:`analyse_tail` reads the newest turn of
   a session's log at boot (``service.reconcile_cut_turns``): a turn with no
-  ``done`` (a crash) or one Iron Jarvis's own stop ended
+  ``done`` (a crash) or one STEC OS's own stop ended
   (``service.STOPPED_TITLE`` beside an ``interrupted`` done — every graceful
   shutdown) is a CUT. The record says whether a card or a question was open
   (``waiting``: the question is lost, so it is offered, never carried on by
@@ -37,7 +37,7 @@ TWO HALVES, two small files beside the session's ``events.jsonl``:
   ``card`` (the limit: account, kind, reset), ``wait`` (armed BY ITSELF when
   ``build_auto_resume`` is on and either the reset is known or the account
   shares a group with another account of its vendor) and ``chain`` (how many
-  times in a row Iron Jarvis carried on by itself without the account
+  times in a row STEC OS carried on by itself without the account
   serving any work — at :data:`MAX_AUTO_IN_A_ROW` the card waits for a
   press). The loop (:func:`resume_due`) carries the reply on at the reset
   (time through an injected clock), or MOVES it within the user's account
@@ -82,7 +82,7 @@ SINCE_FILE = "carry_on_since.json"
 #: The tools whose conversation can move to another account (Claude Code's
 #: copy since v1.303.0; Codex's since v1.422.0, measured — :mod:`.codex_move`).
 MOVABLE: tuple[str, ...] = ("claude-code", "codex")
-#: At most this many carry-ons in a row Iron Jarvis started by itself after a
+#: At most this many carry-ons in a row STEC OS started by itself after a
 #: limit (a move or a reset) without the account serving any work — then the
 #: card waits for the user (Chat › Code's ``MAX_GROUP_MOVES``).
 MAX_AUTO_IN_A_ROW = 4
@@ -102,7 +102,7 @@ CUT_KEEP_DAYS = 7
 
 #: What the TOOL is told (its user message; hidden on the page).
 CONTINUE_AFTER_RESTART = (
-    "Iron Jarvis restarted while you were working on my last message, so your reply was cut off "
+    "STEC OS restarted while you were working on my last message, so your reply was cut off "
     "before it finished. First check what was already done (look at the files and at what you "
     "ran), then carry on with the task from where it stopped. Do not redo work that is already "
     "finished."
@@ -120,7 +120,7 @@ CONTINUE_AFTER_MOVE = (
 
 # Words a person reads (why a cut reply was not carried on by itself).
 WHY_WAITING = (
-    "it was waiting for your answer when Iron Jarvis stopped, and that question was lost — "
+    "it was waiting for your answer when STEC OS stopped, and that question was lost — "
     "press Continue to carry on"
 )
 WHY_CARRIED = "it was already carried on once after a restart and was cut off again"
@@ -133,7 +133,7 @@ WHY_LIMIT = "it waits on its account's limit"
 #: carry-on that had not been served yet) — never "it waits".
 WHY_LIMIT_CARD = "it had stopped on its account's limit"
 WHY_OLD = "it was cut off more than a week ago"
-WHY_BEFORE = "it was cut off before this version of Iron Jarvis could carry replies on by itself"
+WHY_BEFORE = "it was cut off before this version of STEC OS could carry replies on by itself"
 WHY_NEWER = "a newer message was sent"
 WHY_BUSY = "the session is already working"
 WHY_POOL = "too many coding sessions were working at once"
@@ -150,7 +150,7 @@ MOVED_NOTE = (
 #: conversation open in a terminal, …): the wait ends, and the card says why.
 GAVE_UP_NOTE = "It did not carry on by itself: {why}"
 CHAIN_NOTE = (
-    "Iron Jarvis carried this on by itself {n} times in a row and the account was at its limit "
+    "STEC OS carried this on by itself {n} times in a row and the account was at its limit "
     "each time, so it now waits for you."
 )
 
@@ -305,7 +305,7 @@ def analyse_tail(events: list[dict[str, Any]], *, stopped_title: str) -> dict[st
     ``{turn, closed (a done is there), waiting, carried, limit}``.
 
     A turn is CUT when it has no ``done`` (a crash), or when its ``done`` is
-    ``interrupted`` and Iron Jarvis's own stop said so (``stopped_title`` —
+    ``interrupted`` and STEC OS's own stop said so (``stopped_title`` —
     only the app stopping writes it: a shutdown, a cancelled turn, this
     reconcile). The user's Stop writes no such error: no record."""
     turn = ""
@@ -372,7 +372,7 @@ def note_cut(home: Any, sid: str, facts: dict[str, Any]) -> None:
             return
         if turn and old.get("stopped") == turn:
             # v1.422.0 review: the USER pressed Stop on this reply, and the app
-            # went before the coding tool confirmed it (Iron Jarvis's own stop
+            # went before the coding tool confirmed it (STEC OS's own stop
             # then ended it): never a cut — never carried on, never offered.
             return
         rec = {
@@ -502,7 +502,7 @@ async def _start(svc: Any, sid: str, text: str, carry: dict[str, Any]) -> Any:
     if not carry.get("pressed") and _emergency_stop(svc.platform):
         # v1.422.0 review: a pass reads Emergency stop once at its top, and
         # the user may turn it on while the pass goes on (each start is
-        # awaited): every start Iron Jarvis makes BY ITSELF reads it again.
+        # awaited): every start STEC OS makes BY ITSELF reads it again.
         raise Refused(WHY_STOP[:1].upper() + WHY_STOP[1:] + ".")
     turn_id = f"turn-{uuid.uuid4().hex[:12]}"
     return await svc.start_turn(sid, text, turn_id, carry=carry)
@@ -976,7 +976,7 @@ async def resume_due(svc: Any, *, now: datetime | None = None) -> list[str]:
                 # v1.422.0 review: a move STOPS the tool's process (a tree
                 # kill); background work still running in it (a dev server, a
                 # long test run, a helper agent) would die with it. Like the
-                # reaper, the pool and a restart (v1.417.0), a move Iron Jarvis
+                # reaper, the pool and a restart (v1.417.0), a move STEC OS
                 # makes by itself waits for that work (the wait stays).
                 background = live is not None and live.keeps_working(svc.clock())
                 target = None if background else await asyncio.to_thread(
@@ -1205,7 +1205,7 @@ async def carry_loop(platform: Any, on_tick: Any) -> None:
 def stop_unattended_turns(platform: Any) -> list[str]:
     """Emergency stop's half for Build › Code (v1.422.0 review — Chat › Code's
     rule since v1.398.0, ``harness/night.stop_unattended_turns``): every reply
-    Iron Jarvis carried on BY ITSELF (after a restart, an account's reset, a
+    STEC OS carried on BY ITSELF (after a restart, an account's reset, a
     move within a group) is stopped, the way the user's Stop stops it (so it
     is never read as cut, never carried on again). A reply the user started,
     and a Continue the user pressed, keep going. Thread-safe (the stop runs on

@@ -1,8 +1,8 @@
 {
   "name": "ironjarvis-browser-addon",
-  "version": "1.443.4",
+  "version": "1.444.0",
   "private": true,
-  "description": "The Iron Jarvis browser add-on: the Chrome/Edge half of the Browser Bridge.",
+  "description": "The STEC OS browser add-on: the Chrome/Edge half of the Browser Bridge.",
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {

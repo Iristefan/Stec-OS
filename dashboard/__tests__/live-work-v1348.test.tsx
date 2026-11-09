@@ -526,7 +526,7 @@ describe("on the chat page", () => {
     }));
     H.stream.live = { thinking: "Comparing the sheets first.", tools };
     render(<ChatPage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(el, { target: { value: "compare them" } });
     fireEvent.keyDown(el, { key: "Enter" });
     const live = await screen.findByTestId("live-work");
@@ -557,7 +557,7 @@ describe("on the chat page", () => {
       tools: [{ ...done("c1", "read_file", { path: "C:\\work\\a.xlsx" }), startedAt: now - 2_000, endedAt: now - 1_900 }],
     };
     render(<ChatPage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(el, { target: { value: "read it" } });
     fireEvent.keyDown(el, { key: "Enter" });
     const live = await screen.findByTestId("live-work");
@@ -573,7 +573,7 @@ describe("on the chat page", () => {
     H.stream.startedAt = Date.now() - 12_000;
     H.stream.live = { thinking: "", tools: [] };
     render(<ChatPage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(el, { target: { value: "think" } });
     fireEvent.keyDown(el, { key: "Enter" });
     const live = await screen.findByTestId("live-work");

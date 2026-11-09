@@ -211,7 +211,7 @@ def anthropic_thinking_mode(model: str) -> str:
 # not tell what level the model would use. ``reasoning_default`` answers that
 # question, under the same honesty rule as the table above: ABSENT ("") MEANS
 # UNKNOWN, NEVER A GUESS. A value is given only where the vendor DOCUMENTS the
-# default for that exact model, and only for the route Iron Jarvis really
+# default for that exact model, and only for the route STEC OS really
 # takes (an API key's request, which sends nothing when no level is picked).
 #
 # Values: ``low`` / ``medium`` / ``high`` (the composer's own words), plus

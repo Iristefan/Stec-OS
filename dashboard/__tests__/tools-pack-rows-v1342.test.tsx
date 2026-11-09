@@ -471,7 +471,7 @@ describe("Remove says Removed, not restart", () => {
     fireEvent.click(within(rowOf("filesystem")).getByRole("button", { name: /Confirm/ }));
     await waitFor(() => expect(api.dels).toContain("/mcp/servers/filesystem"));
     const note = await screen.findByText(/Removed "filesystem"/);
-    expect(note.textContent).not.toMatch(/Restart Iron Jarvis/);
+    expect(note.textContent).not.toMatch(/Restart STEC OS/);
     expect(document.body.textContent).not.toMatch(/fully unload/);
   });
 });

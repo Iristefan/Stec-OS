@@ -159,7 +159,7 @@ class MockLLMAdapter(LLMAdapter):
             if writer is not None:
                 name, key = writer
                 content = (
-                    "# Iron Jarvis result\n\n"
+                    "# STEC OS result\n\n"
                     f"Task: {task}\n\n"
                     f"Written by the {DEMO_MODEL}: {DEMO_REPLIES}. No AI model ran.\n"
                 )

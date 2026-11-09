@@ -335,7 +335,7 @@ def test_check_and_test_save_on_the_real_path(tmp_path):
     assert steps["save"]["ok"] is False and "Set up tools" in steps["save"]["words"]
     conn.roles = CONFIRMED
     out = client.post(f"/brain/profiles/{pid}/test-save").json()
-    assert out["ok"] and out["verified"] is True and "Iron Jarvis test note" in out["words"]
+    assert out["ok"] and out["verified"] is True and "STEC OS test note" in out["words"]
 
 
 # --------------------------------------------------------------------------- #

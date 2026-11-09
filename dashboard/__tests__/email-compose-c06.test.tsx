@@ -45,7 +45,7 @@ vi.mock("next/link", () => ({
   ),
 }));
 
-const FILE = "C:\\Users\\VR\\Documents\\Iron Jarvis\\2026-09-11 HarborPoint\\HarborPoint_Q1.xlsx";
+const FILE = "C:\\Users\\VR\\Documents\\STEC OS\\2026-09-11 HarborPoint\\HarborPoint_Q1.xlsx";
 const BODY = "To: client@example.com\n\nHi — the HarborPoint_Q1.xlsx workbook is attached.";
 
 function renderCard(text = BODY) {

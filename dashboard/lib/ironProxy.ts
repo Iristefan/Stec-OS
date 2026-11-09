@@ -7,7 +7,7 @@
  * one of those mocks.
  *
  * Iron-Proxy is the ACCOUNT MANAGER (which accounts exist, their order, who is
- * parked until when). Iron Jarvis keeps its own adapters and runs each
+ * parked until when). STEC OS keeps its own adapters and runs each
  * Claude/Codex/Grok call AS the first usable account of THAT provider — a
  * limit moves to the next account of the same provider, never to another one.
  */
@@ -71,7 +71,7 @@ export interface IronProxyAccount {
    *  WORKED; ISO), or null. A failed read never moves it. */
   usage_read_at?: string | null;
   /** v1.439.0: its usage can be read now (a Claude Code / Codex login that is
-   *  on and signed in). Absent from an older Iron Jarvis = no button. */
+   *  on and signed in). Absent from an older STEC OS = no button. */
   can_refresh?: boolean;
 }
 
@@ -92,7 +92,7 @@ export interface IronProxySnapshot {
   accounts: IronProxyAccount[];
   discovered: IronProxyDiscovered[];
   providers_used_by_jarvis?: Record<string, string>;
-  /** v1.393.0: the user's account groups (Iron Jarvis's own setting
+  /** v1.393.0: the user's account groups (STEC OS's own setting
    *  `account_groups`, never Iron-Proxy's): `{group name: [account ids]}`. */
   account_groups?: Record<string, string[]>;
   /** v1.424.0 (audit D4): the Claude group's one line — whether Claude Code on
@@ -229,10 +229,10 @@ export function providerLabel(provider: string): string {
   return PROVIDER_LABEL[provider] ?? provider;
 }
 
-/** What "Add account" offers: the providers Iron Jarvis runs through accounts. */
+/** What "Add account" offers: the providers STEC OS runs through accounts. */
 export const ADDABLE_PROVIDERS = ["anthropic", "openai", "xai"] as const;
 
-/** Iron Jarvis's own provider id for each Iron-Proxy provider (the daemon's
+/** STEC OS's own provider id for each Iron-Proxy provider (the daemon's
  *  `providers_used_by_jarvis` wins; this is the fallback). v1.426.0 (E5):
  *  read from the GENERATED twin of the daemon's one table
  *  (lib/subscriptionClis, providers/subscription_clis). */

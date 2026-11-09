@@ -1,4 +1,4 @@
-"""v1.438.0 (chat-first plan Wave 4 group C, decision D5): "Start Iron Jarvis
+"""v1.438.0 (chat-first plan Wave 4 group C, decision D5): "Start STEC OS
 with Windows" and "Keep running in the background when I close the window"
 are settings — the desktop app reads them and applies them.
 
@@ -311,7 +311,7 @@ def test_the_rows_their_tiers_and_the_tolerant_fields(tmp_path):
 @pytest.mark.parametrize(
     "text, key",
     [
-        ("Start Iron Jarvis with Windows", "start_with_windows"),
+        ("Start STEC OS with Windows", "start_with_windows"),
         ("please start with windows", "start_with_windows"),
         ("don't start with Windows anymore", "start_with_windows"),
         ("make Jarvis start at login", "start_with_windows"),

@@ -328,7 +328,7 @@ function WhatAnswers({
   );
 }
 
-/** v1.426.0 (Wave 6, E1): what Iron Jarvis told the model — whose tool
+/** v1.426.0 (Wave 6, E1): what STEC OS told the model — whose tool
  *  names it was shown, what the instructions were built from, the folder's
  *  own instruction files when they were NOT used (the daemon's sentence, in
  *  the warning tone), and a way to read them: "Show the instructions" puts
@@ -384,7 +384,7 @@ function Instructions({ view, messages }: { view: BuildSessionView; messages: re
         </>
       ) : (
         <p data-testid="session-rail-instructions-none" className={QUIET}>
-          Iron Jarvis puts its instructions together for each reply.
+          STEC OS puts its instructions together for each reply.
         </p>
       )}
       {note ? (
@@ -421,7 +421,7 @@ function Instructions({ view, messages }: { view: BuildSessionView; messages: re
           ) : shown ? (
             <>
               <p className={QUIET}>
-                What Iron Jarvis gives this session's model now, for its folder and model
+                What STEC OS gives this session's model now, for its folder and model
                 {shown.plan ? " (planning only)" : ""}. Read-only; each reply also gets the date, a
                 map of the folder and the skills it can load.
               </p>
@@ -709,7 +709,7 @@ function Background({
         setReadError(null);
       })
       .catch((e: unknown) => {
-        // An older Iron Jarvis has no such read (404): nothing to list. Any
+        // An older STEC OS has no such read (404): nothing to list. Any
         // other failure is SAID — never read as "nothing is running".
         if ((e as { status?: unknown } | null)?.status === 404) {
           setPrograms((prev) => prev ?? []);

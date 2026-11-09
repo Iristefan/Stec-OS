@@ -28,14 +28,14 @@ import { useDocumentVisible } from "./useDocumentVisible";
 export const HIDDEN_HEALTH_INTERVAL_MS = 30_000;
 
 /** v1.406.0 (part 6): how long after the page loads a /health that cannot
- *  reach Iron Jarvis is read as "still starting" rather than an outage — the
+ *  reach STEC OS is read as "still starting" rather than an outage — the
  *  desktop app's own start-up gate (STARTUP_TIMEOUT_MS in desktop/main.js).
- *  Only before the FIRST answer: once Iron Jarvis has answered, a miss is an
+ *  Only before the FIRST answer: once STEC OS has answered, a miss is an
  *  outage at once, exactly as before. */
 export const STARTING_GRACE_MS = 90_000;
 
 /** While starting, /health is asked again this soon (not every 5 s), so the
- *  page lands the moment Iron Jarvis answers. */
+ *  page lands the moment STEC OS answers. */
 export const STARTING_POLL_MS = 1_000;
 
 export interface DaemonState {
@@ -53,9 +53,9 @@ export interface DaemonState {
    *  v1.406.0 (part 6): also true while `starting` — every surface that waits
    *  for `!checking` before saying "offline" stays quiet during a start. */
   checking: boolean;
-  /** v1.406.0 (part 6): Iron Jarvis has never answered this page yet and the
+  /** v1.406.0 (part 6): STEC OS has never answered this page yet and the
    *  page is younger than STARTING_GRACE_MS — it is starting, not down. The
-   *  banner says "Starting Iron Jarvis…" instead of "isn't responding". */
+   *  banner says "Starting STEC OS…" instead of "isn't responding". */
   starting: boolean;
   /** v1.226.0 (contract C7): +1 on every offline->online transition. `useApi`
    *  re-fetches on it ONLY while its last error was status 0, so a page whose
@@ -198,7 +198,7 @@ export function DaemonProvider({ children }: { children: ReactNode }) {
           ) {
             // v1.406.0 (part 6): never answered yet, page just loaded — Iron
             // Jarvis is STARTING. `checking` stays true, so nothing says
-            // "offline"; the banner says "Starting Iron Jarvis…".
+            // "offline"; the banner says "Starting STEC OS…".
             stillStarting = true;
             setStarting(true);
           } else {

@@ -165,7 +165,7 @@ existing chat suite as its proof, and nothing else in the same version.
 
 ## 5 · Steering, honestly
 
-There is no route anywhere in Iron Jarvis that injects a message into a running
+There is no route anywhere in STEC OS that injects a message into a running
 turn. Three things get called "steer" and only the first two exist today:
 
 1. **Deny an approval.** Already real. The model is told the user declined

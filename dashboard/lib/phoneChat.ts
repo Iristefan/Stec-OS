@@ -17,7 +17,7 @@
  * id (a positive number), while a group's id is negative and names nobody, so
  * a group id is never written into the allowlist. A list the person typed is
  * never replaced. The list still fails closed, and it is VISIBLE: the person
- * sees which id may talk to Iron Jarvis before they save.
+ * sees which id may talk to STEC OS before they save.
  *
  * A list the FORM filled follows a corrected chat ID (review, v1.353.0):
  * picking the wrong private chat and then detecting again used to correct

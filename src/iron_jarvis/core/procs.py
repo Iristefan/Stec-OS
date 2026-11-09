@@ -1,6 +1,6 @@
 """Child processes the daemon starts: which LANE they run in (v1.333.0).
 
-THE PROBLEM THIS MODULE EXISTS FOR: Iron Jarvis is a daily driver that also
+THE PROBLEM THIS MODULE EXISTS FOR: STEC OS is a daily driver that also
 runs unattended work — schedules at 3am, goals, workflows, queued
 assignments — for days at a time. Every child that work started (an agent
 CLI, ffmpeg encoding on every core, a REPL cell, a build in a shell) ran at

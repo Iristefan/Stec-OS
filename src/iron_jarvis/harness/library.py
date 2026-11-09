@@ -1680,7 +1680,7 @@ def accept(engine: Any, item_id: str, *, known_tools: Any = None) -> HarnessLibr
     if row.kind == KIND_LESSON:
         return _decide(engine, item_id, ACCEPTED)
     if not editable_file(row.file):
-        raise LibraryRefused("This suggestion names a file Iron Jarvis does not edit.", 409)
+        raise LibraryRefused("This suggestion names a file STEC OS does not edit.", 409)
     problem = folder_problem(row.folder)
     if problem:
         raise LibraryRefused(f"The folder cannot be written now: {problem}", 409)

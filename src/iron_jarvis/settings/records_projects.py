@@ -82,7 +82,7 @@ PROJECT_TOOLS: tuple[str, ...] = ("project_create", "project_update", "project_a
 AGENT_TOOLS: tuple[str, ...] = ("agent_create", "agent_update", "agent_pause", "agent_delete")
 
 #: A tool needs the running app (the route bodies take its deps object).
-NEEDS_THE_APP = "This can only be done while the Iron Jarvis app is running."
+NEEDS_THE_APP = "This can only be done while the STEC OS app is running."
 #: The kinds of agent a made agent can work like (the route refuses
 #: "supervisor" — it would discard the agent's own instructions).
 WORKS_LIKE: tuple[str, ...] = ("builder", "reviewer", "researcher", "planner", "memory", "automation", "guide", "maintainer")
@@ -172,7 +172,7 @@ def _route_words(exc: Any, *, what: str = "") -> str:
     if low == "folder must be an absolute path":
         return "Give the folder's full location, starting with its drive (for example D:\\Clients\\Johnson)."
     if low.startswith("unknown provider '"):
-        return _sentence(detail.replace("unknown provider", "Iron Jarvis has no model service called", 1)
+        return _sentence(detail.replace("unknown provider", "STEC OS has no model service called", 1)
                          .replace(" — pick one from the model list", "; pick one from the model list"))
     if low == "unarchive the project first":
         return f"{_q(what) if what else 'That project'} is archived; unarchive it first."
@@ -770,7 +770,7 @@ def resolve_agent(platform: Any, ref: str) -> tuple[str, str]:
             return hits[0], ""
     if bare.casefold() in _builtin_names():
         return "", (
-            f"The {bare.lower()} is one of Iron Jarvis's own agents; only agents you made can be "
+            f"The {bare.lower()} is one of STEC OS's own agents; only agents you made can be "
             "changed, paused or removed."
         )
     if not names:
@@ -1074,7 +1074,7 @@ def _agent_change_words(before: dict[str, Any], after: dict[str, Any]) -> tuple[
 
 def _check_provider(platform: Any, provider: str) -> str:
     """The Projects route's own model-service check (``routes.projects.
-    _validate_project_model`` — the provider must be one Iron Jarvis has), in
+    _validate_project_model`` — the provider must be one STEC OS has), in
     words. "" when fine or not given."""
     from fastapi import HTTPException
 
@@ -1091,7 +1091,7 @@ def _check_provider(platform: Any, provider: str) -> str:
         except Exception:  # noqa: BLE001
             known = []
         tail = f" The ones it has: {', '.join(known)}." if known else ""
-        return f"Iron Jarvis has no model service called {_q(provider)}.{tail}"
+        return f"STEC OS has no model service called {_q(provider)}.{tail}"
     return ""
 
 
@@ -1367,7 +1367,7 @@ _DEF = r"(?:(?:the|my|our|this|that)\s+)"
 _TAIL = r"(?P<tail>[^\n]{0,80})"
 
 #: The thing after "project" that makes it a document or a file, not a
-#: project of Iron Jarvis's ("create a project plan", "the project folder").
+#: project of STEC OS's ("create a project plan", "the project folder").
 _PROJECT_THING = re.compile(
     r"\s*(?:-|plans?\b|timelines?\b|proposals?\b|budgets?\b|reports?\b|charters?\b|briefs?\b|schedules?\b"
     r"|status\b|updates?\b|summar(?:y|ies)\b|lists?\b|templates?\b|managers?\b|management\b|deadlines?\b"
@@ -1390,7 +1390,7 @@ _PRE_PREP = re.compile(
     r"\b(?:of|about|on|for|with|from|to|in|into|at|by|per|among|between|like|regarding)\b", re.IGNORECASE
 )
 #: A coding project or another app's project ("a new React project", "a
-#: project in Asana", "Microsoft Project") — never one of Iron Jarvis's.
+#: project in Asana", "Microsoft Project") — never one of STEC OS's.
 _CODE_WORDS = re.compile(
     r"\b(?:python|react|node|next\.?js|django|flask|rust|golang|java|kotlin|swift|typescript|javascript|js|ts"
     r"|vite|maven|gradle|cargo|npm|pnpm|yarn|xcode|android|ios|unity|godot|unreal|electron|tauri|flutter"
@@ -1443,7 +1443,7 @@ _P_FOCUS_SETTING = re.compile(
 )
 
 #: A person who is an "agent" ("my insurance agent", "a registered agent for
-#: the LLC", "an enrolled agent"), never one of Iron Jarvis's.
+#: the LLC", "an enrolled agent"), never one of STEC OS's.
 _HUMAN_AGENT = frozenset(
     {
         "registered", "enrolled", "insurance", "travel", "estate", "realty", "booking", "sports", "leasing",

@@ -17,7 +17,7 @@ export default function GlobalError({
 }) {
   useEffect(() => {
     // Surface for debugging; the daemon/console can pick this up.
-    console.error("Iron Jarvis crashed:", error);
+    console.error("STEC OS crashed:", error);
   }, [error]);
 
   return (
@@ -46,13 +46,13 @@ export default function GlobalError({
                 </svg>
               </span>
               <h1 className="text-[13px] font-semibold tracking-wide text-zinc-100">
-                Iron Jarvis hit a snag
+                STEC OS hit a snag
               </h1>
             </header>
             <div className="p-5">
               <div className="flex items-start gap-2.5 rounded-xl border border-rose-500/25 bg-rose-500/[0.07] px-3 py-2.5 text-sm text-rose-200">
                 <span>
-                  Something broke while rendering the dashboard. Iron Jarvis and your data are
+                  Something broke while rendering the dashboard. STEC OS and your data are
                   unaffected — try reloading this view.
                 </span>
               </div>

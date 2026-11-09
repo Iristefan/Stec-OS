@@ -1030,7 +1030,7 @@ def test_the_where_line_follows_the_one_predicate():
     assert "runs in the cloud" in line("fleet-a", public)
     assert "picked per message (Auto)" in line("auto")
     assert "do not claim to run locally" in line("")
-    assert all(line(p).startswith("- Iron Jarvis runs on the user's machine; their home directory is ")
+    assert all(line(p).startswith("- STEC OS runs on the user's machine; their home directory is ")
                for p in ("auto", "claude-cli", ""))
 
 

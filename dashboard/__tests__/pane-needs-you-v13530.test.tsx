@@ -106,7 +106,7 @@ beforeEach(() => {
   H.panes = [];
   H.pendingWebsite = 0;
   window.localStorage.clear();
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
   getMock.mockImplementation(async (path: unknown) => {
     const p = String(path);
     if (p === "/terminals/activity") return { panes: H.panes };
@@ -228,11 +228,11 @@ describe("a pane waiting on its CLI's question reaches the bell (G52)", () => {
     await waitFor(() =>
       expect(screen.getByRole("button", { name: "1 notifications" })).toBeInTheDocument(),
     );
-    await waitFor(() => expect(document.title).toBe("(1) Iron Jarvis"));
+    await waitFor(() => expect(document.title).toBe("(1) STEC OS"));
     // The desktop ping names the pane's CLI, like the row.
     await waitFor(() => expect(notifyMock).toHaveBeenCalled());
     const [title, body] = notifyMock.mock.calls[notifyMock.mock.calls.length - 1];
-    expect(title).toBe("Iron Jarvis: 1 pending");
+    expect(title).toBe("STEC OS: 1 pending");
     expect(body).toContain("Claude Code in Build is waiting for you");
 
     await openBell();

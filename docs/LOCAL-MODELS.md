@@ -1,6 +1,6 @@
 # Local Models by RAM Tier
 
-*Updated 2026-08 for the current landscape. Iron Jarvis talks to local models
+*Updated 2026-08 for the current landscape. STEC OS talks to local models
 through Ollama (`ollama_base_url`) or any OpenAI-compatible server
 (`custom_base_url` — LiteLLM, vLLM, LM Studio). Models without native
 tool-calling still work: the router detects them and switches to prompted
@@ -54,7 +54,7 @@ two-Spark configuration.
 284B total parameters, **13B active**, native **1M context**. DeepSeek
 specifically reports strong coding, reasoning, and agentic performance, and
 its compressed attention architecture dramatically reduces long-context
-KV-cache requirements. For Iron Jarvis this is the most interesting model to
+KV-cache requirements. For STEC OS this is the most interesting model to
 span both Sparks when you want **one extremely capable local agent**.
 
 ### Maximum model: Qwen3.5 397B-A17B
@@ -76,7 +76,7 @@ attractive:
 
 - **Spark 1** → primary coding / reasoning agent
 - **Spark 2** → research / verifier / reviewer / second coding agent
-- **Iron Jarvis** → orchestrates both
+- **STEC OS** → orchestrates both
 
 For example:
 
@@ -86,7 +86,7 @@ For example:
   vision**.
 
 This is often more useful for real autonomous work than consuming both
-machines to run one 397B model — and it maps directly onto Iron Jarvis's
+machines to run one 397B model — and it maps directly onto STEC OS's
 supervisor → specialist delegation: register each Spark's endpoint as its own
 provider (or LiteLLM alias) and let the Team job / delegate tool split
 implement-vs-verify across them.
@@ -102,7 +102,7 @@ implement-vs-verify across them.
 
 ---
 
-## Wiring it into Iron Jarvis, step by step
+## Wiring it into STEC OS, step by step
 
 1. Serve the model (Ollama pull, or LiteLLM/vLLM for the big tiers; on the
    Spark cluster keep **LiteLLM in front** with stable aliases like `fleet` /

@@ -73,7 +73,7 @@ def _untrusted_reads(app, monkeypatch) -> None:
 def _reads(*, words: str = ""):
     calls = [
         ToolCall(id="r1", name="Read", arguments={"file_path": "NOTES.md"}),
-        # A call that FAILS — the report would list it as Iron Jarvis's
+        # A call that FAILS — the report would list it as STEC OS's
         # problem ("A tool call that failed: read_file") if it read this reply.
         ToolCall(id="r2", name="Read", arguments={"file_path": "missing-file.md"}),
     ]

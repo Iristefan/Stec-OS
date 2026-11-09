@@ -321,7 +321,7 @@ def convert_doc_to_docx(src: Path, dst: Path, *, timeout: float = DOC_CONVERT_TI
     if not word_available():
         raise LegacyReadError(
             "cannot read legacy Word 97-2003 (.doc): Microsoft Word is not "
-            "installed on this PC, so Iron Jarvis cannot open .doc files — "
+            "installed on this PC, so STEC OS cannot open .doc files — "
             "save it as .docx in Word (or ask the sender for a .docx)"
         )
     dst.parent.mkdir(parents=True, exist_ok=True)

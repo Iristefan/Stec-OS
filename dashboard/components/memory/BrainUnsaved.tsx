@@ -5,7 +5,7 @@
  * to the primary memory base that could not reach it. Each one waits here, so
  * nothing is lost: Try again, or Discard (two presses).
  *
- * Hidden when the list is empty, and on an older Iron Jarvis (404 / no list).
+ * Hidden when the list is empty, and on an older STEC OS (404 / no list).
  */
 
 import { useCallback, useEffect, useState } from "react";
@@ -75,7 +75,7 @@ export function BrainUnsaved() {
     <Card title="Unsaved changes" icon={<CloudOff size={14} />}>
       <div data-testid="brain-unsaved" className="space-y-3">
         <p className="text-[12px] text-zinc-500">
-          Notes Iron Jarvis could not save to your memory base yet. Nothing here is lost: try again, or discard one.
+          Notes STEC OS could not save to your memory base yet. Nothing here is lost: try again, or discard one.
         </p>
         {note && (
           <p role="status" data-testid="brain-unsaved-note" className="text-[12px] text-tone-success">

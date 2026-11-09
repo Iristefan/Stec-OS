@@ -83,7 +83,7 @@ def test_the_finish_review_id_is_the_finish_checks_own():
 def test_a_run_whose_only_member_work_is_the_finish_review_is_not_the_planners():
     only_review = _rec("a", helpers=[_row(F.REVIEW_CALL_ID, "codex")],
                        parts={"codex": _member_part({"review": 1}, 4)})
-    # The planner handed nothing; Iron Jarvis handed the review; members worked.
+    # The planner handed nothing; STEC OS handed the review; members worked.
     assert TRP.planner_handed(only_review) is False
     assert TRP.finish_reviewed(only_review) is True
     assert TRP.handed_to_a_member(only_review) is True
@@ -114,7 +114,7 @@ def test_the_team_at_work_line_never_credits_the_planner_with_the_finish_review(
     assert TRP.handed_count(runs) == (0, 3, 0)
     assert TRP.reviewed_count(runs) == (2, 3)
     assert TRP.handed_line(runs) == (
-        "The planner handed at least one piece to a team member in 0 of 3 runs. Iron Jarvis's own "
+        "The planner handed at least one piece to a team member in 0 of 3 runs. STEC OS's own "
         "finish check handed the change to the team's reviewer in 2 of 3 runs.")
     # No finish review at all: the line is exactly what it was.
     plain = [_rec("a", helpers=[_row("c1", "glm", role="code")], parts={"glm": _member_part({"code": 1}, 2)})]

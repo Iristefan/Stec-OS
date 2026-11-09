@@ -1,4 +1,4 @@
-# Iron Jarvis — Completion Task List (Phases 4–11)
+# STEC OS — Completion Task List (Phases 4–11)
 
 > ## ✅ COMPLETE — all 14 tasks done & verified with proof
 > - Phases 0–11 implemented. **71 Python tests pass** (23 original + 43 module + 5 integration).

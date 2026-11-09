@@ -1,6 +1,6 @@
-"""Iron Jarvis's own tools for a Build › Code session (v1.414.0).
+"""STEC OS's own tools for a Build › Code session (v1.414.0).
 
-A Build terminal can hand the coding tool running in it Iron Jarvis's MCP
+A Build terminal can hand the coding tool running in it STEC OS's MCP
 connection (``terminals/recipes.py``, v1.238.0): a pane-scoped token, the
 ``/mcp`` address, and the pane's own Capabilities — five boxes, ALL OFF until
 the user ticks one, of which only Browser and Memory are served
@@ -18,7 +18,7 @@ files (each measured on this PC against the installed program, with a
 scratch home and a logging stand-in server; no model call):
 
 * Claude Code 2.1.311 — ``--mcp-config <file>``: a file of OUR OWN in the
-  session's folder under Iron Jarvis's home (``hosted/<id>/jarvis-mcp.json``)
+  session's folder under STEC OS's home (``hosted/<id>/jarvis-mcp.json``)
   holding the address and ``Authorization: Bearer ${IRONJARVIS_MCP_TOKEN}``
   — a REFERENCE Claude Code expands from the child's environment (measured:
   the header arrived equal to the token). No ``--strict-mcp-config``: the
@@ -47,7 +47,7 @@ return, and that model runs where the user's own tool sends it (Anthropic,
 OpenAI, a Pi/OpenCode provider). Build › Code sessions have no Local only
 setting (none of the four tools), so ticking Memory means "my memory may be
 read by this tool's model" — the box says so. Code sessions have no trust
-posture of Iron Jarvis's own either: the four tools run their own rules. No
+posture of STEC OS's own either: the four tools run their own rules. No
 write tool is ever served (Memory is read-only; Browser's acting tools ask on
 every call, exactly as for a terminal).
 """
@@ -75,7 +75,7 @@ GRANT_PREFIX = "code:"
 #: keeps the rule simple. The model sees it as the tools' prefix
 #: (``mcp__iron-jarvis-code__memory_search`` in Claude Code).
 SERVER_NAME = "iron-jarvis-code"
-#: Our own files in the session's folder under Iron Jarvis's home.
+#: Our own files in the session's folder under STEC OS's home.
 CLAUDE_FILE = "jarvis-mcp.json"
 PI_FILE = "jarvis-mcp.js"
 
@@ -148,10 +148,10 @@ def _pi_extension(url: str) -> str:
         # Declared to the model like any other tool (Pi's default hides an
         # MCP server's tools behind codemode).
         "exposure": "direct",
-        "description": "Iron Jarvis: the memory and browser tools the user turned on for this session.",
+        "description": "STEC OS: the memory and browser tools the user turned on for this session.",
     }
     return (
-        "// Written by Iron Jarvis for one Build › Code session. Holds no credential.\n"
+        "// Written by STEC OS for one Build › Code session. Holds no credential.\n"
         "export default function (pi) {\n"
         f"  pi.registerMcpServer({json.dumps(SERVER_NAME)}, {json.dumps(config)});\n"
         "}\n"
@@ -159,7 +159,7 @@ def _pi_extension(url: str) -> str:
 
 
 #: v1.441.0 (review A5): per tool, whether its own handshake says it takes
-#: an HTTP MCP server — Iron Jarvis's tools reach it only then. Antigravity
+#: an HTTP MCP server — STEC OS's tools reach it only then. Antigravity
 #: starts False: agy 1.5.2's ``initialize`` names no ``mcpCapabilities``
 #: (measured); an Antigravity that says ``http: true`` turns it on
 #: (:func:`note_takes`, every start). Memory only; a tool not named takes them.
@@ -167,7 +167,7 @@ _TAKES: dict[str, bool] = {"antigravity": False}
 
 
 def takes(harness: str) -> bool:
-    """Does this coding tool take Iron Jarvis's own tools (an HTTP MCP
+    """Does this coding tool take STEC OS's own tools (an HTTP MCP
     server)? False only for a tool whose own handshake said it does not."""
     return _TAKES.get(str(harness or ""), True)
 
@@ -256,7 +256,7 @@ class HostedTokens:
         self.store = PaneTokenStore(pane_lookup=self.lookup)
         #: v1.422.0: each session's token by its DIGEST only — kept with the
         #: session's state in the code host, so a tool still running after an
-        #: Iron Jarvis restart keeps its Iron Jarvis tools (:meth:`restore`).
+        #: STEC OS restart keeps its STEC OS tools (:meth:`restore`).
         self.digests: dict[str, str] = {}
 
     def lookup(self, pane_id: str) -> Any:

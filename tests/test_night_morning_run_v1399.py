@@ -9,7 +9,7 @@ is shortened:
 * one task finishes with its tests PASSING (the finish check ran them), one
   NEEDS YOU (its own ``git commit`` — a safety card — is declined after the
   wait), one FAILS (the model breaks mid-way);
-* each branch holds Iron Jarvis's OWN commit of the task's work with the
+* each branch holds STEC OS's OWN commit of the task's work with the
   task's words (decision 2) — the failed and needs-you tasks' work too — and
   the user's main checkouts are byte-identical;
 * exactly ONE summary, ONE ``build.night_summary`` event (the bell's row) and
@@ -222,7 +222,7 @@ async def test_a_scripted_night_commits_each_branch_and_makes_one_summary_one_be
     # Each task kept the night it ran in.
     assert done["night"] == needs["night"] == fail["night"] == "2026-10-26"
 
-    # ---- (1) THE COMMIT: each branch holds Iron Jarvis's own commit, with the
+    # ---- (1) THE COMMIT: each branch holds STEC OS's own commit, with the
     # task's words, the failed and needs-you tasks' work included.
     for task, repo, made in ((done, repo_done, "calc.py"), (needs, repo_needs, "notes.md"),
                              (fail, repo_fail, "half.txt")):
@@ -233,7 +233,7 @@ async def test_a_scripted_night_commits_each_branch_and_makes_one_summary_one_be
         message = git("log", "-1", "--format=%B", branch, cwd=repo)
         first_words = task["words"].splitlines()[0]
         assert message.splitlines()[0] == first_words, message
-        assert "Committed by Iron Jarvis when this night task ended" in message, message
+        assert "Committed by STEC OS when this night task ended" in message, message
         assert made in _branch_files(repo, branch)
         worktree = Path(setup_of(app, task["thread_id"])["git"]["worktree"])
         assert git("status", "--porcelain", cwd=worktree) == ""  # everything committed
@@ -242,7 +242,7 @@ async def test_a_scripted_night_commits_each_branch_and_makes_one_summary_one_be
     assert "(needs you)" in git("log", "-1", "--format=%B", needs["branch"], cwd=repo_needs)
     assert "(failed)" in git("log", "-1", "--format=%B", fail["branch"], cwd=repo_fail)
     # The agent's OWN commit was declined (the safety card) — the only commit on
-    # its branch is Iron Jarvis's.
+    # its branch is STEC OS's.
     base = git("merge-base", "main", needs["branch"], cwd=repo_needs)
     assert git("rev-list", "--count", f"{base}..{needs['branch']}", cwd=repo_needs) == "1"
     # Nothing was pushed by the night.
@@ -428,7 +428,7 @@ async def test_a_task_that_changed_nothing_gets_no_commit_and_says_so(tmp_path, 
 
 
 async def test_a_settle_run_again_after_a_stop_keeps_the_commit_it_made(tmp_path, monkeypatch):
-    """Iron Jarvis stopped between a task's commit and its record saying it
+    """STEC OS stopped between a task's commit and its record saying it
     ended: the settle runs again, finds nothing new to commit — and the
     commit it already made is still the task's commit (never "Nothing
     changed")."""
@@ -477,7 +477,7 @@ async def test_a_commit_git_refuses_is_a_note_in_words_never_a_crash(tmp_path, m
     assert ended["state"] == N.DONE, ended["notes"]
     assert ended["commit_sha"] == ""
     note = ended["morning"]["commit_note"]
-    assert note.startswith("Iron Jarvis could not commit its work: Git did not make the commit."), note
+    assert note.startswith("STEC OS could not commit its work: Git did not make the commit."), note
     assert "the hook says no" in note and note.endswith("Its changes are still in its branch folder.")
     # The work is still there, uncommitted, for the morning.
     worktree = Path(setup_of(app, ended["thread_id"])["git"]["worktree"])

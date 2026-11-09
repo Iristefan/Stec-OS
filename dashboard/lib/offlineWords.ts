@@ -5,7 +5,7 @@
  * on every page said "Daemon offline.", a chat bubble said "Nothing arrived
  * from the daemon for 90 s…", the Status headline said "Daemon offline" and
  * the splash said "Booting the daemon and dashboard". A new user does not
- * know there is a daemon; they know Iron Jarvis. These are the words every
+ * know there is a daemon; they know STEC OS. These are the words every
  * shell surface says instead, in ONE place so they cannot drift.
  *
  * Dependency-free on purpose: `lib/api.ts` (mocked wholesale by ~71 test
@@ -16,16 +16,16 @@
 /** The outage, in the app's own name. Also the message of the status-0
  *  `ApiError` (lib/api.ts, lib/archiveChat.ts) and the chat stream's offline
  *  frame, so any surface that prints `err.message` says this. */
-export const OFFLINE_WORDS = "Iron Jarvis isn't responding";
+export const OFFLINE_WORDS = "STEC OS isn't responding";
 
 /** The banner's and the in-page hint's headline. */
 export const OFFLINE_TITLE = `${OFFLINE_WORDS}.`;
 
-/** v1.406.0 (part 6): what the banner says while Iron Jarvis is STARTING —
+/** v1.406.0 (part 6): what the banner says while STEC OS is STARTING —
  *  it has not answered this page yet and the page has just loaded (lib/daemon
  *  STARTING_GRACE_MS). A start is not an outage, so it says the splash's own
  *  words, calmly, instead of OFFLINE_TITLE. */
-export const STARTING_TITLE = "Starting Iron Jarvis…";
+export const STARTING_TITLE = "Starting STEC OS…";
 
 /** What was NOT affected (the audit's "what was not affected" row): nothing
  *  the user made is lost, and a cut-off job comes back as an offer (the
@@ -34,7 +34,7 @@ export const OFFLINE_SAVED_SENTENCE =
   "Your chats and files are saved; anything that was running will be offered back.";
 
 /** The token banner's headline (was "Daemon rejected your token."). */
-export const SIGNED_OUT_TITLE = "This window isn't signed in to Iron Jarvis.";
+export const SIGNED_OUT_TITLE = "This window isn't signed in to STEC OS.";
 
 /** A data request that failed with a real (non-0) answer (was "A request to
  *  the daemon failed."). The page's own polls re-read it. */
@@ -42,7 +42,7 @@ export const PART_FAILED_TITLE = "Part of this page didn't load. It will try aga
 
 /** G31: the line the banner shows for a few seconds when the service answers
  *  again after an outage — the banner used to just vanish. */
-export const BACK_TITLE = "Iron Jarvis is back.";
+export const BACK_TITLE = "STEC OS is back.";
 
 /** G31: said beside BACK_TITLE only when the restart cut work off (the bell
  *  lists it with Continue / Dismiss — components/InterruptedJobs). */

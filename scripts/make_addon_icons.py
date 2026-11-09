@@ -1,6 +1,6 @@
 """Make the browser add-on's icons from the app icon (v1.400.6).
 
-The add-on is "Iron Jarvis" in the browser's toolbar, its extensions menu, the
+The add-on is "STEC OS" in the browser's toolbar, its extensions menu, the
 side panel's header and the extensions page, and each of those draws the icon
 ``manifest.json`` names. They wear the SAME picture as the desktop app: the
 user's "iU" tile, ``desktop/assets/icon.png`` (itself cropped from

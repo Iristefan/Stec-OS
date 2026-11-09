@@ -6,7 +6,7 @@
  * profile (reach the base, search it, load the guide, can it save) and shows
  * each step in a short list; a test save writes one note, in two presses.
  *
- * A route-level 404 from either (an older Iron Jarvis) hides both buttons for
+ * A route-level 404 from either (an older STEC OS) hides both buttons for
  * every row (`onGone`); a 404 the daemon worded (a profile deleted elsewhere)
  * is shown like any refusal. The words and decoders live in lib/memoryProfileCheck (pure).
  */
@@ -26,7 +26,7 @@ import {
 
 const msg = (e: unknown, fallback: string) => (e as { message?: string })?.message || fallback;
 
-/** An older Iron Jarvis has no check routes: FastAPI's own 404, "Not Found".
+/** An older STEC OS has no check routes: FastAPI's own 404, "Not Found".
  *  A 404 with the daemon's OWN sentence ("That profile no longer exists.")
  *  is about this one profile, and is said — never a reason to hide the
  *  buttons of every other profile (v1.408.0 review). */

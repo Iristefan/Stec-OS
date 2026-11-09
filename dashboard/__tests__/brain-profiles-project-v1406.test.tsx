@@ -3,7 +3,7 @@
  * model): it names the app's choice, offers "None in this project" and each
  * profile, shows the project's saved `brain_profile`, and saves a pick through
  * the page's own `savePatch` (PATCH /projects/{id} {brain_profile}). An older
- * Iron Jarvis (GET /brain 404) gets no select at all.
+ * STEC OS (GET /brain 404) gets no select at all.
  *
  * The harness is project-board-words-v13540's: the real page, the real
  * useApi; only the HTTP layer and leaves not under test are stood in.
@@ -210,7 +210,7 @@ describe("the project page's Brain profile select", () => {
     expect(sel.value).toBe("");
   });
 
-  it("an older Iron Jarvis (GET /brain 404) shows no select", async () => {
+  it("an older STEC OS (GET /brain 404) shows no select", async () => {
     delete H.gets["/brain"];
     render(<ProjectWorkspacePage params={fakeParams("p1")} />);
     await screen.findByLabelText("Model", {}, W);

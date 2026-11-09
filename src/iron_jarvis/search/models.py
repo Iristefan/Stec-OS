@@ -8,7 +8,7 @@ model (see ``core/db.py::_ensure_fts``); it is created with raw DDL and keyed to
 
 Why ``n`` exists next to ``id``
 ------------------------------
-FTS5 joins on an INTEGER ``rowid``. Every other Iron Jarvis table uses a string
+FTS5 joins on an INTEGER ``rowid``. Every other STEC OS table uses a string
 primary key (``new_id("...")``), which cannot be a rowid. So this table carries
 BOTH: ``n`` (``INTEGER PRIMARY KEY`` → a true SQLite rowid alias, verified in
 ``tests/test_search_index.py::test_n_is_a_rowid_alias``) is what the FTS index

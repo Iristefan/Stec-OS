@@ -24,7 +24,7 @@ THE RULES are Claude's: the conversation is COPIED, never moved; the copy
 lands only inside the other account's home; a destination that already holds
 an OLDER copy of the same conversation (a byte prefix — the rollout is
 append-only, and A -> B -> A meets A's older copy) is replaced, its old
-bytes kept in Iron Jarvis's own trash first; a DIVERGED copy is never
+bytes kept in STEC OS's own trash first; a DIVERGED copy is never
 overwritten (refused in words); a link is never followed; everything is
 checked BEFORE Iron-Proxy is told anything or anything is copied.
 """

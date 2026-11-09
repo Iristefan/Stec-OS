@@ -3,7 +3,7 @@
 The benchmark of 2026-10-27 measured it: a Sonnet planner shown its model
 team, with "Hand work to my team first" on and the words proven to reach it,
 handed the team work in 0 of 108 runs. Soft guidance does not move the
-planner, so Iron Jarvis does it ITSELF: when the setting is on and a member
+planner, so STEC OS does it ITSELF: when the setting is on and a member
 holds the Review role, the finish check of a Build reply that changed files
 hands the change to the team's reviewer — one more ``delegate`` call
 (``role: review``) of the check's own round — and the reviewer's report goes
@@ -778,9 +778,9 @@ async def test_a_team_first_bench_run_records_the_review_as_member_work(tmp_path
     assert rec["parts"]["codex"]["pieces"].get("review") == 1
     assert TRP.handed_to_a_member(rec) is True
     # Review (v1.401.0): team work, but NOT the planner's — the report never
-    # says "the planner handed" for the review Iron Jarvis handed out itself.
+    # says "the planner handed" for the review STEC OS handed out itself.
     assert TRP.planner_handed(rec) is False and TRP.finish_reviewed(rec) is True
     assert TRP.handed_line(res.records) == (
-        "The planner handed at least one piece to a team member in 0 of 1 run. Iron Jarvis's own "
+        "The planner handed at least one piece to a team member in 0 of 1 run. STEC OS's own "
         "finish check handed the change to the team's reviewer in 1 of 1 run.")
     assert platform.config.team_first is False  # put back after the run

@@ -49,7 +49,7 @@ export function MaintenanceCard() {
           : "";
         setOk(`Backup written to ${r.result}${copy}`);
         setBackupsVersion((v) => v + 1);
-      } else setErr("Iron Jarvis says the backup did not finish.");
+      } else setErr("STEC OS says the backup did not finish.");
     } catch (e) {
       setErr(e instanceof ApiError ? e.message : String(e));
     } finally {

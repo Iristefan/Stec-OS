@@ -171,7 +171,7 @@ export function BackgroundPicker({
         </div>
       )}
       <p className="text-[11px] leading-relaxed text-zinc-500">
-        Each one is downloaded from Iron Jarvis&rsquo;s own release when you pick it and kept on this PC
+        Each one is downloaded from STEC OS&rsquo;s own release when you pick it and kept on this PC
         until you delete it. It runs sealed off: it cannot reach the internet or the rest of the app.{" "}
         {STILL_WHEN}
       </p>

@@ -1,5 +1,5 @@
 """v1.420.0 (C6.1) — the matcher reads the user's MAIL and questions about
-Iron Jarvis's FEATURES, as the real chat lanes meet them.
+STEC OS's FEATURES, as the real chat lanes meet them.
 
 Probed at v1.415.0: "summarize my latest emails" armed ``web_search`` +
 ``web_fetch`` ("latest" read as a web signal; "my latest emails" was not mail

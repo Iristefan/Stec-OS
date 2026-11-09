@@ -169,7 +169,7 @@ describe("the plan door (exit_plan_mode)", () => {
     const buttons = screen.getAllByRole("button").map((b) => b.textContent?.trim());
     expect(buttons).toEqual(["Allow and run", "Deny"]);
     expect(screen.getByRole("alertdialog")).toHaveTextContent(
-      "Nothing changes until you answer. “Allow and run” approves this plan and Iron Jarvis starts carrying it out at once, with no message from you; Deny keeps it planning.",
+      "Nothing changes until you answer. “Allow and run” approves this plan and STEC OS starts carrying it out at once, with no message from you; Deny keeps it planning.",
     );
     // A plan is not an action: no undo line, and it is not a local-only card.
     expect(screen.queryByTestId("approval-undo")).toBeNull();

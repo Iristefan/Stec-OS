@@ -5,7 +5,7 @@ Found by running every allowed call (the allowlist's whole RUN_TABLE plus a
 reviewer's usual calls) through the REAL tool against one repository whose
 own ``.git/config`` names every program and file a repo config can — no
 program ran and no file changed, but two settings read a file OUTSIDE the
-folder (any file: a key in Iron Jarvis's own protected stores too, which
+folder (any file: a key in STEC OS's own protected stores too, which
 ``read_file`` refuses) and put its text in the answer:
 
 1. ``mailmap.file`` — ``log``, ``show``, ``blame`` and ``shortlog`` map every

@@ -13,7 +13,7 @@
  * of the server (up to 20 s on one that does not answer), so it is read only
  * when the user presses "Set up tools" — and again on every press, so a tool
  * the server gained since is offered (v1.408.0 review). One PUT on "Use
- * these". A 404 (not an MCP base, or an older Iron Jarvis) draws nothing. The
+ * these". A 404 (not an MCP base, or an older STEC OS) draws nothing. The
  * words and the rules live in lib/mcpBaseRoles (pure; no lib/api import).
  */
 

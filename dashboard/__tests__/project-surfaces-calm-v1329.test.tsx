@@ -198,7 +198,7 @@ describe("Board and Media in the chat column: no outer card", () => {
     api.responses[BOARD] = new api.FakeApiError("down", 0);
     const { container } = render(<ProjectSurface projectId="proj_1" hasRoot view="board" />);
     // v1.354.0 (G59, updated on purpose): the user's words, not "the daemon".
-    await screen.findByText("The board couldn't load. Iron Jarvis isn't responding.");
+    await screen.findByText("The board couldn't load. STEC OS isn't responding.");
     expect(container.querySelector(".card-surface")).toBeNull();
   });
 

@@ -78,7 +78,7 @@ export default function SelfDevPage() {
       <Reveal>
         <PageHeader
           title="Self-development"
-          subtitle="Let Iron Jarvis improve its own source. A Maintainer agent works on a throwaway git worktree of this repo — every change is review-gated and never merges on its own."
+          subtitle="Let STEC OS improve its own source. A Maintainer agent works on a throwaway git worktree of this repo — every change is review-gated and never merges on its own."
         />
       </Reveal>
 
@@ -199,9 +199,9 @@ export default function SelfDevPage() {
 function NotReadyCard({ data }: { data: SelfDevStatus | null }) {
   if (!data) {
     return (
-      <Card title="Waiting for Iron Jarvis" icon={<FolderGit2 size={15} />}>
+      <Card title="Waiting for STEC OS" icon={<FolderGit2 size={15} />}>
         <p className="text-sm text-zinc-400">
-          Self-development needs Iron Jarvis to report its status before it can start.
+          Self-development needs STEC OS to report its status before it can start.
         </p>
       </Card>
     );
@@ -210,7 +210,7 @@ function NotReadyCard({ data }: { data: SelfDevStatus | null }) {
   const noRepo = data.enabled && !data.repo_root;
   return (
     <Card
-      title={off ? "Turned off" : noRepo ? "Can’t find the Iron Jarvis code" : "Not ready"}
+      title={off ? "Turned off" : noRepo ? "Can’t find the STEC OS code" : "Not ready"}
       icon={<FolderGit2 size={15} />}
     >
       <div className="space-y-4">
@@ -218,14 +218,14 @@ function NotReadyCard({ data }: { data: SelfDevStatus | null }) {
           {off ? (
             <>
               Self-development is off. Turn on <strong>Self-development</strong> in Settings →
-              Advanced, then restart Iron Jarvis (Settings → Maintenance → Restart Iron Jarvis) so it
+              Advanced, then restart STEC OS (Settings → Maintenance → Restart STEC OS) so it
               takes effect.
             </>
           ) : noRepo ? (
             <>
-              Self-development is on, but Iron Jarvis can’t find its own source code. Set{" "}
+              Self-development is on, but STEC OS can’t find its own source code. Set{" "}
               <strong>Self-development repo root</strong> in Settings → Advanced to a copy of the
-              Iron Jarvis repo, then restart Iron Jarvis so it takes effect.
+              STEC OS repo, then restart STEC OS so it takes effect.
             </>
           ) : (
             <>

@@ -98,7 +98,7 @@ order.
      monthly allowance and its notes all apply. Nothing new to learn.
 7. **Who picks the model for each piece (Phase 6).**
    - *Recommended:* the planner names a **role** ("read these files", "write
-     this module", "review this change"). Iron Jarvis picks the team member
+     this module", "review this change"). STEC OS picks the team member
      for that role.
    - It tries a local model first when that model's record for the role is
      good. "Good" is measured by the finish check and the reviewer, not just
@@ -278,7 +278,7 @@ Browser / Files.
 ## Phase 6 — Local first, limits watched (target v1.395.0)
 
 **What you see.**
-- The planner asks for roles. Iron Jarvis picks the member: local first when
+- The planner asks for roles. STEC OS picks the member: local first when
   its record for that role is good, cloud next, pay-per-use only under your
   cap (decisions 7 and 8).
 - The Timeline says why each pick was made ("local: good record for reading",

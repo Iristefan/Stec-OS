@@ -2,7 +2,7 @@
 
 Pi (1.3.0) loads a folder's own ``.pi`` resources only when the folder is
 trusted. Its terminal ASKS; RPC mode (how Build › Code runs Pi) cannot, so
-with no decision Pi SKIPS them silently (``docs/security.md``). Iron Jarvis
+with no decision Pi SKIPS them silently (``docs/security.md``). STEC OS
 now reads whether a Pi session's folder is in that state (``hosted/pi_trust``,
 read-only, Pi's own rules from ``dist/core/trust-manager.js`` +
 ``project-trust.js``), SAYS it in the session, and offers ONE press that

@@ -1,7 +1,7 @@
 """The add-on's ACTING half is pinned — what it does inside a page, and what it never does.
 
 Ship 3 of the Browser capability (v1.237.0). ``extensions/chrome/src/content/actions.ts``
-is the only Iron Jarvis code that CHANGES a page the user is signed in to, and
+is the only STEC OS code that CHANGES a page the user is signed in to, and
 ``background/tabs.ts`` is the only code that closes, opens or navigates one of their
 tabs. There is no TypeScript test harness in this repository, so these are SOURCE
 pins in the shape ``tests/test_browser_content_script_v1236.py`` established, plus
@@ -777,7 +777,7 @@ def test_the_service_worker_registers_every_method_the_protocol_declares(method:
     assert f"dispatcher.register({constant}," in code, (
         f"the service worker does not register {method}. The daemon's tool exists, "
         "the frame is sent, and the add-on answers 'does not implement it yet' — "
-        "which the user reads as Iron Jarvis being broken rather than incomplete"
+        "which the user reads as STEC OS being broken rather than incomplete"
     )
 
 

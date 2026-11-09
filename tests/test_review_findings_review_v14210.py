@@ -80,7 +80,7 @@ async def test_a_clean_long_report_still_keeps_every_finding(world):  # noqa: F8
 
 
 async def test_a_review_verdict_judges_only_the_named_pieces_that_changed_files(world):  # noqa: F811
-    """A2 records a piece handed BY NAME under the role Iron Jarvis infers
+    """A2 records a piece handed BY NAME under the role STEC OS infers
     (``model_team.piece_role``: a builder-based worker's piece is ``code``),
     so the lead's QUESTION to its worker ("read app.py, what is X?") was a
     ``code`` row too — and the reply's review verdict judged it: one

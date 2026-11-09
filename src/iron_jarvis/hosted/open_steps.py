@@ -1,7 +1,7 @@
 """A step is "running" only while the coding tool that runs it does (v1.427.2).
 
 A user bug: after Claude Code's reply ended it kept working ON ITS OWN (helper
-agents running tests, then a reply it started itself), and Iron Jarvis closed
+agents running tests, then a reply it started itself), and STEC OS closed
 in the middle. Those steps' rows said ``running`` in the session's log forever:
 the boot reconcile only closed a reply the USER started (a ``user`` event with
 no ``done``), and nothing closed a step when the tool's process ended with no
@@ -12,7 +12,7 @@ Two ways a step is closed now, each with a ``tool`` row of status
 
 * LIVE — :class:`.service.HostedService` notes every step it emits
   (:func:`note`), and when the tool's process ends (it stopped, it was
-  stopped, Iron Jarvis is closing) every step still open is closed
+  stopped, STEC OS is closing) every step still open is closed
   (:func:`closing_rows`). A step outside any reply also gets ONE notice saying
   why (the reply's own error or notice says it for a reply's steps).
 * AT BOOT — :func:`close_in_tail` reads a session log's tail the same way

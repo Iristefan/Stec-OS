@@ -1061,7 +1061,7 @@ _WEB_WEIGHTS: dict[str, int] = {"web_search": 8, "web_fetch": 3}
 
 #: v1.420.0 (C6.1, the re-audit's "what apps can you work with?", "what are
 #: missions", "what is build for" → nothing armed): a question ABOUT one of
-#: Iron Jarvis's own features, answered by the Guide. Every alternative is
+#: STEC OS's own features, answered by the Guide. Every alternative is
 #: either about "you" (the one asked) or a feature word only this app has,
 #: and the everyday senses are kept out by where the sentence ENDS: the
 #: words may be followed only by the end of the sentence, "here", "for" or
@@ -1099,7 +1099,7 @@ _FEATURE_QUESTION = (
 #: and its weights, one object each so the rule loop can tell the rule by
 #: IDENTITY (:func:`_guide_fires`). See the rule's note in ``_RULES``.
 _GUIDE_RX = re.compile(
-    r"\b(?:iron\s*jarvis|this\s+app|the\s+app|the\s+dashboard|"
+    r"\b(?:iron\s*jarvis|stec\s*os|this\s+app|the\s+app|the\s+dashboard|"
     r"which\s+page|what\s+page|where\s+in\s+the\s+app|"
     r"what\s+(?:else\s+)?(?:can|could)\s+you\s+(?:do(?!\s+(?:about|to)\b)|help(?:\s+me)?\s+with)|"
     r"what\s+are\s+you\s+able\s+to\s+do|"
@@ -1109,7 +1109,7 @@ _GUIDE_RX = re.compile(
     r"can\s+(?:i|you)\b[^.!?\n]{0,60}?\b(?:(?:from|on)\s+my\s+(?:phone|browser)|on\s+a\s+schedule)|"
     r"do\s+i\s+have\s+(?:a|an|any)\s+(?:project|workflow|schedule|reflex|goal|skill|agent)|"
     r"where\s+(?:is|are)\s+my\s+(?:project|workflow|schedule|reflex|goal|skill|agent)s?|"
-    # v1.420.0 (C6.1): a FEATURE QUESTION about Iron Jarvis — see
+    # v1.420.0 (C6.1): a FEATURE QUESTION about STEC OS — see
     # :data:`_FEATURE_QUESTION`. Each alternative ends the sentence (or says
     # "here" / "in Jarvis"), so "what are missions in the Bible" stays out.
     r"(?P<guide_feature>" + _FEATURE_QUESTION + r"))\b",
@@ -1128,7 +1128,7 @@ _ABOUT_JARVIS_STRONG_RX = re.compile(
     r"|remind|train|pair|link|talk\s+to|reach)\s+you\b"
     r"|\byour\s+(?:own\s+)?(?:settings|memory|tools|skills|features|handbook|help|abilities"
     r"|capabilities|voice|name|models?|agents?)\b"
-    # ...or a feature only Iron Jarvis has (the Handbook / Everything words
+    # ...or a feature only STEC OS has (the Handbook / Everything words
     # nothing else uses).
     r"|\bcomputer\s+use\b|\bbuild\s+panes?\b|\btool\s+packs?\b|\breflex(?:es)?\b|\bsentinels?\b"
     r"|\bautonomy\b|\blocal[\s-]+only\b|\bphone\s+chat\b|\bread[\s-]+aloud\b|\bthe\s+directory\b"
@@ -1273,7 +1273,7 @@ _PAGE_TAIL_OK_RX = re.compile(
 
 
 def _page_word_is_the_object(sentence: str) -> bool:
-    """Does a how-do-I verb act on a page / setting word of Iron Jarvis
+    """Does a how-do-I verb act on a page / setting word of STEC OS
     (:data:`_PAGE_OBJECT_RX`, :data:`_PAGE_TAIL_OK_RX`)? Pure."""
     for m in _PAGE_OBJECT_RX.finditer(sentence):
         word = m.group("word").lower()
@@ -1294,7 +1294,7 @@ _ELSEWHERE_RX = re.compile(
     re.IGNORECASE,
 )
 #: A catalog app beside a connect verb ("how do I connect gmail") — setting
-#: an app up is done in Iron Jarvis.
+#: an app up is done in STEC OS.
 _HOWDO_CONNECT_RX = re.compile(
     r"\bhow\s+do\s+i\s+(?:connect|add|install|set\s*up|setup|link|pair|enable|turn\s+on"
     r"|hook\s+up|sign\s+in\s+to|log\s+in\s+to)\b",
@@ -1347,7 +1347,7 @@ _NAMES_JARVIS_RX = re.compile(r"\b(?:iron\s*)?jarvis\b|\bthis\s+app\b", re.IGNOR
 def _guide_fires(msg: str) -> bool:
     """Does the Guide rule award on *msg* (v1.360.0, lane 10B)? Every branch
     as before, except the how-do-I one, which counts only in a sentence about
-    Iron Jarvis (:func:`_how_to_is_about_jarvis`) — or (v1.361.0, lane 11B)
+    STEC OS (:func:`_how_to_is_about_jarvis`) — or (v1.361.0, lane 11B)
     in a message that names the app in another sentence ("I'm new to
     Jarvis. How do I set it up?"), unless the how-to puts its thing inside
     another product ("Hey Jarvis. How do I turn off autocorrect on my
@@ -2673,7 +2673,7 @@ _RULES: list[tuple[re.Pattern[str], dict[str, int]]] = [
     # --- the app itself (v1.224.0) ------------------------------------------
     # "how do I turn on computer use", "where in the app is the undo page",
     # "what does the Reflex page do", "do I have a schedule for …" — questions
-    # ABOUT Iron Jarvis or about the user's own things inside it. Narrow on
+    # ABOUT STEC OS or about the user's own things inside it. Narrow on
     # purpose: a bare "what is" must not arm a lookup on every chat question.
     #
     # v1.353.0 (G38): the questions a NEW user asks first. "What can you do?"
@@ -3594,7 +3594,7 @@ def tools_named_in_playbook(
 # v1.420.0 (C6.1): the CODING OFFER — a door, never a hand-off.
 # --------------------------------------------------------------------------- #
 #: Where a coding task is best done. v1.426.0 (Wave 6, E2): Chat › Code — the
-#: coding session the owner uses, Iron Jarvis's own harness with the user's
+#: coding session the owner uses, STEC OS's own harness with the user's
 #: chosen model working in a folder (the chat page's Code view,
 #: ``/chat?view=code``; it was Build › Code, ``/terminals?view=code``, which
 #: opened EMPTY: the request was retyped). The dashboard carries the user's
@@ -3638,7 +3638,7 @@ _OFFER_LEAD_IN = (
 #: settings-like verb, "itself", or a word about how it looks; "make me an app
 #: that starts with Windows" and "make my app start faster" (the user's own
 #: software) still get the door.
-#: v1.433.0 review: "the Iron Jarvis app", "the Jarvis app" and "the desktop
+#: v1.433.0 review: "the STEC OS app", "the Jarvis app" and "the desktop
 #: app" are this app too; and a sentence that names the code the app is
 #: written in ("make the app use React and TypeScript", "… it's a react todo
 #: app I am writing") is the user's own software, so the door stays. Only

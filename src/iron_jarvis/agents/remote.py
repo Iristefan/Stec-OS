@@ -53,13 +53,13 @@ text, no memory between calls, and no way for the remote to reach back. Now:
   results and files arrive where the user is, unprompted.
 
 ANOTHER IRON JARVIS IS A REMOTE TOO (v1.357.0, G61). A second computer running
-Iron Jarvis turns on its task door (``agents/task_door.py``,
+STEC OS turns on its task door (``agents/task_door.py``,
 ``POST /agents/task-door/task``) and this one registers it HERE, through the
 same form, as an ``http-task`` remote: its door address and its door token.
 Nothing about the wire changes except what the answer needs: when the remote's
 address IS such a door (:func:`~iron_jarvis.agents.task_door.is_task_door_url`)
 and message-back is on, ``run`` adds ``reply_token`` — this computer's inbound
-token for that remote — beside ``reply_to``, so the other Iron Jarvis can post
+token for that remote — beside ``reply_to``, so the other STEC OS can post
 its answer home (every other remote's body is byte-identical); ``test`` asks
 the door a token-checked question instead of handing it a throwaway task; and a
 door's refusal (off, wrong token, Emergency stop, too many) is said in words.
@@ -172,7 +172,7 @@ def _dialect_hint(kind: str, body: str) -> str:
 
 
 def _door_refusal(record: Any, status: int, body: str) -> str:
-    """Plain words for another Iron Jarvis's task door turning a task away
+    """Plain words for another STEC OS's task door turning a task away
     (v1.357.0, G61), or "" when the remote is not such a door (its old
     "remote returned HTTP …" wording stays). The door's own sentence (its
     JSON ``detail``) is quoted, prefixed with the remote's name, so the
@@ -439,15 +439,15 @@ class RemoteAgentRegistry:
         """Hand ``task`` to a remote agent and relay its reply.
 
         ``local_only`` (v1.357.0, G61): the chat this task comes from is local
-        only, so the receiving Iron Jarvis must not hand it to a model off ITS
+        only, so the receiving STEC OS must not hand it to a model off ITS
         network (it refuses in words instead). Sent as ``"local_only": true``
         on ``http-task`` only when set; the caller sets it only for another
-        Iron Jarvis's task door.
+        STEC OS's task door.
 
         ``reply_token`` (v1.357.0, G61): the key the remote must present when
         it posts its answer to ``reply_to`` — this computer's inbound token
         for that remote. Sent ONLY beside a ``reply_to`` on ``http-task``; the
-        caller passes it only to another Iron Jarvis's task door
+        caller passes it only to another STEC OS's task door
         (``AgentThreads._speak_remote``), so every other remote's body is
         unchanged.
 
@@ -502,7 +502,7 @@ class RemoteAgentRegistry:
                 "input": [*rows, {"role": "user", "content": task}] if rows else task,
             }
         else:  # http-task (default / unknown kind falls here)
-            # v1.357.0 re-review: another Iron Jarvis's door is dialled at its
+            # v1.357.0 re-review: another STEC OS's door is dialled at its
             # exact leaf (a trailing "/" met the install guard, never the
             # door); every other remote's address is used as typed.
             from .task_door import door_address
@@ -557,7 +557,7 @@ class RemoteAgentRegistry:
                 snippet = ""
             door_words = _door_refusal(record, status, body_text)
             if door_words:
-                # v1.357.0 (G61): another Iron Jarvis said why, in words.
+                # v1.357.0 (G61): another STEC OS said why, in words.
                 return {"ok": False, "result": "", "detail": door_words}
             detail = f"remote returned HTTP {status}"
             if snippet:
@@ -639,7 +639,7 @@ class RemoteAgentRegistry:
     ) -> dict[str, Any]:
         """Cheap reachability probe: ask the remote to reply 'ok', short timeout.
 
-        Another Iron Jarvis's task door (v1.357.0, G61) is ASKED, not handed
+        Another STEC OS's task door (v1.357.0, G61) is ASKED, not handed
         work: a GET on the door with the token answers whether it would take
         a task — a throwaway "reply ok" task would start a real run there."""
         from .task_door import is_task_door_url
@@ -659,7 +659,7 @@ class RemoteAgentRegistry:
     async def _test_door(
         self, record: RemoteAgentRecord, secret_resolver: SecretResolver
     ) -> dict[str, Any]:
-        """Ask another Iron Jarvis's task door whether it takes tasks from this
+        """Ask another STEC OS's task door whether it takes tasks from this
         computer (token checked, nothing started). Bounded; never raises."""
         import httpx
 
@@ -687,7 +687,7 @@ class RemoteAgentRegistry:
         if status == 200:
             return {
                 "ok": True,
-                "detail": f"{record.name} is another computer running Iron Jarvis and takes tasks from here.",
+                "detail": f"{record.name} is another computer running STEC OS and takes tasks from here.",
             }
         try:
             body = (resp.text or "")[:2000]
@@ -731,7 +731,7 @@ async def open_handoff_room(platform: Any, record: Any, task: str) -> dict[str, 
 
     Returns ``{room_id, kwargs}`` — ``kwargs`` for
     :meth:`RemoteAgentRegistry.run` (``conversation_id``, ``reply_to`` and, for
-    another Iron Jarvis's task door, ``reply_token`` / ``local_only``) — or
+    another STEC OS's task door, ``reply_token`` / ``local_only``) — or
     ``{}`` when the remote cannot message back (the call is then sent exactly
     as before). Never raises: a room that cannot be opened sends the job
     without one."""

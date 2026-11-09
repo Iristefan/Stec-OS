@@ -13,13 +13,13 @@
  * - "memory" (v1.406.0): archiving, deleting, renaming or moving a note in
  *   the Brain Profile's memory base (src/iron_jarvis/brain/tools.py);
  * - "guarded" (v1.407.2): an edit of Git's own files (.git/**, .gitconfig…),
- *   Iron Jarvis's own rules (.ironjarvis/**) or Claude Code's (.claude/**) —
+ *   STEC OS's own rules (.ironjarvis/**) or Claude Code's (.claude/**) —
  *   src/iron_jarvis/core/auto_approve.py `guarded_edit`. A safety card:
  *   Enter never allows it.
  * - "privacy" (v1.435.0 review): turning THIS chat's Local only off from chat
  *   (src/iron_jarvis/settings/records_history.py LOCAL_ONLY_REASON) — what is
  *   written next may then go to a model off this PC. A safety card.
- * - "undo" (v1.435.0 review): undoing one of Iron Jarvis's changes from chat
+ * - "undo" (v1.435.0 review): undoing one of STEC OS's changes from chat
  *   (records_history UNDO_REASON) — an undo cannot itself be undone. A safety
  *   card.
  *

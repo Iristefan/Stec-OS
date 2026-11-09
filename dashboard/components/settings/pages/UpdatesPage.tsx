@@ -257,8 +257,8 @@ export default function UpdatesPage() {
           title="Updates"
           subtitle={
             bridge
-              ? "Keep the Iron Jarvis desktop app up to date — check, download, and install the latest release."
-              : "Check for and apply updates to the Iron Jarvis code this copy runs from. Applying downloads the new code, updates its packages and rebuilds the dashboard — then you restart to load it."
+              ? "Keep the STEC OS desktop app up to date — check, download, and install the latest release."
+              : "Check for and apply updates to the STEC OS code this copy runs from. Applying downloads the new code, updates its packages and rebuilds the dashboard — then you restart to load it."
           }
         />
       </Reveal>
@@ -315,7 +315,7 @@ export default function UpdatesPage() {
                     </p>
                     <p className="text-[11px] leading-relaxed text-zinc-600">
                       Running from a git clone instead? Self-update appears here once
-                      Iron Jarvis is started from that checkout.
+                      STEC OS is started from that checkout.
                     </p>
                   </div>
                 ) : (
@@ -496,7 +496,7 @@ export default function UpdatesPage() {
                           <div>
                             <div className="font-semibold text-amber-200">Restart required.</div>
                             <div className="mt-0.5 text-amber-100/70">
-                              The files on disk are updated, but Iron Jarvis and the
+                              The files on disk are updated, but STEC OS and the
                               dashboard you&apos;re viewing are still running the old
                               code. Restart{" "}
                               <Code>ironjarvis serve</Code>{" "}

@@ -143,7 +143,7 @@ afterEach(() => {
 });
 
 const box = () => screen.getByRole("textbox", { name: "" }) as HTMLTextAreaElement;
-const composer = async () => (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+const composer = async () => (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
 
 function type(el: HTMLTextAreaElement, text: string) {
   fireEvent.change(el, { target: { value: text } });

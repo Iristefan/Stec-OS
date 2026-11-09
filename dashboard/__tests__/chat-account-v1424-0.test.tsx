@@ -11,7 +11,7 @@
  *   `cliAccounts`), plus "Any free account";
  * * a pick under an account rides every turn as `account` (only for the
  *   provider it serves), is named on the chip and kept in the chat's setup;
- * * Iron-Proxy off / an older Iron Jarvis (a 404): no entries — the menu is
+ * * Iron-Proxy off / an older STEC OS (a 404): no entries — the menu is
  *   exactly as before (chat-model-menu-unchanged-v1376 stays byte for byte);
  * * the coding session's menu groups Grok (xAI) with its accounts.
  *
@@ -166,14 +166,14 @@ afterEach(() => {
 });
 
 async function openMenu(): Promise<HTMLElement> {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.click(await screen.findByTitle("Switch model"));
   const menu = await screen.findByTestId("model-menu");
   return menu;
 }
 
 async function send(text: string) {
-  const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  const box = await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.change(box, { target: { value: text } });
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
   await waitFor(() => expect(H.stream.bodies.length).toBeGreaterThan(0));
@@ -275,7 +275,7 @@ describe("the chat page's model menu (v1.424.0)", () => {
     expect("account" in body).toBe(false);
   });
 
-  it("an older Iron Jarvis (no account list) keeps the menu as it was, and sends none", async () => {
+  it("an older STEC OS (no account list) keeps the menu as it was, and sends none", async () => {
     delete H.api.getResponses["/build/accounts"];
     render(<ChatPage />);
     const menu = await openMenu();
@@ -287,7 +287,7 @@ describe("the chat page's model menu (v1.424.0)", () => {
 
   it("the account list is read when the menu opens, never on page load", async () => {
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     expect(H.api.gets).not.toContain("/build/accounts");
     await openMenu();
     await waitFor(() => expect(H.api.gets).toContain("/build/accounts"));

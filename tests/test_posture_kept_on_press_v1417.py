@@ -2,7 +2,7 @@
 approved plan's act turn and a PERSON's "Resume when ready".
 
 ``unwatched_mode`` mapped both to Ask first for every coding-session turn
-Iron Jarvis starts itself. A person's press is the watch: the plan they just
+STEC OS starts itself. A person's press is the watch: the plan they just
 allowed, and the Resume when ready they pressed (a wait not armed by itself),
 keep the posture they chose. The night, CI and a restart resume still fall
 back. Driven through ``routes/build.run_approved_plan`` and

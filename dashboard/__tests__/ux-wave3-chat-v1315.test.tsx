@@ -396,7 +396,7 @@ describe("the composer on a phone (phone-composer-cramped)", () => {
     render(<ChatPage />);
     const box = await composerBox();
     await waitFor(() => expect(box.placeholder).not.toMatch(/Enter|Shift|Esc/));
-    expect(box.placeholder).toMatch(/^Message Iron Jarvis/);
+    expect(box.placeholder).toMatch(/^Message STEC OS/);
   });
 
   it("on a phone the talking-to placeholder carries no keyboard hints", async () => {
@@ -432,7 +432,7 @@ describe("the composer on a phone (phone-composer-cramped)", () => {
         .some((el) => classes(el).some((c) => /^sm:(block|inline|flex|inline-flex)$/.test(c)));
       expect(inPlaceholder || hintLine).toBe(true);
     });
-    expect(box.placeholder).toMatch(/^Message Iron Jarvis/);
+    expect(box.placeholder).toMatch(/^Message STEC OS/);
   });
 
   it("CONTROL: the + and project menus still open upward with every row", async () => {

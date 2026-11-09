@@ -1,6 +1,6 @@
 """v1.413.0 — OpenCode in Build's Code view: the user's REAL OpenCode
 (``opencode acp``, the Agent Client Protocol over stdio), with its own tools,
-agents, plugins, MCP servers and config ON; Iron Jarvis only hosts it and turns
+agents, plugins, MCP servers and config ON; STEC OS only hosts it and turns
 every permission question OpenCode asks into a card.
 
 Every turn replays a RECORDED opencode 1.18.18 session
@@ -209,7 +209,7 @@ async def test_opencode_starts_its_own_acp_with_nothing_switched_off(app, work, 
                                                    "session/prompt"]
     caps = msgs[0]["params"]["clientCapabilities"]
     assert caps == {"fs": {"readTextFile": False, "writeTextFile": False}, "terminal": False}, \
-        "Iron Jarvis is no editor: OpenCode uses its own tools"
+        "STEC OS is no editor: OpenCode uses its own tools"
     assert msgs[1]["params"] == {"cwd": str(work), "mcpServers": []}, "no MCP server is added (the user's own load)"
     assert msgs[2]["params"]["configId"] == "model" and msgs[2]["params"]["value"] == MODEL
     assert msgs[3]["params"]["prompt"] == [{"type": "text", "text": "do it"}]
@@ -355,7 +355,7 @@ def test_the_users_own_config_is_read_never_written(tmp_path, monkeypatch):
     assert [(p.read_bytes(), p.stat().st_mtime_ns) for p in files] == before
     # An OPENCODE_PERMISSION of the user's own counts as their rules too — and
     # (v1.420.0, moved on purpose) it is KEPT in the variable OpenCode reads,
-    # first, with Iron Jarvis's own rules after it: the variable used to be
+    # first, with STEC OS's own rules after it: the variable used to be
     # replaced, so a user's "edit": "deny" fell to OpenCode's default allow.
     env, _ = O.child_env({"OPENCODE_PERMISSION": '{"edit": "deny"}'}, "edits", str(folder))
     perm = json.loads(env["OPENCODE_PERMISSION"])

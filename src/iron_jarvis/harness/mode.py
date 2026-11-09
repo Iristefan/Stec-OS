@@ -695,11 +695,11 @@ def _reaches_past_pc(registry: Any, name: str) -> bool:
 
 
 #: Every posture but "Don't ask": an edit of a file that steers git, the
-#: editor, CI or Iron Jarvis itself cards once, every time
+#: editor, CI or STEC OS itself cards once, every time
 #: (``core/auto_approve.guarded_edit``, v1.407.2) — named only when the turn
 #: offers a file editor.
 _GUARDED_EDITS_WORDS = (
-    "An edit of a file that steers git, the editor, CI or Iron Jarvis itself (.git, "
+    "An edit of a file that steers git, the editor, CI or STEC OS itself (.git, "
     ".gitattributes, .github/workflows, .vscode/settings.json and tasks.json, .ironjarvis, "
     ".claude, AGENTS.md, CLAUDE.md) waits for the user's approval every time."
 )
@@ -798,7 +798,7 @@ def ask_sentence(
         page = _PREVIEW_PAGE_WORDS + ", " if asking & _PAGE_REAL else ""
         rest = (
             f"Calls to {', '.join(shown)} pause while the user approves them; {page}a call of a "
-            "tool the user already allowed for this session, or one Iron Jarvis's rules or a quick "
+            "tool the user already allowed for this session, or one STEC OS's rules or a quick "
             "check find routine for what the user asked, may run without asking (a call its rules "
             "read as deleting, overwriting, sending or paying for something, or one that edits a "
             f"file outside this folder, is never found routine); {_DECLINE_WORDS}"

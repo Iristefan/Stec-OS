@@ -1,7 +1,7 @@
-"""Self-diagnostic ("doctor") for Iron Jarvis.
+"""Self-diagnostic ("doctor") for STEC OS.
 
 A SAFE, read-only health check anyone can run from zero to confirm their machine
-can get value out of Iron Jarvis. No check ever raises; each returns a human
+can get value out of STEC OS. No check ever raises; each returns a human
 ``detail`` and an actionable ``fix`` hint. *Required* checks gate the overall
 ``ok`` (these are what the install itself needs); *recommended* checks — the web
 dashboard and voice/browser tooling — only warn so a minimal Python+uv install
@@ -91,7 +91,7 @@ def check_python() -> dict:
     detail = (
         f"Python {cur} (>= {need} required)."
         if ok
-        else f"Python {cur} is too old; Iron Jarvis needs >= {need}."
+        else f"Python {cur} is too old; STEC OS needs >= {need}."
     )
     return _result(
         "python",
@@ -175,7 +175,7 @@ def check_node() -> dict:
         fix=""
         if ok
         else "Install Node.js LTS: https://nodejs.org "
-        "(the dashboard is optional; the CLI and Iron Jarvis work without it).",
+        "(the dashboard is optional; the CLI and STEC OS work without it).",
         level=RECOMMENDED,
     )
 
@@ -342,7 +342,7 @@ def check_guide_docs() -> dict:
     """The Guide's bundled reference docs are all present (v1.223.0).
 
     RECOMMENDED, not required: the app runs without them, but the built-in
-    Iron Jarvis Guide then answers from the live catalogs alone and says so.
+    STEC OS Guide then answers from the live catalogs alone and says so.
     In a packaged build a missing file means the .spec's ``ijdocs`` bundle
     drifted from ``guide.BUNDLED_DOCS`` — the silent-degradation shape this
     project keeps meeting (pikepdf, the pdf classifier), caught here instead.
@@ -560,7 +560,7 @@ def _addon_manifest_id(folder: Path) -> tuple[str, str]:
 def check_browser_addon() -> dict:
     """The browser add-on ships, is BUILT, and carries the pinned id (D25, D27A).
 
-    RECOMMENDED, never REQUIRED: Iron Jarvis runs fine with no browser attached,
+    RECOMMENDED, never REQUIRED: STEC OS runs fine with no browser attached,
     and a machine that has never loaded the add-on is not broken. Named
     ``browser_addon`` because ``check_browser`` already answers a different
     question -- is a Chromium browser installed at all.
@@ -569,7 +569,7 @@ def check_browser_addon() -> dict:
     is gitignored and produced by the release, so a build that skipped that stage
     ships a folder whose ``manifest.json`` points at a service worker that is not
     there: Chrome refuses to register it, the user sees an add-on error rather
-    than an Iron Jarvis one, and nothing in this app says a word. A manifest
+    than a STEC OS one, and nothing in this app says a word. A manifest
     ``key`` that has drifted from ``browser.identity`` is worse than an absent
     one -- the add-on loads, connects, and is refused at ``/browser/ws`` with 1008
     by the origin allowlist, leaving the card on "Waiting to pair" with no
@@ -1090,7 +1090,7 @@ def check_model_targets(platform) -> dict:
         "every configured model can be reached."
         if ok
         else "; ".join(problems)
-        + ". Iron Jarvis refuses rather than quietly using a different model,"
+        + ". STEC OS refuses rather than quietly using a different model,"
         " so this setting is doing nothing until it is fixed",
         fix="" if ok else " ".join(dict.fromkeys(fixes)),
         level=RECOMMENDED,
@@ -1165,7 +1165,7 @@ def check_mcp(platform) -> dict:
         else "; ".join(problems),
         fix=""
         if ok
-        else "Open Tools → Connected extensions and press Retry on the extension; if npx is missing, install Node.js LTS (https://nodejs.org) and restart Iron Jarvis.",
+        else "Open Tools → Connected extensions and press Retry on the extension; if npx is missing, install Node.js LTS (https://nodejs.org) and restart STEC OS.",
         level=RECOMMENDED,
     )
 
@@ -1213,7 +1213,7 @@ def check_browser_bridge(platform) -> dict:
             False,
             "the browser service did not initialise - every browser tool is missing "
             "and the Your browser card cannot pair anything.",
-            fix="Restart Iron Jarvis; if it persists, reinstall the current release "
+            fix="Restart STEC OS; if it persists, reinstall the current release "
             "(check daemon.log for the boot error).",
             level=RECOMMENDED,
         )
@@ -1230,7 +1230,7 @@ def check_browser_bridge(platform) -> dict:
             False,
             "the browser routes are not being served in this process "
             f"({', '.join(unserved)}) - the add-on has nowhere to connect.",
-            fix="Restart Iron Jarvis; if it persists, reinstall the current release.",
+            fix="Restart STEC OS; if it persists, reinstall the current release.",
             level=RECOMMENDED,
         )
     facts.append(f"the pairing socket is served at {WS_PATH}")
@@ -1292,7 +1292,7 @@ def check_browser_bridge(platform) -> dict:
             "browser_bridge",
             False,
             "; ".join(facts) + " - so this row cannot say whether your browser works.",
-            fix=f"Restart Iron Jarvis; if it persists, reinstall the current release "
+            fix=f"Restart STEC OS; if it persists, reinstall the current release "
             f"({', '.join(unreadable)} could not be read - daemon.log has the error).",
             level=RECOMMENDED,
         )

@@ -185,7 +185,7 @@ describe("the chat's approval chip follows the setting", () => {
     expect(el.getAttribute("title")).toBe(PERMISSION_LEVELS.approve_for_me.description);
   });
 
-  it("an older Iron Jarvis (no route) leaves the words as they were and nothing breaks", async () => {
+  it("an older STEC OS (no route) leaves the words as they were and nothing breaks", async () => {
     H.gets[READ_FACTS_PATH] = new H.FakeApiError("Not Found", 404);
     const el = chip("yolo");
     fireEvent.click(el);

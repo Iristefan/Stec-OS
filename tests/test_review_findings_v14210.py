@@ -17,7 +17,7 @@ for work redistribution." What these pins hold:
 3. THE LEAD SEES IT WHOLE: a long report's prose may be cut, its findings
    never (``finish.report_for_lead``); the note repeats who changed what and
    tells the lead to hand each finding to the worker who changed that file,
-   by name — or do it itself only when Iron Jarvis says no worker can take it
+   by name — or do it itself only when STEC OS says no worker can take it
    (``harness/team``'s own rule).
 """
 
@@ -237,8 +237,8 @@ async def test_through_the_lane_a_long_report_reaches_the_lead_with_every_findin
 def test_the_leads_ask_routes_each_finding_by_name_as_the_team_rules_do():
     ask = F.TEAM_REVIEW_ASK
     assert "worker who changed that file, by name" in ask and "R number" in ask
-    assert "only when Iron Jarvis tells you that no worker can take it may you do it yourself" in ask
+    assert "only when STEC OS tells you that no worker can take it may you do it yourself" in ask
     # The team's own rule, in the same words (harness/team).
-    assert "Only when Iron Jarvis tells you that no worker can take a piece may you do that piece yourself" \
+    assert "Only when STEC OS tells you that no worker can take a piece may you do that piece yourself" \
         in T.TEAM_BRIEF_HANDS
     assert "R numbers" in F.REVIEW_ASK

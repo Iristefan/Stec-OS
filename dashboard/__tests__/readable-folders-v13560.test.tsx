@@ -100,7 +100,7 @@ function seed(chosen: string[]) {
     "/config/ledger": { changes: [] },
     "/settings/access": {
       reads: { limited: chosen.length > 0, folders: chosen, chosen, install: false },
-      writes: { chat_files_dir: "C:\\Users\\me\\Documents\\Iron Jarvis" },
+      writes: { chat_files_dir: "C:\\Users\\me\\Documents\\STEC OS" },
     },
     "/connectors": { connectors: [] },
     "/grants": { grants: [] },
@@ -198,7 +198,7 @@ describe("Settings › Permissions: the row and the block", () => {
     // What the daemon answers once the setting is saved.
     H.gets["/settings/access"] = {
       reads: { limited: true, folders: [A, B], chosen: [A, B], install: false },
-      writes: { chat_files_dir: "C:\\Users\\me\\Documents\\Iron Jarvis" },
+      writes: { chat_files_dir: "C:\\Users\\me\\Documents\\STEC OS" },
     };
     fireEvent.click(await screen.findByRole("button", { name: "Save changes" }, W));
     await waitFor(() => expect(H.puts).toHaveLength(1), W);

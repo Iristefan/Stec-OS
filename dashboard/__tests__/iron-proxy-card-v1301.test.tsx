@@ -243,14 +243,14 @@ describe("the switch and the status line", () => {
     expect(screen.queryByRole("button", { name: /Add account/ })).toBeNull();
   });
 
-  it("renders ON: started by Iron Jarvis + version, or already running on this PC", async () => {
+  it("renders ON: started by STEC OS + version, or already running on this PC", async () => {
     await mountWith(snap());
     expect(document.getElementById("iron-proxy-toggle")!.getAttribute("aria-checked")).toBe("true");
     // v1.325.5: a remount first paints the CACHED answer (lib/apiCache) and
     // only then the fresh GET, so wait for the line itself, never the card.
     await waitFor(() =>
       expect(screen.getByTestId("iron-proxy-status").textContent).toBe(
-        "Running· started by Iron Jarvis · v0.6.0",
+        "Running· started by STEC OS · v0.6.0",
       ),
     );
     cleanup();
@@ -281,7 +281,7 @@ describe("the switch and the status line", () => {
     await waitFor(
       () =>
         expect(screen.getByTestId("iron-proxy-status").textContent).toMatch(
-          /Running· started by Iron Jarvis/,
+          /Running· started by STEC OS/,
         ),
       { timeout: 6000 },
     );
@@ -340,7 +340,7 @@ describe("accounts", () => {
     const claude = screen.getByTestId("iron-proxy-group-anthropic");
     const ids = [...claude.querySelectorAll("[id^='iron-proxy-account-']")].map((e) => e.id);
     expect(ids).toEqual(["iron-proxy-account-a", "iron-proxy-account-c", "iron-proxy-account-e"]);
-    expect(claude.textContent).toMatch(/Iron Jarvis's claude-cli runs as these, top first/);
+    expect(claude.textContent).toMatch(/STEC OS's claude-cli runs as these, top first/);
     expect(screen.getByTestId("iron-proxy-group-xai").textContent).toMatch(/grok-cli/);
   });
 
@@ -364,11 +364,11 @@ describe("accounts", () => {
     expect(within(row("c")).queryByTestId("iron-proxy-usage")).toBeNull();
   });
 
-  it("an API-key account says Iron Jarvis uses its own keys and has no Sign in", async () => {
+  it("an API-key account says STEC OS uses its own keys and has no Sign in", async () => {
     await mountWith(
       snap({}, { accounts: [acct({ id: "k", title: "Team key", lane: "api" })] }),
     );
-    expect(row("k").textContent).toMatch(/Iron Jarvis uses its own keys/);
+    expect(row("k").textContent).toMatch(/STEC OS uses its own keys/);
     expect(within(row("k")).queryByRole("button", { name: /Sign in/ })).toBeNull();
   });
 

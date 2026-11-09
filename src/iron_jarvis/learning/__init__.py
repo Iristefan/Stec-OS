@@ -1,6 +1,6 @@
 """Self-correcting learning loop (§29 — complements the Evaluation Engine).
 
-Iron Jarvis gets better each time you use it: feedback and post-session
+STEC OS gets better each time you use it: feedback and post-session
 reflections are captured as durable *lessons*, and those lessons (plus explicit
 preferences) are injected into the agent's system prompt on every future run.
 

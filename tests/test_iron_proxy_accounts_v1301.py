@@ -1,6 +1,6 @@
 """v1.301.0 — the subscription CLIs run AS the account Iron-Proxy picks.
 
-Iron-Proxy is the account manager; Iron Jarvis keeps its own adapters and
+Iron-Proxy is the account manager; STEC OS keeps its own adapters and
 borrows one account per call (``iron_proxy/accounts.py``): the account's
 vendor-CLI home rides the CHILD's environment, a limit is reported (Iron-Proxy
 parks the account) and the call is retried as the next account of the SAME
@@ -325,7 +325,7 @@ async def test_off_or_no_account_runs_exactly_as_before(tmp_path, monkeypatch):
     resp_c = await fake.adapter().complete(system="s", messages=[_user()], tools=[])
     seen.append(_normalized(fake.record))
     _use(client)
-    # (d) the picked account is not a CLI account (env null): Iron Jarvis keeps its route
+    # (d) the picked account is not a CLI account (env null): STEC OS keeps its route
     client.fail.pop("pick")
     client.homes, client.order = {"K": ""}, ["K"]
     real_pick = client.pick
@@ -349,7 +349,7 @@ async def test_a_refused_control_token_is_said_never_a_silent_default_login(tmp_
     with pytest.raises(ProviderError) as info:
         await fake.adapter().complete(system="", messages=[_user()], tools=[])
     assert str(info.value) == (
-        "claude-cli: Iron-Proxy refused Iron Jarvis's access, so it cannot say which Claude account "
+        "claude-cli: Iron-Proxy refused STEC OS's access, so it cannot say which Claude account "
         "to use — turn Iron-Proxy off and on again on the Connections page."
     )
     assert not info.value.transient
@@ -1036,7 +1036,7 @@ async def test_an_iron_proxy_too_old_for_the_executor_api_says_so(tmp_path, monk
         await fake.adapter().complete(system="", messages=[_user()], tools=[])
     assert str(info.value) == (
         "claude-cli: The Iron-Proxy running on this PC is too old to lend its Claude accounts to "
-        "Iron Jarvis — update Iron-Proxy, or turn it off on the Connections page."
+        "STEC OS — update Iron-Proxy, or turn it off on the Connections page."
     )
     assert not fake.record_path.exists()
 
@@ -1371,7 +1371,7 @@ async def test_an_auto_turn_may_substitute_and_says_so(lane):
 VENDORED_BUNDLE = Path(__file__).resolve().parents[1] / "desktop" / "vendor" / "iron-proxy" / "iron-proxy.mjs"
 
 #: Iron-Proxy's DEFAULT_HINTS (packages/core/src/errors.ts) that mention its CLI
-#: or the tray switcher -> exactly what the user reads in Iron Jarvis.
+#: or the tray switcher -> exactly what the user reads in STEC OS.
 EXPECTED_HINTS = {
     "NO_PROFILE": "Add an account on the Connections page (Iron-Proxy card), then sign it in there.",
     "PROFILE_NOT_FOUND": "Check the account list on the Connections page (Iron-Proxy card).",

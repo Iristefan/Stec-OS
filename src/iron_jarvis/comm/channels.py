@@ -289,10 +289,10 @@ class DesktopChannel(Channel):
         if sink is None:
             return {
                 "ok": False,
-                "detail": "desktop notifications need the running app (Iron Jarvis is not running)",
+                "detail": "desktop notifications need the running app (STEC OS is not running)",
             }
         try:
-            sink(str(kw.get("title") or "Iron Jarvis"), message)
+            sink(str(kw.get("title") or "STEC OS"), message)
         except Exception as exc:  # noqa: BLE001 — a bad sink must not break fan-out
             return {"ok": False, "detail": f"{type(exc).__name__}: {exc}"}
         return {"ok": True, "detail": "notification shown on this device"}
@@ -461,7 +461,7 @@ class EmailChannel(Channel):
             from email.message import EmailMessage
 
             msg = EmailMessage()
-            msg["Subject"] = kw.get("subject") or cfg.get("subject") or "Iron Jarvis"
+            msg["Subject"] = kw.get("subject") or cfg.get("subject") or "STEC OS"
             msg["From"] = from_addr
             msg["To"] = to_addr
             msg.set_content(message)

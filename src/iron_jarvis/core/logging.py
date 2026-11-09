@@ -261,7 +261,7 @@ class QueryCredentialRedactionFilter(logging.Filter):
     uvicorn logs the whole path-with-query on both of its loggers — the access
     line for HTTP, and ``'%s - "WebSocket %s" [accepted]'`` on ``uvicorn.error``
     for a handshake — and the desktop tees both into
-    ``%APPDATA%/Iron Jarvis/logs/daemon.log``. A WebSocket handshake cannot carry
+    ``%APPDATA%/STEC OS/logs/daemon.log``. A WebSocket handshake cannot carry
     an ``Authorization`` header, so both of this app's sockets put their
     credential on the URL: ``/events?token=<install bearer>`` (leaking into that
     file today) and ``/browser/ws?token=<pairing token>`` (D06A says the pairing

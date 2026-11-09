@@ -94,7 +94,7 @@ def _profile_on(platform: Any) -> bool:
 def _writer(platform: Any) -> Any:
     w = getattr(platform, "config_writer", None)
     if w is None:
-        raise RuntimeError("settings can only be changed while the Iron Jarvis app is running")
+        raise RuntimeError("settings can only be changed while the STEC OS app is running")
     return w
 
 
@@ -133,7 +133,7 @@ _RETIRED_OPTION_WORDS: dict[str, dict[str, str]] = {
 
 
 BAD_DEVICE_REFUSAL = (
-    "{label} is set per screen, and this chat named a screen Iron Jarvis does not know, "
+    "{label} is set per screen, and this chat named a screen STEC OS does not know, "
     "so nothing was changed. Ask again from a chat in the app."
 )
 
@@ -226,7 +226,7 @@ def _show(value: Any) -> str:
 class ConfigListTool(Tool):
     name = "config_list"
     description = (
-        "Find Iron Jarvis settings by words and see their current values, and which tool "
+        "Find STEC OS settings by words and see their current values, and which tool "
         "changes each one. Call this first when the user asks to change a setting and you "
         "are not sure of its key. Read-only."
     )
@@ -384,7 +384,7 @@ class _ConfigChangeBase(Tool):
                 return ToolResult(
                     ok=False, output="",
                     error=(
-                        f"{d.label} belongs to one screen of the Iron Jarvis app; change it there "
+                        f"{d.label} belongs to one screen of the STEC OS app; change it there "
                         "(Settings, or a chat in the app)."
                     ),
                 )
@@ -415,14 +415,14 @@ class _ConfigChangeBase(Tool):
                 "tools without asking will ask first too."
             )
         if not change.changed:
-            restart_now = " This takes full effect after Iron Jarvis restarts." if (cleared and d.restart) else ""
+            restart_now = " This takes full effect after STEC OS restarts." if (cleared and d.restart) else ""
             return ToolResult(
                 ok=True,
                 output=f"{d.label} was already {_show(value)}.{apps}{restart_now}",
                 data={"config_change": None},
             )
         c = change.changed[0]
-        restart = " It takes full effect after Iron Jarvis restarts." if d.restart else ""
+        restart = " It takes full effect after STEC OS restarts." if d.restart else ""
         # v1.438.0: a row the daemon does not act on itself says WHEN it
         # applies ("The desktop app on this PC picks this up…").
         applies = f" {d.applies}" if d.applies else ""
@@ -456,7 +456,7 @@ class ConfigSetTool(_ConfigChangeBase):
     name = "config_set"
     TIER = "allow"
     description = (
-        "Change an Iron Jarvis setting that is safe to apply at once (config_list says which "
+        "Change a STEC OS setting that is safe to apply at once (config_list says which "
         "tool each setting needs). The reply shows the change with an Undo."
     )
 
@@ -465,7 +465,7 @@ class ConfigChangeTool(_ConfigChangeBase):
     name = "config_change"
     TIER = "ask"
     description = (
-        "Change an Iron Jarvis setting that asks the user first (config_list says which tool "
+        "Change a STEC OS setting that asks the user first (config_list says which tool "
         "each setting needs). The user approves on a card; the change has an Undo."
     )
 
@@ -474,7 +474,7 @@ class ConfigChangeProtectedTool(_ConfigChangeBase):
     name = "config_change_protected"
     TIER = "ask-floor"
     description = (
-        "Change a PROTECTED Iron Jarvis setting (autonomy, sandbox, self-development, tool "
+        "Change a PROTECTED STEC OS setting (autonomy, sandbox, self-development, tool "
         "permissions, or turning a safety off). The user approves every time on a card."
     )
 

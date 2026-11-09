@@ -1,6 +1,6 @@
 """Git integration via the real ``git`` binary (§27).
 
-A :class:`GitSession` represents one Iron Jarvis session's working branch as a
+A :class:`GitSession` represents one STEC OS session's working branch as a
 linked git *worktree* of a project repository. The worktree gives the agent an
 isolated checkout to mutate without ever touching the user's main checkout —
 the change only lands in the base branch when a review is explicitly approved
@@ -23,7 +23,7 @@ from ..core.ids import utcnow
 # Identity defaults injected on every git call so commits work in fresh repos
 # (§27 — sessions must be able to commit regardless of host git config).
 _DEFAULT_EMAIL = "ironjarvis@local"
-_DEFAULT_NAME = "Iron Jarvis"
+_DEFAULT_NAME = "STEC OS"
 
 #: Wall-clock bound on one git call (v1.333.0 — there was none). Generous on
 #: purpose: a worktree checkout of a very large repository is slow, but a git
@@ -290,7 +290,7 @@ class GitSession:
         never leaves the developer's working tree parked on a surprise branch
         (a no-op in the normal case where HEAD already points at ``base``).
         """
-        self.commit(f"Iron Jarvis session {self.branch}")
+        self.commit(f"STEC OS session {self.branch}")
         original = _git(["rev-parse", "--abbrev-ref", "HEAD"], cwd=self.repo).strip()
         _git(["checkout", self.base], cwd=self.repo)
         merge_msg = message or f"Merge {self.branch} into {self.base}"

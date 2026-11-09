@@ -153,7 +153,7 @@ LINE_KEYS: tuple[str, ...] = (
     # v1.391.0 (the long-jobs plan's Phase 2): on the hidden question a boot
     # writes to carry a cut-off reply on, and on the reply that carried it
     # on: the turn id of the reply a restart cut off (the screen's one plain
-    # line says the reply carried on by itself after Iron Jarvis restarted).
+    # line says the reply carried on by itself after STEC OS restarted).
     "resumedFrom",
     # v1.422.0 (Wave 2 "Never lose work", B1): on a reply that ENDED ON AN
     # ERROR and kept its rounds, ``canContinue`` (the screen offers "Continue
@@ -182,7 +182,7 @@ LINE_KEYS: tuple[str, ...] = (
     # reviewer's model labels, how many pieces went to the workers, and every
     # time the lead did a piece itself because no worker could take it.
     "team",
-    # v1.406.0 part 3 (daemon/routes/ci_watch): a line Iron Jarvis wrote
+    # v1.406.0 part 3 (daemon/routes/ci_watch): a line STEC OS wrote
     # about the session's pull request's checks ({kind, round}: checks failed,
     # a fix started, the review's verdict, pushed, kept on a side branch,
     # waiting for the user, stopped, gave up, passing) — its words in content.
@@ -1021,7 +1021,7 @@ def history_of(messages: list[dict[str, Any]], *, last_work: bool = False) -> li
 #: v1.420.0 (C3.2): the most a "what I did in that reply" note may hold.
 LAST_WORK_MAX_CHARS = 1500
 #: Its opening words (the note is the daemon's record, never the user's).
-LAST_WORK_LEAD = "What I did in that reply (recorded by Iron Jarvis, not shown to the user): "
+LAST_WORK_LEAD = "What I did in that reply (recorded by STEC OS, not shown to the user): "
 #: A command or search text kept in the note, at most.
 _LAST_WORK_ITEM_CHARS = 120
 #: The step kinds (``harness.step_target.KIND_OF``) and their words, in the
@@ -1117,7 +1117,7 @@ def last_work_note(steps: Any) -> str:
                 # cut.
                 cmd = _one_line(_shown_command(_step_command(step))) or target or name
                 verdict = "failed" if failed else "succeeded"
-                who = " (Iron Jarvis's own check)" if step.get("check") else ""
+                who = " (STEC OS's own check)" if step.get("check") else ""
                 commands.append(f"ran `{cmd}` ({verdict}){who}")
                 continue
             if kind and target:

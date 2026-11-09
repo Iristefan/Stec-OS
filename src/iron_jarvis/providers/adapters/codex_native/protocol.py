@@ -18,7 +18,7 @@ THREE RULES this module keeps:
    is left cannot act: ``exec``/``wait`` (code mode, only for a model whose
    catalog entry demands it) run raw JavaScript in a V8 isolate "no Node, no
    file system, no network access" whose only way out is a nested tool — and
-   Iron Jarvis's tools are kept top-level (``direct_only_tool_namespaces``),
+   STEC OS's tools are kept top-level (``direct_only_tool_namespaces``),
    so nothing is nested.
 
 2. TOOL NAMES ARE MAPPED, PER THREAD, BOTH WAYS. Registry names may hold
@@ -98,7 +98,7 @@ BUILTINS_OFF: dict[str, Any] = {
     # The notify program the user's Codex runs after each turn.
     "notify": [],
     # Code mode is never switched ON for a model that does not demand it; for
-    # a code_mode_only model (gpt-5.6-*, gpt-6-*) Iron Jarvis's tools stay
+    # a code_mode_only model (gpt-5.6-*, gpt-6-*) STEC OS's tools stay
     # TOP-LEVEL ("functions" is the namespace of a plain function tool), so
     # the isolate has nothing nested to call.
     "features.code_mode": {"enabled": False, "direct_only_tool_namespaces": ["functions"]},
@@ -142,7 +142,7 @@ BUILTIN_ITEM_TYPES = frozenset({
 #: requests answer with ``ReviewDecision``, whose deny is a STRUCT variant in
 #: 0.157.0 (``Denied { rejection }``, protocol/src/protocol.rs) — the bare
 #: string ``"denied"`` does not deserialize as one.
-_REJECTION = "Iron Jarvis runs every tool itself"
+_REJECTION = "STEC OS runs every tool itself"
 APPROVAL_DENIALS: dict[str, dict[str, Any]] = {
     "item/commandExecution/requestApproval": {"decision": "decline"},
     "item/fileChange/requestApproval": {"decision": "decline"},
@@ -152,7 +152,7 @@ APPROVAL_DENIALS: dict[str, dict[str, Any]] = {
 }
 
 REPLAY_HEADER = (
-    "[Earlier in this conversation, replayed by Iron Jarvis as text because this is a new "
+    "[Earlier in this conversation, replayed by STEC OS as text because this is a new "
     "Codex session. Tool calls shown here already ran and their results are included; "
     "nothing below runs again.]"
 )
@@ -281,9 +281,9 @@ def thread_config(mcp_servers: list[str]) -> dict[str, Any]:
 SANDBOX_NOTE = (
     "About this session's sandbox: the read-only sandbox and approval policy "
     "Codex reports apply only to Codex's own built-in tools, and those are all "
-    "switched off here. Your function tools are carried out by Iron Jarvis on "
+    "switched off here. Your function tools are carried out by STEC OS on "
     "this computer: its file and command tools really do read, create, change "
-    "and delete files in the working folder, and Iron Jarvis asks the user "
+    "and delete files in the working folder, and STEC OS asks the user "
     "itself whenever a call needs approval. So never tell the user the folder "
     "is read-only or ask them to apply a change by hand: make the change with "
     "your tools."
@@ -501,7 +501,7 @@ def continuation_of(messages: list[Any]) -> "tuple[list[Any], str, list[dict[str
     items)`` when
     the conversation ENDS with new user message(s) right after an assistant
     answer that called no tool — the shape of the lane's finish note (the
-    model ended its reply; Iron Jarvis asks one more thing) — else None."""
+    model ended its reply; STEC OS asks one more thing) — else None."""
     msgs = list(messages or [])
     k = len(msgs)
     while k > 0 and getattr(msgs[k - 1], "role", "") == "user":
@@ -633,7 +633,7 @@ def _window(raw: Any) -> dict[str, Any] | None:
 def rate_limit_snapshot(raw: Any) -> dict[str, Any] | None:
     """Codex's account rate-limit snapshot (``RateLimitSnapshot``) kept in its
     own field names (Phase 5 reads ``planType`` and the windows), plus when
-    Iron Jarvis saw it. None for anything that is not one."""
+    STEC OS saw it. None for anything that is not one."""
     if not isinstance(raw, dict):
         return None
     out: dict[str, Any] = {

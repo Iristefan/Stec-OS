@@ -1,8 +1,8 @@
-"""One Iron Jarvis voice, everywhere (v1.144.0).
+"""One STEC OS voice, everywhere (v1.144.0).
 
 The reported symptom: "switching models makes Jarvis communicate differently."
 Tracing the prompt assembly showed it is not really about the model at all —
-the persona (Iron Jarvis's own character) was resolved in ``chat_turn`` and the
+the persona (STEC OS's own character) was resolved in ``chat_turn`` and the
 ``/chat/stream`` mirror and NOWHERE ELSE. The moment a request escalated to an
 agent session, the system prompt started from ``agent_def.system_prompt`` — the
 ROLE ("you are a builder agent…") — and the character was simply absent.

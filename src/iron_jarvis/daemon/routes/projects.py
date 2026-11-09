@@ -267,7 +267,7 @@ def update_project_record(d, project_id: str, body: ProjectPatch) -> dict[str, A
 
 
 def delete_project_record(d, project_id: str) -> dict[str, Any]:
-    """Remove a project from Iron Jarvis ONLY — the folder it pointed at
+    """Remove a project from STEC OS ONLY — the folder it pointed at
     and every file on disk are untouched (the root is just a reference).
     Sessions that were tagged to it keep their history; they simply lose
     the project association. So does every AUTOMATION bound to it: task
@@ -493,7 +493,7 @@ def register(app: FastAPI, d) -> None:
 
     @app.delete("/projects/{project_id}")
     def delete_project(project_id: str) -> dict[str, Any]:
-        """Remove a project from Iron Jarvis ONLY (``delete_project_record``)."""
+        """Remove a project from STEC OS ONLY (``delete_project_record``)."""
         return delete_project_record(d, project_id)
 
     @app.post("/projects/{project_id}/activate")
@@ -818,7 +818,7 @@ def register(app: FastAPI, d) -> None:
             if store is None:
                 raise HTTPException(
                     status_code=503,
-                    detail="Queued tasks are not available right now. Restart Iron Jarvis to bring them back.",
+                    detail="Queued tasks are not available right now. Restart STEC OS to bring them back.",
                 )
             payload: dict[str, Any] = {
                 "allow_tools": list(body.allow_tools or []),

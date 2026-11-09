@@ -387,7 +387,7 @@ class CouldNotStop(Exception):
 
 #: What the user is told when :class:`CouldNotStop`.
 COULD_NOT_STOP = (
-    "Iron Jarvis could not reach what this command started, so it may still be running. "
+    "STEC OS could not reach what this command started, so it may still be running. "
     "Close it in the program itself, or end it in Task Manager."
 )
 
@@ -533,7 +533,7 @@ class ProcessStartTool(Tool):
         "types into it, process_stop stops it. It keeps running until "
         "process_stop, until the session or agent run that started it ends "
         "(a coding session ends when it is archived or deleted), or until "
-        "Iron Jarvis shuts down. Use shell instead for a command that "
+        "STEC OS shuts down. Use shell instead for a command that "
         "finishes on its own."
     )
     # v1.425.0 (Wave 5, C5): "the end of the agent run that started it" was

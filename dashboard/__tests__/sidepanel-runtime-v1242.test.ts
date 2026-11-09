@@ -289,7 +289,7 @@ if (absent.length) {
       const h = await panelReady();
       h.status = bridgeStatus({ state: "pairing" });
       await h.restatus();
-      await waitFor(() => expect(el("state-word").textContent).toBe("Waiting for Iron Jarvis"));
+      await waitFor(() => expect(el("state-word").textContent).toBe("Waiting for STEC OS"));
       const toggle = el("toggle") as HTMLButtonElement;
       expect(toggle.hidden).toBe(false);
       expect(toggle.textContent).toBe("Disconnect");
@@ -396,7 +396,7 @@ if (absent.length) {
     it("an error frame ends the turn and says so in the panel", async () => {
       const h = await panelReady({ state: "connected", access: "read_only", paired: true });
       startTurn(h);
-      h.emit("error", { text: "Iron Jarvis could not reach that page." });
+      h.emit("error", { text: "STEC OS could not reach that page." });
       expect(document.body.dataset.turn).toBe("idle");
       expect(transcript()).toContain("could not reach that page");
       // No technical text sent: nothing folded under it.
@@ -843,7 +843,7 @@ if (absent.length) {
       // A turn is streaming; a failed dictation beside it is not the turn's error.
       h.emit("delta", { text: "Working" });
       await waitFor(() => expect(document.body.dataset.turn).toBe("running"));
-      h.emit("error", { text: "Voice is not set up in Iron Jarvis yet.", reason: "voice_unavailable" });
+      h.emit("error", { text: "Voice is not set up in STEC OS yet.", reason: "voice_unavailable" });
       await waitFor(() => expect(transcript()).toContain("Voice is not set up"));
       expect(ask.value).toBe("kept");
       expect(document.body.dataset.turn).toBe("running");
@@ -934,7 +934,7 @@ if (absent.length) {
       h.delivered = false;
       (el("ask") as HTMLTextAreaElement).value = "what is on this page?";
       (el("send") as HTMLButtonElement).click();
-      await waitFor(() => expect(transcript()).toContain("did not reach Iron Jarvis"));
+      await waitFor(() => expect(transcript()).toContain("did not reach STEC OS"));
       // And the composer came back, rather than leaving the panel stuck mid-turn.
       expect(document.body.dataset.turn).toBe("idle");
     });
@@ -1084,7 +1084,7 @@ if (absent.length) {
       h.delivered = false;
       (el("ask") as HTMLTextAreaElement).value = "what does this do?";
       (el("send") as HTMLButtonElement).click();
-      await waitFor(() => expect(transcript()).toContain("did not reach Iron Jarvis"));
+      await waitFor(() => expect(transcript()).toContain("did not reach STEC OS"));
       expect((el("pointed") as HTMLElement).hidden).toBe(false);
       expect(el("pointed-text").textContent).toBe("Pointing at button 'Apply coupon'");
     });

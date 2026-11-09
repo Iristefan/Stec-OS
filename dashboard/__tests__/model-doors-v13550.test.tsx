@@ -240,7 +240,7 @@ describe("G73: the free-and-private door downloads a starter model with one pres
     expect(hooks.posts).toEqual([{ path: "/terminals/launch", body: { cli: "ollama-starter" } }]);
     // The press replaced itself with the pane line: it cannot be pressed twice.
     expect(screen.queryByRole("button", { name: /Download a starter model/ })).toBeNull();
-    // Step 3 is unchanged: the user still tells Iron Jarvis to use it.
+    // Step 3 is unchanged: the user still tells STEC OS to use it.
     expect(screen.getByRole("button", { name: /Connect to Ollama on this PC/ })).toBeTruthy();
   });
 

@@ -226,7 +226,7 @@ describe("'after a restart' says where the restart is", () => {
     const tag = screen.getByRole("button", { name: "after a restart" });
     expect(tag.getAttribute("title")).toBe(RESTART_TAG_LINK_TITLE);
     expect(RESTART_TAG_LINK_TITLE).toContain(MAINTENANCE_PLACE);
-    expect(RESTART_TAG_LINK_TITLE).toContain("Restart Iron Jarvis");
+    expect(RESTART_TAG_LINK_TITLE).toContain("Restart STEC OS");
     fireEvent.click(tag);
     expect(open).toHaveBeenCalledTimes(1);
     // The look is the quiet warn word it always was.

@@ -1,12 +1,12 @@
 <div align="center">
 
-# 🚀 Deploy Iron Jarvis
+# 🚀 Deploy STEC OS
 
 **Two containers, one click (or one `docker compose up`).**
 
 </div>
 
-Iron Jarvis ships as two services:
+STEC OS ships as two services:
 
 | Service | Image | Port | What it is |
 |---------|-------|------|------------|
@@ -108,7 +108,7 @@ See [`deploy/azure.md`](deploy/azure.md) — **Azure Container Apps** from the t
 | **`NEXT_PUBLIC_IJ_API`** | dashboard | **Yes** (for any hosted deploy) | The **public** daemon URL the browser calls, e.g. `https://iron-jarvis-daemon.onrender.com`. **Inlined at build time** (Next.js bakes `NEXT_PUBLIC_*`), so it's a Docker **build arg** — set it before/at build and redeploy the dashboard after changing it. Defaults to `http://127.0.0.1:8787` for local dev. |
 | **`NEXT_PUBLIC_IJ_TOKEN`** | dashboard | Optional | If you set `IRONJARVIS_TOKEN`, set this to the **same** value so the dashboard authenticates to the daemon. Also build-time inlined. |
 | `IRONJARVIS_ROOT` | daemon | Recommended | Point at the mounted volume (`/data`) so `.ironjarvis/` (SQLite + encrypted vault) persists across redeploys. The container serves `--root /data`. |
-| `ANTHROPIC_API_KEY` | daemon | Optional | Enables live Claude models. Without it, Iron Jarvis runs the deterministic **mock model** (fully offline). You can also add keys at runtime from the dashboard's Connections page. |
+| `ANTHROPIC_API_KEY` | daemon | Optional | Enables live Claude models. Without it, STEC OS runs the deterministic **mock model** (fully offline). You can also add keys at runtime from the dashboard's Connections page. |
 
 > `PUBLIC_API_URL` and `./data:/data` in [`docker-compose.yml`](docker-compose.yml) are the
 > compose-local way to set `NEXT_PUBLIC_IJ_API` (build arg) and the persistent volume.
@@ -117,7 +117,7 @@ See [`deploy/azure.md`](deploy/azure.md) — **Azure Container Apps** from the t
 
 ## 🔒 Security checklist
 
-Iron Jarvis is built to run **local-first** under your control. The moment you put it on a public
+STEC OS is built to run **local-first** under your control. The moment you put it on a public
 host, harden it — the daemon **executes tools on your behalf**, so an open daemon is effectively
 remote code execution.
 

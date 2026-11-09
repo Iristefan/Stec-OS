@@ -6,7 +6,7 @@
  * Code view, but it runs the Claude or the Codex tool itself" (t3code was
  * the reference). The tool runs EVERYTHING itself (its tools, settings,
  * permission rules, its own saved session — `claude --resume` and
- * `codex resume` open the same conversation in a terminal); Iron Jarvis
+ * `codex resume` open the same conversation in a terminal); STEC OS
  * starts it, draws what it does and answers its permission questions with
  * the user's own answer.
  *
@@ -209,7 +209,7 @@ export const TOOLS_REREAD_TRIES = 5;
 export const CODE_LIST_REREAD_MS = 15_000;
 /** How often a session whose running turn is not named is read again. */
 export const CODE_RUNNING_REREAD_MS = 2_000;
-/** While Iron Jarvis is not answering mid-reply: how often to look again
+/** While STEC OS is not answering mid-reply: how often to look again
  *  (the reply is followed again once it is back). */
 export const CODE_LOST_REREAD_MS = 3_000;
 /** v1.422.0 review: while a limit card WAITS by itself (it carries the reply
@@ -397,10 +397,10 @@ function SessionPane({
    *  wait that carries on by itself (until when; Cancel). */
   const [carryFacts, setCarryFacts] = useState<CarryFacts>({ cut: null, wait: null, limitNote: "" });
   const [continuingCut, setContinuingCut] = useState(false);
-  /** Iron Jarvis stopped answering while a reply ran: looked for again. */
+  /** STEC OS stopped answering while a reply ran: looked for again. */
   const [lost, setLost] = useState(false);
   /** v1.441.0: what this tool can branch or rewind from (null = an older
-   *  Iron Jarvis: nothing offered). */
+   *  STEC OS: nothing offered). */
   const [branch, setBranch] = useState<BranchFacts | null>(null);
   const [branching, setBranching] = useState(false);
   /** The reader scrolled up while something new arrived. */
@@ -666,8 +666,8 @@ function SessionPane({
             continue;
           }
           if (ev.offline) {
-            // Iron Jarvis went away mid-reply: the reply goes on there; it is
-            // followed again once Iron Jarvis answers.
+            // STEC OS went away mid-reply: the reply goes on there; it is
+            // followed again once STEC OS answers.
             setLost(true);
             continue;
           }
@@ -738,7 +738,7 @@ function SessionPane({
 
   // A turn that runs but was not named (an older daemon): read again.
   useVisibleInterval(() => void load({ follow: true }), CODE_RUNNING_REREAD_MS, running && !following && !lost);
-  // Iron Jarvis stopped answering mid-reply: look again until it is back,
+  // STEC OS stopped answering mid-reply: look again until it is back,
   // then follow the reply again (the read rejoins a running turn).
   useVisibleInterval(() => void load({ follow: true }), CODE_LOST_REREAD_MS, lost && !following);
   // v1.422.0 review: a limit card that waits by itself carries the reply on
@@ -792,7 +792,7 @@ function SessionPane({
   }, [bgOn, sessionId]);
 
   // v1.422.0 (C4.7): while this session is on screen (the window seen), say
-  // so to Iron Jarvis once a minute: the session in front is closed after 60
+  // so to STEC OS once a minute: the session in front is closed after 60
   // minutes with nothing to do instead of 15. Never on mount (the first read
   // already says it); a hidden window stops beating, and within minutes the
   // session is back on the 15-minute rule. Errors change nothing.
@@ -1149,7 +1149,7 @@ function SessionPane({
     [session],
   );
 
-  /** v1.414.0: a session the daemon answered with (the Iron Jarvis tools
+  /** v1.414.0: a session the daemon answered with (the STEC OS tools
    *  chip's change). */
   const adoptSession = useCallback(
     (next: CodeSession) => {
@@ -1191,8 +1191,8 @@ function SessionPane({
    *  other account) is said in its words. */
   /** v1.417.0 (C4.9): Retry on the newest failed reply — the same message
    *  again, its files by path (they went up already).
-   *  v1.422.0 review: a carry-on Iron Jarvis sent (its `carry`) is run again
-   *  by the daemon, hidden (POST …/continue) — its words are Iron Jarvis's to
+   *  v1.422.0 review: a carry-on STEC OS sent (its `carry`) is run again
+   *  by the daemon, hidden (POST …/continue) — its words are STEC OS's to
    *  the tool and must never be sent as the user's own message. */
   const continueCutRef = useRef<(() => Promise<void>) | null>(null);
   // v1.441.0: a branch just made lands with its message in the box.
@@ -1560,7 +1560,7 @@ function SessionPane({
               {sessionRowLine(session, tools)} · {sessionFolderWords(session)}
             </p>
           </div>
-          {/* v1.414.0: Iron Jarvis's own tools for this session (all off
+          {/* v1.414.0: STEC OS's own tools for this session (all off
               until ticked) — the same two boxes a Build terminal has. */}
           {/* v1.441.0 (review A5): never for a tool that takes none. */}
           {session.jarvisToolsTaken === false ? null : (
@@ -1712,7 +1712,7 @@ function SessionPane({
             ) : null}
             {lost ? (
               <p role="status" data-testid="code-lost" className="mt-3 text-[12px] text-zinc-500">
-                Iron Jarvis isn&apos;t answering right now. The reply keeps going there and shows here again once
+                STEC OS isn&apos;t answering right now. The reply keeps going there and shows here again once
                 it&apos;s back.
               </p>
             ) : null}
@@ -2564,7 +2564,7 @@ export function BuildCodeView({
             {OPEN_IN_TERMINAL}
           </button>
           {/* v1.441.0: a new session with this whole conversation (only where
-              the tool can branch one; absent from an older Iron Jarvis). */}
+              the tool can branch one; absent from an older STEC OS). */}
           {s.canBranch && !archivedRow ? (
             <button
               type="button"
@@ -2611,7 +2611,7 @@ export function BuildCodeView({
               confirmLabel="Delete for good?"
               title={
                 s.running
-                  ? "A reply is running: stop it first (Iron Jarvis refuses to delete a working session)"
+                  ? "A reply is running: stop it first (STEC OS refuses to delete a working session)"
                   : "Delete this session from the list (press twice). The tool's own saved conversation stays."
               }
               className="w-full justify-start"

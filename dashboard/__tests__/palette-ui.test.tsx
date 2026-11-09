@@ -335,7 +335,7 @@ describe("CommandPalette — search is never a dead end", () => {
     await type("zzz qqq?");
 
     expect(options()).toHaveLength(1);
-    expect(labels()[0]).toContain("Ask Iron Jarvis");
+    expect(labels()[0]).toContain("Ask STEC OS");
     await press("Enter");
     // The query rides along url-encoded, not raw.
     expect(routerMock.push).toHaveBeenCalledWith("/chat?ask=zzz%20qqq%3F");
@@ -348,10 +348,10 @@ describe("CommandPalette — search is never a dead end", () => {
 
     const rows = labels();
     expect(rows.length).toBeGreaterThan(1);
-    expect(rows[rows.length - 1]).toContain("Ask Iron Jarvis");
+    expect(rows[rows.length - 1]).toContain("Ask STEC OS");
     // ...and reachable by keyboard like any other row.
     await press("ArrowDown", rows.length - 1);
-    expect(activeOption().textContent).toContain("Ask Iron Jarvis");
+    expect(activeOption().textContent).toContain("Ask STEC OS");
   });
 });
 

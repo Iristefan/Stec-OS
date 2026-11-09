@@ -137,7 +137,7 @@ export function folderOnShare(folder: string): boolean {
  *  fallback. */
 export function openFailedWords(e: unknown, label: string): string {
   const msg = e instanceof Error ? e.message.trim() : "";
-  return msg || `Iron Jarvis could not open ${label}.`;
+  return msg || `STEC OS could not open ${label}.`;
 }
 
 /* ----------------------------------------------------------- the context */

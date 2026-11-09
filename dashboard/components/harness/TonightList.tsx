@@ -5,7 +5,7 @@
  *
  * One calm list of coding tasks queued for the night. Each task is a folder,
  * the user's words and how it runs (the default model, one model, the model
- * team, or "try on" 2–3 models). Inside the night window Iron Jarvis starts
+ * team, or "try on" 2–3 models). Inside the night window STEC OS starts
  * each one by itself as a NEW coding session on its own branch — at most N at
  * a time, never two in one folder — and the row says Queued / Working /
  * Done / Failed / Needs you / Stopped, with what happened folded under it.
@@ -418,7 +418,7 @@ export function TonightList({
     } catch (e) {
       setLoadError(
         e && typeof e === "object" && "status" in e && (e as { status?: number }).status === 404
-          ? "This version of Iron Jarvis has no night list yet."
+          ? "This version of STEC OS has no night list yet."
           : errorWords(e),
       );
     }
@@ -494,7 +494,7 @@ export function TonightList({
         </p>
       ) : list.tasks.length === 0 ? (
         <p data-testid="tonight-empty" className="px-2 text-[13px] text-zinc-500">
-          Nothing is queued for tonight. Add a task, and Iron Jarvis starts it in the night window on a branch of its
+          Nothing is queued for tonight. Add a task, and STEC OS starts it in the night window on a branch of its
           own; you find it here in the morning.
         </p>
       ) : (

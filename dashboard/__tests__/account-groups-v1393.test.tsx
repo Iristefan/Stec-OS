@@ -9,7 +9,7 @@
  *    (`PUT /settings/values {account_groups}`) — never through Iron-Proxy —
  *    with one group per account and an emptied group dropped;
  *  - the card says what a group is, in the schema's own words;
- *  - an older Iron Jarvis (no `account_groups` in its answer) shows no
+ *  - an older STEC OS (no `account_groups` in its answer) shows no
  *    choice at all.
  */
 
@@ -166,7 +166,7 @@ describe("the Group choice", () => {
     expect(await screen.findByText(/no Claude Code or Codex account “home”/)).toBeInTheDocument();
   });
 
-  it("an older Iron Jarvis without groups shows no choice", async () => {
+  it("an older STEC OS without groups shows no choice", async () => {
     await mount(undefined);
     expect(screen.queryByTestId("iron-proxy-group-tsi")).toBeNull();
     expect(screen.queryByTestId("iron-proxy-group-help")).toBeNull();

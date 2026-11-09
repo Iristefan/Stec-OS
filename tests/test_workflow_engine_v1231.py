@@ -170,7 +170,7 @@ async def test_agent_step_whose_session_raises_honors_on_failure_skip(tmp_path):
     # (failure_words.plain_reason — the run page's words; the raw text is the
     # run's folded detail), never "RuntimeError: provider fleet-custom …".
     assert outs["Draft"]["summary"] == (
-        "The run failed: Iron Jarvis couldn't finish this task. Run it again. "
+        "The run failed: STEC OS couldn't finish this task. Run it again. "
         "If it happens again, open the run to see the details."
     )
     assert outs["Draft"]["kind"] == "agent"
@@ -235,7 +235,7 @@ async def test_agent_step_whose_session_raises_under_halt_fails_the_run_with_the
     assert rec.status == "failed"
     # Readiness 12A review (G28): the run's plain sentence, not the raw text.
     assert outs["Draft"]["status"] == "failed"
-    assert outs["Draft"]["summary"].startswith("The run failed: Iron Jarvis couldn't finish this task.")
+    assert outs["Draft"]["summary"].startswith("The run failed: STEC OS couldn't finish this task.")
     assert "RuntimeError" not in outs["Draft"]["summary"] and "HTTP 500" not in outs["Draft"]["summary"]
     assert outs["Tell"] == {"status": "skipped"}
     assert _step_events(platform, "Draft")[-1].payload["status"] == "failed"

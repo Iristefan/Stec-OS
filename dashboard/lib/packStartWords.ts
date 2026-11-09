@@ -36,7 +36,7 @@ export function packStartReason(note: string | null | undefined): string {
 
 /** The edit route's own extra note (routes/agents.py, PATCH): said after the
  *  start sentence, never folded into its reason. */
-const AUTO_APPROVE_RESTART = /;\s*(restart Iron Jarvis for autonomous agents to pick up the auto-approve change)\s*$/i;
+const AUTO_APPROVE_RESTART = /;\s*(restart STEC OS for autonomous agents to pick up the auto-approve change)\s*$/i;
 
 /**
  * v1.351.0 integrate (the Tools Edit door, G08's last green): an edit whose

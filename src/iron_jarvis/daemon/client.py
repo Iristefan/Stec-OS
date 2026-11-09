@@ -53,10 +53,10 @@ def _token_files() -> list[Path]:
     out: list[Path] = []
     appdata = os.environ.get("APPDATA")
     if appdata:
-        out.append(Path(appdata) / "Iron Jarvis" / "token.txt")
+        out.append(Path(appdata) / "STEC OS" / "token.txt")
     home = Path.home()
-    out.append(home / "Library" / "Application Support" / "Iron Jarvis" / "token.txt")
-    out.append(home / ".config" / "Iron Jarvis" / "token.txt")
+    out.append(home / "Library" / "Application Support" / "STEC OS" / "token.txt")
+    out.append(home / ".config" / "STEC OS" / "token.txt")
     return out
 
 

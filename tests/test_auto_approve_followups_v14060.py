@@ -10,7 +10,7 @@ card (or send the call to the judge), never pass it by rule:
    (conftest.py, package.json, a runner-named script…) — judged;
 3. model-written code (``run_code``): a shell command's word checks plus
    code's own before the judge;
-4. a coding-session turn Iron Jarvis started BY ITSELF (restart resume,
+4. a coding-session turn STEC OS started BY ITSELF (restart resume,
    Resume when ready, an account move, an approved plan's act turn, the
    night) runs Accept edits / Auto as Ask first.
 
@@ -241,7 +241,7 @@ async def test_control_plain_code_is_judged_and_runs_on_allow(env, monkeypatch):
 
 
 # --------------------------------------------------------------------------- #
-# 4. a turn Iron Jarvis started by itself runs as Ask first
+# 4. a turn STEC OS started by itself runs as Ask first
 # --------------------------------------------------------------------------- #
 @pytest.mark.parametrize("mode", ["accept_edits", "auto"])
 @pytest.mark.parametrize(

@@ -9,7 +9,7 @@
 // off the finished command; the glow is painted into that page; it stays while the
 // turn runs and is cleared when the sidebar's turn ends (`done`, `error`, a `state`
 // frame with `running: false`), when the socket is lost, or — for a turn driven from
-// the Iron Jarvis window, whose end this worker never hears — after GLOW_LINGER_MS
+// the STEC OS window, whose end this worker never hears — after GLOW_LINGER_MS
 // without a further command.
 //
 // WHAT IT IS. One fixed, full-viewport element with an inset box-shadow, injected

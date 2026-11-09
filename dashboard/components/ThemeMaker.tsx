@@ -437,7 +437,7 @@ export function ThemeMaker() {
 
       {palettes.length === 0 && !editing && (
         <p className="text-[12px] leading-relaxed text-zinc-500">
-          Pick your own colours — Iron Jarvis makes a dark and a light version and keeps every word
+          Pick your own colours — STEC OS makes a dark and a light version and keeps every word
           readable.
         </p>
       )}

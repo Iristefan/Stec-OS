@@ -77,7 +77,7 @@ class _Client:
 
 
 class _IP:
-    """Iron-Proxy as Iron Jarvis sees it: a cached snapshot (what the group
+    """Iron-Proxy as STEC OS sees it: a cached snapshot (what the group
     rules read) and a client (what Continue on another account asks)."""
 
     enabled = True
@@ -417,7 +417,7 @@ async def test_continue_on_moves_a_codex_conversation_and_refuses_a_diverged_cop
         assert dest.read_text(encoding="utf-8") == '{"a":1}\n{"c":3}\n' and ip.client.signals == []
         assert store.get(app.state.platform.engine, row.id).account == "o1"
         # An OLDER copy of the same conversation (a byte prefix) is replaced,
-        # its old bytes kept in Iron Jarvis's own trash.
+        # its old bytes kept in STEC OS's own trash.
         dest.write_text('{"a":1}\n', encoding="utf-8")
         r = await c.post(f"/build/app/sessions/{row.id}/continue-on", json={"account": "o2"})
         assert r.status_code == 200, r.text

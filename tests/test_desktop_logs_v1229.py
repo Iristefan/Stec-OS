@@ -51,7 +51,7 @@ const fs = { mkdirSync: (p, o) => { mkdirs.push([p, o && o.recursive]); } };
 let _openResult = () => Promise.resolve("");
 const opened = [];
 const shell = { openPath: (p) => { opened.push(p); return _openResult(p); } };
-let userDataDir = "C:\\\\ud\\\\Iron Jarvis";
+let userDataDir = "C:\\\\ud\\\\STEC OS";
 let _trusted = true;
 function isTrustedDashboardSender(event) { return _trusted && !!event; }
 
@@ -105,7 +105,7 @@ def test_open_logs_handler_behaviour(tmp_path):
     assert got["untrusted"] is None, "an off-origin frame launched the file manager"
     assert got["opened_while_untrusted"] == 0
 
-    logs = "C:\\ud\\Iron Jarvis\\logs"
+    logs = "C:\\ud\\STEC OS\\logs"
     assert got["ok"] == {"ok": True, "path": logs}
     assert got["mkdir"] == [logs, True]
     assert got["err_string"] == {"ok": False, "path": logs, "error": "No application is associated"}

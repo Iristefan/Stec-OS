@@ -4,7 +4,7 @@
  * /train — "Train Jarvis on me" (v1.145.0).
  *
  * The brief asked for one place to add wikis, documents, notes, past
- * conversations, writing samples, and instructions. Iron Jarvis already had a
+ * conversations, writing samples, and instructions. STEC OS already had a
  * doorway for every one of those — they were just five unrelated pages, so
  * nobody found them as a set. This page is the ON-RAMP, not a sixth store:
  * each step either does its work inline (writing samples, which had no home)
@@ -237,7 +237,7 @@ export default function TrainPage() {
           title="Show it how you write"
           icon={<PenLine size={15} />}
           done={Boolean(st?.voice_card)}
-          blurb="Paste things you wrote — emails, posts, notes. Iron Jarvis reads them for STYLE only: it describes your rhythm and vocabulary and never keeps what they were about."
+          blurb="Paste things you wrote — emails, posts, notes. STEC OS reads them for STYLE only: it describes your rhythm and vocabulary and never keeps what they were about."
         >
           <div className="space-y-3">
             <input
@@ -360,7 +360,7 @@ export default function TrainPage() {
           title="Connect your notes and wiki"
           icon={<Library size={15} />}
           done={(st?.memory_bases ?? 0) > 1}
-          blurb="An Obsidian vault, a Notion database, a shared drive, or a memory app. Once connected, Iron Jarvis retrieves from it on every relevant question — no tool to arm, no folder to name."
+          blurb="An Obsidian vault, a Notion database, a shared drive, or a memory app. Once connected, STEC OS retrieves from it on every relevant question — no tool to arm, no folder to name."
         >
           <div className="space-y-2">
             {/* v1.316.0: count what the USER added. The built-in base is
@@ -428,7 +428,7 @@ export default function TrainPage() {
         <Card title="What this is not" icon={<GraduationCap size={15} />}>
           <p className="text-[12.5px] leading-relaxed text-zinc-500">
             None of this trains or fine-tunes a model. Your writing and notes stay on this
-            machine; what changes is the context Iron Jarvis assembles before it asks a
+            machine; what changes is the context STEC OS assembles before it asks a
             model anything — so the same knowledge applies whether the answer comes from a
             local model or a cloud one, and you can delete any of it at any time.
           </p>

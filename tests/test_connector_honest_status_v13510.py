@@ -106,4 +106,4 @@ def test_no_connector_note_says_daemon():
         assert "daemon" not in words.lower(), words
     # A memory source loads at start-up and has no Retry: a restart IS its
     # fix, said in the app's own name.
-    assert "restart Iron Jarvis" in service.MEMORY_NOT_LIVE_NOTE
+    assert "restart STEC OS" in service.MEMORY_NOT_LIVE_NOTE

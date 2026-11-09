@@ -186,7 +186,7 @@ async def test_exit_plan_mode_cards_once_only_even_on_auto_approve_and_allow_swi
     assert reply["content"] == plan_text + "\n\nReady."
     # ...and the NEXT turn — act mode — reads it in its history. v1.402.0
     # (moved on purpose): that turn is no longer the user's next message —
-    # Iron Jarvis starts it by itself the moment the plan turn ends
+    # STEC OS starts it by itself the moment the plan turn ends
     # (tests/test_plan_runs_v1402.py pins the rest of that).
     act = await until(lambda: [m for m in messages_of(app, sid) if m["role"] == "user" and m.get("continuation")])
     act_log = await until(lambda: turn_log(app, act[0]["turnId"]))

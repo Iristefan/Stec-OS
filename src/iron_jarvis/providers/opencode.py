@@ -198,7 +198,7 @@ def _passthrough_aliases(
     Unreadable proxy => empty set, and the caller stays conservative by other
     means (an explicit allowlist).
 
-    *headers* (the gateway-key fix): the saved key of the Iron Jarvis
+    *headers* (the gateway-key fix): the saved key of the STEC OS
     endpoint that IS this server (``FleetRegistry.headers_for_url``). The
     user's OpenCode points at their keyed LiteLLM gateway, and this read went
     out bare on every daemon boot — and on every app the test suite started.

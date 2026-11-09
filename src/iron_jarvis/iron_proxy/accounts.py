@@ -1,7 +1,7 @@
 """Run a subscription CLI AS the account Iron-Proxy picks (v1.301.0).
 
 Iron-Proxy is the ACCOUNT MANAGER: which accounts exist, their order, who is
-parked until when, sign-in and usage. Iron Jarvis keeps its OWN adapters
+parked until when, sign-in and usage. STEC OS keeps its OWN adapters
 (claude-cli native stream-json, codex-cli, grok-cli) and only borrows an
 account for one call: :func:`lease` asks Iron-Proxy which account to use and
 returns the vendor-CLI home to run it from; the adapter reports the outcome
@@ -49,7 +49,7 @@ one per turn), :func:`lease` is a PINNED pick of that ONE account
 lease for any other subscription provider is refused; :func:`retry_lease`
 reports a limit and NEVER leases another account. When the account is parked
 or needs sign-in the facts land on the pin (``pin.limit``) for the turn's
-``account_limit`` frame, and the words are Iron Jarvis's own: Iron-Proxy's
+``account_limit`` frame, and the words are STEC OS's own: Iron-Proxy's
 hint for a pinned refusal ("pick without a profile id") is the wrong advice
 inside a session the user pinned. Chat keeps first-free + rotation.
 
@@ -83,7 +83,7 @@ MAX_ATTEMPTS = 5
 
 @dataclass(frozen=True)
 class ProviderAccounts:
-    """How an Iron Jarvis provider maps onto Iron-Proxy."""
+    """How a STEC OS provider maps onto Iron-Proxy."""
 
     ij_provider: str
     proxy_provider: str
@@ -91,7 +91,7 @@ class ProviderAccounts:
     label: str
 
 
-#: Iron Jarvis provider id -> Iron-Proxy provider + the vendor CLI's home var.
+#: STEC OS provider id -> Iron-Proxy provider + the vendor CLI's home var.
 #: v1.426.0 (E5): read from THE table (``providers/subscription_clis``).
 PROVIDERS: dict[str, ProviderAccounts] = {
     c.provider: ProviderAccounts(c.provider, c.proxy, c.home_var, c.account_label)
@@ -151,7 +151,7 @@ class Lease:
     env_set: dict[str, str] = field(default_factory=dict)
     #: Variables to REMOVE from the child env (Iron-Proxy's list, minus PATH & co).
     env_unset: tuple[str, ...] = ()
-    #: The Iron Jarvis provider id this lease is for (``claude-cli`` ...).
+    #: The STEC OS provider id this lease is for (``claude-cli`` ...).
     ij_provider: str = ""
     #: v1.302.0: the account's home folder, set or not (a default home is not).
     home_dir: str = ""
@@ -248,7 +248,7 @@ def _note(where: str, exc: BaseException) -> None:
 # --------------------------------------------------------------------------- #
 _CONNECTIONS = "the Connections page (Iron-Proxy card)"
 
-#: Iron-Proxy's own hints name its CLI and its tray switcher; inside Iron Jarvis
+#: Iron-Proxy's own hints name its CLI and its tray switcher; inside STEC OS
 #: the place to act is the Connections page. Every rule rewrites a WHOLE
 #: sentence (Iron-Proxy's hints are one imperative sentence each), so the result
 #: always reads as a sentence. Iron-Proxy's DEFAULT_HINTS (packages/core/src/
@@ -295,7 +295,7 @@ _GENERIC_HINT = "See the Iron-Proxy card on the Connections page."
 def plain_hint(text: str) -> str:
     """Iron-Proxy's words with every CLI command / tray-switcher instruction
     turned into a whole sentence about the Connections page — what a user of
-    Iron Jarvis can do. A sentence no rule covers is replaced whole by
+    STEC OS can do. A sentence no rule covers is replaced whole by
     :data:`_GENERIC_HINT` (never a half-rewritten fragment)."""
     out = str(text or "").strip()
     for pattern, repl in _HINT_REWRITES:
@@ -472,14 +472,14 @@ def _auth_required_error(spec: ProviderAccounts, exc: BaseException) -> Exceptio
 
 
 def _refused_error(spec: ProviderAccounts) -> Exception:
-    return _refusal(spec, f"Iron-Proxy refused Iron Jarvis's access, so it cannot say which "
+    return _refusal(spec, f"Iron-Proxy refused STEC OS's access, so it cannot say which "
                           f"{spec.label} account to use — turn Iron-Proxy off and on again on the "
                           "Connections page.")
 
 
 def _too_old_error(spec: ProviderAccounts) -> Exception:
     return _refusal(spec, f"The Iron-Proxy running on this PC is too old to lend its {spec.label} "
-                          "accounts to Iron Jarvis — update Iron-Proxy, or turn it off on the "
+                          "accounts to STEC OS — update Iron-Proxy, or turn it off on the "
                           "Connections page.")
 
 
@@ -512,7 +512,7 @@ def _unavailable_error(spec: ProviderAccounts, exc: BaseException) -> Exception:
 # --------------------------------------------------------------------------- #
 # A Build session's ONE account (v1.368.0)
 # --------------------------------------------------------------------------- #
-#: Iron Jarvis provider -> the vendor word a Build session's account list
+#: STEC OS provider -> the vendor word a Build session's account list
 #: groups by (``claude`` / ``codex``).
 VENDOR_OF = dict(_SUBS.VENDOR_OF)  # v1.426.0 (E5): THE table (providers/subscription_clis)
 
@@ -585,7 +585,7 @@ def _note_limit(pin: "_pin.AccountPin", spec: ProviderAccounts, kind: str,
 
 
 def pinned_words(spec: ProviderAccounts, title: str, kind: str, resets_at: Any) -> str:
-    """Iron Jarvis's OWN sentence for a pinned account that cannot serve. Never
+    """STEC OS's OWN sentence for a pinned account that cannot serve. Never
     Iron-Proxy's hint: it says "pick without a profile id", which would move a
     session the user pinned onto another account."""
     who = f'The {spec.label} account "{title}"'
@@ -624,7 +624,7 @@ def _other_provider_refused(spec: ProviderAccounts | None, ij_provider: str,
 
 
 def _pinned_error(spec: ProviderAccounts, pin: "_pin.AccountPin", exc: BaseException) -> Exception:
-    """Any Iron-Proxy error for the pinned pick, as Iron Jarvis's sentence —
+    """Any Iron-Proxy error for the pinned pick, as STEC OS's sentence —
     by kind where its code/details say so (docs/ADOPTING.md, "A given
     account")."""
     code = str(getattr(exc, "code", "") or "")
@@ -657,7 +657,7 @@ def _pinned_error(spec: ProviderAccounts, pin: "_pin.AccountPin", exc: BaseExcep
 
 
 def _pinned_lease(spec: ProviderAccounts, pin: "_pin.AccountPin") -> Lease:
-    """THE pinned account's lease, or a ``no_failover`` refusal in Iron Jarvis's
+    """THE pinned account's lease, or a ``no_failover`` refusal in STEC OS's
     words. Never None (the session asked for this account: running it on this
     PC's own login instead would land it on an account nobody picked), never
     another account. BLOCKING — call through ``asyncio.to_thread``."""
@@ -913,7 +913,7 @@ def _lease_of(spec: ProviderAccounts, answer: Any) -> Lease | None:
     profile = answer.get("profile") if isinstance(answer, dict) else None
     env = answer.get("env") if isinstance(answer, dict) else None
     if env is None:
-        return None  # not a CLI account (an API-key one): Iron Jarvis keeps its own route
+        return None  # not a CLI account (an API-key one): STEC OS keeps its own route
     pid = str((profile or {}).get("id") or "").strip() if isinstance(profile, dict) else ""
     env_set = (env or {}).get("set") if isinstance(env, dict) else None
     home = env_set.get(spec.home_var) if isinstance(env_set, dict) else None

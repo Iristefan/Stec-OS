@@ -171,7 +171,7 @@ def _fit(data: bytes) -> tuple[bytes, str]:
 
 def _new_work() -> Path:
     """BLOCKING: the run's throwaway folder, in the SYSTEM temp folder — never
-    in Iron Jarvis's home (v1.371.0 review). While the browser runs, ~60 files
+    in STEC OS's home (v1.371.0 review). While the browser runs, ~60 files
     of its profile are locked (measured: ``lockfile``, the shader caches), and
     a backup walks the whole home and fails on the first file it cannot read
     (``maintenance.create_backup``, the v1.337.1 class). The picture is

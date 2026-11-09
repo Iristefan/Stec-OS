@@ -276,7 +276,7 @@ class NoStoreMiddleware:
 #: the exact ``BROWSER_WS_PATH`` comparison above.
 MCP_PATH = "/mcp"
 
-#: Another computer running Iron Jarvis hands THIS one a task here (v1.357.0,
+#: Another computer running STEC OS hands THIS one a task here (v1.357.0,
 #: G61; ``agents/task_door.py``). Spelled once, EXEMPT for the same reason the
 #: remote inbound leaf is: the sender holds the DOOR's own token (minted into
 #: the vault, shown once), never the install bearer — and the handler verifies
@@ -290,7 +290,7 @@ _EXEMPT_EXACT = frozenset(
 )
 
 #: v1.358.0 (G61, lane 8E review): "Let other computers on my network reach
-#: this Iron Jarvis" makes the DESKTOP spawn the daemon listening on the
+#: this STEC OS" makes the DESKTOP spawn the daemon listening on the
 #: network and marks the spawn with this variable (desktop/main.js
 #: ``daemonNetwork``). The token-free reads above that carry no credential of
 #: their own (``/health`` names the active project and its folder, the
@@ -546,7 +546,7 @@ def _is_exempt(path: str) -> bool:
     # Exactly the ".../inbound" leaf: enable/disable beneath it stay guarded.
     if path.startswith("/agents/remote/") and path.endswith("/inbound"):
         return True
-    # Another computer running Iron Jarvis sending a task (v1.357.0): its own
+    # Another computer running STEC OS sending a task (v1.357.0): its own
     # door token, verified fail-closed in the handler. Exactly this leaf.
     if path == TASK_DOOR_PATH:
         return True

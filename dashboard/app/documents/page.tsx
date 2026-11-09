@@ -737,7 +737,7 @@ export default function DocumentsPage() {
       <Reveal>
         <PageHeader
           title="Documents"
-          subtitle="Pull the text out of any PDF, Word, Excel, PowerPoint, CSV or Markdown file — or have Iron Jarvis create a real document for you. Dictate the contents with the mic."
+          subtitle="Pull the text out of any PDF, Word, Excel, PowerPoint, CSV or Markdown file — or have STEC OS create a real document for you. Dictate the contents with the mic."
         />
       </Reveal>
 
@@ -800,7 +800,7 @@ export default function DocumentsPage() {
                         </span>
                       </div>
                       <div className="text-[11px] text-zinc-600">
-                        Copies the file into Iron Jarvis, then reads its text
+                        Copies the file into STEC OS, then reads its text
                         automatically.
                       </div>
                     </>
@@ -951,7 +951,7 @@ export default function DocumentsPage() {
                   <Badge value={writeType.label} tone={writeType.tone} />
                 </div>
                 <div className="mt-1.5 text-[11px] text-zinc-600">
-                  Saved in Iron Jarvis&apos;s own documents folder — the
+                  Saved in STEC OS&apos;s own documents folder — the
                   extension picks the format.
                 </div>
               </div>
@@ -1508,7 +1508,7 @@ export default function DocumentsPage() {
                           <ConfirmButton
                             onConfirm={() => removeLive(d.id)}
                             label="Delete"
-                            title="Removes from Iron Jarvis only — the file stays on disk"
+                            title="Removes from STEC OS only — the file stays on disk"
                           />
                         </div>
                       </div>

@@ -10,7 +10,7 @@ rest of the line as file names). Claude Code itself runs its Bash tool through
 Git for Windows' bash on Windows (read off Claude Code 2.1.310's own code:
 ``CLAUDE_CODE_GIT_BASH_PATH``, then ``C:\\Program Files\\Git\\bin\\bash.exe``
 and ``C:\\Program Files (x86)\\Git\\bin\\bash.exe``, then the bash beside
-``where git``); this module finds the same bash for Iron Jarvis.
+``where git``); this module finds the same bash for STEC OS.
 
 FINDING IT (:func:`find`, BLOCKING -- callers on the event loop use
 ``asyncio.to_thread``; remembered per process):

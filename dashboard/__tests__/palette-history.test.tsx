@@ -345,7 +345,7 @@ describe("the lane is merged, never ranked", () => {
       const labelled = header.parentElement?.querySelector('[role="option"]');
       expect(labelled?.textContent).toContain("Zed conversation");
       // ...and the ask row is still the last thing in the box.
-      expect(labels()[labels().length - 1]).toContain("Ask Iron Jarvis");
+      expect(labels()[labels().length - 1]).toContain("Ask STEC OS");
     }
   });
 });
@@ -365,7 +365,7 @@ describe("where the lane sits", () => {
 
     const rows = labels();
     const lane = rows.findIndex((r) => r.includes("S-corp election timing"));
-    const ask = rows.findIndex((r) => r.includes("Ask Iron Jarvis"));
+    const ask = rows.findIndex((r) => r.includes("Ask STEC OS"));
     expect(lane).toBeGreaterThan(0); // something matched by name above it
     expect(ask).toBe(rows.length - 1);
     expect(lane).toBeLessThan(ask);
@@ -723,7 +723,7 @@ describe("an older or unhappy daemon is silent, not broken", () => {
     await type("redact");
     await settle();
     expect(labels()[0]).toContain("Documents → Redact PII");
-    expect(labels()[labels().length - 1]).toContain("Ask Iron Jarvis");
+    expect(labels()[labels().length - 1]).toContain("Ask STEC OS");
   });
 
   it("a 405 switches the lane off too — the path is there, the verb isn't", async () => {

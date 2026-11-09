@@ -5,7 +5,7 @@
  * (daemon `harness/library`).
  *
  * Once a session has been idle a while after replies that changed files or
- * ran commands, Iron Jarvis may SUGGEST one lesson for the session's folder,
+ * ran commands, STEC OS may SUGGEST one lesson for the session's folder,
  * and sometimes an edit to one of the folder's harness files. Nothing is kept until the user accepts it: an
  * accepted lesson is read by every later session in that folder; an accepted
  * edit is written into the folder's file at that moment (the daemon refuses
@@ -82,7 +82,7 @@ export function decodeLibraryView(raw: unknown): LibraryView | null {
   };
 }
 
-/** The session's folder library; null when this Iron Jarvis has none. */
+/** The session's folder library; null when this STEC OS has none. */
 export async function fetchSessionLibrary(threadId: string): Promise<LibraryView | null> {
   try {
     return decodeLibraryView(await get<unknown>(`/build/sessions/${encodeURIComponent(threadId)}/library`));

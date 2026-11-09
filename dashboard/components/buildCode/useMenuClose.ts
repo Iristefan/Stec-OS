@@ -1,6 +1,6 @@
 /**
  * v1.441.0 (integration I6): how a small ⋯ menu in the Code view closes —
- * the rule the Iron Jarvis tools chip (JarvisTools) and the Session tab's
+ * the rule the STEC OS tools chip (JarvisTools) and the Session tab's
  * menus (SessionControls) already follow, shared by the session row's ⋯
  * (BuildCodeView) and a message's ⋯ (CodeConversation):
  *

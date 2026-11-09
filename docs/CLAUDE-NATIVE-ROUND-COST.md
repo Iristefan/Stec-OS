@@ -112,7 +112,7 @@ does for Build › Code) would remove the spawn (8-50 ms) and the CLI's start
 (about 500 ms, 731 ms cold) from every round after the first, and the history
 replay with it. Projected on this PC: about 0.5 s a round, so roughly 1 s on a
 3-round reply, 2.5 s on 6 rounds, 10 s on 20 rounds. It changes the v1.300.0
-design (one admitted request per process, Iron Jarvis executing every tool,
+design (one admitted request per process, STEC OS executing every tool,
 account moves between rounds), so it waits for the decision.
 
 ## Not measured

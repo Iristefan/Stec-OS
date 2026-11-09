@@ -42,7 +42,7 @@ describe("memory speaks 'base', never 'source' or 'brain'", () => {
   it("copy stops calling the built-in base a 'brain'", () => {
     const s = read("components/memory/LongTerm.tsx");
     expect(s).not.toContain("built-in local brain");
-    expect(s).not.toContain("Iron Jarvis&apos;s brain");
+    expect(s).not.toContain("STEC OS&apos;s brain");
     // The identifier `brain` (the builtin source's API name) is allowed —
     // renaming an identity would break saved project bindings. Only prose is
     // policed here.
@@ -269,7 +269,7 @@ const ALLOW: ReadonlyArray<{ file: string; text: string; why: string }> = [
   {
     file: "app/self-dev/page.tsx",
     text: "throwaway git worktree of this repo",
-    why: "Self-development is the developer's page for Iron Jarvis's OWN source; its reader works in git, and the Maintainer really uses a git worktree of this repository",
+    why: "Self-development is the developer's page for STEC OS's OWN source; its reader works in git, and the Maintainer really uses a git worktree of this repository",
   },
   {
     file: "app/self-dev/page.tsx",
@@ -401,7 +401,7 @@ describe("the canon is a scan, not a list of strings (v1.357.0)", () => {
     expect(canon).toContain("| One piece of work Jarvis does for you");
     expect(canon).toMatch(/\*\*task\*\*; one attempt at it is a \*\*run\*\*/);
     expect(canon).toContain("| **terminal** | pane |");
-    expect(canon).toContain("| **Iron Jarvis** | daemon |");
+    expect(canon).toContain("| **STEC OS** | daemon |");
     // Harness gaps (fix 4): the coding-agent view; v1.406.0 (part 1, moved on
     // purpose): it is the chat page's Code view, and "Build session" retired.
     expect(canon).toContain(

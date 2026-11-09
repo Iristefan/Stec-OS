@@ -290,7 +290,7 @@ class CoachEngine:
 
     def _prompt(self, instructions: str, found: list[Cluster]) -> tuple[str, str]:
         system = (
-            "You are the reflection coach for one custom agent inside Iron Jarvis. "
+            "You are the reflection coach for one custom agent inside STEC OS. "
             "You are given the agent's CURRENT instructions and the patterns its "
             "recent runs showed (fixed categories, with quotes from the ledger). "
             "Propose the SMALLEST edit to the instructions that addresses the "

@@ -1,4 +1,4 @@
-"""Iron Jarvis nudging a run on BY ITSELF (v1.402.0, autonomy changes 2-4).
+"""STEC OS nudging a run on BY ITSELF (v1.402.0, autonomy changes 2-4).
 
 Where the user used to have to type "continue" or press a button, the
 product now moves the run on itself in a few bounded places. Each place says

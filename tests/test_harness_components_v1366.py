@@ -228,7 +228,7 @@ def test_compose_never_uses_a_layer_that_did_not_validate():
     ("missing_script", "does not exist"),
     ("plugins_allow", "never allow it"),
     ("plugins_unknown_section", "unknown sections"),
-    ("plugins_unknown_tool", "not an Iron Jarvis tool"),
+    ("plugins_unknown_tool", "not a STEC OS tool"),
     ("plugins_not_toml", "not valid TOML"),
     ("plugins_multiline_command", "one line"),
     ("plugins_bad_timeout", "timeout_s"),

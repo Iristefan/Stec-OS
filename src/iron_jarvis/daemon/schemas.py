@@ -176,7 +176,7 @@ class SessionCreate(BaseModel):
     provider: str | None = None
     model: str | None = None
     wait: bool = True
-    # Opt-in self-development: run a Maintainer on a worktree of Iron Jarvis's
+    # Opt-in self-development: run a Maintainer on a worktree of STEC OS's
     # OWN source (gated by config.self_dev_enabled; review-gated, never auto-merge).
     self_dev: bool = False
     # Context spine: tag into a project ("" = the ACTIVE project, if any).
@@ -2176,7 +2176,7 @@ class RemoteInboundEnable(BaseModel):
 
 class TaskDoorEnable(BaseModel):
     """Turn on this computer's task door (v1.357.0, G61): another computer
-    running Iron Jarvis may then send it tasks. ``name`` is what to call that
+    running STEC OS may then send it tasks. ``name`` is what to call that
     computer (its runs are stamped ``remote:<name>``; blank keeps the name
     already given, else "another computer"); ``url`` overrides the address
     derived from this request — for a tunnel or a reverse proxy."""

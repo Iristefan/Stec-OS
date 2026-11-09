@@ -5,7 +5,7 @@
  *   - the Session tab lists the tool's own MCP servers as it reported them
  *     (the overview's `mcp`, `hosted/tool_setup.view`): each one's state in
  *     words, and for one waiting for a sign-in, the tool's own way to sign
- *     in; a tool that never said says so; an older Iron Jarvis (no `mcp`)
+ *     in; a tool that never said says so; an older STEC OS (no `mcp`)
  *     shows nothing;
  *   - Codex's own `/` items: its skills come with the prefix "$" (Codex's own
  *     way to invoke one) and picking one types `$<name> `, never `/<name>`.
@@ -161,7 +161,7 @@ describe("the Session tab: the tool's own MCP servers", () => {
     expect(screen.getByText(/As Claude Code reported them just now, when it started\./)).toBeTruthy();
   });
 
-  it("a tool that never said shows the daemon's sentence, and an older Iron Jarvis shows nothing", async () => {
+  it("a tool that never said shows the daemon's sentence, and an older STEC OS shows nothing", async () => {
     setGets({ ...OVERVIEW, mcp: { known: false, servers: [], note: "Pi does not report its own MCP servers here." } });
     const view = render(<CodePanes session={SESSION} tools={TOOLS} events={[]} running={false} />);
     await waitFor(() =>

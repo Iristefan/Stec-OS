@@ -19,7 +19,7 @@
  *    "No team" sets it back to working alone. "Use this team for new sessions
  *    in this folder" saves it as the folder's default
  *    (`PUT /build/folders/team`). A refusal is one plain sentence in the panel.
- *    An Iron Jarvis without teams (its `GET /build/folders/team` answers 404)
+ *    A STEC OS without teams (its `GET /build/folders/team` answers 404)
  *    shows no Team control at all.
  *
  *  - TeamReplyLine: a team reply's quiet line ("Team: lead Opus 5.5 · workers
@@ -91,14 +91,14 @@ type Part = "worker" | "reviewer";
 export const TEAM_SOLO_TITLE =
   "Team: give this session workers that write the code and a reviewer that checks every change, led by this session's model";
 
-/** A 404: an Iron Jarvis that has no session teams. */
+/** A 404: a STEC OS that has no session teams. */
 function missing(e: unknown): boolean {
   return e instanceof ApiError && e.status === 404;
 }
 
 /** A refusal's one sentence (the route's own `detail`). */
 function refusal(e: unknown): string {
-  return e instanceof Error && e.message ? e.message : "Iron Jarvis could not change the team.";
+  return e instanceof Error && e.message ? e.message : "STEC OS could not change the team.";
 }
 
 /** A member in the model menu's words (the catalog's label, else the
@@ -175,7 +175,7 @@ export function TeamControl({
     onKnown?: (name: string, facts: { provider: string; model: string; label: string }) => void;
   };
 }) {
-  /** Does this Iron Jarvis have session teams? Unknown until its folder's
+  /** Does this STEC OS have session teams? Unknown until its folder's
    *  team is read once; a 404 hides the control for good. */
   const [avail, setAvail] = useState<"unknown" | "yes" | "no">("unknown");
   const [folderTeam, setFolderTeam] = useState<TeamNames | null>(null);
@@ -209,7 +209,7 @@ export function TeamControl({
       })
       .catch((e: unknown) => {
         if (!alive) return;
-        // Only a 404 is an Iron Jarvis without teams; another refusal (or no
+        // Only a 404 is a STEC OS without teams; another refusal (or no
         // answer) still has the control — its folder's team is just unknown.
         setAvail(missing(e) || !(e instanceof ApiError) ? "no" : "yes");
       });
@@ -367,7 +367,7 @@ export function TeamControl({
     }
   };
 
-  /** Set the session's team; a 404 means this Iron Jarvis has none.
+  /** Set the session's team; a 404 means this STEC OS has none.
    *  v1.437.0: in `draft`, the new-session box keeps it (no session yet). */
   async function save(next: TeamNames | null) {
     if (draft) {

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  The side panel: a WINDOW onto a conversation that runs in Iron Jarvis (D32, D33).
+  The side panel: a WINDOW onto a conversation that runs in STEC OS (D32, D33).
 
   It holds no agent loop, no policy and no tool settings. Everything it shows
   arrives as a `browser.panel_event` frame and everything the user presses leaves
@@ -8,7 +8,7 @@
 
   ONE control lives here that D28 once kept out, by the user's decision
   (v1.267.0): the MODEL that answers in this panel. The list comes from the
-  daemon (the same one every picker in Iron Jarvis reads) and a pick is
+  daemon (the same one every picker in STEC OS reads) and a pick is
   validated there before a turn starts — the panel never carries a catalog of
   its own. The rest of D28 stands: no tool switch, no pairing control, no
   access switch; those are governed in Jarvis, on surfaces that are reviewed.
@@ -23,7 +23,7 @@
   buttons. tests/test_browser_sidepanel_look_v1268.py pins the structure.
 
   THE TOP IS THE MARK; THE CONTROLS ARE IN THE COMPOSER (v1.269.0). "Clean up
-  the view at the top, it's very busy" — the header is now the Iron Jarvis
+  the view at the top, it's very busy" — the header is now the STEC OS
   reactor mark (the same drawing the app's sidebar and Overview use, as inline
   SVG) with the connection dot on it, the state word beside it in small type,
   and the access pill. The model picker moved to the bottom right of the
@@ -31,7 +31,7 @@
   it, so the native list opens on click and the tooltip names the pick. Next
   to it, ONE button with two jobs: the microphone when nothing is typed, the
   send arrow as soon as there are words, a stop square while listening.
-  Dictation goes through Iron Jarvis's own speech engine, never a browser
+  Dictation goes through STEC OS's own speech engine, never a browser
   vendor's — see sidepanel.ts.
 
   IT REMEMBERS, IT HAS ONE SWITCH, AND THE WORK IS FOLDED (v1.270.0). The
@@ -49,15 +49,15 @@
   A route notice (a failover, the mock) stays a visible line.
 
   Copy rule: this add-on is never called an "extension" in anything the user reads —
-  in Iron Jarvis that word already means an MCP server.
+  in STEC OS that word already means an MCP server.
 
   Naming rule: the place the user goes to change any of this has ONE name, and it is
-  the one the dashboard's own nav shows — "the Browser page in Iron Jarvis".
+  the one the dashboard's own nav shows — "the Browser page in STEC OS".
 -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Iron Jarvis</title>
+    <title>STEC OS</title>
     <style>
       /* THE PANEL FOLLOWS THE BROWSER'S THEME (v1.265.0). Every colour on this
          page is a token below, so the light and the dark palette are the ONLY
@@ -699,7 +699,7 @@
         <div class="state" id="state" data-tone="off">
           <!-- The app's own arc-reactor mark (Sidebar.tsx / the Overview), with
                the connection dot on its corner. -->
-          <span class="brand" title="Iron Jarvis">
+          <span class="brand" title="STEC OS">
             <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
               <circle cx="12" cy="12" r="9.2" stroke-width="1.2" opacity="0.3" />
               <g stroke-width="1.1" stroke-linecap="round" opacity="0.7">
@@ -759,7 +759,7 @@
     <div id="transcript">
       <div id="empty">
         <strong>Browser access is off.</strong> This panel can run nothing until you turn it on
-        from the Browser page in Iron Jarvis.
+        from the Browser page in STEC OS.
       </div>
     </div>
 
@@ -796,7 +796,7 @@
           <span class="spacer"></span>
           <!-- v1.400.9: "POINT AT IT". Click this, then click the thing on the
                page you mean: Jarvis is told exactly which element "this" is.
-               The click goes to Iron Jarvis, not to the page. -->
+               The click goes to STEC OS, not to the page. -->
           <button id="point" type="button" aria-label="Point at something on the page" title="Point at it: click something on the page to show Jarvis what you mean. The page does not see that click. Esc cancels.">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="7" />
@@ -821,7 +821,7 @@
                empty, the send arrow as soon as there are words, a stop square
                while listening. The panel paints `data-mode`; the press decides
                from the box's content. -->
-          <button class="primary" id="send" type="button" data-mode="mic" title="Dictate — Iron Jarvis writes what you say into the box">
+          <button class="primary" id="send" type="button" data-mode="mic" title="Dictate — STEC OS writes what you say into the box">
             <svg class="icon icon-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="9" y="3" width="6" height="11" rx="3" />
               <path d="M5 11a7 7 0 0 0 14 0" />

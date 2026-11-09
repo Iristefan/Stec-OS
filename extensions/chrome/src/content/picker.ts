@@ -14,7 +14,7 @@
 // element on the user's behalf by synthesising one. The page's own handlers never
 // see the pick's click either (capture phase, `preventDefault` +
 // `stopImmediatePropagation` on every pointer and mouse event while picking), so
-// pointing at "Delete account" deletes nothing: the click went to Iron Jarvis.
+// pointing at "Delete account" deletes nothing: the click went to STEC OS.
 // An event no person made passes UNTOUCHED: that is Jarvis's own click or typing
 // (or the page's script), and swallowing it made an action report "clicked" on a
 // page that never saw it. Jarvis acting on the page also ends the pick
@@ -22,7 +22,7 @@
 // or a full-screen element — the browser's top layer sits above every z-index.
 //
 // THE SHIELD. While picking, a transparent layer covers the whole window and
-// takes every pointer event, so the click lands on Iron Jarvis's own element and
+// takes every pointer event, so the click lands on STEC OS's own element and
 // never on the page's — including an EMBEDDED FRAME (a payment form, a sign-in
 // box), whose clicks a listener in this page could not see, let alone stop. The
 // element meant is found UNDER the shield with `elementsFromPoint`; a click over

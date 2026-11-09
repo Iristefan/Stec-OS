@@ -100,7 +100,7 @@ TIERS: dict[str, str] = {
 KINDS: tuple[str, ...] = ("night_task", "night_order", "build_defaults", "build_team")
 
 #: A tool needs the running app (the route bodies take its deps object).
-NEEDS_THE_APP = "This can only be done while the Iron Jarvis app is running."
+NEEDS_THE_APP = "This can only be done while the STEC OS app is running."
 NETWORK_FOLDER = (
     "That folder is a network location on another computer; give a folder on this PC, starting "
     "with its drive (for example D:\\code\\shop)."
@@ -108,7 +108,7 @@ NETWORK_FOLDER = (
 FULL_PATH = "Give the folder's full location, starting with its drive (for example D:\\code\\shop)."
 WHICH_FOLDER = (
     "Say which folder (its full location, for example D:\\code\\shop): this chat is not in a project "
-    "with a folder, so Iron Jarvis will not guess which one you mean."
+    "with a folder, so STEC OS will not guess which one you mean."
 )
 NO_SUCH_FOLDER = "There is no folder {folder} on this PC."
 ACCOUNT_NOT_KEPT = (
@@ -922,7 +922,7 @@ class BuildFolderShowTool(Tool):
 
     name = "build_folder_show"
     description = (
-        "Show what NEW coding sessions in a folder start with: its defaults for Chat › Code (Iron Jarvis's "
+        "Show what NEW coding sessions in a folder start with: its defaults for Chat › Code (STEC OS's "
         "own coding sessions: model, reasoning, approval level) and for Build › Code (the user's own Claude "
         "Code, Codex, Pi, OpenCode, Grok or Antigravity program: tool, model, effort, mode), and its coding team. "
         "`folder` is a full location; leave it out for the folder of the project this chat is in."
@@ -976,7 +976,7 @@ def _menu(platform: Any) -> "set[tuple[str, str]] | None":
 
 
 _VIEW_REFUSAL = (
-    "Say which coding view: \"chat_code\" (Iron Jarvis's own coding sessions in Chat › Code) or "
+    "Say which coding view: \"chat_code\" (STEC OS's own coding sessions in Chat › Code) or "
     "\"build_code\" (the user's own Claude Code, Codex, Pi, OpenCode, Grok or Antigravity in Build › Code). If the user "
     "did not say, ask them."
 )
@@ -988,7 +988,7 @@ class BuildDefaultsSetTool(_FolderTool):
     description = (
         "Set what NEW coding sessions in a folder start with (a session already made keeps its own). "
         "`folder` is the repository's full location; leave it out for the folder of the project this chat "
-        "is in — if there is none, ASK which folder, never guess. `view` is \"chat_code\" (Iron Jarvis's "
+        "is in — if there is none, ASK which folder, never guess. `view` is \"chat_code\" (STEC OS's "
         "own coding sessions in Chat › Code: `provider` and `model` as the model list names them — Codex is "
         "provider codex-cli, Claude Code is claude-cli — `reasoning` low|medium|high|xhigh|off, "
         "`approval_mode` always_ask|approve_for_me|accept_edits|auto) or \"build_code\" (the user's own "

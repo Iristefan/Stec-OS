@@ -421,7 +421,7 @@ def root_problem(
         return f"folder does not exist on this machine: {root}"
     if for_reading:
         if is_protected_path(str(p)):
-            return f"that folder holds Iron Jarvis's own keys or records, which are never read: {root}"
+            return f"that folder holds STEC OS's own keys or records, which are never read: {root}"
         env = _env_roots()
         if env is not None:
             try:

@@ -855,7 +855,7 @@ def test_a_resume_keeps_the_missions_own_objective(tmp_path):
         sid = c.post("/missions", json={"objective": "file the 1099s"}).json()["id"]
         _wait(c, sid)
         res = c.post(f"/sessions/{sid}/continue", json={
-            "message": "Continue where you left off — Iron Jarvis restarted.",
+            "message": "Continue where you left off — STEC OS restarted.",
             "resume": True, "wait": True})
         assert res.status_code == 200, res.text
         rid = res.json()["id"]

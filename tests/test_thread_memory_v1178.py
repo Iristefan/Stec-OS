@@ -263,7 +263,7 @@ def test_panel_transcript_keeps_every_speaker_distinct(tmp_path):
     text = panel_transcript("Extension call", _PANEL, _ROUND, None)
     assert "### You" in text
     assert "### planner (lead)" in text and "### critic (critic)" in text
-    assert "Iron Jarvis" not in text  # chat's two-speaker vocabulary must not leak
+    assert "STEC OS" not in text  # chat's two-speaker vocabulary must not leak
     assert "_ghost is offline (not registered) — skipped._" in text
 
 

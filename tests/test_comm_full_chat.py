@@ -236,7 +236,7 @@ async def test_free_form_full_chat_happy_path(platform):
         {"role": "user", "content": "what is the answer?"},
         {"role": "assistant", "content": "The answer is 42."},
     ]
-    assert ch.sent == ["Iron Jarvis: The answer is 42."]
+    assert ch.sent == ["STEC OS: The answer is 42."]
     body = turn.calls[0]
     assert body.auto_tools is True
     assert [(m.role, m.content) for m in body.messages] == [
@@ -389,7 +389,7 @@ async def test_reply_chunked_to_channel_limit(platform):
     assert len(ch.sent) > 1  # a 200-char reply cannot fit one 40-char message
     assert all(len(s) <= 40 for s in ch.sent)
     joined = "".join("".join(s.split()) for s in ch.sent)
-    assert "".join(("Iron Jarvis: " + "word " * 40).strip().split()) == joined
+    assert "".join(("STEC OS: " + "word " * 40).strip().split()) == joined
 
 
 def test_safe_append_heals_vanished_thread(platform):
@@ -538,7 +538,7 @@ def test_desktop_send_runs_turn_and_fans_out(tmp_path):
             {"role": "user", "content": "hi from desk"},
             {"role": "assistant", "content": "Desk reply."},
         ]
-        assert ch.sent == ["Iron Jarvis: Desk reply."]  # the phone heard it too
+        assert ch.sent == ["STEC OS: Desk reply."]  # the phone heard it too
 
 
 def test_desktop_send_404_unknown_thread(tmp_path):
@@ -672,7 +672,7 @@ def test_desktop_send_escalate_failure_delivers_honest_error(tmp_path):
         assert msgs[2] == {
             "role": "assistant",
             "content": (
-                "I hit a problem: Iron Jarvis couldn't finish this task. Run it again. "
+                "I hit a problem: STEC OS couldn't finish this task. Run it again. "
                 "If it happens again, open the run to see the details."
             ),
         }

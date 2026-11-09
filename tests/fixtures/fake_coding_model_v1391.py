@@ -29,7 +29,7 @@ from typing import Any
 
 #: The words of the daemon's resume note (``harness.reply_record.RESUME_NOTE``)
 #: the model recognises a resumed conversation by.
-RESUMED_WORDS = "Iron Jarvis stopped while you were working on this reply"
+RESUMED_WORDS = "STEC OS stopped while you were working on this reply"
 
 
 @dataclass

@@ -573,7 +573,7 @@ describe("Help — the Guide status line speaks plainly; the counts stay in a ti
     S.responses["/helpdocs"] = { docs: [] };
     render(<HelpPage />);
     // v1.354.0 (G59, on purpose): in the app's name, still "unknown".
-    expect(screen.getByText(/What the Guide knows couldn't load\. Iron Jarvis isn't responding\./)).toBeInTheDocument();
+    expect(screen.getByText(/What the Guide knows couldn't load\. STEC OS isn't responding\./)).toBeInTheDocument();
     expect(screen.queryByText(/Knows /)).toBeNull();
   });
 });

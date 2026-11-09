@@ -1,6 +1,6 @@
 /**
  * v1.427.2 (a USER BUG, with a screenshot) — Build › Code drew spinners on
- * steps for days: Claude Code was working on its own when Iron Jarvis closed,
+ * steps for days: Claude Code was working on its own when STEC OS closed,
  * and its log kept six steps "running". The daemon now closes every step its
  * tool never finished with a `stopped` row (tests/test_build_app_unfinished_
  * steps_v14272.py, the same shape as the real log). Here: the screen reads
@@ -45,7 +45,7 @@ const LOG = [
   { type: "tool", at: "2026-10-31T20:21:03Z", item: "grep", kind: "command", name: "Bash", title: "Run grep",
     input: "", status: "stopped" },
   { type: "notice", at: "2026-10-31T20:21:03Z",
-    text: "Iron Jarvis closed while Claude Code was working on its own, so 2 steps did not finish. Send a message to carry on." },
+    text: "STEC OS closed while Claude Code was working on its own, so 2 steps did not finish. Send a message to carry on." },
 ];
 
 function tools(items: readonly ConvItem[]) {
@@ -92,7 +92,7 @@ describe("a step the tool never finished", () => {
       // A boot that closed it much later (an older daemon's time, say).
       { type: "tool", at: "2026-11-03T18:00:00Z", item: "s1", kind: "command", name: "Bash", title: "Run s1",
         input: "", status: "stopped", turn: "t2" },
-      { type: "error", at: "2026-11-03T18:00:00Z", title: "Iron Jarvis stopped while this was working", fix: "", technical: "", turn: "t2" },
+      { type: "error", at: "2026-11-03T18:00:00Z", title: "STEC OS stopped while this was working", fix: "", technical: "", turn: "t2" },
       { type: "done", at: "2026-11-03T18:00:00Z", stop: "interrupted", turn: "t2" },
     ]));
     const done = items.find((i): i is Extract<ConvItem, { kind: "done" }> => i.kind === "done")!;

@@ -158,7 +158,7 @@ async def publish_delegation_completed(
 
         result = display_unfenced(result) if result else result
         # A WITHHELD reply's note quotes the phrase that tripped the detector
-        # (attacker text): the event keeps Iron Jarvis's category only.
+        # (attacker text): the event keeps STEC OS's category only.
         m = _WITHHELD_RX.match(result or "")
         if m is not None:
             result = f"[content withheld — suspected {m.group(1).strip()}]"
@@ -269,7 +269,7 @@ class DelegateTool(Tool):
         "'custom:<name>' agent, or a listed 'remote:<name>' agent; defaults "
         "to 'builder' — and task (the self-contained instruction for the "
         "subagent). Instead of a name you may give role — read, code, review "
-        "or test — and Iron Jarvis picks the member of the user's model team "
+        "or test — and STEC OS picks the member of the user's model team "
         "for it (a local one first when its record for that role is good; a "
         "cloud account near its usage limit gets no new work); the answer says "
         "who took it. Give piece (a short name for this piece of work) and "
@@ -882,7 +882,7 @@ class DelegateTool(Tool):
                 # (its steps ran out, it gave up — the settle path below); an
                 # exception escaping it is the provider (down, busy, refusing),
                 # the account (its limit, a sign-in), Local only, the hold — or
-                # Iron Jarvis itself. None of that says the member is bad at
+                # STEC OS itself. None of that says the member is bad at
                 # the role, and counting it demoted a local member whose box
                 # was merely busy, or a cloud member whose account hit its limit.
                 await publish_delegation_completed(
@@ -1052,7 +1052,7 @@ class DelegateTool(Tool):
             child_run_id=None,
             ok=bool(res.ok),
             # Both are already fenced by ``_delegate_remote`` (an ACCEPTED
-            # job's words are Iron Jarvis's own, v1.420.0).
+            # job's words are STEC OS's own, v1.420.0).
             result=res.output if res.ok else res.error,
             accepted=data if data.get("state") == "accepted" else None,
             **edge,
@@ -1098,7 +1098,7 @@ class DelegateTool(Tool):
             res = await registry.run(record, task, self.platform.secrets.get)
         if res.get("ok") and res.get("accepted"):
             # The remote TOOK the job and reports later: its own outcome
-            # ("accepted"), in Iron Jarvis's words — never an empty, fenced
+            # ("accepted"), in STEC OS's words — never an empty, fenced
             # success the mission card showed as the fence's header alone.
             room_id = str(room.get("room_id") or "")
             await note_accepted_in_room(self.platform, room_id, name)

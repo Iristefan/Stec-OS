@@ -192,7 +192,7 @@ def test_a_real_daemon_killed_twice_carries_its_coding_session_on_and_a_quit_end
         assert _code_view_starts(fake_log) == tool
 
         # 3. a QUIT ends it all
-        assert httpx.post(d3.base + "/shutdown", timeout=30).json()["detail"] == "Iron Jarvis is shutting down"
+        assert httpx.post(d3.base + "/shutdown", timeout=30).json()["detail"] == "STEC OS is shutting down"
         d3.proc.wait(timeout=90)
         end = time.monotonic() + 30
         while time.monotonic() < end and any(alive(p) for p in pids):

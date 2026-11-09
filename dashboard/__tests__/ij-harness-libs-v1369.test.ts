@@ -307,7 +307,7 @@ describe("the account list (GET /build/accounts)", () => {
     expect(sessionAccount(null, "claude", v)).toBeNull();
   });
 
-  it("an Iron Jarvis without the account list (404) hides the account pieces; other failures throw", async () => {
+  it("a STEC OS without the account list (404) hides the account pieces; other failures throw", async () => {
     vi.mocked(api.get).mockRejectedValueOnce(new api.ApiError("Not Found", 404));
     expect(await fetchAccounts()).toBeNull();
     vi.mocked(api.get).mockRejectedValueOnce(new api.ApiError("boom", 500));

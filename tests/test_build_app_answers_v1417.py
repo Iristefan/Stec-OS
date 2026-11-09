@@ -1,7 +1,7 @@
 """v1.417.0 (fix plan wave 1) — Build › Code's cards, answers and ends.
 
 * C1.1: a command card offers "Allow all commands this session"; the answer
-  ``allow_commands`` reaches Claude Code as Iron Jarvis's OWN whole-tool
+  ``allow_commands`` reaches Claude Code as STEC OS's OWN whole-tool
   session rule (never its per-prefix suggestion), and the second command of
   the process asks nothing. Codex maps it to its ``acceptForSession`` only
   when the request offers it; Pi and OpenCode refuse in words.
@@ -278,7 +278,7 @@ async def test_a_failure_no_rule_knows_names_the_tool_and_fits_retry(app, work, 
 def test_generic_failure_words_name_every_tool(harness, name):
     ev = W.generic_error(harness, "something nobody recognises")
     assert ev["title"] == f"{name} couldn't finish this answer"
-    assert "Iron Jarvis" not in ev["title"]
+    assert "STEC OS" not in ev["title"]
 
 
 def test_the_tool_label_reaches_the_shared_failure_words():

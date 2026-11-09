@@ -16,7 +16,7 @@ Each clause is load-bearing:
 * *A Jarvis capability.* Every decision — is access on, is this pane allowed, does
   this target need approval, what gets logged — is made in the daemon, before a
   frame is sent. The add-on holds no policy. A capability whose rules lived in the
-  extension would be a capability the user could not turn off from Iron Jarvis.
+  extension would be a capability the user could not turn off from STEC OS.
 * *Browser-side I/O only.* The add-on lists tabs, walks the DOM, clicks, types and
   scrubs sensitive fields at capture time (D13B). It decides nothing, stores
   nothing but its pairing token, and shows no automation UI (D28).
@@ -36,7 +36,7 @@ the only concession the MVP makes to that future.
 Vocabulary (§7.1, mandatory). ``VOCABULARY.md`` already assigns **extension** to
 an MCP server, so no user-facing string in this feature may call the Chrome add-on
 an extension. The user-facing words are **Your browser** and **Jarvis browser**;
-where the add-on itself must be named, it is **the Iron Jarvis browser add-on**.
+where the add-on itself must be named, it is **the STEC OS browser add-on**.
 Identifiers like ``ExtensionBackend`` and ``extension_id`` are engineering
 vocabulary and are fine.
 """

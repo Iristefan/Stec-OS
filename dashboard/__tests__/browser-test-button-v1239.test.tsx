@@ -120,7 +120,7 @@ type Status = Record<string, unknown>;
  *  reader this card was rewritten for, and written out here rather than built
  *  from the folder name so that a card which quietly fell back to printing the
  *  NAME could not satisfy these assertions. */
-const ADDON_DIR = "C:\\Users\\dana\\AppData\\Local\\Programs\\Iron Jarvis\\resources\\browser-addon";
+const ADDON_DIR = "C:\\Users\\dana\\AppData\\Local\\Programs\\STEC OS\\resources\\browser-addon";
 
 const base: Status = {
   connected: false,
@@ -198,7 +198,7 @@ describe("the card names the add-on folder a user can actually reach (v1.239.0)"
     expect(screen.getByTestId("browser-addon-packaged-value").textContent).not.toBe(
       PACKAGED_FOLDER,
     );
-    expect(block.textContent).toContain("Iron Jarvis install");
+    expect(block.textContent).toContain("STEC OS install");
     // The retired fallback: a page that prints nothing while the doctor is happy.
     expect(block.textContent).not.toContain("Overview");
     // And it must not send a packaged user to a build they cannot run: the build
@@ -210,7 +210,7 @@ describe("the card names the add-on folder a user can actually reach (v1.239.0)"
     // A card that assembled the path itself would pass the case above on a
     // machine-shaped fixture and be wrong on every other install. This drives a
     // second, differently-shaped daemon answer through the same field.
-    const posix = "/opt/Iron Jarvis/resources/browser-addon";
+    const posix = "/opt/STEC OS/resources/browser-addon";
     api.status = { ...base, addon_dir: posix };
     render(<YourBrowserCard />);
     await screen.findByTestId("browser-addon-folder");

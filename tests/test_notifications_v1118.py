@@ -56,15 +56,15 @@ def test_desktop_send_fails_honestly_without_the_daemon_sink():
     r = DesktopChannel({"type": "desktop"}).send("hello")
     assert r["ok"] is False
     # v1.360.0 integrate (moved on purpose): the canon's words, never "daemon".
-    assert "Iron Jarvis is not running" in r["detail"]
+    assert "STEC OS is not running" in r["detail"]
 
 
 def test_desktop_send_delivers_through_the_sink():
     got = []
     DesktopChannel.sink = staticmethod(lambda title, msg: got.append((title, msg)))
-    r = DesktopChannel({"type": "desktop"}).send("review waiting", title="Iron Jarvis")
+    r = DesktopChannel({"type": "desktop"}).send("review waiting", title="STEC OS")
     assert r["ok"] is True
-    assert got == [("Iron Jarvis", "review waiting")]
+    assert got == [("STEC OS", "review waiting")]
 
 
 # --- N5: per-destination routing (and the fan-out fix) ------------------------

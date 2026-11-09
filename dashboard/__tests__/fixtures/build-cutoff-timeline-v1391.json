@@ -31,7 +31,7 @@
       }
     ],
     "content": "",
-    "error": "Iron Jarvis stopped while answering (a restart or a crash). What it had written so far is kept; press Retry to ask again.",
+    "error": "STEC OS stopped while answering (a restart or a crash). What it had written so far is kept; press Retry to ask again.",
     "interrupted": true,
     "role": "assistant",
     "steps": [

@@ -15,7 +15,7 @@ import { expect, test, type Page } from "@playwright/test";
  *     Coding sessions on Last night; failed and needs-you first; the main
  *     folder change said open;
  *  2. keyboard only: Throw away takes TWO presses of Enter, and only the
- *     second asks Iron Jarvis to move the folder;
+ *     second asks STEC OS to move the folder;
  *  3. 390 px: nothing pans sideways, every row and every button is inside the
  *     window.
  */
@@ -35,7 +35,7 @@ async function answerFromFixture(page: Page, discards: string[]) {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify({ moved: true, note: "The worktree is in Iron Jarvis's trash and the branch ij/fix-the-parser-77aa is kept." }),
+      body: JSON.stringify({ moved: true, note: "The worktree is in STEC OS's trash and the branch ij/fix-the-parser-77aa is kept." }),
     });
   });
 }

@@ -1,7 +1,7 @@
 """OutcomeLedger + deterministic downgrade-only tuning (Wave C4, v1.203.0).
 
 Ported from the user's own IronCore project (``ironcore/envelope/outcomes.py``,
-its MS-8 self-improvement loop), adapted to Iron Jarvis. The probe battery
+its MS-8 self-improvement loop), adapted to STEC OS. The probe battery
 measures a model once; live sessions keep producing evidence forever. This
 module persists that evidence per (provider, model) and its tuner can
 CONSERVATIVELY fold it back into the capability profile:
@@ -60,14 +60,14 @@ The tuner's rules, ported intact for that day:
 Adapted, not copied — the deltas from IronCore, recorded so nobody re-files
 them as omissions:
 
-* **No edit-format counters** — Iron Jarvis edits through structured tools,
+* **No edit-format counters** — STEC OS edits through structured tools,
   not diff negotiation (the same reason profile.py has no edit ladder).
 * **No turn/drift or verify counters** — no loop records a drift signal this
   wave, and an evidence channel nothing feeds would be dead weight; the
   coherence-horizon tuning that consumed it stays unported until it exists.
 * **Both IJ rungs are tunable.** IronCore's ``_tune_ladder`` skipped its last
   rung because that rung (the IRONCALL text floor) was the unconditional
-  bottom; Iron Jarvis's floor is ``"none"`` BELOW the ladder, so native AND
+  bottom; STEC OS's floor is ``"none"`` BELOW the ladder, so native AND
   strict_json carry real thresholds and both tune.
 * **Keyed (provider, model)** like everything in this package — the same
   model id behind two endpoints is two different deployments.

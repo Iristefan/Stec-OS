@@ -496,7 +496,7 @@ async def test_real_edge_no_job_for_the_driver_means_no_browser(monkeypatch):
     site = Site({"/": "<title>Shop</title>shop"})
     b = _browsers()
     try:
-        with pytest.raises(PB.BrowserProblem, match="would not let Iron Jarvis hold"):
+        with pytest.raises(PB.BrowserProblem, match="would not let STEC OS hold"):
             await b.open("build:nojob", site.base, preview=site.base)
         assert not b.is_open("build:nojob")
         assert drivers and drivers[0]
@@ -1013,7 +1013,7 @@ def test_the_driver_runs_on_the_apps_electron_when_its_own_node_is_not_shipped(t
     node = tmp_path / "node.exe"
     cli = tmp_path / "cli.js"
     cli.write_text("", encoding="utf-8")
-    electron = tmp_path / "Iron Jarvis.exe"
+    electron = tmp_path / "STEC OS.exe"
     electron.write_bytes(b"MZ")
     monkeypatch.setattr(PB, "_bundled_driver", lambda: (str(node), str(cli)))
     monkeypatch.delenv(PB.NODE_ENV, raising=False)
@@ -1191,7 +1191,7 @@ def test_the_driver_node_override_reaches_playwrights_own_driver_lookup():
     PB._driver_env_hook()  # wrapped once, never twice
     plain_node, plain_cli = transport.compute_driver_executable()
     assert "ELECTRON_RUN_AS_NODE" not in transport.get_driver_env()
-    node_tok = PB._DRIVER_NODE.set(r"C:\Apps\Iron Jarvis\Iron Jarvis.exe")
+    node_tok = PB._DRIVER_NODE.set(r"C:\Apps\STEC OS\STEC OS.exe")
     temp_tok = PB._DRIVER_TEMP.set(r"C:\Temp\ij-agent-browser-x\tmp")
     try:
         node, cli = transport.compute_driver_executable()
@@ -1199,7 +1199,7 @@ def test_the_driver_node_override_reaches_playwrights_own_driver_lookup():
     finally:
         PB._DRIVER_TEMP.reset(temp_tok)
         PB._DRIVER_NODE.reset(node_tok)
-    assert node == r"C:\Apps\Iron Jarvis\Iron Jarvis.exe" and cli == plain_cli
+    assert node == r"C:\Apps\STEC OS\STEC OS.exe" and cli == plain_cli
     assert env["ELECTRON_RUN_AS_NODE"] == "1"
     assert env["TEMP"] == env["TMP"] == r"C:\Temp\ij-agent-browser-x\tmp"
     # Outside the browser's start nothing leaks into Playwright's own lookup.

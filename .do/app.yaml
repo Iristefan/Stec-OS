@@ -1,16 +1,16 @@
-# Iron Jarvis — DigitalOcean App Platform spec
+# STEC OS — DigitalOcean App Platform spec
 # Reference: https://docs.digitalocean.com/products/app-platform/reference/app-spec/
 # One-click: https://cloud.digitalocean.com/apps/new?repo=https://github.com/RealDealCPA-VR/Iron-Jarvis/tree/master
 #
 # ─────────────────────────────────────────────────────────────────────────────
 # PERSISTENCE CAVEAT — READ THIS FIRST
 # App Platform service instances are EPHEMERAL: the local filesystem is wiped on
-# every deploy, restart, and scale event. Iron Jarvis is local-first and stores
+# every deploy, restart, and scale event. STEC OS is local-first and stores
 # SQLite + the Fernet-encrypted secrets vault under .ironjarvis/ (here, /data), so
 # on App Platform that state is NOT durable. For real stateful use, either:
 #   * run the daemon on a small Droplet with docker-compose + an attached Volume
 #     (block storage), or
-#   * point Iron Jarvis at a managed Postgres database instead of local SQLite.
+#   * point STEC OS at a managed Postgres database instead of local SQLite.
 # App Platform does not offer mountable block volumes for app services — use the
 # spec below for a stateless/demo deployment, or a Droplet for stateful use.
 # ─────────────────────────────────────────────────────────────────────────────

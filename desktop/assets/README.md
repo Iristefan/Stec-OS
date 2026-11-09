@@ -1,4 +1,4 @@
-# Iron Jarvis Desktop — assets
+# STEC OS Desktop — assets
 
 The application icon (v1.380.0): the "iU" tile the user chose.
 

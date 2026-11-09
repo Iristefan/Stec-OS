@@ -46,7 +46,7 @@ export const PROTOCOL_LABELS: Record<EndpointProtocol, string> = {
 export const PROTOCOL_CANNOT_TELL = "Fetch could not tell how this server answers. Pick one:";
 /** The same choice opened by hand (the review: a server that answers BOTH
  *  ways — a LiteLLM proxy — reads "OpenAI", and the user may want the other). */
-export const PROTOCOL_BY_HAND = "How Iron Jarvis talks to this server:";
+export const PROTOCOL_BY_HAND = "How STEC OS talks to this server:";
 
 /** The other protocol. */
 function otherProtocol(p: EndpointProtocol): EndpointProtocol {
@@ -158,8 +158,8 @@ export function filterModels(
 /** The sentence a failed request shows (the daemon's own words win). */
 function requestWords(err: unknown): string {
   if (err instanceof ApiError) {
-    if (err.status === 0) return "Iron Jarvis is not answering right now. Try again in a moment.";
-    if (err.status === 404) return "This version of Iron Jarvis cannot fetch models yet. Type the model id yourself.";
+    if (err.status === 0) return "STEC OS is not answering right now. Try again in a moment.";
+    if (err.status === 404) return "This version of STEC OS cannot fetch models yet. Type the model id yourself.";
     return err.message;
   }
   return "Could not ask that server for its models. Type the model id yourself.";

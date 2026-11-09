@@ -254,7 +254,7 @@ desktop app's tray code under node.
 | The summary's file paths were checked against every call the session ever made — a REWOUND turn's rows (its lines gone) and a turn after the coverage (never shown to the summarizer) corroborated a path, so a summary every later turn reads as fact could name work the conversation no longer holds | only the covered turns' own calls may back it (`compact.turn_windows`: each turn's first line to its last) |
 | Compact parsed the transcript (up to 200 lines with steps and thinking), hashed it and wrote the usage row on the event loop | off the loop, like every other transcript read in the build routes |
 | A parked or signed-out account answered "Claude Code couldn't finish this answer Press Retry. If it happens again, pick another model for this chat." | the account's own sentence (the turn's limit card's words), 409; other failures in whole sentences |
-| The meter called the app's own 32,000 safe size "what this model can read at once" for any model whose window nobody knows (a Codex or API-key session reads 95% of a window it does not have) | the reading carries `window_known`; the meter says "of what Iron Jarvis sends this model at once ... its own limit is not known"; compaction turned off in Settings shows the number with no Compact |
+| The meter called the app's own 32,000 safe size "what this model can read at once" for any model whose window nobody knows (a Codex or API-key session reads 95% of a window it does not have) | the reading carries `window_known`; the meter says "of what STEC OS sends this model at once ... its own limit is not known"; compaction turned off in Settings shows the number with no Compact |
 | At 390 px with a model that offers reasoning levels, "Summarizing earlier turns…" / "Earlier turns summarized" pushed Send ~60 px out of the box (the percent and Compact 4–15 px) — measured in a real browser | the box's right-hand group wraps, right-aligned, bounded by its row; re-measured live |
 | A finish the user watched end was counted again by "While you were away" after a reload or a close to the tray | the watched ids are kept beside the "looking" note and left out of the replay |
 | A settled Build reply folded its plan with the chat's run rule: steps it did not reach read "Not attempted" | decided: a Build plan carries over to the next turn — the step it was on is not ticked off (failed with a failed turn), the rest "not started" |
@@ -272,7 +272,7 @@ window pinned, the real screen at 390 px): 72% offered Compact; the press
 summarized 10 messages (0 removed, billed: 9 turns on the usage line); the
 next turn answered the codename and port from the summary; a second Compact
 covered 14 with the first fed in; with the pin removed the meter read 6% "of
-what Iron Jarvis sends this model ... not known"; a 69 s turn (a shell
+what STEC OS sends this model ... not known"; a 69 s turn (a shell
 command that slept) raised ONE `build.turn_finished` and the bell's row
 "Your Build session finished — review drive · took 1 min 9 s". Still open:
 Build turns also run the chat's own automatic compaction at 92% (content-
@@ -377,7 +377,7 @@ Decisions made in this phase (each pinned by a test):
 - **Archive** keeps the worktree. **Delete** moves it to the trash first
   (the branch stays); a worktree that cannot be moved refuses the delete in
   words. **Discard** archives the session.
-- **Commit identity**: the user's own git name and e-mail; Iron Jarvis's
+- **Commit identity**: the user's own git name and e-mail; STEC OS's
   default only when git names no one, and the answer says so.
 - **gh**: Create PR only when installed AND signed in for the remote's host
   (`gh auth status`, remembered 60 s); otherwise the GitHub compare link.
@@ -640,7 +640,7 @@ Decisions:
   bytes (408,555,153 before the review); `page-browser-check` with
   `IRONJARVIS_PLAYWRIGHT_NODE` set to Electron: ok, 9 processes, none left;
   without it, it says the browser starts only inside the app. The release
-  check must set that variable to the installed `Iron Jarvis.exe`.
+  check must set that variable to the installed `STEC OS.exe`.
 
 Live (scratch daemon 8817, this PC's Claude Code login, a scratch site): the
 Claude session found the console error, fixed app.js, reloaded, confirmed
@@ -872,7 +872,7 @@ claude-cli adapter answered `stop_reason: "refusal"`, `stop_details.category:
 (output_tokens 0). The conversation asked, twice, for the shell's
 environment to be dumped; the classifier judges the whole conversation, and
 every later message resends it, so even "Say hello" was declined; a fresh
-session has no such history. Iron Jarvis turns the refusal into an empty
+session has no such history. STEC OS turns the refusal into an empty
 reply (`claude_native/transport.assemble` treats `stop_reason == "refusal"`
 as handled and returns no text; `adapters/anthropic._finish` maps it to
 "stop"), and the lane then says "The model returned an empty answer … Press
@@ -924,7 +924,7 @@ pairings, each CLI on its own default model, this PC's own logins, Iron-Proxy
 off; at most two configurations at once and never two on one plan). Numbers
 from the bench's own combined report,
 `%TEMP%\ij-bench-phase7\combined\.ironjarvis\harness-bench\report.md`
-(Iron Jarvis 1.377.0 plus this phase's commits); v1.370.3 in brackets:
+(STEC OS 1.377.0 plus this phase's commits); v1.370.3 in brackets:
 
 | Runner | Passed | Mean time | Mean tool calls | Tokens in | List-price $ |
 |---|---|---|---|---|---|

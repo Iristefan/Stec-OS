@@ -12,9 +12,9 @@
   - The card now shows the choices as checkboxes, and the answer goes back as a LIST of choices.
   - Anything typed goes into `qN_other`.
   - The page's ", "-joined answer is matched back against the choice labels greedily, so a label that itself contains a comma still counts as one choice.
-- **A3.** A question form with no question Iron Jarvis can show is still declined, but a notice now says so. Before, it was declined silently.
+- **A3.** A question form with no question STEC OS can show is still declined, but a notice now says so. Before, it was declined silently.
 - **A4.** The sign-in error said "send your message again" twice. Now it says it once.
-- **A5. The Iron Jarvis tools chip and Antigravity.**
+- **A5. The STEC OS tools chip and Antigravity.**
   - The chip is hidden for Antigravity, because agy 1.5.2 does not report `mcpCapabilities`.
   - The session view carries `jarvis_tools: false`; the page decodes it as `jarvisToolsTaken: false`.
   - Ticking a box no longer restarts Antigravity, and no token is minted for it.
@@ -69,7 +69,7 @@ Moved on purpose:
 
 ## Still OPEN
 
-- A rename made while stopped is held in memory only. If Iron Jarvis restarts before the tool next starts, the name is not sent.
+- A rename made while stopped is held in memory only. If STEC OS restarts before the tool next starts, the name is not sent.
 - After a restart, the bare Claude Code built-in list is empty until a Claude session opens. Until then, the start composer's `/` menu for Claude shows nothing. That is the same rule as before for an empty list.
 - P1: the plan card's "Approve, then ask first" label stays on screen after the chip moves. Making Enter / the label follow `thenMode` is the dashboard lane's D3.
 - A5: what an Antigravity process says about MCP is kept in memory only. Antigravity starts as "takes none", the measured 1.5.2 truth.
@@ -91,8 +91,8 @@ Moved on purpose:
 ## Draft Handbook lines
 
 - In Antigravity, a note typed while a card or a question waits is refused, and your words stay in the box. Answer the card first. A question that lets you pick several answers shows checkboxes.
-- The Iron Jarvis tools chip is not shown for Antigravity, because it does not take them (agy 1.5.2).
-- In Claude Code, `/model opus`, `/model sonnet` and `/model haiku` set the model chip. A name Iron Jarvis does not know goes to Claude Code as typed.
+- The STEC OS tools chip is not shown for Antigravity, because it does not take them (agy 1.5.2).
+- In Claude Code, `/model opus`, `/model sonnet` and `/model haiku` set the model chip. A name STEC OS does not know goes to Claude Code as typed.
 - If you pick a mode while a plan card waits, approving the plan keeps the mode you picked.
 - Type `/export` to be pointed at Export as Markdown in the session's ⋯ menu.
 
@@ -129,7 +129,7 @@ Every builder claim was checked against the code, and the lane's pins were mutat
 - claude 2.1.316 `initialize` in a scratch folder (scratch CLAUDE_CONFIG_DIR, signed out, no model call). A project's own `.claude/commands/status.md` is listed as `status` with no `builtin`; the 48 Claude Code rows all say `builtin: true`; `export` is not in the list, so P5's words do show once the list has been read.
 - Real agy 1.5.2 with a scratch USERPROFILE and the stand-in model (scratch test `scratchpad/fix1r/test_agy_race_review_final.py`, not committed):
   - a note while a command card is open answers 409 in the new words, with no `code`; Allow then ends completed;
-  - **the race**: the note is WRITTEN before Iron Jarvis has read the card agy already raised (0 s and 1.5 s windows). agy refuses the note's prompt, the backstop says so, Allow ends the reply `completed`, and the note comes back `returned`. The next message completes too.
+  - **the race**: the note is WRITTEN before STEC OS has read the card agy already raised (0 s and 1.5 s windows). agy refuses the note's prompt, the backstop says so, Allow ends the reply `completed`, and the note comes back `returned`. The next message completes too.
   - Mutation: the backstop removed, then this live test goes red.
 - `/model sonnet-9` sent through to the real claude (signed out, stream-json, with a message uuid): `command_lifecycle` `started` arrives, then a `result`, in 0.6 s, so the turn ends and does not hang. Signed IN was not measured: running `/model` on the user's own login could write its settings.
 - The P2 "no alias" mutation was re-run: red in 19 s. The pin is bounded by its own 15 s wait and never hangs.

@@ -2,7 +2,7 @@
 
 Iron-Proxy (RealDealCPA-VR/Iron-Proxy, MIT) is the ACCOUNT MANAGER: which
 subscription accounts exist, their order, which are parked until when, sign-in
-and usage. Iron Jarvis talks to it over loopback HTTP with the bearer token the
+and usage. STEC OS talks to it over loopback HTTP with the bearer token the
 proxy wrote into ``<data_dir>/proxy.json``.
 
 Every method is BLOCKING (httpx, sync). Callers on the daemon's event loop go
@@ -38,8 +38,8 @@ import httpx
 
 log = logging.getLogger(__name__)
 
-#: The fields Iron Jarvis may change on an account. Iron-Proxy's PATCH also
-#: takes cli/apiKey/order/defaultModel; those are not Iron Jarvis's to edit
+#: The fields STEC OS may change on an account. Iron-Proxy's PATCH also
+#: takes cli/apiKey/order/defaultModel; those are not STEC OS's to edit
 #: (order goes through ``reorder``).
 _PATCHABLE = ("enabled", "title")
 
@@ -233,7 +233,7 @@ class IronProxyClient:
                         pass
                 raise IronProxyError(
                     "AUTH_REQUIRED",
-                    "Iron-Proxy refused Iron Jarvis's access token.",
+                    "Iron-Proxy refused STEC OS's access token.",
                     status=401,
                 )
             raise err

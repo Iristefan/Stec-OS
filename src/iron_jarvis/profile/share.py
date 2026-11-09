@@ -84,13 +84,13 @@ DEBOUNCE_S = 1.5
 START = b"<!-- iron-jarvis:profile:start"
 END = b"<!-- iron-jarvis:profile:end -->"
 START_LINE = (
-    "<!-- iron-jarvis:profile:start - written by Iron Jarvis from your profile; "
-    "change it in Iron Jarvis (an edit here stops Iron Jarvis updating this block) -->"
+    "<!-- iron-jarvis:profile:start - written by STEC OS from your profile; "
+    "change it in STEC OS (an edit here stops STEC OS updating this block) -->"
 )
 END_LINE = END.decode("ascii")
 BOM = b"\xef\xbb\xbf"
 
-LEAD = "The person you are working with keeps this profile in Iron Jarvis, their own assistant app."
+LEAD = "The person you are working with keeps this profile in STEC OS, their own assistant app."
 PREFS_HEADER = "# Preferences they approved"
 
 STATE_FILE = "profile-share.json"
@@ -638,7 +638,7 @@ class ProfileShare:
         if region == "broken":
             rec["drift"] = "broken"
             if force:
-                rec["error"] = "its Iron Jarvis markers are damaged — fix or delete them by hand first"
+                rec["error"] = "its STEC OS markers are damaged — fix or delete them by hand first"
             return rec
         newline = "\r\n" if data is not None and b"\r\n" in data else "\n"
         new_block = block_bytes(content, newline)

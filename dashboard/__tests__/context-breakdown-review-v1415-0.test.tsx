@@ -3,9 +3,9 @@
  *
  * 1. Claude Code's DEFERRED tools ("loaded when needed") are, by definition,
  *    NOT sent with each message, yet the list above them said "Sent with
- *    each message, not counted above:". Only Iron Jarvis's own tool
+ *    each message, not counted above:". Only STEC OS's own tool
  *    descriptions (Chat › Code) are sent with each message.
- * 2. In Chat › Code (Iron Jarvis's own harness) the same press the box's
+ * 2. In Chat › Code (STEC OS's own harness) the same press the box's
  *    meter calls "Summarize" (v1.356.0 G75 retired "Compact now"; v1.389.0:
  *    "Summarize" replaced "Compact", `/compact` keeps Claude Code's name) was
  *    "Compact session" here. Build › Code keeps Claude Code's own word.

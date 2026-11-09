@@ -1,4 +1,4 @@
-"""v1.224.0 — the Iron Jarvis Guide is a built-in AGENT.
+"""v1.224.0 — the STEC OS Guide is a built-in AGENT.
 
 The user asked for a baked-in helper agent in the Agents module: base
 knowledge of the project, and tools to search the app for what they need.
@@ -37,8 +37,8 @@ from iron_jarvis.guide.tools import GUIDE_TOOL_NAMES
 from tests._fakes.rooms import rooms
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-BASE = "# Iron Jarvis reference (base knowledge)"
-REF = "# Iron Jarvis reference"
+BASE = "# STEC OS reference (base knowledge)"
+REF = "# STEC OS reference"
 
 
 # --------------------------------------------------------------- the corpus

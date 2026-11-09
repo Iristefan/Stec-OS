@@ -149,7 +149,7 @@ afterEach(() => {
 });
 
 async function chip(): Promise<HTMLElement> {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   return screen.findByTitle("Switch model");
 }
 

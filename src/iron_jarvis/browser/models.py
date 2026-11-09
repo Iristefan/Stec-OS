@@ -1,7 +1,7 @@
 """The one persisted row the Browser capability owns: a paired browser (plan §4.3).
 
 A :class:`BrowserPairing` is the durable half of the D06A trust relationship
-between the Iron Jarvis browser add-on and this daemon. It holds the SHA-256 of
+between the STEC OS browser add-on and this daemon. It holds the SHA-256 of
 the pairing token and never the token itself, which is the whole point of the
 table: nothing in this repository keeps a recoverable secret outside the Fernet
 vault, and a pairing token in a plaintext column would be one — readable in the

@@ -7,7 +7,7 @@ Captures two signals and turns them into durable, reusable *lessons*:
 * **preferences** the agent infers mid-conversation and chooses to remember.
 
 The payoff is :meth:`apply_to_prompt`: before every run, the accumulated lessons
-are appended to the agent's system prompt — so each interaction makes Iron Jarvis
+are appended to the agent's system prompt — so each interaction makes STEC OS
 a little better at working the way you want.
 
 Recording and retrieval are deterministic and offline (DB rows only). Because

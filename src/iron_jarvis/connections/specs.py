@@ -114,7 +114,7 @@ BUILTIN_SPECS: dict[str, ConnectionSpec] = {
         key_help=(
             "Paste an Anthropic API key (sk-ant-…) for direct API use. Or skip "
             "this: if you're logged into the Claude CLI (`claude`) on this "
-            "machine, Iron Jarvis inherits that subscription login automatically "
+            "machine, STEC OS inherits that subscription login automatically "
             "— no key needed."
         ),
         key_secret_name="anthropic_api_key",

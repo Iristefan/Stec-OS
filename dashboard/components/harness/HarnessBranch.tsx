@@ -149,7 +149,7 @@ export function BranchView({
   // while the window is on screen.
   useVisibleInterval(() => void readPr(), PR_POLL_MS, !!prUrl && !removed);
 
-  // v1.439.0 (chat-first Wave 6): where Iron Jarvis's pull-request watch
+  // v1.439.0 (chat-first Wave 6): where STEC OS's pull-request watch
   // stands (GET /build/sessions/{id}/ci — no GitHub call). Read with the
   // pull request: when this view opens, after a turn, and on the same slow
   // visible-only clock. A failed read keeps the last line (it is a hint, not
@@ -378,7 +378,7 @@ export function BranchView({
           }
           label="Discard"
           confirmLabel={discardConfirm}
-          title={`This session's own copy of the folder goes to Iron Jarvis's trash; the branch ${git.branch} stays.`}
+          title={`This session's own copy of the folder goes to STEC OS's trash; the branch ${git.branch} stays.`}
         />
         {busy ? <Loader2 size={13} aria-label="Working" className="animate-spin text-zinc-500" /> : null}
       </div>
@@ -551,7 +551,7 @@ export function BranchView({
             }
             label="Remove its copy of the folder"
             confirmLabel="Confirm remove"
-            title={`This session's own copy of the folder goes to Iron Jarvis's trash; the branch ${git.branch} stays.`}
+            title={`This session's own copy of the folder goes to STEC OS's trash; the branch ${git.branch} stays.`}
           />
         </div>
       ) : null}

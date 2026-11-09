@@ -1,5 +1,5 @@
 /**
- * v1.433.0 (Wave 1, A8) — Settings › Maintenance's "Restart Iron Jarvis".
+ * v1.433.0 (Wave 1, A8) — Settings › Maintenance's "Restart STEC OS".
  *
  * The press used to POST /shutdown with no body: the daemon's QUIT (Build ›
  * Code's coding tools stopped) and, to the desktop app's supervisor, a crash
@@ -81,7 +81,7 @@ afterEach(() => {
   delete win.ironjarvis;
 });
 
-describe("Settings › Maintenance › Restart Iron Jarvis", () => {
+describe("Settings › Maintenance › Restart STEC OS", () => {
   it("inside the desktop app asks the shell for a tidy restart and posts no bare /shutdown", async () => {
     const restartDaemonTidy = vi.fn().mockResolvedValue(true);
     win.ironjarvis = { isDesktop: true, shell: { restartDaemonTidy } };
@@ -140,7 +140,7 @@ describe("Restore from backup tells the desktop app first", () => {
     fireEvent.click(screen.getByRole("button", { name: /Restore from backup…/ }));
     fireEvent.click(await screen.findByRole("button", { name: "Restore and restart" }));
     await waitFor(() => expect(notes).toHaveLength(1));
-    // After the restore answered (it is what stops Iron Jarvis), before the note.
+    // After the restore answered (it is what stops STEC OS), before the note.
     expect(order).toEqual(["post:/maintenance/restore", 'tidy:{"stopping":true}']);
   });
 });

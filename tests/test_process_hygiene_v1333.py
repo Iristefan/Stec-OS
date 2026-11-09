@@ -632,7 +632,7 @@ def test_the_word_script_names_the_word_it_started_before_opening_the_file():
 # The door is the only door: no new raw spawn in src/                          #
 # --------------------------------------------------------------------------- #
 
-#: v1.383.0: the harness benchmark's TASK DATA is not Iron Jarvis code. Each
+#: v1.383.0: the harness benchmark's TASK DATA is not STEC OS code. Each
 #: ``harness_bench/tasks/<id>/`` holds a standalone project handed to a coding
 #: agent (``repo/``), its hidden check and its setup step — stdlib-only
 #: programs that run as CHILDREN the bench starts through ``core.procs``

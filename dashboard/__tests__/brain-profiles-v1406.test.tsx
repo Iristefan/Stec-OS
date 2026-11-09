@@ -14,7 +14,7 @@
  *     null says nothing; the expanded detail.
  *   - The chat drawer's quiet line, and Memory's "Unsaved changes" card:
  *     Try again and Discard (two presses).
- *   - 404 (an older Iron Jarvis) renders nothing anywhere.
+ *   - 404 (an older STEC OS) renders nothing anywhere.
  */
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -147,7 +147,7 @@ const OBSIDIAN = { ...NOTION, id: "bp2", name: "Obsidian vault", primary: "vault
 const BASES = [
   { name: "notion", label: "Notion", kind: "mcp", available: true },
   { name: "vault", label: "Obsidian vault", kind: "folder", available: false },
-  { name: "brain", label: "Iron Jarvis memory", kind: "builtin", available: null },
+  { name: "brain", label: "STEC OS memory", kind: "builtin", available: null },
 ];
 const STATE = { profiles: [NOTION, OBSIDIAN], selected: "bp1", bases: BASES, pending: 0 };
 
@@ -414,7 +414,7 @@ describe("Settings › Brain profile (the component)", () => {
     expect(await screen.findByText("Deleted. It is no longer used by the app and 2 projects.")).toBeTruthy();
   });
 
-  it("a 404 (an older Iron Jarvis) renders nothing", async () => {
+  it("a 404 (an older STEC OS) renders nothing", async () => {
     H.gets["/brain"] = new H.FakeApiError("Not Found", 404);
     const { container } = render(<BrainProfiles />);
     await waitFor(() => expect(H.getCalls).toContain("/brain"));

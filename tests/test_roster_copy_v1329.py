@@ -1,7 +1,7 @@
 """v1.329.0 (calm chat wave 8, J4): the built-in agents describe themselves
 in plain words, with no dash aside.
 
-The closing audit found the Guide's roster line, "the Iron Jarvis expert —
+The closing audit found the Guide's roster line, "the STEC OS expert —
 explains the app, finds your things in it", on the mission screen's Team list
 AND in the chat @ menu (both read ``build_roster`` → ``RosterEntry.description``).
 Every built-in description is a plain phrase now; this pins the Guide's words
@@ -40,7 +40,7 @@ def _platform():
 
 def test_the_guide_describes_itself_in_plain_words():
     entries = {e.name: e for e in build_roster(_platform())}
-    assert entries["guide"].description == "the Iron Jarvis expert who explains the app and finds your things in it"
+    assert entries["guide"].description == "the STEC OS expert who explains the app and finds your things in it"
 
 
 def test_no_builtin_description_carries_a_dash_aside():
@@ -55,9 +55,9 @@ def test_no_builtin_description_carries_a_dash_aside():
     for e in builtins:
         assert not _ASIDE.search(e.description or ""), (e.name, e.description)
     block = roster_block(_platform())
-    assert "guide — the Iron Jarvis expert who explains" in block
+    assert "guide — the STEC OS expert who explains" in block
 
 
 def test_the_scan_sees_a_dash_aside_anti_vacuity():
-    assert _ASIDE.search("the Iron Jarvis expert — explains the app")
-    assert not _ASIDE.search("the Iron Jarvis expert who explains the app and finds your things in it")
+    assert _ASIDE.search("the STEC OS expert — explains the app")
+    assert not _ASIDE.search("the STEC OS expert who explains the app and finds your things in it")

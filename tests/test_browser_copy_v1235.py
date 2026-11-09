@@ -22,7 +22,7 @@ the packaging, and `DATED_AS_FUTURE` below is the pin that says so.
 
 THE BOUNDARY MOVED IN THIS FILE IN THE SAME CHANGE AS THE ABILITY, which is the only
 discipline that works. At v1.237.0 three acting claims moved; at v1.238.0 the harness
-claim moved; at v1.239.0 the card's "from your Iron Jarvis install" moved -- out of the
+claim moved; at v1.239.0 the card's "from your STEC OS install" moved -- out of the
 forbidden list, into the required half below. A claim deleted from BOTH halves is a
 claim nothing checks, so nothing was deleted -- it moved.
 
@@ -95,7 +95,7 @@ def _handbook_browser_section() -> str:
 # Phrased as whole clauses so a legitimate mention of the FUTURE ("reading a
 # page's text arrives in v1.236.0") is not caught.
 # UPDATED AT v1.239.0. THE ADD-ON NOW SHIPS INSIDE THE INSTALLER, so the card's
-# "from your Iron Jarvis install" left this list and became a REQUIRED phrase below --
+# "from your STEC OS install" left this list and became a REQUIRED phrase below --
 # the same direction of travel as the harness at v1.238.0 and acting at v1.237.0.
 # NOTHING IN THE FIVE-SHIP PLAN IS STILL AHEAD, so nothing is dated here any more; what
 # remains is copy that contradicts an ability the app HAS.
@@ -465,7 +465,7 @@ def test_the_card_gives_the_build_step_the_readme_gives():
 def test_the_card_names_the_folder_inside_the_installed_app():
     """MOVED AT v1.239.0, both halves of the same edit.
 
-    "from your Iron Jarvis install" was the FIRST entry of `OVERSOLD`: the card said
+    "from your STEC OS install" was the FIRST entry of `OVERSOLD`: the card said
     the folder was part of the install while it existed only in a source checkout.
     Ship 5 makes it true, so the phrase moves here and becomes owed -- the card is the
     surface a user stands on with Chrome's Load unpacked dialog already open, and
@@ -476,9 +476,9 @@ def test_the_card_names_the_folder_inside_the_installed_app():
     is the sentence that dated the packaged folder as a later version.
     """
     card = _text(CARD)
-    assert "from your Iron Jarvis install" in card, (
+    assert "from your STEC OS install" in card, (
         "YourBrowserCard.tsx does not tell a packaged user the add-on folder is part "
-        'of their install. The owed phrase is "from your Iron Jarvis install" -- it '
+        'of their install. The owed phrase is "from your STEC OS install" -- it '
         "was on the forbidden list until this version and moves here in the same "
         "change as the packaging."
     )
@@ -741,7 +741,7 @@ def test_the_browser_guide_never_calls_the_add_on_an_extension():
 # allowToChangeInstallationDirectory:true and no perMachine, so electron-builder's
 # default root is %LOCALAPPDATA%\Programs\<productName>, and the add-on is the
 # extraResources entry whose `to:` is "browser-addon", written under resources\.
-DEFAULT_ADDON_PATH = r"%LOCALAPPDATA%\Programs\Iron Jarvis\resources\browser-addon"
+DEFAULT_ADDON_PATH = r"%LOCALAPPDATA%\Programs\STEC OS\resources\browser-addon"
 
 
 def test_the_default_addon_path_the_guides_print_is_the_one_the_installer_writes():
@@ -889,7 +889,7 @@ def test_both_guides_state_the_chrome_version_floor_the_manifest_declares():
     """Limitation 2 understated the bar: MV3 support long predates Chrome 120, and
     manifest.json sets `minimum_chrome_version` to 120. A user on a managed Chrome 115
     read that MV3 support was the bar, got Chrome's "requires a newer version of
-    Chrome", and had no number anywhere in Iron Jarvis's documentation to check.
+    Chrome", and had no number anywhere in STEC OS's documentation to check.
 
     The floor is asserted IN EACH PLACE that answers "which browsers work", not
     merely somewhere in the file: a reader who lands on Supported browsers and one

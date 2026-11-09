@@ -15,7 +15,7 @@
  *    session's box.
  *  - Search: titles and folder names, the chat list's search as the model.
  *
- * Decoders whitelist what they read (an older Iron Jarvis answers 404 or
+ * Decoders whitelist what they read (an older STEC OS answers 404 or
  * leaves a key out: nothing is shown, never a wrong thing).
  */
 
@@ -48,7 +48,7 @@ export function decodeNextSteps(raw: unknown): string[] {
 }
 
 /** Ask for the Next step suggestions after the newest reply. Never throws:
- *  an older Iron Jarvis, the switch being off or a model failure is []. */
+ *  an older STEC OS, the switch being off or a model failure is []. */
 export async function fetchNextSteps(threadId: string): Promise<string[]> {
   try {
     return decodeNextSteps(await post<unknown>(`/build/sessions/${encodeURIComponent(threadId)}/followups`, {}));

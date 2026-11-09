@@ -91,10 +91,10 @@ def create_backup(
     # Downloaded animated backgrounds (v1.410.0) in a dev or test home: they
     # are re-downloadable copies of repository files, never the user's state.
     backgrounds_dir = (home / "backgrounds").resolve()
-    # v1.428.0: an app installed from Iron Jarvis's own lock in a dev or test
+    # v1.428.0: an app installed from STEC OS's own lock in a dev or test
     # home (connectors/locked_pack.py) — a program, rebuilt from the lock.
     packages_dir = (home / "mcp-packages").resolve()
-    # v1.424.0 (D4): Iron Jarvis's plugin folder for the owner's Claude Code
+    # v1.424.0 (D4): STEC OS's plugin folder for the owner's Claude Code
     # setup on other accounts, in a dev or test home: COPIES of the owner's own
     # skills/commands/agents (v1.424.0 review: never junctions), remade at the
     # next start — never archived. Matched on the path AS WALKED, so a junction
@@ -276,7 +276,7 @@ def mirror_dir_problem(home: Path, value: str) -> "str | None":
 
     ``fs_policy.root_problem`` answers first — absolute, a folder on this
     machine, allowed, and WRITABLE (the one definition every "work in this
-    folder" door uses) — then one rule of its own: not inside Iron Jarvis's own
+    folder" door uses) — then one rule of its own: not inside STEC OS's own
     data folder, because a copy in the same tree survives nothing the original
     would not. ``""`` (switched off) is never a problem. BLOCKING (the
     writability probe creates a file): call it off the event loop."""
@@ -296,7 +296,7 @@ def mirror_dir_problem(home: Path, value: str) -> "str | None":
         return f"folder cannot be read: {exc}"
     if folder == own or own in folder.parents:
         return (
-            "that folder is inside Iron Jarvis's own data folder — pick a folder "
+            "that folder is inside STEC OS's own data folder — pick a folder "
             "outside it, ideally on another drive"
         )
     return None
@@ -586,7 +586,7 @@ def restore_backup_live(home: Path, archive: Path) -> int:
         extract_backup(archive, staging)
         tops = [p for p in staging.iterdir() if p.is_dir()]
         if len(tops) != 1:
-            raise ValueError(f"not an Iron Jarvis backup (top-level entries: {len(tops)})")
+            raise ValueError(f"not a STEC OS backup (top-level entries: {len(tops)})")
         src_home = tops[0]
         db_src = src_home / _DB_NAME
         moved = 0
@@ -696,7 +696,7 @@ def _walk_rest(home: Path, skip: "set[str]") -> "tuple[int, int, float]":
 
 
 def storage_report(home: Path) -> dict:
-    """What Iron Jarvis is keeping under ``home``, by category (R-01).
+    """What STEC OS is keeping under ``home``, by category (R-01).
 
     THE SILENT GROWTH THIS SURFACES. Measured on the live install before this
     shipped: 814 MB of state, of which ``artifacts/`` was 783 MB — 186 files, 57
@@ -746,7 +746,7 @@ def storage_report(home: Path) -> dict:
             "clearable": False,
         }
     )
-    # v1.424.0: Iron Jarvis's Claude setup folder holds copies of the owner's
+    # v1.424.0: STEC OS's Claude setup folder holds copies of the owner's
     # own files, remade when needed (``os.walk`` would also follow a junction an
     # older build left there): never counted.
     from .iron_proxy.claude_setup import FOLDER as _CLAUDE_SETUP

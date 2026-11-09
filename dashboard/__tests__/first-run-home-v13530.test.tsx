@@ -450,7 +450,7 @@ describe("G57 — names, not provider ids", () => {
     };
     setHealth(CLAUDE_SIGNED_IN, "anthropic");
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     fireEvent.click(await screen.findByTitle("Switch model"));
     const menu = await screen.findByTestId("model-menu");
     await waitFor(() => expect(within(menu).getAllByTestId("model-kind-badge").length).toBe(7));

@@ -1,6 +1,6 @@
 """MCP client — consume external Model Context Protocol servers as native tools.
 
-Iron Jarvis is an MCP *client*: it speaks JSON-RPC 2.0 (``tools/list`` /
+STEC OS is an MCP *client*: it speaks JSON-RPC 2.0 (``tools/list`` /
 ``tools/call``) to external MCP *servers* (Gmail / Drive / GitHub / ...) and
 surfaces each remote tool to agents as an ``mcp__<server>__<tool>`` ``Tool``
 gated by the ``mcp_call`` permission. The wire transport is dependency-injected

@@ -34,7 +34,7 @@ owner's record held 2 rows ever while one coding session handed ~14 pieces to
 its worker by name, so the router and any learning loop saw almost none of
 the work). ``asked`` says HOW: :data:`ASKED_BY_ROLE` (the planner named the
 role — the router picked, or a role beside the name labelled it) or
-:data:`ASKED_BY_NAME` (Iron Jarvis inferred the role the member worked as,
+:data:`ASKED_BY_NAME` (STEC OS inferred the role the member worked as,
 ``model_team.piece_role``); "" on a row from before the column. ``files_json``
 keeps the files the piece's session wrote (its journaled writes,
 :func:`piece_files`), for the coming Team notes (a reviewer's finding is
@@ -436,7 +436,7 @@ def credit_review(engine: Any, *, scope: str, review_row: "str | None", verdict:
     on a verdict line) are skipped anyway (``review = ''``).
 
     v1.421.0 review: a piece handed BY NAME that wrote NO file is not judged
-    either. Its role is Iron Jarvis's inference (a builder-based worker's
+    either. Its role is STEC OS's inference (a builder-based worker's
     piece is ``code``), so the lead's QUESTION to its worker ("read app.py,
     what is X?") was a ``code`` row, and one "changes needed" counted TWO
     failed code pieces — a :data:`FAIL_STREAK` that marked the worker not

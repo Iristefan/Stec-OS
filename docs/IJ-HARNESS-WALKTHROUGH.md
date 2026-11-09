@@ -7,7 +7,7 @@ driven).
 
 ## How it was run
 
-**IJ harness: driven for real.** A scratch Iron Jarvis daemon (port 8827, a
+**IJ harness: driven for real.** A scratch STEC OS daemon (port 8827, a
 fresh home whose default model is claude-cli, this PC's own Claude Code
 login, Iron-Proxy off) and the dashboard (`next dev` on 8828), driven by
 Playwright on the installed Edge at 1280 × 800. The model was the real

@@ -552,7 +552,7 @@ test.describe("review: the menu stays with its chip (1406 × 857)", () => {
     // Opened the way the title bar's search opens it (open, never toggle):
     // the palette is a chunk loaded when the page is idle, and a Ctrl+K
     // pressed before it arrived would open nothing.
-    const dialog = page.getByRole("dialog", { name: "Search Iron Jarvis" });
+    const dialog = page.getByRole("dialog", { name: "Search STEC OS" });
     await expect
       .poll(async () => {
         if ((await dialog.count()) === 0) await page.evaluate(() => window.dispatchEvent(new CustomEvent("ij:open-palette")));
@@ -579,7 +579,7 @@ test.describe("review: the IJ harness's Ctrl+K from a row of the menu", () => {
     await expect(page.getByTestId("harness-session")).toBeVisible({ timeout: 90_000 });
     // The palette is a chunk loaded when the page is idle: prove it is here
     // (open it, close it), or a Ctrl+K it would have taken proves nothing.
-    const dialog = page.getByRole("dialog", { name: "Search Iron Jarvis" });
+    const dialog = page.getByRole("dialog", { name: "Search STEC OS" });
     await expect
       .poll(async () => {
         if ((await dialog.count()) === 0) await page.evaluate(() => window.dispatchEvent(new CustomEvent("ij:open-palette")));

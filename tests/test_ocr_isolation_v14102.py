@@ -1,6 +1,6 @@
 """v1.410.2 — a stalled Windows OCR call can never freeze the daemon again.
 
-THE USER BUG (2026-10-30, after an update): "Iron Jarvis isn't responding" on
+THE USER BUG (2026-10-30, after an update): "STEC OS isn't responding" on
 every start. Each freeze trace (logs/daemon-freeze.txt) showed a Build
 terminal's restore parked in Windows' CreateProcessW (the Store PowerShell)
 and the OCR self-test that ``GET /onboarding`` runs parked at its first WinRT

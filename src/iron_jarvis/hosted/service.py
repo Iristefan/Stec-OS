@@ -205,14 +205,14 @@ _MODEL_RX = re.compile(r"^[A-Za-z0-9._:/\-\[\]]{1,120}$")
 _SID_RX = re.compile(r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
 
 def typable_sid(harness: str, hid: str) -> bool:
-    """Is ``hid`` a session id Iron Jarvis would type into a terminal — a
+    """Is ``hid`` a session id STEC OS would type into a terminal — a
     UUID, or (v1.413.0) OpenCode's own ``ses_…`` id for an OpenCode row?"""
     if _SID_RX.match(str(hid or "")):
         return True
     return harness == OPENCODE and bool(O.SESSION_ID_RX.match(str(hid or "")))
 
 
-STOPPED_TITLE = "Iron Jarvis stopped while this was working"
+STOPPED_TITLE = "STEC OS stopped while this was working"
 STOPPED_FIX = "Send the message again — the conversation is kept."
 
 
@@ -696,7 +696,7 @@ def started_by_clear(path: Any) -> bool:
 
 def claude_later(pane: Any, home: str, recorded: str, *, taken: "Collection[str]" = ()) -> list[dict[str, Any]]:
     """v1.426.0 (Wave 6, E3): the conversations a Build terminal's Claude
-    Code moved to AFTER the one Iron Jarvis recorded for it: what a
+    Code moved to AFTER the one STEC OS recorded for it: what a
     ``/clear`` (a new conversation id) typed inside the terminal leaves
     behind. BLOCKING; never raises ([] on any failure).
 
@@ -711,7 +711,7 @@ def claude_later(pane: Any, home: str, recorded: str, *, taken: "Collection[str]
     reader's summary (``id``, ``title``, ``mtime``).
 
     v1.426.0 review: "newer in the same folder" alone is NOT the pane's — the
-    user's own Claude Code running OUTSIDE Iron Jarvis in the same folder (the
+    user's own Claude Code running OUTSIDE STEC OS in the same folder (the
     Claude app, an editor's panel) writes such files all the time, and its
     conversation was handed over (and could be resumed while that Claude still
     wrote it). Only a conversation a ``/clear`` began counts. A ``/resume``
@@ -981,7 +981,7 @@ class LiveSession:
         #: v1.414.0: ask id -> the card's way to the phone (:class:`.news.PhoneWatch`).
         self.phones: dict[str, Any] = {}
         #: v1.414.0: the session's Capabilities (five boxes, the pane's shape),
-        #: read LIVE by its Iron Jarvis token (:mod:`.jarvis_tools`), and its
+        #: read LIVE by its STEC OS token (:mod:`.jarvis_tools`), and its
         #: folder (where a tool call through that token runs).
         self.caps: dict[str, bool] = {}
         self.folder = ""
@@ -1008,7 +1008,7 @@ class LiveSession:
         #: v1.418.0 (C4.8): the messages waiting behind the running reply
         #: (:class:`.queued.SessionQueue`; None until first read).
         self.queue: Any = None
-        #: v1.422.0 (the code host): what a restarted Iron Jarvis needs beside
+        #: v1.422.0 (the code host): what a restarted STEC OS needs beside
         #: the driver's own state (OpenCode's rules note, the MCP servers its
         #: session and Grok's are told about).
         self.kept: dict[str, Any] = {}
@@ -1093,7 +1093,7 @@ def _stoppable(lv: "LiveSession", now: float) -> bool:
 # --------------------------------------------------------------------------- #
 def heard_from(driver: Any, obj: dict[str, Any]) -> bool:
     """v1.441.0 review: does this frame count as hearing from the tool (the
-    two-silent-hours rule)? Not the answer to Iron Jarvis's own background
+    two-silent-hours rule)? Not the answer to STEC OS's own background
     read. Never raises."""
     try:
         return not (driver is not None and driver.quiet_frame(obj))
@@ -1146,7 +1146,7 @@ class HostedService:
         from ..harness.stall import PHONE_AFTER_S
 
         self.phone_after_s = PHONE_AFTER_S
-        #: v1.414.0: Iron Jarvis's own tools for a session — tokens of their
+        #: v1.414.0: STEC OS's own tools for a session — tokens of their
         #: own (memory only), revoked with the process.
         self.tokens = JT.HostedTokens(self)
         #: v1.415.0: the newest Context reading a tool gave per session
@@ -1154,7 +1154,7 @@ class HostedService:
         self._context_seen: dict[str, dict[str, Any]] = {}
         #: v1.441.0 (review P4): a name given while the session's tool was NOT
         #: running — told to the tool once, right after its next start
-        #: (memory only: a restart of Iron Jarvis in between forgets it).
+        #: (memory only: a restart of STEC OS in between forgets it).
         self._renames: dict[str, str] = {}
 
     # -- helpers -----------------------------------------------------------------
@@ -1892,7 +1892,7 @@ class HostedService:
             return live.queue
         saved = await asyncio.to_thread(Q.read, self.home, sid)
         # Review (v1.418.0): a queue read from disk was left by an EARLIER
-        # run of Iron Jarvis (this run keeps its own on the live session) —
+        # run of STEC OS (this run keeps its own on the live session) —
         # the reply it waited for is gone, so it is HELD: back to the box,
         # never sent behind the next reply (a shutdown returns before it
         # could write the hold).
@@ -2102,7 +2102,7 @@ class HostedService:
         if isinstance(body.get("capabilities"), dict):
             # v1.414.0: the session's Capabilities, a MERGE (the pane's own
             # rule: a box not named keeps its value). Read LIVE by the
-            # session's Iron Jarvis token, so a box turned OFF takes effect on
+            # session's STEC OS token, so a box turned OFF takes effect on
             # the tool's next call; a change of whether the connection is
             # needed at all (the first box on, the last one off) reaches the
             # tool with a new process before the next message.
@@ -2113,7 +2113,7 @@ class HostedService:
                     merged[key] = JT.normalise({key: value})[key]
             if merged != before:
                 fields["capabilities_json"] = json.dumps(merged, sort_keys=True)
-                # v1.441.0 (review A5): a tool that takes no Iron Jarvis
+                # v1.441.0 (review A5): a tool that takes no STEC OS
                 # tools (Antigravity 1.5.2) is never restarted for a box.
                 needs = JT.takes(row.harness) and JT.wanted(merged) != JT.wanted(before)
                 if live is not None:
@@ -2219,7 +2219,7 @@ class HostedService:
         return {"ok": True, "deleted": sid, "events_moved_to": moved}
 
     def _trash_events(self, sid: str) -> str:
-        """BLOCKING: the session's events folder moved to Iron Jarvis's own
+        """BLOCKING: the session's events folder moved to STEC OS's own
         trash (never deleted). The harness's own session file is untouched."""
         src = session_dir(self.home, sid)
         if not src.exists():
@@ -2400,7 +2400,7 @@ class HostedService:
             # v1.413.0: the mode's permission rules, for THIS process only (the
             # user's own config files are read, never written).
             env, rules_note = await asyncio.to_thread(O.child_env, env, row.mode, row.folder)
-        # v1.414.0: Iron Jarvis's own tools (Memory, Browser) — ONLY when the
+        # v1.414.0: STEC OS's own tools (Memory, Browser) — ONLY when the
         # user ticked one this server serves; else no token, no configuration.
         live.caps = JT.load(getattr(row, "capabilities_json", "") or "")
         live.folder = row.folder or ""
@@ -2485,7 +2485,7 @@ class HostedService:
             raise Refused(f"{W.label(row.harness)} did not start: {clip(said, 200)}") from None
         if not took_before and JT.takes(row.harness) and JT.wanted(live.caps) and url:
             # v1.441.0 (review of lane fix1): this start's handshake said the
-            # tool DOES take Iron Jarvis's tools (a newer Antigravity) — too
+            # tool DOES take STEC OS's tools (a newer Antigravity) — too
             # late for this process, which got none: the next message starts
             # it again with them, so a ticked box is never shown on for nothing.
             live.restart = True
@@ -2683,7 +2683,7 @@ class HostedService:
         stamp = HL.stamp_of(live.proc)
         if stamp is not None:
             # v1.422.0: the log's copy names the tool's line it came from, so
-            # a restarted Iron Jarvis knows what was already shown
+            # a restarted STEC OS knows what was already shown
             # (hosted/adopt.py); the turn's watchers get the event as before.
             from . import adopt as ADOPT
 
@@ -3001,7 +3001,7 @@ class HostedService:
     # -- turns -------------------------------------------------------------------
     async def start_turn(self, sid: str, text: str, turn_id: str, files: list[str] | None = None,
                          *, carry: dict[str, Any] | None = None) -> HostedTurn:
-        """``carry`` (v1.422.0): a message Iron Jarvis sends BY ITSELF to carry
+        """``carry`` (v1.422.0): a message STEC OS sends BY ITSELF to carry
         a reply on (``hosted.carry_on``) — its ``user`` event carries it (the
         page shows a line, not a bubble) and it ends no wait. Any other
         message is the user's own: it ends a limit's wait (``_drive``)."""
@@ -3075,10 +3075,10 @@ class HostedService:
                 raise Refused(W.BUSY)
         turn = HostedTurn(turn_id, sid)
         turn.started_mono = self.clock()
-        # v1.422.0 review: a turn Iron Jarvis started BY ITSELF (a carry-on) is
+        # v1.422.0 review: a turn STEC OS started BY ITSELF (a carry-on) is
         # one Emergency stop stops (``carry_on.stop_unattended_turns``).
         turn.carry = dict(carry) if carry else None
-        # v1.422.0: a carry-on Iron Jarvis sends by itself never names the
+        # v1.422.0: a carry-on STEC OS sends by itself never names the
         # session (its words are the app's, not the user's).
         live.title = (row.title or "").strip() or ("" if carry or builtin else first_message_title(text))
         self.turns[turn_id] = turn
@@ -3117,7 +3117,7 @@ class HostedService:
                 return f"Attached file not found: {clip(os.path.basename(f), 120)}"
             ok, why = fs_read_ok(f)
             if not ok:
-                return why or f"Iron Jarvis may not read {clip(os.path.basename(f), 120)}."
+                return why or f"STEC OS may not read {clip(os.path.basename(f), 120)}."
         return ""
 
     async def _pi_typed(self, row: Any, live: "LiveSession", text: str,
@@ -3156,7 +3156,7 @@ class HostedService:
         """v1.439.0: the message is one of Claude Code's or Grok's own commands
         done here (``hosted/typed``)? ``(name, value)`` for ``/model`` and
         ``/effort`` (resolved against that tool's own lists), a Refused (one
-        line) for one Iron Jarvis does not send, None for anything else."""
+        line) for one STEC OS does not send, None for anything else."""
         typed = T.typed_builtin(row.harness, text, _own_commands(row.harness, live, row.folder or ""))
         if typed is None:
             return None
@@ -3268,12 +3268,12 @@ class HostedService:
         if files:
             user["files"] = [clip(f, 500) for f in files]
         if carry:
-            user["carry"] = dict(carry)  # v1.422.0: Iron Jarvis carried it on
+            user["carry"] = dict(carry)  # v1.422.0: STEC OS carried it on
         if builtin is not None and row.harness == PI and builtin[0] in P.SHELL_BUILTINS:
             # v1.441.0 review: a command the user ran with ``!`` — a restart
             # that cuts it off never carries it on by itself
             # (``carry_on.WHY_COMMAND``): there is no reply for the model to
-            # carry on, and Iron Jarvis never starts the model's work on it.
+            # carry on, and STEC OS never starts the model's work on it.
             user["command"] = True
         self._emit(live, user)
         started = False
@@ -3690,7 +3690,7 @@ class HostedService:
 
         v1.422.0: ``keep_tools`` (a RESTART, ``POST /shutdown`` with
         ``restart``): a tool the code host runs is left running, its state
-        kept one last time — the next Iron Jarvis carries it on
+        kept one last time — the next STEC OS carries it on
         (:meth:`adopt`). A tool that is not in the host still goes."""
         self._closing = True
         if self._reaper is not None:
@@ -3772,7 +3772,7 @@ class HostedService:
                 # conversation as it was before the rewind (re-measured).
                 raise Refused(BR.PENDING_REWIND_TERMINAL.format(label=W.label(row.harness)))
             if not typable_sid(row.harness, hid):
-                raise Refused("That session's id is not one Iron Jarvis types into a terminal.", 409)
+                raise Refused("That session's id is not one STEC OS types into a terminal.", 409)
             # v1.426.0 (Wave 6, E3): pressed again after it opened (or the
             # conversation runs in another Build terminal): a second terminal
             # would be a second writer on one conversation.
@@ -4056,7 +4056,7 @@ class HostedService:
                     )
                 if home and not CO._usable(st) and force and st.get("status") not in ("unauthenticated", "disabled"):
                     # v1.427.3: the user knows it has usage left — Iron-Proxy's
-                    # park ends first (it may be Iron Jarvis's own guess).
+                    # park ends first (it may be STEC OS's own guess).
                     try:
                         client.unpark(str(prof.get("id")))
                     except Exception as exc:  # noqa: BLE001
@@ -4100,7 +4100,7 @@ class HostedService:
     def _carry(self, lease: Any, source: Path, client: Any, current: str, limit: Any) -> None:
         """BLOCKING: tell Iron-Proxy (ONLY the limit message) and COPY the
         conversation into the next account's home (``carry_over``: never
-        moved, an older copy kept in Iron Jarvis's trash)."""
+        moved, an older copy kept in STEC OS's trash)."""
         from ..iron_proxy import accounts as _acc
         from ..terminals import continue_on as CO
 
@@ -4130,7 +4130,7 @@ def reconcile_cut_turns(home: Any, keep: "Collection[str]" = ()) -> int:
     v1.422.0 (B3): ``keep`` — sessions to leave ALONE (a host that survived
     the restart still runs them: nothing is closed, nothing recorded). For
     every other session whose newest reply a restart cut off — the crash
-    case above, and a reply Iron Jarvis's own stop ended (a graceful
+    case above, and a reply STEC OS's own stop ended (a graceful
     shutdown's ``STOPPED_TITLE`` beside an ``interrupted`` done) — what the
     carry-on pass needs is kept beside the log (``hosted.carry_on``: the
     turn, whether a card or question was open, whether it was itself a

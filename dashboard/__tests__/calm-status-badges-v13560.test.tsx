@@ -262,7 +262,7 @@ describe("the bordered look stays only where it is deliberate", () => {
     expect(ui.match(/if \(variant !== "bordered"\) \{/g) ?? []).toHaveLength(2);
   });
 
-  // v1.356.0 integrate (moved on purpose): the "Restart Iron Jarvis" confirm
+  // v1.356.0 integrate (moved on purpose): the "Restart STEC OS" confirm
   // (Maintenance card + the legacy settings form) keeps its deliberate amber
   // outline too - its className colours a border the calm look does not draw.
   it("the bordered uses are Build's 'Close this terminal?' confirm and the Restart confirm", () => {

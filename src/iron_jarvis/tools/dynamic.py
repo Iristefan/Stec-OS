@@ -324,7 +324,7 @@ class DynamicToolRegistry:
             raise ValueError("tool name is required")
         if name in RESERVED_TOOL_NAMES:
             raise ValueError(
-                f"'{name}' is a name Iron Jarvis keeps for its own approvals; choose another name"
+                f"'{name}' is a name STEC OS keeps for its own approvals; choose another name"
             )
         if not argv:
             raise ValueError("tool command (argv) is required")

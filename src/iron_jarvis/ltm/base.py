@@ -106,7 +106,7 @@ class LTMConnector(ABC):
         """A structural change: ``archive`` | ``delete`` | ``rename`` | ``move``.
         Callers ask the user first (``brain_change`` cards every call)."""
         raise NoteOpUnsupported(
-            f"{self.name}: this memory base cannot {action} a note from Iron Jarvis"
+            f"{self.name}: this memory base cannot {action} a note from STEC OS"
         )
 
 

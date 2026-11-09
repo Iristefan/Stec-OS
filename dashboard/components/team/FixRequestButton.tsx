@@ -7,7 +7,7 @@
  * simple copy and paste of the issues experienced").
  *
  * ONE quiet button. A press reads `GET /team/fix-request?days=7[&session=…]`
- * (the daemon's `agents/fix_request`: the problems Iron Jarvis's OWN coding
+ * (the daemon's `agents/fix_request`: the problems STEC OS's OWN coding
  * sessions and model team ran into — a command the shell could not run, a
  * tool a worker kept calling wrong, a helper that could not start, a router
  * that found no one, a reply cut off, a review that never ran — each with
@@ -27,7 +27,7 @@
  *  - any other failure in words.
  *
  * Nothing is read until the press (the report reads a week of records). A 404
- * whose detail is FastAPI's own "Not Found" means an older Iron Jarvis that
+ * whose detail is FastAPI's own "Not Found" means an older STEC OS that
  * has no such report: the button hides itself. The route's own 404 (a session
  * that is gone) is said in its words instead.
  *
@@ -74,8 +74,8 @@ export function fixRequestTitle(session?: string | null, days: number = FIX_REQU
     ? `in this coding session over ${windowWords(days)}`
     : `in ${windowWords(days)}`;
   return (
-    `Copies a report of the problems Iron Jarvis's coding sessions and model team ran into ${where}, ` +
-    "written for the coding agent that fixes Iron Jarvis. Check it before you paste it anywhere: it " +
+    `Copies a report of the problems STEC OS's coding sessions and model team ran into ${where}, ` +
+    "written for the coding agent that fixes STEC OS. Check it before you paste it anywhere: it " +
     "holds commands, file paths and errors from your work (secrets are masked)."
   );
 }
@@ -99,12 +99,12 @@ function decode(raw: unknown): Report | null {
     problems: count(r.problems) ?? 0,
     listed: count(r.listed),
     // v1.423.0 review: `complete: false` — a source could not be read, or
-    // calls were left out; an older Iron Jarvis says nothing (complete).
+    // calls were left out; an older STEC OS says nothing (complete).
     complete: r.complete !== false,
   };
 }
 
-/** An older Iron Jarvis has no such route: FastAPI's own 404 ("Not Found"). */
+/** An older STEC OS has no such route: FastAPI's own 404 ("Not Found"). */
 function olderIronJarvis(err: unknown): boolean {
   return err instanceof ApiError && err.status === 404 && err.message.trim() === "Not Found";
 }
@@ -138,7 +138,7 @@ export function FixRequestButton({
     try {
       const report = decode(await get<unknown>(fixRequestPath(session, days)));
       if (!report) {
-        setSaid({ tone: "warn", text: "Iron Jarvis answered with something that is not a report." });
+        setSaid({ tone: "warn", text: "STEC OS answered with something that is not a report." });
         return;
       }
       if (report.problems <= 0) {

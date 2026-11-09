@@ -161,10 +161,10 @@ async def test_a_video_job_runs_in_the_background_delivers_and_comes_home(app, t
     tid = _thread(engine, [{"role": "user", "content": "make me a video", "at": "x"}])
     handle = await _started(provider)
     # A SPACE in the workspace on purpose: the packaged home is
-    # "%APPDATA%/Iron Jarvis/..." and the chat workfolder "Documents/Iron
+    # "%APPDATA%/STEC OS/..." and the chat workfolder "Documents/Iron
     # Jarvis/<date> <title>" — a bare markdown destination with a space is
     # refused by CommonMark and the chat shows the literal text.
-    workspace = tmp_path / "Iron Jarvis ws"
+    workspace = tmp_path / "STEC OS ws"
 
     job_id = jobs.start_background(
         _spec(provider, handle, workspace=workspace),
@@ -203,7 +203,7 @@ async def test_a_video_job_runs_in_the_background_delivers_and_comes_home(app, t
     # Angle-bracketed destination — the only form CommonMark accepts with a
     # space; the dashboard's Markdown renders a <video> from it.
     assert line["content"] == f"Your video is ready.\n\n![video](<{posix}>)"
-    assert media_markdown("image", "C:\\Iron Jarvis\\a b.png") == "![image](<C:/Iron Jarvis/a b.png>)"
+    assert media_markdown("image", "C:\\STEC OS\\a b.png") == "![image](<C:/STEC OS/a b.png>)"
     assert line["documents"] == [str(out)]
     assert line["panelKind"] == "media"
     assert line["at"]

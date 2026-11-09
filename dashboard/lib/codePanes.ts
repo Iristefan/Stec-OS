@@ -293,11 +293,11 @@ export interface CodeOverview {
   /** The listing was cut at its bound: more run than are listed. */
   programsMore: boolean;
   /** v1.426.0 (E4): the tool's OWN MCP servers as it reported them; null =
-   *  an older Iron Jarvis that does not say. */
+   *  an older STEC OS that does not say. */
   mcp: CodeMcp | null;
   /** v1.441.0 (g1): the tool's own background work it can stop (Claude Code's
    *  open tasks, Codex's background terminals); null = the tool offers no list
-   *  (or an older Iron Jarvis): the tab shows what it showed before. */
+   *  (or an older STEC OS): the tab shows what it showed before. */
   backgroundWork: BackgroundWork[] | null;
 }
 
@@ -328,7 +328,7 @@ export const MCP_ACTION_WORDS: Record<string, string> = {
 /** What an action does, beyond its name (the menu item's title), per tool. */
 export function mcpActionTitle(action: string, tool: string, toolName: string): string {
   if (action === "off" && tool === "claude-code") return "Claude Code remembers this for this folder, as /mcp does.";
-  if (action === "sign_in") return `Opens ${toolName}'s sign-in page for it in your browser; Iron Jarvis never signs in for you.`;
+  if (action === "sign_in") return `Opens ${toolName}'s sign-in page for it in your browser; STEC OS never signs in for you.`;
   if (action === "reconnect") return `Asks ${toolName} to start it again.`;
   return "";
 }

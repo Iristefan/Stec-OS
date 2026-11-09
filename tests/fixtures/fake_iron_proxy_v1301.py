@@ -1,4 +1,4 @@
-"""A fake Iron-Proxy speaking the control API Iron Jarvis uses (v1.301.0).
+"""A fake Iron-Proxy speaking the control API STEC OS uses (v1.301.0).
 
 Two ways to use it:
 

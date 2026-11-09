@@ -103,7 +103,7 @@ export function MemorySurface({
       <Reveal>
         <PageHeader
           title="Memory"
-          subtitle="Everything Iron Jarvis remembers — working notes, learned lessons, and the long-term knowledge base, in one place."
+          subtitle="Everything STEC OS remembers — working notes, learned lessons, and the long-term knowledge base, in one place."
         />
       </Reveal>
       {/* v1.279.0: the answer to "what do you know about me?" comes first —

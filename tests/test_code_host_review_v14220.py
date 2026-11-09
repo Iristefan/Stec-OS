@@ -60,7 +60,7 @@ pytestmark = [pytest.mark.skipif(sys.platform != "win32", reason="the product's 
 
 
 async def _cut_mid_reply(hosts, tmp_path: Path, monkeypatch):
-    """A reply being written when Iron Jarvis dies: (root, home, log, sid, tool pid)."""
+    """A reply being written when STEC OS dies: (root, home, log, sid, tool pid)."""
     root = tmp_path / "root"
     log = tmp_path / "fake.log"
     hosts.home(config_home(root))
@@ -165,7 +165,7 @@ async def test_a_kept_session_the_adoption_ran_out_of_time_for_is_stopped_not_le
     monkeypatch.setattr(ADOPT, "BOOT_ADOPT_WAIT_S", 1.0, raising=False)
     app2 = await boot(root)
     monkeypatch.setattr(ADOPT, "_adopt_one", real)
-    await until(lambda: not psutil.pid_exists(pid), timeout=20)  # never left running unknown to Iron Jarvis
+    await until(lambda: not psutil.pid_exists(pid), timeout=20)  # never left running unknown to STEC OS
     _closed_once(home, sid, app2)
     await _next_message_resumes(app2, sid, log)
     starts = [r for r in fake_rows(log) if "argv" in r]
@@ -358,7 +358,7 @@ def test_the_host_listens_on_loopback_only_and_keeps_no_credential_in_its_own_en
 
 async def test_a_card_raised_by_a_line_read_again_is_the_same_card_end_to_end(hosts, tmp_path, monkeypatch):
     """The state was last kept BEFORE the card's line (it came, was shown,
-    and Iron Jarvis died before keeping the state again): after the restart
+    and STEC OS died before keeping the state again): after the restart
     the line is read again and must raise the card the window already shows
     — same id — answerable by that id, the answer reaching the tool once.
     (The id's derivation was pinned only as a unit; an end-to-end run with
@@ -408,7 +408,7 @@ def test_a_start_the_host_answered_too_late_never_leaves_a_second_process(hosts,
     """The host did not answer a start in time (a process creation that
     hung): the tool starts as a plain child instead — and the host, which
     may still start it, is told to stop it, so the conversation never has a
-    second process the host runs on unknown to Iron Jarvis."""
+    second process the host runs on unknown to STEC OS."""
     import os
 
     home = hosts.home(tmp_path / "home")

@@ -134,7 +134,7 @@ beforeEach(() => {
   window.history.replaceState({}, "", "/everything");
   window.localStorage.clear();
   window.sessionStorage.clear();
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
   Element.prototype.scrollIntoView = vi.fn();
 });
 afterEach(() => {
@@ -210,7 +210,7 @@ describe("the chat page claims the chat it opens — before any read answers", (
   it("a NEW chat is claimed by the id its first save mints", async () => {
     window.history.replaceState({}, "", "/chat");
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     expect(threadShownHere("t1")).toBe(false);
     act(() => {
       box.focus();

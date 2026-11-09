@@ -63,7 +63,7 @@ bell shows a quiet row). ACCEPT (:func:`accept`) keeps it as a
 :class:`TeamNote` and RENDERS the member's ``TEAM-NOTES.md`` in its agent
 folder (``agents/files.AgentFiles``): atomic, a revision copy of the old text
 under ``revisions/team-notes/``, and NEVER over a hand edit — the file is
-written only while it is exactly what Iron Jarvis last wrote
+written only while it is exactly what STEC OS last wrote
 (:attr:`TeamNoteState.written_sha`), else the user's file is kept and the
 answer says so. DECLINE is the coach's (it suppresses that signature for
 :data:`SUPPRESS_DAYS`). :func:`remove` takes an accepted habit back (the file
@@ -91,7 +91,7 @@ suggestion of any kind.
 MEASUREMENT (Phase 3, ``agents/team_measure``): each accepted habit's
 member record is split at its acceptance — first-pass approval, confirmed
 findings per piece, check pass rate — and a habit that seems to make things
-worse is FLAGGED on ``GET /team``, never removed by Iron Jarvis.
+worse is FLAGGED on ``GET /team``, never removed by STEC OS.
 
 Every reader and writer here is BLOCKING (SQLite, files) and never raises;
 the async ones hop.
@@ -154,8 +154,8 @@ NOTES_REVISIONS = ("revisions", "team-notes")
 HABITS_HEADER = "# Your working habits (from your reviewers' findings)"
 NOTES_TITLE = "# Working habits"
 NOTES_COMMENT = (
-    "<!-- Iron Jarvis writes this file from the working habits you accepted on the Agents page. "
-    "If you edit it, Iron Jarvis keeps your text and stops changing this file. -->"
+    "<!-- STEC OS writes this file from the working habits you accepted on the Agents page. "
+    "If you edit it, STEC OS keeps your text and stops changing this file. -->"
 )
 HABIT_SOURCE = "a working habit"
 FINDING_PROMPT_SOURCE = "a reviewer's finding"
@@ -182,8 +182,8 @@ REASON_NOT_SAVED = (
     "the attempt could not be recorded, so nothing was sent (the once-a-day limit could not be kept)"
 )
 KEPT_SENTENCE = (
-    "TEAM-NOTES.md was changed by hand, so Iron Jarvis kept your file as it is. The habit is "
-    "saved; edit the file yourself, or put it back as Iron Jarvis wrote it, to have it updated."
+    "TEAM-NOTES.md was changed by hand, so STEC OS kept your file as it is. The habit is "
+    "saved; edit the file yourself, or put it back as STEC OS wrote it, to have it updated."
 )
 OFF_SENTENCE = "Team notes are turned off, so no model is shown the habit until you turn them on."
 
@@ -225,7 +225,7 @@ class TeamNote(SQLModel, table=True):
 
 class TeamNoteState(SQLModel, table=True):
     """Per member: the last distill ATTEMPT (the daily limit) and the
-    ``TEAM-NOTES.md`` text Iron Jarvis last wrote (the hand-edit rule)."""
+    ``TEAM-NOTES.md`` text STEC OS last wrote (the hand-edit rule)."""
 
     __tablename__ = "teamnotestate"
 
@@ -233,7 +233,7 @@ class TeamNoteState(SQLModel, table=True):
     last_attempt_at: datetime | None = None
     #: Why the last attempt minted nothing ("" when it minted, or never ran).
     last_reason: str = ""
-    #: sha256 of the TEAM-NOTES.md text Iron Jarvis last wrote ("" = never).
+    #: sha256 of the TEAM-NOTES.md text STEC OS last wrote ("" = never).
     written_sha: str = ""
 
 
@@ -1376,7 +1376,7 @@ def notes_path(platform: Any, member: str) -> Any:
 
 
 def render_text(habits: Iterable[str]) -> str:
-    """TEAM-NOTES.md as Iron Jarvis writes it."""
+    """TEAM-NOTES.md as STEC OS writes it."""
     lines = [NOTES_TITLE, "", NOTES_COMMENT, ""]
     body = [f"- {_one_line(h)}" for h in habits if _one_line(h)]
     return "\n".join(lines + body).rstrip("\n") + "\n"
@@ -1458,14 +1458,14 @@ def _replace_unless_changed(path: Any, text: str, *, expect: "bytes | None") -> 
     temp file, read the file AGAIN right before the replace, and abandon the
     write (:class:`_ChangedWhileWriting`) when it no longer holds the bytes
     the decision read (``expect``; None = there was no file). A save the
-    user made while Iron Jarvis was deciding wins — the window left is the
+    user made while STEC OS was deciding wins — the window left is the
     re-read-to-replace gap, not the whole render."""
     import os
 
     tmp = _write_temp(path, text)
     try:
         if _raw(path) != expect:
-            raise _ChangedWhileWriting("TEAM-NOTES.md changed while Iron Jarvis was writing it")
+            raise _ChangedWhileWriting("TEAM-NOTES.md changed while STEC OS was writing it")
         os.replace(tmp, path)
     except BaseException:
         try:
@@ -1485,8 +1485,8 @@ class Rendered:
 
 def render(platform: Any, member: str) -> Rendered:
     """Write the member's TEAM-NOTES.md from its habits in force — ONLY
-    while the file is exactly what Iron Jarvis last wrote (or there is none:
-    nothing to overwrite). A file Iron Jarvis did not write, or one changed
+    while the file is exactly what STEC OS last wrote (or there is none:
+    nothing to overwrite). A file STEC OS did not write, or one changed
     since, is the USER's: kept as it is, and :data:`KEPT_SENTENCE` says so.
     Atomic, with a revision copy of the previous text (``revisions/
     team-notes/``). A member with no habit and no file gets no file.
@@ -1516,8 +1516,8 @@ def render(platform: Any, member: str) -> Rendered:
             if before is not None and current is None:
                 return Rendered(state="kept", path=str(path), sentence=KEPT_SENTENCE)
             if current is not None and current == want:
-                # Already exactly what Iron Jarvis would write: nothing to do
-                # (and from now on it is Iron Jarvis's text again).
+                # Already exactly what STEC OS would write: nothing to do
+                # (and from now on it is STEC OS's text again).
                 _save_state(engine, member, written_sha=_sha(want))
                 return Rendered(state="unchanged", path=str(path))
             if current is None:
@@ -1530,8 +1530,8 @@ def render(platform: Any, member: str) -> Rendered:
             try:
                 _replace_unless_changed(path, want, expect=before)
             except _ChangedWhileWriting:
-                # The user saved it while Iron Jarvis was deciding: theirs now
-                # — kept, and Iron Jarvis's last-written text unchanged (so it
+                # The user saved it while STEC OS was deciding: theirs now
+                # — kept, and STEC OS's last-written text unchanged (so it
                 # reads as a hand edit until they put it back).
                 log.info("TEAM-NOTES.md changed while it was being written; the user's file was kept")
                 return Rendered(state="kept", path=str(path), sentence=KEPT_SENTENCE)
@@ -1557,8 +1557,8 @@ def _revision(path: Any, previous: str) -> None:
 
 
 def hand_edited(platform: Any, member: str) -> bool:
-    """Does the member's TEAM-NOTES.md hold text Iron Jarvis did not write
-    (the user's own file, or one changed since Iron Jarvis wrote it)?
+    """Does the member's TEAM-NOTES.md hold text STEC OS did not write
+    (the user's own file, or one changed since STEC OS wrote it)?
     BLOCKING; never raises (False)."""
     try:
         path = notes_path(platform, member)
@@ -1732,7 +1732,7 @@ def forget_member(member: str) -> None:
 
 
 def notes_body(text: str) -> str:
-    """The habits part of TEAM-NOTES.md: the title line and Iron Jarvis's
+    """The habits part of TEAM-NOTES.md: the title line and STEC OS's
     one-line comment left out. Linear (lines, no regex)."""
     out: list[str] = []
     first = True

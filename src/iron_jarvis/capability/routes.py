@@ -68,7 +68,7 @@ def register(app, d) -> None:
         """Pending requests first, with what approving each one would actually do.
 
         ``can_apply`` / ``kind_note`` / ``blocked`` come from the LIVE platform,
-        so the card can say "Iron Jarvis can't add an MCP server for you" BEFORE
+        so the card can say "STEC OS can't add an MCP server for you" BEFORE
         the user clicks rather than after.
 
         BOUNDED, AND IT SAYS SO (v1.185.0). ``store.list`` caps the rows and

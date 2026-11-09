@@ -276,7 +276,7 @@ function PublicUrlBox({ url, autoCopy = false }: { url: string; autoCopy?: boole
 
 /* ---- Share row ---------------------------------------------------------------- */
 
-const SHARE_TEXT = "Made with Iron Jarvis";
+const SHARE_TEXT = "Made with STEC OS";
 
 /** Letter-glyph chip for brands lucide no longer ships icons for (X, Facebook, LinkedIn). */
 function BrandGlyph({ glyph }: { glyph: string }) {
@@ -1672,7 +1672,7 @@ function UserBubble({ text }: { text: string }) {
   );
 }
 
-/** Three staggered pulsing dots — the "Iron Jarvis is working" indicator. */
+/** Three staggered pulsing dots — the "STEC OS is working" indicator. */
 function WorkingDots() {
   return (
     <span className="inline-flex items-center gap-1" aria-hidden="true">
@@ -1683,7 +1683,7 @@ function WorkingDots() {
   );
 }
 
-/** Left-aligned assistant chat bubble with an Iron Jarvis avatar. */
+/** Left-aligned assistant chat bubble with a STEC OS avatar. */
 function AssistantBubble({ children }: { children: ReactNode }) {
   return (
     <div className="flex justify-start gap-2.5">
@@ -2796,7 +2796,7 @@ function StudioView({
           <Reveal>
             <ErrorNote>
               {gone
-                ? "This terminal is gone. Iron Jarvis may have restarted."
+                ? "This terminal is gone. STEC OS may have restarted."
                 : !alive
                   ? describeTerminalExit(exitCode)
                   : "The engine exited in this terminal — its shell is still open on Build."}{" "}
@@ -3187,7 +3187,7 @@ function StudioView({
         <Reveal>
           <div className="flex items-start gap-3 rounded-xl border border-amber-500/25 bg-amber-500/[0.06] px-4 py-2.5">
             <p className="min-w-0 flex-1 text-xs text-amber-200">
-              Your previous studio session ended (Iron Jarvis may have restarted). The terminal
+              Your previous studio session ended (STEC OS may have restarted). The terminal
               and its output are gone; your media is still in the destination folder.
             </p>
             <button
@@ -3980,10 +3980,10 @@ export default function CreativePage() {
             view === "library"
               ? "Browse your own media folders — every image, video, and track on this machine. Pin the folders you use most."
               : view === "create"
-                ? "Pick an engine, a skill, and a folder — Iron Jarvis launches the CLI in a background terminal (it appears on Build) and new media lands here as it’s created."
+                ? "Pick an engine, a skill, and a folder — STEC OS launches the CLI in a background terminal (it appears on Build) and new media lands here as it’s created."
                 : // v1.314.0 (UX wave 2): no internal tool names — point at the
                   // page's own Create tab and at Chat.
-                  "Everything Iron Jarvis makes lands here automatically. Make something in Create, or ask for it in Chat or an agent session."
+                  "Everything STEC OS makes lands here automatically. Make something in Create, or ask for it in Chat or an agent session."
           }
           actions={
             <div className="flex flex-wrap items-center gap-3">
@@ -4100,7 +4100,7 @@ export default function CreativePage() {
                   action={{ label: "Make something here", onClick: () => switchView("create") }}
                   secondary={{ label: "Open Chat", href: "/chat" }}
                 >
-                  Images, video and audio Iron Jarvis makes land here automatically. Start one in
+                  Images, video and audio STEC OS makes land here automatically. Start one in
                   Create, or ask for it in Chat.
                 </Empty>
               </Card>

@@ -254,7 +254,7 @@ describe("A1 Reflexes: the empty state teaches and opens the add form", () => {
     render(<ReflexPage />);
     const empty = await findEmpty();
     expectTeaching(empty);
-    expect(empty.textContent).not.toContain("No reflexes yet — add one to make Iron Jarvis act on its own.");
+    expect(empty.textContent).not.toContain("No reflexes yet — add one to make STEC OS act on its own.");
     expect(empty.textContent).not.toMatch(/act on its own/i);
   });
 
@@ -665,7 +665,7 @@ describe("D5 Notifications: the test-send picker says destination, and the value
     expect(opts[0].textContent).toBe("All destinations");
     const mockOpt = opts.find((o) => o.value === "mock")!;
     expect(mockOpt.textContent).toBe("Test log (in-app only)");
-    fireEvent.change(screen.getByPlaceholderText("Hello from Iron Jarvis…"), { target: { value: "hi" } });
+    fireEvent.change(screen.getByPlaceholderText("Hello from STEC OS…"), { target: { value: "hi" } });
     fireEvent.change(pick, { target: { value: "mock" } });
     const send = screen.getAllByRole("button", { name: /^send$/i })[0];
     fireEvent.click(send);
@@ -682,7 +682,7 @@ describe("D5 Notifications: the test-send picker says destination, and the value
 /*  E. Autonomy in plain words                                                 */
 /* ========================================================================== */
 
-function primeAutonomy(briefingText = "Iron Jarvis — morning briefing\n- Active goals: 0\n- Pending proposals: 2") {
+function primeAutonomy(briefingText = "STEC OS — morning briefing\n- Active goals: 0\n- Pending proposals: 2") {
   api.responses["/autonomy"] = {
     enabled: false,
     level: "suggest",
@@ -1082,7 +1082,7 @@ describe("Review fix: webhook examples are TRUE for a loopback install", () => {
     // nothing, so the Direction option, the events hint and the subtitle must
     // not say it does (the empty state above already says a reflex decides).
     const s = code("app/webhooks/page.tsx");
-    expect(s).not.toMatch(/starts? work here|start work in Iron Jarvis/);
+    expect(s).not.toMatch(/starts? work here|start work in STEC OS/);
     expect(s).toMatch(/a reflex decides what to do/);
   });
 });

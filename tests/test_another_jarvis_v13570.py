@@ -1,4 +1,4 @@
-"""Another computer running Iron Jarvis can be connected (v1.357.0, G61).
+"""Another computer running STEC OS can be connected (v1.357.0, G61).
 
 ACCEPTANCE (the readiness audit's G61): on two PCs, a user registers the second
 Jarvis by address and token in Agents › Your team, "@desk do X" runs there, and
@@ -289,7 +289,7 @@ def test_the_door_is_fail_closed(tmp_path, monkeypatch):
     padded = {"task": "short", "history": [{"role": "user", "content": "y" * 500}]}
     assert client.post(TASK_DOOR_PATH, json=padded, headers=door_auth).status_code == 413
     monkeypatch.setattr(td, "TASK_MAX_BODY_BYTES", 2 * 1024 * 1024)
-    # a reply address that is not another Iron Jarvis's inbound door
+    # a reply address that is not another STEC OS's inbound door
     for bad in (
         "http://192.168.1.9:8787/agents/remote/desk/run",
         "file:///etc/passwd",
@@ -337,7 +337,7 @@ async def test_a_task_becomes_one_unattended_low_trust_session(tmp_path, monkeyp
                 "conversation_id": "athr_1",
                 "history": [
                     {"role": "user", "content": "we need the Q3 notes"},
-                    {"role": "assistant", "content": "Iron Jarvis: on it"},
+                    {"role": "assistant", "content": "STEC OS: on it"},
                 ],
                 "reply_to": "http://a-pc:8787/agents/remote/desk/inbound",
                 "reply_token": "the-callers-inbound-key",
@@ -894,11 +894,11 @@ def test_the_reachability_sentence_says_iron_jarvis_and_opens_nothing(tmp_path, 
     reach = out["reachable"]
     assert reach["host_allowed"] is False
     note = reach["note"]
-    assert note.startswith("Iron Jarvis on this computer")
+    assert note.startswith("STEC OS on this computer")
     assert "daemon" not in note.lower()
     # v1.358.0 (G61, moved on purpose): the way in is the SETTING, never a
     # command line or an environment variable the desktop app cannot set.
-    assert "Let other computers on my network reach this Iron Jarvis" in note
+    assert "Let other computers on my network reach this STEC OS" in note
     assert "IRONJARVIS_HOST_ALLOWLIST" not in note and "--host" not in note
     assert "the other computer needs the same" in note
     import os

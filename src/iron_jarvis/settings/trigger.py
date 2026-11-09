@@ -108,7 +108,7 @@ _EXTENDERS = frozenset(
 )
 #: v1.438.0 (Wave 4 group C): after "…windows", a word that names one of
 #: WINDOWS' own things — "start Windows Update", "start Windows Defender" —
-#: is never "start Iron Jarvis with Windows".
+#: is never "start STEC OS with Windows".
 _WINDOWS_THINGS = frozenset(
     {
         "update", "updates", "defender", "explorer", "firewall", "terminal", "security", "store",

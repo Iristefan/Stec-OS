@@ -1,5 +1,5 @@
 """v1.411.0 — Pi in Build's Code view: the user's REAL Pi (``pi --mode rpc``),
-with its own tools, extensions, skills and settings ON; Iron Jarvis only hosts
+with its own tools, extensions, skills and settings ON; STEC OS only hosts
 it and turns every question Pi or an extension asks into a card.
 
 Every turn replays a RECORDED Pi 1.3.0 session (masked live output,

@@ -163,7 +163,7 @@ describe("OnboardingWelcome step links (v1.197.0)", () => {
   it("first_session points at Chat ('Open Chat'), not the Sessions list", async () => {
     hooks.responses["/onboarding"] = freshInstall();
     render(<OnboardingWelcome />);
-    await screen.findByText("Welcome to Iron Jarvis");
+    await screen.findByText("Welcome to STEC OS");
 
     const link = rowLink("Step first_session");
     expect(link).toHaveAttribute("href", "/chat");
@@ -174,7 +174,7 @@ describe("OnboardingWelcome step links (v1.197.0)", () => {
   it("teach_style points at Chat ('Teach it in Chat'), not the empty lessons page", async () => {
     hooks.responses["/onboarding"] = freshInstall();
     render(<OnboardingWelcome />);
-    await screen.findByText("Welcome to Iron Jarvis");
+    await screen.findByText("Welcome to STEC OS");
 
     const link = rowLink("Step teach_style");
     // v1.320.0: Chat opens with an example preference already typed (nothing
@@ -191,7 +191,7 @@ describe("OnboardingWelcome step links (v1.197.0)", () => {
   it("connect_ai still points at /connections ('Connect a model')", async () => {
     hooks.responses["/onboarding"] = freshInstall();
     render(<OnboardingWelcome />);
-    await screen.findByText("Welcome to Iron Jarvis");
+    await screen.findByText("Welcome to STEC OS");
 
     const link = rowLink("Step connect_ai");
     expect(link).toHaveAttribute("href", "/connections");
@@ -203,7 +203,7 @@ describe("OnboardingWelcome step links (v1.197.0)", () => {
     data.checklist[0] = step("connect_ai", { done: true });
     hooks.responses["/onboarding"] = data;
     render(<OnboardingWelcome />);
-    await screen.findByText("Welcome to Iron Jarvis");
+    await screen.findByText("Welcome to STEC OS");
 
     const link = rowLink("Step connect_ai");
     expect(link).toHaveAttribute("href", "/connections");

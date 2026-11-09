@@ -1,4 +1,4 @@
-"""Wrap remote MCP tools as native Iron Jarvis ``Tool`` objects (§19).
+"""Wrap remote MCP tools as native STEC OS ``Tool`` objects (§19).
 
 Each tool advertised by an external MCP server is exposed to agents as an
 :class:`MCPRemoteTool` named ``mcp__<server>__<tool>`` and gated by the single
@@ -472,7 +472,7 @@ def _build_transport(cfg: dict[str, Any], secret_resolver: SecretResolver | None
             if value:
                 env[str(env_key)] = value
     if cfg.get("locked"):
-        # v1.428.0 review: a LOCKED program gets its settings from Iron Jarvis
+        # v1.428.0 review: a LOCKED program gets its settings from STEC OS
         # ONLY. A daemon started with any `MS365_MCP_*` (an OAuth token that
         # skips the account lock, a command that stores the sign-in) or a
         # wider ENABLED_TOOLS / NODE_OPTIONS must not hand it on.
@@ -561,7 +561,7 @@ def resolve_launcher(command: str) -> str:
     }.get(cmd.lower().removesuffix(".cmd"), f"install '{cmd}'")
     raise FileNotFoundError(
         f"launcher '{cmd}' was not found on PATH or in the usual install "
-        f"folders — {hint}, restart Iron Jarvis, then press Retry on the extension"
+        f"folders — {hint}, restart STEC OS, then press Retry on the extension"
     )
 
 
@@ -882,14 +882,14 @@ def classify_load_failure(cfg: dict[str, Any] | None, error: str | None) -> dict
             node_launchers = {"npx", "npx.cmd", "node", "npm"}
             if present:
                 reason = (
-                    f"{launcher} exists on this PC but not on the PATH Iron Jarvis "
+                    f"{launcher} exists on this PC but not on the PATH STEC OS "
                     f"was started with, so the extension could not start"
                 )
                 fix = (
-                    "Restart Iron Jarvis from a terminal that can run "
+                    "Restart STEC OS from a terminal that can run "
                     f"{launcher}, or reinstall Node.js LTS so it registers for every program."
                     if launcher.lower() in node_launchers
-                    else f"Restart Iron Jarvis from a terminal that can run {launcher}."
+                    else f"Restart STEC OS from a terminal that can run {launcher}."
                 )
             else:
                 reason = f"{launcher} isn't installed, or isn't on the PATH this app can see"

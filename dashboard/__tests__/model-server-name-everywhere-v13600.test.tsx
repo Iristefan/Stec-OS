@@ -273,7 +273,7 @@ describe("the row helpers hand the catalog to the one rule", () => {
 /* ------------------------------------------------------ the chat page */
 
 async function openMenu() {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.click(await screen.findByTitle("Switch model"));
   return (await screen.findByTestId("model-filter")) as HTMLInputElement;
 }

@@ -56,7 +56,7 @@ TICK_S = 30.0
 #: stopped by the loop (the reply cap ends it at a step boundary first; this
 #: is the backstop for a step that never returns).
 OVERRUN_GRACE_S = 15 * 60.0
-#: A task marked running whose session was never made (Iron Jarvis stopped
+#: A task marked running whose session was never made (STEC OS stopped
 #: in between) is given up after this long.
 NO_SESSION_GIVE_UP_S = 5 * 60.0
 
@@ -300,7 +300,7 @@ async def _settle_morning(d: Any, task: dict[str, Any], thread: str, git: "dict[
     """v1.399.0 (N2): one ended night task's COMMIT and its MORNING FACTS.
 
     * THE COMMIT (decision 2): the task's work is committed to its own branch
-      by Iron Jarvis itself (``build_git.commit_for_night`` — the Commit
+      by STEC OS itself (``build_git.commit_for_night`` — the Commit
       button's machinery under the session's git lock; never a push, never a
       merge) with the task's words as the message (``night_morning.
       commit_message``) — whatever it ended as, so a failed or needs-you
@@ -344,7 +344,7 @@ async def _settle_morning(d: Any, task: dict[str, Any], thread: str, git: "dict[
                     # changed" beside files that did change.
                     commit_note = "Nothing was committed."
                 elif done.get("nothing") and task.get("commit_sha"):
-                    # Iron Jarvis stopped after this task's commit and before
+                    # STEC OS stopped after this task's commit and before
                     # the task was marked ended: the settle runs again, finds
                     # nothing new, and the commit it made is still its commit.
                     prior = (task.get("morning") or {}).get("commit")
@@ -448,7 +448,7 @@ async def _announce_once(platform: Any, key: str) -> bool:
     (v1.399.0 review). The claim is written FIRST (``claim_notice``: a phone
     never gets the night's message twice, even from two passes), and given
     back when the publish fails, so the next pass tries again — a summary
-    made but never announced (Iron Jarvis stopped between the two, a claim
+    made but never announced (STEC OS stopped between the two, a claim
     the database refused) is announced on the next pass, not never. A stop
     between the claim and the publish loses that one notice (the Last night
     view still holds the night): at most once, on purpose."""
@@ -614,7 +614,7 @@ async def settle_running(d: Any) -> list[str]:
             if started is not None and now is not None and (now - started).total_seconds() < NO_SESSION_GIVE_UP_S:
                 continue
             await asyncio.to_thread(N.add_note, engine, tid, "error",
-                                    "Iron Jarvis stopped before this task's session was made.")
+                                    "STEC OS stopped before this task's session was made.")
             await asyncio.to_thread(N.finish_task, engine, tid, N.FAILED)
             _release(d, tid)
             settled.append(tid)
@@ -623,7 +623,7 @@ async def settle_running(d: Any) -> list[str]:
         if turn or thread in _STARTING:
             _keep_held(d, tid)
             # The backstop counts THIS turn's own time (a reply carried on
-            # after a restart starts a new turn; the hours Iron Jarvis was
+            # after a restart starts a new turn; the hours STEC OS was
             # off are never counted — the reply cap's own rule).
             from .chat import _turn_logs
 
@@ -752,7 +752,7 @@ async def settle_running(d: Any) -> list[str]:
         if ended_pids:
             notes.append(("info", f"It left {len(ended_pids)} program(s) running in the background; "
                           "they were stopped when it ended."))
-        # v1.399.0 (N2, decision 2): Iron Jarvis COMMITS the task's work to
+        # v1.399.0 (N2, decision 2): STEC OS COMMITS the task's work to
         # its own branch (the Commit button's machinery; never a push, never a
         # merge) — a failed or needs-you task's too, so nothing is lost — and
         # keeps what the morning summary reads, off the records.
@@ -779,7 +779,7 @@ async def settle_running(d: Any) -> list[str]:
                 notes = [(k, t) for k, t in notes if k != "outside" and t != G.UNCHECKED]
                 notes.insert(0, ("outside", said))
                 if not moved:
-                    notes.append(("info", "Your main folder changed while Iron Jarvis committed this task's "
+                    notes.append(("info", "Your main folder changed while STEC OS committed this task's "
                                   "work (a git hook of the repository runs then)."))
                 if state == N.DONE:
                     state = N.NEEDS_YOU
@@ -798,7 +798,7 @@ async def settle_running(d: Any) -> list[str]:
 
 async def start_task(d: Any, task: dict[str, Any]) -> bool:
     """Start ONE queued task: its session on a NEW branch (the one create
-    path), then its first turn (or its attempts), as Iron Jarvis's own
+    path), then its first turn (or its attempts), as STEC OS's own
     (``started_by="night"``). True when it started; a refusal ends the task
     FAILED with the reason in words. The caller holds its slot."""
     from .build import (

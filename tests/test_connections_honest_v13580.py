@@ -149,7 +149,7 @@ def test_the_gallery_rows_carry_the_built_in_fields(client):
     assert rows["fetch"]["built_in"] == "Web" and rows["fetch"]["name"] == "Fetch web pages"
     assert rows["memory"]["built_in"] == "Memory"
     for cid in ("filesystem", "fetch", "memory"):
-        assert rows[cid]["built_in_note"].startswith("Iron Jarvis already ")
+        assert rows[cid]["built_in_note"].startswith("STEC OS already ")
     assert rows["github"]["built_in"] == "" and rows["github"]["built_in_note"] == ""
 
 

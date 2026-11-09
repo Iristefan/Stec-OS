@@ -251,9 +251,9 @@ def test_the_lanes_error_frame_says_title_and_fix_and_folds_the_technical_text()
 
 def test_an_older_error_frame_reads_as_before() -> None:
     turns, conn = _turns()
-    _drive(turns, conn, [("error", {"detail": "Iron Jarvis could not reach that page."})])
+    _drive(turns, conn, [("error", {"detail": "STEC OS could not reach that page."})])
     [sent] = [p for e, p in conn.sent if e == P.PANEL_EVENT_ERROR]
-    assert sent == {"text": "Iron Jarvis could not reach that page."}
+    assert sent == {"text": "STEC OS could not reach that page."}
 
 
 # --------------------------------------------------------------------------- #

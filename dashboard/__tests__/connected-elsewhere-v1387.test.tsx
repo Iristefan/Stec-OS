@@ -160,7 +160,7 @@ const connectorReads = () => H.gets.filter((g) => g === "/connectors").length;
 async function ask(question: string, way: Way) {
   H.getResponses["/connectors"] = { connectors: [way.before] };
   H.dones.push({ ...way.done, route: { provider: "mock", model: "mock" } });
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: question } });
   fireEvent.keyDown(box, { key: "Enter" });
   await waitFor(() => expect(H.streamBodies.length).toBe(1));
@@ -242,7 +242,7 @@ describe("only the newest offer, only when it really works, read only when looke
     render(<ChatPage />);
     await ask("search my Google Drive for the lease", FIX.drive);
     H.dones.push({ reply: "Sure, here is a poem.", route: { provider: "mock", model: "mock" } });
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "write me a poem" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await screen.findByText("Sure, here is a poem.");
@@ -274,7 +274,7 @@ describe("only the newest offer, only when it really works, read only when looke
   it("no offer, no read: a reply that offered nothing never asks the Directory", async () => {
     render(<ChatPage />);
     H.dones.push({ reply: "Hello!", route: { provider: "mock", model: "mock" } });
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "hi" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await screen.findByText("Hello!");

@@ -4,7 +4,7 @@
  *
  * ACCEPTANCE (as a new user): opening a run from chat shows the task as the
  * title, "Took 2 min 5 s", plain step words and a collapsed "Full record"; a
- * run cut by a restart says "Stopped when Iron Jarvis restarted" with a
+ * run cut by a restart says "Stopped when STEC OS restarted" with a
  * Continue that resumes its conversation.
  *
  * Harness: the REAL session page (app/sessions/[id]/page.tsx) with only the
@@ -129,7 +129,7 @@ import { CONTINUE_AFTER_RESTART } from "@/components/InterruptedJobs";
 import type { SessionView } from "@/lib/types";
 
 const ID = "session_7b32f746bc3a";
-const WS = "C:/Users/me/Documents/Iron Jarvis/2026-10-18 lease";
+const WS = "C:/Users/me/Documents/STEC OS/2026-10-18 lease";
 
 function fakeParams(id: string): Promise<{ id: string }> {
   const p = Promise.resolve({ id });
@@ -373,11 +373,11 @@ describe("a run a restart cut off", () => {
     summary: "interrupted by a daemon restart",
   };
 
-  it("says 'Stopped when Iron Jarvis restarted', reads 'Interrupted' (never a red 'Failed'), and offers Continue", async () => {
+  it("says 'Stopped when STEC OS restarted', reads 'Interrupted' (never a red 'Failed'), and offers Continue", async () => {
     setRun(INTERRUPTED);
     open();
     const line = await screen.findByTestId("session-interrupted");
-    expect(line.textContent).toContain("Stopped when Iron Jarvis restarted");
+    expect(line.textContent).toContain("Stopped when STEC OS restarted");
     expect(within(line).getByRole("button", { name: "Continue" })).toBeInTheDocument();
     expect(within(line).getByRole("button", { name: "Dismiss" })).toBeInTheDocument();
     const chip = screen.getByTestId("session-interrupted-chip");
@@ -456,7 +456,7 @@ describe("a run a restart cut off", () => {
  *     recap first ("Conversation so far:\n…\n\n---\n\n<the ask>"), so the
  *     title read "Conversation so far:".
  * (2) The reconcile's stock summary "interrupted by a daemon restart" sat
- *     right under "Stopped when Iron Jarvis restarted".
+ *     right under "Stopped when STEC OS restarted".
  * (3) A mission teammate / delegated child was offered the restart Continue
  *     the bell deliberately withholds (v1.309.0, contract 7).
  */
@@ -484,7 +484,7 @@ describe("v1.354.0 review — the receipt for real runs", () => {
     setRun({ status: "failed", interrupted_at: null, summary: "interrupted by a daemon restart" });
     open();
     const summary = await screen.findByTestId("session-summary");
-    expect(summary.textContent).toContain("Stopped when Iron Jarvis restarted.");
+    expect(summary.textContent).toContain("Stopped when STEC OS restarted.");
     expect(document.body.textContent ?? "").not.toMatch(/daemon/i);
   });
 
@@ -503,7 +503,7 @@ describe("v1.354.0 review — the receipt for real runs", () => {
     api.postResponses[`/sessions/${ID}/continue`] = { id: "session_next" };
     open();
     const line = await screen.findByTestId("session-interrupted");
-    expect(line.textContent).toContain("Stopped when Iron Jarvis restarted");
+    expect(line.textContent).toContain("Stopped when STEC OS restarted");
     expect(within(line).queryByRole("button", { name: "Continue" })).toBeNull();
     expect(within(line).getByTestId("session-interrupted-part")).toBeInTheDocument();
     // Still tells the truth about how it ended.

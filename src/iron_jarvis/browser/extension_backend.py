@@ -1,4 +1,4 @@
-"""The one live socket to the Iron Jarvis browser add-on (plan §5.3, D08).
+"""The one live socket to the STEC OS browser add-on (plan §5.3, D08).
 
 This module is the transport half of the Browser capability: it holds the single
 authoritative :class:`ExtensionConnection`, mints request ids, tracks the pending
@@ -301,7 +301,7 @@ def download_bus_payload(reported: Any) -> tuple[dict[str, Any], str]:
         claimed = payload.get("filename")
         return payload, (
             "your browser reported a completed download without an absolute local "
-            f"path (filename={claimed!r}), so Iron Jarvis will not hand that path to "
+            f"path (filename={claimed!r}), so STEC OS will not hand that path to "
             "a file tool"
         )
     payload["local_path"] = verified
@@ -790,7 +790,7 @@ class ExtensionBackend:
                 BrowserErrorCode.BROWSER_NOT_CONNECTED,
                 message=(
                     "The browser that asked to pair is no longer connected. Ask "
-                    "the user to reload the Iron Jarvis add-on and press Pair again."
+                    "the user to reload the STEC OS add-on and press Pair again."
                 ),
             )
         if not await conn.send(P.paired_frame(token)):
@@ -1214,7 +1214,7 @@ class ExtensionBackend:
             logger.debug("browser frame refused (%d): %s", conn.refused_frames, why)
         if conn.refused_frames >= MAX_REFUSED_FRAMES:
             self.note_error(
-                f"your browser sent {conn.refused_frames} frames Iron Jarvis could not "
+                f"your browser sent {conn.refused_frames} frames STEC OS could not "
                 f"read, so the connection was closed; the last one: {why}"
             )
             logger.warning("closing browser socket: %s", self.last_error)
@@ -1315,15 +1315,15 @@ class ExtensionBackend:
         access = self.access_word()
         if access not in PANEL_ACCESS_ALLOWED:
             self.note_error(
-                "the sidebar asked Iron Jarvis to work while Browser access is off"
+                "the sidebar asked STEC OS to work while Browser access is off"
             )
             await conn.send(
                 P.panel_event_frame(
                     P.PANEL_EVENT_ERROR,
                     {
-                        "text": "Browser access is off, so Iron Jarvis will not"
+                        "text": "Browser access is off, so STEC OS will not"
                         " run anything from this sidebar. Turn it on from"
-                        " the Browser page in Iron Jarvis.",
+                        " the Browser page in STEC OS.",
                         "reason": "browser_access_off",
                     },
                 )
@@ -1335,7 +1335,7 @@ class ExtensionBackend:
                 P.panel_event_frame(
                     P.PANEL_EVENT_ERROR,
                     {
-                        "text": "This Iron Jarvis cannot run a sidebar"
+                        "text": "This STEC OS cannot run a sidebar"
                         " conversation.",
                         "reason": "no_panel_handler",
                     },
@@ -1350,7 +1350,7 @@ class ExtensionBackend:
             await conn.send(
                 P.panel_event_frame(
                     P.PANEL_EVENT_ERROR,
-                    {"text": "Iron Jarvis could not do that from the sidebar."},
+                    {"text": "STEC OS could not do that from the sidebar."},
                 )
             )
 

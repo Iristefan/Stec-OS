@@ -3,7 +3,7 @@
  * kills a dev server the coding tool started, and the session in front gets 60
  * minutes. What the Code view does about it:
  *
- *   - while the session is on screen (the window seen), it tells Iron Jarvis
+ *   - while the session is on screen (the window seen), it tells STEC OS
  *     so once a minute (`POST …/seen`) — never on mount (the first read
  *     already says it);
  *   - a session kept open for a program it runs says so in ONE quiet line
@@ -107,7 +107,7 @@ const KEEP =
   "that program stops, or after 8 hours with nothing new. To close it now, ask Claude Code to stop it, or press " +
   "Close Claude Code (the program stops with it).";
 const STOPPED =
-  "Iron Jarvis closed Claude Code after 15 minutes with nothing to do. The program it ran stopped with it:\n" +
+  "STEC OS closed Claude Code after 15 minutes with nothing to do. The program it ran stopped with it:\n" +
   "- node vite.js --port 3000 (port 3000)";
 
 function sess(over: Record<string, unknown> = {}) {

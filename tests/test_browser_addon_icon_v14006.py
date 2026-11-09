@@ -1,7 +1,7 @@
 """v1.400.6 — the browser add-on wears the app's own icon.
 
 Before this, ``extensions/chrome/manifest.json`` named no icon at all, so Chrome and
-Edge drew a grey letter "I" for "Iron Jarvis" in the toolbar, the extensions menu,
+Edge drew a grey letter "I" for "STEC OS" in the toolbar, the extensions menu,
 the side panel's header and the extensions page. Now every one of those draws the
 user's "iU" tile — the same picture as the desktop app (v1.380.0).
 
@@ -78,7 +78,7 @@ def test_the_manifest_names_the_icons_chrome_and_edge_draw():
             "refuse the whole folder"
         )
     action = manifest["action"]
-    assert action["default_title"] == "Iron Jarvis", "the toolbar button lost its title"
+    assert action["default_title"] == "STEC OS", "the toolbar button lost its title"
     assert action.get("default_icon") == {"16": icons["16"], "32": icons["32"]}, (
         "the toolbar button must draw the same icon at 1x and 2x"
     )

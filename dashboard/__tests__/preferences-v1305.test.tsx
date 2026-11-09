@@ -610,7 +610,7 @@ describe("the quiet line under the reply", () => {
 // ---------------------------------------------------------------- the page
 
 async function send(text: string, reply: string) {
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: text } });
   fireEvent.keyDown(box, { key: "Enter" });
   await screen.findByText(reply);
@@ -675,7 +675,7 @@ describe("the chat page — both lanes (v1.305.0)", () => {
     H.stream.gate = new Promise<void>((r) => {
       release = r;
     });
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "and the next thing" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await waitFor(() => expect(H.stream.bodies.length).toBe(2));

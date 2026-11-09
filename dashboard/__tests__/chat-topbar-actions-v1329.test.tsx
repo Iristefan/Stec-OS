@@ -324,7 +324,7 @@ describe("Add to project", () => {
     expect(document.activeElement).toBe(trigger());
 
     // The page followed the chat: the next autosave keeps p2.
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "and the totals?" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await screen.findByText("Streamed answer.");
@@ -376,7 +376,7 @@ describe("Add to project", () => {
     await waitFor(() => expect(H.db.rows[0].project_id).toBeNull());
     await waitFor(() => expect(menuOpen()).toBeNull());
 
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "and the totals?" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await screen.findByText("Streamed answer.");

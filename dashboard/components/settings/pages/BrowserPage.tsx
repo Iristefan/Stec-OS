@@ -592,7 +592,7 @@ export default function ComputerUsePage() {
       <Reveal>
         <PageHeader
           title="Browser"
-          subtitle="Two browsers live here. Your browser — your own Chrome or Edge, paired with Iron Jarvis so it can see your open tabs and read the page you are looking at. And the agent browser — a separate, disposable browser an agent drives on its own, gated behind allowlists and your explicit approval, with a live view so you can watch it work."
+          subtitle="Two browsers live here. Your browser — your own Chrome or Edge, paired with STEC OS so it can see your open tabs and read the page you are looking at. And the agent browser — a separate, disposable browser an agent drives on its own, gated behind allowlists and your explicit approval, with a live view so you can watch it work."
         />
       </Reveal>
 
@@ -1070,7 +1070,7 @@ export default function ComputerUsePage() {
 
       {/* Best practices — why you can trust it */}
       <Reveal>
-        <Card title="How Iron Jarvis keeps this safe" icon={<ShieldCheck size={15} />}>
+        <Card title="How STEC OS keeps this safe" icon={<ShieldCheck size={15} />}>
           <ul className="grid gap-3 sm:grid-cols-2">
             {BEST_PRACTICES.map(({ icon: Icon, text }, i) => (
               <li key={i} className="flex items-start gap-2.5 text-sm text-zinc-400">

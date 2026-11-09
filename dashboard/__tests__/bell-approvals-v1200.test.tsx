@@ -109,7 +109,7 @@ beforeEach(() => {
   postMock.mockReset();
   notifyMock.mockReset();
   eventsRef.current = [];
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
 });
 
 afterEach(() => {
@@ -145,7 +145,7 @@ describe("pending agent approvals in the bell", () => {
     render(<NotificationBell />);
     // 1 review + 1 computer-use approval + 1 agent ask = 3.
     await screen.findByRole("button", { name: "3 notifications" });
-    await waitFor(() => expect(document.title).toBe("(3) Iron Jarvis"));
+    await waitFor(() => expect(document.title).toBe("(3) STEC OS"));
     expect(getMock).toHaveBeenCalledWith(PENDING_PATH);
   });
 
@@ -154,7 +154,7 @@ describe("pending agent approvals in the bell", () => {
     render(<NotificationBell />);
     await waitFor(() => expect(notifyMock).toHaveBeenCalled());
     const [title, body] = notifyMock.mock.calls[0] as [string, string];
-    expect(title).toBe("Iron Jarvis: 1 pending"); // v1.329.0: no dash aside
+    expect(title).toBe("STEC OS: 1 pending"); // v1.329.0: no dash aside
     expect(body).toContain("1 agent asking permission");
   });
 });
@@ -189,7 +189,7 @@ describe("answering an agent ask", () => {
     );
     await waitFor(() => expect(pendingCalls()).toBeGreaterThan(before));
     // Nothing else pends, so the badge and tab title clear to the base state.
-    await waitFor(() => expect(document.title).toBe("Iron Jarvis"));
+    await waitFor(() => expect(document.title).toBe("STEC OS"));
   });
 
   it("Deny POSTs {decision:'deny'} to the same route", async () => {

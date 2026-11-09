@@ -601,7 +601,7 @@ async def _repl_sweep_loop(repl, *, interval_s: float = _REPL_SWEEP_S) -> None:
             raise
         except Exception:  # noqa: BLE001 — a sweep must never kill the daemon
             # v1.433.0 (L2): WARNING — a sweep that keeps failing leaves idle
-            # Python processes running for as long as Iron Jarvis does. Once
+            # Python processes running for as long as STEC OS does. Once
             # per run of failures (review): every minute would flood the log
             # and push real problems out of GET /diagnostics/errors.
             if not failing:
@@ -1912,7 +1912,7 @@ def create_app(project_root: str | None = None) -> FastAPI:
         def _desktop_sink(title: str, message: str) -> None:
             loop = _live_rearm.get("loop")
             if loop is None:
-                raise RuntimeError("Iron Jarvis is not running yet")
+                raise RuntimeError("STEC OS is not running yet")
             asyncio.run_coroutine_threadsafe(
                 platform.event_bus.publish(
                     "comm.desktop", {"title": title, "message": message}
@@ -2325,7 +2325,7 @@ def create_app(project_root: str | None = None) -> FastAPI:
             # v1.422.0: a QUIT (or an update) also stops every tool in the CODE
             # HOST and the host itself (even one only a crash left); a RESTART
             # (``POST /shutdown {"restart": true}``) leaves them running for the
-            # next Iron Jarvis (hosted/adopt.py).
+            # next STEC OS (hosted/adopt.py).
             try:
                 from ..hosted import adopt as _hosted_adopt
 
@@ -2383,7 +2383,7 @@ def create_app(project_root: str | None = None) -> FastAPI:
             except Exception:  # noqa: BLE001 — shutdown never raises
                 pass
 
-    app = FastAPI(title="Iron Jarvis", version=__version__, lifespan=lifespan)
+    app = FastAPI(title="STEC OS", version=__version__, lifespan=lifespan)
     # Optional bearer-token auth (env IRONJARVIS_TOKEN) — required for a public
     # deployment; no-op locally.
     from .auth import (
@@ -3347,7 +3347,7 @@ def create_app(project_root: str | None = None) -> FastAPI:
                 )
 
         system = (
-            "You design Iron Jarvis workflows. A workflow is a repeatable, ordered "
+            "You design STEC OS workflows. A workflow is a repeatable, ordered "
             "list of steps. Respond with ONLY a JSON object (no prose, no code "
             "fence) of the exact shape: "
             '{"name": "kebab-case-name", "description": "one line", '
@@ -3505,12 +3505,12 @@ def create_app(project_root: str | None = None) -> FastAPI:
                      "manifest below — create the app from it in one paste)."},
             {"key": "channel", "label": "Channel (option B)", "secret": False,
              "help": "Where messages go, e.g. #general or a channel ID (C0123…). "
-                     "Invite the bot to the channel: /invite @Iron Jarvis."},
+                     "Invite the bot to the channel: /invite @STEC OS."},
             {"key": "signing_secret", "label": "Signing secret (two-way)", "secret": True,
              "help": "App → Basic Information → Signing Secret. UNLOCKS inbound "
                      "events: point Slack's Event Subscriptions request URL at "
                      "/comm/slack/events/<channel-name> (needs a public URL — "
-                     "e.g. a Tailscale funnel); Iron Jarvis verifies every "
+                     "e.g. a Tailscale funnel); STEC OS verifies every "
                      "request against this secret."},
             {"key": "app_id", "label": "App ID (optional)", "secret": False,
              "help": "Basic Information → App ID (A0…). Stored for reference."},
@@ -3526,15 +3526,15 @@ def create_app(project_root: str | None = None) -> FastAPI:
                      "encrypted."},
             {"key": "app_token", "label": "App-level token (two-way, no exposure)", "secret": True,
              "help": "xapp-… from Basic Information → App-Level Tokens "
-                     "(connections:write scope). POWERS SOCKET MODE: Iron Jarvis "
+                     "(connections:write scope). POWERS SOCKET MODE: STEC OS "
                      "dials OUT to Slack over a WebSocket — two-way DMs with "
                      "ZERO public URL / internet exposure. Enable Socket Mode in "
                      "the app (the manifest below already does)."},
             {"key": "inbound_enabled", "label": "Enable two-way (true/false)", "secret": False,
              "help": "Set to true to let allowlisted people DM the bot and get "
                      "agent replies. Off by default."},
-            {"key": "chat_enabled", "label": "Chat with Iron Jarvis (true/false)", "secret": False,
-             "help": "Set to true to hold a real conversation with Iron Jarvis "
+            {"key": "chat_enabled", "label": "Chat with STEC OS (true/false)", "secret": False,
+             "help": "Set to true to hold a real conversation with STEC OS "
                      "in your Slack messages with the bot — replies remember "
                      "the thread, and the conversation shows up live on the "
                      "desktop. Chat implies listening: turning this on also "
@@ -3555,11 +3555,11 @@ def create_app(project_root: str | None = None) -> FastAPI:
             {"key": "chat_id", "label": "Chat ID", "secret": False,
              "help": "Your numeric chat id (message @userinfobot to find it)."},
             {"key": "inbound_enabled", "label": "Enable two-way (true/false)", "secret": False,
-             "help": "Set to true so Iron Jarvis listens for messages sent to "
+             "help": "Set to true so STEC OS listens for messages sent to "
                      "the bot (commands like /status, and chat when enabled "
                      "below). Off by default."},
-            {"key": "chat_enabled", "label": "Chat with Iron Jarvis (true/false)", "secret": False,
-             "help": "Set to true to hold a real conversation with Iron Jarvis "
+            {"key": "chat_enabled", "label": "Chat with STEC OS (true/false)", "secret": False,
+             "help": "Set to true to hold a real conversation with STEC OS "
                      "from this destination — replies remember the thread, and "
                      "the whole conversation shows up live on the desktop. "
                      "Chat implies listening: turning this on also turns "
@@ -3582,13 +3582,13 @@ def create_app(project_root: str | None = None) -> FastAPI:
     # Pre-formatted app manifest (JSON — the format Slack's "Create New App →
     # From an app manifest" editor now expects; it dropped the YAML tab): paste it
     # at api.slack.com/apps and every required scope/setting lands in one step.
-    # (Socket Mode is on, so Iron Jarvis dials OUT to Slack — two-way DMs with no
+    # (Socket Mode is on, so STEC OS dials OUT to Slack — two-way DMs with no
     # public URL; create an App-Level Token with connections:write after install.)
     _CHANNEL_MANIFESTS = {
         "slack": """{
   "display_information": {
-    "name": "Iron Jarvis",
-    "description": "Notifications and two-way chat from your local Iron Jarvis",
+    "name": "STEC OS",
+    "description": "Notifications and two-way chat from your local STEC OS",
     "background_color": "#0a0c11"
   },
   "features": {
@@ -3598,7 +3598,7 @@ def create_app(project_root: str | None = None) -> FastAPI:
       "messages_tab_read_only_enabled": false
     },
     "bot_user": {
-      "display_name": "Iron Jarvis",
+      "display_name": "STEC OS",
       "always_online": true
     }
   },
@@ -3817,7 +3817,7 @@ def create_app(project_root: str | None = None) -> FastAPI:
 
     _team_routes.register(app, d)
     # Copy as a fix request (v1.423.0): the problems the coding sessions and
-    # their team ran into, as a report for the agent that fixes Iron Jarvis.
+    # their team ran into, as a report for the agent that fixes STEC OS.
     from .routes import fix_request as _fix_request_routes
 
     _fix_request_routes.register(app, d)
@@ -3850,7 +3850,7 @@ def create_app(project_root: str | None = None) -> FastAPI:
     from .routes import build_library as _build_library_routes
 
     _build_library_routes.register(app, d)
-    # v1.426.0 (Wave 6, E1): SEE the instructions Iron Jarvis gives a coding
+    # v1.426.0 (Wave 6, E1): SEE the instructions STEC OS gives a coding
     # session's model — the component tree, put together as a turn does it,
     # read-only and never stored.
     from .routes import build_harness as _build_harness_routes

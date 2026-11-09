@@ -245,11 +245,11 @@ function storeThread(setup: Record<string, unknown>) {
   window.history.replaceState({}, "", "/chat?thread=t7");
 }
 
-const box = () => screen.getByPlaceholderText(/Message Iron Jarvis/) as HTMLTextAreaElement;
+const box = () => screen.getByPlaceholderText(/Message STEC OS/) as HTMLTextAreaElement;
 
 async function startTurn(text: string) {
   const n = H.stream.bodies.length;
-  const b = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const b = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(b, { target: { value: text } });
   fireEvent.keyDown(b, { key: "Enter" });
   await waitFor(() => expect(H.stream.bodies.length).toBe(n + 1));

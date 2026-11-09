@@ -83,7 +83,7 @@
  * failure this paragraph exists to prevent.
  *
  * NO AGENT-FACING STRING REACHES THIS SURFACE. `/browser/request-host-permission`
- * answers 409 with "…Ask the user to open the Browser page in Iron Jarvis and
+ * answers 409 with "…Ask the user to open the Browser page in STEC OS and
  * pair their browser, then retry." — remedy copy written for a TOOL, and it
  * tells the user, who is standing on that page, to go to that page. Failures
  * here are mapped to sentences written for the person reading them
@@ -162,7 +162,7 @@ function statusOf(e: unknown): number {
  * A sentence for the PERSON, never the daemon's own words.
  *
  * The routes behind this dialog answer with remedy text written for an agent
- * ("Ask the user to open the Browser page in Iron Jarvis and pair their
+ * ("Ask the user to open the Browser page in STEC OS and pair their
  * browser, then retry"), which is both wrong here — the user IS on that page —
  * and in a voice no user should ever be shown. It is also not thrown away: the
  * card behind this dialog keeps rendering `last_error` from the daemon, and the
@@ -174,42 +174,42 @@ function humanFailure(what: "arm" | "pair" | "grant" | "access", e: unknown): st
   // which is the one thing read from its words here: WHICH 409 this is.
   const words = e instanceof Error ? e.message : String(e ?? "");
   if (status === 0) {
-    return "Iron Jarvis did not answer. Check it is still running, then try again.";
+    return "STEC OS did not answer. Check it is still running, then try again.";
   }
   if (status === 401 || status === 403) {
-    return "Iron Jarvis refused that. Reopen the app window and try again.";
+    return "STEC OS refused that. Reopen the app window and try again.";
   }
   switch (what) {
     case "arm":
       if (status === 404) {
-        return "This copy of Iron Jarvis is older than the guided setup, so it cannot open a setup window. The steps below still work — restart Iron Jarvis to get the guided one.";
+        return "This copy of STEC OS is older than the guided setup, so it cannot open a setup window. The steps below still work — restart STEC OS to get the guided one.";
       }
       if (status === 503) {
-        return "The browser bridge is not running in this copy of Iron Jarvis, so there is no setup window to open. The steps below still work.";
+        return "The browser bridge is not running in this copy of STEC OS, so there is no setup window to open. The steps below still work.";
       }
-      return "Iron Jarvis could not open a setup window just now. The steps below still work, and Re-arm tries again.";
+      return "STEC OS could not open a setup window just now. The steps below still work, and Re-arm tries again.";
     case "pair":
       // v1.265.0: a 409 is now one of two different things. AUTHENTICATION_FAILED
       // is "another browser is paired and connected" — the one case a Pair press
       // does not simply replace — and its remedy is a button on the card behind
       // this dialog. Every other 404/409 is a request that is no longer pairable.
       if (status === 409 && words.startsWith("AUTHENTICATION_FAILED")) {
-        return "Another browser is paired and connected to Iron Jarvis right now. Press Forget on the Browser card behind this dialog to end that pairing, then press Pair here again.";
+        return "Another browser is paired and connected to STEC OS right now. Press Forget on the Browser card behind this dialog to end that pairing, then press Pair here again.";
       }
       if (status === 404 || status === 409) {
         return "That pairing request is no longer waiting — your browser may have reconnected. Give it a moment; when it asks again, this button comes back.";
       }
-      return "Iron Jarvis could not complete the pairing just now. Try the button again in a moment.";
+      return "STEC OS could not complete the pairing just now. Try the button again in a moment.";
     case "grant":
       if (status === 409 || status === 503) {
-        return "Your browser is not connected to Iron Jarvis right now, so there is nothing to ask. Finish the steps above first — the tab opens by itself once it is.";
+        return "Your browser is not connected to STEC OS right now, so there is nothing to ask. Finish the steps above first — the tab opens by itself once it is.";
       }
-      return "Iron Jarvis could not ask your browser for site access just now. Try again in a moment.";
+      return "STEC OS could not ask your browser for site access just now. Try again in a moment.";
     case "access":
       if (status === 400) {
-        return "Iron Jarvis would not accept that access level.";
+        return "STEC OS would not accept that access level.";
       }
-      return "Iron Jarvis could not change the access level just now. Try again in a moment.";
+      return "STEC OS could not change the access level just now. Try again in a moment.";
   }
 }
 
@@ -524,7 +524,7 @@ export function BrowserSetupModal({
   /** The card's polled `GET /browser/status`. Handed down rather than fetched
    *  again, so the modal and the card behind it can never disagree. */
   status: BrowserStatus | null;
-  /** The version THIS copy of Iron Jarvis is, from `GET /health`, so step 5 can
+  /** The version THIS copy of STEC OS is, from `GET /health`, so step 5 can
    *  name the number the add-on's own header must match. Optional: the dialog
    *  is mounted in tests and by a card whose health call may not have landed
    *  yet, and a version sentence is worth having only when there is a version
@@ -712,7 +712,7 @@ export function BrowserSetupModal({
             Set up your browser
           </h2>
           <p className="mt-0.5 text-[11.5px] text-zinc-500">
-            Five presses, and Iron Jarvis does the rest. Three of them are {browser.possessive} to
+            Five presses, and STEC OS does the rest. Three of them are {browser.possessive} to
             keep, one is yours to give, and the last one opens the sidebar.
           </p>
           {/* v1.261.0: the steps below are written for ONE browser. The pick
@@ -798,7 +798,7 @@ export function BrowserSetupModal({
               <span data-testid="browser-setup-countdown" className="font-mono text-zinc-100">
                 {clock(left)}
               </span>{" "}
-              Iron Jarvis asks your browser for site access by itself, so step four usually happens
+              STEC OS asks your browser for site access by itself, so step four usually happens
               without you. Pairing is always your press.
             </span>
           </div>
@@ -836,14 +836,14 @@ export function BrowserSetupModal({
               />
             )}
             {step2 && <DoneRow n={2} label="Add-on loaded in your browser" />}
-            {step3 && <DoneRow n={3} label="Paired with Iron Jarvis" />}
+            {step3 && <DoneRow n={3} label="Paired with STEC OS" />}
 
             {current === 1 && (
               <StepCard n={1} icon={<FolderOpen size={13} />} title="Open this folder">
                 {addonDir ? (
                   <>
                     <p className="text-[12.5px] leading-relaxed text-zinc-400">
-                      This is the Iron Jarvis browser add-on on this machine, already built and
+                      This is the STEC OS browser add-on on this machine, already built and
                       shipped with the app. Copy it — {browser.short} asks for it by path in the
                       next step.
                     </p>
@@ -860,7 +860,7 @@ export function BrowserSetupModal({
                     className="text-[12.5px] leading-relaxed text-amber-100/80"
                   >
                     <span className="font-semibold text-amber-200">
-                      Iron Jarvis could not find the add-on folder on this machine
+                      STEC OS could not find the add-on folder on this machine
                     </span>{" "}
                     — so there is no path to copy, and printing a folder name{" "}
                     {browser.possessive} picker cannot resolve would only waste your time. Reinstalling the current release
@@ -890,9 +890,9 @@ export function BrowserSetupModal({
                   data-testid="browser-setup-why-manual"
                   className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-2.5 py-2 text-[11.5px] leading-relaxed text-zinc-500"
                 >
-                  Iron Jarvis cannot do these two clicks for you. {browser.short} only installs
+                  STEC OS cannot do these two clicks for you. {browser.short} only installs
                   add-ons either from a Web Store listing or from a person pressing Load unpacked
-                  themselves — that is the whole point of the setting. The Iron Jarvis browser
+                  themselves — that is the whole point of the setting. The STEC OS browser
                   add-on has no Web Store listing yet, so it is the second route.
                 </p>
                 <p className="text-[11.5px] leading-relaxed text-zinc-500">
@@ -907,8 +907,8 @@ export function BrowserSetupModal({
             {current === 3 && (
               <StepCard n={3} icon={<Link2 size={13} />} title="Pair it">
                 <p className="text-[12.5px] leading-relaxed text-zinc-400">
-                  Your browser is asking to connect to Iron Jarvis. Press Pair if you just loaded
-                  the Iron Jarvis browser add-on yourself.
+                  Your browser is asking to connect to STEC OS. Press Pair if you just loaded
+                  the STEC OS browser add-on yourself.
                 </p>
                 {/* WHO is asking — the card's own identity line, in the card's
                     words. Approving a credential for an anonymous caller is not
@@ -919,17 +919,17 @@ export function BrowserSetupModal({
                 >
                   {pending?.extension_id
                     ? pending.extension_id === status?.expected_extension_id
-                      ? `Identified as the Iron Jarvis browser add-on (${pending.extension_id})`
-                      : `Unrecognised caller: ${pending.extension_id} — this is not the Iron Jarvis browser add-on`
+                      ? `Identified as the STEC OS browser add-on (${pending.extension_id})`
+                      : `Unrecognised caller: ${pending.extension_id} — this is not the STEC OS browser add-on`
                     : "This caller did not identify itself. Do not pair it unless you just loaded the add-on."}
                 </div>
                 <p
                   data-testid="browser-setup-why-pair"
                   className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-2.5 py-2 text-[11.5px] leading-relaxed text-zinc-500"
                 >
-                  Iron Jarvis cannot press this one for you, and it never will. Anything running on
+                  STEC OS cannot press this one for you, and it never will. Anything running on
                   this computer can knock on the same door and claim to be your browser — the name
-                  it gives is just text it typed. Nothing Iron Jarvis can check tells a real browser
+                  it gives is just text it typed. Nothing STEC OS can check tells a real browser
                   from a program pretending to be one, so a person has to look at the name above and
                   say &ldquo;yes, that is mine&rdquo;. That press is the whole protection.
                 </p>
@@ -1022,7 +1022,7 @@ export function BrowserSetupModal({
             {current === 5 && (
               <StepCard n={5} icon={<PanelRight size={13} />} title="Open the Jarvis sidebar">
                 <p className="text-[12.5px] leading-relaxed text-zinc-400">
-                  Click the Iron Jarvis icon in your browser&apos;s toolbar. A sidebar opens down
+                  Click the STEC OS icon in your browser&apos;s toolbar. A sidebar opens down
                   the right-hand side of the window, and you can talk to Jarvis about the page
                   you are looking at without leaving it.
                 </p>
@@ -1034,7 +1034,7 @@ export function BrowserSetupModal({
                     You probably have no icon yet &mdash; pin it.
                   </span>{" "}
                   {browser.short} does not put a newly loaded add-on on the toolbar. Click the
-                  puzzle-piece button at the top right of {browser.short}, find Iron Jarvis in that
+                  puzzle-piece button at the top right of {browser.short}, find STEC OS in that
                   list, and {browser.pinAction}. Until you do, the icon lives inside that menu and
                   there is nothing on the toolbar to click.
                 </div>
@@ -1048,11 +1048,11 @@ export function BrowserSetupModal({
                   <code className="rounded bg-white/[0.05] px-1 py-0.5 font-mono text-[11px] text-zinc-300">
                     {browser.extensionsPage}
                   </code>{" "}
-                  and press Reload on Iron Jarvis.
+                  and press Reload on STEC OS.
                   {appVersion ? (
                     <>
                       {" "}
-                      This copy of Iron Jarvis is{" "}
+                      This copy of STEC OS is{" "}
                       <span data-testid="browser-setup-app-version" className="text-zinc-300">
                         {appVersion}
                       </span>

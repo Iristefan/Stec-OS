@@ -23,7 +23,7 @@ from ..platform import build_platform
 from ..tools.permissions import headless_ask_resolver
 from .client import DaemonClient
 
-app = typer.Typer(help="Iron Jarvis — local-first AI operating system (slice).")
+app = typer.Typer(help="STEC OS — local-first AI operating system (slice).")
 console = Console()
 
 # v1.363.0: the harness benchmark (`ironjarvis bench-harness run|report`). Its
@@ -53,7 +53,7 @@ def _port_in_use(host: str, port: int) -> bool:
 
 
 def _is_ironjarvis_daemon(host: str, port: int) -> bool:
-    """True only if the listener on host:port is actually an Iron Jarvis daemon
+    """True only if the listener on host:port is actually a STEC OS daemon
     (probes the auth-exempt /health). Distinguishes 'already running' from an
     UNRELATED program squatting on the baked port — which must fail loudly rather
     than be mistaken for us (the packaged client is hard-wired to this port)."""
@@ -82,7 +82,7 @@ def _home_for(root: str) -> Path:
 
 
 def _source_repo_root() -> "Path | None":
-    """Locate the git checkout Iron Jarvis runs from, WITHOUT importing the
+    """Locate the git checkout STEC OS runs from, WITHOUT importing the
     platform — so ``rollback`` works even when a bad update broke the daemon."""
     import subprocess
 
@@ -171,7 +171,7 @@ def codehost(
     NOT for humans — the daemon starts ITSELF with ``codehost --launch
     <home>`` (a launcher that starts the host and exits at once, so the host
     is never in the daemon's process tree), and the host then runs the coding
-    tools so they outlive an Iron Jarvis restart. The frozen exe serves it
+    tools so they outlive a STEC OS restart. The frozen exe serves it
     from ``packaging/ironjarvis_entry._fast_path`` without importing this CLI;
     keep the two identical (same module, same ``main([...])``)."""
     from ..codehost import LAUNCH_FLAG
@@ -195,7 +195,7 @@ def claude_inert_mcp(
 
     Hidden because it is a protocol endpoint: stdout CARRIES the JSON-RPC
     wire, so nothing here may print to it. It lists the manifest's tools and
-    refuses every call — Iron Jarvis executes tools, never the CLI.
+    refuses every call — STEC OS executes tools, never the CLI.
     """
     from ..providers.adapters.claude_native.inert_mcp import main as _inert_main
 
@@ -261,14 +261,14 @@ def run(
 
 @app.command("self-dev")
 def self_dev(
-    task: str = typer.Argument(..., help="What to fix or improve in Iron Jarvis itself."),
+    task: str = typer.Argument(..., help="What to fix or improve in STEC OS itself."),
     enable: bool = typer.Option(
-        False, "--enable", help="Opt in: allow this run to edit Iron Jarvis's own source."
+        False, "--enable", help="Opt in: allow this run to edit STEC OS's own source."
     ),
     provider: str = typer.Option(None, help="Override provider (default from config)."),
     root: str = typer.Option(".", help="Project root (for config/state)."),
 ) -> None:
-    """Run a Maintainer that edits Iron Jarvis's OWN source — review-gated.
+    """Run a Maintainer that edits STEC OS's OWN source — review-gated.
 
     Self-development is OFF by default. Pass ``--enable`` (or set
     ``self_dev_enabled`` in config) to allow it. Changes land on a git worktree
@@ -322,10 +322,10 @@ def demo(root: str = typer.Option(".", help="Project root.")) -> None:
     """Offline end-to-end demo: plan->act->tool->workspace artifact, no network."""
     platform = build_platform(root)
     orch = Orchestrator(platform)
-    task = "Create a file summarizing what Iron Jarvis just did."
+    task = "Create a file summarizing what STEC OS just did."
     session = asyncio.run(orch.run(task, AgentType.BUILDER))
 
-    console.rule("Iron Jarvis - offline demo")
+    console.rule("STEC OS - offline demo")
     console.print(f"Session   : {session.id}")
     console.print(f"Provider  : {session.provider} / {session.model}")
     console.print(f"Status    : {session.status.value}")
@@ -411,7 +411,7 @@ def serve(
     if _port_in_use(probe, port):
         if _is_ironjarvis_daemon(probe, port):
             console.print(
-                f"[yellow]Iron Jarvis is already running[/yellow] on http://{probe}:{port} "
+                f"[yellow]STEC OS is already running[/yellow] on http://{probe}:{port} "
                 "— not starting a second instance."
             )
             # v1.226.0 (contract C2): 75, not 0. Exit 0 read as "my child died
@@ -423,7 +423,7 @@ def serve(
         # non-zero so the desktop shell surfaces a clear error instead of assuming
         # a healthy daemon came up.
         console.print(
-            f"[red]Port {port} on {host} is in use by another program.[/red] Iron Jarvis "
+            f"[red]Port {port} on {host} is in use by another program.[/red] STEC OS "
             "needs this port — close the other program (or set IJ_DAEMON_PORT) and retry."
         )
         raise typer.Exit(code=1)
@@ -772,7 +772,7 @@ def feedback(
 
 @app.command()
 def lessons(root: str = typer.Option(".", help="Project root.")) -> None:
-    """Show what Iron Jarvis has learned about working with you."""
+    """Show what STEC OS has learned about working with you."""
     platform = build_platform(root)
     table = Table(title="What I've learned")
     table.add_column("source")
@@ -793,11 +793,11 @@ def doc_read(path: str, root: str = typer.Option(".")) -> None:
 
 @app.command()
 def doctor() -> None:
-    """Check your environment is ready to run Iron Jarvis."""
+    """Check your environment is ready to run STEC OS."""
     from ..onboarding import doctor as run_doctor
 
     result = run_doctor()
-    table = Table(title="Iron Jarvis doctor")
+    table = Table(title="STEC OS doctor")
     table.add_column("")
     table.add_column("check")
     table.add_column("detail", overflow="fold")
@@ -986,7 +986,7 @@ def update_check(root: str = typer.Option(".", help="Project root (for config)."
     repo = iron_jarvis_repo_root(platform.config)
     if repo is None:
         console.print(
-            "[yellow]not a source checkout[/yellow] — Iron Jarvis git repo not found "
+            "[yellow]not a source checkout[/yellow] — STEC OS git repo not found "
             "(running from an installed package?)."
         )
         return
@@ -1010,7 +1010,7 @@ def self_update(
         False, "--no-dashboard", help="Skip the dashboard (pnpm) build."
     ),
 ) -> None:
-    """Pull the latest Iron Jarvis source and rebuild (git pull + uv sync + pnpm build).
+    """Pull the latest STEC OS source and rebuild (git pull + uv sync + pnpm build).
 
     Refuses if the working tree is dirty. This updates the FILES on disk only —
     you must restart the daemon (and dashboard) afterwards to load the new code.

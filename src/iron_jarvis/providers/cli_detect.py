@@ -2,7 +2,7 @@
 
 Some coding CLIs (Grok, …) ship an authenticated inference session on disk:
 installing the CLI and logging in is enough to *use its models* without an API
-key. This module discovers those models so Iron Jarvis can offer them as
+key. This module discovers those models so STEC OS can offer them as
 routable providers — a NEW CLI that installs an inference provider auto-appears
 once its registry entry exists.
 

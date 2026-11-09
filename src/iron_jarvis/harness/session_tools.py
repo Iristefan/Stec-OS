@@ -66,11 +66,11 @@ UNANSWERED_AT_NIGHT = (
 )
 #: What exit_plan_mode's result tells the model after the user's Allow.
 #: v1.402.0: the approval STARTS the work — as soon as this turn ends,
-#: Iron Jarvis carries the plan out in act mode by itself, with no new
+#: STEC OS carries the plan out in act mode by itself, with no new
 #: message from the user (``routes/build.run_approved_plan``).
 PLAN_APPROVED = (
     "The user approved your plan. This turn stays read-only and ends now: as "
-    "soon as it ends, Iron Jarvis starts carrying the plan out in act mode, "
+    "soon as it ends, STEC OS starts carrying the plan out in act mode, "
     "without waiting for another message from the user. End this turn now with "
     "one short line saying you are starting on the plan."
 )

@@ -30,7 +30,7 @@ MEASURED on this PC (pi 1.3.0, live, in scratch folders; the recordings are
   "aborted"``, then ``agent_settled`` with ``aborted: true``, then the abort's
   own response. The process stays up and takes the next message.
 * PERMISSIONS: Pi asks NOTHING before running a tool — that is its own rule
-  (the user chose "the tool's own rules, shown as Iron Jarvis cards"). Only an
+  (the user chose "the tool's own rules, shown as STEC OS cards"). Only an
   extension can ask, through ``extension_ui_request``: ``confirm`` (answered
   ``{"confirmed": true|false}``), ``select`` / ``input`` / ``editor``
   (``{"value": …}``), or ``{"cancelled": true}``. A ``tool_call`` hook's
@@ -575,7 +575,7 @@ def command_rows(cmds: Any, *, user_only: bool = False) -> list[dict[str, str]]:
 # --------------------------------------------------------------------------- #
 # Pi's own `/` commands (v1.429.0)
 # --------------------------------------------------------------------------- #
-#: Pi's built-in commands Iron Jarvis does here through Pi's RPC (pi 1.3.0
+#: Pi's built-in commands STEC OS does here through Pi's RPC (pi 1.3.0
 #: docs/slash-commands.md + docs/rpc-commands.md). Typed in Pi's RPC prompt
 #: they would reach the MODEL as plain text (measured: the stand-in model
 #: received "/compact"), so the Code view does each one itself.
@@ -615,7 +615,7 @@ TERMINAL_ONLY: dict[str, str] = {
     "copy": "Point at a finished reply and press its copy icon (Copy reply) to copy its text.",
     "share": ("It uploads the conversation, so it stays in Pi's own terminal — "
               "open this session there with Open in terminal."),
-    "quit": "There is nothing to quit here: Iron Jarvis stops Pi after the session has been idle a while.",
+    "quit": "There is nothing to quit here: STEC OS stops Pi after the session has been idle a while.",
 }
 #: v1.441.0: ``!command`` / ``!!command`` typed in the box, as Pi's own
 #: terminal reads them: Pi's RPC ``bash`` {command, excludeFromContext} runs it
@@ -636,7 +636,7 @@ BASH_TIMEOUT_S = 1800.0
 SHELL_TIME_LIMIT = "Stopped: it ran longer than {minutes} minutes."
 #: v1.441.0 review: a Stop on a ``!`` command kept across a restart waits this
 #: long for Pi's ``bash`` answer after the abort, then ends the turn anyway
-#: (the answer may have come while Iron Jarvis was down).
+#: (the answer may have come while STEC OS was down).
 ABORT_ANSWER_WAIT_S = 3.0
 MODEL_NEEDS_NAME = "Choose the model from the model menu under the box, or type /model provider/model."
 THINKING_NEEDS_LEVEL = "Choose the thinking level from the effort menu under the box, or type /thinking low."
@@ -774,7 +774,7 @@ class PiDriver(Driver):
         #: by itself, or it began after its message's turn had ended).
         self._run_open = False
         self._run_owner: int | None = None
-        #: Pi's dialog id -> Iron Jarvis's ask id (a dialog Pi timed out goes).
+        #: Pi's dialog id -> STEC OS's ask id (a dialog Pi timed out goes).
         self._dialogs: dict[str, str] = {}
         #: The dialogs raised while a run was going: Pi resolves them by itself
         #: when that run ends or is aborted (rpc-mode.js, the dialog's signal).
@@ -996,7 +996,7 @@ class PiDriver(Driver):
             self._end("interrupted" if self._interrupting else "completed")
 
     def _rearm_shell(self) -> None:
-        """v1.441.0 review: a ``!`` command still running when Iron Jarvis
+        """v1.441.0 review: a ``!`` command still running when STEC OS
         restarted (the code host kept Pi): its ``bash`` answer settles a
         waiter with no kept form — re-made so the answer (or a Stop) ends the
         turn. Only THAT turn: a late answer never ends a later one."""
@@ -1249,7 +1249,7 @@ class PiDriver(Driver):
             waiter = self._bash_waiter
             if waiter is not None and not waiter.done() and b is not None and self._bash is b:
                 # Review: kept across a restart — Pi's ``bash`` answer may have
-                # come while Iron Jarvis was down; the turn ends anyway.
+                # come while STEC OS was down; the turn ends anyway.
                 with contextlib.suppress(Exception):
                     await asyncio.wait_for(asyncio.shield(waiter), ABORT_ANSWER_WAIT_S)
                 if self._bash is b and self.turn_open:

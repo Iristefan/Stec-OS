@@ -3,7 +3,7 @@ builder's code first.
 
 1. THE GLOBAL SETTINGS FOLDER IS NEVER THE BENCH HOME. ``--root <your user
    folder>`` resolved the bench home to ``~/.ironjarvis`` — the folder whose
-   ``config.toml`` every Iron Jarvis process layers in (``core/config.
+   ``config.toml`` every STEC OS process layers in (``core/config.
    global_config_path``), the packaged app's included. The product path makes
    real coding sessions there and the benchmark answers every card "Allow
    once", so a settings change a task's model asked for would have landed in
@@ -47,7 +47,7 @@ def test_the_global_settings_folder_is_never_the_bench_home(tmp_path, monkeypatc
     # (Path.home() is where every process reads its global settings from:
     # ``core/config.global_config_path``.)
     monkeypatch.setattr(Path, "home", lambda: user)
-    with pytest.raises(BenchRefused, match="settings every Iron Jarvis"):
+    with pytest.raises(BenchRefused, match="settings every STEC OS"):
         resolve_bench_home(str(user))
     # A scratch folder beside it is fine.
     scratch = tmp_path / "scratch"
@@ -68,7 +68,7 @@ def test_the_command_line_refuses_the_global_settings_folder(tmp_path, monkeypat
         "--root", str(user), "--dry-run", "--tasks", "bugfix-leap-year",
     ])
     assert out.exit_code == 2, out.output
-    assert "settings every Iron Jarvis" in out.output
+    assert "settings every STEC OS" in out.output
     # Nothing was made there (no database, no results folder).
     assert not (user / ".ironjarvis").exists()
 

@@ -11,7 +11,7 @@
  * TWO KINDS:
  *  - an APPROVAL (Claude Code's "can I use this tool", Codex's "can I run
  *    this command / apply this change"): Allow once · Allow all commands
- *    this session (v1.417.0, a command card that offers it — Iron Jarvis's
+ *    this session (v1.417.0, a command card that offers it — STEC OS's
  *    own whole-tool rule; the tool's own narrower allow then reads "Allow
  *    similar commands") · Allow for this session (only when the tool offers
  *    a session-wide allow) · Deny · "No, tell it what to do instead"
@@ -55,7 +55,7 @@ export type CodeAnswer =
     };
 
 /** v1.417.0 (C1.1): the answer that allows every command for the session
- *  (Iron Jarvis's own rule), beside the tool's own narrower one. */
+ *  (STEC OS's own rule), beside the tool's own narrower one. */
 export const ALLOW_ALL_COMMANDS = "Allow all commands this session";
 /** v1.417.0 (C1.1): the tool's own session-wide allow when the one above
  *  is offered too (it covers commands LIKE this one). */

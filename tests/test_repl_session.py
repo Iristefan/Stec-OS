@@ -163,9 +163,9 @@ def test_worker_command_re_execs_the_frozen_binary(monkeypatch):
     cannot be copied here: on the user's real machine it finds nothing.
     """
     monkeypatch.setattr(sys, "frozen", True, raising=False)
-    monkeypatch.setattr(sys, "executable", r"C:\Program Files\Iron Jarvis\ironjarvis.exe")
+    monkeypatch.setattr(sys, "executable", r"C:\Program Files\STEC OS\ironjarvis.exe")
     assert worker_command() == [
-        r"C:\Program Files\Iron Jarvis\ironjarvis.exe",
+        r"C:\Program Files\STEC OS\ironjarvis.exe",
         "repl-worker",
     ]
     # No interpreter hunting anywhere in the argv.

@@ -1,7 +1,7 @@
 """v1.239.0 — the browser diagnostics, and whether they tell the truth (D25).
 
 Ship 5 adds no capability. It adds the sentence a user reads when the browser
-half of Iron Jarvis is not working, which means every claim in this file is about
+half of STEC OS is not working, which means every claim in this file is about
 HONESTY rather than behaviour:
 
 * **The doctor covers what D25 lists** — service initialisation, the add-on build,
@@ -110,12 +110,12 @@ def _addon(root: Path, *, built: bool = True, key: str = PINNED_EXTENSION_KEY,
         manifest_text = json.dumps(
             {
                 "manifest_version": 3,
-                "name": "Iron Jarvis",
+                "name": "STEC OS",
                 "version": "1.239.0",
                 "key": key,
                 "background": {"service_worker": "dist/background.js", "type": "module"},
                 "side_panel": {"default_path": "dist/sidepanel.html"},
-                "action": {"default_title": "Iron Jarvis"},
+                "action": {"default_title": "STEC OS"},
             }
         )
     (folder / "manifest.json").write_text(manifest_text, encoding="utf-8")
@@ -252,7 +252,7 @@ def test_an_unbuilt_addon_is_reported_as_unloadable_and_names_the_missing_file(
     """THE Ship 5 failure. ``extensions/chrome/dist`` is gitignored and produced by
     the release, so a build that skipped that stage ships a folder whose manifest
     points at a service worker that is not there. Chrome refuses to register it and
-    blames the add-on; without this row nothing in Iron Jarvis says a word."""
+    blames the add-on; without this row nothing in STEC OS says a word."""
     folder = _addon(tmp_path, built=False)
     _point_at(monkeypatch, folder)
 

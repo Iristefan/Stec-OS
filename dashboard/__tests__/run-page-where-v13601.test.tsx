@@ -136,7 +136,7 @@ import { SessionFiles, type SessionResult } from "@/components/sessions/SessionF
 import type { SessionView } from "@/lib/types";
 
 const ID = "session_where_13601";
-const WS = "C:/Users/me/Documents/Iron Jarvis/2026-10-20 where";
+const WS = "C:/Users/me/Documents/STEC OS/2026-10-20 where";
 const RESULT = `/sessions/${ID}/result`;
 /** A second run, for moving between runs on the same page. */
 const ID_B = "session_where_13601_b";

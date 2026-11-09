@@ -137,7 +137,7 @@ def confinement_env(workspace: Path, scratch: Path | None = None) -> dict[str, s
 def worker_command() -> list[str]:
     """The argv that launches a REPL worker child.
 
-    Iron Jarvis ships as a PyInstaller-frozen binary, and a packaged install
+    STEC OS ships as a PyInstaller-frozen binary, and a packaged install
     has **no Python on PATH** — that is exactly why ``run_code``'s
     ``shutil.which("python")`` lookup returns nothing there and the tool is
     dead on a real user's machine. The REPL must not inherit that weakness, so

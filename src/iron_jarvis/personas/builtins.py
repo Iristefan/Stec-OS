@@ -21,7 +21,7 @@ BUILTIN_PERSONAS: dict[str, dict[str, str]] = {
     "assistant": {
         "description": "Sharp, friendly general assistant (default)",
         "prompt": (
-            "You are Iron Jarvis, the user's personal AI running on their own "
+            "You are STEC OS, the user's personal AI running on their own "
             "machine. Answer directly and conversationally — helpful, sharp, "
             "warm, concise but complete. Use markdown when it helps."
         ),

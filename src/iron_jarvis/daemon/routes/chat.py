@@ -897,7 +897,7 @@ def _share_transcript(title: str, persona: str, updated_at, msgs: list) -> str:
     the loop — so what the user shares is exactly what was said. Message
     extras (attachments, tools used, interruption) ride along as footnotes;
     dropping them would misrepresent how a reply was produced."""
-    meta = ["Shared from Iron Jarvis"]
+    meta = ["Shared from STEC OS"]
     if persona:
         meta.append(f"persona: {persona}")
     if updated_at is not None:
@@ -909,7 +909,7 @@ def _share_transcript(title: str, persona: str, updated_at, msgs: list) -> str:
     for m in msgs:
         if not isinstance(m, dict):
             continue
-        who = "You" if m.get("role") == "user" else "Iron Jarvis"
+        who = "You" if m.get("role") == "user" else "STEC OS"
         lines += ["", f"### {who}", ""]
         lines.append(str(m.get("content") or "").strip() or "_(empty message)_")
         extras = []
@@ -2409,7 +2409,7 @@ def register(app: FastAPI, d) -> None:
                 )
             content = (
                 f"# {title} — compacted\n\n"
-                f"_A digest of {len(msgs)} messages · shared from Iron Jarvis_\n\n"
+                f"_A digest of {len(msgs)} messages · shared from STEC OS_\n\n"
                 f"{digest}\n"
             )
         else:
@@ -2607,7 +2607,7 @@ def register(app: FastAPI, d) -> None:
                 + transcript[-tail:]
             )
         system = (
-            "You turn a finished chat conversation into a REUSABLE Iron Jarvis "
+            "You turn a finished chat conversation into a REUSABLE STEC OS "
             "workflow: the repeatable process behind what actually happened. "
             "GENERALIZE — replace one-off specifics (a particular file name, "
             "date, client) with role words ('the provided file', 'this week') "
@@ -3533,12 +3533,12 @@ def _eager_checks(platform, body) -> None:
 #: How a failure that escapes the lane BEFORE the answer started is worded
 #: (v1.312.0). Preparation reads, recalls and chooses; it never answers.
 _PREP_FAILED = (
-    "Iron Jarvis could not get ready to answer ({detail}). No answer was"
+    "STEC OS could not get ready to answer ({detail}). No answer was"
     " started. Send your message again to retry."
 )
 #: v1.354.0 (G28): the headline of a preparation failure the plain words
 #: could not name (``failure_words`` answered its generic title).
-_PREP_FAILED_TITLE = "Iron Jarvis couldn't get ready to answer"
+_PREP_FAILED_TITLE = "STEC OS couldn't get ready to answer"
 
 
 async def _honest_failures(frames):
@@ -5591,7 +5591,7 @@ async def chat_stream(
                 # MIRROR NOTE (lock-step): chat_turn.
                 _turn_tools = _chat_turn.round_gate({*armed, *ask_armed}, _finish, calls)
                 # v1.407.2: the posture rides along — Ask first's guard for
-                # Git's and Iron Jarvis's own files is dropped under "Don't
+                # Git's and STEC OS's own files is dropped under "Don't
                 # ask" (tools/base.guarded_edit_check). MIRROR NOTE
                 # (lock-step): chat_turn's POST lane and the runtime pass theirs.
                 _spend = await spend_checks_for(
@@ -6114,9 +6114,9 @@ async def chat_stream(
                                     # safety card it is (its Enter allowed it).
                                     _frame["once_reason"] = _sc.reason
                             # v1.417.0 (C1.3/C1.7): WHO asks and WHY — the
-                            # card's one reason line. Iron Jarvis's own call
+                            # card's one reason line. STEC OS's own call
                             # (the finish check's test run, a project's
-                            # checker) is said to be Iron Jarvis's, never "the
+                            # checker) is said to be STEC OS's, never "the
                             # assistant's"; otherwise the rule or reason that
                             # kept the card (a spend check's own sentence, a
                             # once-only reason, Local only, the night, the

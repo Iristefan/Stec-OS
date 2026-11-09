@@ -21,7 +21,7 @@ checkout's state before a night task starts and again when it ends, and
   are left out);
 * the packages in the main folder's ``.venv`` (the one a branch borrows);
 * (v1.399.0 review) the repository's git hooks and its ``.git/config`` — a
-  hook a command planted runs on Iron Jarvis's own commit of the night's
+  hook a command planted runs on STEC OS's own commit of the night's
   work and on every commit the user makes afterwards.
 
 A change ends the task "needs you" with a note no one can miss. What is NOT
@@ -43,13 +43,13 @@ from typing import Any
 
 #: The record's own sentence about what a night task's commands could reach.
 NOT_CONFINED = (
-    "Its commands ran as you, so they could reach other folders and the network; Iron Jarvis "
+    "Its commands ran as you, so they could reach other folders and the network; STEC OS "
     "checked only your main folder (its commit, branches, files, git hooks and settings, and .venv packages) "
     "afterwards."
 )
 #: The sentence when the main folder could not be read afterwards.
 UNCHECKED = (
-    "Iron Jarvis could not read your main folder after this task, so it could not check that "
+    "STEC OS could not read your main folder after this task, so it could not check that "
     "the task left it alone."
 )
 
@@ -100,7 +100,7 @@ def _git_settings(main: str) -> dict[str, str]:
     """v1.399.0 review (night shift N2): the repository's own git SETTINGS
     (``.git/config``) and HOOKS (the hooks folder git runs — ``core.hooksPath``
     or ``<common dir>/hooks``; names, sizes and times, never contents). A night
-    task's commands can plant a hook there, and Iron Jarvis's own commit of
+    task's commands can plant a hook there, and STEC OS's own commit of
     its work then RUNS it unattended — and so does every commit the user makes
     afterwards in the main folder. ``{}`` when unreadable (nothing is said
     then, never a made-up change). Never raises."""

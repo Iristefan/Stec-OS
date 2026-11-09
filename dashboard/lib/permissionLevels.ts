@@ -48,7 +48,7 @@ export type PermissionMode = "always_ask" | "approve_for_me" | "accept_edits" | 
 
 /** The reading sentence while nothing limits reading: reading never asks
  *  (v1.352.0, G27). Also what a level says while the limit is not known (an
- *  older Iron Jarvis, or before the first answer). */
+ *  older STEC OS, or before the first answer). */
 export const READS_LINE = "Reads files anywhere on this PC without asking";
 
 export type PermissionTone = "neutral" | "warn";
@@ -151,7 +151,7 @@ export const PERMISSION_LEVELS: Readonly<Record<PermissionMode, PermissionLevel>
 /** GET /settings/access `reads` (daemon/routes/access_summary.py): `limited`
  *  = something limits reading; `chosen` = the user's "Folders Jarvis may
  *  read" as typed (v1.356.0, G81); `install` = the installation's own limit
- *  is on; `folders` = what the gate allows. An older Iron Jarvis sends some
+ *  is on; `folders` = what the gate allows. An older STEC OS sends some
  *  of these or none. */
 export interface ReadFacts {
   limited?: boolean;

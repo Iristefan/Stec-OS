@@ -1106,7 +1106,7 @@ class ConPtyBackend:
                             f"terminal and has not finished after "
                             f"{PACKAGED_SPAWN_WAIT_S:g} s, so Windows may be stuck "
                             "starting it. This terminal did not open. Try again in "
-                            "a moment, pick another shell, or restart Iron Jarvis."
+                            "a moment, pick another shell, or restart STEC OS."
                         )
                     try:
                         self._spawn(api, argv, cwd, env, None)

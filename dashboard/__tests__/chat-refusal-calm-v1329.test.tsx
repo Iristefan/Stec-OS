@@ -241,7 +241,7 @@ function storeThread(setup: Record<string, unknown>) {
 
 async function startTurn(text: string): Promise<Record<string, unknown>> {
   const n = H.stream.bodies.length;
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: text } });
   fireEvent.keyDown(box, { key: "Enter" });
   await waitFor(() => expect(H.stream.bodies.length).toBe(n + 1));

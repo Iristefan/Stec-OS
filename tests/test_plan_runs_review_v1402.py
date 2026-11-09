@@ -16,10 +16,10 @@ routes and lanes (only the model is scripted):
 2. A PLAN TURN THAT WENT TO LOW TRUST STARTED ITS ACT TURN AT FULL TRUST.
    A flagged read (a page or file that tried to give orders) lowers the turn;
    the plan the model wrote then — and its last lines — are the conversation
-   the act turn reads, and Iron Jarvis started that turn BY ITSELF with its
+   the act turn reads, and STEC OS started that turn BY ITSELF with its
    commands back and nobody reading in between. Now the act turn starts at
    low trust with :data:`PLAN_RUN_LOW_TRUST` (the night shift's rule for a
-   turn Iron Jarvis starts after a lowered one).
+   turn STEC OS starts after a lowered one).
 
 And one in the step-limit carry-on (``agents/runtime``):
 
@@ -133,7 +133,7 @@ async def test_a_plan_turn_that_went_to_low_trust_runs_its_plan_at_low_trust(app
     plan_done = [d for e, d in turn_frames(app, "bp-low") if e == "done"][-1]
     assert plan_done.get("trust") == "low", plan_done
     _lg, done = await _act_turn(app, sid)
-    # The act turn Iron Jarvis started by itself stays LOW, and says why.
+    # The act turn STEC OS started by itself stays LOW, and says why.
     assert done.get("trust") == "low", done
     assert done.get("trust_reason") == B.PLAN_RUN_LOW_TRUST
     assert plan_lg.status == "done"

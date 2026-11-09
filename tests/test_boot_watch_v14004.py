@@ -223,7 +223,7 @@ def test_the_boot_restarts_a_hung_daemon_before_the_dialog_and_gates_again():
     retry = src.index("shouldRetryHungDaemon(daemonProc, bootDaemonRetried)", gate)
     restart = src.index("restartDaemonFromShell(", retry)
     regate = src.index("daemonGate = await waitForDaemon(STARTUP_TIMEOUT_MS, GATE_POLL_MS)", restart)
-    dialog = src.index('handleStartupFailure(\n      "Iron Jarvis did not start"', gate)
+    dialog = src.index('handleStartupFailure(\n      "STEC OS did not start"', gate)
     assert gate < retry < restart < regate < dialog
     # The retry runs only when the daemon's gate FAILED, and only for a hung one.
     assert 'if (daemonGate.status === "rejected" && shouldRetryHungDaemon(daemonProc, bootDaemonRetried)) {' in src

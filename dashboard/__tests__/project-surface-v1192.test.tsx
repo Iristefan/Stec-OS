@@ -190,7 +190,7 @@ describe("SurfaceBoard never asserts an empty project on a guess", () => {
 
     expect(
       // v1.354.0 (G59, updated on purpose): the user's words, not "the daemon".
-      await screen.findByText("The board couldn't load. Iron Jarvis isn't responding."),
+      await screen.findByText("The board couldn't load. STEC OS isn't responding."),
     ).toBeInTheDocument();
     expect(screen.queryByText(/No sessions in this project yet/)).toBeNull();
   });

@@ -25,7 +25,7 @@
  *
  * VOCABULARY. "Extension" is this app's user-facing word for an MCP server
  * (VOCABULARY.md, v1.216.0), so no string a user reads here may call the
- * Chrome add-on one. It is "the Iron Jarvis browser add-on". The one exception
+ * Chrome add-on one. It is "the STEC OS browser add-on". The one exception
  * is the literal `chrome://extensions` URL the user must type into Chrome,
  * which is Chrome's name for its own page and not ours.
  *
@@ -362,14 +362,14 @@ function AddonFolder({ addonDir, browser }: { addonDir: string; browser: Browser
           <FolderLine
             testid="browser-addon-packaged"
             folder={resolved}
-            where={`This is the folder on this machine, already built, from your Iron Jarvis install. Copy it and paste it into ${browser.possessive} Load unpacked box.`}
+            where={`This is the folder on this machine, already built, from your STEC OS install. Copy it and paste it into ${browser.possessive} Load unpacked box.`}
           />
         ) : (
           <p
             data-testid="browser-addon-unresolved"
             className="text-[11px] leading-relaxed text-amber-100/80"
           >
-            Iron Jarvis could not find the add-on folder on this machine, so there is no path to
+            STEC OS could not find the add-on folder on this machine, so there is no path to
             copy. It normally ships inside the app, in the {PACKAGED_ADDON_FOLDER} folder under{" "}
             {PACKAGED_ADDON_PARENT} — reinstalling the current release puts it back. From a source
             checkout, use the folder below instead.
@@ -419,7 +419,7 @@ function InstallSteps({ browser }: { browser: BrowserWords }) {
         className="flex w-full items-center gap-2 px-3 py-2.5 text-left text-[12px] font-medium text-zinc-300"
       >
         {open ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-        How to load the Iron Jarvis browser add-on
+        How to load the STEC OS browser add-on
       </button>
       {open && (
         <ol
@@ -468,7 +468,7 @@ function InstallSteps({ browser }: { browser: BrowserWords }) {
  *  "click the icon" who has no icon concludes the feature is broken.
  *
  *  THE VERSION LINE IS THE STALE-BUILD REMEDY. Chrome keeps serving the copy of
- *  the add-on it loaded until somebody presses Reload, so an Iron Jarvis update
+ *  the add-on it loaded until somebody presses Reload, so a STEC OS update
  *  can leave the previous add-on running — and the previous one still declares
  *  a popup, which means the toolbar click opens the retired popup and the
  *  sidebar cannot be reached at all. `GET /browser/status` does not carry the
@@ -490,7 +490,7 @@ function SidebarNote({ appVersion, browser }: { appVersion: string; browser: Bro
       <p className="mt-2 flex items-start gap-2 text-[12px] leading-relaxed text-zinc-400">
         <PanelRight size={14} className="mt-0.5 shrink-0 text-zinc-500" aria-hidden="true" />
         <span>
-          Click the Iron Jarvis icon in your browser&apos;s toolbar and a chat sidebar opens down
+          Click the STEC OS icon in your browser&apos;s toolbar and a chat sidebar opens down
           the right-hand side of the window — ask Jarvis about the page you are looking at without
           leaving it.
         </span>
@@ -501,7 +501,7 @@ function SidebarNote({ appVersion, browser }: { appVersion: string; browser: Bro
       >
         <span className="font-semibold text-amber-200">No icon on the toolbar?</span>{" "}
         {browser.short} does not put a newly loaded add-on there. Click the puzzle-piece button at
-        the top right of {browser.short}, find Iron Jarvis in that list, and {browser.pinAction}.
+        the top right of {browser.short}, find STEC OS in that list, and {browser.pinAction}.
       </p>
       {/* v1.315.0: the stale-copy remedy is troubleshooting, not a step —
           it sits one click away so the card reads as one next step. A
@@ -517,11 +517,11 @@ function SidebarNote({ appVersion, browser }: { appVersion: string; browser: Bro
           If the icon opens a small popup instead of a sidebar, {browser.short} is still running an
           older copy of the add-on — open{" "}
           <code className="font-mono text-zinc-400">{browser.extensionsPage}</code> and press Reload
-          on Iron Jarvis.
+          on STEC OS.
           {appVersion ? (
             <>
               {" "}
-              This copy of Iron Jarvis is{" "}
+              This copy of STEC OS is{" "}
               <span data-testid="browser-sidebar-app-version" className="text-zinc-400">
                 {appVersion}
               </span>
@@ -599,7 +599,7 @@ export function YourBrowserCard() {
     if (!requestId) return;
     await run("pair", async () => {
       await post("/browser/pair", { request_id: requestId });
-      setNote("Paired. Your browser is now connected to Iron Jarvis.");
+      setNote("Paired. Your browser is now connected to STEC OS.");
       reload();
     });
   }
@@ -668,14 +668,14 @@ export function YourBrowserCard() {
         {notSignedIn ? (
           <ErrorNote>
             <span data-testid="browser-not-signed-in">
-              This page is not signed in to Iron Jarvis, so the Browser card cannot read your
-              setup. Open this page in the Iron Jarvis app itself (the banner at the top has a
+              This page is not signed in to STEC OS, so the Browser card cannot read your
+              setup. Open this page in the STEC OS app itself (the banner at the top has a
               link), or enter the app&apos;s token there.
             </span>
           </ErrorNote>
         ) : unavailable ? (
           <ErrorNote>
-            This version of Iron Jarvis does not have the Browser surface yet — restart Iron Jarvis
+            This version of STEC OS does not have the Browser surface yet — restart STEC OS
             and reopen this page.
           </ErrorNote>
         ) : (
@@ -683,7 +683,7 @@ export function YourBrowserCard() {
             {/* What this is, in one line. */}
             <p className="text-[12px] leading-relaxed text-zinc-400">
               Jarvis works inside the browser you already use — your tabs, your logins, your
-              session. Load the Iron Jarvis browser add-on, pair it here, and Jarvis can read the
+              session. Load the STEC OS browser add-on, pair it here, and Jarvis can read the
               page you are looking at.
             </p>
             {/* v1.259.0: WHICH browser paired. Chrome and Edge load the same add-on
@@ -723,7 +723,7 @@ export function YourBrowserCard() {
                   <Wand2 size={14} /> Set up my browser
                 </button>
                 <span className="text-[11px] text-zinc-500">
-                  Five steps, guided — Iron Jarvis does everything else itself.
+                  Five steps, guided — STEC OS does everything else itself.
                 </span>
               </div>
             )}
@@ -768,7 +768,7 @@ export function YourBrowserCard() {
                   className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-3 py-2.5 text-[12px] leading-relaxed text-amber-100/80"
                 >
                   <span className="font-semibold text-amber-200">A browser is asking to pair.</span>{" "}
-                  Pair it only if you just loaded the Iron Jarvis browser add-on yourself.
+                  Pair it only if you just loaded the STEC OS browser add-on yourself.
                   {/* WHO is asking. Pairing needs no credential by design, so this row
                       is reachable by anything on this machine — and the one fact that
                       distinguishes the real add-on from an impostor is the identity
@@ -780,8 +780,8 @@ export function YourBrowserCard() {
                   >
                     {data?.pending_pairing?.extension_id
                       ? data.pending_pairing.extension_id === data.expected_extension_id
-                        ? `Identified as the Iron Jarvis browser add-on (${data.pending_pairing.extension_id})`
-                        : `Unrecognised caller: ${data.pending_pairing.extension_id} — this is not the Iron Jarvis browser add-on`
+                        ? `Identified as the STEC OS browser add-on (${data.pending_pairing.extension_id})`
+                        : `Unrecognised caller: ${data.pending_pairing.extension_id} — this is not the STEC OS browser add-on`
                       : "This caller did not identify itself. Do not pair it unless you just loaded the add-on."}
                   </div>
                   {/* v1.265.0: WHAT PAIR WILL DO TO THE PAIRING THIS INSTALL ALREADY
@@ -850,7 +850,7 @@ export function YourBrowserCard() {
                 className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-3 py-2.5 text-[12px] leading-relaxed text-amber-100/80"
               >
                 <span className="font-semibold text-amber-200">This browser is paired</span> but
-                nothing is connected right now. Open the browser you paired, or load the Iron Jarvis
+                nothing is connected right now. Open the browser you paired, or load the STEC OS
                 browser add-on again — pairing it again replaces this pairing.
               </div>
             )}

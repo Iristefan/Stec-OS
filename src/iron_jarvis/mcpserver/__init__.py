@@ -1,4 +1,4 @@
-"""Iron Jarvis as an MCP **server**: the outward direction (D17, plan 12.1).
+"""STEC OS as an MCP **server**: the outward direction (D17, plan 12.1).
 
 :mod:`iron_jarvis.mcp` is the CLIENT — Jarvis consuming Gmail / Drive / GitHub
 servers. This package is the opposite arrow: an external harness (Claude Code,

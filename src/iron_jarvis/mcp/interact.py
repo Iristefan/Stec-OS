@@ -59,10 +59,10 @@ MAX_ELICIT_FIELDS = 20
 
 #: The words a pack sees when no one can answer it.
 NO_SCOPE_SAMPLING = (
-    "Iron Jarvis lets an app ask a model only during a chat the user is watching."
+    "STEC OS lets an app ask a model only during a chat the user is watching."
 )
 GAVE_UP_SAMPLING = "The chat turn ended before this request was answered."
-FAILED_SAMPLING = "Iron Jarvis could not answer this request."
+FAILED_SAMPLING = "STEC OS could not answer this request."
 
 _PROP_NAME_RE = re.compile(r"^[A-Za-z0-9_.-]{1,64}$")
 _FIELD_TYPES = ("string", "number", "integer", "boolean")
@@ -218,7 +218,7 @@ def _serve_elicitation(
     if reason is not None:
         # Url mode, a nested object, too many questions …: nothing the card
         # can show, so the pack hears "no" at once rather than wait.
-        log.info("pack %r asked something Iron Jarvis cannot show (%s); declined", pack, reason)
+        log.info("pack %r asked something STEC OS cannot show (%s); declined", pack, reason)
         return _result(rid, {"action": "decline"})
     status, value = _wait_on_loop(scope, lambda: scope.elicit(pack, params), cancel)
     if status == "error":
@@ -383,7 +383,7 @@ def _type_ok(kind: str, value: Any) -> bool:
 
 def _field(name: str, prop: Any, required: bool) -> tuple[dict[str, Any] | None, str | None]:
     if not _PROP_NAME_RE.match(name):
-        return None, f"the question name {name[:40]!r} is not one Iron Jarvis accepts"
+        return None, f"the question name {name[:40]!r} is not one STEC OS accepts"
     if not isinstance(prop, dict):
         return None, f"the question {name!r} is not described"
     kind = prop.get("type")
@@ -399,7 +399,7 @@ def _field(name: str, prop: Any, required: bool) -> tuple[dict[str, Any] | None,
     if kind == "array":
         return None, f"the question {name!r} asks for a list"
     if kind not in _FIELD_TYPES:
-        return None, f"the question {name!r} has a type Iron Jarvis cannot show"
+        return None, f"the question {name!r} has a type STEC OS cannot show"
     title = prop.get("title")
     description = prop.get("description")
     field: dict[str, Any] = {
@@ -461,7 +461,7 @@ def elicitation_fields(params: dict) -> tuple[list[dict], str | None]:
             return [], "the request is not readable"
         mode = params.get("mode")
         if mode is not None and mode != "form":
-            return [], "the app asked to open a web page, which Iron Jarvis does not do"
+            return [], "the app asked to open a web page, which STEC OS does not do"
         schema = params.get("requestedSchema")
         if schema is None:
             return [], None  # a plain yes/no: only the message

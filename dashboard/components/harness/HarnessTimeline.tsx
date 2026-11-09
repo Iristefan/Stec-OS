@@ -80,21 +80,21 @@ const OVERSCAN = 12;
 const FALLBACK_ROWS = 40;
 
 export const NO_TIMELINE = "No timeline for this reply.";
-export const NO_TIMELINE_WHY = "It was made before Iron Jarvis kept the time of each step.";
+export const NO_TIMELINE_WHY = "It was made before STEC OS kept the time of each step.";
 /** v1.390.0 review: a reply written since the Timeline that ended before the
  *  model was first asked (an error or a Stop) — never "made before". */
 export const NO_TIMELINE_EARLY = "It ended before any work started.";
 /** v1.390.0 review: a reply a crash cut off (its line, rebuilt at boot,
  *  keeps no times) — never "made before" either. */
-export const NO_TIMELINE_CUT = "Iron Jarvis stopped while answering, so this reply's times were not kept.";
+export const NO_TIMELINE_CUT = "STEC OS stopped while answering, so this reply's times were not kept.";
 const NO_TIMELINE_REASON = { early: NO_TIMELINE_EARLY, cut: NO_TIMELINE_CUT, before: NO_TIMELINE_WHY } as const;
-/** v1.390.0 review: a step Iron Jarvis ran ITSELF to check the reply (the
+/** v1.390.0 review: a step STEC OS ran ITSELF to check the reply (the
  *  finish check's test run, a project check) — never drawn as the model's. */
 export const CHECK_WORDS: Readonly<Record<StepCheck, string>> = {
   finish: "Finish check",
   project: "Project check",
 };
-export const CHECK_NOTE = "Iron Jarvis ran this itself, to check the reply's work. The model did not ask for it.";
+export const CHECK_NOTE = "STEC OS ran this itself, to check the reply's work. The model did not ask for it.";
 export const NO_REPLIES = "No replies yet. While the session works, each step shows here on one time axis.";
 export const NOT_KEPT = "Not kept for this step.";
 export const HELPERS_APART = "not in the cost above";
@@ -156,7 +156,7 @@ function modelName(provider: string, model: string, models: readonly CatalogRow[
 }
 
 /** A step in the run log's words: "Read app.py", "Reading app.py"; a check
- *  Iron Jarvis ran itself says so first ("Finish check · Ran python"). */
+ *  STEC OS ran itself says so first ("Finish check · Ran python"). */
 export function stepLabel(step: Pick<TimelineStep, "name" | "target" | "state"> & { check?: StepCheck | null }): string {
   const own = ownStepLabel(step);
   return step.check ? `${CHECK_WORDS[step.check]} · ${own}` : own;

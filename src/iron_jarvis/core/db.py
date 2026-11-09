@@ -497,7 +497,7 @@ def open_db(db_path: str | Path) -> Engine:
     if quarantine_db(path, "confirmed corrupt database at init") is None and path.exists():
         raise RuntimeError(
             f"corrupt database {db_path} could not be quarantined (in use?). Stop all "
-            "Iron Jarvis processes and run `ironjarvis repair` to restore a backup."
+            "STEC OS processes and run `ironjarvis repair` to restore a backup."
         )
     engine = make_engine(db_path)
     init_db(engine)  # fresh DB on the now-free path

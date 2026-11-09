@@ -29,7 +29,7 @@
 ## What was measured, and how
 
 - **Grok `chat_history.jsonl`** (grok 1.0.70): read the shape (keys and types
-  only) of the sessions Grok saved for Iron Jarvis's own earlier scratch
+  only) of the sessions Grok saved for STEC OS's own earlier scratch
   recordings under `~/.grok/sessions` (READ only, never written). Records:
   `system` (Grok's prompt), `user` (`prompt_index` = the user's words in
   `<user_query>`; `synthetic_reason` `system_reminder` = Grok's own, an
@@ -102,7 +102,7 @@
   tools through the real service (a conversation opened from disk).
 - `tests/test_build_app_grok_mcp_v14410.py` (5): the recorded notifications
   fold to names and states only, sign-in/gone servers, the Session tab words,
-  the driver keeps its reported list apart from the servers Iron Jarvis hands
+  the driver keeps its reported list apart from the servers STEC OS hands
   Grok, and through a running fake Grok nothing secret is kept.
 - `tests/test_build_app_pi_user_bash_v14410.py` (5): the typed reading, `!`
   through Pi's bash as one step, `!!` kept out + a failing exit, a bare `!`
@@ -132,7 +132,7 @@
   Jarvis HANDS the tool; on the base driver it is the list the tool REPORTED.
   Grok now keeps its reported list as `reported_mcp`; the clash itself is left.
 - Pi `!` runs under Pi's own rules (Pi asks nothing; an extension's `user_bash`
-  hook may take it) — Iron Jarvis shows no card, as Pi's terminal shows none.
+  hook may take it) — STEC OS shows no card, as Pi's terminal shows none.
   A `!` typed while a reply runs waits in the queue like any message.
 - Grok and Antigravity pictures in a past message show as "(a picture)"/nothing.
 - Antigravity: no usage windows (see above); its MCP connection is not offered
@@ -152,7 +152,7 @@
   `!!`). `tool_setup.grok_servers`/`grok_status` read ONLY `name`, `status`,
   `reason` from `_x.ai/mcp/servers_updated`/`server_status` (never url,
   command, args, headers or `detail`); GrokDriver keeps them as
-  `reported_mcp` because an ACP driver's `mcp_servers` is what Iron Jarvis
+  `reported_mcp` because an ACP driver's `mcp_servers` is what STEC OS
   hands the tool (`note_servers(attr=)`); REPORTS_MCP gains grok, sign-in words
   point at `/mcps`. `profile/share.CLIS["grok"]` = `<GROK_HOME or ~/.grok>/
   AGENTS.md`, proxy `xai`, setting `profile_share_grok` (ask, put=False,
@@ -175,7 +175,7 @@ Antigravity conversation you started in a terminal, the Code view now shows
 what was said before, read from the tool's own saved files (they are never
 changed). Grok's own MCP servers appear in the Session tab by name with their
 state; if one needs a sign-in, press Open in terminal, type `/mcps`, choose the
-server and press i. Iron Jarvis never shows or keeps a server's address or key.
+server and press i. STEC OS never shows or keeps a server's address or key.
 In a Pi session you can run a command yourself: start the message with `!`
 (Pi's model sees the command and its output) or `!!` (it doesn't). Settings ›
 Memory & you › Share with Build now has a switch for Grok too.

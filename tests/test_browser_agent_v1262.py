@@ -10,7 +10,7 @@ the approval card. The sidebar could not reach them:
     ``browser_click`` for "click the 'Buy' button" and nothing for "book the
     first available slot" — so most requests ran with no acting tool at all;
   * six tool rounds, then an escalation the sidebar cannot follow ("ask again
-    in the Iron Jarvis window") — a form is five rounds of read → act;
+    in the STEC OS window") — a form is five rounds of read → act;
   * the prompt never said it could act, so the model advised the user which
     buttons to press; Read only stripped every acting tool in silence; every
     action was its own card with no way to allow the rest of the task.
@@ -312,7 +312,7 @@ def test_a_browser_agent_turn_runs_past_six_rounds_and_ends_in_chat(tmp_path, mo
         budget = 2 * chat_turn._BROWSER_TOOL_ROUNDS
         assert reads == budget - 1, f"{reads} reads for a {budget}-round budget"
         words = " ".join(p.get("text", "") for e, p in app.panel.events() if e == P.PANEL_EVENT_DELTA)
-        assert "needs the full Iron Jarvis agent" not in words, words
+        assert "needs the full STEC OS agent" not in words, words
         assert words.strip(), "the cut turn said nothing"
 
 

@@ -11,7 +11,7 @@
 // `skill`) — both persist across turns and clear on New chat / thread switch.
 //
 // AGENT: the original session-based flow, preserved verbatim. The message opens
-// (or continues) a real Iron Jarvis session that can use tools. Sending is
+// (or continues) a real STEC OS session that can use tools. Sending is
 // NON-BLOCKING: we POST with wait:false (the agent runs in the background) and
 // then show a live "working" bubble that narrates the agent's steps from the
 // /events stream. We finalize when the session's `agent.completed` event
@@ -500,7 +500,7 @@ import { PageShell, Reveal } from "@/components/motion";
  *  not lost — the card draws a dashed drop target the moment a file is over
  *  it, which says the same thing at the moment it matters. */
 const CHAT_HINT =
-  "Talk to Iron Jarvis. Ask anything. Quick answers come straight back, and " +
+  "Talk to STEC OS. Ask anything. Quick answers come straight back, and " +
   "work that needs files, tools or several steps just gets done. Attach files, " +
   "or drop them anywhere on the page.";
 import type { ProjectSurfaceView } from "@/components/project/ProjectSurfaces";
@@ -1002,7 +1002,7 @@ function stripMentions(text: string): string {
 }
 
 /** The chat so far as the panel route reads it (v1.284.0): who said each
- *  line — the user, Iron Jarvis, or a panel agent by its key — and the words.
+ *  line — the user, STEC OS, or a panel agent by its key — and the words.
  *  Empty bubbles (hand-off markers, a stopped turn) carry nothing and are
  *  skipped; the daemon budgets the rest to the speaker's model. */
 function panelHistoryOf(msgs: ChatMessage[]): { who: string; content: string }[] {
@@ -1035,7 +1035,7 @@ interface RoomEntry {
   documents?: string[];
 }
 
-/** The conversation as the Iron Jarvis lanes send it (v1.284.0). A panel
+/** The conversation as the STEC OS lanes send it (v1.284.0). A panel
  *  agent's reply is LABELLED, so Jarvis reads it as what builder said — not as
  *  its own earlier words. Before this, a plain message after an @-round made
  *  Jarvis answer as if it had made the agent's claims. Both Jarvis-lane
@@ -1045,7 +1045,7 @@ function toRequestMessages(msgs: ChatMessage[]): ChatRequestMessage[] {
     role: m.role,
     content:
       m.role === "assistant" && m.panelWho
-        ? `[Reply from the agent ${agentDisplayName(m.panelWho)}, on the agent panel — not Iron Jarvis]\n${m.content}`
+        ? `[Reply from the agent ${agentDisplayName(m.panelWho)}, on the agent panel — not STEC OS]\n${m.content}`
         : m.content,
   }));
 }
@@ -2064,7 +2064,7 @@ const ComposerInput = memo(function ComposerInput({
   onSend: (text: string) => void;
   onStop: () => void;
   /** v1.284.0: the agent(s) the conversation is with — the placeholder says
-   *  so, because a box that still reads "Message Iron Jarvis" while the reply
+   *  so, because a box that still reads "Message STEC OS" while the reply
    *  will come from builder is the confusion the strip above it exists to end. */
   talkingTo?: string;
   /** v1.278.0: Enter while a turn runs sends the box as a STEER note — the
@@ -2244,7 +2244,7 @@ const ComposerInput = memo(function ComposerInput({
             ? wide
               ? `Message ${talkingTo}…  (@ to bring in someone else · Back to Jarvis above)`
               : `Message ${talkingTo}…`
-            : "Message Iron Jarvis…"
+            : "Message STEC OS…"
       }
       // v1.326.0 (calm chat W1-2): the box is the top of the composer card,
       // not a field of its own: no border, no fill, no focus ring (the caret
@@ -2692,7 +2692,7 @@ const AtPicker = memo(function AtPicker({
           className={`${sectionCap(chatMatches.length > 0 || fileMatches.length > 0 ? "max-h-40" : "max-h-72")} p-1`}
         >
           {/* v1.329.0: a calm heading in sentence case, like Chats. */}
-          <AtSectionHead title="Agents" hint="Answer in place of Iron Jarvis" />
+          <AtSectionHead title="Agents" hint="Answer in place of STEC OS" />
           {agentShown.map((a) => (
             <button
               key={a.name}
@@ -4096,7 +4096,7 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
   const [promptForm, setPromptForm] = useState<PackPrompt | null>(null);
   const packListsAtRef = useRef<{ prompts: number; resources: number }>({ prompts: 0, resources: 0 });
   // TALKING TO AN AGENT (v1.284.0): after "@builder …" the follow-ups keep
-  // going to builder — participant keys ("builtin:builder"); [] = Iron Jarvis.
+  // going to builder — participant keys ("builtin:builder"); [] = STEC OS.
   // Set after every round, restored from the saved conversation on open,
   // cleared by "Back to Jarvis", a new chat, or a different @ in the text.
   const [addressee, setAddressee] = useState<string[]>([]);
@@ -5068,7 +5068,7 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
   // user's Enter, and a search box that fires agent work on its own breaks it.
   // Same window.location pattern as ?project= above (static route — no
   // useSearchParams).
-  //   ?ask=<text>    the "Ask Iron Jarvis: …" fallback row — prefill the composer
+  //   ?ask=<text>    the "Ask STEC OS: …" fallback row — prefill the composer
   //   ?skill=<name>  a skill picked in search — arm it (chip shows; nothing runs)
   //   ?thread=<id>   a saved conversation picked in search — open it
   //   ?persona=<n>   (v1.223.0) select a persona for THIS conversation — the
@@ -6598,7 +6598,7 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
         // The dialog is open: say it there, where the user is looking.
         setArchiveError(
           offlineNow
-            ? "Could not reach Iron Jarvis. Try again."
+            ? "Could not reach STEC OS. Try again."
             : `Could not archive this chat. ${e instanceof Error ? e.message : String(e)}`,
         );
       } else if (offlineNow) setOffline(true);
@@ -7956,7 +7956,7 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
   }
 
   // Voice Chat mic scheduling: hold the mic while a reply is being generated
-  // or spoken (so it never transcribes Iron Jarvis's own voice), listen
+  // or spoken (so it never transcribes STEC OS's own voice), listen
   // otherwise. Also (re)starts the mic on entering voice chat.
   useEffect(() => {
     if (!voiceMode) return;
@@ -10592,7 +10592,7 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
     setError(null);
     setOffline(false);
     setThreadId(null);
-    setAddressee([]); // a fresh conversation is with Iron Jarvis
+    setAddressee([]); // a fresh conversation is with STEC OS
     awaitingWhoRef.current = null;
     setCommMeta(null); // a fresh conversation is browser-owned again
     // Back to the defaults — the project folder while a project is selected,

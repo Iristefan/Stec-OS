@@ -5,7 +5,7 @@
  * user's words (lib/loadFailed.ts):
  *
  *   "The board couldn't load. Try again."
- *   "The board couldn't load. Iron Jarvis isn't responding."
+ *   "The board couldn't load. STEC OS isn't responding."
  *
  * The same quiet grey sentence the panels already drew (no box, no tone, no
  * new look); the HTTP code and the server's own message ride the `title`

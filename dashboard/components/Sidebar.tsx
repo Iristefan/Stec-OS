@@ -69,7 +69,7 @@ export function NavDrawer() {
             <div className="flex shrink-0 items-center justify-between px-3 py-3">
               <Link href="/" className="flex items-center gap-2 text-zinc-100" onClick={() => setOpen(false)}>
                 <ArcMark />
-                <span className="text-[15px] font-semibold tracking-tight">Iron Jarvis</span>
+                <span className="text-[15px] font-semibold tracking-tight">STEC OS</span>
               </Link>
               <button
                 type="button"

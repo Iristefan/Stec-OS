@@ -3,7 +3,7 @@
  * G61 + G76).
  *
  * The daemon's task door (`src/iron_jarvis/agents/task_door.py`) stamps a
- * task that another computer running Iron Jarvis sent with the origin
+ * task that another computer running STEC OS sent with the origin
  * `remote:<caller>` (`REMOTE_TASK_ORIGIN` + the caller's cleaned name, or
  * `DEFAULT_CALLER` "another computer" when it named none). Every surface that
  * reads an origin says it the same way, keyed on the PREFIX (the caller is a

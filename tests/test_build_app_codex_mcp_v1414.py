@@ -10,7 +10,7 @@ with ``mode: "form"``, an EMPTY ``requestedSchema`` and ``_meta``
 ``{"action": "accept"}`` as allow once, ``accept`` + ``_meta.persist ==
 "session"`` as allow for this session, ``{"action": "decline"}`` as "user
 rejected MCP tool call". Before the fix every such request was declined with
-"An app asked Codex for input…", so Codex could never use Iron Jarvis memory
+"An app asked Codex for input…", so Codex could never use STEC OS memory
 in Ask mode.
 
 Every test replays the request through the real fake harness
@@ -71,7 +71,7 @@ async def test_the_mcp_tool_approval_is_a_card_naming_the_server_tool_and_argume
     try:
         card = (await wait_pending(c, s["id"]))[0]
         assert card["type"] == "approval" and card["kind"] == "tool"
-        assert card["title"] == 'Search Iron Jarvis memory for "project codename"'
+        assert card["title"] == 'Search STEC OS memory for "project codename"'
         assert "query: project codename" in card["detail"]
         assert card["tool"] == "iron-jarvis-code.memory_search"
         # Codex offered "session" (persist: ["session", "always"]); "always"

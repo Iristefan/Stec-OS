@@ -245,7 +245,7 @@ def test_command_grammar(tmp_path):
         assert isinstance(asyncio.run(ci.interpret("/agents")), str)
 
         status = asyncio.run(ci.interpret("/status"))
-        assert "Iron Jarvis v" in status and "Model:" in status  # version + model line
+        assert "STEC OS v" in status and "Model:" in status  # version + model line
 
         assert "Unknown command" in asyncio.run(ci.interpret("/bogus"))
 

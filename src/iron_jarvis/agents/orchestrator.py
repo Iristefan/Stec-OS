@@ -429,13 +429,13 @@ EMERGENCY_STOP_REFUSAL = (
 #: Cancel button they never pressed.
 EMERGENCY_STOP_STOPPED = "Emergency stop was turned on, so this run was stopped."
 #: The summary (and run result) the boot reconcile gives a run a restart cut
-#: off (v1.354.0, G30): Iron Jarvis, never "the daemon". The SAME words the
+#: off (v1.354.0, G30): STEC OS, never "the daemon". The SAME words the
 #: run page's restart line, the bell's interrupted-jobs rows and the chat line
 #: a chat-started run delivers home say (dashboard
 #: components/sessions/runPageWords.RESTART_WORDS, pinned equal by
 #: tests/test_integrate_wave4_v13540.py). Rows stored before v1.354.0 keep
 #: the old "interrupted by a daemon restart"; the run page reads both.
-RESTART_SUMMARY = "Stopped when Iron Jarvis restarted."
+RESTART_SUMMARY = "Stopped when STEC OS restarted."
 #: The summary (and the reply a chat-started run leaves in its chat, and the
 #: answer a task from another computer gets back) when a run was stopped with
 #: no words of its own (v1.359.0, wave 9): the SHARED stopped sentence — the
@@ -461,7 +461,7 @@ class EmergencyStopOn(RuntimeError):
 
     #: Readiness 12A (G28): its message IS the person's sentence, so a run
     #: summary keeps it as it is (``failure_words.worded_message``) instead of
-    #: the generic "Iron Jarvis couldn't finish this task".
+    #: the generic "STEC OS couldn't finish this task".
     plain_words = True
 
 
@@ -974,10 +974,10 @@ class Orchestrator:
         ).exists()
 
     def _self_dev_repo(self) -> Path:
-        """Resolve the Iron Jarvis repo for a self-dev session, or raise.
+        """Resolve the STEC OS repo for a self-dev session, or raise.
 
         Self-development is OPT-IN: it requires ``config.self_dev_enabled`` and a
-        locatable git checkout of Iron Jarvis. Raising here keeps the capability
+        locatable git checkout of STEC OS. Raising here keeps the capability
         fail-closed — an agent cannot reach its own source unless the user has
         explicitly turned it on.
         """
@@ -987,12 +987,12 @@ class Orchestrator:
         if not getattr(cfg, "self_dev_enabled", False):
             raise PermissionError(
                 "self-dev is disabled; set self_dev_enabled = true in config to let "
-                "agents edit Iron Jarvis's own source"
+                "agents edit STEC OS's own source"
             )
         root = iron_jarvis_repo_root(cfg)
         if root is None:
             raise RuntimeError(
-                "self-dev is enabled but the Iron Jarvis git repo could not be located "
+                "self-dev is enabled but the STEC OS git repo could not be located "
                 "(running from an installed package?); set self_dev_root to the checkout path"
             )
         return root
@@ -1178,7 +1178,7 @@ class Orchestrator:
             if root:
                 direct_root = Path(root)
         if direct_root is None and self_dev:
-            # Gated self-development: edit Iron Jarvis itself on a worktree of its
+            # Gated self-development: edit STEC OS itself on a worktree of its
             # OWN repo, as the Maintainer, still review-gated (never auto-merge).
             repo_for_worktree = self._self_dev_repo()
             agent_type = AgentType.MAINTAINER
@@ -1741,7 +1741,7 @@ class Orchestrator:
         # live session for the loop above to find, so it kept waiting under
         # the switch (and its schedule row kept "Needs you").
         stopped.extend(self._stop_waiting_workflows(reason, limit=limit))
-        # v1.398.0 (night shift N1): a CODING SESSION's turn Iron Jarvis
+        # v1.398.0 (night shift N1): a CODING SESSION's turn STEC OS
         # started by itself — a night task, Resume when ready, a move within
         # an account group, a reply carried on after a restart — has no
         # Session row either. Each is stopped by its name (thread-safe); a
@@ -1753,7 +1753,7 @@ class Orchestrator:
             stopped.extend(stop_unattended_turns(self.p.engine))
         except Exception:  # noqa: BLE001 — the rest of the stop still happened
             log.exception("Emergency stop could not stop the coding turns")
-        # v1.422.0 review: and a Build › Code reply Iron Jarvis carried on BY
+        # v1.422.0 review: and a Build › Code reply STEC OS carried on BY
         # ITSELF (after a restart, an account's reset, a move) — it has no
         # Session row and no turn in the chat registry either.
         try:
@@ -2534,7 +2534,7 @@ class Orchestrator:
         into a fresh run.
 
         A MAINTAINER (self-dev) session is re-run as self-dev so it still lands on
-        an Iron Jarvis worktree (and fails closed if self-dev is now disabled).
+        a STEC OS worktree (and fails closed if self-dev is now disabled).
         A session that ran DIRECTLY in a user folder (a project's in-folder task)
         re-runs THERE — cloning only task/model used to dump the rerun's
         deliverable into a throwaway scratch workspace — and its bundle-approved
@@ -3187,7 +3187,7 @@ class Orchestrator:
         pr = Path(self.p.config.project_root)
         if (pr / ".git").exists():
             repos.append(pr)
-        # Only scan the Iron Jarvis self-dev repo when self-dev is enabled, so we
+        # Only scan the STEC OS self-dev repo when self-dev is enabled, so we
         # never touch the real project's worktrees from an unrelated daemon.
         if getattr(self.p.config, "self_dev_enabled", False):
             from ..core.self_dev import iron_jarvis_repo_root

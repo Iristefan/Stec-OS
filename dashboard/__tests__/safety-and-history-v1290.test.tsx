@@ -3,7 +3,7 @@
  * safety item, and the Build pane's Memory capability copy.
  *
  * Pinned here:
- *  - a finding renders with its severity chip, reason and (Iron Jarvis only)
+ *  - a finding renders with its severity chip, reason and (STEC OS only)
  *    a link to /sessions/<id>; its evidence is collapsed and clipped;
  *  - the empty state NAMES what was checked (tool calls x rules);
  *  - a 500 renders the daemon's error, NEVER the empty state (v1.226.0 rule);
@@ -125,7 +125,7 @@ const RULES = {
     },
     {
       id: "ironjarvis-own-key",
-      title: "Read Iron Jarvis's own secret key",
+      title: "Read STEC OS's own secret key",
       severity: "high",
       description: "Something read the key that unlocks this app's saved secrets.",
       category: "credentials",
@@ -233,7 +233,7 @@ afterEach(() => cleanup());
 /* ---- Safety checks ------------------------------------------------------------ */
 
 describe("Safety checks card (v1.290.0)", () => {
-  it("renders each finding with its severity, reason and — for Iron Jarvis only — a session link", async () => {
+  it("renders each finding with its severity, reason and — for STEC OS only — a session link", async () => {
     render(<ActivityPage />);
     await waitFor(() => expect(screen.getAllByTestId("finding")).toHaveLength(2));
     const safety = document.getElementById("safety")!;
@@ -254,7 +254,7 @@ describe("Safety checks card (v1.290.0)", () => {
       "href",
       "/sessions/session_3f9a1c2b8d04",
     );
-    // A Claude Code finding has no Iron Jarvis session page to link to.
+    // A Claude Code finding has no STEC OS session page to link to.
     expect(within(med).queryByTestId("finding-session-link")).toBeNull();
 
     // Evidence is collapsed until asked for, then clipped — never a wall.
@@ -294,7 +294,7 @@ describe("Safety checks card (v1.290.0)", () => {
     expect(screen.queryByTestId("safety-empty")).toBeNull();
     expect(document.body.textContent).not.toMatch(/No safety findings/);
     // v1.354.0 (G30): the OfflineHint's words moved; check both.
-    expect(screen.queryByText(/Daemon offline|Iron Jarvis isn't responding/i)).toBeNull();
+    expect(screen.queryByText(/Daemon offline|STEC OS isn't responding/i)).toBeNull();
   });
 
   it("the 7 days switch asks for hours=168 and the empty copy says 7 days", async () => {
@@ -494,7 +494,7 @@ describe("lead follow-ups (v1.290.0)", () => {
     expect(link.textContent).toBe("Open Chat");
   });
 
-  it("an ordinary Iron Jarvis session still links to its session page", async () => {
+  it("an ordinary STEC OS session still links to its session page", async () => {
     const { FindingRow } = await import("@/components/SafetyChecks");
     render(
       <ul>

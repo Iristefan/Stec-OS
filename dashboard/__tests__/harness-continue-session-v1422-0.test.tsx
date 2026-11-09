@@ -103,7 +103,7 @@ const FAILED_KEPT = {
   role: "assistant",
   content: "",
   turnId: "t1",
-  error: "Claude Code is busy. Iron Jarvis tried 5 times over 1 min 50 s. Try again shortly, or pick another model for this session.",
+  error: "Claude Code is busy. STEC OS tried 5 times over 1 min 50 s. Try again shortly, or pick another model for this session.",
   errorTitle: "Claude Code is busy",
   canContinue: true,
 };

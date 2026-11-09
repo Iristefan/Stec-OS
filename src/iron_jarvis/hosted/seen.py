@@ -1,7 +1,7 @@
 """What a coding tool SAID about its account and its conversation (v1.414.0,
 the Code view's Usage and Session tabs).
 
-The real CLIs report, in their own frames, numbers Iron Jarvis used to read
+The real CLIs report, in their own frames, numbers STEC OS used to read
 only for a limit: Claude Code's ``rate_limit_event`` carries its usage
 windows (``unifiedWindows``: utilization + reset per window), Codex's
 ``account/rateLimits/updated`` its ``primary`` / ``secondary`` windows

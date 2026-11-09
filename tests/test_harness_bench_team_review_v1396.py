@@ -145,7 +145,7 @@ async def test_a_dry_run_says_what_it_checked_and_what_it_cannot_know(world, tmp
     # The gateway answered with the key, and lists the member's model.
     assert world.gateway.seen and all(had for _p, had in world.gateway.seen)
     assert f"glm: the custom endpoint (127.0.0.1:{world.gateway.port}) answered and lists glm-5.3-flash" in text
-    # Iron Jarvis never starts a CLI to ask: the sign-in is said as not known.
+    # STEC OS never starts a CLI to ask: the sign-in is said as not known.
     assert cli_auth.DEFAULT_PROBE.status("claude") is None
     assert "whether Claude Code is signed in is not known yet" in text
     assert "whether Codex is signed in is not known yet" in text

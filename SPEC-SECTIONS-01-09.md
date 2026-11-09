@@ -13,7 +13,7 @@
 
 # 1. Vision & Product Definition
 
-Iron Jarvis is a **local-first AI operating system** that orchestrates agents,
+STEC OS is a **local-first AI operating system** that orchestrates agents,
 models, tools, memory, and workflows to autonomously perform meaningful work
 while preserving complete user ownership, transparency, and control. (This is
 the same definition stated in §33; §1 is its full statement, §33 its recap.)
@@ -137,7 +137,7 @@ improves over time. **[ASSUMPTION]** Default model = the latest Claude (model id
   passwords / auth secrets outside secure storage").
 - **Browser providers**: Playwright loads the encrypted session (cookies / local
   / session storage / fingerprint) from the vault (§10). If the session is
-  expired, Iron Jarvis surfaces a **user-driven login** in the Dashboard. **MFA
+  expired, STEC OS surfaces a **user-driven login** in the Dashboard. **MFA
   codes are entered by the human and never stored or automated.**
 - Sessions are refreshed opportunistically; failures fail closed (request is
   blocked, event `provider.failed` emitted, §31).

@@ -26,7 +26,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 # slug -> (title, a heading string that MUST appear in the real file)
 EXPECTED = {
-    "handbook": ("The Handbook", "# Iron Jarvis — The Handbook"),
+    "handbook": ("The Handbook", "# STEC OS — The Handbook"),
     "recommended-settings": ("Recommended Settings", "# Recommended Settings"),
     "local-models": ("Local Models by RAM Tier", "# Local Models by RAM Tier"),
 }

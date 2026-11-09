@@ -25,7 +25,7 @@ export type SurfaceGroup = "primary" | "work" | "automations" | "knowledge" | "s
 
 export interface Surface extends NavEntry {
   group: SurfaceGroup;
-  /** v1.353.0 (G66): a page for people who build on Iron Jarvis rather than
+  /** v1.353.0 (G66): a page for people who build on STEC OS rather than
    *  with it. Everything lists these after the everyday entries, under its
    *  column's "More"; the filter, Ctrl K and pins treat them like any other. */
   advanced?: boolean;
@@ -119,7 +119,7 @@ const EXTRA_ENTRIES: NavEntry[] = [
     label: "Everything",
     icon: LayoutGrid,
     aliases: ["all pages", "all tools", "modules", "directory of pages", "more", "apps", "everything else"],
-    blurb: "Every part of Iron Jarvis on one page, grouped, each with one line about what it is for.",
+    blurb: "Every part of STEC OS on one page, grouped, each with one line about what it is for.",
   },
   {
     // v1.406.0 (part 1): the chat page's Code view — the coding sessions,

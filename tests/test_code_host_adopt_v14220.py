@@ -1,6 +1,6 @@
-"""v1.422.0 — Build › Code survives an Iron Jarvis restart (audit gap B3, the
+"""v1.422.0 — Build › Code survives a STEC OS restart (audit gap B3, the
 owner's decision of 2026-11-01): the coding tools run in the CODE HOST
-(``iron_jarvis/codehost.py``) and a restarted Iron Jarvis carries each
+(``iron_jarvis/codehost.py``) and a restarted STEC OS carries each
 session on (``hosted/adopt.py``).
 
 The daemon is restarted IN-PROCESS here: the old one "dies" without a word
@@ -16,7 +16,7 @@ The four promises, one test each, and the fallbacks:
 
 1. an idle session's next message goes to the SAME live tool process — no
    new start, no resume, no "Starting" notice;
-2. a reply being written keeps going while Iron Jarvis is down; afterwards
+2. a reply being written keeps going while STEC OS is down; afterwards
    the window follows the rest of it live, its end is written exactly once
    and nothing already in the log is shown twice;
 3. a card the tool had open is shown again (the same card), and answering it
@@ -133,7 +133,7 @@ async def test_a_reply_being_written_carries_on_and_ends_once(hosts, tmp_path, m
     app, root, log, work = await _first_app(hosts, tmp_path, monkeypatch, mid_reply(tmp_path, 4.0))
     home = config_home(root)
     if when == "kept_state_behind":
-        # Iron Jarvis dies before it kept the state again: lines ALREADY
+        # STEC OS dies before it kept the state again: lines ALREADY
         # SHOWN are read again after the restart and must not be shown twice.
         monkeypatch.setattr(HL, "SNAP_AFTER_LINE_S", 3600.0)
         monkeypatch.setattr(HL, "SNAP_AFTER_WRITE_S", 3600.0)
@@ -150,7 +150,7 @@ async def test_a_reply_being_written_carries_on_and_ends_once(hosts, tmp_path, m
     follow.cancel()
     await c.aclose()
     if when == "after_it_ended":
-        # The whole rest of the reply came while no Iron Jarvis was there.
+        # The whole rest of the reply came while no STEC OS was there.
         await asyncio.sleep(5.5)
     app2 = await boot(root)
     svc2 = app2.state.platform.hosted
@@ -210,7 +210,7 @@ async def test_a_card_open_across_the_restart_is_answerable_and_reaches_the_tool
 
 async def test_a_card_answered_just_before_the_restart_is_not_asked_again(hosts, tmp_path, monkeypatch):
     """The answer reached the tool, but the state kept in the host still shows
-    the card open (Iron Jarvis died before it was kept again): the session's
+    the card open (STEC OS died before it was kept again): the session's
     log has the answer, so the card is NOT reopened and the reply goes on."""
     app, root, log, work = await _first_app(hosts, tmp_path, monkeypatch, with_card(tmp_path))
     home = config_home(root)
@@ -222,7 +222,7 @@ async def test_a_card_answered_just_before_the_restart_is_not_asked_again(hosts,
     await kept(app, sid)
     ask_id = next(iter(svc.live[sid].asks))
     proc = svc.live[sid].proc
-    proc.snapshot_source = None  # Iron Jarvis dies before the answered state is kept
+    proc.snapshot_source = None  # STEC OS dies before the answered state is kept
     r = await c.post(f"/build/app/sessions/{sid}/answer", json={"request_id": ask_id, "decision": "allow"})
     assert r.status_code == 200, r.text
     crash(app)
@@ -295,7 +295,7 @@ async def test_shutdown_with_restart_keeps_the_tools_for_the_next_iron_jarvis(ho
         frames((await asyncio.wait_for(
             c.post(f"/build/app/sessions/{sid}/turn", json={"text": "one", "turn_id": "t1"}), 60)).text)
         r = await c.post("/shutdown", json={"restart": True})
-        assert r.status_code == 200 and r.json()["detail"] == "Iron Jarvis is restarting"
+        assert r.status_code == 200 and r.json()["detail"] == "STEC OS is restarting"
     assert app.state.platform.code_host_keep is True
     pid = app.state.platform.hosted.live[sid].proc.pid
     await ADOPT.shutdown(app.state.platform, keep=app.state.platform.code_host_keep)
@@ -312,7 +312,7 @@ async def test_shutdown_with_no_body_is_a_quit(tmp_path, monkeypatch):
     app = create_app(str(tmp_path / "root"))
     async with client(app) as c:
         r = await c.post("/shutdown")
-    assert r.status_code == 200 and r.json()["detail"] == "Iron Jarvis is shutting down"
+    assert r.status_code == 200 and r.json()["detail"] == "STEC OS is shutting down"
     assert not getattr(app.state.platform, "code_host_keep", False), "an older desktop's stop is a QUIT"
 
 
@@ -395,7 +395,7 @@ async def test_no_host_means_the_tool_starts_as_before_and_says_so_once(tmp_path
 # --------------------------------------------------------------------------- #
 async def test_a_line_read_again_after_the_restart_never_writes_twice(hosts, tmp_path, monkeypatch):
     """A line the tool sent that made the driver ANSWER it (a control request
-    Iron Jarvis does not handle: refused) is read again after the restart —
+    STEC OS does not handle: refused) is read again after the restart —
     the host kept everything since the last kept state — and must not be
     answered a second time."""
     from tests._code_host_helpers_v14220 import _turn_split, write_scenario
@@ -434,7 +434,7 @@ async def test_a_line_read_again_after_the_restart_never_writes_twice(hosts, tmp
 
 async def test_a_reply_whose_end_was_read_but_never_written_ends_once_after_the_restart(hosts, tmp_path,
                                                                                          monkeypatch):
-    """Iron Jarvis read the tool's last line of a reply (its usage is in the
+    """STEC OS read the tool's last line of a reply (its usage is in the
     log) and died before the reply's end was written: after the restart the
     reply ends — once — instead of waiting forever."""
     app, root, log, work = await _first_app(hosts, tmp_path, monkeypatch, two_turns(tmp_path))
@@ -443,7 +443,7 @@ async def test_a_reply_whose_end_was_read_but_never_written_ends_once_after_the_
     sid = (await new_session(c, work))["id"]
     svc = app.state.platform.hosted
 
-    async def never(*a, **k):  # Iron Jarvis dies before the end is written
+    async def never(*a, **k):  # STEC OS dies before the end is written
         return None
 
     monkeypatch.setattr(svc, "_end_turn", never)

@@ -303,7 +303,7 @@ TEST_CMD = "python -m unittest -q test_mini"
 
 
 async def test_ask_first_shows_one_card_for_the_finish_rounds_own_calls(env, monkeypatch):
-    """The test re-run and the checker share ONE card, Iron Jarvis's."""
+    """The test re-run and the checker share ONE card, STEC OS's."""
     platform, ws, log = env
     (ws / ".ironjarvis" / "harness" / "finish.toml").write_text("new_files = false\nrequest = false\n",
                                                                  encoding="utf-8")
@@ -347,7 +347,7 @@ async def test_low_trust_runs_no_checker_at_the_finish(env, monkeypatch):
 def test_the_findings_are_the_programs_text_and_go_through_the_lanes_fence(tmp_path):
     """A finding quotes the project's files: the note's lines under each
     head go through the lane's own fence (scanned; a flagged one taints the
-    reply), the head lines are Iron Jarvis's own words."""
+    reply), the head lines are STEC OS's own words."""
     import asyncio
 
     pc = C.ProjectCheckers(tmp_path, [], "shell")

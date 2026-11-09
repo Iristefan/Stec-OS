@@ -4,7 +4,7 @@
  * One quiet line in the chat's project drawer (v1.406.0): which brain profile
  * this project's chats use ("Memory profile: Notion (this project)"), with a
  * link to the project page where it is chosen. Said only when a profile
- * applies; an older Iron Jarvis (404) or none at all says nothing.
+ * applies; an older STEC OS (404) or none at all says nothing.
  */
 
 import Link from "next/link";

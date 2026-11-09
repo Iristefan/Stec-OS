@@ -412,7 +412,7 @@ This preserves D28 exactly as written: the popup gains no pairing approval, no a
 
 - `browser_get_status` reports `host_permission: false` and stays available.
 - `browser_list_tabs` and `browser_get_active_tab` still return ids and window ids, with `url`/`title` `null` and `needs_host_permission: true` per row.
-- Every other tool returns `PERMISSION_DENIED` with the message: `Site access has not been granted to the Iron Jarvis extension. Open the Browser page in Iron Jarvis and press Grant site access.`
+- Every other tool returns `PERMISSION_DENIED` with the message: `Site access has not been granted to the STEC OS extension. Open the Browser page in STEC OS and press Grant site access.`
 
 ---
 
@@ -422,7 +422,7 @@ Five separate credentials exist after this work. They never substitute for one a
 
 | Credential | Minted by | Lives | Accepted at |
 | --- | --- | --- | --- |
-| Install bearer | `desktop/main.js:192` `getOrCreateToken()` -> `%APPDATA%/Iron Jarvis/token.txt` -> `IRONJARVIS_TOKEN` | per install | every HTTP route + `/terminals/*/ws`, `/events`, `/voice/stream` |
+| Install bearer | `desktop/main.js:192` `getOrCreateToken()` -> `%APPDATA%/STEC OS/token.txt` -> `IRONJARVIS_TOKEN` | per install | every HTTP route + `/terminals/*/ws`, `/events`, `/voice/stream` |
 | Browser pairing token | NEW `browser/pairing.py` | per paired browser, on disk under the daemon home | `/browser/ws` ONLY |
 | Pane capability token | NEW `browser/panetokens.py` (Ship 4) | pane lifetime, memory only | `/mcp` ONLY |
 | Provider secrets | existing Fernet vault | n/a | n/a |
@@ -491,7 +491,7 @@ table.
 
 Therefore **no user-facing string in these five ships may call the Chrome add-on an "extension"**. The
 user-facing words are `Your browser` and `Jarvis browser` (D04). Where the add-on itself must be named
-to the user, the phrase is **"the Iron Jarvis browser add-on"**. Internal identifiers
+to the user, the phrase is **"the STEC OS browser add-on"**. Internal identifiers
 (`ExtensionBackend`, `extensions/chrome/`, `extension_id`) are engineering vocabulary and are fine.
 
 Rows added to `VOCABULARY.md` in Ship 1, in the existing table's shape:
@@ -1282,7 +1282,7 @@ class PaneTokenStore:
 - **Restart recovery, defined.** Tokens do not survive a daemon restart. `TerminalManager.rehydrate`
   brings panes back under the same id with a fresh shell, and the old token named a process that no
   longer exists. A restored pane therefore has no token until its harness is relaunched, and
-  `POST /mcp` answers `401` with `the pane token expired when Iron Jarvis restarted; relaunch the
+  `POST /mcp` answers `401` with `the pane token expired when STEC OS restarted; relaunch the
   harness from the Build pane`. Silently re-minting for a restored pane would hand a live credential to
   whatever now occupies that pane id.
 - `/mcp` accepts **only** these tokens. The install bearer and any pairing token are rejected with 401,

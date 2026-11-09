@@ -1,6 +1,6 @@
 /**
  * v1.354.0 (product-readiness G31): the chat's own offline hint clears BY
- * ITSELF when Iron Jarvis answers again.
+ * ITSELF when STEC OS answers again.
  *
  * The chat page keeps its own `offline` flag (a status-0 answer to one of its
  * reads). Nothing cleared it but the user — a send, a Retry, another chat —
@@ -145,8 +145,8 @@ beforeEach(() => {
   resetApi();
   window.localStorage.clear();
   Element.prototype.scrollIntoView = vi.fn();
-  // Opening a saved chat while Iron Jarvis is down: the read answers status 0.
-  H.getResponses["/chat/threads/t7"] = new H.FakeApiError("Iron Jarvis isn't responding", 0);
+  // Opening a saved chat while STEC OS is down: the read answers status 0.
+  H.getResponses["/chat/threads/t7"] = new H.FakeApiError("STEC OS isn't responding", 0);
   window.history.replaceState({}, "", "/chat?thread=t7");
 });
 afterEach(() => {
@@ -160,10 +160,10 @@ describe("G31 — the chat's offline hint clears by itself", () => {
     const view = render(at(1));
     expect(await screen.findByText(HINT, { exact: false }, { timeout: 10_000 })).toBeInTheDocument();
     // The hint says the app's name, never "daemon".
-    expect(screen.getByText("Iron Jarvis isn't responding.")).toBeInTheDocument();
+    expect(screen.getByText("STEC OS isn't responding.")).toBeInTheDocument();
     const before = listReads();
 
-    // Iron Jarvis answers again: DaemonProvider moves the epoch.
+    // STEC OS answers again: DaemonProvider moves the epoch.
     view.rerender(at(2));
     await waitFor(() => expect(screen.queryByText(HINT, { exact: false })).toBeNull());
     await waitFor(() => expect(listReads()).toBeGreaterThan(before));

@@ -1,7 +1,7 @@
 /**
  * The "Your browser" card, all six states (v1.235.0, Browser Ship 1).
  *
- * The card is the ONLY place a user pairs their own Chrome with Iron Jarvis,
+ * The card is the ONLY place a user pairs their own Chrome with STEC OS,
  * and it is the only place they learn why it is not working. Six states of one
  * card is exactly the shape that rots: five of them are rare, so a regression
  * in any of them ships green and is discovered by the user. This file mounts
@@ -332,7 +332,7 @@ describe("the install instructions are reachable when nothing is talking (v1.235
       api.status = byState(state);
       render(<YourBrowserCard />);
       const toggle = await screen.findByTestId("browser-install-toggle");
-      expect(toggle.textContent).toContain("Iron Jarvis browser add-on");
+      expect(toggle.textContent).toContain("STEC OS browser add-on");
       expect(screen.queryByTestId("browser-install-steps")).toBeNull();
       fireEvent.click(toggle);
       const steps = await screen.findByTestId("browser-install-steps");

@@ -281,7 +281,7 @@ def build_recap(dropped: list[Any], *, max_chars: int = 900) -> str:
         return ""
     lines: list[str] = []
     for m in dropped:
-        role = "You" if _role_of(m) == "user" else "Iron Jarvis"
+        role = "You" if _role_of(m) == "user" else "STEC OS"
         text = " ".join(_content_of(m).split())
         if not text:
             continue

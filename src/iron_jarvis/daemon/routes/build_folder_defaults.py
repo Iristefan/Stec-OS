@@ -3,7 +3,7 @@ lane B, E5) — every rule lives in :mod:`iron_jarvis.harness.folder_defaults`.
 
 ``GET /build/folders/defaults?folder=`` answers ``{folder, defaults: {code?,
 tool?}}`` (every folder answers 200 — none saved is ``{}``; the screens read a
-404 as an older Iron Jarvis). ``PUT /build/folders/defaults {folder, view:
+404 as an older STEC OS). ``PUT /build/folders/defaults {folder, view:
 "code" | "tool", defaults: {...} | null}`` saves (or with null clears) one
 view's defaults and answers the folder's defaults after it; a default the
 folder cannot keep is a 400 in one sentence. Both are plain ``def`` routes:

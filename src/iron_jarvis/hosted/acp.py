@@ -24,7 +24,7 @@ prompt(s), permission cards, the update stream drawn as the Code view's
 events, and the turn's end. Each tool's own module says the rest — how it is
 started, how a session opens and reopens, its modes, models and effort, which
 of its options is session-wide, its notes while it works and its usage.
-Iron Jarvis is no editor: ``clientCapabilities`` fs/terminal are FALSE and a
+STEC OS is no editor: ``clientCapabilities`` fs/terminal are FALSE and a
 tool's ``fs/*`` / ``terminal/*`` request is answered "not handled" (the tool
 reads, writes and runs commands with its OWN tools, exactly as in a terminal).
 """
@@ -223,7 +223,7 @@ def _read_images(files: list[str]) -> tuple[list[dict[str, Any]], list[str]]:
 
 #: v1.414.0: a tool that does not take an HTTP MCP server over ACP.
 JARVIS_TOOLS_NOT_TAKEN = (
-    "This {label} does not take an MCP server from Iron Jarvis, so the Iron Jarvis "
+    "This {label} does not take an MCP server from STEC OS, so the STEC OS "
     "tools you turned on are not in this session."
 )
 
@@ -263,7 +263,7 @@ class AcpDriver(Driver):
         self.options: list[dict[str, Any]] = []
         self.can_load = False
         self.takes_pictures = True
-        #: v1.414.0: ACP ``mcpServers`` entries (Iron Jarvis's own tools for
+        #: v1.414.0: ACP ``mcpServers`` entries (STEC OS's own tools for
         #: this session, set by the service when the user turned them on).
         self.mcp_servers: list[dict[str, Any]] = []
 
@@ -338,21 +338,21 @@ class AcpDriver(Driver):
             pass
 
     def client_capabilities(self) -> dict[str, Any]:
-        """What Iron Jarvis says it can do in ``initialize``. The tool reads,
+        """What STEC OS says it can do in ``initialize``. The tool reads,
         writes and runs commands with its OWN tools, exactly as in a terminal
         (fs / terminal off). v1.439.0: a subclass may add what it answers
         (Antigravity: its question form, ``elicitation``)."""
         return {"fs": {"readTextFile": False, "writeTextFile": False}, "terminal": False}
 
     async def initialize(self) -> dict[str, Any]:
-        """``initialize`` — Iron Jarvis is not an editor (fs / terminal off).
+        """``initialize`` — STEC OS is not an editor (fs / terminal off).
         Answers the agent's capabilities and keeps what the driver needs."""
         from .. import __version__
 
         got = await self.request("initialize", {
             "protocolVersion": PROTOCOL_VERSION,
             "clientCapabilities": self.client_capabilities(),
-            "clientInfo": {"name": "iron-jarvis", "title": "Iron Jarvis", "version": __version__},
+            "clientInfo": {"name": "iron-jarvis", "title": "STEC OS", "version": __version__},
         })
         caps = (got or {}).get("agentCapabilities") if isinstance(got, dict) else {}
         caps = caps if isinstance(caps, dict) else {}
@@ -362,7 +362,7 @@ class AcpDriver(Driver):
         return caps
 
     def acp_servers(self, caps: dict[str, Any]) -> list[dict[str, Any]]:
-        """v1.414.0: Iron Jarvis's own tools for THIS session, given the ACP
+        """v1.414.0: STEC OS's own tools for THIS session, given the ACP
         way — only to a tool that says it takes an HTTP MCP server."""
         mcp_caps = caps.get("mcpCapabilities") if isinstance(caps.get("mcpCapabilities"), dict) else {}
         servers = list(self.mcp_servers) if mcp_caps.get("http") else []
@@ -527,9 +527,9 @@ class AcpDriver(Driver):
         if method == "session/request_permission":
             self._ask(rid, p)
             return
-        # fs/* and terminal/*: Iron Jarvis said it is no editor (the tool
+        # fs/* and terminal/*: STEC OS said it is no editor (the tool
         # writes the file itself and only tells an editor it did — measured).
-        asyncio.ensure_future(self._respond(rid, error="Iron Jarvis does not handle this request"))
+        asyncio.ensure_future(self._respond(rid, error="STEC OS does not handle this request"))
 
     def _ask(self, rid: Any, p: dict[str, Any]) -> None:
         tc = p.get("toolCall") if isinstance(p.get("toolCall"), dict) else {}

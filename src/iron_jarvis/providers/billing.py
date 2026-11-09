@@ -190,7 +190,7 @@ def _join(names: list[str]) -> str:
 
 def not_moved_sentence(providers: Iterable[str], manager: Any = None) -> str:
     """The ONE sentence a failure carries when the failover left pay-per-use
-    models out (decision D1): "Iron Jarvis didn't switch to OpenAI, which
+    models out (decision D1): "STEC OS didn't switch to OpenAI, which
     bills per use, because you didn't choose a pay-per-use model for this." — the
     providers by their plain names (``failure_words.plain_name``: a fleet
     node by the label the user gave it). ``""`` for none. Never raises."""
@@ -206,7 +206,7 @@ def not_moved_sentence(providers: Iterable[str], manager: Any = None) -> str:
             return ""
         which = "bills" if len(names) == 1 else "bill"
         return (
-            f"Iron Jarvis didn't switch to {_join(names)}, which {which} per use, "
+            f"STEC OS didn't switch to {_join(names)}, which {which} per use, "
             "because you didn't choose a pay-per-use model for this."
         )
     except Exception:  # noqa: BLE001 — wording only

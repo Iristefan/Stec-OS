@@ -5,7 +5,7 @@ Ported from NousResearch's MIT-licensed claude-subscription-directsdk plugin
 ``--strict-mcp-config`` and ONE server: this one. It answers ``initialize``,
 lists this request's tools from a manifest file (``tools/list``), and refuses
 every ``tools/call`` — the CLI also runs with ``--permission-mode dontAsk``,
-so a call is denied twice over. Iron Jarvis's own loop, registry and
+so a call is denied twice over. STEC OS's own loop, registry and
 permission engine execute every tool; the CLI only ever emits ``tool_use``.
 
 STDLIB ONLY, NO IRON JARVIS IMPORTS, NOTHING ON STDOUT BUT THE PROTOCOL. It is
@@ -27,7 +27,7 @@ from pathlib import Path
 
 MODULE = "iron_jarvis.providers.adapters.claude_native.inert_mcp"
 SUBCOMMAND = "claude-inert-mcp"
-DENIED = "Denied: tools are inert; Iron Jarvis executes tools."
+DENIED = "Denied: tools are inert; STEC OS executes tools."
 
 
 def inert_mcp_command(manifest_path: str) -> list[str]:

@@ -48,7 +48,7 @@ vi.mock("@/lib/api", () => ({
     if (p === "/build/night") return Promise.resolve({ tasks: [], window: {}, limits: {}, emergency_stop: false });
     if (p === "/build/sessions") return Promise.resolve(SESSIONS);
     if (p === "/build/sessions/bs_fail/git") {
-      return Promise.resolve({ pr_draft: { title: "Fix the parser", body: "Committed by Iron Jarvis." } });
+      return Promise.resolve({ pr_draft: { title: "Fix the parser", body: "Committed by STEC OS." } });
     }
     return Promise.reject(new api.ApiError(`unmocked ${p}`, 404));
   },
@@ -57,7 +57,7 @@ vi.mock("@/lib/api", () => ({
     if (api.fail[p]) return Promise.reject(api.fail[p]);
     if (p.endsWith("/git/pr")) return Promise.resolve({ url: "https://github.com/acme/parser/pull/9", number: 9 });
     if (p.endsWith("/git/discard")) {
-      return Promise.resolve({ moved: true, note: "The worktree is in Iron Jarvis's trash and the branch ij/fix-the-parser-77aa is kept." });
+      return Promise.resolve({ moved: true, note: "The worktree is in STEC OS's trash and the branch ij/fix-the-parser-77aa is kept." });
     }
     return Promise.resolve({});
   },
@@ -186,7 +186,7 @@ describe("Last night: the summary, read from the records", () => {
     // The branch's own prefill (GET …/git pr_draft), never words made up here.
     expect(api.calls).toContainEqual(["GET", "/build/sessions/bs_fail/git", undefined]);
     expect(api.calls).toContainEqual([
-      "POST", "/build/sessions/bs_fail/git/pr", { title: "Fix the parser", body: "Committed by Iron Jarvis." },
+      "POST", "/build/sessions/bs_fail/git/pr", { title: "Fix the parser", body: "Committed by STEC OS." },
     ]);
     // A pushed branch with a pull request offers neither again — its link.
     expect(screen.queryByTestId("last-night-push-night_done")).toBeNull();
@@ -196,7 +196,7 @@ describe("Last night: the summary, read from the records", () => {
     );
   });
 
-  it("a refused push says Iron Jarvis's own words", async () => {
+  it("a refused push says STEC OS's own words", async () => {
     api.fail["/build/sessions/bs_fail/git/push"] = new Error(
       "This repository has no remote to push to. Add one with git, then push again.",
     );
@@ -219,7 +219,7 @@ describe("Last night: the summary, read from the records", () => {
       expect(api.calls).toContainEqual(["POST", "/build/sessions/bs_fail/git/discard", { confirm: true }]),
     );
     expect((await screen.findByTestId("last-night-said-night_fail")).textContent).toBe(
-      "The worktree is in Iron Jarvis's trash and the branch ij/fix-the-parser-77aa is kept.",
+      "The worktree is in STEC OS's trash and the branch ij/fix-the-parser-77aa is kept.",
     );
   });
 
@@ -250,10 +250,10 @@ describe("Last night: the summary, read from the records", () => {
     );
   });
 
-  it("an older Iron Jarvis (404) says so in words", async () => {
+  it("an older STEC OS (404) says so in words", async () => {
     api.fail["/build/night/summaries"] = new api.ApiError("Not Found", 404);
     render(<LastNightList onOpenSession={vi.fn()} />);
-    expect(await screen.findByText("This version of Iron Jarvis has no Last night summary yet.")).toBeTruthy();
+    expect(await screen.findByText("This version of STEC OS has no Last night summary yet.")).toBeTruthy();
   });
 
   it("the keyboard: every button is a real button in the tab order", async () => {

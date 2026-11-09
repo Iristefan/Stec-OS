@@ -1,4 +1,4 @@
-"""Persistent Python session namespace for Iron Jarvis.
+"""Persistent Python session namespace for STEC OS.
 
 The child-process half lives in `worker.py` and is deliberately standalone: it
 imports nothing from `iron_jarvis`, so the parent can hand its file path to a

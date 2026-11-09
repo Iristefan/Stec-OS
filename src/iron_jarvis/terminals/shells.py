@@ -41,7 +41,7 @@ environment). It is the PROCESS scope: that terminal only, nothing on the PC
 changes, and a group policy would still win. A policy anyone DID set (even
 ``Restricted``, even ``AllSigned``) is respected and the flag is not added.
 Review: a RESTORED Windows PowerShell pane is a new process too, so its flag
-is decided by the same rule when its saved argv is one Iron Jarvis gave
+is decided by the same rule when its saved argv is one STEC OS gave
 (:func:`restored_argv`) — a saved flag would beat a policy the user set since
 (process scope wins over the user's and the machine's own); any other saved
 argv is kept as it was.
@@ -170,7 +170,7 @@ def _windows_powershell_argv() -> list[str]:
 
 def restored_argv(name: str | None, argv: list[str]) -> list[str]:
     """The argv a RESTORED pane starts with (v1.422.2 review): its saved one,
-    except that for the two argvs Iron Jarvis itself gives Windows PowerShell
+    except that for the two argvs STEC OS itself gives Windows PowerShell
     (``powershell -NoLogo``, with or without ``-ExecutionPolicy
     RemoteSigned``) the policy flag is decided by today's rule, as for a new
     terminal. A restore is a NEW PowerShell process: a saved flag would beat a

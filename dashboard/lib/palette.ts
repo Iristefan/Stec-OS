@@ -1,7 +1,7 @@
 /** Ranking brain for the v1.111.0 global search / command palette.
  *
  * THE NEED: "I know the thing exists — I just don't know which page it's on."
- * Iron Jarvis is 39 routes deep, and the way you reach a skill, a project, a
+ * STEC OS is 39 routes deep, and the way you reach a skill, a project, a
  * chat thread and a settings toggle is four different navigations. One box that
  * takes what you'd say out loud ("rename endpoint", "usage") and puts the right
  * row first is the whole feature; the ordering below IS the feature.

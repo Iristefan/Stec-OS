@@ -12,7 +12,7 @@ adapters are doubles (``AccountDouble`` — they make the SAME
    an account that cannot come back, Cancel, Choose account, an archived
    session and the user's own later turn behave as before; a write after a
    slow check never re-arms a wait the user cancelled.
-2. ACCOUNT GROUPS live in Iron Jarvis's config (the one writer), validated.
+2. ACCOUNT GROUPS live in STEC OS's config (the one writer), validated.
 3. A limit MOVES the reply to another account of the SAME group and vendor
    that is usable now (lowest usage first), through the Choose account path;
    the line names both accounts; a work account never hands a conversation to
@@ -288,7 +288,7 @@ async def test_groups_are_saved_through_the_writer_and_shown_on_the_card(app, fa
     }
     status, view = await asgi(app, "GET", "/iron-proxy?discover=0")
     assert view["account_groups"] == app.state.platform.config.account_groups
-    # Persisted in Iron Jarvis's config.toml (never in Iron-Proxy).
+    # Persisted in STEC OS's config.toml (never in Iron-Proxy).
     text = (app.state.platform.config.home / "config.toml").read_text(encoding="utf-8")
     assert "account_groups" in text and "c-spare" in text
     assert not any("group" in str(c).lower() for c in fake.calls)

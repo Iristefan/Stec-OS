@@ -297,7 +297,7 @@ class ChatApprovals:
         somebody else's loop).
 
         ``actor`` (v1.402.0, the autonomy metrics): who answered — ``app``
-        (a press in Iron Jarvis, the default), ``phone`` (a reply on the
+        (a press in STEC OS, the default), ``phone`` (a reply on the
         user's phone), ``bench`` (the benchmark answering for nobody). The
         FIRST answer that reaches a still-open ask names it."""
         if decision not in DECISIONS:
@@ -411,7 +411,7 @@ class ChatApprovals:
 # up by the event log's write (a busy SQLite retries for up to ~2 s). A
 # publish failure is swallowed — a metric never breaks a turn.
 
-#: Who settled an ask. ``app``: a press in Iron Jarvis; ``phone``: a reply on
+#: Who settled an ask. ``app``: a press in STEC OS; ``phone``: a reply on
 #: the user's phone; ``grant``: a grant the person made a moment earlier (a
 #: sibling woken by "Allow for this run", the sidebar's "allow everything"
 #: switch); ``timeout``: nobody answered in time (the night shift's card wait

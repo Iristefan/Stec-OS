@@ -362,7 +362,7 @@ export function MemoryReview() {
       }
     >
       <p className="mb-3 text-[13px] leading-relaxed text-zinc-500">
-        Iron Jarvis adds notes to your memory bases on its own — that&apos;s always
+        STEC OS adds notes to your memory bases on its own — that&apos;s always
         undoable. Anything that would change or remove a note you already have waits
         here. <span className="text-zinc-300">Nothing is changed until you approve.</span>
       </p>
@@ -401,7 +401,7 @@ export function MemoryReview() {
 
       {pending.length === 0 ? (
         <p className="text-[13px] leading-relaxed text-zinc-600">
-          Nothing to review. As Iron Jarvis reads your conversations it saves what
+          Nothing to review. As STEC OS reads your conversations it saves what
           matters and flags duplicates, out-of-date notes, and contradictions here.
         </p>
       ) : (

@@ -142,23 +142,23 @@ export type BrowserErrorCode =
 export const BROWSER_ERROR_CODES = ["BROWSER_NOT_CONNECTED", "BROWSER_ACCESS_OFF", "READ_ONLY_MODE", "TAB_NOT_FOUND", "PAGE_NOT_READY", "ELEMENT_NOT_FOUND", "STALE_ELEMENT", "STALE_SNAPSHOT", "PERMISSION_DENIED", "ACTION_TIMEOUT", "NAVIGATION_FAILED", "PAGE_FAILED_TO_LOAD", "DOWNLOAD_FAILED", "UNSUPPORTED_PAGE", "EXTENSION_ERROR", "PAIRING_REQUIRED", "AUTHENTICATION_FAILED", "CONNECTION_REPLACED"] as const;
 
 export const REMEDIES: Record<BrowserErrorCode, string> = {
-  "BROWSER_NOT_CONNECTED": "Your browser is not connected to Iron Jarvis. Ask the user to open the Browser page in Iron Jarvis and pair their browser, then retry.",
-  "BROWSER_ACCESS_OFF": "Browser access is off. Ask the user to set Browser access to Read only or Interactive on the Browser page in Iron Jarvis, then retry.",
+  "BROWSER_NOT_CONNECTED": "Your browser is not connected to STEC OS. Ask the user to open the Browser page in STEC OS and pair their browser, then retry.",
+  "BROWSER_ACCESS_OFF": "Browser access is off. Ask the user to set Browser access to Read only or Interactive on the Browser page in STEC OS, then retry.",
   "READ_ONLY_MODE": "Browser access is Read only, so this tool cannot change the page. The reading tools still work; ask the user to switch Browser access to Interactive if you should act on the page.",
   "TAB_NOT_FOUND": "No tab {tab_id} is open. Call browser_list_tabs and retry with an id from that list.",
   "PAGE_NOT_READY": "Tab {tab_id} has not finished loading. Call browser_read_page again before acting on it.",
   "ELEMENT_NOT_FOUND": "No element {element_id} in snapshot {snapshot_id}. Call browser_read_page to list what is on the page now.",
   "STALE_ELEMENT": "The page changed after the previous snapshot. Call browser_read_page and retry using the new element ID.",
   "STALE_SNAPSHOT": "No current snapshot for this tab. Call browser_read_page and retry with the new element ID.",
-  "PERMISSION_DENIED": "Site access has not been granted to the Iron Jarvis browser add-on. Open the Browser page in Iron Jarvis and press Grant site access.",
+  "PERMISSION_DENIED": "Site access has not been granted to the STEC OS browser add-on. Open the Browser page in STEC OS and press Grant site access.",
   "ACTION_TIMEOUT": "Your browser did not answer in time. Call browser_get_status to check the connection, then retry the call once.",
   "NAVIGATION_FAILED": "Navigation to {url} failed. Check the address, then retry once or ask the user to open the page themselves.",
   "PAGE_FAILED_TO_LOAD": "Tab {tab_id} is showing the browser's error page: the site did not load. Do not read it again. Navigate it to a URL that loads (or a different site), or tell the user the site is unreachable.",
   "DOWNLOAD_FAILED": "The download did not complete. Ask the user to check their browser's downloads, then retry.",
   "UNSUPPORTED_PAGE": "{scheme} pages are closed to add-ons by the browser. Ask the user to switch to a normal tab.",
   "EXTENSION_ERROR": "Your browser reported an error: {detail}. Call browser_get_status; if it persists, ask the user to reload the add-on from chrome://extensions.",
-  "PAIRING_REQUIRED": "This browser is not paired with Iron Jarvis. Ask the user to open the Browser page in Iron Jarvis and press Pair.",
-  "AUTHENTICATION_FAILED": "Your browser's pairing was refused. Ask the user to press Forget on the Browser page in Iron Jarvis and pair the browser again.",
+  "PAIRING_REQUIRED": "This browser is not paired with STEC OS. Ask the user to open the Browser page in STEC OS and press Pair.",
+  "AUTHENTICATION_FAILED": "Your browser's pairing was refused. Ask the user to press Forget on the Browser page in STEC OS and pair the browser again.",
   "CONNECTION_REPLACED": "Another browser connected and replaced this one, so this call was abandoned rather than left hanging. Call browser_get_status and retry against the connected browser.",
 };
 

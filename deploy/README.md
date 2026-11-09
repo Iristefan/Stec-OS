@@ -1,6 +1,6 @@
 # Deploy configs
 
-Provider-specific deployment specs and guides for Iron Jarvis. Start with the centerpiece guide,
+Provider-specific deployment specs and guides for STEC OS. Start with the centerpiece guide,
 [**`../DEPLOY.md`**](../DEPLOY.md) — one-click buttons, per-provider walkthroughs, the required env
 vars table, and the security checklist.
 

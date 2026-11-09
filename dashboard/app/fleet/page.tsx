@@ -867,7 +867,7 @@ function UsageStrip({ usage }: { usage: FleetUsage | null }) {
             </div>
           ) : (
             <div className="text-xs text-zinc-600">
-              No avoided-spend estimate: Iron Jarvis has no comparison model to
+              No avoided-spend estimate: STEC OS has no comparison model to
               price local tokens against.
             </div>
           )}

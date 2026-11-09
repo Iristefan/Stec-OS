@@ -105,7 +105,7 @@ def test_nothing_left_out_keeps_the_old_words(platform, monkeypatch):
 # nothing was left out.
 
 SENTENCE_ANTHROPIC = (
-    "Iron Jarvis didn't switch to Anthropic, which bills per use, because you "
+    "STEC OS didn't switch to Anthropic, which bills per use, because you "
     "didn't choose a pay-per-use model for this."
 )
 
@@ -177,7 +177,7 @@ from iron_jarvis.providers.adapters.base import LLMAdapter, ProviderError  # noq
 from iron_jarvis.providers.router import ModelRouter  # noqa: E402
 
 SENTENCE_OPENAI = (
-    "Iron Jarvis didn't switch to OpenAI, which bills per use, because you "
+    "STEC OS didn't switch to OpenAI, which bills per use, because you "
     "didn't choose a pay-per-use model for this."
 )
 

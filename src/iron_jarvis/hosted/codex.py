@@ -96,10 +96,10 @@ call:
   access by another name, and ``untrusted`` asks before every file change
   (``item/fileChange/requestApproval`` {threadId, turnId, itemId, reason?,
   grantRoot?}) AND every command. Codex itself has no such posture here.
-* Not built (a decision for the user): Iron Jarvis could answer Codex's
+* Not built (a decision for the user): STEC OS could answer Codex's
   ``item/fileChange/requestApproval`` itself under ``untrusted`` (the paths
   are on the ``fileChange`` item that starts before it), so edits inside the
-  folder run while commands still ask. That is Iron Jarvis's own rule, not
+  folder run while commands still ask. That is STEC OS's own rule, not
   Codex's; it would need the same folder and protected-file checks as Chat's
   Accept edits (``core/auto_approve.sensitive_kind``).
 * ``collaborationMode`` {mode: ``plan`` | ``default``} exists, marked
@@ -113,7 +113,7 @@ a scratch ``CODEX_HOME`` with no sign-in for the no-model checks, and ONE tiny
 real turn on the user's own login in a scratch folder on an EPHEMERAL thread —
 nothing saved, nothing changed):
 
-* PLAN IS REAL AND PER TURN: Iron Jarvis already opts into the experimental
+* PLAN IS REAL AND PER TURN: STEC OS already opts into the experimental
   API (``initialize`` ``capabilities.experimentalApi``).
   ``collaborationMode/list`` answers the presets ``Plan`` (mode ``plan``) and
   ``Default``. ``turn/start`` takes ``collaborationMode: {mode: "plan",
@@ -126,7 +126,7 @@ nothing saved, nothing changed):
   it, ``thread/resume`` answers the effective ``collaborationMode``), so
   leaving Plan sends ``{mode: "default"}`` once.
 * Codex's plan mode is INSTRUCTIONS, not a lock (its prompt says "you must not
-  perform mutating actions"). Read-only is Iron Jarvis's: Plan runs on Ask
+  perform mutating actions"). Read-only is STEC OS's: Plan runs on Ask
   first's posture (``untrusted``: Codex asks before EVERY file change and
   every command), and in Plan every file-change request is declined by Iron
   Jarvis at once, never shown as a card (:meth:`CodexDriver._decline_in_plan`);
@@ -137,7 +137,7 @@ nothing saved, nothing changed):
   then ``turn/completed``. No ``agentMessage`` came with it. Codex's own TUI
   then asks "Implement this plan?" — "Yes, implement this plan" switches to
   Default and sends ``Implement the plan.`` (read from the 0.157.0 program).
-  So does Iron Jarvis: the plan is the reply, and the PLAN CARD (the one every
+  So does STEC OS: the plan is the reply, and the PLAN CARD (the one every
   tool's plan uses, ``W.PLAN_CARD_TITLE``) waits under it before the reply
   ends; Allow leaves Plan for Ask first and starts that turn, Deny keeps
   planning.
@@ -148,7 +148,7 @@ nothing saved, nothing changed):
   drawn, and how it decides here was not measured.
 * ``windowsSandbox/readiness`` answers ``{status: "notConfigured"}`` on this
   PC. Setting it up (``windowsSandbox/setupStart``) changes Windows itself and
-  needs administrator rights — Iron Jarvis never does it, and what Auto edits
+  needs administrator rights — STEC OS never does it, and what Auto edits
   would do after it was not measured, so Auto edits stays hidden on Windows.
 """
 
@@ -207,18 +207,18 @@ HIDDEN_MODES: dict[str, str] = {
     # v1.420.0 (C1.9): the real causes, read from Codex's own settings list.
     # v1.441.0: Plan is offered (measured); Auto review is not.
     "auto": "Codex's Auto review lets a reviewer model of Codex's own answer each approval instead of "
-            "you. It is not offered here: Iron Jarvis cannot show you yet what that reviewer decided.",
+            "you. It is not offered here: STEC OS cannot show you yet what that reviewer decided.",
     **({"edits": "On Windows, Codex can run commands only with its own file protection switched off, and "
                  "then it asks either before every file change and every command, or before none of them. "
                  "It has no setting where edits run on their own while commands still ask. Codex's own "
-                 "Windows protection for commands is not set up on this PC, and Iron Jarvis does not "
+                 "Windows protection for commands is not set up on this PC, and STEC OS does not "
                  "set it up."}
        if _WINDOWS else {}),
 }
 #: v1.412.0: what each preset does, in plain words (the mode menu says it).
 MODE_ABOUT: dict[str, str] = {
     "ask": "Asks before every command and every file change.",
-    # (review) "changes no file" was more than Iron Jarvis holds: only Codex's
+    # (review) "changes no file" was more than STEC OS holds: only Codex's
     # file-change requests are refused; a command the user allows can write.
     "plan": "Codex's own plan mode: it looks and plans, and every file change it asks for is refused. "
             "It asks before each command, and a command you allow can still change files. "
@@ -413,7 +413,7 @@ CODEX_NOTICES: tuple[str, ...] = ("configWarning", "warning", "deprecationNotice
 #: or an error entry; otherwise it is quiet).
 HOOK_STATUS_WORDS: dict[str, str] = {"failed": "failed", "blocked": "blocked the step",
                                      "stopped": "stopped the turn", "completed": "ran"}
-#: A deprecation about how Iron Jarvis ITSELF calls Codex (measured on codex
+#: A deprecation about how STEC OS ITSELF calls Codex (measured on codex
 #: 0.157.0 at every ``thread/resume``: "Full-history hydration is deprecated
 #: for paginated threads; use `excludeTurns: true` …") — nothing the person
 #: can act on: logged, never shown.
@@ -448,7 +448,7 @@ def codex_notice(method: str, p: Any, thread: str = "") -> str:
         return f"Codex warns: {said}" if said else ""
     if method == "deprecationNotice":
         if any(m in str(p.get("summary") or "") for m in OWN_DEPRECATIONS):
-            log.info("Codex deprecation about how Iron Jarvis calls it: %s", one_line(p.get("summary"), 200))
+            log.info("Codex deprecation about how STEC OS calls it: %s", one_line(p.get("summary"), 200))
             return ""
         said = _said(p.get("summary"), p.get("details"))
         return f"Codex says something is going away: {said}" if said else ""
@@ -544,10 +544,10 @@ class CodexDriver(Driver):
         #: The read that follows them while any runs (not kept: re-armed).
         self._terminal_poll: asyncio.Task | None = None
         #: v1.441.0 review: the ids of terminal reads in flight — their answers
-        #: are Iron Jarvis's own, never "the tool was heard from".
+        #: are STEC OS's own, never "the tool was heard from".
         self._quiet_ids: set[int] = set()
         #: v1.441.0 (Plan): the collaboration mode Codex's thread holds as far
-        #: as Iron Jarvis knows ("" = never set: Codex's default), the model
+        #: as STEC OS knows ("" = never set: Codex's default), the model
         #: the thread runs on (a collaboration mode must name one), the mode
         #: THIS turn started in, its plan, the plan card waiting under it, and
         #: whether the user pressed Stop. (review) The waiting card is kept by
@@ -665,7 +665,7 @@ class CodexDriver(Driver):
         once the browser comes back, ``mcpServer/oauthLogin/completed {name,
         success, error}`` and Codex starts the server again in the same thread
         (``startupStatus`` starting -> ready). A stdio server is refused
-        ("only supported for streamable HTTP servers"). Iron Jarvis only hands
+        ("only supported for streamable HTTP servers"). STEC OS only hands
         the address to the user's browser — it never signs in."""
         if action != "sign_in":
             raise ControlRefused("Codex cannot do that to one of its MCP servers here.")
@@ -676,7 +676,7 @@ class CodexDriver(Driver):
             raise ControlRefused(f"Codex could not start signing in to {clip(server, 120)}: {exc}") from None
         url = safe_sign_in_url(res.get("authorizationUrl") if isinstance(res, dict) else None)
         if not url:
-            raise ControlRefused("Codex did not give a sign-in page Iron Jarvis can open.")
+            raise ControlRefused("Codex did not give a sign-in page STEC OS can open.")
         return {"url": url}
 
     def after_restore(self) -> None:
@@ -730,7 +730,7 @@ class CodexDriver(Driver):
         from .. import __version__
 
         await self.request("initialize", {
-            "clientInfo": {"name": "iron-jarvis", "title": "Iron Jarvis", "version": __version__},
+            "clientInfo": {"name": "iron-jarvis", "title": "STEC OS", "version": __version__},
             "capabilities": {"experimentalApi": True},
         })
         await self.notify("initialized")
@@ -1178,11 +1178,11 @@ class CodexDriver(Driver):
             self.raise_ask(Ask(ask_id, "approval", clip(name, 120) or "mcp", rid, {"method": method}, ev,
                                ev["at"], can_session))
             return
-        asyncio.ensure_future(self._safe(self.respond_error(rid, "Iron Jarvis does not handle this request")))
+        asyncio.ensure_future(self._safe(self.respond_error(rid, "STEC OS does not handle this request")))
 
     def _decline_in_plan(self, method: str, rid: Any, p: dict[str, Any]) -> None:
         """v1.441.0: in Plan, a file change is declined at once — never a card
-        (Codex's plan mode is instructions only; read-only is Iron Jarvis's)."""
+        (Codex's plan mode is instructions only; read-only is STEC OS's)."""
         item = self._items.get(str(p.get("itemId") or "")) or {}
         rows = _change_rows(p.get("fileChanges") if method == "applyPatchApproval" else item.get("changes"))
         name = _base(rows[0][0]) if rows else ""

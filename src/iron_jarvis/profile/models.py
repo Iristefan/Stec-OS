@@ -3,7 +3,7 @@
 Every surface that talks to the user (chat, the streamed chat, phone/Telegram,
 agent sessions, the round table) renders this same record into its system
 prompt, so switching model — 14B local to a cloud frontier model — cannot
-change how Iron Jarvis writes.
+change how STEC OS writes.
 
 Deliberately ONE ROW (``id="me"``): this app is a single-user local OS, and a
 multi-row table would immediately raise "which profile is active?" at every
@@ -92,7 +92,7 @@ class WritingSampleRecord(SQLModel, table=True):
 
     They are NOT knowledge: a sample is evidence about STYLE, never grounding
     for answers, so it deliberately does not join the memory fabric or the
-    history index. Anything the user wants Iron Jarvis to KNOW goes through the
+    history index. Anything the user wants STEC OS to KNOW goes through the
     existing doorways (``POST /ltm/ingest-document``, the memory importers,
     project knowledge) — the /train wizard points at exactly those.
     """

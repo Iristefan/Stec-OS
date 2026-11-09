@@ -348,7 +348,7 @@ describe("2. an MCP memory base's tool roles", () => {
     expect(screen.getByTestId("mcp-roles-badge-hermes").textContent).toBe("Not set up yet");
   });
 
-  it("a 404 (not an MCP base, or an older Iron Jarvis) draws nothing", async () => {
+  it("a 404 (not an MCP base, or an older STEC OS) draws nothing", async () => {
     H.gets[ROLES_PATH] = new H.FakeApiError("Not Found", 404);
     const { container } = render(<McpBaseRoles name="hermes" />);
     fireEvent.click(await screen.findByTestId("mcp-roles-open-hermes", {}, W));
@@ -468,7 +468,7 @@ describe("3. Check a memory profile, and Try a test save", () => {
     expect(err.className).toContain("text-tone-warn");
   });
 
-  it("a 404 (an older Iron Jarvis) hides both buttons", async () => {
+  it("a 404 (an older STEC OS) hides both buttons", async () => {
     H.answers["POST /brain/profiles/bp1/check"] = new H.FakeApiError("Not Found", 404);
     const row = await renderProfiles();
     fireEvent.click(within(row).getByRole("button", { name: "Check" }));

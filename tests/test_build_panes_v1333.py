@@ -1043,7 +1043,7 @@ def test_a_pane_whose_shell_ended_on_its_own_is_swept_when_it_is_dropped():
 
 
 def test_the_shutdown_snapshot_keeps_the_history_inline_for_an_older_app(tmp_path):
-    """An older Iron Jarvis reads only ``scrollback_b64``. The 30 s snapshot
+    """An older STEC OS reads only ``scrollback_b64``. The 30 s snapshot
     leaves it out (per-pane files); the shutdown one (kill_all) puts it back,
     and a restore prefers it."""
     sp = tmp_path / "terminals.json"

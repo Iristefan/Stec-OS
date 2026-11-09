@@ -33,7 +33,7 @@
       {
         "name": "MS365_MCP_CLIENT_ID",
         "label": "Your firm's app ID (needed for a work account)",
-        "help": "The Application (client) ID of the app your Microsoft 365 admin registered for Iron Jarvis (the Handbook has the steps). A personal account can leave it empty.",
+        "help": "The Application (client) ID of the app your Microsoft 365 admin registered for STEC OS (the Handbook has the steps). A personal account can leave it empty.",
         "kind": "env",
         "optional": true
       }
@@ -77,7 +77,7 @@
       {
         "name": "MS365_MCP_CLIENT_ID",
         "label": "Your firm's app ID (needed for a work account)",
-        "help": "The Application (client) ID of the app your Microsoft 365 admin registered for Iron Jarvis (the Handbook has the steps). A personal account can leave it empty.",
+        "help": "The Application (client) ID of the app your Microsoft 365 admin registered for STEC OS (the Handbook has the steps). A personal account can leave it empty.",
         "kind": "env",
         "optional": true
       }

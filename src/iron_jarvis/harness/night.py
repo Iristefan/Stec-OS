@@ -35,7 +35,7 @@ the durable part and the rules every night task runs under:
   question (``ask_user``), an app's question and a helper's ask all see it.
   Every other session is untouched (no NightTurn = byte-identical).
 * WHO STARTED A TURN (:func:`note_unattended_turn`): a coding-session turn
-  Iron Jarvis started BY ITSELF — a night task, "Resume when ready", a move
+  STEC OS started BY ITSELF — a night task, "Resume when ready", a move
   within an account group, a reply carried on after a restart — is listed
   here while it runs, so Emergency stop (``Orchestrator.stop_unattended``)
   stops every one of them; a turn a person started is never listed.
@@ -91,7 +91,7 @@ ENDED_SHOWN_DAYS = 3
 #: The note kinds (the morning's sections, N2).
 NOTE_KINDS = ("declined", "unanswered", "low_trust", "limit", "env", "error", "stopped", "emergency",
               "restart", "account", "tests", "info", "outside",
-              # v1.399.0 (N2): what Iron Jarvis's own commit of the task's
+              # v1.399.0 (N2): what STEC OS's own commit of the task's
               # work did (``harness/night_morning``).
               "commit")
 
@@ -176,7 +176,7 @@ class NightTaskRecord(SQLModel, table=True):
     #: when it starts. "" (NULL on an upgraded table) on a task an older Iron
     #: Jarvis started: derived from ``started_at`` then.
     night: str = ""
-    #: v1.399.0: the commit Iron Jarvis made of the task's work on its own
+    #: v1.399.0: the commit STEC OS made of the task's work on its own
     #: branch when it ended (decision 2), "" when none.
     commit_sha: str = ""
     #: v1.399.0: what the morning summary reads about the task, written when
@@ -943,7 +943,7 @@ def ask_timeout() -> "float | None":
 
 
 # --------------------------------------------------------------------------- #
-# turns Iron Jarvis started by itself (Emergency stop reaches them)
+# turns STEC OS started by itself (Emergency stop reaches them)
 # --------------------------------------------------------------------------- #
 
 #: Who started a coding-session turn (``start_build_turn(started_by=)``).
@@ -980,7 +980,7 @@ EMERGENCY_NOTE = "Emergency stop was turned on, so this task was stopped."
 
 
 def stop_unattended_turns(engine: Any = None, *, note: str = EMERGENCY_NOTE) -> list[str]:
-    """Stop every coding-session turn Iron Jarvis started by itself (a night
+    """Stop every coding-session turn STEC OS started by itself (a night
     task, a resume) — Emergency stop's half for coding sessions. Thread-safe
     (``TurnRegistry.stop`` wakes the turn's own loop); a night task's record
     keeps the note. Returns ``turn:<id>`` for each turn asked to stop.
@@ -1029,7 +1029,7 @@ def outcome_of(task: dict[str, Any], line: "dict[str, Any] | None") -> tuple[str
     elif line.get("error"):
         if line.get("interrupted") and "restart" in str(line.get("error") or "").lower():
             state = STOPPED
-            notes.append(("restart", "Stopped when Iron Jarvis restarted."))
+            notes.append(("restart", "Stopped when STEC OS restarted."))
         else:
             state = FAILED
             notes.append(("error", str(line.get("error") or "The reply failed.")))

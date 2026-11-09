@@ -69,7 +69,7 @@ def npm_program(found: str) -> str:
     """v1.413.0: npm's ``opencode.cmd`` only starts
     ``node_modules/opencode-ai/bin/opencode.exe`` (measured: the shim's
     one line). That program is started DIRECTLY when it is there — no cmd.exe
-    between Iron Jarvis and OpenCode reading its arguments, and one process
+    between STEC OS and OpenCode reading its arguments, and one process
     less to stop. Anything else is used as found."""
     path = Path(found)
     if path.suffix.lower() != ".cmd":

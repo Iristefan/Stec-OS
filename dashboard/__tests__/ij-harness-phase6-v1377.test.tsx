@@ -702,7 +702,7 @@ describe("the words", () => {
 
   it("the chat gauge and the harness meter say the same thing, never the model's limit for a safe size", () => {
     expect(fillWords("chat", 41, false)).toBe(
-      "This chat fills about 41% of what Iron Jarvis sends this model at once. This model's own limit is not known, so a safe size is used.",
+      "This chat fills about 41% of what STEC OS sends this model at once. This model's own limit is not known, so a safe size is used.",
     );
     expect(fillWords("chat", 41, true)).toBe("This chat fills about 41% of what this model can read at once.");
     expect(trimmedWords(2, false)).not.toContain("what this model can read");

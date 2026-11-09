@@ -2,7 +2,7 @@
  * v1.357.0 integrate — Wave 7's seams, the dashboard half.
  *
  * `__tests__/fixtures/wave7-seams-v13570.json` holds what the REAL daemon
- * sends when a task another computer running Iron Jarvis sent (lane 7A's
+ * sends when a task another computer running STEC OS sent (lane 7A's
  * task door, origin `remote:<caller>`) ends badly: its `session.completed`
  * event and the title the phone/desktop alert gave it
  * (tests/test_integrate_wave7_v13570.py drives a real door task and fails

@@ -230,7 +230,7 @@ afterEach(() => {
 
 async function startTurn(text: string) {
   const n = H.stream.bodies.length;
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: text } });
   fireEvent.keyDown(box, { key: "Enter" });
   await waitFor(() => expect(H.stream.bodies.length).toBe(n + 1));
@@ -288,7 +288,7 @@ describe("G29: the failure line has a headline, folded details and the fix press
 
     // The message went back in the box, and the line says so.
     expect(screen.getByTestId("chat-turn-draft-back").textContent).toBe("Your message is back in the box.");
-    expect((screen.getByPlaceholderText(/Message Iron Jarvis/) as HTMLTextAreaElement).value).toBe("hello there");
+    expect((screen.getByPlaceholderText(/Message STEC OS/) as HTMLTextAreaElement).value).toBe("hello there");
 
     // Sign in opens the sign-in pane (POST /terminals/launch on this PC's
     // own login), then says what to do there and links to it.
@@ -626,7 +626,7 @@ describe("G62: a remote's reply has a receipt line and a pending state", () => {
       ],
     };
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "@he" } });
     await screen.findByRole("option", { name: /hermes/ });
     fireEvent.change(box, { target: { value: "@hermes research the lease" } });

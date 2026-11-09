@@ -593,7 +593,7 @@ def test_a_crash_rebuilt_attempts_line_never_says_press_retry():
         ["attempt", json.dumps({"id": "try1", "label": "Codex", "provider": "codex-cli", "model": "gpt-5.5",
                                 "state": "running", "steps": 2, "since": 1, "ask": None,
                                 "card": {"base": "ij/s", "base_commit": "a" * 40, "adopt": False}})],
-        ["error", json.dumps({"detail": "cut off", "title": "Iron Jarvis stopped"})],
+        ["error", json.dumps({"detail": "cut off", "title": "STEC OS stopped"})],
     ]
     lines = replayed_reply_line("cr-2", frames, started_at=1_700_000_000.0)
     assert lines is not None

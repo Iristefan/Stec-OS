@@ -13,7 +13,7 @@ split such a failure into ``title`` / ``fix`` / ``technical``
 (``chat_turn.error_payload``); a run had one string.
 
 NOW (one rule, ``failure_words.run_failure_words``): a run's summary names
-WHAT failed — the provider by its plain name, or Iron Jarvis itself — and what
+WHAT failed — the provider by its plain name, or STEC OS itself — and what
 to do next; a failure that was already written for a person (Iron-Proxy's
 account sentences, a local-only refusal, a held Build session, Emergency stop)
 keeps its own sentence; the raw text is kept apart on the row
@@ -69,7 +69,7 @@ CODEX_REASON = (
     "choose another model in Settings."
 )
 OWN_REASON = (
-    "Iron Jarvis couldn't finish this task. Run it again. If it happens again, "
+    "STEC OS couldn't finish this task. Run it again. If it happens again, "
     "open the run to see the details."
 )
 
@@ -113,8 +113,8 @@ def test_the_runs_provider_names_a_provider_failure_that_names_none():
     run's own provider (the hint), never by Auto or the demo model."""
     exc = ProviderError("something new went wrong")
     assert fw.plain_reason(exc, provider="claude-cli").startswith("Claude Code couldn't finish this task.")
-    assert fw.plain_reason(exc, provider="auto").startswith("Iron Jarvis couldn't finish this task.")
-    assert fw.plain_reason(exc, provider="mock").startswith("Iron Jarvis couldn't finish this task.")
+    assert fw.plain_reason(exc, provider="auto").startswith("STEC OS couldn't finish this task.")
+    assert fw.plain_reason(exc, provider="mock").startswith("STEC OS couldn't finish this task.")
     # A failure that is not a provider's is never pinned on the run's provider.
     assert fw.plain_reason(RuntimeError("boom"), provider="claude-cli") == OWN_REASON
 

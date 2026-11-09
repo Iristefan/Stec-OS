@@ -1,14 +1,14 @@
-# Iron Jarvis: Calm UI Redesign Brief
+# STEC OS: Calm UI Redesign Brief
 
 Save this file in the repo at `docs/redesign/BRIEF.md`. Both /goal runs point at it.
 
 ## Problem
 
-The overview screen and secondary surfaces are overwhelming. Iron Jarvis can do a lot, but it shows all of it at once. Users coming from ChatGPT, Claude, and Grok expect a calm, chat-first interface where the conversation is the product and details live in settings or subpages. Chat and Build are the surfaces that get used and they work well. Everything else feels like a mountain.
+The overview screen and secondary surfaces are overwhelming. STEC OS can do a lot, but it shows all of it at once. Users coming from ChatGPT, Claude, and Grok expect a calm, chat-first interface where the conversation is the product and details live in settings or subpages. Chat and Build are the surfaces that get used and they work well. Everything else feels like a mountain.
 
 ## Goal
 
-A first-time user opens Iron Jarvis, sees a familiar chat-first layout, and gets value immediately without configuring anything. Every power feature stays available, but is found through progressive disclosure, the command palette, or by asking the agent in chat.
+A first-time user opens STEC OS, sees a familiar chat-first layout, and gets value immediately without configuring anything. Every power feature stays available, but is found through progressive disclosure, the command palette, or by asking the agent in chat.
 
 ## Non-negotiables
 
@@ -30,7 +30,7 @@ AUDIT.md must contain these sections, in this order:
 
 1. **Surface inventory.** A table of every top-level surface, panel, nav item, tile, and widget on the overview and in main navigation. Columns: Surface | Route / component file | What it does | Frequency tier (daily / occasional / setup-only / power-user) | Evidence (usage data, code reference, or "assumed") | Proposed new home.
 2. **Usage evidence.** If the event bus, ledger, or logs record which surfaces are opened, query the last 30 days and summarize. If no such data exists, say so plainly and recommend the smallest instrumentation that would capture it.
-3. **Reference patterns.** How ChatGPT, Claude, and Grok web apps structure their primary view, sidebar, settings, model selection, tool toggles, projects, and connectors. State whether this came from browsing or from prior knowledge. Note what Iron Jarvis should borrow and where it should deliberately differ.
+3. **Reference patterns.** How ChatGPT, Claude, and Grok web apps structure their primary view, sidebar, settings, model selection, tool toggles, projects, and connectors. State whether this came from browsing or from prior knowledge. Note what STEC OS should borrow and where it should deliberately differ.
 4. **Proposed information architecture.**
    - Primary: Chat and Build.
    - Sidebar: conversations and projects. Top-level nav items, excluding the conversation list, capped at 4.

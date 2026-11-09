@@ -68,12 +68,12 @@ function isLoopbackBase(base: string): boolean {
  *  URL, so the Zapier example is true everywhere. */
 function webhookExamples(loopback: boolean): string[] {
   const inbound = loopback
-    ? ["A script or app on this PC tells Iron Jarvis something happened (a reflex decides what to do)"]
+    ? ["A script or app on this PC tells STEC OS something happened (a reflex decides what to do)"]
     : [
-        "A web form tells Iron Jarvis when someone fills it in (a reflex decides what to do)",
-        "GitHub tells Iron Jarvis when code is pushed",
+        "A web form tells STEC OS when someone fills it in (a reflex decides what to do)",
+        "GitHub tells STEC OS when code is pushed",
       ];
-  return [...inbound, "Iron Jarvis tells Zapier when a task finishes"];
+  return [...inbound, "STEC OS tells Zapier when a task finishes"];
 }
 
 /** Quick-add chips for a sending webhook: real event names (core/events.py)
@@ -149,7 +149,7 @@ export default function WebhooksPage() {
       setOk(
         direction === "inbound"
           ? `Ready. Other apps can now send events to ${API_BASE}/webhooks/${slug.trim()}`
-          : `Webhook "${slug.trim()}" added. Iron Jarvis will tell that app when those events happen.`,
+          : `Webhook "${slug.trim()}" added. STEC OS will tell that app when those events happen.`,
       );
       setSlug("");
       setTargetUrl("");
@@ -169,7 +169,7 @@ export default function WebhooksPage() {
       <Reveal>
         <PageHeader
           title="Webhooks"
-          subtitle="Let other apps tell Iron Jarvis something happened (a reflex decides what to do), or let Iron Jarvis tell other apps when work finishes."
+          subtitle="Let other apps tell STEC OS something happened (a reflex decides what to do), or let STEC OS tell other apps when work finishes."
           actions={
             <button
               type="button"
@@ -216,7 +216,7 @@ export default function WebhooksPage() {
                     className="field"
                   >
                     {/* Values stay inbound/outbound — only the words moved (v1.314.0). */}
-                    <option value="inbound">Receive — another app tells Iron Jarvis something happened</option>
+                    <option value="inbound">Receive — another app tells STEC OS something happened</option>
                     <option value="outbound">Send — tell another app when something finishes</option>
                   </select>
                 </div>
@@ -339,9 +339,9 @@ export default function WebhooksPage() {
             {webhooks.length > 0 && (
               <p>
                 {loopback
-                  ? "A webhook is an address other apps on this computer can call to tell Iron Jarvis something happened"
-                  : "A webhook is an address other apps (a form, Zapier, GitHub) can call to tell Iron Jarvis something happened"}{" "}
-                — or one Iron Jarvis calls to tell another app when work finishes.
+                  ? "A webhook is an address other apps on this computer can call to tell STEC OS something happened"
+                  : "A webhook is an address other apps (a form, Zapier, GitHub) can call to tell STEC OS something happened"}{" "}
+                — or one STEC OS calls to tell another app when work finishes.
               </p>
             )}
             <p className="text-[12px] text-zinc-500">
@@ -375,8 +375,8 @@ export default function WebhooksPage() {
               action={{ label: "Add your first webhook", onClick: () => setOpen(true) }}
               secondary={{ label: "Most people want Reflexes instead →", href: "/reflex" }}
             >
-              A webhook lets another app tell Iron Jarvis something happened (a reflex decides what
-              to do about it), or lets Iron Jarvis tell another app when work finishes.
+              A webhook lets another app tell STEC OS something happened (a reflex decides what
+              to do about it), or lets STEC OS tell another app when work finishes.
             </Empty>
           ) : (
             <div className="-mx-1 overflow-x-auto">

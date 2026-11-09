@@ -39,7 +39,7 @@ class AccountPin:
 
     #: The Iron-Proxy account id (never shown to the user).
     profile_id: str
-    #: The Iron Jarvis provider it serves (``claude-cli`` / ``codex-cli``).
+    #: The STEC OS provider it serves (``claude-cli`` / ``codex-cli``).
     ij_provider: str
     #: The account's name (its Iron-Proxy title) — never an e-mail.
     title: str = ""

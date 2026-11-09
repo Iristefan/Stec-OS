@@ -10,7 +10,7 @@
  *    itself (`can_open_in_code: true` — added ONLY when true; read as
  *    given, never guessed; an explicit `false` hides the offer);
  *  - else a terminal reopened after a restart whose tool died with the old
- *    Iron Jarvis (`resume_cli` names claude or codex: the shell is fresh).
+ *    STEC OS (`resume_cli` names claude or codex: the shell is fresh).
  * A plain terminal, or one whose tool may still be running, shows nothing:
  * the Terminal view stays exactly as it was. The daemon decides in the end
  * (a refusal is shown in its words).

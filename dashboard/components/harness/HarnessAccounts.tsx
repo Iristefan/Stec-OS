@@ -24,7 +24,7 @@
  *    the cached snapshot ("63% of the 5-hour window, resets 3:40 PM"; "usage
  *    not known yet" before the vendor sent a number — never 0%).
  *
- * An Iron Jarvis without the account list (a 404) gets no chip at all — the
+ * A STEC OS without the account list (a 404) gets no chip at all — the
  * older-daemon rule; nothing here guesses an account.
  */
 

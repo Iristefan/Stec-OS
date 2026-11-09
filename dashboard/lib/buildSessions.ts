@@ -122,7 +122,7 @@ export function decodeFolders(raw: unknown): BuildFolder[] {
 }
 
 /** GET /build/sessions → where a session with no folder keeps its files
- *  (v1.379.0; "" from an older Iron Jarvis). */
+ *  (v1.379.0; "" from an older STEC OS). */
 export function decodeWorkRoot(raw: unknown): string {
   return str(rec(raw)?.work_root, 1000);
 }
@@ -186,7 +186,7 @@ export interface BuildSessionView extends BuildSessionRow {
   accountLimit: unknown;
   accountWait: unknown;
   /** The daemon keeps accounts on the view (Phase 5): its limit card and
-   *  wait are then the truth (null = none), not "an older Iron Jarvis". */
+   *  wait are then the truth (null = none), not "an older STEC OS". */
   knowsAccounts: boolean;
   /** v1.374.0: the summary standing in for the older turns (Compact) — raw,
    *  lib/buildContext decodeCompaction; null = none. */
@@ -475,7 +475,7 @@ const LINE_KEYS = [
   // v1.414.0: a repeated correction offered as a standing preference (raw;
   // lib/preferences decodeSuggestion) — its answer folded in by the daemon.
   "suggestion",
-  // v1.406.0 part 3: a line Iron Jarvis wrote about the session's pull
+  // v1.406.0 part 3: a line STEC OS wrote about the session's pull
   // request's checks ({kind, round}; its words are the content).
   "ci",
 ] as const;
@@ -675,7 +675,7 @@ export function answerQuestion(
   );
 }
 
-/** A 404 from a route an older Iron Jarvis does not have. */
+/** A 404 from a route an older STEC OS does not have. */
 export function isMissing(e: unknown): boolean {
   return e instanceof ApiError && e.status === 404;
 }

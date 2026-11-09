@@ -164,7 +164,7 @@ def test_a_variable_pointing_into_the_frozen_bundle_is_dropped(monkeypatch, tmp_
     bundle (``OPENSSL_MODULES``, ``TCL_LIBRARY``…): the app's, not the
     user's — a user's own ``openssl`` / ``python`` would load the app's
     modules. PATH loses only the bundle's entries."""
-    bundle = tmp_path / "Iron Jarvis" / "resources" / "daemon" / "_internal"
+    bundle = tmp_path / "STEC OS" / "resources" / "daemon" / "_internal"
     bundle.mkdir(parents=True)
     user_bin = tmp_path / "user-bin"
     user_bin.mkdir()

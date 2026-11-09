@@ -1,4 +1,4 @@
-# Iron Jarvis — Computer Use (opt-in, safe by construction)
+# STEC OS — Computer Use (opt-in, safe by construction)
 
 Computer Use lets agents drive a real browser **of the app's own** (and, behind
 the strongest gates, a desktop) to do work no API exposes. It is **OFF by

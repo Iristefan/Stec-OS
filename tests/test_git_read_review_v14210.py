@@ -34,7 +34,7 @@ vacuous.
    repository;
 8. a ``..`` step glued to a cluster (``grep -nf../x``) read a file outside the
    folder past the text check;
-9. a folder holding Iron Jarvis's own keys and records (the protected roots
+9. a folder holding STEC OS's own keys and records (the protected roots
    ``read_file`` refuses): ``blame --contents`` printed a key file;
 10. ``blame.ignoreRevsFile`` naming a file outside: blame echoed its first
     line in an error;
@@ -347,7 +347,7 @@ def test_the_argv_carries_the_review_guards():
 
 
 # --------------------------------------------------------------------------- #
-# 9. Iron Jarvis's own keys and records (the protected roots)
+# 9. STEC OS's own keys and records (the protected roots)
 # --------------------------------------------------------------------------- #
 
 

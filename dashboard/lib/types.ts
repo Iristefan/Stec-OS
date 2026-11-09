@@ -1,4 +1,4 @@
-// Shapes mirror the Iron Jarvis daemon API (FastAPI).
+// Shapes mirror the STEC OS daemon API (FastAPI).
 
 export interface ProviderHealth {
   provider: string;
@@ -33,7 +33,7 @@ export interface Health {
   providers: ProviderHealth[];
   /** Harness gaps (fix 1): how many replies the daemon is writing right now
    *  — a chat's and a Build coding session's (the durable turn registry, in
-   *  memory). Absent on an older Iron Jarvis. */
+   *  memory). Absent on an older STEC OS. */
   replies?: { chat?: number; build?: number; /** v1.414.0: Build › Code. */ build_app?: number } | null;
 }
 
@@ -426,7 +426,7 @@ export interface TerminalInfo {
    *  Extensions are recorded and displayed, and the rail's copy says so rather
    *  than implying a gate that is not there. */
   capabilities?: PaneCapabilities;
-  /** v1.245.0: the CLI that was running in this pane before Iron Jarvis
+  /** v1.245.0: the CLI that was running in this pane before STEC OS
    *  restarted (the shell came back fresh), and the command that picks its
    *  last conversation back up ("" when there is nothing to resume). */
   resume_cli?: string | null;

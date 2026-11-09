@@ -195,7 +195,7 @@ afterEach(() => {
 });
 
 async function startTurn(text: string) {
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: text } });
   fireEvent.keyDown(box, { key: "Enter" });
   await waitFor(() => expect(streamCalls).toHaveLength(1));

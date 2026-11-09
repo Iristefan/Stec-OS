@@ -1,4 +1,4 @@
-# Deploy Iron Jarvis to Azure
+# Deploy STEC OS to Azure
 
 Recommended: **Azure Container Apps** (serverless containers). The two images come straight from
 the repo's Dockerfiles — daemon (`Dockerfile`, port `8787`) and dashboard (`Dockerfile.dashboard`,

@@ -12,7 +12,7 @@
  *     {tools: [{name, description, params: [{name, required, type}]}],
  *      roles: [...], proposed: {role: Mapping|null}, saved: {role: Mapping}|null,
  *      problems: {role: string[]}, sources: [...], error?}
- *     404 = not an MCP base, or an older Iron Jarvis: nothing is drawn.
+ *     404 = not an MCP base, or an older STEC OS: nothing is drawn.
  *   PUT /ltm/sources/{name}/roles {roles: {role: Mapping|null}}
  *     -> the same view after saving | 400 {detail}
  * Mapping = {tool, args: {param: source | {const: string}}}.

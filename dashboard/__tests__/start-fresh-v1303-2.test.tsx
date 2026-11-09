@@ -227,7 +227,7 @@ const MANUAL =
   "Could not write the summary: the conversation file is locked.\nType /exit in the pane, then run: claude --resume 1f2e3d";
 
 const HOW =
-  "Iron Jarvis writes a short summary of the conversation so far (your first request, the last few messages, the files involved) and starts a new Claude session on “Personal” with it.";
+  "STEC OS writes a short summary of the conversation so far (your first request, the last few messages, the files involved) and starts a new Claude session on “Personal” with it.";
 
 const callsTo = (method: string, path: string) =>
   hooks.calls.filter((c) => c.method === method && c.path === path);

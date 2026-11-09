@@ -2,7 +2,7 @@
 ONE catalog of packs: the Tools page's ``GET /mcp/catalog`` is built from it
 (:func:`mcp_catalog_rows`).
 
-A single, curated gallery of everything Iron Jarvis can connect to — MCP servers
+A single, curated gallery of everything STEC OS can connect to — MCP servers
 (Slack/GitHub/Postgres/…), OAuth apps (Drive/Dropbox/…), and API-key services
 (Pixio) — each with a glyph, a plain-English *what this unlocks*, the permissions
 it wants, and how it connects. The catalog carries NO secrets: a token the user
@@ -78,7 +78,7 @@ class Connector:
     fields: list[Field] = field(default_factory=list)
     # -- oauth / api_key (routes through the ConnectionRegistry) --
     provider: str = ""  # a ConnectionSpec provider id
-    # v1.353.0 (G45): a one-time setup this app needs OUTSIDE Iron Jarvis,
+    # v1.353.0 (G45): a one-time setup this app needs OUTSIDE STEC OS,
     # said on the card BEFORE Connect (Gmail's package reads a Google OAuth
     # client the user registers themselves; it used to be one clause of the
     # blurb, and Drive's said nothing until the press failed). For an OAuth
@@ -124,7 +124,7 @@ class Connector:
     signin_name: str = ""
     # -- v1.428.0: an app LOCKED DOWN for client data --
     # ``locked`` names a ``connectors.locked_pack`` package: the program is
-    # installed ONCE from the lock Iron Jarvis ships (every package pinned by
+    # installed ONCE from the lock STEC OS ships (every package pinned by
     # version and sha512) and runs as ``node <entry>`` — never ``npx`` at its
     # newest. Its settings come from the card's own rules
     # (``connectors.service.LOCKED_RULES``), and ``local_only`` marks every
@@ -322,7 +322,7 @@ CATALOG: list[Connector] = [
         # v1.358.0 (lane 8D): files are built in; this is a second, fenced one.
         built_in="Files & documents",
         built_in_note=(
-            "Iron Jarvis already reads and writes your files without this. "
+            "STEC OS already reads and writes your files without this. "
             "This is a separate folder tool, fenced to the one folder you pick."
         ),
     ),
@@ -400,7 +400,7 @@ CATALOG: list[Connector] = [
         # "common") ends it an hour later.
         # v1.428.0 (the user's decision: a firm holding client information):
         # LOCKED DOWN — read and draft only, ONE account, the firm's own app
-        # when given, the program from Iron Jarvis's own lock, and its mail
+        # when given, the program from STEC OS's own lock, and its mail
         # only ever on the user's own models (connectors/ms365.py).
         id="microsoft_365",
         name="Microsoft 365 (Outlook, Calendar, OneDrive)",
@@ -454,7 +454,7 @@ CATALOG: list[Connector] = [
                 "MS365_MCP_CLIENT_ID",
                 "Your firm's app ID (needed for a work account)",
                 help="The Application (client) ID of the app your Microsoft 365 admin registered "
-                "for Iron Jarvis (the Handbook has the steps). A personal account can leave it empty.",
+                "for STEC OS (the Handbook has the steps). A personal account can leave it empty.",
                 kind="env",
                 optional=True,
             ),
@@ -581,7 +581,7 @@ CATALOG: list[Connector] = [
         # page reader.
         built_in="Web",
         built_in_note=(
-            "Iron Jarvis already searches the web and reads pages without this. "
+            "STEC OS already searches the web and reads pages without this. "
             "This is a separate page reader."
         ),
     ),
@@ -623,7 +623,7 @@ CATALOG: list[Connector] = [
         # store.
         built_in="Memory",
         built_in_note=(
-            "Iron Jarvis already remembers things in its own memory without this. "
+            "STEC OS already remembers things in its own memory without this. "
             "This is a separate knowledge graph."
         ),
     ),
@@ -691,7 +691,7 @@ LINK_CARDS: list[Connector] = [
         glyph="🧭",
         blurb="Let Jarvis read and act in the browser you already use.",
         unlocks="Open pages, read them, click and fill in forms in your own "
-        "browser, through the Iron Jarvis browser add-on.",
+        "browser, through the STEC OS browser add-on.",
         connect_via=LINK,
         scopes=["Read pages", "Click and type"],
         # Settings › Connections › Browser through its old address, which
@@ -780,7 +780,7 @@ def signin_argv(c: Connector) -> list[str]:
     program is a path on this PC: its line here only names it; the pane types
     the saved pack's own (``connectors.service.locked_signin``)."""
     if c.locked:
-        return [c.command, f"<{c.name}: Iron Jarvis's locked copy>", *c.signin_args]
+        return [c.command, f"<{c.name}: STEC OS's locked copy>", *c.signin_args]
     return [c.command, *c.args, *c.signin_args]
 
 

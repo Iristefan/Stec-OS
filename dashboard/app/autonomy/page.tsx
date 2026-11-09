@@ -391,7 +391,7 @@ export default function AutonomyPage() {
       <Reveal>
         <PageHeader
           title="Autonomy"
-          subtitle="The trust surface for the Motivation Layer — what Iron Jarvis wants to do on its own, what it's waiting to ask you, and the one switch that stops everything."
+          subtitle="The trust surface for the Motivation Layer — what STEC OS wants to do on its own, what it's waiting to ask you, and the one switch that stops everything."
           actions={
             <div className="flex flex-wrap items-center gap-2">
               {/* Master enable (off by default) — writes autonomy_enabled via /settings. */}
@@ -567,7 +567,7 @@ export default function AutonomyPage() {
               <ErrorNote>{proposals.error.message}</ErrorNote>
             ) : pending.length === 0 ? (
               <Empty icon={<CircleCheck size={24} />}>
-                Nothing awaiting your call. Proposals Iron Jarvis wants to act on
+                Nothing awaiting your call. Proposals STEC OS wants to act on
                 will queue here for approval.
               </Empty>
             ) : (
@@ -694,7 +694,7 @@ export default function AutonomyPage() {
               is a contract record with its own budget and verifier
               (goals/models.py). */}
           <p className="mb-3 max-w-3xl text-xs leading-relaxed text-zinc-500">
-            A sentence Iron Jarvis keeps in mind each time it checks in. Set to
+            A sentence STEC OS keeps in mind each time it checks in. Set to
             Suggest only, it proposes a next step for you to approve; a goal set
             to Act may take some steps itself (never a high-risk one), within
             the overall autonomy setting and budget. Goals made in Chat are
@@ -713,7 +713,7 @@ export default function AutonomyPage() {
             // panel only pushed it down.
             <p className="text-sm text-zinc-500">
               No simple goals yet. Write one in New goal or pick a starter —
-              Iron Jarvis will keep it in mind and (within its settings and
+              STEC OS will keep it in mind and (within its settings and
               budget) work toward it.
             </p>
           ) : (
@@ -1228,7 +1228,7 @@ function GoalsSection() {
         <p className="text-sm text-zinc-500">
           No goals yet. Goals are born in Chat — ask for something recurring
           and it takes a seat here, budget and all. For a lighter goal that
-          Iron Jarvis keeps in mind when it checks in, use Simple goals below.
+          STEC OS keeps in mind when it checks in, use Simple goals below.
         </p>
       ) : (
         <div className="space-y-2.5">

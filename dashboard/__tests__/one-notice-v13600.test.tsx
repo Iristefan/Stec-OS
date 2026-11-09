@@ -180,7 +180,7 @@ beforeEach(() => {
   H.responses = {};
   H.posts = [];
   window.localStorage.clear();
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
   mockDaemon();
 });
 

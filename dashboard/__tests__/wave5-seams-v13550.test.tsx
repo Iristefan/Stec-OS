@@ -112,8 +112,8 @@ describe("(a) one failed turn reads the same on the stream and the POST lane", (
     expect(turnErrorTechnical(plain)).toBe("");
     expect(failureAction(plain, null, "")).toBeNull();
     // Offline: no body at all.
-    expect(turnErrorText(postFailureFields(new ApiError("Iron Jarvis isn't responding.", 0)))).toBe(
-      "Iron Jarvis isn't responding.",
+    expect(turnErrorText(postFailureFields(new ApiError("STEC OS isn't responding.", 0)))).toBe(
+      "STEC OS isn't responding.",
     );
   });
 });

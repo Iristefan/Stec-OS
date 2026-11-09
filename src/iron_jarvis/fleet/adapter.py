@@ -31,7 +31,7 @@ CapsReader = Callable[[str], dict]
 
 
 #: Where a model's capability answer came from (v1.424.0, D8): ``checked`` —
-#: Iron Jarvis asked THIS model (a live check, or the node's own record for
+#: STEC OS asked THIS model (a live check, or the node's own record for
 #: its default model); ``stated`` — the model's server says so in its own
 #: ``/model/info``; ``node`` (v1.424.0 review) — nothing speaks for THIS
 #: model, so the node's own record (the server's check of its DEFAULT model,

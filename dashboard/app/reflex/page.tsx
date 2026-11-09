@@ -904,7 +904,7 @@ export default function ReflexPage() {
               ]}
               action={{ label: "Add your first reflex", onClick: openFromEmpty }}
             >
-              A reflex is an if-this-then-that rule: a signal comes in, and Iron Jarvis starts the
+              A reflex is an if-this-then-that rule: a signal comes in, and STEC OS starts the
               work you picked. Anything risky still asks you first.
             </Empty>
           ) : (

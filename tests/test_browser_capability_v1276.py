@@ -5,7 +5,7 @@ Three items from the sidebar review, each verified against the code:
 1. ``BrowserRuntime.approval_resolver`` was None in production, so the four
    floor cases (payment/password field, destructive words, a flagged page, an
    unreadable target) ended in a refusal telling the model to have the user
-   approve "in Iron Jarvis" and call again — from the sidebar, a task that
+   approve "in STEC OS" and call again — from the sidebar, a task that
    could not be completed. ``PanelTurns.resolve_risk_ask`` answers its own
    turn's asks through the sidebar's card.
 2. ``prepare_action`` refused STALE_SNAPSHOT for a role/name or css target on a

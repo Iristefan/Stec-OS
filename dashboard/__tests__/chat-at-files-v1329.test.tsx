@@ -214,7 +214,7 @@ function inProject() {
 }
 
 async function box(): Promise<HTMLTextAreaElement> {
-  return (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  return (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
 }
 
 function type(el: HTMLTextAreaElement, value: string) {
@@ -506,7 +506,7 @@ describe("agents in plain words (v1.329.0)", () => {
     await waitFor(() => expect(list.querySelectorAll('[role="option"]')).toHaveLength(3));
     const text = list.textContent ?? "";
     expect(text).toContain("Agents");
-    expect(text).toContain("Answer in place of Iron Jarvis");
+    expect(text).toContain("Answer in place of STEC OS");
     expect(text).not.toMatch(/they answer instead/i);
     expect(text).not.toContain("—");
     // Sentence case, never shouted.

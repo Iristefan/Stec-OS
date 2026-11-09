@@ -66,23 +66,23 @@ MAX_COLUMN = 100_000
 MAX_PATH_CHARS = 4096
 
 # --------------------------------------------------------------- the words
-NOT_ABSOLUTE = "Iron Jarvis needs the file's full path to open it in your editor."
-NETWORK_PATH = "Iron Jarvis opens files on this PC's own drives only, not on a network share."
-NOT_ALLOWED = "Iron Jarvis is not allowed to read that file, so it will not open it in your editor."
+NOT_ABSOLUTE = "STEC OS needs the file's full path to open it in your editor."
+NETWORK_PATH = "STEC OS opens files on this PC's own drives only, not on a network share."
+NOT_ALLOWED = "STEC OS is not allowed to read that file, so it will not open it in your editor."
 MISSING = "That file is not on this PC any more."
 A_FOLDER = "That is a folder, not a file."
 WORKSPACE_FILE = (
-    "Iron Jarvis does not open workspace files (.code-workspace) in your editor: "
+    "STEC OS does not open workspace files (.code-workspace) in your editor: "
     "your editor would load that workspace's settings and tasks."
 )
-UNREADABLE_LINK = "Iron Jarvis could not follow a shortcut in that path, so it will not open the file."
+UNREADABLE_LINK = "STEC OS could not follow a shortcut in that path, so it will not open the file."
 BAD_LINE = "The line to open must be a whole number from 1 to 10,000,000."
 BAD_COLUMN = "The column to open must be a whole number from 1 to 100,000."
-UNKNOWN_EDITOR = "Iron Jarvis can open files in VS Code or Cursor only."
-NO_EDITOR = "Iron Jarvis could not find VS Code or Cursor on this PC. Install one, then try again."
+UNKNOWN_EDITOR = "STEC OS can open files in VS Code or Cursor only."
+NO_EDITOR = "STEC OS could not find VS Code or Cursor on this PC. Install one, then try again."
 NOT_INSTALLED = "{label} is not installed on this PC."
 NOT_KNOWN_NOTE = (
-    "Iron Jarvis can find VS Code and Cursor on Windows only. Choose one under "
+    "STEC OS can find VS Code and Cursor on Windows only. Choose one under "
     "Settings › Agents & automation › Code editor to open files in it."
 )
 

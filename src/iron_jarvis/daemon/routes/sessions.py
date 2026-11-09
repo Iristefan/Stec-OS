@@ -165,7 +165,7 @@ def _stamp_continuation(
     up where you left off" after a restart), not the user's follow-up — so
     the parent's display objective is kept, overwriting the message Track A's
     ``continue_session`` stored. The resumed round is listed by what the user
-    asked for, never by "Continue where you left off — Iron Jarvis
+    asked for, never by "Continue where you left off — STEC OS
     restarted…".
 
     ``retry_failed`` (v1.310.0): the retry-failed door's count. The rerun keeps
@@ -847,7 +847,7 @@ def register(app: FastAPI, d) -> None:
         from fastapi.responses import PlainTextResponse
 
         lines = [
-            f"# Iron Jarvis session — {session.task}",
+            f"# STEC OS session — {session.task}",
             "",
             f"- id: {session.id}",
             f"- status: {session.status.value}",

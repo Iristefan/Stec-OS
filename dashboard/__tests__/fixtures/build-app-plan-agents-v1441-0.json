@@ -70,12 +70,12 @@
   {
    "id": "auto",
    "label": "Auto",
-   "reason": "Codex's Auto review lets a reviewer model of Codex's own answer each approval instead of you. It is not offered here: Iron Jarvis cannot show you yet what that reviewer decided."
+   "reason": "Codex's Auto review lets a reviewer model of Codex's own answer each approval instead of you. It is not offered here: STEC OS cannot show you yet what that reviewer decided."
   },
   {
    "id": "edits",
    "label": "Auto edits",
-   "reason": "On Windows, Codex can run commands only with its own file protection switched off, and then it asks either before every file change and every command, or before none of them. It has no setting where edits run on their own while commands still ask. Codex's own Windows protection for commands is not set up on this PC, and Iron Jarvis does not set it up."
+   "reason": "On Windows, Codex can run commands only with its own file protection switched off, and then it asks either before every file change and every command, or before none of them. It has no setting where edits run on their own while commands still ask. Codex's own Windows protection for commands is not set up on this PC, and STEC OS does not set it up."
   }
  ]
 }

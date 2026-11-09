@@ -1,7 +1,7 @@
 """What a session ACTUALLY did (v1.149.0) — read out of the ledger, not the prose.
 
 The report this answers: "agents must stop only describing what they intend to
-do." Iron Jarvis was never guessing — every tool call, every file mutation and
+do." STEC OS was never guessing — every tool call, every file mutation and
 every failure has been recorded in ``ToolInvocation`` + ``UndoJournal`` since
 TX-01. What was missing is that nothing SUMMARISED it back to the person who
 asked; the only thing they saw was the model's own closing paragraph, which is

@@ -5,18 +5,18 @@ The user, 2026-10-29, beside a screenshot of Chat's Code view and one of Build:
 similar to the code, but it would run and control the claude harness or the
 codex harness … like https://github.com/pingdotgg/t3code … only effect the
 build module." Approved as planned: Claude Code and Codex first; the harness's
-own approvals answered by Iron Jarvis cards; a **</> Code | Terminal** switch at
+own approvals answered by STEC OS cards; a **</> Code | Terminal** switch at
 the top of Build (Code is this view); Open in terminal both ways; Pi next, then
 OpenCode.
 
 ## What is different from Chat's Code view
 
-Code view: Iron Jarvis runs every tool; Claude/Codex only think
+Code view: STEC OS runs every tool; Claude/Codex only think
 (`claude_native` / `codex_native` switch the harness's own tools OFF).
 
 App view: the HARNESS runs everything itself, exactly as in a terminal: its
 own tools, settings, CLAUDE.md / AGENTS.md, MCP servers, slash commands,
-hooks, permission rules, its own session file. Iron Jarvis only starts it,
+hooks, permission rules, its own session file. STEC OS only starts it,
 draws what it does, relays the user's messages and answers its permission
 questions. Nothing from `claude_native` / `codex_native` that switches
 built-ins off may be reused for this; reuse only process plumbing.
@@ -73,7 +73,7 @@ built-ins off may be reused for this; reuse only process plumbing.
 | Full access | `bypassPermissions` | never + danger-full-access |
 
 Full access takes TWO presses in the UI and the daemon refuses it unless the
-request says `confirm: true`. Nothing is granted by Iron Jarvis on its own:
+request says `confirm: true`. Nothing is granted by STEC OS on its own:
 every permission question goes to the user (no auto-allow, no grants reused
 from chat). "Allow for this session" maps to the harness's own session-wide
 allow when it offers one (Claude's `updatedPermissions` suggestions; Codex's

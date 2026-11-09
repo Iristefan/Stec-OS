@@ -128,7 +128,7 @@ CLAUDE_WEB_TOOLS_LIMITATION = (
 #: matches no tool, and disables nothing - silently, with no limitation line at
 #: all, which is precisely Q04's "pretending isolation exists".
 CLAUDE_WEB_TOOLS_UNVERIFIED_LIMITATION = (
-    "Iron Jarvis could not verify how this Claude Code build wants its disallowed "
+    "STEC OS could not verify how this Claude Code build wants its disallowed "
     "tools written, so the request to disable its own web tools may not take "
     "effect and it may reach the web without Jarvis. Browser calls through Jarvis "
     "are still logged and gated."
@@ -141,7 +141,7 @@ CLAUDE_WEB_TOOLS_UNVERIFIED_LIMITATION = (
 #: logged-in browser published in their next ``git push`` - and it outlives the
 #: pane that owns it, which is the one property ``browser/panetokens.py`` exists
 #: to guarantee. The reference is inert in a commit: it resolves only inside a
-#: shell Iron Jarvis started for that pane. If a build does not expand it, the
+#: shell STEC OS started for that pane. If a build does not expand it, the
 #: failure is a visible 401 naming the token, not a silent leak - which is the
 #: right way round for a credential.
 CONFIG_TOKEN_REFERENCE = "${" + MCP_TOKEN_ENV + "}"
@@ -422,12 +422,12 @@ def _merge_mcp_json(path: Path, entry: dict[str, Any]) -> tuple[str, bool]:
             existing = json.loads(path.read_text(encoding="utf-8") or "{}")
         except Exception as exc:
             raise ConfigWriteRefused(
-                f"{path} exists and could not be read as JSON, so Iron Jarvis left "
+                f"{path} exists and could not be read as JSON, so STEC OS left "
                 "it alone rather than overwrite it"
             ) from exc
         if not isinstance(existing, dict):
             raise ConfigWriteRefused(
-                f"{path} exists and is not a JSON object, so Iron Jarvis left it "
+                f"{path} exists and is not a JSON object, so STEC OS left it "
                 "alone rather than overwrite it"
             )
         data = existing
@@ -517,7 +517,7 @@ def _no_folder(version: str, env: dict[str, str]) -> RecipeResult:
         version=version,
         env=dict(env),
         limitations=[
-            "This pane has no working folder, so Iron Jarvis could not write the "
+            "This pane has no working folder, so STEC OS could not write the "
             "configuration that points this CLI at Jarvis. The pane launches as it "
             "does today, without Jarvis capabilities."
         ],
@@ -547,7 +547,7 @@ def _no_capabilities(cli_id: str, version: str) -> RecipeResult:
         method=METHOD_NONE,
         version=version,
         limitations=[
-            "This pane has no capabilities enabled, so no Iron Jarvis MCP server "
+            "This pane has no capabilities enabled, so no STEC OS MCP server "
             "was configured for it. Tick a capability in the pane's Capabilities "
             "list and relaunch."
         ],
@@ -610,7 +610,7 @@ class ClaudeCodeRecipe:
         if not config_flag:
             if not help_text:
                 limitations.append(
-                    "Iron Jarvis could not read this Claude Code build's help "
+                    "STEC OS could not read this Claude Code build's help "
                     "output, so it could not verify how to point it at Jarvis. "
                     "The pane launches as it does today, without Jarvis "
                     "capabilities."
@@ -618,7 +618,7 @@ class ClaudeCodeRecipe:
             else:
                 limitations.append(
                     "This Claude Code build advertises no option for loading an "
-                    "MCP configuration file, so Iron Jarvis could not verify how "
+                    "MCP configuration file, so STEC OS could not verify how "
                     "to connect it. The pane launches as it does today, without "
                     "Jarvis capabilities."
                 )
@@ -733,7 +733,7 @@ class ClaudeCodeRecipe:
         writes.append(written)
         if merged:
             limitations.append(
-                f"This folder already had a {self.config_name}, so Iron Jarvis "
+                f"This folder already had a {self.config_name}, so STEC OS "
                 "added its own server to it and left everything else in place. "
                 "Delete the iron-jarvis entry whenever you like - a launch writes "
                 "it again, and it holds no credential."
@@ -841,11 +841,11 @@ class CodexRecipe:
         help_text = self._help()
         if not _advertises(help_text, self.home_env):
             why = (
-                "Iron Jarvis could not read this Codex build's help output, so it "
+                "STEC OS could not read this Codex build's help output, so it "
                 "could not verify how to give it a terminal-scoped configuration."
                 if not help_text
                 else f"This Codex build does not advertise {self.home_env}, so "
-                "Iron Jarvis could not verify how to give it a terminal-scoped "
+                "STEC OS could not verify how to give it a terminal-scoped "
                 "configuration."
             )
             return (
@@ -861,7 +861,7 @@ class CodexRecipe:
             return (
                 METHOD_NONE,
                 [
-                    "Iron Jarvis's stdio bridge is missing from this build, so it "
+                    "STEC OS's stdio bridge is missing from this build, so it "
                     "could not configure Codex to reach Jarvis. The pane launches "
                     "as it does today, without Jarvis capabilities."
                 ],
@@ -891,7 +891,7 @@ class CodexRecipe:
         exe = json.dumps(sys.executable)
         args = json.dumps(self._shim_launch())
         return (
-            "# Written by Iron Jarvis for this Build pane. Safe to delete.\n"
+            "# Written by STEC OS for this Build pane. Safe to delete.\n"
             f"[mcp_servers.{json.dumps(SERVER_NAME)}]\n"
             f"command = {exe}\n"
             f"args = {args}\n"
@@ -996,7 +996,7 @@ class PiRecipe:
             return (
                 METHOD_NONE,
                 [
-                    "Iron Jarvis could not find the Node runtime Pi ships with, so "
+                    "STEC OS could not find the Node runtime Pi ships with, so "
                     "it could not place its Pi adapter. The pane launches as it "
                     "does today, without Jarvis capabilities."
                 ],
@@ -1049,7 +1049,7 @@ class PiRecipe:
         path = _confined(cwd, ADAPTER_FILENAME)
         writes.append(_write_config(path, adapter_source()))
         limitations.append(
-            "Pi does not load the Iron Jarvis adapter on its own: run "
+            "Pi does not load the STEC OS adapter on its own: run "
             f"`{self.runtime()} {ADAPTER_FILENAME}` in this pane to give Pi "
             "the Jarvis tools."
         )

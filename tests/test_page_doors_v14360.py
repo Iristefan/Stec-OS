@@ -122,7 +122,7 @@ DOOR_ROWS: list[tuple[str, str]] = [
     ("connect my Chrome to you", "browser_addon"),
     ("how do I set up your Chrome extension", "browser_addon"),
     ("the browser add-on won't connect", "browser_addon"),
-    ("install the Iron Jarvis extension in Edge", "browser_addon"),
+    ("install the STEC OS extension in Edge", "browser_addon"),
     ("download a local model", "local_model"),
     ("can you install a good local model for me", "local_model"),
     ("ollama pull llama3.2", "local_model"),
@@ -132,7 +132,7 @@ DOOR_ROWS: list[tuple[str, str]] = [
     ("pull the qwen coder model", "local_model"),
 ]
 
-#: (sentence, the thing it asks for that Iron Jarvis does not offer)
+#: (sentence, the thing it asks for that STEC OS does not offer)
 LINE_ROWS: list[tuple[str, str]] = [
     ("can you control my mouse", "desktop_control"),
     ("take over my screen and click the button", "desktop_control"),
@@ -142,7 +142,7 @@ LINE_ROWS: list[tuple[str, str]] = [
     ("click on my desktop icon for QuickBooks", "desktop_control"),
     ("take a screenshot of my desktop", "desktop_control"),
     ("I want desktop automation", "desktop_control"),
-    ("can I open Iron Jarvis from another computer", "another_computer"),
+    ("can I open STEC OS from another computer", "another_computer"),
     ("access the dashboard from my laptop", "another_computer"),
     ("use you on my iPad", "another_computer"),
     ("can I reach the dashboard over my network", "another_computer"),
@@ -193,7 +193,7 @@ NEAR_MISSES: list[str] = [
     "my raspberry pi login is broken",
     "can you tell me how to log in to Outlook on my phone",
     "what is pi to ten digits",
-    "can you run Iron Jarvis on my laptop too",
+    "can you run STEC OS on my laptop too",
     "talk to you from my phone",
     "how do I log in to Outlook on my phone",
     "windows control panel",
@@ -273,7 +273,7 @@ def test_the_lines_speak_plainly():
     for step in P.STEPS:
         assert not banned.search(step.line), step.id
         assert not banned.search(step.label), step.id
-        # Says what Iron Jarvis cannot do itself, and to say so plainly.
+        # Says what STEC OS cannot do itself, and to say so plainly.
         assert re.search(r"\b(?:cannot|does not)\b", step.line), step.id
         assert "plainly" in step.line, step.id
     for item in P.NOT_OFFERED:

@@ -1,4 +1,4 @@
-// The acting half of the page reader: the only Iron Jarvis code that CHANGES a page.
+// The acting half of the page reader: the only STEC OS code that CHANGES a page.
 //
 // Everything in this file runs inside a tab the user is signed in to — their bank,
 // their email, their client portal. A wrong resolution here is not a failed test, it
@@ -141,7 +141,7 @@ function targetRef(resolved: Resolved): TargetRef {
  *
  * Inventing a new error code instead would need a daemon-side remedy, which is
  * another lane's file, and a code the daemon has no remedy for reaches the model as
- * "Iron Jarvis does not have a remedy for that".
+ * "STEC OS does not have a remedy for that".
  */
 function described(resolved: Resolved, note: string): string {
   const ref = targetRef(resolved);
@@ -219,7 +219,7 @@ function exactlyOne(matches: Element[], what: string): Element {
   const first = pool[0];
   if (pool.length > 1 || first === undefined) {
     throw noTarget(
-      `${pool.length} elements match ${what}, so Iron Jarvis refused rather than ` +
+      `${pool.length} elements match ${what}, so STEC OS refused rather than ` +
         "guess which one you meant. Call browser_read_page and send the element_id " +
         "of the one you want",
     );
@@ -380,7 +380,7 @@ function mouseInit(): MouseEventInit {
  *
  * `scrollIntoView` first, for the user rather than for the code: the dispatch does
  * not need the element on screen, but a person watching their own browser should
- * see what Iron Jarvis just pressed.
+ * see what STEC OS just pressed.
  */
 function clickNode(node: Element): void {
   node.scrollIntoView({ block: "center", inline: "nearest" });
@@ -589,7 +589,7 @@ function typeInto(node: Element, text: string, clear: boolean): boolean {
         throw new BridgeError("EXTENSION_ERROR", {
           detail:
             "this field would only accept text by replacing everything already in " +
-            "it, and Iron Jarvis will not overwrite what the user typed. Retry with " +
+            "it, and STEC OS will not overwrite what the user typed. Retry with " +
             "clear: true if replacing the field's contents is what you meant",
         });
       }

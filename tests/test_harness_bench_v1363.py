@@ -18,7 +18,7 @@ What is pinned here, each through the real code:
   version) is this configuration's and whose workspace is unchanged.
 * THE BUDGET LEDGER: every model call is entered; a record that disagrees with
   the ledger raises.
-* THE JARVIS RUNNER: a SMOKE run of two tasks through Iron Jarvis's own
+* THE JARVIS RUNNER: a SMOKE run of two tasks through STEC OS's own
   streaming chat lane with a scripted model — real tools, real grading, the
   report — plus the "a broken check turns it red" contrast.
 * THE CLI RUNNERS: ``claude`` and ``codex`` driven through the same code path
@@ -736,7 +736,7 @@ def test_the_bench_never_uses_the_apps_own_folder(tmp_path, monkeypatch):
     monkeypatch.delenv("IRONJARVIS_HOME", raising=False)
     monkeypatch.setenv("APPDATA", str(tmp_path))
     with pytest.raises(BenchRefused, match="app's own folder"):
-        bench_mod.resolve_bench_home(str(tmp_path / "Iron Jarvis"))
+        bench_mod.resolve_bench_home(str(tmp_path / "STEC OS"))
     monkeypatch.setenv("IRONJARVIS_HOME", str(tmp_path / "x"))
     with pytest.raises(BenchRefused, match="IRONJARVIS_HOME"):
         bench_mod.resolve_bench_home(str(tmp_path / "scratch"))

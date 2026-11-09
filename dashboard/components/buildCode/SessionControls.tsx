@@ -5,14 +5,14 @@
  * coding tool's own background work with Stop, and its own MCP servers'
  * actions (reconnect, turn off or on, sign in). Each row keeps one small ⋯
  * menu, never a row of buttons; a row the tool offers nothing for shows no
- * menu at all, and an older Iron Jarvis (no `background_work`, no `actions`)
+ * menu at all, and an older STEC OS (no `background_work`, no `actions`)
  * leaves the tab exactly as it was.
  *
  * Stopping one background task goes through the tool's own stop (Claude
  * Code's `stop_task`, Codex's background terminal `terminate`): the reply,
  * if one runs, goes on, and the conversation says what was stopped. A sign-in
  * opens the tool's OWN sign-in page in the user's browser (the desktop sends
- * every window.open through its safe external-link check); Iron Jarvis never
+ * every window.open through its safe external-link check); STEC OS never
  * signs in.
  */
 

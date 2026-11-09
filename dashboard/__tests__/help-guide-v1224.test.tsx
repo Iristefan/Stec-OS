@@ -4,7 +4,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 /**
  * v1.224.0 — "Ask the Guide" on the Help page.
  *
- * The built-in Iron Jarvis expert is an AGENT on the Agents page; the Help
+ * The built-in STEC OS expert is an AGENT on the Agents page; the Help
  * page is its front door. What is pinned: the box lands on the Agents page
  * with `talk=guide` (open/start the 1:1 thread) and the question PREFILLED
  * (never sent — consent waits for Enter in the composer); Enter in the box is
@@ -131,7 +131,7 @@ describe("Ask the Guide (v1.223.0)", () => {
     render(<HelpPage />);
     // v1.354.0 (G59, on purpose): the panels' one "couldn't load" line, in
     // the app's name — still UNKNOWN, never "knows nothing".
-    expect(screen.getByText("What the Guide knows couldn't load. Iron Jarvis isn't responding.")).toBeInTheDocument();
+    expect(screen.getByText("What the Guide knows couldn't load. STEC OS isn't responding.")).toBeInTheDocument();
     expect(screen.queryByText(/daemon looks offline/)).not.toBeInTheDocument();
     expect(screen.queryByText(/Knows /)).not.toBeInTheDocument();
   });

@@ -1,4 +1,4 @@
-"""The Iron Jarvis Guide — the built-in expert on the app itself (v1.224.0).
+"""The STEC OS Guide — the built-in expert on the app itself (v1.224.0).
 
 A built-in AGENT (``AgentType.GUIDE``, in the roster beside builder and the
 rest) with base knowledge of the app injected into every session

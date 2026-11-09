@@ -216,7 +216,7 @@ async def test_app_health_names_a_failed_pack_a_failing_loop_and_recent_errors_m
     assert data["unreadable"] == []
     assert data["disk"]["free_bytes"] > 0 and data["disk"]["total_bytes"] > 0
     assert data["interrupted_sessions"] == 0
-    assert data["version"] and out.startswith(f"Iron Jarvis {data['version']}.")
+    assert data["version"] and out.startswith(f"STEC OS {data['version']}.")
     assert data["db_liveness"] == "ok" and data["secrets_key_valid"] is True
     assert data["model"]["provider"] == platform.config.default_provider
     assert "circuits_open" in data

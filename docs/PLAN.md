@@ -12,7 +12,7 @@ assumptions tagged).
 
 ## 0. TL;DR
 
-Iron Jarvis is a full local-first AI operating system, not a single feature. This
+STEC OS is a full local-first AI operating system, not a single feature. This
 plan breaks it into a **Python `uv` workspace** of focused packages plus a
 **Next.js dashboard**, and a **12-phase build order** where every phase is
 runnable and offline-testable (MockLLM / MockBrowser / native sandbox) before the

@@ -1364,12 +1364,12 @@ describe("review: polish", () => {
     await waitFor(() => expect(document.activeElement).toBe(screen.getByTestId("code-box")));
   });
 
-  it("a reply whose stream dropped while Iron Jarvis was away is followed again once it is back", async () => {
+  it("a reply whose stream dropped while STEC OS was away is followed again once it is back", async () => {
     settledSession();
     H.scripts = [
       [
         { event: "user", data: { type: "user", text: "Go", turn: "t5" } },
-        { yield: { type: "error", detail: "Iron Jarvis isn't responding.", status: 0, offline: true } },
+        { yield: { type: "error", detail: "STEC OS isn't responding.", status: 0, offline: true } },
       ],
       [{ event: "user", data: { type: "user", text: "Go", turn: "t5" } }],
     ];

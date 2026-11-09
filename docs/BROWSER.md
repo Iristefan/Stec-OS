@@ -1,6 +1,6 @@
-# Iron Jarvis — Your browser
+# STEC OS — Your browser
 
-*How Iron Jarvis works in the browser you already use: what it can do, what it
+*How STEC OS works in the browser you already use: what it can do, what it
 asks you first, what it will never do, and what this first version cannot do
 yet. Current as of v1.239.0 (2026-09-07).*
 
@@ -12,7 +12,7 @@ The **Browser** page holds two different things. They share no code, no profile
 and no cookies, and mixing them up is the fastest way to misunderstand both.
 
 **Your browser** is the Chrome or Edge *you* already use, already signed in to
-your bank, your practice software, the IRS, your email. Iron Jarvis reaches it
+your bank, your practice software, the IRS, your email. STEC OS reaches it
 through a small **browser add-on** that you load yourself and then **pair** from
 inside Jarvis. That is what this guide is about.
 
@@ -47,15 +47,15 @@ on this machine as well as its name. On a default Windows install the add-on is
 the `browser-addon` folder here:
 
 ```
-%LOCALAPPDATA%\Programs\Iron Jarvis\resources\browser-addon
+%LOCALAPPDATA%\Programs\STEC OS\resources\browser-addon
 ```
 
-— that is `AppData\Local\Programs\Iron Jarvis\resources\browser-addon` under
+— that is `AppData\Local\Programs\STEC OS\resources\browser-addon` under
 your own user folder. The installer lets you choose a different location, and if
 you did, the add-on is in `resources\browser-addon` underneath the folder you
 chose.
 
-1. Open Iron Jarvis → **Browser**, and note the add-on folder it names.
+1. Open STEC OS → **Browser**, and note the add-on folder it names.
 2. In Chrome, open `chrome://extensions`.
 3. Turn on **Developer mode**, top right.
 4. Press **Load unpacked** and choose that folder — the one holding
@@ -189,7 +189,7 @@ Jarvis touched.
 
 **Where the icon is, and why you probably cannot see it yet.** Chrome does not
 put a newly loaded unpacked add-on on the toolbar — it files it behind the
-**puzzle-piece** button at the top right. Open that menu, find **Iron Jarvis**,
+**puzzle-piece** button at the top right. Open that menu, find **STEC OS**,
 and press the **pin** beside it; the icon then stays on the toolbar and one
 click opens the sidebar. Until you pin it, the sidebar is reachable only through
 that menu, which is the difference between a feature existing and a feature
@@ -198,13 +198,13 @@ repeats it for anyone who set their browser up long ago.
 
 **If the icon opens a small popup instead of a sidebar**, your browser is still
 running an older copy of the add-on. Chrome keeps the copy it loaded until you
-reload it, so updating Iron Jarvis does not update what Chrome is running: open
-`chrome://extensions` and press **Reload** on Iron Jarvis. The add-on carries the
+reload it, so updating STEC OS does not update what Chrome is running: open
+`chrome://extensions` and press **Reload** on STEC OS. The add-on carries the
 same version number as the app it shipped with, the sidebar prints that version
 in its own header, and the Browser card prints the app's — an older number in the
 sidebar is the copy to reload.
 
-Clicking the Iron Jarvis icon opens a chat docked beside the page you are
+Clicking the STEC OS icon opens a chat docked beside the page you are
 reading. **It is a window onto Jarvis, not a second Jarvis.** The panel holds no
 model, no agent loop, no settings and no tool list. Your question travels down
 the connection the browser already has, the daemon runs the turn with the same
@@ -252,7 +252,7 @@ automatic:
 
 **That credential belongs to the pane and to nothing else.** It is not the app's
 access token, it cannot be used for anything else, and it lives in memory only:
-closing the pane, or restarting Iron Jarvis, ends it. If a harness starts
+closing the pane, or restarting STEC OS, ends it. If a harness starts
 reporting that Jarvis refuses it, relaunch it from the Build pane rather than
 hunting for a setting. Untick **Browser** and the harness's very next call is
 refused, with nothing to restart. The configuration file Jarvis writes into the
@@ -283,7 +283,7 @@ programs already running as you, which can read this app's files anyway.
 
 **Passwords are never read.** No field's value is ever collected, password or
 not, and the stripping happens inside the page before anything is sent, so a
-password never reaches Iron Jarvis at all. Your browser's own password manager
+password never reaches STEC OS at all. Your browser's own password manager
 keeps working, because Jarvis never sees what it fills.
 
 **Page content is untrusted data, always.** A web page can contain text that
@@ -347,7 +347,7 @@ something.
     long page into one image is not implemented.
 12. **Page content is always untrusted.** A flagged page marks the result and
     constrains what may happen next; it does not end your turn for you.
-13. **A pane's credential dies with the daemon.** After Iron Jarvis restarts,
+13. **A pane's credential dies with the daemon.** After STEC OS restarts,
     relaunch the harness from its Build pane.
 14. **Only the Browser capability is enforced per pane.** Files, Shell,
     Extensions and Memory are recorded and shown so you can see what a pane is

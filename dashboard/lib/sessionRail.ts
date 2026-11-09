@@ -238,12 +238,12 @@ export async function fetchPrograms(threadId: string): Promise<SessionPrograms> 
 }
 
 /** "2 commands left programs running. They are stopped when the session is
- *  archived or deleted, or when you quit Iron Jarvis." — or "" for none. Only
+ *  archived or deleted, or when you quit STEC OS." — or "" for none. Only
  *  windowless programs are counted: a window a command opened is spared. */
 export function othersWords(n: number): string {
   if (n <= 0) return "";
   const head = n === 1 ? "1 command left a program running" : `${n} commands left programs running`;
-  return `${head}. They are stopped when the session is archived or deleted, or when you quit Iron Jarvis.`;
+  return `${head}. They are stopped when the session is archived or deleted, or when you quit STEC OS.`;
 }
 
 /** The user's Stop: the program and everything it started. The daemon keeps
@@ -303,7 +303,7 @@ export const HARNESS_DIALECT_LABELS: Record<string, string> = {
   claude: "Claude Code",
   gpt: "Codex",
   qwen: "Qwen Code",
-  generic: "Iron Jarvis",
+  generic: "STEC OS",
 };
 
 /** A model family in words (`harness/dialects.family_for`). "generic" (a
@@ -319,7 +319,7 @@ const FAMILY_WORDS: Record<string, string> = {
 const NOTE_CHARS = 600;
 
 /** A reply route's instructions, or null (not a coding reply, or a line an
- *  older Iron Jarvis wrote). Only the keys the daemon sends; a junk value is
+ *  older STEC OS wrote). Only the keys the daemon sends; a junk value is
  *  dropped, never shown. */
 export function decodeReplyInstructions(route: unknown): ReplyInstructions | null {
   const h = rec(rec(route)?.harness);
@@ -355,29 +355,29 @@ export function newestInstructions(
 export function instructionToolWords(h: ReplyInstructions): string {
   const label = HARNESS_DIALECT_LABELS[h.dialect];
   const family = FAMILY_WORDS[h.family];
-  const names = label === "Iron Jarvis" ? "Iron Jarvis's own tool names" : label ? `${label}'s tool names` : "";
+  const names = label === "STEC OS" ? "STEC OS's own tool names" : label ? `${label}'s tool names` : "";
   const forModel = family ? `for a ${family} model` : "";
   const out = [names, forModel].filter(Boolean).join(", ");
   return out ? out.charAt(0).toUpperCase() + out.slice(1) : "";
 }
 
-/** What the instructions were built from, in words: "Iron Jarvis's
+/** What the instructions were built from, in words: "STEC OS's
  *  defaults, Claude Code's tool words, this folder's own instructions,
  *  lessons kept for this folder". An unknown part is left out. */
 export function instructionLayerWords(layers: readonly string[]): string {
   const words: string[] = [];
   for (const layer of layers) {
-    if (layer === "default") words.push("Iron Jarvis's defaults");
+    if (layer === "default") words.push("STEC OS's defaults");
     else if (layer.startsWith("family:")) {
       const label = HARNESS_DIALECT_LABELS[layer.slice("family:".length)];
-      if (label) words.push(label === "Iron Jarvis" ? "Iron Jarvis's own tool words" : `${label}'s tool words`);
+      if (label) words.push(label === "STEC OS" ? "STEC OS's own tool words" : `${label}'s tool words`);
     } else if (layer === "project") words.push("this folder's own instructions");
     else if (layer === "library") words.push("lessons kept for this folder");
   }
   return words.join(", ");
 }
 
-/** `GET /build/sessions/{id}/harness`: the instructions Iron Jarvis gives
+/** `GET /build/sessions/{id}/harness`: the instructions STEC OS gives
  *  this session's model NOW, put together as a turn does (read-only, never
  *  stored, masked and cut by the daemon). */
 export interface SessionInstructions {

@@ -127,7 +127,7 @@ class SkillLoadTool(Tool):
         # Code's result — the base directory line, then the body with its
         # arguments (``args``) and ``${CLAUDE_SKILL_DIR}`` filled. The skill's
         # ``allowed-tools`` grants nothing: every call it leads to is asked
-        # for under Iron Jarvis's own rules.
+        # for under STEC OS's own rules.
         text = await asyncio.to_thread(
             native.invocation_text, skill, str(args.get("args") or ""),
             event_bus=getattr(ctx, "event_bus", None),

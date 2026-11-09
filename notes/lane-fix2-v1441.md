@@ -151,7 +151,7 @@ Review findings U1-U7, X1, X2, X5 (per-account usage refresh) and D1-D4
 **Check usage now.** The button reads an account's usage only when Iron-Proxy
 can keep the number; an older Iron-Proxy, or one that is not answering, says so
 right away. A login with no Claude plan says it has no plan usage to report.
-While a coding session or a Build terminal works on an account, Iron Jarvis
+While a coding session or a Build terminal works on an account, STEC OS
 re-reads its usage every few minutes (less often when the login reports no
 numbers); a session waiting for your answer is not re-read.
 

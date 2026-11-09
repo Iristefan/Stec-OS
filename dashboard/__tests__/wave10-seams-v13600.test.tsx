@@ -158,7 +158,7 @@ beforeEach(() => {
   modelsRef.current = [];
   waitingRuns = [];
   window.localStorage.clear();
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
   getMock.mockImplementation(async (p: unknown) => {
     const url = String(p);
     if (url.startsWith("/audit")) return { entries: [], next_cursor: null, total: 0 };
@@ -206,7 +206,7 @@ describe("(a) the bell, fed the daemon's real events: one row and one ping per o
     render(<NotificationBell />);
     await waitFor(() => expect(notifyMock).toHaveBeenCalledTimes(1));
     const [title, body] = notifyMock.mock.calls[0];
-    expect(title).toBe("Iron Jarvis: 1 pending");
+    expect(title).toBe("STEC OS: 1 pending");
     expect(body).toContain("1 workflow question waiting");
   });
 

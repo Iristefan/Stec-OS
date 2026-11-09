@@ -17,7 +17,7 @@ the user's own ``~/.agents/skills`` (``HOME``, else the home folder). A bare
 ``.pi`` folder needs nothing.
 
 Pi's order: ``--approve`` / ``--no-approve`` -> a user-level or command-line
-extension answering the ``project_trust`` event (Iron Jarvis CANNOT see that:
+extension answering the ``project_trust`` event (STEC OS CANNOT see that:
 said in the words) -> the NEAREST entry (folder, then parents) in
 ``<agent dir>/trust.json`` -> ``defaultProjectTrust`` in the agent dir's
 ``settings.json`` ("always" | "never" | anything else = "ask") -> no screen =
@@ -52,7 +52,7 @@ TRUSTED = "trusted"
 DECLINED = "declined"
 #: Pi would have asked in its terminal and skips them here: OFFERED.
 UNDECIDED = "undecided"
-#: Iron Jarvis cannot tell (a network folder, a link it will not follow, an
+#: STEC OS cannot tell (a network folder, a link it will not follow, an
 #: unreadable trust list): nothing offered.
 UNKNOWN = "unknown"
 
@@ -102,7 +102,7 @@ def _home(env: dict[str, str] | None) -> str:
 def pi_path(raw: str) -> str | None:
     """The folder as Pi spells it (``realpathSync(path.resolve(...))``), or
     None when it cannot be spelled without touching a share or following a
-    link Iron Jarvis does not follow."""
+    link STEC OS does not follow."""
     from ..harness import code_editor as CE  # noqa: PLC0415 — keeps imports light
 
     text = str(raw or "").strip()

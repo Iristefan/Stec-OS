@@ -58,7 +58,7 @@ describe("whose window the meter measures by", () => {
     meter(reading({ window_known: false }));
     const title = screen.getByTestId("harness-context-meter").getAttribute("title") ?? "";
     expect(title).toBe(
-      "This conversation fills about 80% of what Iron Jarvis sends this model at once. This model's own limit is not known, so a safe size is used.",
+      "This conversation fills about 80% of what STEC OS sends this model at once. This model's own limit is not known, so a safe size is used.",
     );
     expect(title).not.toMatch(/can read at once/);
     // The planner really does leave turns out past it: Compact still helps.

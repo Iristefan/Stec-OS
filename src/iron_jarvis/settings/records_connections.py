@@ -11,7 +11,7 @@ in words, when the user changed it again since.
 
 * ``model_server_add`` — adds a server through the Fleet page's own body
   (``daemon.routes.fleet.add_fleet_node``: the kind is detected, it is probed
-  once, it becomes a model Iron Jarvis may use at once). The card says whether
+  once, it becomes a model STEC OS may use at once). The card says whether
   it is on this PC or the user's own network, or on the internet (what is sent
   to it then leaves this PC — ``providers.egress.private_host``). Its KEY is
   never an argument: ``needs_key`` puts up the secure card
@@ -31,7 +31,7 @@ in words, when the user changed it again since.
   (``iron_proxy.client.create_profile``, the Iron-Proxy card's Add account),
   then the account's own sign-in terminal is opened
   (``daemon.routes.iron_proxy.open_account_signin``) and the reply carries a
-  door into it. Iron Jarvis NEVER handles the login: the user signs in in that
+  door into it. STEC OS NEVER handles the login: the user signs in in that
   terminal, in their own browser. Iron-Proxy off is refused with where to turn
   it on. Undo removes the account only while Iron-Proxy says it still needs to
   sign in — a signed-in account (or one whose state cannot be read) is never
@@ -92,7 +92,7 @@ ACCOUNT = "account"
 MEMORY_BASE = "memory_base"
 KINDS = (MODEL_SERVER, MODEL_DEFAULT, MODEL_SERVER_REMOVED, ACCOUNT, MEMORY_BASE)
 
-NEEDS_THE_APP = "This can only be done while the Iron Jarvis app is running."
+NEEDS_THE_APP = "This can only be done while the STEC OS app is running."
 #: The one refusal of a credential passed as a tool argument (the Wave 1 rule:
 #: a key typed into the chat sits in the model's context, the transcript and
 #: the stream).
@@ -205,7 +205,7 @@ def _shown_address(raw: Any) -> Any:
             shown = f"{parts.scheme}://{host}{port}{parts.path}" + " (part left out)"
             return shown if "://" in text else shown.split("://", 1)[1]
     except ValueError:
-        return "(an address Iron Jarvis cannot read)"
+        return "(an address STEC OS cannot read)"
     try:
         from ..detections.redact import mask
 
@@ -246,7 +246,7 @@ def clean_address(raw: Any) -> tuple[str, str]:
         host = parts.hostname
         parts.port  # noqa: B018 — a bad port raises here
     except ValueError:
-        return "", "That is not an address Iron Jarvis can open."
+        return "", "That is not an address STEC OS can open."
     if parts.scheme.lower() not in ("http", "https") or not host:
         return "", "Give the server's address starting with http:// or https://."
     if parts.username or parts.password:
@@ -294,7 +294,7 @@ def _node_label(node: Any) -> str:
 
 def find_server(d: Any, ref: Any) -> tuple[Any, str]:
     """``(node, problem)``: the added server the user named — its id, its name
-    or its address (``host:port``). Only a server Iron Jarvis keeps (never a
+    or its address (``host:port``). Only a server STEC OS keeps (never a
     model a proxy reports). Never raises."""
     raw = str(ref or "").strip()
     nodes = _top_nodes(d)
@@ -619,7 +619,7 @@ class ModelServerAddTool(R._RecordTool):
         # by the add's own detection and probe before the user pasted one.
         node_id = await asyncio.to_thread(_fresh_node_id, d, self.platform, address, label, keyed)
         if not node_id:
-            return ToolResult(ok=False, error="Iron Jarvis could not choose a name for that server; give it another name.")
+            return ToolResult(ok=False, error="STEC OS could not choose a name for that server; give it another name.")
         key_name = f"endpoint_{node_id}_key" if keyed else ""
         body = FleetNodeBody(
             base_url=address, label=label, id=node_id, api_key_name=key_name, routable=True, protocol=protocol
@@ -632,7 +632,7 @@ class ModelServerAddTool(R._RecordTool):
         node = d.fleet.get(node_id)
         shown = label or node_id
         where = place_words(address)
-        lines = [f"Added the model server {_q(shown)} at {address} ({where}). Iron Jarvis may use its models now."]
+        lines = [f"Added the model server {_q(shown)} at {address} ({where}). STEC OS may use its models now."]
         if (out.get("snapshot") or {}).get("status") not in (None, "online") and not key_name:
             lines.append("It did not answer just now; it stays added and is checked again by itself.")
         data: dict[str, Any] = {"node_id": node_id}
@@ -1066,7 +1066,7 @@ class AccountAddTool(R._RecordTool):
             door = {"href": f"/terminals?focus={pane['terminal_id']}", "label": f"Sign in {name} in its terminal"}
             how = (
                 f"Its sign-in is open in a terminal in Build named {_q(pane.get('name') or 'Sign in: ' + name)}: "
-                "the user finishes it there, in their own browser. Iron Jarvis never sees the login."
+                "the user finishes it there, in their own browser. STEC OS never sees the login."
             )
         except (HTTPException, IronProxyError) as exc:
             how = (
@@ -1246,7 +1246,7 @@ class MemoryBaseAddTool(R._RecordTool):
     name = "memory_base_add"
     RECORD = MEMORY_BASE
     description = (
-        "Add a memory base Iron Jarvis searches and saves to (\"use Notion as your long-term memory\", "
+        "Add a memory base STEC OS searches and saves to (\"use Notion as your long-term memory\", "
         "\"add my Obsidian vault at D:\\vault as memory\"): `kind` is notion or folder (an Obsidian vault "
         "is a folder), `name` what to call it, `folder` the folder's full location, `database` the Notion "
         "database's link or id. A Notion token is NEVER passed: the user pastes it on a secure card. "
@@ -1610,7 +1610,7 @@ _TO_A_DEVICE = re.compile(
     re.IGNORECASE,
 )
 #: Review: the clause puts the thing INTO the user's content ("…to the
-#: budget", "…in the asset list"), never a change to Iron Jarvis.
+#: budget", "…in the asset list"), never a change to STEC OS.
 _INTO_CONTENT = re.compile(
     r"\b(?:to|into|in|on|onto|from)\s+(?:the|my|our|a|an|this|that|your)\s+(?:[\w-]+\s+){0,2}?"
     r"(?:budget|list(?!\s+of\s+(?:model\s+)?(?:servers|models|endpoints))|checklist|inventory|spreadsheet|sheet|doc|document|diagram|invoice|report|e-?mail|"

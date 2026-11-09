@@ -9,7 +9,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/re
  * (v1.321.0). The doors it used are the shared `ConnectDoors`, which the chat's
  * empty state still shows while replies are the demo, so the pins on the
  * doors' own mechanics moved onto it; the wizard-only pins (its show rule, its
- * latch across a first_run flip, its "Start using Iron Jarvis" finale) left
+ * latch across a first_run flip, its "Start using STEC OS" finale) left
  * with the wizard.
  *
  * WHAT THESE TESTS GUARD:
@@ -33,7 +33,7 @@ const hooks = vi.hoisted(() => ({
 // only the fetching stops (lib/useApi.ts). The wizard leans on that: the
 // moment a run completes it STOPS polling `/sessions/{id}`, and the completed
 // panel keeps rendering off the retained detail. A mock that nulls data with
-// the path unmounts "Start using Iron Jarvis" one commit after it appears.
+// the path unmounts "Start using STEC OS" one commit after it appears.
 vi.mock("@/lib/useApi", async () => {
   const { useRef } = await import("react");
   const useStub = (path: string | null) => {

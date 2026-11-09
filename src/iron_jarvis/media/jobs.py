@@ -130,10 +130,10 @@ def _posix(path: str) -> str:
 
 def media_markdown(kind: str, abs_path: str) -> str:
     """The markdown image syntax for a LOCAL file, destination in angle
-    brackets: ``![video](<C:/Users/x/Iron Jarvis/media/fake/mj_1.mp4>)``.
+    brackets: ``![video](<C:/Users/x/STEC OS/media/fake/mj_1.mp4>)``.
     CommonMark refuses a bare destination holding a space and the dashboard's
     Markdown then shows the literal text — and the packaged home is
-    ``%APPDATA%/Iron Jarvis/...``, the chat workfolder ``Documents/Iron Jarvis/
+    ``%APPDATA%/STEC OS/...``, the chat workfolder ``Documents/STEC OS/
     <date> <title>`` (proven against the real component: with the brackets a
     <video> renders and the src decodes the space; a space-free path renders
     under both forms, so always bracketing is safe)."""

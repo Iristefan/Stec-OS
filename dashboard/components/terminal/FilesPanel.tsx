@@ -442,7 +442,7 @@ export function FilesPanel({
             </p>
           ) : offline ? (
             <div className="py-3">
-              <OfflineHint detail="The files list needs Iron Jarvis running." />
+              <OfflineHint detail="The files list needs STEC OS running." />
             </div>
           ) : error ? (
             <p
@@ -557,7 +557,7 @@ export function FilesPanel({
           </Empty>
         ) : offline ? (
           <div className="p-3">
-            <OfflineHint detail="The files panel needs Iron Jarvis running." />
+            <OfflineHint detail="The files panel needs STEC OS running." />
           </div>
         ) : error ? (
           <p

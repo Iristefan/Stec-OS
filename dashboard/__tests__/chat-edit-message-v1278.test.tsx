@@ -135,7 +135,7 @@ afterEach(() => {
 });
 
 async function send(text: string, reply: string) {
-  const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   H.stream.replies.push(reply);
   fireEvent.change(el, { target: { value: text } });
   fireEvent.keyDown(el, { key: "Enter" });
@@ -150,7 +150,7 @@ describe("edit and resend (v1.278.0)", () => {
     expect(screen.getAllByLabelText("Edit and resend")).toHaveLength(2);
 
     fireEvent.click(screen.getAllByLabelText("Edit and resend")[1]);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     expect(el.value).toBe("second question");
     // Cut before it: the second exchange is gone, the first stays.
     await waitFor(() => expect(screen.queryByText("second answer")).toBeNull());
@@ -183,7 +183,7 @@ describe("edit and resend (v1.278.0)", () => {
     render(<ChatPage />);
     await send("only question", "only answer");
     fireEvent.click(screen.getByLabelText("Edit and resend"));
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     expect(el.value).toBe("only question");
     await waitFor(() => expect(screen.queryByText("only answer")).toBeNull());
     H.stream.replies.push("fresh answer");

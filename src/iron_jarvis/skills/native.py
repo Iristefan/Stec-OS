@@ -35,7 +35,7 @@ work exactly the same way inside our native harness." Measured on this PC
 This module is the ONE place for those rules: :func:`user_roots` (what the
 registry loads), :func:`project_skills` (a session folder's own), the
 listing (:func:`listing`) and what invoking one hands the model
-(:func:`invocation_text`). Permissions stay Iron Jarvis's: ``allowed-tools``
+(:func:`invocation_text`). Permissions stay STEC OS's: ``allowed-tools``
 is read and never obeyed, and a skill that did not come from the user is
 scanned before a model reads it (``framework.guarded_instructions``).
 Nothing here writes a harness's files. BLOCKING (stats + small reads):

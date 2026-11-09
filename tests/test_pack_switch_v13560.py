@@ -198,7 +198,7 @@ def test_a_bare_auto_approve_flip_keeps_its_answer_byte_for_byte(client, server)
     assert res.json() == {
         "name": NAME,
         "auto_approve": True,
-        "note": "saved — restart Iron Jarvis for autonomous agents to pick this up",
+        "note": "saved — restart STEC OS for autonomous agents to pick this up",
     }
 
 

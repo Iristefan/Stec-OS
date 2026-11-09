@@ -41,7 +41,7 @@ MAX_TRANSCRIPT_CHARS = 4_000_000
 
 #: The note a resumed run's model reads after its conversation.
 RESUME_NOTE = (
-    "[Iron Jarvis stopped while you were working on this (a restart or a crash)"
+    "[STEC OS stopped while you were working on this (a restart or a crash)"
     " and has resumed. Your conversation so far is above, exactly as it was. A"
     " tool call that was cut off says so in its result: a call that only reads"
     " is safe to run again; for anything else, check whether it took effect"
@@ -163,7 +163,7 @@ def _cut_off_note(engine: Any, run_id: str, call: Any, registry: Any, *,
 
 #: The note the step a stop cut off gets in front of its prompt on resume.
 STEP_RESUME_NOTE = (
-    "[Iron Jarvis stopped while this step was running (a restart or a crash)"
+    "[STEC OS stopped while this step was running (a restart or a crash)"
     " and has resumed. Some of this step may already be done: check what is"
     " already there before doing anything again.]"
 )

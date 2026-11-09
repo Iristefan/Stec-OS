@@ -1,4 +1,4 @@
-"""An app's program installed from a LOCK Iron Jarvis ships (v1.428.0).
+"""An app's program installed from a LOCK STEC OS ships (v1.428.0).
 
 WHY: ``npx -y <package>`` asks npm for the newest release of the package AND
 the newest allowed version of every package it depends on, at every start.
@@ -56,7 +56,7 @@ NO_NODE = (
 
 @dataclass(frozen=True)
 class LockedPackage:
-    """One app program Iron Jarvis installs from its own lock."""
+    """One app program STEC OS installs from its own lock."""
 
     key: str
     #: The npm package the app runs, and the version the lock pins.
@@ -69,7 +69,7 @@ class LockedPackage:
     #: v1.428.0 review: the native file that install step produces is NOT
     #: covered by the lock's sha512 (keytar's ``prebuild-install`` downloads it
     #: from GitHub with no checksum). Per platform: ``(relative path, sha256)``
-    #: of the exact file Iron Jarvis checked. Another file is refused; on a
+    #: of the exact file STEC OS checked. Another file is refused; on a
     #: platform not listed the step does not run at all (the package then keeps
     #: its key in a file beside the sign-in).
     native_files: tuple[tuple[str, str, str], ...] = ()
@@ -315,14 +315,14 @@ def ensure_installed(pkg: LockedPackage, home: str | os.PathLike[str]) -> Path:
                 built = temp / rel
                 if not built.is_file() or _sha256(built) != digest:
                     raise LockedInstallError(
-                        f"{pkg.native}'s native file is not the one Iron Jarvis checked, so "
+                        f"{pkg.native}'s native file is not the one STEC OS checked, so "
                         "nothing was installed."
                     )
             got = installed_version(temp, pkg)
             if got != pkg.version:
                 raise LockedInstallError(
                     f"npm installed {pkg.package} {got or '(unknown version)'}, not the "
-                    f"{pkg.version} Iron Jarvis locked, so it was not used."
+                    f"{pkg.version} STEC OS locked, so it was not used."
                 )
             if not (temp / pkg.entry).is_file():
                 raise LockedInstallError("npm finished, but the app's program is not where it should be.")
@@ -336,5 +336,5 @@ def ensure_installed(pkg: LockedPackage, home: str | os.PathLike[str]) -> Path:
         except OSError as exc:
             shutil.rmtree(temp, ignore_errors=True)
             raise LockedInstallError(f"The app's program could not be installed: {exc.strerror or exc}.") from None
-        log.info("installed %s %s from Iron Jarvis's lock", pkg.package, pkg.version)
+        log.info("installed %s %s from STEC OS's lock", pkg.package, pkg.version)
         return final / pkg.entry

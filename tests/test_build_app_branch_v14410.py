@@ -155,7 +155,7 @@ async def test_claude_rewind_cuts_the_log_and_goes_back_with_the_next_message(
         assert [e["type"] for e in view["events"]] == [e["type"] for e in before["events"][:cut_index]]
         assert view["branch"]["at"] == [at1]
         assert list(BR.read_refs(home, sid)) == [at1]
-        # The whole old log is kept in Iron Jarvis's trash.
+        # The whole old log is kept in STEC OS's trash.
         assert list(Path(home, "trash").glob("*/hosted-rewind/" + sid + "/events.jsonl"))
         await _turn(c, sid, "again", "t3")
         argv = starts(tmp_path / "fake.log")[-1]["argv"]

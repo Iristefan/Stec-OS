@@ -6,7 +6,7 @@ THE FINDINGS (each pin red on the builder's first cut):
 
 * "Open in Code view" took ANY conversation written in the terminal's folder
   after the recorded one as the terminal's own. The user's own Claude Code,
-  running OUTSIDE Iron Jarvis in the same folder (the Claude desktop app, a
+  running OUTSIDE STEC OS in the same folder (the Claude desktop app, a
   VS Code panel — the owner works this way every day), writes such files all
   the time: with no ``/clear`` in the terminal at all, its conversation was
   handed over as the terminal's (and the Code view could then resume it while
@@ -105,7 +105,7 @@ def test_only_a_conversation_a_clear_started_reads_as_one(tmp_path):
 
 async def test_the_users_own_claude_outside_iron_jarvis_is_never_handed_over(app, work, tmp_path, monkeypatch):
     """No /clear in the terminal: the newer conversation in the folder is the
-    user's OWN Claude Code (outside Iron Jarvis), never the terminal's."""
+    user's OWN Claude Code (outside STEC OS), never the terminal's."""
     home = _home(tmp_path, monkeypatch)
     _aged(_write_claude(home, work, OLD, "the terminal's question"), 120)
     _aged(_write_claude(home, work, OUTSIDE, "asked in the Claude app"), 10)

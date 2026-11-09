@@ -431,7 +431,7 @@ async def test_emergency_stop_stops_a_coding_turn_iron_jarvis_started_and_leaves
     stopped = await asyncio.to_thread(orch.stop_unattended)
     assert "turn:bt-auto" in stopped and "turn:bt-me" not in stopped
     await until(lambda: lg.status != "running", 30)
-    assert lg.status != "running", "Emergency stop stopped the turn Iron Jarvis started"
+    assert lg.status != "running", "Emergency stop stopped the turn STEC OS started"
     assert "Never said." not in json.dumps(lg.frames)
     hold_auto.gate.set()
     logs = app.state.platform.turn_logs
@@ -703,7 +703,7 @@ async def test_the_team_rides_the_models_message_and_try_on_starts_attempts(app,
     question = next(m for m in messages_of(app, started["thread_id"]) if m["role"] == "user")
     assert question["content"] == "TEAM: split the parser", "the question line shows the user's words alone"
 
-    # Try on: the attempts' own start, as Iron Jarvis's (started_by night).
+    # Try on: the attempts' own start, as STEC OS's (started_by night).
     seen: list = []
 
     async def fake_maybe_start(d, thread_id, text, turn_id, body, *, started_by="person"):

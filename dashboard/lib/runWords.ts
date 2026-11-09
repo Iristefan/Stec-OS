@@ -90,17 +90,17 @@ const AGENT_TOOLS: Readonly<Record<string, AgentToolWords>> = {
   remember_preference: { did: "Noted a preference", noun: "preference note" },
   notebook: { did: "Updated its notebook", noun: "notebook update" },
   // guide/tools.py: the bundled docs and the user's own setup.
-  guide_search: { did: "Searched the Iron Jarvis guide", noun: "guide search", nouns: "guide searches" },
-  guide_read: { did: "Read the Iron Jarvis guide", noun: "guide read" },
-  app_search: { did: "Searched your Iron Jarvis setup", noun: "setup search", nouns: "setup searches" },
-  app_status: { did: "Checked your Iron Jarvis setup", noun: "setup check" },
+  guide_search: { did: "Searched the STEC OS guide", noun: "guide search", nouns: "guide searches" },
+  guide_read: { did: "Read the STEC OS guide", noun: "guide read" },
+  app_search: { did: "Searched your STEC OS setup", noun: "setup search", nouns: "setup searches" },
+  app_status: { did: "Checked your STEC OS setup", noun: "setup check" },
   // v1.359.0 integrate (lane 9A review): every other registered built-in, in
   // the Python twin's words (agents/mission._RUN_TOOL_WORDS; the tool-lines
   // fixture holds the two equal), so no line reads a built-in's spaced id.
-  app_health: { did: "Checked how Iron Jarvis is doing", noun: "health check" },
+  app_health: { did: "Checked how STEC OS is doing", noun: "health check" },
   assign_work: { did: "Queued a task for a teammate", noun: "queued task" },
   batch_documents: { did: "Worked through a folder of documents", noun: "document batch", nouns: "document batches" },
-  capability_propose: { did: "Suggested a new ability for Iron Jarvis", noun: "ability suggestion" },
+  capability_propose: { did: "Suggested a new ability for STEC OS", noun: "ability suggestion" },
   change_undo: { did: "Undid a change", noun: "undo" },
   changes_list: { did: "Listed its recent changes", noun: "change listing" },
   channel_connect: { did: "Connected a messaging channel", noun: "channel connection" },

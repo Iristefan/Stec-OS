@@ -79,13 +79,13 @@ export function describe(status: BridgeStatus): Rendered {
             tone: "waiting",
             word: "Connected — no site access",
             // v1.274.0: the button is HERE now (below), not in another app.
-            note: "Press Grant site access to let Iron Jarvis see the tabs you have open.",
+            note: "Press Grant site access to let STEC OS see the tabs you have open.",
             toggle,
           };
     case "pairing":
       return {
         tone: "waiting",
-        word: "Waiting for Iron Jarvis",
+        word: "Waiting for STEC OS",
         note: "Open Jarvis to connect your browser.",
         toggle,
       };
@@ -93,7 +93,7 @@ export function describe(status: BridgeStatus): Rendered {
       return {
         tone: "waiting",
         word: "Another browser is connected",
-        note: status.lastError || "Iron Jarvis is working with a different browser right now.",
+        note: status.lastError || "STEC OS is working with a different browser right now.",
         toggle,
       };
     case "suspended":
@@ -204,15 +204,15 @@ let turnStartedAt = 0;
  *
  * Chrome keeps serving the build it loaded until somebody presses Reload on
  * chrome://extensions, and an unpacked add-on's card there shows the version of
- * the LOADED copy — so after an Iron Jarvis update it still read 1.235.0 and a
+ * the LOADED copy — so after a STEC OS update it still read 1.235.0 and a
  * user had no way to tell a stale add-on from a current one. The stale build is
  * the one that still declares `action.default_popup`, which means the toolbar
  * click opens the retired popup and this panel never runs at all; when it DOES
  * run, this line is the proof of which copy did.
  *
  * The comparison is not made here, and deliberately: `browser.ready` carries no
- * Iron Jarvis version, so the panel would have to guess at what "current" is.
- * The Browser page in Iron Jarvis knows both numbers and owns that sentence.
+ * STEC OS version, so the panel would have to guess at what "current" is.
+ * The Browser page in STEC OS knows both numbers and owns that sentence.
  */
 function paintVersion(): void {
   if (!el.version) {
@@ -724,14 +724,14 @@ export function applyPanelEvent(event: string, payload: Record<string, unknown>)
         // A dictation that could not happen: the box keeps what it had, the
         // microphone goes back to idle, and the sentence says what to do.
         resetVoice();
-        say("error", text || "Iron Jarvis could not take dictation.");
+        say("error", text || "STEC OS could not take dictation.");
         return;
       }
       setTurn(false);
       streaming = null;
       clearApproval();
       finishWork();
-      say("error", text || "Iron Jarvis could not finish that.");
+      say("error", text || "STEC OS could not finish that.");
       // v1.433.0: the line says it in plain words; the exact message, when the
       // daemon sent one, is folded beneath it.
       const technical = typeof payload["technical"] === "string" ? (payload["technical"] as string) : "";
@@ -742,7 +742,7 @@ export function applyPanelEvent(event: string, payload: Record<string, unknown>)
       return;
     }
     default:
-      say("error", `Iron Jarvis sent something this add-on does not understand (${event}).`);
+      say("error", `STEC OS sent something this add-on does not understand (${event}).`);
       return;
   }
 }
@@ -881,7 +881,7 @@ function sendNow(): void {
       // another window's turn this panel later sees must not borrow it.
       if (turnStartedAt === startedAt) turnStartedAt = 0;
       setTurn(false);
-      say("error", "That did not reach Iron Jarvis — this browser is not connected.");
+      say("error", "That did not reach STEC OS — this browser is not connected.");
       // The message never left, so the element it pointed at is still meant.
       if (point && pointed === null) {
         pointed = point;
@@ -996,7 +996,7 @@ async function setAuto(on: boolean): Promise<void> {
   }
   const sent = await post(PANEL_ACTION_AUTO_ALLOW, { on });
   if (!sent) {
-    say("error", "That did not reach Iron Jarvis — this browser is not connected.");
+    say("error", "That did not reach STEC OS — this browser is not connected.");
   }
 }
 
@@ -1010,7 +1010,7 @@ el.reset?.addEventListener("click", () => {
   clearTranscript();
   void post(PANEL_ACTION_RESET).then((sent) => {
     if (!sent) {
-      say("error", "That did not reach Iron Jarvis — this browser is not connected.");
+      say("error", "That did not reach STEC OS — this browser is not connected.");
     }
   });
 });
@@ -1057,8 +1057,8 @@ function refreshComposer(): void {
     button.title = "Stop listening";
   } else {
     button.title = voiceAvailable
-      ? "Dictate — Iron Jarvis writes what you say into the box"
-      : voiceHint || "Voice is not set up in Iron Jarvis yet.";
+      ? "Dictate — STEC OS writes what you say into the box"
+      : voiceHint || "Voice is not set up in STEC OS yet.";
   }
 }
 
@@ -1116,7 +1116,7 @@ function base64Of(buffer: ArrayBuffer): string {
 async function startDictation(): Promise<void> {
   if (voiceState !== "idle") return;
   if (!voiceAvailable) {
-    say("error", voiceHint || "Voice is not set up in Iron Jarvis yet.");
+    say("error", voiceHint || "Voice is not set up in STEC OS yet.");
     return;
   }
   const media = navigator.mediaDevices;
@@ -1140,7 +1140,7 @@ async function startDictation(): Promise<void> {
       void chrome.runtime.sendMessage({ kind: "request_microphone" }).catch(() => {});
       say(
         "error",
-        "Your browser has to ask you once before Iron Jarvis can use the microphone, and it " +
+        "Your browser has to ask you once before STEC OS can use the microphone, and it " +
           "cannot ask inside this sidebar. A page just opened for that: allow the microphone " +
           "there, then press the microphone here again.",
       );
@@ -1171,7 +1171,7 @@ async function startDictation(): Promise<void> {
   const started = await post(PANEL_ACTION_VOICE, { op: "start" });
   if (!started) {
     resetVoice();
-    say("error", "That did not reach Iron Jarvis — this browser is not connected.");
+    say("error", "That did not reach STEC OS — this browser is not connected.");
     return;
   }
   const source = ctx.createMediaStreamSource(stream);
@@ -1195,7 +1195,7 @@ function stopDictation(): void {
   void post(PANEL_ACTION_VOICE, { op: "stop" }).then((sent) => {
     if (!sent) {
       resetVoice();
-      say("error", "That did not reach Iron Jarvis — this browser is not connected.");
+      say("error", "That did not reach STEC OS — this browser is not connected.");
     }
   });
 }

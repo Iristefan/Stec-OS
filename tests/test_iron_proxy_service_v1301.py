@@ -3,7 +3,7 @@
 Driven against a REAL fake Iron-Proxy (``tests/fixtures/fake_iron_proxy_v1301.py``)
 — in-process for "a proxy the user already runs", and as a spawned CHILD
 PROCESS (``IRONJARVIS_IRON_PROXY_NODE`` = this interpreter,
-``IRONJARVIS_IRON_PROXY_BUNDLE`` = the fake script) for "the bundle Iron Jarvis
+``IRONJARVIS_IRON_PROXY_BUNDLE`` = the fake script) for "the bundle STEC OS
 starts itself". The load-bearing behaviours, each mutation-checked:
 
 * a running Iron-Proxy is REUSED, never respawned;
@@ -190,7 +190,7 @@ def test_a_refused_token_is_an_error_not_a_crash(running_fake):
         c.profiles()
     assert e.value.status == 401 and e.value.code == "AUTH_REQUIRED"
     assert e.value.details == {}  # never read as an account needing sign-in
-    assert e.value.sentence == "Iron-Proxy refused Iron Jarvis's access token."
+    assert e.value.sentence == "Iron-Proxy refused STEC OS's access token."
 
 
 # --------------------------------------------------------------------------- #
@@ -569,7 +569,7 @@ def test_an_older_iron_proxy_is_used_for_nothing_and_says_so(tmp_path):
         s.refresh_accounts()
         assert s._usable.get("anthropic") is True
         assert s.has_usable_account("claude-cli") is False
-        with pytest.raises(RuntimeError, match="older than this Iron Jarvis"):
+        with pytest.raises(RuntimeError, match="older than this STEC OS"):
             s.ensure_running()
     finally:
         old.stop()

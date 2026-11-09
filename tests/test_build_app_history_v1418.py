@@ -108,7 +108,7 @@ async def test_ten_views_of_a_live_session_open_the_log_at_most_once(app, work, 
     svc = S.service_for(app.state.platform)
     fake_tool(svc, monkeypatch)
     row = store.create(app.state.platform.engine, harness="claude-code", folder=str(work))
-    # What the log held before this daemon (an older Iron Jarvis: no seq).
+    # What the log held before this daemon (an older STEC OS: no seq).
     d = S.session_dir(svc.home, row.id)
     d.mkdir(parents=True)
     old = [make("user", text=f"old {i}") for i in range(3)]

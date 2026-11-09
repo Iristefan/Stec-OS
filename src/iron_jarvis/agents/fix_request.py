@@ -1,17 +1,17 @@
 """COPY AS A FIX REQUEST (v1.423.0, Wave 3 lane B, the owner's decision of
-2026-11-01): a report of the problems Iron Jarvis's OWN machinery ran into in
+2026-11-01): a report of the problems STEC OS's OWN machinery ran into in
 the coding sessions and their model team, shaped so the owner can paste it to
 the coding agent that works on THIS repository.
 
 The owner: "This will be the specifics I can feed back to the agent working on
 the app … structured so that sending it to a coding agent for a fix is a
 simple copy and paste of the issues experienced." The reader of the report is
-a coding agent working on Iron Jarvis itself — never on the user's project —
+a coding agent working on STEC OS itself — never on the user's project —
 so every problem here is a defect (or a likely defect) in the harness: a
 command shape the shell could not run, a tool a worker kept calling wrong, a
 helper that could not start or failed, a router that found nobody, a reply cut
 off at its output limit, a team review that never ran. Bugs in the user's own
-code are not Iron Jarvis's to fix and are left out.
+code are not STEC OS's to fix and are left out.
 
 TWO HALVES:
 
@@ -37,9 +37,9 @@ never counted three times):
   A ``delegate`` / ``spawn_agent`` row is read only when NO run started (the
   team router found no one → ``router_refused``; any other refusal →
   ``helper_not_started``): a helper that started and then failed is read off
-  its own Session row instead. A call Iron Jarvis made ITSELF is named as
-  its own (``called_as`` "finish check" / "project check" → "Iron Jarvis's
-  finish check", its module first under "Where in Iron Jarvis"), and the
+  its own Session row instead. A call STEC OS made ITSELF is named as
+  its own (``called_as`` "finish check" / "project check" → "STEC OS's
+  finish check", its module first under "Where in STEC OS"), and the
   name the model used is said beside the tool ("shell (as Bash)").
 * Helper / teammate ``Session`` rows that ended FAILED (``summary`` and
   ``failure_detail``): ran out of steps, a context window too small for the
@@ -51,7 +51,7 @@ never counted three times):
 * A coding session's REPLY LINES (``ChatThreadRecord`` with surface "build",
   ``harness/sessions.LINE_KEYS``): a reply that ended on an error (a
   provider failure in team work; one that kept retrying and gave up says
-  "Iron Jarvis tried N times" — ``harness/patience.tried_words``), a reply
+  "STEC OS tried N times" — ``harness/patience.tried_words``), a reply
   cut off at its output limit (``route.cut_off``, ``truncated``), and the
   finish check's team review that failed, did not run, or ran past its time
   limit (``finish.review``). v1.423.0 review: the reply line is the team
@@ -87,7 +87,7 @@ defects):
   written for another shell ("was unexpected at this time", the ``;``
   guard), a guard refused it (the git guard, a ``cwd`` outside the folder),
   or it ran until its time limit. An output line is that marker only when it
-  IS the shell's own message (or Iron Jarvis's appended hint) at the start of
+  IS the shell's own message (or STEC OS's appended hint) at the start of
   its line (``_NOT_FOUND_LINE`` / ``_WRONG_SHELL_LINE``): a failing test whose
   output QUOTES "is not recognized" ran.
 * LOW TRUST: nothing is read from a run that ended at LOW trust (a helper
@@ -128,7 +128,7 @@ NOT RECORDED ANYWHERE (so not in the report): a helper's own reply cut off at
 its output limit (the agent runtime notes it inside the run, nothing is
 stored), how long a patience wait lasted when the reply then SUCCEEDED, and
 Build › Code's real CLIs (their tools run inside Claude Code / Codex, not
-through Iron Jarvis's ledger).
+through STEC OS's ledger).
 """
 
 from __future__ import annotations
@@ -172,10 +172,10 @@ MAX_SESSIONS_SHOWN = 5
 MAX_PROGRAMS_SHOWN = 8
 
 #: The report's title and its one instruction for the agent that reads it.
-TITLE = "# Fix request: Iron Jarvis coding sessions and model team"
+TITLE = "# Fix request: STEC OS coding sessions and model team"
 INSTRUCTION = (
-    "These are problems Iron Jarvis's coding sessions and model team ran into. Fix them in the "
-    "Iron Jarvis repository; each problem says where it happened, what was seen, what was "
+    "These are problems STEC OS's coding sessions and model team ran into. Fix them in the "
+    "STEC OS repository; each problem says where it happened, what was seen, what was "
     "expected and the evidence."
 )
 
@@ -205,7 +205,7 @@ KIND_TABLE: dict[str, dict[str, Any]] = {
     "command_wrong_shell": {
         "title": "A command written for a different shell",
         "expected": (
-            "A command is written in the syntax of the shell that runs it, or Iron Jarvis runs it "
+            "A command is written in the syntax of the shell that runs it, or STEC OS runs it "
             "in the shell it was written for."
         ),
         "owners": (
@@ -394,7 +394,7 @@ KIND_TABLE: dict[str, dict[str, Any]] = {
     },
     # v1.423.0 (Wave 3 lane D): THE TEAM'S WAY OF WORKING, read off the
     # reviewers' findings (``agents/team_findings``) — what the developer can
-    # improve in Iron Jarvis (the briefs, the standard, the router), never a
+    # improve in STEC OS (the briefs, the standard, the router), never a
     # bug in the user's code. A finding CONFIRMED fixed is the system
     # working: it is never a problem.
     "finding_did_not_apply": {
@@ -414,7 +414,7 @@ KIND_TABLE: dict[str, dict[str, Any]] = {
         "expected": (
             "After a team review the lead answers every finding by its number on its own line "
             "(\"R1 fixed\" or \"R2 does not apply: why\"), as the finish check's note asks, and "
-            "Iron Jarvis reads each answer."
+            "STEC OS reads each answer."
         ),
         "owners": (
             "src/iron_jarvis/harness/finish.py",
@@ -485,7 +485,7 @@ _USER_DENIED_KINDS = frozenset({
     # ``chat_turn.SPEND_NOT_ASKED_LABEL``: the POST lane cannot show a card.
     "not run",
 })
-#: ``tool.denied`` kinds that are Iron Jarvis refusing a malformed call.
+#: ``tool.denied`` kinds that are STEC OS refusing a malformed call.
 _NOT_GIVEN_KINDS = frozenset({"not armed"})
 _REPEAT_KINDS = frozenset({"refused"})
 
@@ -499,7 +499,7 @@ _STOP_MARKERS = (
     "stopped by the user before the helper finished",
     "the run was cancelled while the tool was running",
     "client disconnected while the tool was running",
-    "iron jarvis stopped while this was running",
+    "stec os stopped while this was running",
     "emergency stop is on",
     "the approval request timed out",
     "declined this call when asked",
@@ -535,18 +535,18 @@ _WRONG_SHELL = re.compile(
     r"|unexpected eof while looking for matching"
     r"|is not a valid statement separator"
     r"|does not separate commands"
-    # v1.423.0 review: Iron Jarvis's own hint under Git Bash
+    # v1.423.0 review: STEC OS's own hint under Git Bash
     # (``sandbox/git_bash`` — a cmd.exe idiom in a bash line).
     r"|this shell is git for windows' bash, not cmd\.exe",
     re.IGNORECASE,
 )
 #: v1.423.0 review: a line of the command's OUTPUT is a marker only when it
-#: IS the shell's own message (or Iron Jarvis's appended hint) — at the start
+#: IS the shell's own message (or STEC OS's appended hint) — at the start
 #: of the line, as the shell prints it. A command that RAN and failed can
 #: print the same words inside its own output (a failing test's assertion
 #: quoting "'grep' is not recognized …", a log, a diff): that is the user's
 #: work, never "a command the shell could not run". The tool's own error
-#: (the header) is Iron Jarvis's or the shell's words and is read as before.
+#: (the header) is STEC OS's or the shell's words and is read as before.
 _SHELL_PREFIX = r"(?:(?:/usr/bin/|/bin/)?(?:ba|z|da)?sh(?:\.exe)?: )?(?:-c: )?(?:line \d+: )?"
 _NOT_FOUND_LINE = re.compile(
     # cmd.exe quotes the name it could not find as it was typed, quotes
@@ -568,7 +568,7 @@ _WRONG_SHELL_LINE = re.compile(
     rf"|^{_SHELL_PREFIX}syntax error near unexpected token"
     rf"|^{_SHELL_PREFIX}unexpected eof while looking for matching"
     r"|^(?:\+ )?\s{0,8}the token '[^'\n]{1,40}' is not a valid statement separator"
-    # Iron Jarvis's own hint lines (``sandbox/shell_tool.SEMICOLON_HINT``,
+    # STEC OS's own hint lines (``sandbox/shell_tool.SEMICOLON_HINT``,
     # ``sandbox/git_bash``): appended as their own line, at its start.
     r"|^\(this shell is windows cmd\.exe: ';' does not separate commands"
     r"|^\(this shell is git for windows' bash, not cmd\.exe",
@@ -596,7 +596,7 @@ _CHILD_RAN = re.compile(
 #: The team router's own refusal sentences (``agents/model_team.route_role``,
 #: ``harness/team.UNLOCK_NOTE``).
 _ROUTER = re.compile(
-    r"^(?:no worker could take this|no one on |no team member |iron jarvis could not pick a team member"
+    r"^(?:no worker could take this|no one on |no team member |stec os could not pick a team member"
     r"|no one on your model team)",
     re.IGNORECASE,
 )
@@ -606,7 +606,7 @@ _NOT_GIVEN = re.compile(
 )
 _REPEAT = re.compile(r"repeated-failure breaker|the same call failed", re.IGNORECASE)
 
-#: Lines Iron Jarvis adds to a command's output (not the command's words).
+#: Lines STEC OS adds to a command's output (not the command's words).
 _ADVISORY = re.compile(
     r"^\s*(?:\[native runtime|\[warning\] sandbox|\[earlier output dropped\])", re.IGNORECASE
 )
@@ -615,10 +615,10 @@ _ADVISORY = re.compile(
 _TOO_SMALL = re.compile(r"context window \([\d,]+ tokens\) is too small", re.IGNORECASE)
 _STEP_LIMIT = re.compile(r"reached max steps|ran out of steps|step limit", re.IGNORECASE)
 #: A reply that waited and gave up (``harness/patience.tried_words``).
-_TRIED = re.compile(r"iron jarvis tried \d+ times", re.IGNORECASE)
+_TRIED = re.compile(r"stec os tried \d+ times", re.IGNORECASE)
 #: A restart that cut a reply off (``durable_turns.INTERRUPTED_DETAIL``,
 #: ``harness/attempts.CUT_OFF_LINE``).
-_RESTART = re.compile(r"^iron jarvis stopped while", re.IGNORECASE)
+_RESTART = re.compile(r"^stec os stopped while", re.IGNORECASE)
 #: v1.423.0 review: a provider's safety refusal and a key the provider
 #: refused, in ``providers/failure_words``' own words (a helper's summary).
 _USER_FIX_WORDS = re.compile(
@@ -630,7 +630,7 @@ _USER_FIX_WORDS = re.compile(
 
 def users_to_fix(text: Any) -> bool:
     """True when a helper's failure is the USER's to fix or a provider's own
-    call, never Iron Jarvis's (v1.423.0 review — the module's rule held for
+    call, never STEC OS's (v1.423.0 review — the module's rule held for
     the lead's replies only): a CLI that is not signed in
     (``cli_auth.is_sign_in_refusal``), a key the provider refused, an
     account's limit (``harness/patience``'s reading), a safety refusal.
@@ -824,7 +824,7 @@ def clean(value: Any, limit: int) -> str:
         # swallows its own fault and hands the text back UNSCANNED, so the
         # branch below was as dead as the mask's was: asked to RAISE, a scan
         # that cannot run drops the value.
-        text = scan_context(text, source="Iron Jarvis's records", cap=None, strict=True).text
+        text = scan_context(text, source="STEC OS's records", cap=None, strict=True).text
     except Exception:  # noqa: BLE001 — an unscanned value is never shown
         return LEFT_OUT_UNSCANNED
     text = " ".join(str(text).split()).replace("`", "'")
@@ -871,7 +871,7 @@ def shape(text: Any) -> str:
 def split_failure(output: Any) -> tuple[str, list[str]]:
     """``(header, body lines)`` of a failed call's ledger text
     (``registry.compose_failure_text``: the tool's error, then ``[output]``,
-    then the output's tail), Iron Jarvis's own advisory lines removed."""
+    then the output's tail), STEC OS's own advisory lines removed."""
     text = str(output or "")
     head, sep, body = text.partition("\n[output]\n")
     lines = [ln for ln in body.splitlines() if ln.strip() and not _ADVISORY.match(ln)] if sep else []
@@ -915,7 +915,7 @@ def classify_call(tool: str, output: Any, denied_kind: str = "") -> "tuple[str, 
             return "command_timed_out", head
         if _REFUSED_CMD.search(head):
             return "command_refused", head
-        # The header is the tool's / Iron Jarvis's own words; an output line
+        # The header is the tool's / STEC OS's own words; an output line
         # counts only when it IS the shell's message (``_*_LINE``).
         if _WRONG_SHELL.search(head):
             return "command_wrong_shell", head
@@ -959,7 +959,7 @@ def program_of(line: str) -> str:
 
 def failure_example(output: Any) -> str:
     """A failed call's own words for "What happened": the tool's error and
-    the output's tail with Iron Jarvis's advisory lines removed (raw — the
+    the output's tail with STEC OS's advisory lines removed (raw — the
     caller cleans it)."""
     head, body = split_failure(output)
     return " · ".join(p for p in [head, " ".join(ln.strip() for ln in body)] if p)
@@ -968,7 +968,7 @@ def failure_example(output: Any) -> str:
 def command_failure_words(output: Any) -> str:
     """A command that could NOT run, in the words that SHOW it (v1.423.0
     review): the tool's header ("exit 255", "command timed out") and only the
-    output lines that are the shell's own message or Iron Jarvis's hint
+    output lines that are the shell's own message or STEC OS's hint
     (``_NOT_FOUND_LINE`` / ``_WRONG_SHELL_LINE``, cmd.exe's second line of
     "not recognized"). Never the rest of what the command printed: a line
     like ``type clients.csv & tail -5`` printed the user's client file before
@@ -1133,7 +1133,7 @@ class Occurrence:
     #: A plain fact for the evidence row that is no error ("in round 3").
     note: str = ""
     #: The name the MODEL called the tool by (its dialect: "Bash", "Agent"),
-    #: when it differs from Iron Jarvis's own (``ToolInvocation.called_as``).
+    #: when it differs from STEC OS's own (``ToolInvocation.called_as``).
     called_as: str = ""
     #: v1.423.0 (lane D): a reviewer's finding — the reply it belongs to
     #: (the line's ``turnId``), the place it names, the finding itself
@@ -1284,18 +1284,18 @@ def _lead_who(session_id: str) -> str:
     return "the lead"
 
 
-#: The calls Iron Jarvis makes ITSELF inside a coding session's reply
+#: The calls STEC OS makes ITSELF inside a coding session's reply
 #: (``ToolInvocation.called_as``, ``harness/finish.HARNESS_CALLED_AS``) —
 #: never the lead's: a coding agent sent to the model's prompt for a command
 #: the finish check re-ran would look in the wrong place.
 _HARNESS_WHO: dict[str, str] = {
-    "finish check": "Iron Jarvis's finish check",
-    "project check": "Iron Jarvis's project checks",
+    "finish check": "STEC OS's finish check",
+    "project check": "STEC OS's project checks",
 }
-#: The module that makes each of those calls (it leads "Where in Iron Jarvis").
+#: The module that makes each of those calls (it leads "Where in STEC OS").
 _HARNESS_MODULES: dict[str, str] = {
-    "Iron Jarvis's finish check": "src/iron_jarvis/harness/finish.py",
-    "Iron Jarvis's project checks": "src/iron_jarvis/harness/checkers.py",
+    "STEC OS's finish check": "src/iron_jarvis/harness/finish.py",
+    "STEC OS's project checks": "src/iron_jarvis/harness/checkers.py",
 }
 #: The finish check's team review (``harness/finish.REVIEW_CALLED_AS``).
 REVIEW_CALLED_AS = "team review"
@@ -1307,7 +1307,7 @@ _ATTEMPT_SLACK_MS = 2000
 
 
 def _harness_who(session_id: str, called_as: Any) -> str:
-    """Who made a coding session's call: Iron Jarvis's own check, or the lead
+    """Who made a coding session's call: STEC OS's own check, or the lead
     (or an attempt)."""
     return _HARNESS_WHO.get(str(called_as or ""), "") or _lead_who(session_id)
 
@@ -1684,7 +1684,7 @@ def gather(engine: Any, *, days: Any = DEFAULT_DAYS, session: Any = "", now: "da
             if any(m in words.lower() for m in _STOP_MARKERS):
                 continue
             if users_to_fix(words):
-                continue  # a sign-in, a key, a limit, a safety refusal: not Iron Jarvis's
+                continue  # a sign-in, a key, a limit, a safety refusal: not STEC OS's
             kind = ("context_too_small" if _TOO_SMALL.search(words)
                     else "helper_step_limit" if _STEP_LIMIT.search(words)
                     else "helper_failed")
@@ -1884,7 +1884,7 @@ def _gather_findings(engine: Any, out: Gathered, occurrences: list[Occurrence], 
                      in_low: Any, leads: "_LeadModels", threads_seen: set[str]) -> "dict[tuple[str, str, str], int]":
     """v1.423.0 (Wave 3 lane D): the TEAM PROCESS problems the reviewers'
     findings (``agents/team_findings.TeamFinding``) reveal — about the
-    team's way of working, which the developer can improve in Iron Jarvis
+    team's way of working, which the developer can improve in STEC OS
     (the briefs, the standard, the router), never about the user's code:
 
     * ``finding_did_not_apply`` — a finding the LEAD said does not apply: the
@@ -2120,7 +2120,7 @@ def _group(occ: Iterable[Occurrence], totals: Counter, pieces: Counter, reply_to
             out_of = (len(items), out_of[1])
         problems.append(Problem(
             # A tool's name can come from an extension (an MCP server): shown
-            # cleaned like any other value that did not come from Iron Jarvis.
+            # cleaned like any other value that did not come from STEC OS.
             kind=kind, who=clean(who, NAME_CHARS), model=clean(mw, NAME_CHARS),
             tool=clean(tool, NAME_CHARS), shape=shp,
             surface=newest.surface, count=len(items), first=min(stamps) if stamps else None,
@@ -2162,7 +2162,7 @@ def nothing_line(g: Gathered) -> str:
         extra += f" ({_running_words(g.running_left_out)})"
     if g.attempts_unknown_left_out:
         extra += f" ({_attempts_unknown_words(g.attempts_unknown_left_out)} were left out)"
-    return f"Nothing to report: Iron Jarvis ran into no problems {where} in {_window_words(g.days)}{extra}."
+    return f"Nothing to report: STEC OS ran into no problems {where} in {_window_words(g.days)}{extra}."
 
 
 def _running_words(n: int) -> str:
@@ -2188,7 +2188,7 @@ def _attempts_low_words(n: int) -> str:
     trust — their calls are never read, and said."""
     return (
         f"{_plural(n, 'attempt')} on several models that ended at low trust "
-        "(Iron Jarvis never reads their text)"
+        "(STEC OS never reads their text)"
     )
 
 
@@ -2196,7 +2196,7 @@ def _attempts_unknown_words(n: int) -> str:
     """v1.423.0 (lane E): attempts whose trust is not known (fail closed)."""
     return (
         f"the calls of {_plural(n, 'attempt')} on several models whose trust was not recorded "
-        "(an attempt that failed, was stopped or cut off, or ran before Iron Jarvis kept it: "
+        "(an attempt that failed, was stopped or cut off, or ran before STEC OS kept it: "
         "whether it ended at low trust is not known)"
     )
 
@@ -2238,7 +2238,7 @@ def _problem_block(n: int, p: Problem) -> str:
     caller = _HARNESS_MODULES.get(p.who)
     if caller and caller not in owners:
         owners.insert(0, caller)
-    lines.append("- Where in Iron Jarvis: " + ", ".join(f"`{o}`" for o in owners) + ".")
+    lines.append("- Where in STEC OS: " + ", ".join(f"`{o}`" for o in owners) + ".")
     lines.append("- Evidence:")
     for ev in p.evidence:
         parts = [ev["at"], ev["session"]]
@@ -2276,7 +2276,7 @@ def render_listed(g: Gathered, *, max_problems: int = MAX_PROBLEMS,
     if not g.problems:
         return nothing_line(g), 0
     facts = [
-        f"- Iron Jarvis version: {g.version}",
+        f"- STEC OS version: {g.version}",
         f"- Operating system: {g.os}",
         f"- Window: {_window_words(g.days)} ({when(g.since)} to {when(g.until)})",
     ]
@@ -2292,7 +2292,7 @@ def render_listed(g: Gathered, *, max_problems: int = MAX_PROBLEMS,
     if g.low_trust_left_out:
         facts.append(
             f"- Left out: {_plural(g.low_trust_left_out, 'reply or helper run', 'replies or helper runs')} "
-            "that ended at low trust (Iron Jarvis never reads their text)"
+            "that ended at low trust (STEC OS never reads their text)"
         )
     if g.unknown_trust_left_out:
         facts.append(f"- Left out: {_unknown_words(g.unknown_trust_left_out)}")
@@ -2350,7 +2350,7 @@ def build_report(engine: Any, *, days: Any = DEFAULT_DAYS, session: Any = "", no
         days_n = clamp_days(days)
         g = Gathered(version=str(version or "not known"), os=os_name or "not known", days=days_n,
                      since=until - timedelta(days=days_n), until=until,
-                     unreadable=["Iron Jarvis's records"])
+                     unreadable=["STEC OS's records"])
     text, listed = render_listed(g)
     return {
         "text": text,

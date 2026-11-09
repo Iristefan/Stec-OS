@@ -1,6 +1,6 @@
 // The service worker: the only place the add-on holds a socket.
 //
-// Everything the add-on does for Iron Jarvis happens here or is called from here.
+// Everything the add-on does for STEC OS happens here or is called from here.
 // The side panel and the setup page hold no socket of their own and talk to this worker
 // through `chrome.runtime.sendMessage`, for one reason: there is exactly one live
 // connection per browser (D08), and a second socket opened by a popup would REPLACE
@@ -503,7 +503,7 @@ watchDownloads((event, payload) => {
   // omission. A download is a fact about the user's own filesystem reported by
   // `chrome.downloads`, which the "downloads" permission alone covers; gating it on
   // host permissions would silence the one event that works without them, on a page
-  // Iron Jarvis was never allowed to read in the first place.
+  // STEC OS was never allowed to read in the first place.
   eventSeq += 1;
   socket.emitEvent(`${EVENT_ID_PREFIX}${eventSeq}`, event, payload);
 });

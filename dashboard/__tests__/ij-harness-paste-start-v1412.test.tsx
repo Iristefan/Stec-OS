@@ -105,7 +105,7 @@ function view(over: Record<string, unknown> = {}) {
     turn_id: "",
     no_folder: true,
     work_folder: "",
-    work_root: "C:\\Users\\me\\Documents\\Iron Jarvis",
+    work_root: "C:\\Users\\me\\Documents\\STEC OS",
     ...over,
   };
 }

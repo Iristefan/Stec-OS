@@ -4,7 +4,7 @@
  *
  * The field is drawn only for a model on Claude Code / Codex / Grok (or a
  * keyless Anthropic / OpenAI the CLI serves) whose vendor has accounts —
- * Iron-Proxy off, an older Iron Jarvis (a 404) or a local model: no field,
+ * Iron-Proxy off, an older STEC OS (a 404) or a local model: no field,
  * the form as before. "No account of its own" = Iron-Proxy's pick.
  */
 
@@ -142,7 +142,7 @@ describe("a night task's account (lib/nightShift)", () => {
     expect("account" in H.patches[1].body).toBe(false);
   });
 
-  it("a task says the account it runs on (an older Iron Jarvis: none)", () => {
+  it("a task says the account it runs on (an older STEC OS: none)", () => {
     expect(decodeTask({ id: "n1", account: "c-work" })?.account).toBe("c-work");
     expect(decodeTask({ id: "n1" })?.account).toBe("");
   });

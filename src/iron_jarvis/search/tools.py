@@ -94,7 +94,7 @@ def _kinds(value: Any) -> "list[str] | None":
 
 
 class HistorySearchTool(Tool):
-    """Ranked full-text search across every conversation Iron Jarvis kept."""
+    """Ranked full-text search across every conversation STEC OS kept."""
 
     name = "history_search"
     #: Planted content: everything returned here was once typed into a

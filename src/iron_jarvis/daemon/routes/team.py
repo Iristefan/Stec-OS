@@ -273,7 +273,7 @@ def register(app: FastAPI, d) -> None:
         that runs on ``provider`` / ``model`` for a session's ``role`` — an
         existing member on that model (it GAINS the role's roles; everything
         else it has is kept), else a new one named after the model. 409 in
-        one sentence for the demo model, a model Iron Jarvis cannot use or
+        one sentence for the demo model, a model STEC OS cannot use or
         reach now, and a cloud model in a Local only session."""
         from ...harness import team as HT
 

@@ -465,7 +465,7 @@ earlier run.
 - The bench through the new command matches Phase 3's run (no task lost; time
   within 10%).
 
-## Phase 5 — Iron Jarvis on Linux, inside a container (target v1.387.0)
+## Phase 5 — STEC OS on Linux, inside a container (target v1.387.0)
 
 **What you see.** `uv tool install` (or a wheel) puts `ironjarvis` on a Linux
 machine, and `ironjarvis code` works there with an API key (or an
@@ -505,7 +505,7 @@ and Codex's from the same machine, the same tasks and the same models.
   2. Then the full set, 3 times per task, up to the cap you set.
 - GPU tasks are listed as not run (decision 4).
 - Results are kept with the bench's other records, and the report says which
-  version of Iron Jarvis, the dataset and Harbor were used.
+  version of STEC OS, the dataset and Harbor were used.
 - SWE-bench Pro follows if Harbor has a dataset for it; otherwise a later
   phase.
 

@@ -13,7 +13,7 @@
 // The add-on never chooses a directory, never renames anything, never reads a
 // byte of the file. It reports. Plan section 10.3 states the tradeoff plainly and
 // this file must not paper over it: the file lands wherever Chrome puts it,
-// normally ~/Downloads, and Iron Jarvis cannot silently redirect that.
+// normally ~/Downloads, and STEC OS cannot silently redirect that.
 //
 // THE §32 REALITY CHECK, ANSWERED. Chromium documents `DownloadItem.filename` as
 // an absolute local path, readable with the "downloads" permission alone — which

@@ -5,7 +5,7 @@ its Timeline.
 line from its stored frames with the words only — no steps, no model calls,
 no ``timing`` — although the frames (``ChatTurnRecord.frames_json``) carry
 every offset the reply's clock stamped while it ran. The Timeline then said
-"Iron Jarvis stopped while answering, so this reply's times were not kept".
+"STEC OS stopped while answering, so this reply's times were not kept".
 The same writer now folds the stored frames through the live writer's own
 ``_ReplyWatch`` on a clock that reads each frame's offset
 (``routes/build.replayed_reply_line``).

@@ -510,7 +510,7 @@ def _ask_codex(argv: list[str], env: dict[str, str]) -> dict[str, Any]:
 
     frames = [
         {"jsonrpc": "2.0", "id": 1, "method": "initialize",
-         "params": {"clientInfo": {"name": "iron-jarvis", "title": "Iron Jarvis", "version": __version__},
+         "params": {"clientInfo": {"name": "iron-jarvis", "title": "STEC OS", "version": __version__},
                     "capabilities": {"experimentalApi": True}}},
         {"jsonrpc": "2.0", "method": "initialized"},
         {"jsonrpc": "2.0", "id": 2, "method": "account/rateLimits/read", "params": None},
@@ -656,7 +656,7 @@ _PANE_CLI_PROVIDER = {"claude": "anthropic", "codex": "openai"}
 
 def in_use_accounts(platform: Any) -> list[str]:
     """Accounts a reply is WORKING on right now, among those whose CLI talks
-    to its vendor with no Iron Jarvis relay in between (so Iron-Proxy hears
+    to its vendor with no STEC OS relay in between (so Iron-Proxy hears
     nothing until someone asks): BLOCKING; never raises.
 
     * Build › Code live sessions whose turn runs and is NOT parked on a card or

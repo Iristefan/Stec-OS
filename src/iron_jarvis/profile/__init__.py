@@ -2,7 +2,7 @@
 
 ``profile_block(platform)`` is the whole public surface for prompt assembly:
 chat, the streamed chat, the phone lane, agent sessions, and the round table
-all append it, so the way Iron Jarvis writes stops depending on which model
+all append it, so the way STEC OS writes stops depending on which model
 took the turn.
 """
 

@@ -2,7 +2,7 @@
 first cut left unpinned or got wrong, each pin red first on the builder's code.
 
 1. Antigravity's saved-conversations database is opened READ-ONLY: a write on
-   the connection Iron Jarvis makes is refused (the builder's test compared the
+   the connection STEC OS makes is refused (the builder's test compared the
    file's bytes, which a read-write connection that only SELECTs leaves as
    they were — so dropping ``mode=ro`` + ``query_only`` stayed green).
 2. A note is read when ITS echo comes, never on the message's own echo:

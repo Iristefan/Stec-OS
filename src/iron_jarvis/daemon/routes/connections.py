@@ -932,7 +932,7 @@ def probe_test_words(result: dict[str, Any], provider: str, manager: Any = None)
         elif kind == "demo":
             title = "The demo model is always ready"
         elif kind == "unknown":
-            return {"title": "Iron Jarvis doesn't know this provider", "fix": "", "technical": technical}
+            return {"title": "STEC OS doesn't know this provider", "fix": "", "technical": technical}
         if title:
             return {"title": title, "fix": _TEST_FIX.get(kind, ""), "technical": technical}
         # An older registry or an injected prober with no kind: still a plain
@@ -1546,7 +1546,7 @@ def register(app: FastAPI, d) -> None:
             {"type": "ironjarvis-oauth", "provider": provider, "ok": ok}
         ).replace("<", "\\u003c")
         html = (
-            "<!doctype html><meta charset=utf-8><title>Iron Jarvis</title>"
+            "<!doctype html><meta charset=utf-8><title>STEC OS</title>"
             "<body style='background:#0a0a0f;color:#e5e7eb;font-family:system-ui;"
             "display:grid;place-items:center;height:100vh;margin:0'>"
             f"<div style='text-align:center'><div style='font-size:42px;color:{color}'>"

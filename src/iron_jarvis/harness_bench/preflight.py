@@ -1,4 +1,4 @@
-"""What a benchmark of Iron Jarvis's own models is checked for BEFORE its
+"""What a benchmark of STEC OS's own models is checked for BEFORE its
 first task (v1.396.0 review of the long-jobs plan's Phase 7: MEASURED).
 
 A team run is unattended for hours. A typo in a member's model, a provider
@@ -179,7 +179,7 @@ def _check_endpoint(platform: Any, who: str, provider: str, model: str, ready: R
 
 
 def _check_claude_model(who: str, model: str, ready: Ready) -> None:
-    """A Claude model the CLI will not take: an id Iron Jarvis's catalog (the
+    """A Claude model the CLI will not take: an id STEC OS's catalog (the
     cached picker, else its pinned table) does not know and that is neither
     one of Claude Code's aliases nor a full ``claude-…`` id."""
     try:
@@ -194,7 +194,7 @@ def _check_claude_model(who: str, model: str, ready: Ready) -> None:
         return
     if low.startswith("claude-"):
         ready.notes.append(
-            f"{who}: {model} is not in Iron Jarvis's list of Claude models; Claude Code decides when "
+            f"{who}: {model} is not in STEC OS's list of Claude models; Claude Code decides when "
             "it starts (a model it does not take fails the first task)."
         )
         return
@@ -246,7 +246,7 @@ def check_models(platform: Any, models: Iterable[tuple[str, str, str]]) -> Ready
             binary, name = cli
             if _cached_sign_in(binary) is None:
                 ready.notes.append(
-                    f"whether {name} is signed in is not known yet (Iron Jarvis does not start {name} to "
+                    f"whether {name} is signed in is not known yet (STEC OS does not start {name} to "
                     "ask; the first task will tell, as \"did not run\")."
                 )
         if provider == "claude-cli":

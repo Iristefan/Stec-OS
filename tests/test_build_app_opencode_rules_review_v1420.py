@@ -41,7 +41,7 @@ def test_rules_that_differ_between_config_files_are_not_tightened(tmp_path, monk
                                                                   project_perm, command, mode):
     """The user's rules are read "stricter wins" across files, so a rule that
     one file says ``ask`` and a later one ``allow`` read as exactly what
-    ``"*": "ask"`` says — and Iron Jarvis's ``"*"`` landed after it and turned
+    ``"*": "ask"`` says — and STEC OS's ``"*"`` landed after it and turned
     every allowed command into a card."""
     proj = _two_files(tmp_path, monkeypatch, global_perm, project_perm)
     env, _note = O.child_env({}, mode, str(proj))
@@ -56,7 +56,7 @@ def test_rules_that_differ_between_config_files_are_not_tightened(tmp_path, monk
 @pytest.mark.parametrize("mode", ["ask", "edits", "plan", "full"])
 def test_an_opencode_permission_already_in_the_environment_is_kept(tmp_path, monkeypatch, theirs, mode):
     """OpenCode reads ONE ``OPENCODE_PERMISSION``. A user who set their own in
-    the environment Iron Jarvis starts from had it REPLACED by Iron Jarvis's
+    the environment STEC OS starts from had it REPLACED by STEC OS's
     (which leaves their tools out, so a ``"bash": "deny"`` of theirs fell to
     OpenCode's default allow)."""
     conf = tmp_path / "empty-conf"
@@ -112,7 +112,7 @@ def _fresh_always(monkeypatch):
 
 
 def test_an_allow_for_the_session_never_crosses_to_another_home(tmp_path, _fresh_always):
-    """``SESSION_ALWAYS`` is the whole process's. Two Iron Jarvis homes in one
+    """``SESSION_ALWAYS`` is the whole process's. Two STEC OS homes in one
     process (every test of the suite starts its own app on the SAME recorded
     ``ses_`` ids) shared answers: a later run of the recorded "Allow for this
     session" scenario had its first card answered by an earlier run, and

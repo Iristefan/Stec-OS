@@ -1129,7 +1129,7 @@ def commit(facts: dict[str, str], message: str, *, screen: Any = None, timeout: 
     Never amends. :class:`GitRefused` for no message, nothing to commit, or a
     commit git refused (a hook, …).
 
-    v1.399.0 review (night shift N2) — three seams only Iron Jarvis's OWN
+    v1.399.0 review (night shift N2) — three seams only STEC OS's OWN
     night commit passes (a person's Commit press is unchanged): ``screen(wt)``
     runs after staging and unstages what must not be committed
     (``harness/night_commit.screen``; answered as ``left_out``, and carried on
@@ -1158,7 +1158,7 @@ def commit(facts: dict[str, str], message: str, *, screen: Any = None, timeout: 
         except Exception as exc:  # noqa: BLE001 — unscreened is never committed
             _g(["reset", "-q"], wt)
             raise GitRefused(
-                "Iron Jarvis could not check what it was about to commit, so it committed nothing.", 409,
+                "STEC OS could not check what it was about to commit, so it committed nothing.", 409,
                 _masked(f"{type(exc).__name__}: {exc}"),
             ) from exc
     if _g(["diff", "--cached", "--quiet"], wt).code == 0:
@@ -1182,7 +1182,7 @@ def commit(facts: dict[str, str], message: str, *, screen: Any = None, timeout: 
         # v1.399.0 review: the repository's hooks ran between the screen and
         # the commit — one that stages everything again put back what the
         # screen left out. What WENT IN is checked; a commit holding what must
-        # not be committed is undone (Iron Jarvis's own, seconds old, never
+        # not be committed is undone (STEC OS's own, seconds old, never
         # pushed — only while HEAD is still that commit on the branch).
         try:
             bad = list(recheck(wt) or [])
@@ -1197,15 +1197,15 @@ def commit(facts: dict[str, str], message: str, *, screen: Any = None, timeout: 
             if undone:
                 _g(["reset", "-q"], wt)
                 refused = GitRefused(
-                    "A git hook of the repository put back files Iron Jarvis had left out ("
+                    "A git hook of the repository put back files STEC OS had left out ("
                     + ", ".join(str(b.get("path")) for b in bad[:5])
-                    + "), so Iron Jarvis undid its own commit and committed nothing.", 409,
+                    + "), so STEC OS undid its own commit and committed nothing.", 409,
                 )
             else:
                 refused = GitRefused(
-                    "A git hook of the repository put back files Iron Jarvis had left out ("
+                    "A git hook of the repository put back files STEC OS had left out ("
                     + ", ".join(str(b.get("path")) for b in bad[:5])
-                    + f") and Iron Jarvis could not undo that commit ({sha[:12]}): do not push this branch "
+                    + f") and STEC OS could not undo that commit ({sha[:12]}): do not push this branch "
                     "before you look at it.", 409,
                 )
             refused.left_out = left_out or bad  # type: ignore[attr-defined]
@@ -1219,7 +1219,7 @@ def commit(facts: dict[str, str], message: str, *, screen: Any = None, timeout: 
         out["left_out"] = left_out
     if not own:
         out["note"] = (
-            "Git has no name and e-mail set on this PC, so the commit is signed \"Iron Jarvis\". "
+            "Git has no name and e-mail set on this PC, so the commit is signed \"STEC OS\". "
             "Set yours with git config to commit as you."
         )
     return out

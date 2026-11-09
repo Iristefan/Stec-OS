@@ -85,7 +85,7 @@ import { HarnessSession } from "@/components/harness/HarnessSession";
 import type { SessionTerminalApi } from "@/components/harness/HarnessPanes";
 import { decodeFolders, decodeSessionView, decodeWorkRoot, noFolderLine } from "@/lib/buildSessions";
 
-const ROOT = "C:\\Users\\me\\Documents\\Iron Jarvis";
+const ROOT = "C:\\Users\\me\\Documents\\STEC OS";
 const MADE = `${ROOT}\\2026-10-23 make a list`;
 const terminal: SessionTerminalApi = {
   find: () => null,

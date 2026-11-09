@@ -196,7 +196,7 @@ def test_revert_in_the_turn_scope_puts_back_this_messages_change_only(tmp_path, 
     staged = _git(repo, "diff", "--cached", "--name-status")
     got = PN.revert_file(home, "s1", _row(repo), events, "Claude Code", rel="a.py", blob=row["blob"],
                          scope="turn", turn="t2")
-    assert got["ok"] and "every other file" in got["words"] and "when Iron Jarvis last read" in got["words"]
+    assert got["ok"] and "every other file" in got["words"] and "when STEC OS last read" in got["words"]
     assert (repo / "a.py").read_text(encoding="utf-8") == "a = 1\n"
     assert (repo / "b.py").read_text(encoding="utf-8") == "b = 2\n"
     assert _git(repo, "rev-parse", "HEAD") == head and _git(repo, "diff", "--cached", "--name-status") == staged

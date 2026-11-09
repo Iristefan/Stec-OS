@@ -1,7 +1,7 @@
 """v1.310.0 (wave 2, the first five minutes) — Start-with-Windows waits.
 
 Finding ``start-with-windows-on-first-launch``: on the very first packaged
-boot a native "Start Iron Jarvis with Windows?" dialog popped up in the same
+boot a native "Start STEC OS with Windows?" dialog popped up in the same
 tick the main window opened — over the first-run wizard, asking a
 system-level question about "schedules, messages and jobs" the user had not
 heard of yet. And the asked-flag was written BEFORE the dialog, so a

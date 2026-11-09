@@ -1,6 +1,6 @@
 """v1.438.0 (chat-first plan Wave 4 group C): Wave 5's honesty note learns
 the new kinds — a kept PREFERENCE or lesson, a chat PERSONA, and the LASTING
-PROMISES ("I'll answer in Spanish from now on", "Iron Jarvis will now start
+PROMISES ("I'll answer in Spanish from now on", "STEC OS will now start
 with Windows").
 
 A false claim gets the note when nothing changed this turn; a true one (the
@@ -55,11 +55,11 @@ MUST_NOTE: list[tuple[str, str]] = [
     ("From now on I'll reply in French.", "“Answer in this language” was not changed"),
     ("Sure! I'll always answer in German going forward.", "“Answer in this language”"),
     ("I'll use bullet points from now on.", "“Formatting” was not changed"),
-    ("Iron Jarvis will now start with Windows.", "“Start Iron Jarvis with Windows” was not changed"),
-    ("Done — Iron Jarvis will no longer start with Windows.", "“Start Iron Jarvis with Windows”"),
-    ("Start with Windows is now on.", "“Start Iron Jarvis with Windows”"),
-    ("I've set Iron Jarvis to start with Windows.", "“Start Iron Jarvis with Windows”"),
-    ("Iron Jarvis will now keep running in the background when you close the window.",
+    ("STEC OS will now start with Windows.", "“Start STEC OS with Windows” was not changed"),
+    ("Done — STEC OS will no longer start with Windows.", "“Start STEC OS with Windows”"),
+    ("Start with Windows is now on.", "“Start STEC OS with Windows”"),
+    ("I've set STEC OS to start with Windows.", "“Start STEC OS with Windows”"),
+    ("STEC OS will now keep running in the background when you close the window.",
      "“Keep running in the background when I close the window”"),
     ("It will now quit when you close the window.", "“Keep running in the background when I close the window”"),
 ]
@@ -77,9 +77,9 @@ NO_NOTE: list[tuple[str, list[str], list[dict]]] = [
     ("I'll answer in Spanish from now on.", ["config_set"], [SC("profile.language", "es")]),
     ("From now on I'll answer in Spanish.", ["remember_preference"], []),
     ("I'll use bullet points from now on.", ["config_set"], [SC("profile.formatting", "bullets")]),
-    ("Iron Jarvis will now start with Windows.", ["config_change_protected"], [SC("start_with_windows")]),
+    ("STEC OS will now start with Windows.", ["config_change_protected"], [SC("start_with_windows")]),
     ("Start with Windows is now on.", ["config_change_protected"], [SC("start_with_windows")]),
-    ("Iron Jarvis will now keep running in the background when you close the window.", ["config_set"],
+    ("STEC OS will now keep running in the background when you close the window.", ["config_set"],
      [SC("keep_running_in_background")]),
     # Never claims: offers, futures with no lasting word, descriptions, someone
     # else's preference or persona, the user's own change.
@@ -87,8 +87,8 @@ NO_NOTE: list[tuple[str, list[str], list[dict]]] = [
     ("Shall I add a lesson about that?", [], []),
     ("I'll answer in Spanish.", [], []),
     ("I'll use bullet points in this summary.", [], []),
-    ("Iron Jarvis will start with Windows once you turn it on in Settings.", [], []),
-    ("If you want, Iron Jarvis can start with Windows.", [], []),
+    ("STEC OS will start with Windows once you turn it on in Settings.", [], []),
+    ("If you want, STEC OS can start with Windows.", [], []),
     ("You turned on start with Windows in the tray.", [], []),
     ("I won't start with Windows.", [], []),
     ("Your buyer persona was updated in the deck.", [], []),

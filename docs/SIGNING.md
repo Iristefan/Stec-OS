@@ -1,6 +1,6 @@
 # Code-signing the Windows installer
 
-Iron Jarvis ships unsigned today, so every new download trips SmartScreen
+STEC OS ships unsigned today, so every new download trips SmartScreen
 ("Windows protected your PC" → More info → Run anyway) and browsers flag the
 `.exe` as uncommonly downloaded. Signing fixes both by attaching a verified
 identity to the binaries and letting Microsoft build reputation for them.
@@ -24,7 +24,7 @@ What is already in the repo, ready to activate:
   unsigned` and returns. It is inert until you reference it from `build.win.sign`
   (step 3 below).
 
-**What is EXTERNAL and user-supplied — Iron Jarvis cannot do this for you:**
+**What is EXTERNAL and user-supplied — STEC OS cannot do this for you:**
 
 1. **Obtain a real code-signing certificate.** This costs money and requires
    identity validation; no certificate is (or can be) invented here. Azure

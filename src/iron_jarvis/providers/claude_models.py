@@ -104,7 +104,7 @@ def reset() -> None:
 
 
 def child_env(base: "dict[str, str] | None" = None) -> dict[str, str]:
-    """THE shared env guard for every ``claude`` child Iron Jarvis spawns on the
+    """THE shared env guard for every ``claude`` child STEC OS spawns on the
     subscription path (this module's picker handshake AND the v1.300.0
     transport — import it, never copy it).
 
@@ -130,7 +130,7 @@ def child_env(base: "dict[str, str] | None" = None) -> dict[str, str]:
     # the user set themselves is honoured even under chat's ``--setting-sources
     # ""`` argv — its plugin's SessionStart hook RAN on every chat turn. Chat's
     # child loads none of the user's setup on ANY account, so it goes, with the
-    # owner-setup values Iron Jarvis gives a second account's Build terminal
+    # owner-setup values STEC OS gives a second account's Build terminal
     # (``iron_proxy.claude_setup``'s ``IJ_MY_SETUP_*``; a daemon started from
     # such a terminal would otherwise hand them on). Case-blind: Windows
     # environment names are.

@@ -420,7 +420,7 @@ def secret_value(value: str) -> bool:
 def _own_bin_dirs() -> list[str]:
     """Folders on PATH that belong to THIS app, not the user: a dev daemon's
     own virtual environment (``uv run`` puts its Scripts first — ``python``
-    would be Iron Jarvis's, with Iron Jarvis's packages) and a frozen
+    would be STEC OS's, with STEC OS's packages) and a frozen
     daemon's bundle. Normalised for comparing."""
     out: list[str] = []
     try:

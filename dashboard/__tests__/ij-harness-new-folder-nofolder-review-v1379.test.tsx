@@ -46,7 +46,7 @@ vi.mock("@/components/harness/HarnessSession", () => ({
 import { IjHarnessView } from "@/components/harness/IjHarnessView";
 
 const LIST = {
-  work_root: "C:\\Users\\me\\Documents\\Iron Jarvis",
+  work_root: "C:\\Users\\me\\Documents\\STEC OS",
   folders: [
     {
       path: "",

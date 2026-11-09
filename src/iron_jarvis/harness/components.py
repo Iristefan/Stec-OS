@@ -397,7 +397,7 @@ def _parse_plugins(text: str, known_tools: "set[str] | None") -> Plugins:
                 "make a tool ask first or refuse it, never allow it"
             )
         if known_tools is not None and tool not in known_tools:
-            raise LayerInvalid(f"{PLUGINS_FILE}: the rule names {tool}, which is not an Iron Jarvis tool")
+            raise LayerInvalid(f"{PLUGINS_FILE}: the rule names {tool}, which is not a STEC OS tool")
         # ONE rule per tool: the plan reads the FIRST rule for a tool while
         # the overrides apply them all, so `ask` then `deny` showed the model
         # a tool every call of which was refused (review of v1.366.0).
@@ -738,7 +738,7 @@ def plan_mode_text(*, exit_name: str, plan_name: str) -> str:
         done = (
             f" When the plan is ready, write it out in your reply and call {exit_name}: "
             "the user approves it on a card before anything changes, and once they do, this "
-            "turn ends and Iron Jarvis carries the plan out in act mode at once. If they "
+            "turn ends and STEC OS carries the plan out in act mode at once. If they "
             "decline, revise the plan with them."
         )
     else:

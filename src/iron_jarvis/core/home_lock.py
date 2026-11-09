@@ -52,7 +52,7 @@ class HomeLockHeld(RuntimeError):
         # ASCII only: this line reaches a console whose code page may not
         # have a dash.
         super().__init__(
-            f"Another Iron Jarvis{named} is already using {home}; the database is"
+            f"Another STEC OS{named} is already using {home}; the database is"
             " locked by another program, so this copy will not start."
         )
 

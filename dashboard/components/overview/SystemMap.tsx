@@ -323,7 +323,7 @@ export function SystemMap({ data, loading }: { data: SystemMapData | null; loadi
         data-hot={hot ? "1" : undefined}
       >
         <title id="system-map-title">
-          {`Iron Jarvis system map: ${totals.setup} of ${totals.all} parts set up, ${totals.used} used this week, ${totals.live} in use now`}
+          {`STEC OS system map: ${totals.setup} of ${totals.all} parts set up, ${totals.used} used this week, ${totals.live} in use now`}
         </title>
         <defs>
           {AREA_ORDER.map((k) => (

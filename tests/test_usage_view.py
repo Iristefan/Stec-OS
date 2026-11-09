@@ -40,7 +40,7 @@ def test_own_hardware_counts_as_local(provider):
      "opencode/anthropic", "opencode/openai", "opencode/openrouter"],
 )
 def test_hosted_never_counts_as_local(provider):
-    """THE SAFETY-CRITICAL CASE. Iron Jarvis's own OpenCode connector is
+    """THE SAFETY-CRITICAL CASE. STEC OS's own OpenCode connector is
     local-only, but this rollup reads OpenCode's OWN store — sessions the user
     ran directly, where that restriction does not apply and hosted models are
     reachable. Counting those as local would price real spend as avoided spend."""

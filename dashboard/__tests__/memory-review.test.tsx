@@ -188,7 +188,7 @@ describe("honest about bases it cannot change", () => {
           can_apply: false,
           undoable: false,
           base_note:
-            "“notion” keeps its notes outside this computer, so Iron Jarvis can’t rewrite or remove them from here.",
+            "“notion” keeps its notes outside this computer, so STEC OS can’t rewrite or remove them from here.",
         },
       ],
     });

@@ -112,7 +112,7 @@ class EventType:
     # actor: app|phone|grant|timeout|bench, wait_ms}.
     INTERRUPT_ASKED = "interrupt.asked"
     INTERRUPT_ANSWERED = "interrupt.answered"
-    # v1.402.0: Iron Jarvis moved a run ON BY ITSELF where the user used to
+    # v1.402.0: STEC OS moved a run ON BY ITSELF where the user used to
     # have to nudge it: {kind (core/nudges.NUDGE_KINDS), thread_id?, turn_id?}.
     # Counted apart from the user's own nudges.
     AUTONOMY_NUDGED = "autonomy.nudged"
@@ -275,7 +275,7 @@ class EventType:
     # checks and branches only, never a path, a log or an id). A QUIET bell
     # row (no ping, no badge, no phone). session_id = "build:<thread id>".
     BUILD_CI_STEP = "build.ci_step"
-    # v1.406.0 part 3: the watch's NEWS — Iron Jarvis stopped fixing the
+    # v1.406.0 part 3: the watch's NEWS — STEC OS stopped fixing the
     # pull request's checks (``kind: "gave_up"``), or the checks pass after
     # the fix it pushed (``kind: "passing"``): the same payload. The bell
     # rings it and counts it, the desktop app says it from the tray, the
@@ -385,7 +385,7 @@ OTHER_PUBLISHED_TYPES: frozenset[str] = frozenset(
 
 
 def known_event_types() -> frozenset[str]:
-    """Every event name Iron Jarvis publishes by itself (v1.433.0, W1):
+    """Every event name STEC OS publishes by itself (v1.433.0, W1):
     ``EventType``'s values plus :data:`OTHER_PUBLISHED_TYPES`. A schedule of
     kind "event" can publish a name of the user's own on top of these; the
     outbound webhook store adds those (``OutboundWebhooks.extra_event_types``)."""

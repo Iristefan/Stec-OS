@@ -103,7 +103,7 @@ the folder named, or read past it, through ONE allowed call —
   git would use must CONTAIN this one (:func:`_place_problem`), and a
   network spelling is refused by its text before git is asked;
 * ``blame --contents`` printed a key file and ``grep --untracked`` searched
-  the secrets store in a folder holding Iron Jarvis's own state (the user's
+  the secrets store in a folder holding STEC OS's own state (the user's
   home holds it): the folder git reads (the repository's top, else this one)
   must hold none of ``core.fs_policy``'s protected roots
   (:data:`PROTECTED_REFUSAL`) — the rule ``read_file`` and ``grep`` follow;
@@ -827,18 +827,18 @@ def _network_spelling(value: str) -> bool:
     return v.startswith(("\\\\", "//", "\\/", "/\\"))
 
 
-#: v1.421.0 review: ``read_file`` and ``grep`` refuse Iron Jarvis's own keys
+#: v1.421.0 review: ``read_file`` and ``grep`` refuse STEC OS's own keys
 #: and records (``core.fs_policy``'s protected roots: the secrets and undo
 #: stores, the database); git reads files by itself, so in a folder that HOLDS
 #: one (the user's home holds the app's state home) ``git blame --contents``
 #: printed a key file and ``git grep --untracked`` searched the secrets store
 #: (measured).
-PROTECTED_REFUSAL = ("This folder holds Iron Jarvis's own keys or records, which are never read, so "
+PROTECTED_REFUSAL = ("This folder holds STEC OS's own keys or records, which are never read, so "
                      "git_read ran nothing.")
 
 
 def _holds_protected(folder: str) -> bool:
-    """Is ``folder`` inside one of Iron Jarvis's protected roots, or does it
+    """Is ``folder`` inside one of STEC OS's protected roots, or does it
     hold one? Fail-closed (an unreadable answer is yes). BLOCKING."""
     from ..core import fs_policy
 
@@ -863,7 +863,7 @@ def _place_problem(cwd: Any, worktrees: list[str], filters: list[str],
       refused by its TEXT before git is asked anything (looking it up is a
       connection to that host);
     * the folder git reads — the repository's top (``:/`` and ``HEAD:<path>``
-      reach all of it), else ``cwd`` — holds none of Iron Jarvis's protected
+      reach all of it), else ``cwd`` — holds none of STEC OS's protected
       roots: :data:`PROTECTED_REFUSAL`.
 
     BLOCKING."""

@@ -273,7 +273,7 @@ function LiveMarkdown({ content, caret }: { content: string; caret: boolean }) {
 /** What a mission's Continue sends when the mission has no words of its own
  *  to send (an older daemon's view with neither objective nor task). */
 export const CONTINUE_MESSAGE =
-  "Iron Jarvis stopped before this objective was finished. Pick up where the team left off and finish it.";
+  "STEC OS stopped before this objective was finished. Pick up where the team left off and finish it.";
 
 /** The message an interrupted mission's Continue posts: the user's OWN
  *  objective (v1.309.0 review). The daemon stores a mission continuation's
@@ -341,7 +341,7 @@ function retryRefusal(message: string): string {
   if (/nothing failed/i.test(said)) return "Nothing is marked failed any more. The list may have changed.";
   if (/no worklist/i.test(said)) return "This objective kept no list of items, so there is nothing to retry.";
   if (!said || /^\d{3}\b|[{}\[\]]|\bdetail\b/i.test(said)) {
-    return "Iron Jarvis could not retry this right now. Try again in a moment.";
+    return "STEC OS could not retry this right now. Try again in a moment.";
   }
   return plainSentences(said);
 }
@@ -369,7 +369,7 @@ function actionError(e: unknown, what: string): string {
   }
   if (e instanceof ApiError && (e.status === 404 || e.status === 405)) {
     return what === "retry"
-      ? "This version of Iron Jarvis can't retry failed items yet. Restart Iron Jarvis to update it."
+      ? "This version of STEC OS can't retry failed items yet. Restart STEC OS to update it."
       : "This objective no longer exists.";
   }
   return e instanceof Error && e.message ? e.message : "Could not start it.";
@@ -517,7 +517,7 @@ export function MissionOutput({
         if (name === "followup") setFollowup("");
         onOpen(row.id, row.project || project);
       } else {
-        setActNote("Iron Jarvis did not say which objective it started.");
+        setActNote("STEC OS did not say which objective it started.");
         onChanged();
       }
     } catch (e) {

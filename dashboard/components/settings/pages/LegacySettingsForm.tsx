@@ -77,7 +77,7 @@ const SECTIONS: SectionDef[] = [
     title: "Models & routing",
     jump: "Models",
     description:
-      "Which AI answers by default, and how much history Iron Jarvis keeps. Add providers and API keys on the Connections page.",
+      "Which AI answers by default, and how much history STEC OS keeps. Add providers and API keys on the Connections page.",
   },
   {
     id: "local",
@@ -91,7 +91,7 @@ const SECTIONS: SectionDef[] = [
     title: "Automation & autonomy",
     jump: "Automation",
     description:
-      "Advanced, and off by default. Lets Iron Jarvis act on your goals — always within the caps you set here. Manage goals on the Autonomy page.",
+      "Advanced, and off by default. Lets STEC OS act on your goals — always within the caps you set here. Manage goals on the Autonomy page.",
   },
   {
     id: "advanced",
@@ -264,7 +264,7 @@ const FIELDS: FieldDef[] = [
     type: "text",
     section: "local",
     placeholder: "whisper-1 / Systran/faster-whisper-large-v3",
-    hint: "Exact transcription model your server serves. Leave blank to auto-discover (Iron Jarvis asks the endpoint for its model list and tries the common whisper names).",
+    hint: "Exact transcription model your server serves. Leave blank to auto-discover (STEC OS asks the endpoint for its model list and tries the common whisper names).",
   },
 
   // --- Automation & autonomy ----------------------------------------------
@@ -306,7 +306,7 @@ const FIELDS: FieldDef[] = [
     label: "Autonomy (the pulse)",
     type: "boolean",
     section: "automation",
-    hint: "Let Iron Jarvis deliberate on your goals and propose (or, within budget, act). Off by default; takes effect immediately.",
+    hint: "Let STEC OS deliberate on your goals and propose (or, within budget, act). Off by default; takes effect immediately.",
   },
   {
     key: "autonomy_level",
@@ -388,7 +388,7 @@ const FIELDS: FieldDef[] = [
     type: "boolean",
     section: "advanced",
     restart: true,
-    hint: "Allow Iron Jarvis to edit its own source code (still review-gated — never auto-merged).",
+    hint: "Allow STEC OS to edit its own source code (still review-gated — never auto-merged).",
   },
   {
     key: "self_dev_root",
@@ -397,7 +397,7 @@ const FIELDS: FieldDef[] = [
     section: "advanced",
     restart: true,
     placeholder: "C:\\path\\to\\Iron-Jarvis",
-    hint: "Path to the Iron Jarvis repo. Only needed when running from an installed package.",
+    hint: "Path to the STEC OS repo. Only needed when running from an installed package.",
   },
   {
     key: "sandbox_runtime",
@@ -931,7 +931,7 @@ export default function SettingsPage() {
   // line under it re-reads the outcome of the copy that backup just made.
   const [backupsVersion, setBackupsVersion] = useState(0);
   const [restarting, setRestarting] = useState(false);
-  // v1.433.0: the desktop app restarts Iron Jarvis; a browser tab only stops
+  // v1.433.0: the desktop app restarts STEC OS; a browser tab only stops
   // it. Read after mount so the server render and the hydrated one agree.
   const [restartDesktop, setRestartDesktop] = useState(false);
   useEffect(() => setRestartDesktop(isDesktopShell()), []);
@@ -1111,7 +1111,7 @@ export default function SettingsPage() {
           : "";
         setMaintOk(`Backup written to ${r.result}${copy}`);
         setBackupsVersion((v) => v + 1);
-      } else setMaintErr("Iron Jarvis says the backup did not finish.");
+      } else setMaintErr("STEC OS says the backup did not finish.");
     } catch (err) {
       setMaintErr(err instanceof ApiError ? err.message : String(err));
     } finally {
@@ -1170,7 +1170,7 @@ export default function SettingsPage() {
           title="Settings"
           subtitle={
             full
-              ? "Tune how Iron Jarvis behaves. Changes are written to config.toml so they survive a restart; a few settings (marked “restart”) only take full effect once Iron Jarvis restarts."
+              ? "Tune how STEC OS behaves. Changes are written to config.toml so they survive a restart; a few settings (marked “restart”) only take full effect once STEC OS restarts."
               : "Choose which AI answers and how the app looks. Everything else is under “Show all settings”."
           }
         />

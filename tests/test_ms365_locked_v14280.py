@@ -7,7 +7,7 @@ server (the v1.415.0 fixture, standing in for the locked package):
 
 * the card's rules: read and draft only (never send, never change the
   calendar), ONE account, the firm's own app + its own directory when given;
-* the lock Iron Jarvis ships pins EVERY package by version and sha512, and
+* the lock STEC OS ships pins EVERY package by version and sha512, and
   only keytar's install step may run; the installer runs npm with
   ``--ignore-scripts``, rebuilds keytar alone, checks the version, and leaves
   nothing behind when it fails;
@@ -156,7 +156,7 @@ def test_a_native_file_that_is_not_the_checked_one_installs_nothing(tmp_path, mo
     monkeypatch.setattr(LP, "node_program", lambda: "node")
     with pytest.raises(LP.LockedInstallError) as info:
         LP.ensure_installed(LP.MS365, tmp_path)
-    assert "native file is not the one Iron Jarvis checked" in str(info.value)
+    assert "native file is not the one STEC OS checked" in str(info.value)
     assert list(LP.install_root(tmp_path).iterdir()) == []
 
 
@@ -178,7 +178,7 @@ def test_the_installer_ignores_install_steps_rebuilds_keytar_alone_and_installs_
 
 
 @pytest.mark.parametrize("version, fail, words", [
-    ("0.171.0", None, "not the 0.170.2 Iron Jarvis locked"),
+    ("0.171.0", None, "not the 0.170.2 STEC OS locked"),
     (LP.MS365.version, "ci", "boom"),
     (LP.MS365.version, "rebuild", "boom"),
 ])

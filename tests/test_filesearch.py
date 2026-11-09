@@ -36,7 +36,7 @@ def tree(tmp_path: Path) -> Path:
         "TODO: refactor the parser\nvalue = 42\n", encoding="utf-8"
     )
     (root / "docs" / "readme.md").write_text(
-        "# Iron Jarvis\nLocal-first AI operating system.\n", encoding="utf-8"
+        "# STEC OS\nLocal-first AI operating system.\n", encoding="utf-8"
     )
     (root / "notes.txt").write_text("plain text notes about taxes\n", encoding="utf-8")
 

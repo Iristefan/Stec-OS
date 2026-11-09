@@ -244,7 +244,7 @@ async def test_the_night_card_reads_the_live_window(tmp_path, repo):
 FRESH_NIGHT = [
     "queue a task for tonight to update the changelog in C:\\work\\api",
     "tonight, refactor the auth module in this repo",
-    "please have Iron Jarvis fix the flaky test overnight",
+    "please have STEC OS fix the flaky test overnight",
     "add 'upgrade pytest' to the night queue",
     "line up a night task: rename the config module",
     "can you cancel the changelog night task",

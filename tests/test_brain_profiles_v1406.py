@@ -122,7 +122,7 @@ def test_profile_routes_validate_in_plain_words(tmp_path):
     assert p["primary"] == "brain" and p["save_to"] == "primary" and p["search_first"] is True
     view = client.get("/brain").json()
     assert [x["id"] for x in view["profiles"]] == [p["id"]]
-    assert any(b["name"] == "brain" and b["label"] == "Iron Jarvis memory" for b in view["bases"])
+    assert any(b["name"] == "brain" and b["label"] == "STEC OS memory" for b in view["bases"])
     upd = client.patch(f"/brain/profiles/{p['id']}", json={"save_to": "ask"})
     assert upd.status_code == 200 and upd.json()["save_to"] == "ask"
     assert client.patch("/brain/profiles/bp_missing", json={"name": "y"}).status_code == 404
@@ -187,7 +187,7 @@ def test_post_lane_carries_the_block_guide_fenced_notes_tools_and_receipt(tmp_pa
     assert guide_at < fence_at < note_at
     assert {"brain_search", "brain_read", "brain_save", "brain_change"} <= set(seen["tools"][0])
     brain = r.json()["brain"]
-    assert brain["name"] == "Work brain" and brain["base"] == "Iron Jarvis memory"
+    assert brain["name"] == "Work brain" and brain["base"] == "STEC OS memory"
     assert brain["guide"] == "loaded" and brain["searched"] >= 1
     assert list(r.json().keys())[-1] == "brain"
 
@@ -300,7 +300,7 @@ async def test_ask_profiles_card_every_save_and_change_always_asks_once(tmp_path
     assert await save.spend_check({"title": "t", "content": "c"}, ctx) is None
     client.patch(f"/brain/profiles/{p['id']}", json={"save_to": "ask"})
     chk = await save.spend_check({"title": "t", "content": "c"}, ctx)
-    assert chk is not None and chk.ask and "Iron Jarvis memory" in chk.words
+    assert chk is not None and chk.ask and "STEC OS memory" in chk.words
     change = BrainChangeTool(platform)
     c = await change.spend_check({"action": "delete", "ref": "t"}, ctx)
     assert c.ask and c.once_only and c.words.startswith("Delete")

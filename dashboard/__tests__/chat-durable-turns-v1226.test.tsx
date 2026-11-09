@@ -217,7 +217,7 @@ afterEach(() => {
 });
 
 async function typeAndSend(text: string) {
-  const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  const box = await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.change(box, { target: { value: text } });
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
 }
@@ -311,7 +311,7 @@ describe("F-D-1 — the in-flight turn is durable", () => {
     // back into the empty transcript, and nothing waits — a typed message
     // is sendable (Send is disabled while a turn is in flight).
     expect(screen.queryByText("do the long thing")).toBeNull();
-    fireEvent.change(await screen.findByPlaceholderText(/Message Iron Jarvis/), {
+    fireEvent.change(await screen.findByPlaceholderText(/Message STEC OS/), {
       target: { value: "fresh" },
     });
     await waitFor(() =>
@@ -354,7 +354,7 @@ describe("F-D-1 — the in-flight turn is durable", () => {
     expect(screen.queryByText(/unmocked GET \/sessions\/gone/)).toBeNull();
     // The wait ended: a typed message can be sent (Send is disabled while a
     // turn is in flight; an empty composer shows the mic instead).
-    fireEvent.change(await screen.findByPlaceholderText(/Message Iron Jarvis/), {
+    fireEvent.change(await screen.findByPlaceholderText(/Message STEC OS/), {
       target: { value: "next" },
     });
     await waitFor(() =>

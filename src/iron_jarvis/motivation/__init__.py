@@ -1,6 +1,6 @@
 """Motivation Layer ("the pulse") — standing goals + autonomous deliberation.
 
-Iron Jarvis today only acts when given a task or when a pre-set schedule fires.
+STEC OS today only acts when given a task or when a pre-set schedule fires.
 This package adds the ability to hold *standing goals*, periodically DELIBERATE
 on the single highest-value next action, and either propose it or — within strict,
 off-by-default governance (per-goal autonomy dial + rolling budget + global kill

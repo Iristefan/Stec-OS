@@ -234,7 +234,7 @@ def _make_tree(tmp_path: Path) -> Path:
     (root / "src").mkdir(parents=True)
     (root / "docs").mkdir()
     (root / "docs" / "readme.md").write_text(
-        "# Iron Jarvis\nLocal-first AI operating system.\n", encoding="utf-8"
+        "# STEC OS\nLocal-first AI operating system.\n", encoding="utf-8"
     )
     (root / "src" / "beta.py").write_text(
         "value = 42\nTODO refactor\n", encoding="utf-8"

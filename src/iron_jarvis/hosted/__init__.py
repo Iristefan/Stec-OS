@@ -7,7 +7,7 @@ OFF (``providers/adapters/claude_native`` / ``codex_native``). This package
 is the other way round: the HARNESS runs everything itself, exactly as in a
 terminal — its own tools, settings, CLAUDE.md / AGENTS.md, MCP servers,
 hooks, permission rules and its own session file under the account's home.
-Iron Jarvis only starts it, draws what it does (the normalized events of
+STEC OS only starts it, draws what it does (the normalized events of
 :mod:`.events`), relays the user's messages and turns every permission
 question the harness asks into a card the USER answers. Nothing that switches
 built-ins off is reused here — only process plumbing (``core/procs``).

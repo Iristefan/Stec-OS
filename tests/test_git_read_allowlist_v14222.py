@@ -524,7 +524,7 @@ def test_listing_rules_for_branch_and_tag_still_hold():
 async def test_a_protected_folder_is_still_refused_for_an_allowed_call_in_a_subfolder(tmp_path, monkeypatch):
     """v1.421.0's place rule, through an option that IS on the list (the old
     pin's ``grep --untracked`` is now refused as an option before the place
-    is asked): a subfolder of a repository whose top holds Iron Jarvis's
+    is asked): a subfolder of a repository whose top holds STEC OS's
     keys is refused by the place, naming it."""
     from iron_jarvis.core import fs_policy
 

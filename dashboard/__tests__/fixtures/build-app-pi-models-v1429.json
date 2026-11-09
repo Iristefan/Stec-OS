@@ -95,7 +95,7 @@
   "accounts": [],
   "own_sign_in": true,
   "only_when_installed": false,
-  "sign_in_hint": "Pi signs in by itself, per model provider: to change it, open Pi in a Build terminal and type /login there. Iron Jarvis's accounts do not apply.",
+  "sign_in_hint": "Pi signs in by itself, per model provider: to change it, open Pi in a Build terminal and type /login there. STEC OS's accounts do not apply.",
   "commands": [
    {
     "name": "model",
@@ -237,7 +237,7 @@
     "name": "quit",
     "description": "Only in Pi's own terminal",
     "source": "pi",
-    "note": "There is nothing to quit here: Iron Jarvis stops Pi after the session has been idle a while."
+    "note": "There is nothing to quit here: STEC OS stops Pi after the session has been idle a while."
    },
    {
     "name": "hello",

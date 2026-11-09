@@ -521,7 +521,7 @@ describe("G19: the run's words, from the ledger, never its tool ids", () => {
       outcome: "completed_with_failures",
       provider: "claude-cli",
       model: "claude-opus-5-5",
-      workspace_path: "C:/Users/me/Documents/Iron Jarvis/2026-10-17 S-corp",
+      workspace_path: "C:/Users/me/Documents/STEC OS/2026-10-17 S-corp",
       summary: "Found it.",
     };
     const out = settleHandOff([hand], "s1", row, 6, null, { ...RESULT, route_note: "Sonnet stood in." });
@@ -536,7 +536,7 @@ describe("G19: the run's words, from the ledger, never its tool ids", () => {
       provider: "claude-cli",
       model: "claude-opus-5-5",
       routeNote: "Sonnet stood in.",
-      workspacePath: "C:/Users/me/Documents/Iron Jarvis/2026-10-17 S-corp",
+      workspacePath: "C:/Users/me/Documents/STEC OS/2026-10-17 S-corp",
       tools: [
         { tool: "history_search", count: 83, failed: 0 },
         { tool: "memory_read", count: 1, failed: 1 },
@@ -617,7 +617,7 @@ describe("G19: the run's words, from the ledger, never its tool ids", () => {
       provider: "claude-cli",
       model: "claude-opus-5-5",
       routeNote: "Opus could not be used, so Sonnet answered.",
-      workspacePath: "C:/Users/me/Documents/Iron Jarvis/2026-10-17 S-corp",
+      workspacePath: "C:/Users/me/Documents/STEC OS/2026-10-17 S-corp",
       tools: [
         { tool: "history_search", count: 83, failed: 0 },
         { tool: "memory_read", count: 1, failed: 1 },
@@ -658,7 +658,7 @@ describe("G19: the run's words, from the ledger, never its tool ids", () => {
     await waitFor(() =>
       expect(H.api.posts).toContainEqual({
         path: "/documents/open",
-        body: { path: "C:/Users/me/Documents/Iron Jarvis/2026-10-17 S-corp" },
+        body: { path: "C:/Users/me/Documents/STEC OS/2026-10-17 S-corp" },
       }),
     );
   });
@@ -680,7 +680,7 @@ describe("G19: the run's words, from the ledger, never its tool ids", () => {
         summary: "You chose the S-corp election in March.",
         provider: "claude-cli",
         model: "claude-opus-5-5",
-        workspace_path: "C:/Users/me/Documents/Iron Jarvis/2026-10-17 S-corp",
+        workspace_path: "C:/Users/me/Documents/STEC OS/2026-10-17 S-corp",
         created_at: isoAgo(125_000, end),
         finished_at: isoAgo(0, end),
       },
@@ -784,7 +784,7 @@ describe("G19: the run's words, from the ledger, never its tool ids", () => {
     H.api.postResponses["/sessions"] = { id: "s9", status: "active", created_at: isoAgo(0) };
     H.api.getResponses["/sessions/s9?transcript=0"] = { session: { id: "s9", status: "active" } };
     render(<ChatPage />);
-    const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    const box = await screen.findByPlaceholderText(/Message STEC OS/);
     fireEvent.change(box, { target: { value: "ask hermes to check the server" } });
     fireEvent.click(screen.getByRole("button", { name: "Send" }));
     await waitFor(() => expect(H.api.posts.some((p) => p.path === "/sessions")).toBe(true));
@@ -979,7 +979,7 @@ describe("v1.352.0 re-review: what the chat page itself wires", () => {
     // name is the run's id, an engine-room word. A folder the user chose keeps
     // its name (the test above). The path is still the title, and Open folder
     // still opens exactly that folder.
-    const own = ["C:", "Users", "me", "AppData", "Roaming", "Iron Jarvis", ".ironjarvis", "workspaces", "session_651171438d54"].join(
+    const own = ["C:", "Users", "me", "AppData", "Roaming", "STEC OS", ".ironjarvis", "workspaces", "session_651171438d54"].join(
       String.fromCharCode(92), // a Windows backslash, the daemon's own separator
     );
     const run: AgentRunStamp = { session: "s1", startedAt: 1_000, endedAt: 46_000, steps: 2, workspacePath: own };
@@ -989,7 +989,7 @@ describe("v1.352.0 re-review: what the chat page itself wires", () => {
     expect(line.textContent).not.toMatch(/session_/);
     expect(within(line).getByTitle(own).textContent).toBe("in its own work folder");
     // A folder the user chose (no run id at its end) keeps its own name.
-    expect(runFolderWords("C:/Users/me/Documents/Iron Jarvis/2026-10-17 S-corp")).toEqual({
+    expect(runFolderWords("C:/Users/me/Documents/STEC OS/2026-10-17 S-corp")).toEqual({
       name: "2026-10-17 S-corp",
       own: false,
     });

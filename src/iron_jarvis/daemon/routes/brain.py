@@ -209,8 +209,8 @@ def register(app: FastAPI, d: Any) -> None:
         if active.profile.get("save_to") == "never":
             raise HTTPException(status_code=409, detail="This profile never saves, so there is nothing to test.")
         stamp = _dt.datetime.now().strftime("%Y-%m-%d %H:%M")
-        title = "Iron Jarvis test note"
-        content = f"A test save from Iron Jarvis ({stamp}). It is safe to delete this note."
+        title = "STEC OS test note"
+        content = f"A test save from STEC OS ({stamp}). It is safe to delete this note."
         res = write_note(d.platform, active, conn, title, content)
         if res["ok"]:
             confirmed = "read back and confirmed" if res["verified"] else "saved, but this base cannot be read back to confirm it"

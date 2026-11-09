@@ -85,11 +85,11 @@ _FENCED_CALL = (
 async def test_tools_rendered_into_system_prompt_with_contract():
     inner = _Scripted(["plain answer"])
     out = await PromptedToolsAdapter(inner).complete(
-        system="You are Iron Jarvis.", messages=_MSG, tools=_TOOLS
+        system="You are STEC OS.", messages=_MSG, tools=_TOOLS
     )
     system, _, tools_seen = inner.calls[0]
     # Original system preserved, contract + tools appended.
-    assert system.startswith("You are Iron Jarvis.")
+    assert system.startswith("You are STEC OS.")
     assert "```tool_call" in system
     assert '{"name": "<tool name>", "arguments": { ... }}' in system
     assert "ONE tool call per reply" in system
@@ -460,7 +460,7 @@ async def test_agent_runtime_end_to_end_with_prompted_wrapped_provider(
         [
             "```tool_call\n"
             '{"name": "write_file", "arguments": {"path": "RESULT.md",'
-            ' "content": "# Iron Jarvis\\nprompted-tools e2e ```code``` fence"}}\n'
+            ' "content": "# STEC OS\\nprompted-tools e2e ```code``` fence"}}\n'
             "```",
             "Wrote RESULT.md with the summary.",
         ],

@@ -2,7 +2,7 @@
 
 The Status tab used to be a second directory (a module grid, saved tasks,
 recent sessions, a connections list) plus eight polls. It is now one picture:
-every part of Iron Jarvis as a star, grouped like the Directory, each saying
+every part of STEC OS as a star, grouped like the Directory, each saying
 whether it is SET UP, USED in the last 7 days, or IN USE right now. This
 module computes that picture, plus the status line's own counts and the day's
 heartbeat, so the page makes one slow poll instead of eight.

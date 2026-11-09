@@ -16,10 +16,10 @@ file, the exit code and OpenCode's agent warning.
    cannot find falls back to the DEFAULT agent; with the first cut's setup
    that ran the user's own agent and its ``bash`` RAN (``missing-agent-old``)
    — the after-the-run check could only say so afterwards. The inline config
-   now names Iron Jarvis's agent as ``default_agent``: OpenCode's default
+   now names STEC OS's agent as ``default_agent``: OpenCode's default
    lookup throws, the run ends before any model request
    (``missing-agent``, ``subagent``).
-2. A CALL OPENCODE REFUSED RAN NOTHING. Under Iron Jarvis's agent no tool is
+2. A CALL OPENCODE REFUSED RAN NOTHING. Under STEC OS's agent no tool is
    offered; a model that calls one anyway gets OpenCode's own refusal
    (``tool_use`` with ``status: "error"``, "Model tried to call unavailable
    tool …") and nothing runs. The first cut called that "OpenCode ran its own
@@ -295,7 +295,7 @@ def test_the_first_cuts_fallback_ran_the_users_own_agent(recorded):
 
 @pytest.mark.parametrize("run", ["missing-agent", "subagent"])
 def test_with_iron_jarviss_default_a_fallback_ends_before_any_model_request(recorded, run):
-    """With Iron Jarvis's agent named as the default, OpenCode's fallback
+    """With STEC OS's agent named as the default, OpenCode's fallback
     lookup throws: no model request at all, nothing ran, a failed exit."""
     got = recorded["runs"][run]
     assert got["agent_lines"] and "Falling back to default agent" in got["agent_lines"][0]

@@ -6,7 +6,7 @@ platform-02: 'Clear generated media' MOVES the library into ``<home>/trash``
 folders but not the trash, so every nightly archive after a clear carried the
 700 MB the press was meant to free — and ``mirror_backup`` copied it again.
 
-platform-08: 'What Iron Jarvis is keeping' walked a fixed list of folders and
+platform-08: 'What STEC OS is keeping' walked a fixed list of folders and
 never counted session workspaces, uploads, the remote inbox, living documents
 or written documents — the ones that grow unbounded — so the card could say
 0 bytes with gigabytes under the home. Now those are rows, plus an 'Everything

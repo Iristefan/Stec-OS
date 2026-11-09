@@ -239,7 +239,7 @@ describe("G41: naming an app that is not connected offers its Connect door", () 
   it("the chat page draws it under the reply with the real DoorsStrip and saves it with the message", async () => {
     const settled = await decodeDaemonFrame();
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "find my tax files in Google Drive" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await waitFor(() => expect(H.stream.settle).not.toBeNull());

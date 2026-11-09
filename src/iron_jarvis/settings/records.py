@@ -174,7 +174,7 @@ _RECURRING = (
     r"|nightly|weekly|daily"
 )
 #: "schedule a call with the client" is a meeting on a calendar, never one of
-#: Iron Jarvis's schedules.
+#: STEC OS's schedules.
 #: LINEAR on purpose (review): the determiner carries its OWN trailing space.
 #: The first cut wrote ``\s+(?:a|…)?\s*``, two whitespace runs side by side,
 #: and "schedule" followed by a pasted run of blank lines was QUADRATIC —
@@ -249,7 +249,7 @@ _GOAL_ACT = re.compile(
 )
 #: v1.434.0 (B1.4): "whenever a new email comes in, start an intake session",
 #: "every time a client email arrives, …" — a signal that ARRIVES is a reflex
-#: rule's trigger. The thing that arrives must be something Iron Jarvis can
+#: rule's trigger. The thing that arrives must be something STEC OS can
 #: hear about (an email, a file, a webhook…), so "when the package arrives"
 #: arms nothing.
 _ARRIVING_THING = (
@@ -354,7 +354,7 @@ _WANTS = re.compile(
 #: v1.434.0 review: a calendar EVENT booked on a recurring time ("set up a
 #: meeting every Tuesday", "book a dentist appointment every six months",
 #: "set my alarm every weekday at 6") is the user's calendar, never one of
-#: Iron Jarvis's schedules — unless they ask to be reminded.
+#: STEC OS's schedules — unless they ask to be reminded.
 _BOOKS_AN_EVENT = re.compile(
     r"\b(?:set\s+up|book|arrange|plan|have|hold|host|organi[sz]e|set|make|add|put|attend)\s+"
     r"(?:(?:a|an|the|my|our|your|some)\s+)?(?:[\w'-]+\s+)?"
@@ -2020,7 +2020,7 @@ class ChannelToggleTool(_RecordTool):
     RECORD = "channel_mode"
     description = (
         "Turn a notification channel's two-way listening on or off: `mode` 'two_way' (people "
-        "on the allowlist can message Iron Jarvis), 'chat' (they can chat with it), or 'off' "
+        "on the allowlist can message STEC OS), 'chat' (they can chat with it), or 'off' "
         "(send only). The user approves on a card; the change has an Undo."
     )
     input_schema = {
@@ -2131,7 +2131,7 @@ class ChannelConnectTool(_RecordTool):
     name = "channel_connect"
     RECORD = "channel"
     description = (
-        "Add a notification channel so Iron Jarvis can message the user: `type` telegram "
+        "Add a notification channel so STEC OS can message the user: `type` telegram "
         "(needs `chat_id`), slack (needs `channel`, e.g. #general), discord (needs nothing "
         "else) or email (needs `host`, the mail server for sending such as smtp.gmail.com, "
         "`from_addr` and `to_addr`; `port` and `username` are optional). Never ask for a token, "
@@ -2435,7 +2435,7 @@ class AppConnectTool(_RecordTool):
                     ok=False,
                     error=(
                         "The browser isn't connected from chat: it is set up in "
-                        "Settings › Connections › Browser (pair the Iron Jarvis browser "
+                        "Settings › Connections › Browser (pair the STEC OS browser "
                         "add-on there, and turn on browser access)."
                     ),
                 )
@@ -2461,7 +2461,7 @@ class AppConnectTool(_RecordTool):
                     data={"app": conn.id, "already_connected": True},
                 )
             # v1.354.0 (G39, with G45's words): the one-time setup an app
-            # needs OUTSIDE Iron Jarvis is said BEFORE the user goes to
+            # needs OUTSIDE STEC OS is said BEFORE the user goes to
             # connect it, while no OAuth client is registered.
             from ..connectors.app_names import _needs_words
 
@@ -2700,7 +2700,7 @@ class AppConnectTool(_RecordTool):
             else (f"{loaded} tools" if loaded else NOT_STARTED_STATE)
         )
         # v1.354.0 (G39, G45's words): an app that needs a one-time setup
-        # outside Iron Jarvis (Gmail's Google OAuth client) says so with the
+        # outside STEC OS (Gmail's Google OAuth client) says so with the
         # connect, so the model can tell the user why it may not start yet.
         _needs = ""
         if conn.needs and not loaded:

@@ -5,7 +5,7 @@ cards, ledger, shell tool; the real claude-cli adapter against the fake CLI;
 the real detections ledger and rules) with only the model scripted.
 
 1. A PROJECT CHECKER NEEDS A PERSON. (v1.417.0, the user's decision D1:
-   EXCEPT under "Don't ask" — there Iron Jarvis's own checker runs with no
+   EXCEPT under "Don't ask" — there STEC OS's own checker runs with no
    card; the pins below that were about yolo now run under Ask first, and
    ``test_yolo_runs_the_project_checker_with_no_card`` pins the new rule.)
    A checker (ruff, mypy,
@@ -115,7 +115,7 @@ def _checker_cards(asked: list[dict]) -> list[dict]:
 
 
 async def test_yolo_runs_the_project_checker_with_no_card(env, monkeypatch):
-    """v1.417.0 (C1.3, decision D1): under "Don't ask" Iron Jarvis's own
+    """v1.417.0 (C1.3, decision D1): under "Don't ask" STEC OS's own
     checker after an edit runs with no card."""
     platform, ws, log = env
     model = wire(platform, monkeypatch, [[call("write_file", "w1", path="app.py", content="import os\n")], "Done."])
@@ -205,7 +205,7 @@ async def test_the_users_permission_table_allowing_the_command_tool_runs_it_with
 
 async def test_the_models_own_command_still_runs_with_no_card_under_yolo(env, monkeypatch):
     """The model's own shell call in the same round keeps yolo's per-call
-    grant — and (v1.417.0, decision D1) so does Iron Jarvis's own checker:
+    grant — and (v1.417.0, decision D1) so does STEC OS's own checker:
     nothing cards."""
     platform, ws, log = env
     asked: list[dict] = []

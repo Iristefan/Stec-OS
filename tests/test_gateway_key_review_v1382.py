@@ -1,6 +1,6 @@
 """The gateway-key fix, reviewed (v1.382.0).
 
-The fix makes Iron Jarvis SEND a saved key on many more requests, so these pins
+The fix makes STEC OS SEND a saved key on many more requests, so these pins
 attack the one outcome that matters most: the key going somewhere it should
 not, or a test/scratch daemon still knocking on the user's real gateway.
 

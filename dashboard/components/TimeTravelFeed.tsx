@@ -478,7 +478,7 @@ export function TimeTravelFeed({
       ) : entries.length === 0 ? (
         <Empty icon={<CircleDot size={22} />}>
           Nothing on the timeline yet. Every action, token, and decision shows up here as
-          Iron Jarvis works — so you can replay it, and undo what allows it.
+          STEC OS works — so you can replay it, and undo what allows it.
         </Empty>
       ) : (
         <ol className="relative space-y-1.5 pl-1">

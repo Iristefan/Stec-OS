@@ -1,6 +1,6 @@
 """Repo-based self-update (git).
 
-Iron Jarvis runs from its OWN git checkout (uv + pnpm). This module lets a user
+STEC OS runs from its OWN git checkout (uv + pnpm). This module lets a user
 check for, and apply, updates that were pushed to the repo — pull the new source
 (``git pull --ff-only``), re-sync Python deps (``uv sync``) and rebuild the
 dashboard (``pnpm install && pnpm build``).
@@ -247,7 +247,7 @@ def apply_update(
             "restart_required": True,
             "rolled_back": False,
             "reason": (
-                "updated — restart Iron Jarvis to load the new code"
+                "updated — restart STEC OS to load the new code"
                 if ok
                 else "update ran but a non-critical step failed — check the log"
             ),

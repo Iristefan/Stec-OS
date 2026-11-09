@@ -1,7 +1,7 @@
 """The quick battery: TOOL-FORM, JSON-STRICT, TOKEN-RATIO.
 
 Ported from IronCore ``envelope/probe_tools.py`` + ``probe_ratio.py``,
-simplified to Iron Jarvis's wire (no text-protocol rung, no in-repo Provider
+simplified to STEC OS's wire (no text-protocol rung, no in-repo Provider
 class — every probe talks to an injected ``complete(messages, **kw)``
 transport, so the whole battery runs offline against fakes, the honest-mock
 rule this repo lives by).

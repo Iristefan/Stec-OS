@@ -1,5 +1,5 @@
 """v1.420.0 (C1.10): OpenCode in Build's Code view never changes a rule of the
-user's own, grants its helpers like Iron Jarvis's own, and keeps an "Allow for
+user's own, grants its helpers like STEC OS's own, and keeps an "Allow for
 this session" across the new process a mode change starts.
 
 The verdicts below are OpenCode 1.18.18's own evaluation (the simulator of
@@ -79,7 +79,7 @@ def test_no_rule_of_the_users_is_changed_in_any_mode(tmp_path, monkeypatch, mode
 @pytest.mark.parametrize("mode", ["ask", "edits"])
 def test_a_users_bash_allow_is_kept(tmp_path, monkeypatch, mode):
     """The merge-order case the plan names: a user's ``"bash": "allow"`` used to
-    meet Iron Jarvis's ``"*": "ask"`` AFTER it, and every allowed command became
+    meet STEC OS's ``"*": "ask"`` AFTER it, and every allowed command became
     a card."""
     env = env_for(tmp_path, monkeypatch, mode, {"bash": "allow"})
     assert env is not None and "*" not in env and "bash" not in env

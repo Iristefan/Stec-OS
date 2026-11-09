@@ -9,7 +9,7 @@
  *    session in Build; a chat's reply there is NOT listed a second time (the
  *    chat list already has it); a waiting one goes first;
  *  - the REAL RunningNow reads the route while open and lists the row; an
- *    older Iron Jarvis without the route (404) lists the rest as before;
+ *    older STEC OS without the route (404) lists the rest as before;
  *  - the REAL MoodOrb turns "working" for a chat's or a coding session's
  *    reply, read from the ONE shared /health poll (no request of its own).
  *
@@ -207,7 +207,7 @@ describe("Running now lists a running coding session", () => {
     }
   });
 
-  it("an older Iron Jarvis without the route lists the rest as before and says nothing runs", async () => {
+  it("an older STEC OS without the route lists the rest as before and says nothing runs", async () => {
     seed(undefined); // GET /chat/turns/running → 404
     wrap(<RunningNow />);
     expect((await screen.findByTestId("running-now-empty", {}, W)).textContent).toBe("Nothing is running right now.");

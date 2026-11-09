@@ -58,7 +58,7 @@ SCENARIOS: dict[str, tuple[str, str, list]] = {
 
 
 def canonical(events: list[dict], work: Path) -> list[dict]:
-    """``at`` dropped, Iron Jarvis's own ids replaced by stable names, this
+    """``at`` dropped, STEC OS's own ids replaced by stable names, this
     run's folder written as the recordings' masked one."""
     names: dict[str, str] = {}
     sessions: dict[str, str] = {}

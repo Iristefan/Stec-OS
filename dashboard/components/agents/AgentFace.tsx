@@ -8,7 +8,7 @@ import { type ReactElement, useEffect, useState } from "react";
  *
  * Concept adapted from NousResearch/Hermes-Bot-Mode (MIT): each agent gets a
  * stable geometric face — shape and color seeded from its name — with eyes
- * that carry MOOD. The difference here: Iron Jarvis has REAL state to drive
+ * that carry MOOD. The difference here: STEC OS has REAL state to drive
  * the moods. A delegated child's face scans while its session runs, shows
  * X-X on failure, and blinks idly between jobs — the face is a status
  * surface, not a decoration.

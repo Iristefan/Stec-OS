@@ -13,7 +13,7 @@
  *    and the steps for the other computer; a later read never shows a token;
  *  - the reachability sentence the daemon gives is shown as is (nothing is
  *    opened here); Rotate mints again; Turn off is two presses;
- *  - a failed answer back is named; an older Iron Jarvis (404) shows nothing;
+ *  - a failed answer back is named; an older STEC OS (404) shows nothing;
  *    a failed read is the one LoadFailedLine;
  *  - the connect form says when an address is another Jarvis and shows that
  *    the answers come back (and what reaching THIS computer takes);
@@ -89,7 +89,7 @@ import {
 
 const DOOR_URL = `http://192.168.1.20:8787${TASK_DOOR_PATH}`;
 const REACH_NOTE =
-  "Iron Jarvis on this computer currently accepts requests addressed to 127.0.0.1 or localhost only, so the other computer cannot reach it yet.";
+  "STEC OS on this computer currently accepts requests addressed to 127.0.0.1 or localhost only, so the other computer cannot reach it yet.";
 
 function section() {
   return render(
@@ -216,7 +216,7 @@ describe("Another computer running Jarvis — the card in Your team", () => {
     expect(replyFailedLine(decodeDoor({ ...ON, last_reply: { ok: true } }))).toBe("");
   });
 
-  it("an older Iron Jarvis (404) shows nothing; a failed read is one quiet line", async () => {
+  it("an older STEC OS (404) shows nothing; a failed read is one quiet line", async () => {
     api.doorError = { status: 404, message: "Not Found" };
     const { unmount } = section();
     await waitFor(() => expect(api.gets).toContain("/agents/task-door"));
@@ -240,14 +240,14 @@ describe("the connect form knows another Jarvis", () => {
       name: "desk",
       inbound_enabled: true,
       another_jarvis: true,
-      reachable: { host_allowed: false, note: "Iron Jarvis on this computer currently accepts requests addressed to 127.0.0.1 or localhost only, so a remote on another machine cannot reach it yet." },
+      reachable: { host_allowed: false, note: "STEC OS on this computer currently accepts requests addressed to 127.0.0.1 or localhost only, so a remote on another machine cannot reach it yet." },
     };
     section();
     const form = await screen.findByTestId("connect-remote-form");
     fireEvent.change(within(form).getByLabelText("Remote agent name"), { target: { value: "desk" } });
     fireEvent.change(within(form).getByLabelText("Base URL"), { target: { value: DOOR_URL } });
     expect(within(form).getByTestId("connect-remote-jarvis-hint").textContent).toMatch(
-      /another computer running Iron Jarvis/,
+      /another computer running STEC OS/,
     );
     fireEvent.change(within(form).getByLabelText("Bearer secret"), { target: { value: "door-token" } });
     fireEvent.click(within(form).getByRole("button", { name: /Connect remote/ }));

@@ -18,7 +18,7 @@ without a restart wherever the page says so.*
 | `skill_learning_enabled` / `skill_learning_auto_approve` | `true` / `false` (defaults) | It suggests skills from your successful sessions; you approve. |
 | `mcp_auto_approve` | `false` (default) | Approve MCP tool calls until you trust a server; flip per-server first if needed. |
 | `autonomy_enabled` | `false` until you want it; then `autonomy_level: "suggest"` first | The caps (`5` actions / `50k` tokens per day) and the kill switch stay. |
-| `self_dev_enabled` | `false` | Only for letting agents edit Iron Jarvis's own source (review-gated). |
+| `self_dev_enabled` | `false` | Only for letting agents edit STEC OS's own source (review-gated). |
 | `event_retention_days` | `90` (default) | The activity ledger's history window. |
 | `search_roots` | your client-documents folders | `file_search` and memory grounding can then reach the folders where real work lives. |
 | `default_persona` | whichever voice you want by default | Free text or a built-in slug; per-thread override always wins. |

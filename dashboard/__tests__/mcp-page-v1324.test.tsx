@@ -212,7 +212,7 @@ afterEach(() => {
 });
 
 async function box() {
-  return (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  return (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
 }
 
 function type(el: HTMLTextAreaElement, value: string) {

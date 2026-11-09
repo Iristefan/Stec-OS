@@ -40,7 +40,7 @@ reply. The line's ``startedAt`` / ``firstTokenAt`` / ``endedAt`` stay WALL-clock
 epoch stamps (review): the reply's Changes row asks the journal for the rows
 between them, and those rows are stamped by the wall clock.
 
-THE CHECKS (review): a step Iron Jarvis ran itself — the finish check's test
+THE CHECKS (review): a step STEC OS ran itself — the finish check's test
 run (``harness/finish.CALL_ID_PREFIX``) or a project check
 (``harness/checkers.CALL_ID_PREFIX``) — carries ``check`` ("finish" /
 "project", :func:`check_kind`) on its frames and its saved step, so the
@@ -110,7 +110,7 @@ def model_call_frame(provider: str, model: str, usage: Any, ms: float, kind: str
     return out
 
 
-#: What ``check`` says on a step Iron Jarvis ran itself (absent on the model's).
+#: What ``check`` says on a step STEC OS ran itself (absent on the model's).
 CHECK_KINDS = ("finish", "project")
 
 

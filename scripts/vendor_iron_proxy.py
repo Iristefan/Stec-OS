@@ -1,7 +1,7 @@
 """Vendor the Iron-Proxy single-file bundle into the desktop app (v1.301.0).
 
 Iron-Proxy (https://github.com/RealDealCPA-VR/Iron-Proxy, MIT) is the account
-switcher Iron Jarvis starts when the user turns it on in Connections. It is not
+switcher STEC OS starts when the user turns it on in Connections. It is not
 published to npm, so the app ships ONE bundled ES module built from a pinned,
 CLEAN checkout of that repo:
 

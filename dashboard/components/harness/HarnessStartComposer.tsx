@@ -165,7 +165,7 @@ export const TRY_ON_NEEDS_FOLDER =
   "Try on needs a folder in a git repository: each model works on its own branch. Choose one first.";
 export const TRY_ON_CHECKING = "Checking whether this folder is in a git repository…";
 export const TRY_ON_UNREAD =
-  "Iron Jarvis could not tell whether this folder is in a git repository, so Try on is off for now.";
+  "STEC OS could not tell whether this folder is in a git repository, so Try on is off for now.";
 export const TRY_ON_NO_GIT = "Try on needs git, which is not installed on this PC: each model works on its own branch.";
 export const TRY_ON_NOT_A_REPO =
   "Try on needs a folder in a git repository: each model works on its own branch, and this folder is not in one.";
@@ -189,7 +189,7 @@ export function localOnlyDroppedWords(names: readonly string[]): string {
 
 /** v1.418.0 review: is a refusal about the FOLDER (said on the folder chip)
  *  — the create's own folder and branch refusals — or about something else
- *  (Iron Jarvis not answering, the model, a team: said under the box, never
+ *  (STEC OS not answering, the model, a team: said under the box, never
  *  in red on a folder the user chose rightly). Pure. */
 export function isFolderProblem(words: string): boolean {
   // v1.437.0: the daemon's refusal of the "Try on…" picks names a git folder
@@ -342,13 +342,13 @@ export function HarnessStartComposer({
 
   // v1.437.0: the Iron-Proxy accounts (GET /build/accounts — the session's
   // own list), read when the box opens and each time the model menu opens.
-  // An Iron Jarvis with no list (a 404: `fetchAccounts` answers null) shows
+  // A STEC OS with no list (a 404: `fetchAccounts` answers null) shows
   // none and is not asked again.
   const readAccounts = useCallback(async () => {
     try {
       setAccounts(await fetchAccounts());
     } catch {
-      // v1.437.0 review: a read that got no answer (Iron Jarvis still
+      // v1.437.0 review: a read that got no answer (STEC OS still
       // starting — the empty Code view IS this box — or offline) keeps the
       // list it last read (none before the first answer) and is asked again
       // when the menu opens; only a 404 means "no list". It used to stop

@@ -102,7 +102,7 @@ beforeEach(() => {
     "/agents/roster": {
       roster: [
         { name: "builder", kind: "builtin", description: "hands-on doer for files, shell, and documents", delegable: true, healthy: true },
-        { name: "guide", kind: "builtin", description: "the Iron Jarvis expert who explains the app and finds your things in it", delegable: true, healthy: true },
+        { name: "guide", kind: "builtin", description: "the STEC OS expert who explains the app and finds your things in it", delegable: true, healthy: true },
       ],
     },
     "/projects": { projects: [{ id: "p1", name: "Harbor Street Cafe", status: "active" }] },

@@ -130,7 +130,7 @@ beforeEach(() => {
   postMock.mockReset();
   notifyMock.mockReset();
   eventsRef.current = [];
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
 });
 
 afterEach(() => {
@@ -151,14 +151,14 @@ describe("bell badge with waiting runs", () => {
     // runs must NOT inflate the badge).
     const trigger = await screen.findByRole("button", { name: "4 notifications" });
     expect(trigger.textContent).toContain("4");
-    await waitFor(() => expect(document.title).toBe("(4) Iron Jarvis"));
+    await waitFor(() => expect(document.title).toBe("(4) STEC OS"));
   });
 
   it("polls the runs list on the exact bell path and titles the tab for one waiting run", async () => {
     mockDaemon({ runs: [WAITING_RUN] });
     render(<NotificationBell />);
     await screen.findByRole("button", { name: "1 notifications" });
-    await waitFor(() => expect(document.title).toBe("(1) Iron Jarvis"));
+    await waitFor(() => expect(document.title).toBe("(1) STEC OS"));
     expect(getMock).toHaveBeenCalledWith(RUNS_PATH);
     // Regression pin: the poll asks for the route's clamp max (200), never the
     // old 50-row window that let a long-parked run fall off the badge.
@@ -175,7 +175,7 @@ describe("bell badge with waiting runs", () => {
     render(<NotificationBell />);
     await waitFor(() => expect(notifyMock).toHaveBeenCalled());
     const [title, body] = notifyMock.mock.calls[0] as [string, string];
-    expect(title).toBe("Iron Jarvis: 1 pending"); // v1.329.0: no dash aside
+    expect(title).toBe("STEC OS: 1 pending"); // v1.329.0: no dash aside
     expect(body).toContain("1 workflow question waiting");
   });
 });
@@ -239,7 +239,7 @@ describe("waiting-run row", () => {
     );
     await waitFor(() => expect(runsCalls()).toBeGreaterThan(before));
     // Nothing else pends, so the badge and tab title clear to the base state.
-    await waitFor(() => expect(document.title).toBe("Iron Jarvis"));
+    await waitFor(() => expect(document.title).toBe("STEC OS"));
   });
 
   it("URL-encodes the run id in the POST path (ids arrive from a polled response)", async () => {

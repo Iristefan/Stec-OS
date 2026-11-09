@@ -3,7 +3,7 @@
 ``routes/build.start_build_turn`` passed ``suggest_preferences=False``, so the
 user telling a coding session "stop explaining every step" twice never became
 the one-press Keep line a chat gets. Now a turn the USER typed asks for one
-(never a turn Iron Jarvis started by itself); the reply line keeps the
+(never a turn STEC OS started by itself); the reply line keeps the
 question (``suggestion``, a line key) and the session's view folds in its
 CURRENT answer from the row (kept / declined / gone) — a coding session's
 lines are the daemon's to write, so the page cannot store the answer on them.
@@ -15,7 +15,7 @@ twice (from the body and from the session's own stored copy, whose first
 line a Compact summary may have dropped). A correction SCOPED to one place in
 the code ("in this repo", "in this module", "right now") is never a standing
 preference (``corrections._ONE_OFF``). Build › Code (the user's real CLI) is
-out of scope: its words never pass through Iron Jarvis's lanes.
+out of scope: its words never pass through STEC OS's lanes.
 """
 
 from __future__ import annotations

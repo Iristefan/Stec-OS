@@ -1,4 +1,4 @@
-# Iron Jarvis dashboard / cockpit (Next.js 15 + pnpm).
+# STEC OS dashboard / cockpit (Next.js 15 + pnpm).
 #
 # Build context is the PROJECT ROOT (so docker-compose can find Dockerfile.dashboard);
 # only the dashboard/ subtree is copied in.

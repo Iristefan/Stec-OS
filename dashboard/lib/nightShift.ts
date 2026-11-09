@@ -35,7 +35,7 @@ export interface NightTask {
   team: boolean;
   tryOn: NightPick[];
   /** v1.424.0 (D6): the account its session runs on ("" = its vendor's
-   *  Default; an older Iron Jarvis sends none). */
+   *  Default; an older STEC OS sends none). */
   account: string;
   state: NightState;
   threadId: string;
@@ -440,7 +440,7 @@ export async function openNightPullRequest(threadId: string): Promise<string> {
 }
 
 /** Throw the task's branch folder away (the session's own Discard, after
- *  the row's two presses): the folder to Iron Jarvis's trash, the branch
+ *  the row's two presses): the folder to STEC OS's trash, the branch
  *  KEPT. Answers the daemon's own sentence. */
 export async function throwAwayNightFolder(threadId: string): Promise<string> {
   const done = rec(

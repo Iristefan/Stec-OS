@@ -7,7 +7,7 @@ supply its OWN tools (``dynamicTools`` on ``thread/start``). Codex runs its own
 agent loop and, when the model calls one of those tools, asks the client to run
 it (the ``item/tool/call`` server request) and waits for the answer.
 
-Iron Jarvis's lanes want the opposite shape: the adapter RETURNS tool calls and
+STEC OS's lanes want the opposite shape: the adapter RETURNS tool calls and
 is called again with their results. The bridge (``adapter``):
 
 * a call whose conversation ends with tool results for calls a LIVE session is
@@ -18,7 +18,7 @@ is called again with their results. The bridge (``adapter``):
   ephemeral thread, the earlier conversation replayed as TEXT (honestly
   labelled) and the current ask as the turn's input.
 
-Iron Jarvis executes every tool through ``registry.invoke`` (armed-set gate,
+STEC OS executes every tool through ``registry.invoke`` (armed-set gate,
 approvals, ledger, undo, trust). Codex's own tools that act are switched off
 on the thread (``protocol.BUILTINS_OFF``, no environment) and the start-up
 answer is CHECKED before the first model call; a built-in approval request

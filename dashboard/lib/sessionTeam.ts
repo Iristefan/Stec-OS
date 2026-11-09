@@ -193,7 +193,7 @@ export function teamLineWords(t: { lead: string; workers: readonly string[]; rev
 }
 
 /** A team turn's record, whitelisted — or null (no team, junk, an older
- *  Iron Jarvis). The daemon's twin is the reply line's `team`. */
+ *  STEC OS). The daemon's twin is the reply line's `team`. */
 export function decodeReplyTeam(raw: unknown): ReplyTeam | null {
   const r = rec(raw);
   if (!r) return null;
@@ -325,7 +325,7 @@ export async function memberFromModel(
 ): Promise<MemberFromModel> {
   const raw = rec(await post<unknown>("/team/members/from-model", { provider, model, role }));
   const name = str(raw?.name, 120);
-  if (!raw || !name) throw new Error("Iron Jarvis did not say which team member it made.");
+  if (!raw || !name) throw new Error("STEC OS did not say which team member it made.");
   return {
     name,
     provider: str(raw.provider, 120),

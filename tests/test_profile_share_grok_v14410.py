@@ -4,7 +4,7 @@ Which file Grok reads was MEASURED on grok 1.0.70 with ``grok inspect
 --json`` (no sign-in, no model call) on a scratch ``GROK_HOME`` and a
 scratch ``USERPROFILE``: every ``Agents.md`` / ``Claude.md`` / ``AGENT.md``
 (and ``AGENTS.md``, the same file on Windows) in the Grok home is listed as a
-"global" instruction file, and so is every ``rules/*.md`` there. Iron Jarvis's
+"global" instruction file, and so is every ``rules/*.md`` there. STEC OS's
 block goes into ``<GROK_HOME or ~/.grok>/AGENTS.md``. The v1.306.0 rules hold:
 off by default, the outside of the block byte-identical, a hand edit never
 overwritten, a linked file left alone; the user's real ``~/.grok`` untouched.
@@ -124,7 +124,7 @@ def test_grok_home_follows_GROK_HOME_and_a_new_file_goes_when_turned_off(client,
     _on(client)
     assert b"Dana Reyes." in (gh / "AGENTS.md").read_bytes()
     _on(client, False)
-    assert not (gh / "AGENTS.md").exists(), "a file Iron Jarvis created and left empty is removed"
+    assert not (gh / "AGENTS.md").exists(), "a file STEC OS created and left empty is removed"
 
 
 def test_a_hand_edit_is_never_overwritten(client, user):

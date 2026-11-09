@@ -1271,7 +1271,7 @@ def test_the_declared_exits_are_narrated_instead_of_dropped(tmp_path, monkeypatc
         )
     )
     words = " ".join(p.get("text", "") for e, p in sent if e == P.PANEL_EVENT_DELTA)
-    assert "Iron Jarvis window" in words, (
+    assert "STEC OS window" in words, (
         f"an escalating turn told the sidebar nothing at all: {sent}"
     )
     assert "many steps" in words, f"the reason was dropped: {sent}"
@@ -1282,7 +1282,7 @@ def test_the_declared_exits_are_narrated_instead_of_dropped(tmp_path, monkeypatc
         turns._translate(conn, "done", {"reply": "", "workflow_draft": {"name": "x"}})
     )
     words = " ".join(p.get("text", "") for e, p in sent if e == P.PANEL_EVENT_DELTA)
-    assert "workflow" in words.lower() and "Iron Jarvis window" in words, (
+    assert "workflow" in words.lower() and "STEC OS window" in words, (
         f"a drafted workflow vanished from the sidebar: {sent}"
     )
 

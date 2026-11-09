@@ -9,7 +9,7 @@
  * does it). So this drives the page itself: the real ProjectWorkspacePage,
  * the real useApi / usePolledApi / apiCache and the real LoadFailedLine; only
  * the HTTP layer and leaves that are not under test are stood in. One more
- * pin: the panel's "Iron Jarvis isn't responding." is the shell banner's own
+ * pin: the panel's "STEC OS isn't responding." is the shell banner's own
  * headline (lib/offlineWords.ts), imported, so the two cannot drift.
  */
 
@@ -200,7 +200,7 @@ describe("G59 on the Projects page: a board that fails to load", () => {
   it("when nothing answers it says so in the app's name, with no press and no title", async () => {
     H.gets[BOARD] = () => new H.FakeApiError("Failed to fetch", 0);
     await openBoardTab();
-    const p = await screen.findByText(lineWith("The board couldn't load. Iron Jarvis isn't responding."), {}, W);
+    const p = await screen.findByText(lineWith("The board couldn't load. STEC OS isn't responding."), {}, W);
     expect(p.getAttribute("title")).toBeNull();
     expect(within(p).queryByRole("button")).toBeNull();
     expect(document.body.textContent).not.toMatch(/daemon/i);

@@ -10,27 +10,27 @@
  */
 export const RESTART_WORDS = {
   /** The section heading and the button. */
-  label: "Restart Iron Jarvis",
+  label: "Restart STEC OS",
   /** The sentence under the heading. */
   blurb:
-    "Applies “restart” settings and clears a stuck state. Iron Jarvis stops tidily and the desktop app starts it again, usually within a few seconds.",
+    "Applies “restart” settings and clears a stuck state. STEC OS stops tidily and the desktop app starts it again, usually within a few seconds.",
   /** The button's hover title. */
-  title: "Iron Jarvis stops tidily and the desktop app starts it again.",
+  title: "STEC OS stops tidily and the desktop app starts it again.",
   /** Under a changed setting that only applies after a restart. */
-  needed: "One or more changed settings need a restart to take full effect. After saving, use “Restart Iron Jarvis” under Maintenance.",
+  needed: "One or more changed settings need a restart to take full effect. After saving, use “Restart STEC OS” under Maintenance.",
   /** The small “restart” tag's hover title on such a setting. */
-  tagTitle: "Takes full effect after Iron Jarvis restarts",
+  tagTitle: "Takes full effect after STEC OS restarts",
   /** v1.433.0: the note after the press inside the desktop app. */
   restartingNote: "Restart requested — reconnecting. Watch the status dot in the sidebar.",
   /** v1.433.0: the desktop app was asked and could not restart it. */
   refused:
-    "The desktop app couldn’t restart Iron Jarvis from here. Quit Iron Jarvis from the tray menu and open it again.",
-  /** v1.433.0: in a browser tab the same press only STOPS Iron Jarvis — a
+    "The desktop app couldn’t restart STEC OS from here. Quit STEC OS from the tray menu and open it again.",
+  /** v1.433.0: in a browser tab the same press only STOPS STEC OS — a
    *  page cannot start it again, so the words say what really happens. */
   browserBlurb:
-    "Stops Iron Jarvis tidily. A browser page can’t start it again: if the Iron Jarvis desktop app is running, it starts it again; otherwise start Iron Jarvis yourself.",
-  browserTitle: "Iron Jarvis stops tidily. A browser page can’t start it again.",
+    "Stops STEC OS tidily. A browser page can’t start it again: if the STEC OS desktop app is running, it starts it again; otherwise start STEC OS yourself.",
+  browserTitle: "STEC OS stops tidily. A browser page can’t start it again.",
   /** v1.433.0: the note after the press in a browser tab. */
   stoppingNote:
-    "Iron Jarvis is stopping. If the desktop app is running, it starts it again; otherwise start Iron Jarvis yourself.",
+    "STEC OS is stopping. If the desktop app is running, it starts it again; otherwise start STEC OS yourself.",
 } as const;

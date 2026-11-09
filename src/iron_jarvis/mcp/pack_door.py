@@ -292,7 +292,7 @@ def add_pack(
     from .secrets import vault_name as _vault_name
 
     if getattr(body, "locked", ""):
-        # v1.428.0: a LOCKED card's settings are Iron Jarvis's own (an account
+        # v1.428.0: a LOCKED card's settings are STEC OS's own (an account
         # lock, a tool filter, the path of the sign-in folder) and none is a
         # secret — `MS365_MCP_TOKEN_CACHE_PATH` names a FILE. Kept plain, so
         # the saved row is exactly what the card writes and its Sign in press
@@ -435,7 +435,7 @@ def add_pack(
         else:
             note = "saved — it connected but advertised no tools; see its row"
     elif body.auto_approve:
-        note = "loaded — restart Iron Jarvis so autonomous agents may use it without asking"
+        note = "loaded — restart STEC OS so autonomous agents may use it without asking"
     return {
         "name": name,
         "added": True,

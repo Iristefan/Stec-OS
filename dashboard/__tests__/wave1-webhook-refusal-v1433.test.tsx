@@ -1,6 +1,6 @@
 /**
  * v1.433.0 (Wave 1, W1) — the Webhooks page shows the daemon's refusal of an
- * event name Iron Jarvis never sends.
+ * event name STEC OS never sends.
  *
  * Delivery matches an event's type exactly, so "sesion.completed" used to save
  * and then never fire. POST /webhooks now answers 400 with one sentence that
@@ -12,7 +12,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 const REFUSAL =
-  "Iron Jarvis never sends an event called “sesion.completed”, so this webhook would never receive it. Did you mean session.completed?";
+  "STEC OS never sends an event called “sesion.completed”, so this webhook would never receive it. Did you mean session.completed?";
 
 const api = vi.hoisted(() => {
   class FakeApiError extends Error {
@@ -91,7 +91,7 @@ describe("Webhooks page: an unknown event name", () => {
     expect((screen.getByPlaceholderText("session.completed, workflow.completed") as HTMLInputElement).value).toBe(
       "sesion.completed",
     );
-    expect(document.body.textContent).not.toMatch(/added\. Iron Jarvis will tell that app/);
+    expect(document.body.textContent).not.toMatch(/added\. STEC OS will tell that app/);
   });
 
   it("CONTROL: a real name is added", async () => {

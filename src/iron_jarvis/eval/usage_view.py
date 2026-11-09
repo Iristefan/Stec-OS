@@ -42,7 +42,7 @@ HOSTED_VENDORS = frozenset(
 def is_local_provider(provider: str) -> bool:
     """True when ``provider``'s tokens ran on hardware the user owns.
 
-    ``opencode/<providerID>`` and ``pi/<provider>`` need care. Iron Jarvis's own
+    ``opencode/<providerID>`` and ``pi/<provider>`` need care. STEC OS's own
     connectors are local-only by construction, but this rollup reads those CLIs'
     OWN stores — sessions the user ran directly, where that restriction does not
     apply. Both CLIs can reach hosted models.

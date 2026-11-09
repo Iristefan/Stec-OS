@@ -4,7 +4,7 @@
 |---|---|
 | Brief | [`BRIEF.md`](BRIEF.md) |
 | Branch | `redesign/calm-ui` |
-| Baseline | Iron Jarvis **v1.320.0** (master `d043951`), 2026-10-08 |
+| Baseline | STEC OS **v1.320.0** (master `d043951`), 2026-10-08 |
 | Status | **Phase 1 complete. Waiting for VR's `APPROVED.md`. Phase 2 has not started.** |
 
 **Scope of Phase 1.** Nothing outside `docs/redesign/` was changed on this

@@ -22,7 +22,7 @@ it must get right are both about faithfulness:
 
 **STDLIB ONLY, AND NO ``iron_jarvis`` IMPORT AT RUNTIME.** This file is meant to
 be copied next to a harness and run by whatever Python that harness has, which is
-not necessarily the interpreter Iron Jarvis ships inside (the packaged daemon is
+not necessarily the interpreter STEC OS ships inside (the packaged daemon is
 frozen and has no importable ``iron_jarvis`` on disk at all). That is why the two
 environment-variable names and the SSE parse are spelled here rather than
 imported from :mod:`iron_jarvis.browser.panetokens` and
@@ -64,7 +64,7 @@ INVALID_REQUEST = -32600
 INTERNAL_ERROR = -32603
 
 #: What the shim says when it cannot reach the daemon at all.
-UNREACHABLE_MESSAGE = "cannot reach Iron Jarvis at {url}: {error}"
+UNREACHABLE_MESSAGE = "cannot reach STEC OS at {url}: {error}"
 
 #: What it says when it was started with no token in the environment.
 NO_TOKEN_MESSAGE = (

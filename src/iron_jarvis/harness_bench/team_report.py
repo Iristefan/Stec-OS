@@ -392,9 +392,9 @@ def _key(r: Mapping[str, Any]) -> tuple[str, int]:
 def find_alone(team_config: Mapping[str, Any], team_records: list[Mapping[str, Any]],
                configs: list[tuple[Mapping[str, Any], list[Mapping[str, Any]]]]
                ) -> tuple[Mapping[str, Any], list[Mapping[str, Any]]] | None:
-    """The single-model setup to answer against: Iron Jarvis on the team's
+    """The single-model setup to answer against: STEC OS on the team's
     PLANNER (same provider and model) alone — with the same effort first,
-    then the same Iron Jarvis version, then the one sharing the most runs
+    then the same STEC OS version, then the one sharing the most runs
     with the team, the newest on a tie."""
     team_keys = {_key(r) for r in _live(team_records)}
     best = None
@@ -405,7 +405,7 @@ def find_alone(team_config: Mapping[str, Any], team_records: list[Mapping[str, A
             continue
         shared = len(team_keys & {_key(r) for r in _live(records)})
         # The same effort as the team's planner first (another effort is
-        # another setup), then the same Iron Jarvis (v1.400.0 review: a root
+        # another setup), then the same STEC OS (v1.400.0 review: a root
         # keeps every night's folders, and tonight's alone row shares every
         # task and repeat with LAST night's team — picked as the newest, it
         # re-answered last night's team against another harness), then the
@@ -427,13 +427,13 @@ def compares_line(team_config: Mapping[str, Any], alone_config: Mapping[str, Any
     """Which single-model row a team's answer compares with (v1.400.0
     review): with every night's folders in one root, two alone rows can sit
     in the same table, and only this line says which one the answer read —
-    and, when it is another Iron Jarvis, that it is."""
+    and, when it is another STEC OS, that it is."""
     a_ver = str(alone_config.get("version") or "?")
     t_ver = str(team_config.get("version") or "?")
     line = (f"The answer compares with {str(alone_config.get('key', ''))[:12]} "
-            f"({runner_label(alone_config)}, Iron Jarvis {a_ver})")
+            f"({runner_label(alone_config)}, STEC OS {a_ver})")
     if a_ver != t_ver:
-        line += f", which ran on another Iron Jarvis than this team ({t_ver})"
+        line += f", which ran on another STEC OS than this team ({t_ver})"
     a_eff = str(alone_config.get("effort") or "")
     t_eff = str(team_config.get("effort") or "")
     if a_eff != t_eff:
@@ -448,7 +448,7 @@ def compares_line(team_config: Mapping[str, Any], alone_config: Mapping[str, Any
     return line + "."
 
 
-#: v1.401.0: the helper row of the review Iron Jarvis's own FINISH CHECK hands
+#: v1.401.0: the helper row of the review STEC OS's own FINISH CHECK hands
 #: the team's reviewer (``harness.finish.REVIEW_CALL_ID`` — pinned equal). The
 #: PLANNER did not hand it out, so it never counts as "the planner handed a
 #: piece" (:func:`planner_handed`); it is team work all the same
@@ -471,7 +471,7 @@ def _a_member(name: Any) -> bool:
 
 
 def finish_reviewed(record: Mapping[str, Any]) -> bool:
-    """Did Iron Jarvis's own finish check hand this run's change to a team
+    """Did STEC OS's own finish check hand this run's change to a team
     member — the team's review at the finish (v1.401.0, "Hand work to my team
     first" on)? A row the router could not place (no member) does not count."""
     return any(_a_member(h.get("member")) for h in _finish_review_rows(record))
@@ -481,7 +481,7 @@ def planner_handed(record: Mapping[str, Any]) -> bool:
     """Did the PLANNER hand at least one piece to a team member? A member's
     part with a model call or a piece, or a helper row naming a member (a piece
     the member then failed, or one its hold refused, still went to the team) —
-    never the finish check's own review (v1.401.0: Iron Jarvis handed that
+    never the finish check's own review (v1.401.0: STEC OS handed that
     one, not the planner; its piece and its model calls are left out of the
     member's part)."""
     reviews = Counter(str(h.get("member") or "") for h in _finish_review_rows(record))
@@ -507,7 +507,7 @@ def planner_handed(record: Mapping[str, Any]) -> bool:
 
 def handed_to_a_member(record: Mapping[str, Any]) -> bool:
     """Did a team member work in this run at all? The planner handed it a
-    piece (:func:`planner_handed`), or — v1.401.0 — Iron Jarvis's own finish
+    piece (:func:`planner_handed`), or — v1.401.0 — STEC OS's own finish
     check handed it the change to review (:func:`finish_reviewed`). Only when
     neither did is the team row the planner working alone."""
     return planner_handed(record) or finish_reviewed(record)
@@ -531,7 +531,7 @@ def handed_count(records: Iterable[Mapping[str, Any]]) -> tuple[int, int, int]:
 
 def reviewed_count(records: Iterable[Mapping[str, Any]]) -> tuple[int, int]:
     """``(reviewed, ran)`` (v1.401.0): in how many of the runs that ran (as
-    :func:`handed_count` counts them) Iron Jarvis's own finish check handed
+    :func:`handed_count` counts them) STEC OS's own finish check handed
     the change to the team's reviewer (:func:`finish_reviewed`)."""
     live = _live(records)
     ran = [r for r in live if r.get("unscored_by") != "infrastructure" or handed_to_a_member(r)]
@@ -557,7 +557,7 @@ def handed_line(records: Iterable[Mapping[str, Any]]) -> str:
             f"run{'' if n == 1 else 's'}" + (f" ({skipped} did not run)" if skipped else "") + ".")
     reviewed, _ran = reviewed_count(records)
     if reviewed:
-        line += (f" Iron Jarvis's own finish check handed the change to the team's reviewer in "
+        line += (f" STEC OS's own finish check handed the change to the team's reviewer in "
                  f"{reviewed} of {n} run{'' if n == 1 else 's'}.")
     return line
 
@@ -570,7 +570,7 @@ def answer(team: tuple[Mapping[str, Any], list[Mapping[str, Any]]],
     t_config, t_records = team
     label = alone_label(t_config)
     if alone is None:
-        return f"{NOT_ENOUGH}: there is no {label}-alone row (Iron Jarvis on the planner's model, no team) yet."
+        return f"{NOT_ENOUGH}: there is no {label}-alone row (STEC OS on the planner's model, no team) yet."
     a_config, a_records = alone
     t_by = {_key(r): r for r in _live(t_records)}
     a_by = {_key(r): r for r in _live(a_records)}

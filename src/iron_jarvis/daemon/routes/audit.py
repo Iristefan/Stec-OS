@@ -86,7 +86,7 @@ def register(app: FastAPI, d) -> None:
         from fastapi.responses import PlainTextResponse
 
         lines = [
-            "# Iron Jarvis audit timeline",
+            "# STEC OS audit timeline",
             "",
             f"- entries: {len(entries)}",
         ]

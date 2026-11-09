@@ -11,7 +11,7 @@ F-E-1  A daemon that is ALIVE but not serving was never detected: the crash
        supervisor only sees a child that dies. Now a watchdog probes /health
        every 30s after boot; three misses with the child alive kills it so the
        exit ladder restarts it; a breaker stops a non-converging kill loop.
-F-E-2  Contract C2: ``ironjarvis serve`` exits 75 when an Iron Jarvis daemon
+F-E-2  Contract C2: ``ironjarvis serve`` exits 75 when a STEC OS daemon
        already owns the port. The old handler treated any exit as a crash and
        respawned forever (13 spawns in 10 min, a false "keeps crashing" toast).
        Now: adopt it when its version is ours; else sweep our image name and
@@ -569,7 +569,7 @@ def test_exit_75_with_our_version_adopts_the_existing_daemon(tmp_path):
     assert out["rec"]["restarts"] == 0
     assert out["sweeps"] == 0, "a same-version daemon must not be swept"
     assert any("adopted an existing daemon" in l for l in out["logs"]), out["logs"]
-    assert "Iron Jarvis — running" in out["tooltips"]
+    assert "STEC OS — running" in out["tooltips"]
 
 
 @requires_node
@@ -731,14 +731,14 @@ def test_the_plain_crash_ladder_stops_at_the_cap_and_says_so(tmp_path):
     """v1.226.0 called steady 60 s retries forever "solid"; v1.229.0 (audit D1)
     gives the ladder a ceiling. A daemon dying 2 s after every spawn: 10
     restarts inside 15 minutes, then the supervisor stops, toasts once more,
-    rebuilds the tray menu (the "Restart Iron Jarvis" item) and leaves no
+    rebuilds the tray menu (the "Restart STEC OS" item) and leaves no
     timer armed — the tray item is the way back, not a 60 s loop."""
     out = _sup("plain_crash", tmp_path)
     assert out["spawns"] == 11, f"the cap is 10 restarts: {out['spawns']} spawns in 1h"
     assert out["rec"]["capped"] is True
     assert out["integrity"] == 1, "three fast deaths must verify the install exactly once"
     assert len(out["notes"]) == 2, out["notes"]
-    assert "10 times in 15 minutes" in out["notes"][1] and "Restart Iron Jarvis" in out["notes"][1], out["notes"]
+    assert "10 times in 15 minutes" in out["notes"][1] and "Restart STEC OS" in out["notes"][1], out["notes"]
     assert out["timersArmed"] is False, "a capped ladder must not keep a restart timer armed"
     assert any("giving up" in l for l in out["logs"]), out["logs"]
     assert any("stopped (crashed too often" in t for t in out["tooltips"]), out["tooltips"]
@@ -892,9 +892,9 @@ def test_startup_dialog_shows_the_gate_reason():
     src = _src()
     # v1.249.0 (R-06): the call now passes a fourth argument (the context the
     # cause-classifier reads), so the window ends at `pendingUpdate,`.
-    # v1.358.0 (G30): the title says "Iron Jarvis did not start" — the
+    # v1.358.0 (G30): the title says "STEC OS did not start" — the
     # program's name, never the code's "daemon" (moved on purpose).
-    m = re.search(r'"Iron Jarvis did not start",(.{0,900}?)pendingUpdate,\n', src, re.S)
+    m = re.search(r'"STEC OS did not start",(.{0,900}?)pendingUpdate,\n', src, re.S)
     assert m, "startup()'s daemon-failure branch moved"
     assert "err && err.message" in m.group(1), "the dialog does not show the gate's reason"
 

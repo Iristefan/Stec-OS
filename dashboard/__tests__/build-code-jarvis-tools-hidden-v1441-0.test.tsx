@@ -1,6 +1,6 @@
 /**
- * v1.441.0 (review A5) — a coding tool that says it takes no Iron Jarvis
- * tools (Antigravity 1.5.2: no `mcpCapabilities`) shows no "Iron Jarvis
+ * v1.441.0 (review A5) — a coding tool that says it takes no STEC OS
+ * tools (Antigravity 1.5.2: no `mcpCapabilities`) shows no "STEC OS
  * tools" chip: the daemon's view says `jarvis_tools: false`. A session whose
  * view does not say so keeps the chip (and an older daemon never says).
  */
@@ -101,8 +101,8 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe("the Iron Jarvis tools chip", () => {
-  it("is hidden for a tool that takes no Iron Jarvis tools", async () => {
+describe("the STEC OS tools chip", () => {
+  it("is hidden for a tool that takes no STEC OS tools", async () => {
     setUp({ jarvis_tools: false });
     render(<BuildCodeView initialSession="app_1" onOpenedTerminal={() => {}} />);
     await screen.findByTestId("code-session-title");
@@ -112,7 +112,7 @@ describe("the Iron Jarvis tools chip", () => {
   it("stays for a session whose view does not say so", async () => {
     setUp({});
     render(<BuildCodeView initialSession="app_1" onOpenedTerminal={() => {}} />);
-    expect((await screen.findByTestId("code-jarvis-tools")).textContent).toBe("Iron Jarvis tools: off");
+    expect((await screen.findByTestId("code-jarvis-tools")).textContent).toBe("STEC OS tools: off");
   });
 
   it("decodes only an explicit false", () => {

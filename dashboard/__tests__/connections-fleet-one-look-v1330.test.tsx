@@ -591,7 +591,7 @@ describe("the last dash asides are plain words", () => {
 
   it("the Notifications blurb in Settings reads as a plain sentence", () => {
     const pieces = copyPieces("components/settings/SettingsHome.tsx").map((p) => p.text);
-    expect(pieces).toContain("Where Iron Jarvis messages you: Telegram, Slack, Discord and email.");
+    expect(pieces).toContain("Where STEC OS messages you: Telegram, Slack, Discord and email.");
     expect(pieces.filter((t) => /messages you/.test(t) && /[—–]/.test(t))).toEqual([]);
     expect(asides("components/settings/SettingsHome.tsx").filter((s) => /messages you/.test(s))).toEqual([]);
   });

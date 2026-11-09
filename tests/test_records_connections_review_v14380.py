@@ -292,7 +292,7 @@ REVIEW_REQUESTS = [
     ("add another Claude account for the firm", "account_add"),
     ("remove the DGX Spark server", "model_server_remove"),
     ("add my Ollama box to your list of model servers", "model_server_add"),
-    ("connect the vLLM server to Iron Jarvis at 10.0.0.8:8000", "model_server_add"),
+    ("connect the vLLM server to STEC OS at 10.0.0.8:8000", "model_server_add"),
     ("plug in my llama.cpp server at localhost:8081", "model_server_add"),
     ("set up a backup Codex login", "account_add"),
 ]

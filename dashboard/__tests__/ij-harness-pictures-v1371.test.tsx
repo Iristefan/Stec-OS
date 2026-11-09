@@ -21,7 +21,7 @@
  *  - a steer note the turn never read goes back in the box — watched (the
  *    done frame's list) AND unwatched (the turn ended while nobody looked);
  *  - a session already answering is rejoined; Stop posts the turn's stop;
- *  - an Iron Jarvis without the account list gets no account chip.
+ *  - a STEC OS without the account list gets no account chip.
  */
 import React from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";

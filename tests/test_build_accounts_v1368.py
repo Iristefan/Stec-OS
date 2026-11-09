@@ -423,7 +423,7 @@ async def test_a_limit_after_text_streamed_keeps_its_words_and_still_parks(tmp_p
 def test_a_pinned_refusal_never_carries_iron_proxys_hint(tmp_path, fake):
     """Iron-Proxy 1b1ea71 answers a parked CHOSEN account with a hint to
     "pick without a profile id" — take the next account. Inside a Build
-    session the user chooses; the refusal is Iron Jarvis's own sentence. The
+    session the user chooses; the refusal is STEC OS's own sentence. The
     fake answers with the vendored bundle's hint (checked present there)."""
     bundle = (Path(__file__).resolve().parents[1] / "desktop" / "vendor" / "iron-proxy"
               / "iron-proxy.mjs").read_text(encoding="utf-8")

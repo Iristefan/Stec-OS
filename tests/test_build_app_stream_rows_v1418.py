@@ -9,7 +9,7 @@ tool is doing, as it does it.
   outputDelta``, read from codex 0.157.0's own schema).
 * C4.3: Claude Code's own system messages (hooks, compacting, a refused
   action, a background helper's end) are notices in its words; a request
-  Iron Jarvis refuses (a hook callback) is said on the screen; every hook's
+  STEC OS refuses (a hook callback) is said on the screen; every hook's
   output is asked for (``--include-hook-events``).
 * C4.4: a step's output goes to the screen cut at 1,500 characters with
   ``more`` — the log keeps up to 20,000 (``EventLog.item_text``); a command's

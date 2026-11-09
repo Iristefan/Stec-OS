@@ -173,7 +173,7 @@ import { signedInOf } from "@/lib/paneAccounts";
 
 const LIGHT = "/iron-proxy?discover=0";
 const OUTDATED =
-  "The Iron-Proxy running on this PC is older than this Iron Jarvis needs — update it, or close it so Iron Jarvis starts its own.";
+  "The Iron-Proxy running on this PC is older than this STEC OS needs — update it, or close it so STEC OS starts its own.";
 
 function acct(over: Partial<IronProxyAccount> & Record<string, unknown>): IronProxyAccount {
   return {
@@ -261,7 +261,7 @@ describe("helpers", () => {
 
   it("knows the daemon's too-old sentence", () => {
     expect(isOutdatedError(OUTDATED)).toBe(true);
-    expect(isOutdatedError("Iron-Proxy refused Iron Jarvis's access token; turn Iron-Proxy off and on again.")).toBe(
+    expect(isOutdatedError("Iron-Proxy refused STEC OS's access token; turn Iron-Proxy off and on again.")).toBe(
       false,
     );
     expect(isOutdatedError(null)).toBe(false);
@@ -396,7 +396,7 @@ describe("a running Iron-Proxy that is too old", () => {
   });
 
   it("another running error (token refused) is shown plainly, not as the too-old banner", async () => {
-    const refused = "Iron-Proxy refused Iron Jarvis's access token; turn Iron-Proxy off and on again.";
+    const refused = "Iron-Proxy refused STEC OS's access token; turn Iron-Proxy off and on again.";
     serve(snap([WORK], { error: refused }));
     await mountCard();
     expect(await screen.findByText(refused)).toBeTruthy();

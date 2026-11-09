@@ -1,4 +1,4 @@
-"""v1.417.0 (C1.3b/C1.7) — a project checker's card says Iron Jarvis asks,
+"""v1.417.0 (C1.3b/C1.7) — a project checker's card says STEC OS asks,
 and names the checker; under "Don't ask" it shows no card at all (decision
 D1). Driven through the REAL stream lane with the fake ruff on the session's
 PATH (tests/test_harness_checkers_v1387)."""
@@ -20,7 +20,7 @@ async def test_a_checker_card_names_iron_jarvis_and_the_checker(env, monkeypatch
     cards = [f for f in asked if str(f.get("call_id", "")).startswith(C.CALL_ID_PREFIX)]
     assert len(cards) == 1, asked
     assert cards[0]["asker"] == "iron_jarvis"
-    assert cards[0]["why"] == A.checker_why("ruff") == "Iron Jarvis runs the project's own checker ruff"
+    assert cards[0]["why"] == A.checker_why("ruff") == "STEC OS runs the project's own checker ruff"
 
 
 async def test_under_dont_ask_the_checker_runs_with_no_card(env, monkeypatch):  # noqa: F811 — the fixture

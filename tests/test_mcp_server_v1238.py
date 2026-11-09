@@ -501,7 +501,7 @@ def test_an_unknown_pane_token_says_what_to_do_after_a_restart(harness):
     """The restart sentence, verbatim from plan 12.2.
 
     Tokens are memory-only, so this is the state EVERY user reaches the first
-    time they restart Iron Jarvis with a harness still running.
+    time they restart STEC OS with a harness still running.
     """
     response = harness.post({"jsonrpc": "2.0", "id": 11, "method": "ping"},
                             token="a-token-no-store-has-ever-seen")
@@ -871,7 +871,7 @@ def test_the_shim_reports_an_unreachable_daemon_instead_of_hanging():
                                               headers={})])
     shim = stdio_shim.StdioShim("http://127.0.0.1:8787/mcp", "t", poster=poster)
     body = json.loads(shim.handle_line('{"jsonrpc":"2.0","id":9,"method":"ping"}'))
-    assert "cannot reach Iron Jarvis" in body["error"]["message"]
+    assert "cannot reach STEC OS" in body["error"]["message"]
 
 
 def test_the_shim_runs_a_whole_stream_and_skips_only_the_notification():
@@ -1156,7 +1156,7 @@ def test_the_ask_timeout_fits_inside_the_shims_own_round_trip_ceiling():
 
     The stdio shim bounds ONE round trip at ``DEFAULT_TIMEOUT_S``; an MCP ask
     blocks inside that trip. If the pause outlives it the harness reports
-    "cannot reach Iron Jarvis" while the card is still on the user's screen, and
+    "cannot reach STEC OS" while the card is still on the user's screen, and
     their answer then resolves a request that has already gone. A RATIO, not a
     wall clock: no test here asserts how long anything takes.
     """

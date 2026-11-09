@@ -91,7 +91,7 @@ def test_a_question_whose_send_failed_leaves_the_phone_its_lines(tmp_path):
         fake = FlakyTelegram()
         _phone(client, fake)
         _fire(client)
-        assert fake.failed and fake.failed[0].startswith("Iron Jarvis: Workflow"), fake.failed
+        assert fake.failed and fake.failed[0].startswith("STEC OS: Workflow"), fake.failed
         _wait(lambda: PARK_LINE in fake.texts(), what="the park line on the phone")
         assert any(t.startswith(SCHEDULE_HEAD) for t in fake.texts()), fake.texts()
 

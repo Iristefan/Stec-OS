@@ -3,7 +3,7 @@
 Runs real inference through the Grok CLI's *on-disk session* — no xAI API key.
 The bearer token the CLI keeps in ``~/.grok/auth.json`` calls the same proxy the
 CLI itself uses (``cli-chat-proxy.grok.com/v1``), so a logged-in Grok CLI
-doubles as a routable Iron Jarvis provider.
+doubles as a routable STEC OS provider.
 
 The wire shape was verified LIVE (2026-07-04) — do not "simplify" it blind:
 
@@ -503,7 +503,7 @@ class GrokCliAdapter(LLMAdapter):
             detail = _error_detail(resp)
             if status == 426:
                 detail = (
-                    f"{detail} (Iron Jarvis sent x-grok-client-version="
+                    f"{detail} (STEC OS sent x-grok-client-version="
                     f"{version}; run `grok update` if the proxy rejects it)"
                 )
             # Typed error so the router classifies transient (429/5xx) vs
@@ -626,7 +626,7 @@ class GrokCliAdapter(LLMAdapter):
                 detail = _error_detail(resp)
                 if status == 426:
                     detail = (
-                        f"{detail} (Iron Jarvis sent x-grok-client-version="
+                        f"{detail} (STEC OS sent x-grok-client-version="
                         f"{version}; run `grok update` if the proxy rejects it)"
                     )
                 raise _with_signal(

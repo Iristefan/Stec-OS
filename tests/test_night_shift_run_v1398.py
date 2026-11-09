@@ -283,6 +283,6 @@ async def test_a_scripted_night_three_tasks_two_folders_a_declined_card_and_emer
     # The user's main checkouts are byte-identical.
     assert snapshot(repo_a) == before_a
     assert snapshot(repo_b) == before_b
-    # No turn Iron Jarvis started is left listed as running.
+    # No turn STEC OS started is left listed as running.
     await until(lambda: not N.unattended_turns(), 30)
     assert not N.unattended_turns()

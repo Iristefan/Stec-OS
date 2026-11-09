@@ -2,11 +2,11 @@
  * v1.354.0 (product-readiness G30 + G31): IRON JARVIS, NOT "THE DAEMON", and
  * coming back is visible.
  *
- * ACCEPTANCE (G30): with the service stopped, a new user sees "Iron Jarvis
+ * ACCEPTANCE (G30): with the service stopped, a new user sees "STEC OS
  * isn't responding." with "Your chats and files are saved"; no chat bubble,
  * banner, Status headline or splash contains the word daemon.
  * ACCEPTANCE (G31): after the desktop app restarts the service, the user sees
- * "Iron Jarvis is back." for a few seconds.
+ * "STEC OS is back." for a few seconds.
  *
  * Driven through the REAL DaemonBanner, OfflineHint and Status view, with
  * only the daemon context and the transport mocked. The chat page's own half
@@ -60,7 +60,7 @@ vi.mock("@/lib/api", () => {
     API_BASE: "http://127.0.0.1:8787",
     ijToken: () => "",
     get: async () => {
-      throw new FakeApiError("Iron Jarvis isn't responding", 0);
+      throw new FakeApiError("STEC OS isn't responding", 0);
     },
     post: async () => ({}),
     put: async () => ({}),
@@ -141,10 +141,10 @@ afterEach(() => {
   setDesktop(false);
 });
 
-describe("G30 — the outage says Iron Jarvis, and what is safe", () => {
+describe("G30 — the outage says STEC OS, and what is safe", () => {
   it("the words, in one place", () => {
-    expect(OFFLINE_WORDS).toBe("Iron Jarvis isn't responding");
-    expect(OFFLINE_TITLE).toBe("Iron Jarvis isn't responding.");
+    expect(OFFLINE_WORDS).toBe("STEC OS isn't responding");
+    expect(OFFLINE_TITLE).toBe("STEC OS isn't responding.");
     expect(OFFLINE_SAVED_SENTENCE).toMatch(/^Your chats and files are saved/);
     // components/ui re-exports the same words beside its primitives.
     expect(UI_OFFLINE_WORDS).toBe(OFFLINE_WORDS);
@@ -153,7 +153,7 @@ describe("G30 — the outage says Iron Jarvis, and what is safe", () => {
   it.each([
     ["inside the desktop app", true],
     ["in a browser tab", false],
-  ])("the banner, %s: 'Iron Jarvis isn't responding.' + 'Your chats and files are saved', never 'daemon'", (_n, desktop) => {
+  ])("the banner, %s: 'STEC OS isn't responding.' + 'Your chats and files are saved', never 'daemon'", (_n, desktop) => {
     setDesktop(desktop);
     render(<DaemonBanner />);
     const banner = screen.getByTestId("daemon-banner-offline");
@@ -199,12 +199,12 @@ describe("G30 — the outage says Iron Jarvis, and what is safe", () => {
     expect(screen.queryByText(/Daemon offline/i)).toBeNull();
   });
 
-  it("a chat bubble's stall and preparation words say Iron Jarvis", () => {
+  it("a chat bubble's stall and preparation words say STEC OS", () => {
     for (const s of [stallDetail(90_000), prepDetail(11 * 60_000)]) {
-      expect(s).toContain("Iron Jarvis");
+      expect(s).toContain("STEC OS");
       expect(s).not.toMatch(/daemon/i);
     }
-    expect(stallDetail(90_000)).toMatch(/^Nothing came back from Iron Jarvis for 90 s/);
+    expect(stallDetail(90_000)).toMatch(/^Nothing came back from STEC OS for 90 s/);
   });
 
   it("the offline stream frame and a status-0 error carry the same words", () => {
@@ -218,15 +218,15 @@ describe("G30 — the outage says Iron Jarvis, and what is safe", () => {
     }
   });
 
-  it("the splash says 'Getting Iron Jarvis ready', never daemon", () => {
+  it("the splash says 'Getting STEC OS ready', never daemon", () => {
     const html = readFileSync(path.join(ROOT, "..", "desktop", "loading.html"), "utf8");
-    expect(html).toContain("Getting Iron Jarvis ready");
+    expect(html).toContain("Getting STEC OS ready");
     expect(html).not.toMatch(/daemon/i);
   });
 });
 
 describe("G31 — coming back is visible", () => {
-  it("after an outage: 'Iron Jarvis is back.' for a few seconds, then nothing", async () => {
+  it("after an outage: 'STEC OS is back.' for a few seconds, then nothing", async () => {
     vi.useFakeTimers();
     const view = render(<DaemonBanner />);
     expect(screen.getByTestId("daemon-banner-offline")).toBeInTheDocument();

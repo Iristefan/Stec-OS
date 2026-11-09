@@ -55,7 +55,7 @@ class HostedSessionRecord(SQLModel, table=True):
     #: v1.414.0: the session's Capabilities — the five boxes a Build
     #: terminal has (``terminals/session.PANE_CAPABILITY_KEYS``), JSON, ALL
     #: OFF until the user ticks one. Browser and Memory give the coding tool
-    #: Iron Jarvis's own MCP connection (``hosted/jarvis_tools``). "" = none.
+    #: STEC OS's own MCP connection (``hosted/jarvis_tools``). "" = none.
     capabilities_json: str = ""
     #: v1.431.0: a Pi session whose user pressed "Load them for this session":
     #: Pi starts with ``--approve`` (trusts the folder's own extensions,

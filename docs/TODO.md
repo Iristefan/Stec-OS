@@ -457,7 +457,7 @@ API.
   `registerHotkey` tries `Ctrl+Shift+J` then `Ctrl+Alt+J`, keeps
   `hotkeyState = {window, spotlight}` (registered accelerator or null),
   retries every 30 min and on `browser-window-focus` while a rung is null
-  (one toast per process); the tray reads "Open Iron Jarvis (Ctrl+Alt+J)" or
+  (one toast per process); the tray reads "Open STEC OS (Ctrl+Alt+J)" or
   "… — hotkey unavailable (taken by another app)", the app-menu accelerator
   is the real key, the tray hint no longer hard-codes a key; sender-checked
   IPC `shell:getState` → preload `window.ironjarvis.shell.getState()`;
@@ -503,7 +503,7 @@ API.
   regardless of uptime — the 5-minute healthy reset used to zero the ladder
   before every increment, so a child dying every 6 minutes was restarted
   forever with no toast. Harness: `h1b_periodic.js`.
-- [x] D4 the tray tooltip returns to "Iron Jarvis — running": `markTrayDegraded`
+- [x] D4 the tray tooltip returns to "STEC OS — running": `markTrayDegraded`
   / `markTrayHealthy` keep a per-service degraded set; the healthy-reset
   branch of the ladder and the watchdog's next healthy `/health` clear their
   service, and the tooltip resets only when no service is degraded.
@@ -525,7 +525,7 @@ API.
   before anything moved; files the archive lacks are kept) and schedules
   `_graceful_stop`; the CLI `restore` shares `extract_backup`. Settings →
   Maintenance → **Restore from backup…** picks an archive, confirms by name
-  with "Iron Jarvis restarts right after", shows a 409 verbatim.
+  with "STEC OS restarts right after", shows a 409 verbatim.
 
 ## Carried out of the 2026-09-04 audit, Wave 2 (v1.228.0)
 

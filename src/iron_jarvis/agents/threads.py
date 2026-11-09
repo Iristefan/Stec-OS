@@ -91,14 +91,14 @@ _TRANSCRIPT_CHARS_PER_TOKEN = 3.5
 #: Speaker labels for the chat-history rows the client sends (v1.284.0).
 #: ``who`` is ``"user"`` / ``"jarvis"`` / a participant key; a key resolves to
 #: the participant's name+role like the room's own entries do.
-_CHAT_WHO_LABELS = {"user": "User", "jarvis": "Iron Jarvis"}
+_CHAT_WHO_LABELS = {"user": "User", "jarvis": "STEC OS"}
 #: Rows of conversation a REMOTE is sent as messages (v1.285.0) — its transport
 #: has no window ladder this daemon can read, so a fixed, generous tail.
 _REMOTE_HISTORY_ROWS = 80
 #: The header a chat-backed transcript opens with, so a speaker knows the
-#: "Iron Jarvis" lines are the assistant's earlier answers in the same chat.
+#: "STEC OS" lines are the assistant's earlier answers in the same chat.
 _CHAT_TRANSCRIPT_HEADER = (
-    "The conversation so far — the user's chat with Iron Jarvis and this "
+    "The conversation so far — the user's chat with STEC OS and this "
     "panel, oldest first:"
 )
 
@@ -566,8 +566,8 @@ def panel_transcript(
 
     NOT ``routes.chat._share_transcript``, and that is a data-shape fact rather
     than a duplicate: chat's renderer has a speaker vocabulary two words wide
-    ("You" / "Iron Jarvis") because a chat has two speakers. Flattening five
-    panelists into "Iron Jarvis" would store a memory that cannot answer the one
+    ("You" / "STEC OS") because a chat has two speakers. Flattening five
+    panelists into "STEC OS" would store a memory that cannot answer the one
     question worth asking of a round table later — who concluded what. Honest
     errors ride along as their own labelled line for the same reason the share
     renderer keeps its footnotes: a panelist that could NOT answer is part of
@@ -960,7 +960,7 @@ class AgentThreads:
         if who in names:
             return names[who]
         # An agent that answered in this chat but is not (or no longer) in THIS
-        # room — still an agent, never the user and never Iron Jarvis.
+        # room — still an agent, never the user and never STEC OS.
         return f"{who.split(':', 1)[1]} (agent)" if ":" in who else who
 
     @classmethod
@@ -1414,7 +1414,7 @@ class AgentThreads:
                 seen_msgs, seen_round, seen_history = messages, new_entries, chat_history
             if seen_history is not None:
                 # THE CHAT IS THE SPINE (v1.284.0): everything the user and
-                # Iron Jarvis said, plus earlier panel replies as they landed in
+                # STEC OS said, plus earlier panel replies as they landed in
                 # chat, then this round's entries so the second speaker sees
                 # the first's answer. Budgeting + rendering is real work over
                 # a possibly long conversation — off the loop (v1.153.1 rule).
@@ -1679,7 +1679,7 @@ class AgentThreads:
     ) -> list[dict[str, str]]:
         """The exchange as the REMOTE should read it (v1.285.0): ``[{role,
         content}]`` — the user's lines as ``user``; its OWN earlier lines as
-        ``assistant`` unprefixed; everyone else (Iron Jarvis, other seats) as
+        ``assistant`` unprefixed; everyone else (STEC OS, other seats) as
         ``assistant`` with the speaker named, so a two-party transport still
         carries a many-party conversation honestly. Blank rows are skipped."""
         names = {
@@ -1718,7 +1718,7 @@ class AgentThreads:
     @staticmethod
     async def _reply_token_for(record: Any, d: Any) -> str:
         """This computer's inbound token for ``record`` — sent beside
-        ``reply_to`` ONLY when the remote is another Iron Jarvis's task door
+        ``reply_to`` ONLY when the remote is another STEC OS's task door
         (v1.357.0, G61), so that computer can post its answer home. Every
         other remote is handed nothing new (its body stays byte-identical).
         The vault read is off the loop; any miss is "" (no key sent)."""
@@ -1736,7 +1736,7 @@ class AgentThreads:
 
     @staticmethod
     def _local_only_for_door(record: Any) -> bool:
-        """A LOCAL-ONLY chat that @-mentions another Iron Jarvis (v1.357.0,
+        """A LOCAL-ONLY chat that @-mentions another STEC OS (v1.357.0,
         G61) tells that computer so: it is on this network (the seat check
         above let it speak), but the model IT answers with might not be — so
         the door refuses there instead of handing this chat to a cloud model.
@@ -1782,7 +1782,7 @@ class AgentThreads:
         if history is not None:
             brief = (
                 f"You are {p['name']}, the {p['role']} in this conversation with the "
-                f"user (and Iron Jarvis, their assistant). Answer the user's latest "
+                f"user (and STEC OS, their assistant). Answer the user's latest "
                 f"message; keep it under ~200 words unless asked for more."
             )
             if project_room:

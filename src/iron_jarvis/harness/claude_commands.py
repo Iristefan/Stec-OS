@@ -772,11 +772,11 @@ def find(folders: Iterable[str], name: str) -> Command | None:
 _BANG_INLINE_RX = re.compile(r"(?:^|(?<=\s))!`[^`]+`", re.M)
 _BANG_BLOCK_RX = re.compile(r"```!\s*\n?[\s\S]*?\n?```")
 
-#: The one sentence a command with shell lines gets: Iron Jarvis never runs
+#: The one sentence a command with shell lines gets: STEC OS never runs
 #: them; the model may, through its own shell tool (so the session's approval
 #: rules and the git guard apply).
 SHELL_LINES_NOTE = (
-    "This command has shell lines (written as !`…` or in a ```! block). Iron Jarvis did not run "
+    "This command has shell lines (written as !`…` or in a ```! block). STEC OS did not run "
     "them. Run each one yourself with your shell tool first, then use what it prints."
 )
 #: v1.381.0 (the user's decision, 2026-10-23): a PROJECT's or a PLUGIN's

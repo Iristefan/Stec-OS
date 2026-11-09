@@ -1,7 +1,7 @@
 """Agent-facing Motivation Layer tools (§19 tool interface).
 
 ``goal_add`` lets an agent (or the user via the agent loop) record a *standing
-goal* Iron Jarvis should carry forward; ``goal_list`` reads them back. Recording
+goal* STEC OS should carry forward; ``goal_list`` reads them back. Recording
 a goal NEVER acts on it — whether a goal ever turns into a self-initiated session
 is governed entirely by the goal's autonomy dial + budget and the global
 ``config.autonomy_enabled`` flag, which are OFF / suggest-only by default. Both
@@ -18,11 +18,11 @@ from ..tools.base import Reversibility, Tool, ToolContext, ToolResult
 
 
 class GoalAddTool(Tool):
-    """Record a standing goal for Iron Jarvis to deliberate toward later."""
+    """Record a standing goal for STEC OS to deliberate toward later."""
 
     name = "goal_add"
     description = (
-        "Record a STANDING GOAL Iron Jarvis should keep working toward over time "
+        "Record a STANDING GOAL STEC OS should keep working toward over time "
         "(e.g. 'keep my inbox under 20 unread', 'ship the v2 docs'). This only "
         "records the intent — it never acts on its own. Whether a goal ever leads "
         "to a self-initiated action is gated by its autonomy dial (default "
@@ -80,11 +80,11 @@ class GoalAddTool(Tool):
 
 
 class GoalListTool(Tool):
-    """List the standing goals Iron Jarvis is holding."""
+    """List the standing goals STEC OS is holding."""
 
     name = "goal_list"
     description = (
-        "List the standing goals Iron Jarvis is currently holding (and their status/dial), and "
+        "List the standing goals STEC OS is currently holding (and their status/dial), and "
         "the goals from chat (each runs as agent work; listed apart, by id)."
     )
     permission_key = "goal_list"

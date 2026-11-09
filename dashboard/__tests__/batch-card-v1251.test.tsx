@@ -296,7 +296,7 @@ describe("a folder of documents is offered as one summary sheet", () => {
     // page). It stays because it is worth pinning that typing while a run is in
     // flight changes nothing about the progress, and because those words are
     // what the card reads AT THE PRESS for the sheet's instructions.
-    fireEvent.change(await screen.findByPlaceholderText(/Message Iron Jarvis/), {
+    fireEvent.change(await screen.findByPlaceholderText(/Message STEC OS/), {
       target: { value: "per client please" },
     });
 

@@ -94,7 +94,7 @@ describe("the count it says is the count it copied", () => {
 describe("never a silent nothing found", () => {
   it("says the daemon's line when a source could not be read", async () => {
     const line =
-      "Nothing to report: Iron Jarvis ran into no problems in the coding sessions and their model team in " +
+      "Nothing to report: STEC OS ran into no problems in the coding sessions and their model team in " +
       "the last 7 days (could not read: the tool-call ledger).";
     api.gets[ALL] = { text: line, problems: 0, listed: 0, complete: false };
     render(<FixRequestButton />);
@@ -106,7 +106,7 @@ describe("never a silent nothing found", () => {
 
   it("says the daemon's line when calls were left out", async () => {
     const line =
-      "Nothing to report: Iron Jarvis ran into no problems in the coding sessions and their model team in " +
+      "Nothing to report: STEC OS ran into no problems in the coding sessions and their model team in " +
       "the last 7 days (1 call from coding sessions whose replies could not be read (whether they ended " +
       "at low trust is not known) were left out).";
     api.gets[ALL] = { text: line, problems: 0, listed: 0, complete: false };
@@ -117,7 +117,7 @@ describe("never a silent nothing found", () => {
 
   it("a plain nothing-to-report keeps its short words", async () => {
     api.gets[ALL] = {
-      text: "Nothing to report: Iron Jarvis ran into no problems in the coding sessions and their model team in the last 7 days.",
+      text: "Nothing to report: STEC OS ran into no problems in the coding sessions and their model team in the last 7 days.",
       problems: 0,
       listed: 0,
       complete: true,

@@ -1,6 +1,6 @@
 """v1.423.0 (Wave 3 lane D): "Copy as a fix request" includes what the
 REVIEWERS found — the team's way of working, which the developer can improve
-in Iron Jarvis (the briefs, the standard, the router), never the user's code.
+in STEC OS (the briefs, the standard, the router), never the user's code.
 
 Lane A records each reviewer finding (``agents/team_findings.TeamFinding``)
 and the lead's answer settles it; this lane reads those records into four new

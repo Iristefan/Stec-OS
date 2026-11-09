@@ -2,12 +2,12 @@
 closed-window ask toast uses the approval card's own words and names the
 run's task (the re-audit's L7 "Approval flow" / K "Why is Jarvis doing it?").
 
-G30 (the re-audit, file:line on v1.357.0): the tray tooltip said "Iron Jarvis —
+G30 (the re-audit, file:line on v1.357.0): the tray tooltip said "STEC OS —
 the daemon keeps stalling", the watchdog toast "The daemon stopped answering
-repeatedly…", the crash-loop tooltip "Iron Jarvis — daemon is restarting
+repeatedly…", the crash-loop tooltip "STEC OS — daemon is restarting
 repeatedly" and toast "The daemon keeps crashing…", and the startup dialog's
-window title "Iron Jarvis — daemon did not start". VOCABULARY.md: the program
-the window talks to is **Iron Jarvis**; the window's own server is "the Iron
+window title "STEC OS — daemon did not start". VOCABULARY.md: the program
+the window talks to is **STEC OS**; the window's own server is "the Iron
 Jarvis dashboard".
 
 THE TOAST: desktop/main.js kept its own six-entry table, so `edit_file` read
@@ -46,7 +46,7 @@ DESKTOP_AHEAD: dict[str, str] = {}
 
 
 # --------------------------------------------------------------------------- #
-# G30 — tray, toasts and dialogs say "Iron Jarvis", never "daemon"
+# G30 — tray, toasts and dialogs say "STEC OS", never "daemon"
 # --------------------------------------------------------------------------- #
 
 _CRASH = """
@@ -55,7 +55,7 @@ const path = require("path");
 const notes = [];
 let tray = { setToolTip(t) { notes.push("tooltip:" + t); } };
 class Notification { constructor(o) { this.o = o; } show() { notes.push("toast:" + this.o.title + "|" + this.o.body); } }
-const userDataDir = "C:/Users/x/AppData/Roaming/Iron Jarvis";
+const userDataDir = "C:/Users/x/AppData/Roaming/STEC OS";
 eval(decl("_services")); eval(decl("_trayDegraded"));
 for (const f of ["markTrayDegraded", "markTrayHealthy", "notifyCrashLoop", "notifyWatchdogExhausted"]) eval(fnSource(f));
 const out = {};
@@ -79,22 +79,22 @@ process.stdout.write(JSON.stringify(out) + "\\n");
 def test_the_crash_loop_and_the_watchdog_say_iron_jarvis_never_daemon(tmp_path):
     out = _run(_CRASH.replace("__EXTRACT__", _EXTRACT), tmp_path, "crash_words")
     daemon = out["daemon"]
-    # The code's label "daemon" is the program the window talks to: Iron Jarvis.
-    assert "tooltip:Iron Jarvis is restarting repeatedly (check logs)" in daemon, daemon
-    assert "tooltip:Iron Jarvis stopped (crashed too often; Restart from the tray)" in daemon, daemon
-    assert any(n.startswith("toast:Iron Jarvis — problem|Iron Jarvis keeps crashing") for n in daemon), daemon
+    # The code's label "daemon" is the program the window talks to: STEC OS.
+    assert "tooltip:STEC OS is restarting repeatedly (check logs)" in daemon, daemon
+    assert "tooltip:STEC OS stopped (crashed too often; Restart from the tray)" in daemon, daemon
+    assert any(n.startswith("toast:STEC OS — problem|STEC OS keeps crashing") for n in daemon), daemon
     assert any(
-        n.endswith("|Iron Jarvis crashed 10 times in 15 minutes and is no longer being restarted.")
+        n.endswith("|STEC OS crashed 10 times in 15 minutes and is no longer being restarted.")
         for n in daemon
     ), "a caller's (who) => body must get the plain subject"
     assert any(n.endswith("|a plain body still works") for n in daemon), "a string body is unchanged"
     # The dashboard child keeps its own name, the startup classifier's words.
     dash = out["dashboard"]
-    assert "tooltip:Iron Jarvis — the dashboard is restarting repeatedly (check logs)" in dash, dash
-    assert any(n.startswith("toast:Iron Jarvis — problem|The Iron Jarvis dashboard keeps crashing") for n in dash)
+    assert "tooltip:STEC OS — the dashboard is restarting repeatedly (check logs)" in dash, dash
+    assert any(n.startswith("toast:STEC OS — problem|The STEC OS dashboard keeps crashing") for n in dash)
     watchdog = out["watchdog"]
-    assert "tooltip:Iron Jarvis keeps stalling (Restart from the tray)" in watchdog, watchdog
-    assert any("|Iron Jarvis stopped answering repeatedly" in n for n in watchdog), watchdog
+    assert "tooltip:STEC OS keeps stalling (Restart from the tray)" in watchdog, watchdog
+    assert any("|STEC OS stopped answering repeatedly" in n for n in watchdog), watchdog
     for note in daemon + dash + watchdog:
         assert not DAEMON.search(note), f"the shell said the code's word to a person: {note!r}"
 
@@ -106,7 +106,7 @@ def test_the_day_window_toast_with_the_daemon_label_says_iron_jarvis(tmp_path):
     toasts — in the program's name."""
     out = _run(_PERIODIC.replace("__EXTRACT__", _EXTRACT), tmp_path, "periodic_words")
     assert len(out["toasts"]) == 1, out["toasts"]
-    assert out["toasts"][0].startswith("Iron Jarvis has crashed 3 times in the last 24 hours"), out["toasts"]
+    assert out["toasts"][0].startswith("STEC OS has crashed 3 times in the last 24 hours"), out["toasts"]
     for line in out["toasts"] + out["tooltips"]:
         assert not DAEMON.search(line), line
 
@@ -119,8 +119,8 @@ def test_the_startup_gate_reasons_shown_under_details_say_iron_jarvis(tmp_path):
     early = _gate({"exitCode": 1}, tmp_path)["result"]["message"]
     other = _gate({"healthVersion": "1.200.0"}, tmp_path)["result"]["message"]
     foreign = _gate({"owner": "notoken", "foreignNotified": True}, tmp_path)["result"]["message"]
-    assert early.startswith("Iron Jarvis stopped while starting") and "port in use?" in early, early
-    assert "different version" in other and "Iron Jarvis did not answer within" in other, other
+    assert early.startswith("STEC OS stopped while starting") and "port in use?" in early, early
+    assert "different version" in other and "STEC OS did not answer within" in other, other
     assert "not ours" in foreign and "stop it or change its port" in foreign, foreign
     for msg in (early, other, foreign):
         assert not DAEMON.search(msg), msg
@@ -128,10 +128,10 @@ def test_the_startup_gate_reasons_shown_under_details_say_iron_jarvis(tmp_path):
 
 def test_the_startup_failure_dialog_title_is_the_programs_name():
     src = _src()
-    assert '"Iron Jarvis did not start",' in src
+    assert '"STEC OS did not start",' in src
     assert "daemon did not start" not in src
     # Anti-vacuity: the dashboard's own failure keeps its own title.
-    assert '"Iron Jarvis — dashboard did not start",' in src
+    assert '"STEC OS — dashboard did not start",' in src
 
 
 # --------------------------------------------------------------------------- #

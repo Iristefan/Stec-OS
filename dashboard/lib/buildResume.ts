@@ -23,14 +23,14 @@
 import type { BuildMessage } from "@/lib/buildSessions";
 
 /** The one line on a reply that carried on a cut-off one. */
-export const RESUMED_LINE = "Carried on by itself after Iron Jarvis restarted.";
+export const RESUMED_LINE = "Carried on by itself after STEC OS restarted.";
 /** A cut-off reply's line once the app carried it on. */
 export const CUT_CARRIED_ON =
-  "Iron Jarvis stopped here (an update, a restart or a crash). It carried on by itself below.";
+  "STEC OS stopped here (an update, a restart or a crash). It carried on by itself below.";
 /** The Timeline's note on a reply that carried on a cut-off one. */
 export const TIMELINE_RESUMED = "This reply carried on the one a restart cut off.";
 /** The Timeline's note on a reply a stop cut off (it kept what ran). */
-export const TIMELINE_CUT = "Iron Jarvis stopped while this reply worked. This is what ran before it stopped.";
+export const TIMELINE_CUT = "STEC OS stopped while this reply worked. This is what ran before it stopped.";
 /** …and, when it was carried on. */
 export const TIMELINE_CUT_CARRIED = `${TIMELINE_CUT} It carried on in the next reply.`;
 /** The Timeline's reply list marks a reply that carried on. */

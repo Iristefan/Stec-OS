@@ -150,7 +150,7 @@ const ROWS: Readonly<Record<string, Row>> = {
     href: "/terminals",
     still: "Your terminals keep working; only their history after a restart is at risk.",
   },
-  // Steps that run once when Iron Jarvis starts.
+  // Steps that run once when STEC OS starts.
   requeue_assignments: {
     label: "Queued tasks",
     problem: "Queued tasks weren't picked back up after the restart",
@@ -169,7 +169,7 @@ const ROWS: Readonly<Record<string, Row>> = {
   },
   probe_cli_logins: {
     label: "Sign-in check",
-    problem: "Your sign-ins weren't checked when Iron Jarvis started",
+    problem: "Your sign-ins weren't checked when STEC OS started",
     href: "/connections",
     still: "",
   },

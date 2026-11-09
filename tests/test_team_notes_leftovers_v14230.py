@@ -11,7 +11,7 @@ notes, each pinned RED on the round-2 code first.
 5. TEAM-NOTES.md WAS OVERWRITTEN BY A SAVE THAT LANDED MID-RENDER.
    ``team_notes.render`` checked for a hand edit, then wrote — with no
    re-read right before the write, so a save the user made in between (an
-   editor open on the file) was replaced by Iron Jarvis's text. The file is
+   editor open on the file) was replaced by STEC OS's text. The file is
    now read AGAIN right before the replace (the ``profile/share.
    _atomic_write(expect=)`` pattern) and the write is abandoned when it
    changed: the user's file is kept and said like any hand edit.
@@ -38,7 +38,7 @@ from tests.test_team_notes_v14230 import (
 )
 
 OTHER = "Keep a test beside every new function"
-USERS = "# Working habits\n\n- my own line, saved while Iron Jarvis was writing\n"
+USERS = "# Working habits\n\n- my own line, saved while STEC OS was writing\n"
 
 
 @pytest.fixture
@@ -104,10 +104,10 @@ def _second(p) -> CoachProposalRecord:
 
 
 def test_a_save_landing_while_iron_jarvis_rewrites_its_own_file_is_kept(plat, monkeypatch):
-    """TEAM-NOTES.md holds exactly what Iron Jarvis last wrote; a second
+    """TEAM-NOTES.md holds exactly what STEC OS last wrote; a second
     habit is accepted; the user saves the file AFTER the hand-edit check
     (here: while the previous text's revision copy is written) and BEFORE
-    the replace. The user's save wins: kept, said, and Iron Jarvis's
+    the replace. The user's save wins: kept, said, and STEC OS's
     last-written text is unchanged (so it reads as a hand edit)."""
     _accepted(plat)
     path = TN.notes_path(plat, WORKER)
@@ -158,7 +158,7 @@ def test_a_file_the_user_creates_while_iron_jarvis_writes_the_first_one_is_kept(
 
 
 def test_with_no_save_in_between_the_file_is_written_as_before(plat):
-    """The control: nothing changed meanwhile — written, and Iron Jarvis's
+    """The control: nothing changed meanwhile — written, and STEC OS's
     text recorded."""
     _accepted(plat)
     out = TN.accept(plat, _second(plat).id)

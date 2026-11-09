@@ -419,7 +419,7 @@ describe("the Iron-Proxy accounts in the Claude group", () => {
     expect(reads()).toBeGreaterThanOrEqual(2); // read again on open (and every few seconds while open)
   });
 
-  it("an Iron Jarvis with no account list (a 404) is not asked again when the menu opens", async () => {
+  it("a STEC OS with no account list (a 404) is not asked again when the menu opens", async () => {
     api.gets["/build/accounts"] = new api.ApiError("no such route", 404);
     api.gets["/build/sessions/s1"] = view({ setup: { provider: "claude-cli", model: "claude-opus-4-8" } });
     renderSession();
@@ -579,7 +579,7 @@ describe("picking a model under an account", () => {
 describe("no account list: Claude Code is the one row it always was", () => {
   for (const [why, answer] of [
     ["Iron-Proxy is off", { claude: [], codex: [], iron_proxy: PROXY_OFF }],
-    ["an older Iron Jarvis (404)", new api.ApiError("no such route", 404)],
+    ["an older STEC OS (404)", new api.ApiError("no such route", 404)],
     ["the list is not read yet", () => new Promise(() => {})],
   ] as const) {
     it(why, async () => {

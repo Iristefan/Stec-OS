@@ -430,7 +430,7 @@ describe("chat empty state: starters reach the fold (empty-state-doors-push-star
     const sub = await screen.findByRole("button", { name: DOOR_SUB }, DOORS_WAIT);
     expect(sub.compareDocumentPosition(chip) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     fireEvent.click(chip);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     await waitFor(() => expect(box.value).toBe(FIRST_CHIP));
     expect(H.streamRuns).toBe(0);
     expect(H.posts.filter((p) => p.path.startsWith("/chat"))).toEqual([]);

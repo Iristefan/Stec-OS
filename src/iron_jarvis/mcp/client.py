@@ -1,6 +1,6 @@
 """Minimal MCP (Model Context Protocol) client (§ external tool consumption).
 
-Iron Jarvis is an MCP *client*: it consumes tools exposed by external MCP
+STEC OS is an MCP *client*: it consumes tools exposed by external MCP
 *servers* (Gmail / Drive / GitHub / ...). This module speaks JSON-RPC 2.0 with
 the two methods every MCP server implements:
 

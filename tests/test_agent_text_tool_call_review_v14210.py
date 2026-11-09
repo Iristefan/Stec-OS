@@ -41,7 +41,7 @@ INLINE_QUOTE_REVIEW = (
 JSON_DOC = (
     "A model that has no tool parser writes its call like this:\n\n"
     '```json\n{"name": "read_file", "arguments": {"path": "a.py"}}\n```\n\n'
-    "Iron Jarvis reads it and tells the model once to make the call itself."
+    "STEC OS reads it and tells the model once to make the call itself."
 )
 
 

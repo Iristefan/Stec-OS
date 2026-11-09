@@ -1,6 +1,6 @@
 /**
  * BRAIN PROFILES (v1.406.0): which memory base is the user's primary durable
- * one (Notion, Obsidian, Iron Jarvis's own memory, a folder base, an MCP base)
+ * one (Notion, Obsidian, STEC OS's own memory, a folder base, an MCP base)
  * and how Jarvis treats it — search it first, where new knowledge is saved,
  * update an existing note instead of adding a duplicate, what to do on a
  * conflict, an optional trusted operating guide, skills loaded at the start,

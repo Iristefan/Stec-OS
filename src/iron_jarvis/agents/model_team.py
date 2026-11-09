@@ -832,7 +832,7 @@ TEAM_LEAD = (
     "test = running and fixing tests). Free and local members cost nothing; "
     "a member near its usage limit should get less. Or ask for a ROLE instead of a "
     "name — role:read, role:code, role:review or role:test as the helper's type — and "
-    "Iron Jarvis picks the member: a local one first when its record for that role is "
+    "STEC OS picks the member: a local one first when its record for that role is "
     "good, and no cloud account near its usage limit gets new work."
 )
 
@@ -1290,7 +1290,7 @@ def pinned_model(platform: Any, record: Any) -> str:
 # --------------------------------------------------------------------------- #
 #
 # The planner may name a ROLE instead of a member ("read these files", "write
-# this module", "review this change") and Iron Jarvis picks the member —
+# this module", "review this change") and STEC OS picks the member —
 # :func:`route_role`, the ONE function that decides (the doors only call it).
 #
 # THE FILTERS, in order: Local only (a member whose model leaves the network
@@ -2021,7 +2021,7 @@ def route_role(platform: Any, role: str, *, local_only: bool = False, caller_pin
     except Exception:  # noqa: BLE001
         log.warning("model team routing failed", exc_info=True)
         return RolePick(role, refusal=(
-            f"Iron Jarvis could not pick a team member for {noun} just now — name the member "
+            f"STEC OS could not pick a team member for {noun} just now — name the member "
             "you want, or do this piece yourself."), reason=f"not started: no member picked for {noun}")
 
 

@@ -17,7 +17,7 @@
  *  - background: the helpers working now and the programs the session
  *    started (GET …/programs), each with its state in words and a Stop for a
  *    running one (POST …/stop); read again every few seconds ONLY while one
- *    runs or the session works; an older Iron Jarvis (404) says nothing runs.
+ *    runs or the session works; an older STEC OS (404) says nothing runs.
  */
 import React from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -381,7 +381,7 @@ describe("background", () => {
     expect(list.querySelectorAll("li")).toHaveLength(1);
   });
 
-  it("says nothing runs when nothing does — and an older Iron Jarvis (404) is not an error", async () => {
+  it("says nothing runs when nothing does — and an older STEC OS (404) is not an error", async () => {
     delete api.gets[PROGRAMS];
     renderRail(view());
     expect(await screen.findByTestId("session-rail-background-none")).toBeTruthy();
@@ -507,7 +507,7 @@ describe("the review's fixes (v1.404.0)", () => {
   });
 
   it("a read that fails (not a 404) says so, never 'nothing is running'", async () => {
-    api.gets[PROGRAMS] = new api.ApiError("Iron Jarvis isn't responding", 0);
+    api.gets[PROGRAMS] = new api.ApiError("STEC OS isn't responding", 0);
     renderRail(view());
     expect((await screen.findByTestId("session-rail-background-error")).textContent).toContain("could not be read");
     expect(screen.queryByTestId("session-rail-background-none")).toBeNull();
@@ -536,7 +536,7 @@ describe("the review's fixes (v1.404.0)", () => {
     expect(row.textContent).toContain("Its command ended; what it started still runs · 1 min");
     expect(within(row).getByTestId("session-rail-program-stop")).toBeTruthy();
     expect(screen.getByTestId("session-rail-others").textContent).toBe(
-      "1 command left a program running. They are stopped when the session is archived or deleted, or when you quit Iron Jarvis.",
+      "1 command left a program running. They are stopped when the session is archived or deleted, or when you quit STEC OS.",
     );
     expect(screen.queryByTestId("session-rail-background-none")).toBeNull();
   });

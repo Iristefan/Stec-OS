@@ -11,7 +11,7 @@ driven as a request-scoped model client over ``--input-format stream-json``.
   and its conflict guard, the admission relay, frame writing, the stdout
   reader, timeouts, cancellation (the process TREE dies), final assembly.
 * ``inert_mcp``  — the tool INVENTORY the CLI sees. It answers tools/list and
-  refuses every tools/call: Iron Jarvis executes tools, never the CLI.
+  refuses every tools/call: STEC OS executes tools, never the CLI.
 * ``admission``  — the loopback relay that admits exactly one upstream
   Messages request per call (another doer's module).
 

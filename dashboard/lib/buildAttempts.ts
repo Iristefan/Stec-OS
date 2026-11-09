@@ -276,7 +276,7 @@ export function endWords(a: AttemptView): string {
     case "limit":
       return "Stopped at an account limit";
     case "cut_off":
-      return "Cut off when Iron Jarvis stopped";
+      return "Cut off when STEC OS stopped";
     case "failed":
       return a.error ? `Failed: ${a.error}` : "Failed";
     default:

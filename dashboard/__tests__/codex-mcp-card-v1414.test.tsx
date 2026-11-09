@@ -2,7 +2,7 @@
  * v1.414.0 (fix) — what the REAL daemon sends (fixtures/codex-mcp-card-v1414.json,
  * written by tests/test_build_app_codex_mcp_v1414.py) draws as it should:
  *
- *   - Codex asking before an MCP tool call (Iron Jarvis memory) is an
+ *   - Codex asking before an MCP tool call (STEC OS memory) is an
  *     ordinary card: the tool in words, its arguments, Allow once · Allow for
  *     this session · Deny — never declined for the user;
  *   - a sign-in failure (the live "OAuth session expired" text) says the tool
@@ -56,7 +56,7 @@ describe("Codex's MCP tool-call approval is a card", () => {
         />,
       );
       const card = screen.getByTestId("code-ask-approval");
-      expect(card.textContent).toContain('Codex wants to: Search Iron Jarvis memory for "project codename"');
+      expect(card.textContent).toContain('Codex wants to: Search STEC OS memory for "project codename"');
       expect(card.textContent).toContain("query: project codename");
       fireEvent.click(within(card).getByTestId(testId));
       expect(answers).toEqual([decision]);

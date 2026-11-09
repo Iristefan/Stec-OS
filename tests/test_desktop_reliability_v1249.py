@@ -658,12 +658,12 @@ def test_the_asks_are_described_in_plain_words_and_never_quote_arguments(tmp_pat
 @requires_node
 def test_the_tray_tooltip_counts_waiting_jobs_but_yields_to_a_broken_service(tmp_path):
     assert _asks({"steps": [], "tooltip": 2}, tmp_path)["tips"] == [
-        "Iron Jarvis — 2 tasks waiting for you"
+        "STEC OS — 2 tasks waiting for you"
     ]
     assert _asks({"steps": [], "tooltip": 1}, tmp_path)["tips"] == [
-        "Iron Jarvis — 1 task waiting for you"
+        "STEC OS — 1 task waiting for you"
     ]
-    assert _asks({"steps": [], "tooltip": 0}, tmp_path)["tips"] == ["Iron Jarvis — running"]
+    assert _asks({"steps": [], "tooltip": 0}, tmp_path)["tips"] == ["STEC OS — running"]
     assert _asks({"steps": [], "tooltip": 3, "degraded": True}, tmp_path)["tips"] == [], (
         "a waiting job overwrote the louder truth that a service is down"
     )
@@ -735,7 +735,7 @@ def test_every_startup_failure_used_to_say_port_8787(tmp_path):
     assert "8787" in out[0]["detail"] and "Retry" in out[0]["detail"]
     assert "Your data is untouched" in out[2]["detail"], "a locked DB reads like data loss"
     assert "Nothing has been deleted" in out[3]["detail"]
-    assert out[4]["message"].startswith("The Iron Jarvis dashboard"), (
+    assert out[4]["message"].startswith("The STEC OS dashboard"), (
         "a dashboard failure is reported as the service"
     )
     assert "antivirus" in out[4]["detail"]
@@ -777,7 +777,7 @@ def test_a_failed_start_offers_retry_instead_of_only_quitting():
     # The update-recovery branch (v1.192.0) must still come first.
     assert fn.index("pendingUpdate.attempts >= 2") < fn.index("classifyStartupFailure")
     # Both gate call sites must pass the context the classifier needs.
-    for m in re.finditer(r"handleStartupFailure\(\s*\"Iron Jarvis[^)]*?\)\s*;", src, re.S):
+    for m in re.finditer(r"handleStartupFailure\(\s*\"STEC OS[^)]*?\)\s*;", src, re.S):
         assert "label:" in m.group(0), f"a call site passes no context: {m.group(0)[:120]}"
 
 

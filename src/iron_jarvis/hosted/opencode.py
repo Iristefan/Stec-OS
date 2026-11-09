@@ -1,7 +1,7 @@
 """OpenCode in the Code view (v1.413.0): ``opencode acp`` — the Agent Client
 Protocol (JSON-RPC 2.0, one JSON object per line on stdin/stdout) — with ALL
 of OpenCode's own tools, agents, plugins, MCP servers, AGENTS.md and config
-on. The same OpenCode the user runs in a terminal; Iron Jarvis only starts
+on. The same OpenCode the user runs in a terminal; STEC OS only starts
 it, draws what it does, relays messages and turns every permission question
 OpenCode asks into a card.
 
@@ -10,10 +10,10 @@ machine-readable ways in (``opencode --help``: "acp — start ACP (Agent Client
 Protocol) server"; "serve — starts a headless opencode server"). ACP speaks
 over the process's own stdin/stdout, so it fits the Code view's process
 plumbing (``hosted.process``: one child, its tree killed on stop) and opens
-NO listening port of Iron Jarvis's. OpenCode still runs its internal server
+NO listening port of STEC OS's. OpenCode still runs its internal server
 inside the process; with no flag the user's global ``server.hostname`` /
 ``server.port`` / ``server.mdns`` decide (review, measured: ``"0.0.0.0"``
-listened on every interface, unauthenticated), so Iron Jarvis passes
+listened on every interface, unauthenticated), so STEC OS passes
 ``--hostname 127.0.0.1 --port 0 --mdns=false`` (:data:`ACP_ARGV`; explicit
 flags win over the config): this PC only, and never a port the config
 names (port 0 takes 4096 first, else a free one — never 8787 / 8788 / 8765).
@@ -83,7 +83,7 @@ READ for v1.420.0 (C1.10), from the installed opencode 1.18.18 program (its
 bundled source: ``Permission.ask`` / ``Permission.reply`` / ``evaluate`` /
 ``Wildcard.match`` and each tool's ``ask`` call):
 
-* The SAME merge order also NARROWED: a ``"*": "ask"`` of Iron Jarvis's
+* The SAME merge order also NARROWED: a ``"*": "ask"`` of STEC OS's
   landed after a user's ``"bash": "allow"`` and won, so their allowed
   commands became cards. Now no key of ours names a tool a rule of the user's
   names (exactly, or by a wildcard such as ``"web*"``), ``"*"`` is used only
@@ -97,7 +97,7 @@ bundled source: ``Permission.ask`` / ``Permission.reply`` / ``evaluate`` /
   ``"edit": …`` followed by ``"*": "allow"`` no longer undoes it.
 * ``task`` asks with ``always: ["*"]``; the helper's own session gets only the
   parent session's folder rules and refusals, and its steps meet the same
-  config rules. Iron Jarvis grants ``task`` in Ask first and Auto edits (as its
+  config rules. STEC OS grants ``task`` in Ask first and Auto edits (as its
   own coding sessions grant helpers); every step OF the helper still asks.
   Plan keeps OpenCode's own rule for helpers.
 * "always" pushes ``{permission, pattern, allow}`` for each of the request's
@@ -127,14 +127,14 @@ no vendor reached; plus a read of the program's bundled ACP source):
   ``OPENCODE_PERMISSION``: an agent with ``"bash": "allow"`` ran ``echo hi``
   with NO card under ``{"*": "ask"}``, one with ``"bash": "deny"`` lost bash.
   So an ``agent:<name>`` mode is Ask first plus that agent, and a rule the
-  agent sets is never changed by Iron Jarvis, either way (:func:`posture_agent`).
+  agent sets is never changed by STEC OS, either way (:func:`posture_agent`).
 * HELPERS (``task``): a helper's own session is NOT an ACP session, and the
   ACP side answers a permission question only for a session it opened
   (``session.tryGet(sessionID)`` -> nothing -> returns with NO answer and NO
   request to the client). A helper's ``bash`` under ``{"*": "ask"}`` sent
   nothing for 40 s; the helper and the reply waited until ``session/cancel``
   ("Task cancelled"). No ``session/update`` of the helper's session arrived
-  either. So outside Full access Iron Jarvis refuses ``task`` (a rule of the
+  either. So outside Full access STEC OS refuses ``task`` (a rule of the
   user's own for it stays theirs): no card for a helper can ever be drawn.
 * THE ``question`` TOOL: an ACP session does not have it (OpenCode adds it
   only for its own clients ``app`` / ``cli`` / ``desktop``, or with
@@ -142,7 +142,7 @@ no vendor reached; plus a read of the program's bundled ACP source):
   ``clientCapabilities.elicitation`` advertised, the model's question was
   NEVER sent (no ``elicitation/create``, no permission request: the ACP side
   handles only ``session.status``, ``permission.asked`` and message parts) and
-  the reply waited until Stop. So Iron Jarvis does not advertise elicitation
+  the reply waited until Stop. So STEC OS does not advertise elicitation
   to OpenCode and drops that variable from OpenCode's environment
   (:func:`child_env`).
 * THE MODEL LIST before any session: ``opencode models --verbose`` (see
@@ -204,7 +204,7 @@ HIDDEN_MODES: dict[str, str] = {
     "auto": "OpenCode has no mode that decides each step for you — choose Ask first or Auto edits.",
 }
 #: v1.441.0 (review): WHY no helpers outside Full access, in the user's words
-#: (a helper's own questions never reach Iron Jarvis over ACP: measured).
+#: (a helper's own questions never reach STEC OS over ACP: measured).
 NO_HELPERS = "It starts no helpers here: a helper's questions could not reach you, so it would wait for ever."
 #: What each preset does for OpenCode, in plain words (the mode menu says it).
 MODE_ABOUT: dict[str, str] = {
@@ -364,7 +364,7 @@ _RANK = {"allow": 0, "ask": 1, "deny": 2}
 #: the 1.18.18 program (each tool's ``ask({permission, patterns, always})``):
 #: for these permissions ``always`` is ``["*"]`` — the rest of that tool.
 #: ``bash``'s is the command's own prefix (``"git status *"``), worked out by
-#: OpenCode and never sent over ACP, so Iron Jarvis keeps only the EXACT
+#: OpenCode and never sent over ACP, so STEC OS keeps only the EXACT
 #: command for it; any other tool's reach is not known and is not kept.
 ALWAYS_COVERS_ALL: tuple[str, ...] = (
     "edit", "webfetch", "websearch", "task", "glob", "grep", "lsp", "todowrite",
@@ -377,7 +377,7 @@ _PERMISSION_OF = {"write": "edit", "multiedit": "edit", "patch": "edit", "apply_
 #: keeps an "always" only for the life of ITS process, and a mode change
 #: starts a new process, so the driver of the new process answers the same
 #: question the same way itself (never a card the user already answered).
-#: Memory only: a restart of Iron Jarvis forgets them, as OpenCode does.
+#: Memory only: a restart of STEC OS forgets them, as OpenCode does.
 SESSION_ALWAYS: dict[str, dict[str, set[str]]] = {}
 MAX_ALWAYS_SESSIONS = 64
 MAX_ALWAYS_PER_SESSION = 200
@@ -431,15 +431,15 @@ def always_covers(session_id: str, tool: str, command: str = "") -> bool:
 #: list (``configOptions.effort``) narrows it when known.
 EFFORTS: tuple[str, ...] = ("minimal", "low", "medium", "high", "xhigh", "max")
 
-#: An OpenCode session id as Iron Jarvis would ever type it into a terminal.
+#: An OpenCode session id as STEC OS would ever type it into a terminal.
 SESSION_ID_RX = re.compile(r"^ses_[A-Za-z0-9]{10,60}$")
 
-#: How Iron Jarvis starts OpenCode: ACP, its internal server on loopback only.
+#: How STEC OS starts OpenCode: ACP, its internal server on loopback only.
 ACP_ARGV: tuple[str, ...] = ("acp", "--hostname", "127.0.0.1", "--port", "0", "--mdns=false")
 
 #: v1.414.0: an OpenCode that does not take an HTTP MCP server over ACP.
 JARVIS_TOOLS_NOT_TAKEN = (
-    "This OpenCode does not take an MCP server from Iron Jarvis, so the Iron Jarvis "
+    "This OpenCode does not take an MCP server from STEC OS, so the STEC OS "
     "tools you turned on are not in this session."
 )
 MAX_MODELS = 300
@@ -579,7 +579,7 @@ def config_files(folder: str, environ: Any = None) -> list[Path]:
 
     env = os.environ if environ is None else environ
     merged = {**os.environ, **dict(env)}
-    # The global files the way Iron Jarvis reads OpenCode's config everywhere
+    # The global files the way STEC OS reads OpenCode's config everywhere
     # (``CONFIG_DIR_ENV``: the daemon's own override, which a child's
     # environment no longer carries).
     out = list(opencode_config_paths(merged))
@@ -637,7 +637,7 @@ def _rank(value: Any) -> int:
 class _Mixed(str):
     """A rule two sources say DIFFERENTLY (v1.420.0 review): the stricter of
     them, which is never "exactly" anything — which one OpenCode ends up with
-    depends on its load order and deep merge, which Iron Jarvis does not
+    depends on its load order and deep merge, which STEC OS does not
     re-create (a global ``"bash": "ask"`` and a project's ``"bash": "allow"``
     read as ``ask`` here and as ``allow`` in OpenCode)."""
 
@@ -1006,7 +1006,7 @@ class OpenCodeDriver(AcpDriver):
     # -- the session --------------------------------------------------------------
     async def open(self, *, session_id: str, resume: bool) -> None:
         caps = await self.initialize()
-        # v1.414.0: Iron Jarvis's own tools for THIS session (``hosted/
+        # v1.414.0: STEC OS's own tools for THIS session (``hosted/
         # jarvis_tools``), given the ACP way — only to an OpenCode that says
         # it takes an HTTP MCP server (``mcpCapabilities.http``).
         servers = self.acp_servers(caps)

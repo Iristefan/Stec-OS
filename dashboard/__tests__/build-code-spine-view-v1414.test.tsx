@@ -2,7 +2,7 @@
  * v1.414.0 — the Build › Code session screen, driven through the real view:
  * the session being on screen (window focused) is LOOKED AT (the bell then
  * stays quiet when its long reply ends — lib/buildWatching, the same note
- * Chat › Code writes), the header carries the "Iron Jarvis tools" chip, and a
+ * Chat › Code writes), the header carries the "STEC OS tools" chip, and a
  * new session offers to share the profile with its tool once.
  */
 
@@ -110,10 +110,10 @@ describe("the Build › Code session screen", () => {
     expect(lookingAt("app_1")).toBe(false);
   });
 
-  it("carries the Iron Jarvis tools chip (off) and offers the profile share once", async () => {
+  it("carries the STEC OS tools chip (off) and offers the profile share once", async () => {
     render(<BuildCodeView initialSession="app_1" onOpenedTerminal={() => {}} />);
     const chip = await screen.findByTestId("code-jarvis-tools");
-    expect(chip.textContent).toBe("Iron Jarvis tools: off");
+    expect(chip.textContent).toBe("STEC OS tools: off");
     const offer = await screen.findByTestId("code-share-offer");
     expect(offer.textContent).toContain("Share your profile with Pi?");
   });

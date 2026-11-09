@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Iron Jarvis",
-  "version": "1.443.4",
-  "description": "Lets Iron Jarvis, running on this computer, work in the tabs you are already signed in to.",
+  "name": "STEC OS",
+  "version": "1.444.0",
+  "description": "Lets STEC OS, running on this computer, work in the tabs you are already signed in to.",
   "minimum_chrome_version": "120",
   "icons": {
     "16": "dist/icons/icon-16.png",
@@ -29,7 +29,7 @@
     "default_path": "dist/sidepanel.html"
   },
   "action": {
-    "default_title": "Iron Jarvis",
+    "default_title": "STEC OS",
     "default_icon": {
       "16": "dist/icons/icon-16.png",
       "32": "dist/icons/icon-32.png"
@@ -40,7 +40,7 @@
       "suggested_key": {
         "default": "Alt+J"
       },
-      "description": "Open the Iron Jarvis sidebar"
+      "description": "Open the STEC OS sidebar"
     }
   }
 }

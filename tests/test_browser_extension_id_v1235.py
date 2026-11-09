@@ -188,7 +188,7 @@ def test_the_side_panel_declares_no_pairing_ui_and_no_settings(  # D28, narrowed
     for label in re.findall(r"<button[^>]*>(.*?)</button>", html, flags=re.S):
         assert "pair" not in label, (
             f"the side panel renders a button offering to pair ({label.strip()[:60]!r}); "
-            "D28 puts that in Iron Jarvis only"
+            "D28 puts that in STEC OS only"
         )
 
 

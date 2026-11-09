@@ -98,10 +98,10 @@ describe("capturePageContext — what the page shows, nothing else", () => {
 
   it("falls back to <main>, and to document.title when there is no h1", () => {
     setPage(`<main><p>Just text</p></main>`);
-    document.title = "Iron Jarvis — Files";
+    document.title = "STEC OS — Files";
     const ctx = capturePageContext();
     expect(ctx.text).toBe("Just text");
-    expect(ctx.title).toBe("Iron Jarvis — Files");
+    expect(ctx.title).toBe("STEC OS — Files");
   });
 
   it("never reads what the user is typing, nor a select's every option", () => {
@@ -128,7 +128,7 @@ describe("capturePageContext — what the page shows, nothing else", () => {
     setPage(`
       <div id="main-content">
         <p>Keep me</p>
-        <div role="dialog">Search Iron Jarvis</div>
+        <div role="dialog">Search STEC OS</div>
         <nav>Tab one Tab two</nav>
         <div hidden>hidden attr</div>
         <div style="display:none">display none</div>

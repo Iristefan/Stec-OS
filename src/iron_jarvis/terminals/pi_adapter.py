@@ -100,7 +100,7 @@ def pi_runtime() -> str:
 
 _ADAPTER_JS = '''\
 #!/usr/bin/env node
-// Iron Jarvis <-> Pi adapter. Written by Iron Jarvis for one Build pane.
+// STEC OS <-> Pi adapter. Written by STEC OS for one Build pane.
 // Safe to delete; the pane will write it again on the next launch.
 //
 // stdio (line-delimited JSON-RPC, which is what Pi can be pointed at) on one
@@ -125,7 +125,7 @@ function fail(id, message) {{
 
 function parseBody(text, contentType) {{
   if ((contentType || "").includes("text/event-stream")) {{
-    // SSE: the JSON-RPC payload rides on `data:` lines, same as the Iron Jarvis
+    // SSE: the JSON-RPC payload rides on `data:` lines, same as the STEC OS
     // MCP client parses.
     for (const raw of String(text).split(/\\r?\\n/)) {{
       const line = raw.trim();
@@ -141,8 +141,8 @@ function parseBody(text, contentType) {{
 }}
 
 async function relay(request) {{
-  if (!endpoint) return fail(request.id, `${{URL_ENV}} is not set: launch this pane from Iron Jarvis Build`);
-  if (!token) return fail(request.id, `${{TOKEN_ENV}} is not set: launch this pane from Iron Jarvis Build`);
+  if (!endpoint) return fail(request.id, `${{URL_ENV}} is not set: launch this pane from STEC OS Build`);
+  if (!token) return fail(request.id, `${{TOKEN_ENV}} is not set: launch this pane from STEC OS Build`);
   const headers = {{
     "content-type": "application/json",
     accept: "application/json, text/event-stream",
@@ -153,7 +153,7 @@ async function relay(request) {{
   try {{
     response = await fetch(endpoint, {{ method: "POST", headers, body: JSON.stringify(request) }});
   }} catch (err) {{
-    return fail(request.id, `could not reach Iron Jarvis at ${{endpoint}}: ${{err && err.message ? err.message : err}}`);
+    return fail(request.id, `could not reach STEC OS at ${{endpoint}}: ${{err && err.message ? err.message : err}}`);
   }}
   const sid = response.headers.get("mcp-session-id");
   if (sid) sessionId = sid;
@@ -161,12 +161,12 @@ async function relay(request) {{
   if (!response.ok) {{
     let detail = text;
     try {{ const j = JSON.parse(text); if (j && j.detail) detail = j.detail; }} catch (_) {{}}
-    return fail(request.id, `Iron Jarvis refused this call (HTTP ${{response.status}}): ${{detail}}`);
+    return fail(request.id, `STEC OS refused this call (HTTP ${{response.status}}): ${{detail}}`);
   }}
   try {{
     return parseBody(text, response.headers.get("content-type"));
   }} catch (err) {{
-    return fail(request.id, `Iron Jarvis sent a body this adapter could not read: ${{err && err.message ? err.message : err}}`);
+    return fail(request.id, `STEC OS sent a body this adapter could not read: ${{err && err.message ? err.message : err}}`);
   }}
 }}
 

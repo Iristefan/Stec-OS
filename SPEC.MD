@@ -8,7 +8,7 @@
 
 # 10. Browser Session Vault
 
-Iron Jarvis maintains encrypted browser session storage for subscription-based providers.
+STEC OS maintains encrypted browser session storage for subscription-based providers.
 
 The vault stores:
 
@@ -122,7 +122,7 @@ Responsible for:
 
 # 12. Multi-Agent Orchestration
 
-Iron Jarvis supports hierarchical agent orchestration.
+STEC OS supports hierarchical agent orchestration.
 
 Architecture:
 
@@ -394,7 +394,7 @@ Users may override permissions globally, per-project, or per-agent.
 
 # 21. Memory Architecture
 
-Iron Jarvis uses layered memory.
+STEC OS uses layered memory.
 
 ## Layer 1 — Session Memory
 
@@ -659,7 +659,7 @@ export patch
 
 # 29. Evaluation Engine
 
-Iron Jarvis continuously evaluates agent performance.
+STEC OS continuously evaluates agent performance.
 
 Metrics:
 
@@ -750,7 +750,7 @@ AR/VR interfaces
 
 # 33. Final Product Definition
 
-Iron Jarvis is a local-first AI operating system that orchestrates agents, models, tools, memory, and workflows to autonomously perform meaningful work while preserving complete user ownership, transparency, and control.
+STEC OS is a local-first AI operating system that orchestrates agents, models, tools, memory, and workflows to autonomously perform meaningful work while preserving complete user ownership, transparency, and control.
 
 Core architecture:
 

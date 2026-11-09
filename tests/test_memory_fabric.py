@@ -1,6 +1,6 @@
 """The Memory Fabric — ONE federated ``recall()`` across every memory store.
 
-Iron Jarvis accumulates knowledge in six places (indexed files, long-term notes,
+STEC OS accumulates knowledge in six places (indexed files, long-term notes,
 the layered memory graph, a project's attached knowledge, self-correction
 lessons, and past sessions), each behind its own index. The Memory Fabric
 (:class:`iron_jarvis.memory.fabric.MemoryFabric`) federates them behind a single

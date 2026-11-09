@@ -263,7 +263,7 @@ describe("the background read", () => {
     H.holdNext = true;
     expect(await tick(CODE_BACKGROUND_REREAD_MS)).toBe(true);
     expect(H.reads).toBe(before + 1);
-    // Iron Jarvis is slow: the next ticks find the read still out.
+    // STEC OS is slow: the next ticks find the read still out.
     expect(await tick(CODE_BACKGROUND_REREAD_MS)).toBe(true);
     expect(await tick(CODE_BACKGROUND_REREAD_MS)).toBe(true);
     expect(H.reads).toBe(before + 1);

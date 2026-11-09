@@ -575,7 +575,7 @@ class IntentEngine:
             agent_type = AgentType(action.get("agent_type", "builder"))
         except ValueError:
             agent_type = AgentType.BUILDER
-        # A MAINTAINER proposal patches Iron Jarvis's OWN source, so route it onto a
+        # A MAINTAINER proposal patches STEC OS's OWN source, so route it onto a
         # self-dev worktree (review-gated, never auto-merge). create_session raises
         # when self_dev_enabled is off, so approval FAILS CLOSED on that gate rather
         # than silently running a maintainer in a throwaway workspace.
@@ -737,7 +737,7 @@ class IntentEngine:
                 raise PermissionError(
                     f"cannot run this self-modifying proposal: {exc}. "
                     "Enable self_dev_enabled in Settings to let the Maintainer patch "
-                    "Iron Jarvis's own source (still review-gated)."
+                    "STEC OS's own source (still review-gated)."
                 ) from exc
             except Exception:
                 # Any other failure before _book durably marked it executed: release
@@ -831,7 +831,7 @@ class IntentEngine:
                 )
             )
         lines = [
-            "Iron Jarvis — morning briefing",
+            "STEC OS — morning briefing",
             f"- Active goals: {len(active)}",
             f"- Actions I took in the last 24h: {len(recent)}",
             f"- Proposals awaiting your call: {len(pending)}",

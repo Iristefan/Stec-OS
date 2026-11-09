@@ -133,7 +133,7 @@ def view(row: HostedSessionRecord) -> dict[str, Any]:
     acc = account_record(row)
     out = _view(row, acc)
     if not takes(row.harness):
-        # v1.441.0 (review A5): this tool said it takes no Iron Jarvis tools
+        # v1.441.0 (review A5): this tool said it takes no STEC OS tools
         # (Antigravity 1.5.2): the page hides the chip. Absent otherwise.
         out["jarvis_tools"] = False
     return out
@@ -160,7 +160,7 @@ def _view(row: HostedSessionRecord, acc: Any) -> dict[str, Any]:
         "archived_at": _iso(row.archived_at),
         "last_error": row.last_error,
         # v1.414.0: the five Capabilities (all off by default) — Browser and
-        # Memory give the coding tool Iron Jarvis's own tools.
+        # Memory give the coding tool STEC OS's own tools.
         "capabilities": _capabilities(row),
         # v1.431.0: a Pi session the user told to load its folder's own Pi
         # extensions, skills and settings (``pi --approve``).

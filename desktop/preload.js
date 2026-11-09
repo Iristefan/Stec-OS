@@ -1,4 +1,4 @@
-// Iron Jarvis — preload (runs in an isolated context with limited Node access).
+// STEC OS — preload (runs in an isolated context with limited Node access).
 // Exposes a tiny, read-only surface to the dashboard renderer.
 const { contextBridge, ipcRenderer } = require("electron");
 
@@ -113,9 +113,9 @@ contextBridge.exposeInMainWorld("ironjarvis", {
     // would reload this page). Resolves true when a (re)spawn started, false
     // when there was nothing to restart, null when the sender is refused.
     restartDaemon: () => ipcRenderer.invoke("shell:restartDaemon"),
-    // Settings › Maintenance's "Restart Iron Jarvis" (v1.433.0): a TIDY
+    // Settings › Maintenance's "Restart STEC OS" (v1.433.0): a TIDY
     // restart the supervisor knows it asked for, so it is never counted as a
-    // crash. `{stopping: true}` when Iron Jarvis is already stopping itself
+    // crash. `{stopping: true}` when STEC OS is already stopping itself
     // (a restore from a backup). Resolves true when a restart is under way,
     // false when there was nothing to restart, null when refused.
     restartDaemonTidy: (opts) =>

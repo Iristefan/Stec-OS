@@ -25,7 +25,7 @@ export const ONE_MILLION = 1_000_000;
 export const CREDITS_CHIP = "pay per use";
 export const CREDITS_TITLE =
   "This model draws from your plan's pay-as-you-go usage credits, so each message is billed. " +
-  "Iron Jarvis counts it as pay per use: if you pick it and it fails, another model that bills " +
+  "STEC OS counts it as pay per use: if you pick it and it fails, another model that bills " +
   "per use may answer instead.";
 
 type RowFacts = Pick<ModelOption, "model" | "label" | "context_window" | "usage_credits">;

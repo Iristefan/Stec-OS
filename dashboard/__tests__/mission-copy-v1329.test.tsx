@@ -82,7 +82,7 @@ describe("the mission door's default-model warnings are plain sentences", () => 
     const p = preflightProblem(health({ available: false }), true);
     expect(p?.text).toBe(
       // v1.354.0 (G59, updated on purpose): the app's name, never "the daemon".
-      "Iron Jarvis isn't responding, so it could not check your default model, your model server. The model looked unavailable at the last check. If a task fails, check it on Connections.",
+      "STEC OS isn't responding, so it could not check your default model, your model server. The model looked unavailable at the last check. If a task fails, check it on Connections.",
     );
     expect(p?.text).not.toMatch(/will fail/i);
   });
@@ -309,8 +309,8 @@ describe("the mission files, lib/mission and the workflow starters keep to the c
   it("the guard reads copy and skips comments (anti-vacuity)", () => {
     // Real copy is read: the plain sentences this wave wrote are found.
     const composer = copyPieces(`${MISSION_DIR}/MissionComposer.tsx`).map((p) => p.text).join("\n");
-    // v1.354.0 (G59, updated on purpose): "Restart Iron Jarvis to finish updating."
-    expect(composer).toContain("Restart Iron Jarvis to finish updating.");
+    // v1.354.0 (G59, updated on purpose): "Restart STEC OS to finish updating."
+    expect(composer).toContain("Restart STEC OS to finish updating.");
     const screenText = copyPieces(`${MISSION_DIR}/MissionScreen.tsx`).map((p) => p.text).join("\n");
     expect(screenText).toContain("Just say what you need.");
     // A dash aside in a string, a template, or JSX text is caught; the same

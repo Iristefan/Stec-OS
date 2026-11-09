@@ -81,7 +81,7 @@ export function DesktopNotifyBridge() {
       seenRef.current.add(ev.id);
       if (quiet) continue;
       const payload = (ev.payload ?? {}) as { title?: string; message?: string };
-      void bridge.notify(payload.title || "Iron Jarvis", payload.message || "");
+      void bridge.notify(payload.title || "STEC OS", payload.message || "");
     }
     // Bound the replay-guard set so a week in the tray doesn't grow it forever.
     if (seenRef.current.size > 500) {

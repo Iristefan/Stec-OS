@@ -39,7 +39,7 @@ from iron_jarvis.terminals.recipes import CodexRecipe
 ROOT = Path(__file__).resolve().parents[1]
 FROZEN_ENTRY = ROOT / "packaging" / "ironjarvis_entry.py"
 URL = "http://127.0.0.1:1/mcp"  # never contacted by the config-shape pins
-FAKE_EXE = "C:\\Program Files\\Iron Jarvis\\resources\\daemon\\ironjarvis.exe"
+FAKE_EXE = "C:\\Program Files\\STEC OS\\resources\\daemon\\ironjarvis.exe"
 
 
 def _server(text: str) -> dict:

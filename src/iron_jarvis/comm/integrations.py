@@ -72,7 +72,7 @@ def channel_integrations() -> list[IntegrationSpec]:
             "telegram",
             "communication",
             "Send AND receive Telegram messages via the Bot API. Two-way comm: "
-            "set inbound_enabled + allowed_senders to text Iron Jarvis a task.",
+            "set inbound_enabled + allowed_senders to text STEC OS a task.",
             config_fields=["chat_id", "inbound_enabled", "allowed_senders"],
             secret_fields=["token_secret"],
         ),
@@ -81,7 +81,7 @@ def channel_integrations() -> list[IntegrationSpec]:
             "communication",
             "Send AND receive email (SMTP out, IMAP in). Inbound trigger (CX-05): "
             "set inbound_enabled + allowed_senders (From-addresses) so an "
-            "allowlisted sender can email Iron Jarvis a task.",
+            "allowlisted sender can email STEC OS a task.",
             config_fields=[
                 "imap_host",
                 "imap_port",

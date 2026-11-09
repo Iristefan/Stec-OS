@@ -43,7 +43,7 @@ class AppSessionPatch(BaseModel):
     model: str | None = None
     effort: str | None = None
     #: v1.414.0: the session's Capabilities, merged (a box not named keeps
-    #: its value). Browser and Memory give the coding tool Iron Jarvis's own
+    #: its value). Browser and Memory give the coding tool STEC OS's own
     #: tools; all five are off until ticked.
     capabilities: dict[str, Any] | None = None
     #: v1.431.0: a Pi session loads its folder's own Pi extensions, skills and

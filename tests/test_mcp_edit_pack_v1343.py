@@ -516,14 +516,14 @@ def test_an_auto_approve_only_patch_is_unchanged_no_reload(client, monkeypatch):
     assert res.json() == {
         "name": "gh",
         "auto_approve": True,
-        "note": "saved — restart Iron Jarvis for autonomous agents to pick this up",
+        "note": "saved — restart STEC OS for autonomous agents to pick this up",
     }
     assert _entry(platform, "gh")["auto_approve"] is True
     res = client.patch("/mcp/servers/gh", json={"auto_approve": False})
     assert res.json() == {
         "name": "gh",
         "auto_approve": False,
-        "note": "saved — restart Iron Jarvis for autonomous agents to pick this up",
+        "note": "saved — restart STEC OS for autonomous agents to pick this up",
     }
     assert "auto_approve" not in _entry(platform, "gh")
     res = client.patch("/mcp/servers/gh", json={})

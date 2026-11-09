@@ -16,19 +16,19 @@ export function isDesktopShell(): boolean {
 }
 
 /** The one line both offline surfaces show inside the desktop shell.
- *  v1.312.0: it points at the tray's own "Restart Iron Jarvis" item, never at
+ *  v1.312.0: it points at the tray's own "Restart STEC OS" item, never at
  *  Quit — a relaunch is the long way round. Worded as what WILL happen (wave 4
  *  review): the tray offers that item only once the automatic restarts stop
  *  (crash cap or the watchdog's breaker), so "use it now" would point at a
  *  menu item that is not there yet. */
 export const DESKTOP_OFFLINE_HINT =
-  "Iron Jarvis is restarting its local service… if it keeps failing, a Restart Iron Jarvis option will appear in the tray menu.";
+  "STEC OS is restarting its local service… if it keeps failing, a Restart STEC OS option will appear in the tray menu.";
 
 /** Up but not answering, and nothing is restarting it YET (v1.312.0 review):
  *  the watchdog checks every 30 s and kills it after three misses, so the
  *  honest words are "it will be", not "it is being", restarted. */
 export const DESKTOP_NOT_ANSWERING_HINT =
-  "Iron Jarvis's local service is not answering. Iron Jarvis checks on it every 30 seconds and restarts it if it stays silent.";
+  "STEC OS's local service is not answering. STEC OS checks on it every 30 seconds and restarts it if it stays silent.";
 
 /** What the desktop supervisor knows about the daemon (v1.312.0) —
  *  `shellState().services.daemon` in desktop/main.js. */
@@ -62,7 +62,7 @@ export interface ShellBridge {
   restartDaemon?: () => Promise<boolean | null>;
   /** v1.433.0: a TIDY restart the supervisor asked for itself — never counted
    *  as a crash, and Build › Code's coding tools keep running. `stopping`:
-   *  Iron Jarvis is already stopping itself (a restore from a backup). */
+   *  STEC OS is already stopping itself (a restore from a backup). */
   restartDaemonTidy?: (opts?: { stopping?: boolean }) => Promise<boolean | null>;
 }
 
@@ -72,7 +72,7 @@ export interface ShellBridge {
  *  browser tab or an older desktop app: the caller keeps its old way. */
 export type TidyRestart = "restarting" | "refused" | "no-bridge";
 
-/** Ask the desktop app to restart Iron Jarvis tidily (Settings › Maintenance,
+/** Ask the desktop app to restart STEC OS tidily (Settings › Maintenance,
  *  and after a restore). Never throws. */
 export async function requestTidyRestart(opts?: { stopping?: boolean }): Promise<TidyRestart> {
   const fn = shellBridge()?.restartDaemonTidy;
@@ -171,7 +171,7 @@ export function offlineStateOf(d: ShellDaemonState | null): ShellOfflineState {
 /** The stalled sentence (v1.312.0 review): the toast's own story, and the
  *  same way forward as the capped one. */
 export const STALLED_SENTENCE =
-  "Iron Jarvis's service stopped answering, and automatic restarts are paused after several tries. " +
+  "STEC OS's service stopped answering, and automatic restarts are paused after several tries. " +
   "Restart it to try again, or open the logs to see why.";
 
 /** "stopped after 10 crashes in 15 minutes" — the capped sentence, with the
@@ -184,7 +184,7 @@ export function cappedSentence(crashes: number | null, windowMin: number | null)
       ? `${crashes} ${crashes === 1 ? "crash" : "crashes"}${windowMin ? ` in ${windowMin} minutes` : ""}`
       : "repeated crashes";
   return (
-    `Iron Jarvis's service stopped after ${what}, so it is no longer being restarted on its own. ` +
+    `STEC OS's service stopped after ${what}, so it is no longer being restarted on its own. ` +
     "Restart it to try again, or open the logs to see why."
   );
 }

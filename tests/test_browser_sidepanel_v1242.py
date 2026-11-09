@@ -1,6 +1,6 @@
 """The browser side panel — the surface the action click now opens, pinned.
 
-Ship 3 of the sidebar plan (v1.242.0), and the first Iron Jarvis CHAT surface that
+Ship 3 of the sidebar plan (v1.242.0), and the first STEC OS CHAT surface that
 lives inside the user's browser. Three things could go wrong here in a way no other
 test in this repository can see, and each of them is silent:
 
@@ -142,7 +142,7 @@ def _visible_html(path: Path) -> str:
 
 
 def test_the_addon_ships_the_version_of_the_app_it_came_with():
-    """The add-on's own version, pinned to Iron Jarvis's (v1.242.0).
+    """The add-on's own version, pinned to STEC OS's (v1.242.0).
 
     IT WAS FROZEN AT 1.235.0 while the app moved seven versions past it, and the
     add-on ships INSIDE the installer. That is not cosmetic: Chrome keeps serving
@@ -324,7 +324,7 @@ def test_a_panel_press_that_never_left_the_browser_is_reported_as_such():
     # lives in `sendNow()`, which is where the verdict must be checked.
     send = _block(panel, "function sendNow(")
     assert "if (!sent)" in send, (
-        "the composer does not check whether its question reached Iron Jarvis"
+        "the composer does not check whether its question reached STEC OS"
     )
     worker = _code(WORKER_TS)
     handler = _block(worker, 'case "panel_action":')
@@ -421,7 +421,7 @@ def test_the_panel_is_honest_when_browser_access_is_off():
 
 
 def test_the_panel_never_calls_the_add_on_an_extension():
-    """In Iron Jarvis "extension" already means an MCP server (house copy rule)."""
+    """In STEC OS "extension" already means an MCP server (house copy rule)."""
     visible = _visible_html(PANEL_HTML).replace("chrome://extensions", "")
     hits = re.findall(r"\bextensions?\b", visible, flags=re.I)
     assert not hits, f"sidepanel.html calls the add-on an extension {len(hits)} time(s)"
@@ -532,7 +532,7 @@ def test_the_app_tells_the_user_the_sidebar_exists_and_how_to_reach_it():
 def test_one_name_for_the_page_the_user_is_sent_to():
     """Reachability finding R3. Two names for one place is two places to look."""
     visible = _visible_html(PANEL_HTML)
-    assert "Browser page in Iron Jarvis" in visible, (
+    assert "Browser page in STEC OS" in visible, (
         "the panel sends the user somewhere other than the Browser page, which is "
         "the name the dashboard's own nav shows"
     )
@@ -542,7 +542,7 @@ def test_the_panel_prints_which_build_of_itself_is_running():
     """Reachability finding R2, the half the panel can own.
 
     Nothing compares versions HERE and nothing should: ``browser.ready`` carries no
-    Iron Jarvis version, so the panel would be guessing at what current means. What
+    STEC OS version, so the panel would be guessing at what current means. What
     it can do is state which copy answered, from the manifest rather than a constant.
     """
     assert 'id="version"' in _read(PANEL_HTML), "the panel prints no add-on version"

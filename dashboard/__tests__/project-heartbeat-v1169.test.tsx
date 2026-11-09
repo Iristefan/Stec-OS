@@ -293,13 +293,13 @@ describe("ProjectSchedules", () => {
   const lineText = (text: string) => (_: string, el: Element | null) =>
     el?.tagName === "P" && el.textContent === text;
 
-  it("says so when Iron Jarvis is unreachable — never fakes 'no schedules'", async () => {
+  it("says so when STEC OS is unreachable — never fakes 'no schedules'", async () => {
     // /schedules is unmocked → the fetch rejects with status 0. Schedules are
     // UNKNOWN here, not absent; vanishing would be indistinguishable from a
     // project with nothing scheduled (same line as SurfaceMedia).
     render(<ProjectSchedules projectId="proj_1" />);
     const line = await screen.findByText(
-      lineText("Schedules couldn't load. Iron Jarvis isn't responding."),
+      lineText("Schedules couldn't load. STEC OS isn't responding."),
     );
     expect(line.textContent).not.toMatch(/daemon/i);
     expect(line.getAttribute("title")).toBeNull();

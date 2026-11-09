@@ -405,5 +405,5 @@ def test_the_editors_exact_patch_bodies_do_what_the_editor_says(client, homes):
     # The Tools page's flip: a bare {auto_approve} keeps the v1.103.0 answer.
     res = client.patch("/mcp/servers/brave", json={"auto_approve": True})
     assert res.status_code == 200
-    assert res.json() == {"name": "brave", "auto_approve": True, "note": "saved — restart Iron Jarvis for autonomous agents to pick this up"}
+    assert res.json() == {"name": "brave", "auto_approve": True, "note": "saved — restart STEC OS for autonomous agents to pick this up"}
     assert _entry(platform, "brave").get("auto_approve") is True

@@ -1,6 +1,6 @@
 """The Session tab's live controls (v1.441.0, lane g1): background work a
 coding tool runs, with Stop, and its own MCP servers' actions — through the
-TOOL's own requests, never Iron Jarvis's.
+TOOL's own requests, never STEC OS's.
 
 ONE generic shape every driver can offer later:
 
@@ -21,7 +21,7 @@ Who offers what (each MEASURED; the driver's docstring says how):
   remembers a server turned off for the folder, as its own ``/mcp`` does).
 * Codex 0.157.0: its background terminals (``thread/backgroundTerminals/list``
   / ``terminate``, experimental); ``mcpServer/oauth/login`` (a sign-in page the
-  user's browser opens; Iron Jarvis never signs in).
+  user's browser opens; STEC OS never signs in).
 
 Stopping a background task never stops the reply: the tool's own stop takes
 only that task (measured: no model request follows it). What was stopped is
@@ -54,7 +54,7 @@ _FITS: dict[str, frozenset[str]] = {
 
 KIND_WORDS = {"helper": "helper", "command": "background command", "task": "background task"}
 NOT_RUNNING = "{label} is not running right now, so nothing runs in the background."
-NO_BACKGROUND = "{label} has no background work Iron Jarvis can stop here."
+NO_BACKGROUND = "{label} has no background work STEC OS can stop here."
 NO_MCP = "{label} offers no way to do that to one of its MCP servers here."
 NOT_NOW = "That does not fit {name} right now."
 NO_ANSWER = "{label} did not answer in time."

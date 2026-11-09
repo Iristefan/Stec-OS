@@ -11,7 +11,7 @@
  *     request (GET /build/sessions/{id}/ci), only when a watch exists.
  *  4. A saved calendar link is removed from the Reflex page
  *     (DELETE /triggers/calendar/url), two presses.
- *  5. Help says when the tray's "Restart Iron Jarvis" appears (only after the
+ *  5. Help says when the tray's "Restart STEC OS" appears (only after the
  *     automatic restarts gave up), never as if it were always there.
  *  6. Help shows the global hotkeys the desktop app REALLY registered, and in
  *     a browser says they are the desktop app's.
@@ -285,7 +285,7 @@ describe("3. a coding session's pull-request watch is one quiet line", () => {
     });
     render(<BranchView sessionId="t1" git={GIT} refreshKey={0} />);
     const line = await screen.findByTestId("branch-ci-watch", undefined, LONG);
-    expect(line.textContent).toContain("Iron Jarvis is watching its checks.");
+    expect(line.textContent).toContain("STEC OS is watching its checks.");
     expect(line.textContent).toContain("2 fix rounds left");
     expect(line.textContent).toContain("Next look at");
     expect(line.getAttribute("data-state")).toBe("watching");
@@ -298,14 +298,14 @@ describe("3. a coding session's pull-request watch is one quiet line", () => {
         rounds: 3,
         max_rounds: 3,
         failed: ["tests"],
-        words: "Iron Jarvis stopped after 3 rounds: Claude Code did not approve the fix.",
+        words: "STEC OS stopped after 3 rounds: Claude Code did not approve the fix.",
         next_check_at: null,
       },
       on: true,
     });
     render(<BranchView sessionId="t1" git={GIT} refreshKey={0} />);
     const line = await screen.findByTestId("branch-ci-watch", undefined, LONG);
-    expect(line.textContent).toBe("Iron Jarvis stopped after 3 rounds: Claude Code did not approve the fix.");
+    expect(line.textContent).toBe("STEC OS stopped after 3 rounds: Claude Code did not approve the fix.");
     expect(line.className).toContain("text-tone-warn");
   });
 
@@ -336,10 +336,10 @@ describe("3. a coding session's pull-request watch is one quiet line", () => {
     expect(ciWatchWords(view({ state: "watching", rounds: 0 }, false))).toContain("turned off in Settings");
     expect(ciWatchWords(view({ state: "closed" }))).toBe("");
     expect(ciWatchWords(view({ state: "fixing", rounds: 2, max_rounds: 3 }))).toBe(
-      "Iron Jarvis is fixing a failed check (round 2 of 3).",
+      "STEC OS is fixing a failed check (round 2 of 3).",
     );
     const past = view({ state: "watching", rounds: 0, next_check_at: "2026-01-01T00:00:00" });
-    expect(ciWatchWords(past, new Date("2026-06-01T00:00:00Z"))).toBe("Iron Jarvis is watching its checks.");
+    expect(ciWatchWords(past, new Date("2026-06-01T00:00:00Z"))).toBe("STEC OS is watching its checks.");
     expect(utcMoment("2026-11-06T10:00:00")?.toISOString()).toBe("2026-11-06T10:00:00.000Z");
     expect(decodeCiView({ watch: null, on: true }).watch).toBeNull();
   });
@@ -398,11 +398,11 @@ function helpSource(): string {
   return readFileSync(join(__dirname, "..", "app", "help", "page.tsx"), "utf8").replace(/\r\n/g, "\n");
 }
 
-describe("5. Help never names the tray's Restart Iron Jarvis as always there", () => {
+describe("5. Help never names the tray's Restart STEC OS as always there", () => {
   it("says the item appears only once the automatic restarts gave up", () => {
     const src = helpSource();
-    expect(src).not.toContain("(or tray \u2192 <Kbd>Restart Iron Jarvis</Kbd>)");
-    const at = src.indexOf("<Kbd>Restart Iron Jarvis</Kbd>");
+    expect(src).not.toContain("(or tray \u2192 <Kbd>Restart STEC OS</Kbd>)");
+    const at = src.indexOf("<Kbd>Restart STEC OS</Kbd>");
     expect(at).toBeGreaterThan(-1);
     const near = src.slice(Math.max(0, at - 200), at + 200).replace(/\s+/g, " ");
     expect(near).toContain("item only once its own automatic restarts have given up");
@@ -410,7 +410,7 @@ describe("5. Help never names the tray's Restart Iron Jarvis as always there", (
 
   it("the tray really adds that item only when a service is capped or stalled", () => {
     const main = readFileSync(join(__dirname, "..", "..", "desktop", "main.js"), "utf8").replace(/\r\n/g, "\n");
-    const at = main.indexOf('[{ label: "Restart Iron Jarvis", click: () => restartServicesFromTray() }]');
+    const at = main.indexOf('[{ label: "Restart STEC OS", click: () => restartServicesFromTray() }]');
     expect(at).toBeGreaterThan(-1);
     expect(main.slice(at - 200, at)).toContain("r.capped || r.stalled");
   });
@@ -447,7 +447,7 @@ describe("6. Help shows the hotkeys the desktop app really registered", () => {
     const win = await screen.findByTestId("help-hotkey-window", undefined, LONG);
     expect(win.querySelector("kbd")).toBeNull();
     expect(win.textContent).toContain("No key right now");
-    expect(win.textContent).toContain("Open Iron Jarvis");
+    expect(win.textContent).toContain("Open STEC OS");
   });
 
   it("in a browser tab, says the keys are the desktop app's", async () => {

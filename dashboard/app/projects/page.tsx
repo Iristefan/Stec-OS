@@ -296,8 +296,8 @@ function ProjectTile({
             }
             title={
               knowledge > 0
-                ? `Permanently delete "${p.name}" and its ${knowledge} ${knowledgeNoun} from Iron Jarvis. Your files and folders on this computer are NOT touched.`
-                : `Remove "${p.name}" from Iron Jarvis only — your files and folders on this computer are NOT touched`
+                ? `Permanently delete "${p.name}" and its ${knowledge} ${knowledgeNoun} from STEC OS. Your files and folders on this computer are NOT touched.`
+                : `Remove "${p.name}" from STEC OS only — your files and folders on this computer are NOT touched`
             }
           />
         </div>

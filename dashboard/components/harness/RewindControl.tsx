@@ -70,7 +70,7 @@ export function RewindControl({
       const preview = await previewRewind(threadId, turnId);
       if (!preview) {
         setPhase({ kind: "idle" });
-        setError("This version of Iron Jarvis cannot rewind a session.");
+        setError("This version of STEC OS cannot rewind a session.");
         return;
       }
       if (!preview.canRewind) {

@@ -2,7 +2,7 @@
  * THE ANIMATED BACKGROUNDS (v1.410.0) — the only background thing the app ships.
  *
  * The backgrounds themselves are five small HTML files in the repository
- * (`backgrounds/<id>/index.html`, written for Iron Jarvis). None is in the
+ * (`backgrounds/<id>/index.html`, written for STEC OS). None is in the
  * installer or this bundle: the daemon downloads the one the user picks from
  * the INSTALLED version's tag (`backgroundSourceUrl`), checks it against
  * `sha256` here, keeps it until the user deletes it, and serves it sealed off

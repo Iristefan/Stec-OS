@@ -6,7 +6,7 @@ parity lane (each pin red on the lane's own commit).
    unchanged while Claude Code had already been renamed.
 2. A rename is fire-and-forget: a tool that never answers never delays it.
 3. A typed ``/model`` on a running Claude Code said the switch TWICE (Claude
-   Code's own "now answers with …" line and Iron Jarvis's).
+   Code's own "now answers with …" line and STEC OS's).
 4. A Claude Code built-in that needs its terminal, sent as a NOTE, said "send
    it once Claude Code has finished" — and then it would only be refused.
    It says its own words.

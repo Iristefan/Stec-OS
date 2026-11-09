@@ -308,7 +308,7 @@ def register(app: FastAPI, d) -> None:
                     detail="no durable memories could be extracted from this text",
                 )
 
-        # Near-duplicate flags against what Iron Jarvis ALREADY remembers —
+        # Near-duplicate flags against what STEC OS ALREADY remembers —
         # surfaced, never silently merged. Degrades to no-flag on embedder
         # trouble (the attachment-RAG rule: similarity is an assist, not a gate).
         def _cos(a: list[float], b: list[float]) -> float:

@@ -1,7 +1,7 @@
 """The browser add-on SHIPS INSIDE THE INSTALLER — every link of that chain, pinned.
 
 Ship 5 of the Browser capability (v1.239.0), decision D27: the built add-on is bundled
-with Iron Jarvis so a user who has never seen a source checkout can point Chrome's
+with STEC OS so a user who has never seen a source checkout can point Chrome's
 "Load unpacked" at a folder inside their own installation. Nothing here adds a
 capability. It makes an existing one REACHABLE, and reachability is the thing this
 repository has shipped broken before while every test was green.

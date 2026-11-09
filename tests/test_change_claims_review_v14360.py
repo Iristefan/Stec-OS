@@ -44,7 +44,7 @@ def _m(role: str, content: str) -> SimpleNamespace:
 
 #: (reply, the turn's successful tools)
 NO_NOTE: list[tuple[str, list[str]]] = [
-    # A CPA's schedules are documents, never one of Iron Jarvis's schedules.
+    # A CPA's schedules are documents, never one of STEC OS's schedules.
     ("I updated the depreciation schedule below.", []),
     ("I added the rental income to Schedule E.", []),
     ("I've filled in Schedule C with the numbers from your 1099s.", []),
@@ -88,10 +88,10 @@ NO_NOTE: list[tuple[str, list[str]]] = [
     ("I've set up a Google Calendar reminder for Friday.", []),
     # The user's own change.
     ("Your default model is now Sonnet because you changed it in Settings.", []),
-    # An undo of something that is not one of Iron Jarvis's changes.
+    # An undo of something that is not one of STEC OS's changes.
     ("I rolled back the release.", []),
     ("I've undone the formatting changes in your doc.", []),
-    # Iron Jarvis's own words quoting a tool, never the model's claim.
+    # STEC OS's own words quoting a tool, never the model's claim.
     ("The model finished without writing an answer. Here is what project_create returned:\n"
      "The project has been created.", []),
     # A completion followed by a state that is no setting or record.
@@ -146,7 +146,7 @@ MUST_NOTE: list[tuple[str, str]] = [
     ("I've created a schedule for your weekly report.", "No schedule was created"),
     ("I created a new workflow for invoice reminders.", "No saved workflow was created"),
     ("I paused every schedule.", "No schedule was paused"),
-    # A destination reached with "to" is Iron Jarvis's own, never "elsewhere".
+    # A destination reached with "to" is STEC OS's own, never "elsewhere".
     ("I created a schedule that posts to Slack every morning.", "No schedule was created"),
 ]
 

@@ -58,7 +58,7 @@ P0 = blocks the north star now. Size S/M/L. "Live" = seen in the owner's record.
 |---|---|---|---|---|
 | B1 | A brief provider error at round 35 of a 40-minute reply ends it, deletes its saved progress, and Retry starts from scratch | P1 | M | `claude_native/transport.py:111` (CLI retries off); `router.py` ≤2 retries; `routes/build.py:2089-2091` forgets the record unless interrupted |
 | B2 | Stop / Esc does not stop a running command (up to 10 min) | P1 | S | `routes/chat.py:2938-2940` says so; kill code exists in `harness/stall.py:480-503` |
-| B3 | Build › Code: an Iron Jarvis restart (update, watchdog, crash) kills every CLI and nothing offers to continue | P1 | M | `hosted/process.py:228-236`, `hosted/service.py:2448-2461`, `:2727-2766` |
+| B3 | Build › Code: a STEC OS restart (update, watchdog, crash) kills every CLI and nothing offers to continue | P1 | M | `hosted/process.py:228-236`, `hosted/service.py:2448-2461`, `:2727-2766` |
 | B4 | Build › Code: the 15-minute idle stop silently kills dev servers the tool started; plan item C4.7 was not built | P1 | S | `hosted/service.py:110-114`, `:2436-2446` |
 | B5 | Build › Code account limits: one manual press, Claude only, no waiting for the reset | P1 | M | `hosted/service.py:2598-2604`; no `auto_wait` in `hosted/` |
 | B6 | New terminals default to the Store copy of PowerShell, the program behind the restore failures | P2 | S | `terminals/shells.py:22-27` |
@@ -175,7 +175,7 @@ Design, in phases, reusing what exists:
   pick was a pay-per-use model (Wave 4).
 - **B3 — the large option.** "The option that would allow long running tasks to
   be accomplished in the most efficient and effective manner possible." Build ›
-  Code's CLIs move into a separate host process that survives an Iron Jarvis
+  Code's CLIs move into a separate host process that survives a STEC OS
   restart; the CLI's own resume stays as the fallback for when that process
   itself is gone (Wave 2).
 - **Team notes — on by default, and a report for the developer.** "This will

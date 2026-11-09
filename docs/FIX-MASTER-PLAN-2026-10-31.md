@@ -1,4 +1,4 @@
-# Iron Jarvis fix master plan, 2026-10-31
+# STEC OS fix master plan, 2026-10-31
 
 Baseline: origin/master `5553f39f` = **v1.415.0**, which is what the live
 install runs (`/health` read 2026-10-31). The checkout at
@@ -6,7 +6,7 @@ install runs (`/health` read 2026-10-31). The checkout at
 origin/master. Nothing in this document has been changed in code.
 
 Two questions were asked. Part A: what the product-readiness audit asked for
-that is still not met. Part B: why Chat › Code (Iron Jarvis's own coding
+that is still not met. Part B: why Chat › Code (STEC OS's own coding
 harness) and Build › Code (the GUI over the real Claude Code / Codex / Pi /
 OpenCode) feel worse than the native desktop apps, and what to do about it.
 Part C is the work list, grouped and ordered, written for a coding agent.
@@ -79,7 +79,7 @@ section C6):
 
 | Gap | Where |
 |---|---|
-| Failure words blame Iron Jarvis and say "Press Retry", but the view has no Retry press. The same dead end v1.389.0 fixed in Chat › Code | `hosted/words.py:346-360` (wraps the tool's error in a RuntimeError, so `failure_words` finds no provider), `components/buildCode/CodeConversation.tsx:208-233` |
+| Failure words blame STEC OS and say "Press Retry", but the view has no Retry press. The same dead end v1.389.0 fixed in Chat › Code | `hosted/words.py:346-360` (wraps the tool's error in a RuntimeError, so `failure_words` finds no provider), `components/buildCode/CodeConversation.tsx:208-233` |
 | The per-reply receipt is "N in · M out [· cost]" only: no model, account, place, duration or changed files on the reply | `lib/buildApp.ts:1335-1360`, `CodeConversation.tsx:235-249` |
 | No Local only and no trust posture (by design; only the Memory box warns) | `hosted/jarvis_tools.py` docstring |
 | Engine-room words: "MCP servers and plugins", raw MCP tool ids on cards, "Code-view session", "The harness" fallback label, Codex's "cannot run commands in its sandbox", "Iron-Proxy" | `hosted/words.py:85-87,133-146,176-184,220,258`, `hosted/codex.py:94-97,684`, `CodePanes.tsx:403` |
@@ -225,7 +225,7 @@ UI although the routes exist (`BuildCodeView.tsx:990-1014,1566-1589`).
 
 ### B6. There are two "Code" products with two sets of everything
 
-Chat | Code is Iron Jarvis's harness; Build's </> Code | Terminal is the real
+Chat | Code is STEC OS's harness; Build's </> Code | Terminal is the real
 CLI. They have different lists, start flows, approval cards, mode names
 ("Accept edits / Don't ask" vs "Auto edits / Full access" vs Claude Code's
 "Accept edits / Bypass permissions"), receipts, failure lines and keyboard
@@ -247,7 +247,7 @@ Each task: **id · title · effort (S/M/L)**, then problem → fix → done when
 Problem: Claude Code's suggestion is a per-prefix rule (`hosted/claude.py:
 236-275`); 24 presses did not stop the cards (live). Fix: when the card's
 kind is `command` and the mode is not `full`, offer a third answer "Allow
-all commands this session" that answers allow with Iron Jarvis's OWN
+all commands this session" that answers allow with STEC OS's OWN
 `updatedPermissions` rule for the whole Bash tool (destination session),
 beside Claude Code's narrower suggestion; keep Claude's rule as "Allow
 similar commands". For Codex, map it to `acceptForSession` when offered, else
@@ -273,10 +273,10 @@ the lead's waiting finish-check card.
 Problem: `needs_a_person` cards the check's test re-run and every checker in
 every posture including yolo (`finish.py:2274-2288`, `checkers.py:553-565`,
 `routes/chat.py:5356-5357,5592-5596`); the card reads "The assistant wants
-to run…" although Iron Jarvis scheduled it (`ApprovalCard.tsx:255-261`).
+to run…" although STEC OS scheduled it (`ApprovalCard.tsx:255-261`).
 Fix: (a) under "Don't ask" and under a session grant on the carrier tool,
-run both without a card (the user's own command, re-run by Iron Jarvis, is
-not a new risk); (b) when a card is still needed, title it "Iron Jarvis wants
+run both without a card (the user's own command, re-run by STEC OS, is
+not a new risk); (b) when a card is still needed, title it "STEC OS wants
 to re-run the tests to check the work" with ONE button "Allow checks this
 session"; (c) skip the re-run when the last test command already passed
 AFTER the last edit (`_test_calls`, `finish.py:2789-2829`). Done when: the
@@ -337,7 +337,7 @@ table; the vocabulary scan has the rows.
 **C1.9 Codex on Windows: an Ask posture that does not ask for every file change · M** (confirm first)
 Problem: only `untrusted + danger-full-access` or full are offered
 (`hosted/codex.py:84-98`). Fix: measure whether `on-request + danger-full-
-access` with Iron Jarvis answering `item/fileChange/requestApproval` can
+access` with STEC OS answering `item/fileChange/requestApproval` can
 give "edits free, commands ask"; if not, document it on the chip and keep
 C1.1's "all commands" answer. Done when: the measurement is written into the
 module docstring and the hidden-mode reason is in plain words.
@@ -598,7 +598,7 @@ tools that take a live change. Done when: e2e keys case; the queue test.
 **C4.9 Failures with a press, and a real receipt · S**
 `hosted/words.py:346-360`; `CodeConversation.tsx:208-249`; `lib/buildApp.ts:
 1335-1360`. Fix: `failure_words` gets the tool's provider from the hosted
-error (name the tool, never Iron Jarvis); a Retry press on the newest failed
+error (name the tool, never STEC OS); a Retry press on the newest failed
 reply (resend the message); the reply line reads "answered by <model> on
 <account> · 2 m 14 s · 7 actions · 3 files changed", folded like Chat's.
 Done when: the failure fixture reads "Claude Code couldn't finish…" with

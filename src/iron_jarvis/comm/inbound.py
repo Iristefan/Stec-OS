@@ -99,9 +99,9 @@ _RECAP_MESSAGES = 6
 _RECAP_CHARS = 500
 
 #: v1.285.0 — the phone lane's words for talking to a REMOTE agent.
-BACK_TO_JARVIS_REPLY = "Back to Iron Jarvis — your next message is for me."
+BACK_TO_JARVIS_REPLY = "Back to STEC OS — your next message is for me."
 #: The tokens that end a remote conversation from the phone ("@jarvis").
-JARVIS_MENTIONS = frozenset({"jarvis", "ironjarvis", "iron jarvis", "iron-jarvis"})
+JARVIS_MENTIONS = frozenset({"jarvis", "ironjarvis", "iron jarvis", "iron-jarvis", "stec", "stec os", "stecos", "stec-os"})
 #: How much of the phone thread a remote is shown as conversation.
 _REMOTE_CHAT_ROWS = 60
 
@@ -161,7 +161,7 @@ def _run_problem(
 
 def _words_beyond_mentions(text: str) -> bool:
     """True when the message says something besides "@name" tokens — the
-    part Iron Jarvis should answer after a hand-back. Never raises."""
+    part STEC OS should answer after a hand-back. Never raises."""
     try:
         from ..agents.threads import _MENTION_RE
 
@@ -182,7 +182,7 @@ class InboundPoller:
         event_bus: Any = None,
         poll_timeout: int = 0,
         agent_type: AgentType = AgentType.SUPERVISOR,
-        reply_prefix: str = "Iron Jarvis: ",
+        reply_prefix: str = "STEC OS: ",
         max_reply_chars: int = 3500,
         command_interpreter: Any = None,
         reflex_router: Any = None,
@@ -359,7 +359,7 @@ class InboundPoller:
                 "update_id": update_id,
                 "chat_id": chat_id,
                 "notified": notified,
-                "reason": "Iron Jarvis restarted while handling the message",
+                "reason": "STEC OS restarted while handling the message",
             },
         )
         return {"channel": name, "status": "dropped", "update_id": update_id, "notified": notified}
@@ -623,7 +623,7 @@ class InboundPoller:
         truncation (a long answer must ARRIVE, not get cut). True iff every
         chunk reported ok. ``prefix`` (v1.285.0) names another speaker —
         ``"hermes: "`` for a remote agent's line — instead of the assistant's
-        own ``reply_prefix``; ``None`` keeps Iron Jarvis's."""
+        own ``reply_prefix``; ``None`` keeps STEC OS's."""
         limit = int(getattr(ch, "chunk_limit", 3500) or 3500)
         ok = True
         lead = self.reply_prefix if prefix is None else prefix
@@ -1155,7 +1155,7 @@ class InboundPoller:
         )
         # A REMOTE AGENT, ADDRESSED FROM THE PHONE (v1.285.0). "@hermes …" (or
         # a follow-up while the conversation is still with hermes) goes to the
-        # remote as a conversation — not to Iron Jarvis — and its reply comes
+        # remote as a conversation — not to STEC OS — and its reply comes
         # back on this same thread and this same phone, named. "@jarvis" ends
         # it. A local agent named here still takes the Jarvis lane below.
         remote_name, back_to_jarvis = self._remote_addressee(thread, tid, text)
@@ -1367,7 +1367,7 @@ class InboundPoller:
         """Who this phone message is for: ``(remote name, False)`` when a
         REMOTE agent is @-mentioned — or the conversation is still with one and
         the text names nobody — ``("", True)`` when "@jarvis" ends it, else
-        ``("", False)`` for Iron Jarvis. A LOCAL agent named here is left to the
+        ``("", False)`` for STEC OS. A LOCAL agent named here is left to the
         Jarvis lane (the daemon's own escalation handles those). Never raises:
         a resolution problem is a plain Jarvis turn."""
         if self.platform is None or self.thread_store is None or not tid:

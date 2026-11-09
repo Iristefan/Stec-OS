@@ -244,7 +244,7 @@ export function PermissionsPanel({
               browser, depending on what each extension exposes.
             </p>
             <p className="text-zinc-400">
-              It takes effect after the next Iron Jarvis restart, and turning it
+              It takes effect after the next STEC OS restart, and turning it
               back off makes every extension ask again. Chat is unaffected:
               arming a tool there is already your approval.
             </p>

@@ -1,4 +1,4 @@
-# Iron Jarvis Product-Readiness Audit: Final Report (v1.350.2, HEAD 94043cfb) and Re-audits (v1.357.0, v1.359.0, latest v1.388.0)
+# STEC OS Product-Readiness Audit: Final Report (v1.350.2, HEAD 94043cfb) and Re-audits (v1.357.0, v1.359.0, latest v1.388.0)
 
 **What this report is built on.** Seven audit lanes covered sections A to O. Each lane's PARTIAL and FAIL findings were then re-checked against the code by a hostile verifier, and against the running app using read-only requests. Where the auditors and verifiers disagreed, the verifier's version is used. Claims the verifiers disproved are left out, for example the bell's "Computer-use run failed — awaiting_approval" row, which is dead code because nothing publishes that event.
 
@@ -162,7 +162,7 @@ Unchanged: G83, G85 (control of other desktop apps) and G86 (a bundled model for
 
 ### 0g.9 Verdict
 
-Iron Jarvis is at 77. The closing wave did what it set out to do: the failure words, the Sign in press, the tool words, the waiting chat and Continue all hold in the code, and nothing that worked was undone apart from one link regression, fixed in v1.388.1. The score is held by three things: Build's IJ harness, which was built after the last audit and has not yet been brought up to the rest of the app's honesty and visibility rules; the common phrasings chat still misreads ("summarize my latest emails", "what can you work with"); and setup the owner has chosen not to remove or that needs the user's accounts to prove. The fastest points left are in the harness (visible in Running now, Retry and Details on failure, approvals and refit on its receipt, an everyday name) and in the matcher (mail and feature questions).
+STEC OS is at 77. The closing wave did what it set out to do: the failure words, the Sign in press, the tool words, the waiting chat and Continue all hold in the code, and nothing that worked was undone apart from one link regression, fixed in v1.388.1. The score is held by three things: Build's IJ harness, which was built after the last audit and has not yet been brought up to the rest of the app's honesty and visibility rules; the common phrasings chat still misreads ("summarize my latest emails", "what can you work with"); and setup the owner has chosen not to remove or that needs the user's accounts to prove. The fastest points left are in the harness (visible in Running now, Retry and Details on failure, approvals and refit on its receipt, an everyday name) and in the matcher (mail and feature questions).
 
 ---
 
@@ -204,7 +204,7 @@ Nothing here has run in the packaged app yet. Section 0d's scores and counts are
   - Bare "my calendar" with no calendar app connected (v1.360.0: the words do not say which app).
   - "what's new in slack / on github" stays research, as v1.360.0 pinned "what's new in Notion…".
   - "how much revenue did stripe show last month?": an app as the subject of a question is also how news is asked.
-- **Guide** (the skeptic's 17 sentences): all 15 how-tos are armed; the cake and bike controls are not. The hunters' wider lists hold 51 bare how-tos with no Jarvis signal ("how do I set a reminder", "how do I set it up"). These stay unarmed, as v1.360.0 decided (G38: the Guide is for questions about Iron Jarvis).
+- **Guide** (the skeptic's 17 sentences): all 15 how-tos are armed; the cake and bike controls are not. The hunters' wider lists hold 51 bare how-tos with no Jarvis signal ("how do I set a reminder", "how do I set it up"). These stay unarmed, as v1.360.0 decided (G38: the Guide is for questions about STEC OS).
 - **Receipt and names** (`hunt/mr`): every substitute and failover line names the machine once. The only differences from v1.359.0 are v1.360.0's intended alias naming, plus one: with a detected llama3 row, "Ran on" for an `ollama/llama3` run read "llama3" and now reads "llama3 on Ollama", like every other catalog shape.
 - **Refused run** (`hunt/sk/probe_cloud_refused.py`): `on_this_network` is now `None`, and the run has no step, token or tool call.
 
@@ -243,7 +243,7 @@ Nothing here has run in the packaged app yet. Section 0d's scores and counts are
 | 3 | An Outlook user who says "check my inbox" was offered Gmail | **Fixed.** Mail and calendar words mean the connected app of that kind (`resolve_kinds` in `_gather_grounding`, both lanes). With Microsoft 365 connected, its tools are armed (stream lane) and no Gmail door appears. With no mail app, ONE door names both choices. "My calendar" with no calendar app offers nothing. The door opens where `/marketplace` (the Directory) lands. | `test_an_outlook_user_who_says_check_my_inbox_gets_microsoft_365` and `test_a_fresh_install_check_my_inbox_offers_both_mail_apps_once` (both lanes), `tests/test_integrate_wave10_v13600.py` (b) |
 | 4 | "Reads files anywhere on this PC without asking" after reading was limited (G81) | **Fixed.** `readScope` / `readsLevelLine` (`lib/permissionLevels`) is the one decision. The chat's approval chip (on chat and in the Build terminal), the Access summary's Approval level row and (integrate) an agent's approval choices follow it. The chip reads `GET /settings/access` only on pointer, focus or open. | `dashboard/__tests__/reads-follow-setting-v13600.test.tsx`, `setup-reads-v13600.test.tsx` |
 | 5 | A helper run's verdict lost its colour and could be cut off (v1.358.0) | **Fixed.** The verdict sits outside the truncating part of the settled row, in its tone token: "failed" and "could not finish" in danger; "needs you", "part failed" and "hit its step limit" in warn; "stopped" uncoloured. The full line is the row's title. | `one-notice-v13600.test.tsx` section (2) |
-| 6 | The Guide rule armed the app-help lookups for how-to questions not about Iron Jarvis (G38) | **Fixed.** The lookups arm only for a question about Iron Jarvis: its name, a feature or page word in its own sense, "here", "this app". "how do I connect my printer to wifi", "how do I install node" and similar arm nothing. | `tests/test_chat_matches_meant_v13600.py` (the ABOUT_JARVIS and NOT_ABOUT_JARVIS tables plus the page-sense tables) |
+| 6 | The Guide rule armed the app-help lookups for how-to questions not about STEC OS (G38) | **Fixed.** The lookups arm only for a question about STEC OS: its name, a feature or page word in its own sense, "here", "this app". "how do I connect my printer to wifi", "how do I install node" and similar arm nothing. | `tests/test_chat_matches_meant_v13600.py` (the ABOUT_JARVIS and NOT_ABOUT_JARVIS tables plus the page-sense tables) |
 | 7 | Sessions' armed "Clean up now?" was grey (G80) | **Fixed.** The armed press wears the danger cue, like "Clear finished" beside it. | `one-notice-v13600.test.tsx` section (3) |
 | 8 | One model, two names: "Your model server" in the menu, "fleet" on the reply, the helper row and card, and the run page | **Fixed.** The reply's `route.label` names the user's machine on both lanes (`chat_turn.route_label`). Every list and card hands the `/models` catalog to the one rule (`modelRowName` / `answeredModelName` / `ranOnWords`), via lane 10B's patch, which the integrator applied. The run page's Model field follows it too (integrate: it read "DGX Spark · fleet"). Everything reads "DGX Spark", or "your model server" for a machine nobody named. | `dashboard/__tests__/model-server-name-everywhere-v13600.test.tsx` (with a scan for any call that leaves the catalog out), `wave10-seams-v13600.test.tsx` (c) (the real route and `/models` rows), `tests/test_integrate_wave10_v13600.py` (c) |
 
@@ -307,7 +307,7 @@ The problems section 0 named are fixed in the code:
 - Chat picks the 24 tools of an app that fit the message, so GitHub's pull-request tools stay in reach.
 - A failure names its provider ("Claude Code didn't answer in time").
 - One helper run shows one receipt, with a plain step-by-step log.
-- The desktop shell says "Iron Jarvis".
+- The desktop shell says "STEC OS".
 - The Directory's built-ins and its "N connected" count agree with its cards.
 - Emergency stop also stops a scheduled workflow that is waiting on a question.
 
@@ -393,7 +393,7 @@ Notes on the counts:
 |---|---|---|
 | G21 Replies say where they ran | A fleet node's reply says "on <label>", Claude's says "· cloud", and the menu badges say "on your plan" / "pay per use". | `route_label` names only `fleet-*` providers (`chat_turn.py:1453-1455`). The user's default route is custom/fleet, so a reply from their DGX box reads "answered by fleet · local", never "on DGX Spark", although the mission screen and run page name the same box. The run page never says local or cloud. |
 | G49 Import explains itself | The sources door comes first, the command sits under Details, and the outcome lists tool names and names Tools › Connections. | A server outside the catalog reads only "A tool from <app>" (`lib/addPackWords.ts:49-53`). Live, all six servers found on this PC read that way. Lane H-I-M called it met; lane C-D-O called it partly met, because the acceptance asks for a one-line description of each found tool. The stricter verdict stands. |
-| G61 Remote Jarvis node | A token-guarded task door, one low-trust run per task and one reply home from every ending. A "reach this Iron Jarvis from my network" setting is applied at every start, and the register form picks the task API itself. Tested with two real app factories on one machine. | Never run on two physical PCs, which is what the acceptance names. A Windows Firewall block of the newly listening app is neither detected nor explained. Both PCs need the setting on and a restart before a reply can come home. Section 0b counted it "met in code"; two lanes here call it partly met. |
+| G61 Remote Jarvis node | A token-guarded task door, one low-trust run per task and one reply home from every ending. A "reach this STEC OS from my network" setting is applied at every start, and the register form picks the task API itself. Tested with two real app factories on one machine. | Never run on two physical PCs, which is what the acceptance names. A Windows Firewall block of the newly listening app is neither detected nor explained. Both PCs need the setting on and a restart before a reply can come home. Section 0b counted it "met in code"; two lanes here call it partly met. |
 | G76 One vocabulary | `VOCABULARY.md` is the canon. One scan covers every dashboard string, and a second covers `main.js`, the schema and a fixed list of daemon files. | The backend scan is a fixed file list, so daemon sentences outside it still reach users:<br>• the Status map's "4 of 4 tool packs running." and "0 open panes" (`system_map.py:258, 701-703`; live on v1.354.0);<br>• extension failure reasons such as "the pack's server couldn't be reached", whose fix points at "Tools → Connected packs" (`mcp/tools.py:767, 784`), while the section is titled "Connected extensions";<br>• Directory memory cards: "A memory brain…" (`connectors/service.py:717-752`);<br>• "plug-in tools" (`routes/agents.py:4203-4206`).<br>Section 0b counted it met. |
 
 Met, with remainders worth knowing:
@@ -462,10 +462,10 @@ Advanced or rare paths:
 | `components/memory/baseCatalog.ts:96-99`; `settings/pages/LegacySettingsForm.tsx:569-575` | "An MCP memory server … Claude-Desktop-style config"; "MCP integrations" |
 | `connections/EndpointModelPicker.tsx:65` | "Server type: OpenAI-compatible / Anthropic-compatible", always shown |
 | `daemon/routes/settings.py:936` | "ollama pull llama3.2" |
-| `mcp/tools.py:752-755` | "Restart Iron Jarvis from a terminal that can run npx…" |
+| `mcp/tools.py:752-755` | "Restart STEC OS from a terminal that can run npx…" |
 | `computeruse/tools.py:271-277`; `settings/pages/BrowserPage.tsx:240` | "Pending approval id=<id>."; "run ad-hoc" |
 | `app/terminals/page.tsx:1072, 1375`; `MoodOrb.tsx:58-60, 205`; `StatusOverview.tsx:308` | "Attaching to sessions…", "this terminal has no cwd", "Thinking — a session is in flight", "· stream offline" |
-| `comm/channels.py:289`; `desktop/main.js:3962` | "(daemon not up)"; "Iron Jarvis — dashboard did not start" |
+| `comm/channels.py:289`; `desktop/main.js:3962` | "(daemon not up)"; "STEC OS — dashboard did not start" |
 | `TurnReceipt.tsx:1086-1090` (expanded receipt) | "(default)", "(prompted-tools)", "auto-tier", "context 43%". Acceptable as Level 2 detail. |
 
 Until it updates, the user's install (v1.354.0) also still shows the Status-map words fixed in v1.356.0: "Ready: anthropic, claude-cli, codex-cli, custom".
@@ -490,7 +490,7 @@ Until it updates, the user's install (v1.354.0) also still shows the Status-map 
 
 ### 0d.9 Verdict
 
-Iron Jarvis is now a product a general user can live in day to day. The first audit's worst problems are gone from the code: false "ok" and "Done", silent unattended failures, green badges on broken packs, "daemon" on the screen, raw tool ids in chat, two receipts for one run, and an Emergency stop that did not stop. Schedules, missions, helper runs, the bell, the Directory and the error lines now say what chat says. 152 of 213 items pass, none fail, and 79 of the 83 built gaps meet their acceptance.
+STEC OS is now a product a general user can live in day to day. The first audit's worst problems are gone from the code: false "ok" and "Done", silent unattended failures, green badges on broken packs, "daemon" on the screen, raw tool ids in chat, two receipts for one run, and an Emergency stop that did not stop. Schedules, missions, helper runs, the bell, the Directory and the error lines now say what chat says. 152 of 213 items pass, none fail, and 79 of the 83 built gaps meet their acceptance.
 
 It is not finished. 61 items are still PARTIAL. The problems left are narrower, but users will meet them:
 - failed background work that is silent in the tray and doubled while a window is open;
@@ -597,7 +597,7 @@ Notes on the counts:
 | G01 Schedules record real outcome | The outcome is recorded from the ledger (`platform.py:2074-2097, 2214`). The notice says "finished, but it needs you", Run now is amber, and the bell, Status map and home line count short runs. | The row reads grey "Done · needs you" / "Done · part failed", with only an amber dot (`lib/statusWords.ts:91-96, 142-145`; `ui.tsx:207-260`). A run that failed after its ask expired reads "Done · needs you" beside a "Failed" badge (`platform.py:2088`). A parked scheduled workflow and a skipped goal iteration record "ok" (`platform.py:2111-2115, 2151`). Lanes A-B, G-N and H-I-M called it met; lane L, partly met. |
 | G15 Connect in chat works and continues | Saving a token says "GitHub connected · N tools", turns the app on for the chat, and Continue re-sends the task. | Chat arms the first 24 tools of an app in name order (`chat_turn.py:127, 3160, 3216`; `registry.py:420`). On GitHub's maintained server the pull-request tools probably fall past the cut. Tested with a local stand-in only. |
 | G19 Helper card/row in words | "answered by <model> · 10 min 57 s", a neutral Stopped, error rows in words, and the row says where and on what. | The new "What it did" fold reads "Builder used history search" (`agents/mission.py:255-257`). |
-| G30 "Iron Jarvis", not "daemon" (shell and chat) | Banner, chat, Status, splash and Settings say "Iron Jarvis isn't responding". | The tray tooltip, Windows notifications and startup-failure dialog title still say "daemon" (`desktop/main.js:955-964, 1574-1580, 3681`). |
+| G30 "STEC OS", not "daemon" (shell and chat) | Banner, chat, Status, splash and Settings say "STEC OS isn't responding". | The tray tooltip, Windows notifications and startup-failure dialog title still say "daemon" (`desktop/main.js:955-964, 1574-1580, 3681`). |
 | G39 Chat knows apps by name | Chat recognises an app by its everyday name, says whether it is connected, and ask-arms its tools. | It works only when the message names the app, and only in the stream lane. The 24-tool cap applies. Its web rule broke ordinary web research (regression 2). |
 | G41 Refusals leave a fix button | A browser setup code leaves "Pair your browser", and an app tool's refusal names the app and where to turn it on. | The Drive button appears only if the model calls `app_connect`. A refused built-in tool still reads "_Note: write_file could not run (not turned on for this chat)._" (`chat_turn.py:2426-2429`). |
 | G61 Remote Jarvis node | A token-guarded task door, one low-trust run per task, one reply home from every ending, and an address card. Tested with two real app factories on one machine. | The packaged app listens on 127.0.0.1 only (`desktop/main.js:3583`). The card tells the user to run `ironjarvis serve --host <ip>` and set `IRONJARVIS_HOST_ALLOWLIST` (`daemon/routes/agents.py:98-108`), which the desktop app cannot do. The register form still asks for "http-task". |
@@ -612,7 +612,7 @@ Two gaps that one lane called partly met are counted as met:
 1. **The Schedules row leads with "Done" again.** v1.351.0 shipped an amber "finished · needs you" (`git show 9c3c9c11:dashboard/lib/scheduleOutcome.ts:40-41`). The one status table (v1.352.0) and the calm default badge (v1.356.0) turned it back into grey "Done · needs you". A run that FAILED after its ask expired now reads "Done · needs you", and its notice says "finished, but it needs you", while its own badge says "Failed" (`platform.py:2088`; `SessionStatusBadge.tsx:56-59`). A test pins this as intended (`tests/test_schedule_outcomes_v13510.py:503`).
 2. **Confirmed: a web question that names an app no longer searches the web.** "look up the stripe api docs for refunds", "search for notion templates for a CRM" and similar requests armed web search at v1.350.2 and arm nothing now. The apps section then tells the model "Never search the web in its place" (`tools/autoselect.py:1060-1116`; `connectors/app_names.py:420-427`).
 3. **Plausible, not run live: GitHub's pull-request tools are probably out of chat's reach.** The card moved to GitHub's own, larger server in v1.355.0, and chat arms at most 24 tools per app in name order (`chat_turn.py:127`). The Microsoft 365 card filters its tools for exactly this reason (`catalog.py:395`); the GitHub card does not (`catalog.py:230-253`).
-4. **Confirmed: a failure the classifier does not recognise is anonymous in chat.** A Claude Code CLI timeout reads "Iron Jarvis couldn't finish this answer. Press Retry…", where the old raw line at least named claude-cli and the timeout (`providers/failure_words.py:262-341`). The run page, schedule row and bell still print it raw: "…(claude-cli: claude-cli: CLI timed out — no output for 300s)".
+4. **Confirmed: a failure the classifier does not recognise is anonymous in chat.** A Claude Code CLI timeout reads "STEC OS couldn't finish this answer. Press Retry…", where the old raw line at least named claude-cli and the timeout (`providers/failure_words.py:262-341`). The run page, schedule row and bell still print it raw: "…(claude-cli: claude-cli: CLI timed out — no output for 300s)".
 5. **One helper run shows two receipts.** The settled row's new body and the boxed card under the reply say the same facts in different words: "Ran on" vs "answered by", "Open run" vs "Full transcript", and "Task complete" vs "Done" (`app/chat/page.tsx:3149-3178`).
 6. **The card's "What it did" fold shows tool ids**, such as "Builder used history search" (`agents/mission.py:255-257`).
 7. **"✓ Answered in N s" sits over a cut-off reply**, above "The reply was cut off." (`WorkLine.tsx:216-219, 896-908`).
@@ -633,7 +633,7 @@ On paths a typical user reaches:
 
 | Where | What the user sees |
 |---|---|
-| `desktop/main.js:955-964, 1574-1580, 3681` (tray, Windows notification, startup dialog title) | "Iron Jarvis — daemon did not start", "The daemon stopped answering repeatedly…" |
+| `desktop/main.js:955-964, 1574-1580, 3681` (tray, Windows notification, startup dialog title) | "STEC OS — daemon did not start", "The daemon stopped answering repeatedly…" |
 | `providers/cli_auth.py:50-58` (SIGN_IN_FIX, on Status doctor rows and in refusals) | "Open a terminal, run `claude`, then `/login`, then click Test on Connections." |
 | `orchestrator.py:2077` via `failure_words.py:363-392` (run page, schedule row, bell body) | "…(claude-cli: claude-cli: CLI timed out — no output for 300s)" |
 | `scheduling/run_outcome.py:65` | "The run failed, and it gave no reason (the daemon log has the details)." |
@@ -660,7 +660,7 @@ Advanced or rare paths:
 | `connections/RestHookups.tsx:181-185` | A raw "Config (JSON)" box |
 | `connections/specs.py:254, 272`; `ConnectionsPage.tsx:1052-1058` | Google Cloud / Entra OAuth client steps; "<provider>_oauth_client_id" |
 | `components/memory/baseCatalog.ts:96-99` | "An MCP memory server … Claude-Desktop-style config" |
-| `mcp/tools.py:752-755, 767, 784` | "Restart Iron Jarvis from a terminal that can run npx…", "Tools → Connected packs" |
+| `mcp/tools.py:752-755, 767, 784` | "Restart STEC OS from a terminal that can run npx…", "Tools → Connected packs" |
 | `daemon/routes/settings.py:870` | "ollama pull llama3.2" |
 | `connections/EndpointModelPicker.tsx:41-42, 65` | "Server type: OpenAI-compatible / Anthropic-compatible", always shown |
 | `routes/assignments.py:95` and six other routes | "… not available on this daemon — restart it" |
@@ -689,7 +689,7 @@ The user's install (v1.354.0) also still shows the Status-map words fixed in v1.
 
 ### 0.9 Verdict
 
-Iron Jarvis has gone from a strong engine with a developer-grade shell to a product most people could use day to day. The first audit's worst problems are fixed in the code:
+STEC OS has gone from a strong engine with a developer-grade shell to a product most people could use day to day. The first audit's worst problems are fixed in the code:
 - false "ok" and "Finished" over work that needs the user;
 - silent unattended failures and a bell that forgot;
 - green badges on packs that did not start;
@@ -729,7 +729,7 @@ Wave 8 ("close the re-audit") worked through section 0's lists in five lanes (8A
 
 **Gaps 0.4 listed as partly met:**
 - **Met:** G01, G15, G30, G39, G76. G39's name-matching stays stream-lane only, by design.
-- **Met in code:** G61. It has a setting that is off by default (Settings › Connections › "Let other computers on my network reach this Iron Jarvis"). The desktop applies it at each start, and it keeps the token rule. The register form now picks the task API itself. It is still untried on two physical PCs.
+- **Met in code:** G61. It has a setting that is off by default (Settings › Connections › "Let other computers on my network reach this STEC OS"). The desktop applies it at each start, and it keeps the token rule. The register form now picks the task API itself. It is still untried on two physical PCs.
 - **Met, apart from noted remainders:**
   - G19: the run log is in tool words. The mission's refusal line still names a built-in tool by its spaced id ("tried write file").
   - G41: built-in refusals say where to turn the tool on, and Pixio key errors name Settings › Connections. The Drive "Connect" button still appears only when the model calls app_connect.
@@ -1158,14 +1158,14 @@ Once G43, G44, G45, G70 and G78 land, the catalog rows carry needs, permissions 
 
 | Where | Today | Say instead | Gap |
 |---|---|---|---|
-| DaemonBanner.tsx:256, 343, 402 (every page) | "Daemon offline." / "Daemon rejected your token." / "A request to the daemon failed." | "Iron Jarvis isn't responding." / "This window isn't signed in to Iron Jarvis." / "Part of this page didn't load." | G30 |
-| useChatStream.ts:827-840 (chat bubble) | "Nothing arrived from the daemon for 90 s…" | "Nothing came back from Iron Jarvis for 90 s…" | G30 |
-| PreflightNote.tsx:67; StatusOverview.tsx:152; ui.tsx:495; api.ts:193 | "couldn't reach the daemon", "Daemon offline", "daemon offline" | "Iron Jarvis isn't responding" | G30 |
-| desktop/loading.html:94 | "Booting the daemon and dashboard" | "Getting Iron Jarvis ready" | G30 |
-| MaintenanceCard / LegacySettingsForm; SettingsHome:136,142 | "Restart daemon", "reach the daemon" | "Restart Iron Jarvis" | G59 |
+| DaemonBanner.tsx:256, 343, 402 (every page) | "Daemon offline." / "Daemon rejected your token." / "A request to the daemon failed." | "STEC OS isn't responding." / "This window isn't signed in to STEC OS." / "Part of this page didn't load." | G30 |
+| useChatStream.ts:827-840 (chat bubble) | "Nothing arrived from the daemon for 90 s…" | "Nothing came back from STEC OS for 90 s…" | G30 |
+| PreflightNote.tsx:67; StatusOverview.tsx:152; ui.tsx:495; api.ts:193 | "couldn't reach the daemon", "Daemon offline", "daemon offline" | "STEC OS isn't responding" | G30 |
+| desktop/loading.html:94 | "Booting the daemon and dashboard" | "Getting STEC OS ready" | G30 |
+| MaintenanceCard / LegacySettingsForm; SettingsHome:136,142 | "Restart daemon", "reach the daemon" | "Restart STEC OS" | G59 |
 | projects/[id], ProjectSurfaces, SavedWorkflows, ProjectSchedules, Creative | "the daemon returned an error (HTTP 500)" / "Daemon offline — could not upload." | "The board couldn't load. Try again." (code in a title) | G59 |
 | connectors/service.py:204, 302 | "saved — restart the daemon…" | "Saved, but it didn't start. Press Retry." | G08 |
-| router.py:897-925 | "anthropic runs through claude-cli…", "local_primary_policy=refuse… Set local_primary_policy to failover" | "Claude Code isn't signed in." / "Iron Jarvis won't switch to a different AI without asking." | G28 |
+| router.py:897-925 | "anthropic runs through claude-cli…", "local_primary_policy=refuse… Set local_primary_policy to failover" | "Claude Code isn't signed in." / "STEC OS won't switch to a different AI without asking." | G28 |
 | ConnectDoors.tsx:478 above its own Sign in button; ConnectionsPage CLI rows | "Open a terminal, run `claude`, then `/login`…", "install / log in via its CLI" | A Sign in button and a vendor link | G33 |
 | adapters/base.py:94-98 | "openrouter API error 401: No auth credentials found" | "OpenRouter refused your key. Update it in Connections." | G28, G29 |
 | orchestrator.py:1809; platform.py:2108 | "Session failed: ProviderError: …", "RuntimeError: session ended failed: …" | "This run stopped: <reason>" / "The run failed: <reason>" | G28, G01 |
@@ -1352,7 +1352,7 @@ Once G43, G44, G45, G70 and G78 land, the catalog rows carry needs, permissions 
 | G28 | Daemon failures in plain words | P1 | Medium | — | 4 · A |
 | G39 | Chat knows apps by name | P1 | Medium | G15, G38, G45 | 4 · A |
 | G20 | Run page as receipt + interrupted Continue | P1 | Medium | G18, G24 | 4 · B |
-| G30 | "Iron Jarvis", not "daemon" (shell & chat) | P1 | Medium | — | 4 · B |
+| G30 | "STEC OS", not "daemon" (shell & chat) | P1 | Medium | — | 4 · B |
 | G31 | Recovery visible | P1 | Small | G30 | 4 · B |
 | G49 | Import explains itself | P1 | Medium | — | 4 · C |
 | G50 | Import reads current files, respects off | P1 | Small | G49 | 4 · C |
@@ -1399,7 +1399,7 @@ Once G43, G44, G45, G70 and G78 land, the catalog rows carry needs, permissions 
 
 ## 11. Final verdict
 
-**How close is Iron Jarvis today to the intended product?**
+**How close is STEC OS today to the intended product?**
 About halfway to two-thirds of the way. The engine is ready for real people: it recovers, survives restarts, refuses honestly and keeps a complete ledger. The chat page is close to the target experience.
 
 A new user still hits developer-grade edges as soon as they leave the chat or step away:

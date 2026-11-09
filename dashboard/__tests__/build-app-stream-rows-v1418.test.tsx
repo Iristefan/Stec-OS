@@ -141,7 +141,7 @@ describe("C4.3 thinking live; Claude Code's own messages", () => {
     const notices = screen.getAllByTestId("code-notice").map((n) => n.textContent);
     expect(notices).toContain("Hook SessionStart:startup (SessionStart) ran: Loaded the team's notes.");
     expect(notices).toContain("Hook PostToolUse:Bash (PostToolUse) failed: lint: 2 warnings in file_0003.py");
-    expect(notices.some((n) => n?.startsWith("Claude Code asked Iron Jarvis to answer one of its hooks"))).toBe(true);
+    expect(notices.some((n) => n?.startsWith("Claude Code asked STEC OS to answer one of its hooks"))).toBe(true);
     expect(notices).toContain("Claude Code is compacting the conversation to make room…");
     expect(notices.filter((n) => n?.includes("compacting"))).toHaveLength(1);
   });

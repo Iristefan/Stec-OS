@@ -1,7 +1,7 @@
 """Arming gaps in the document module (v1.196.0).
 
 MEASURED, not guessed. The event ledger of the user's live install
-(``%APPDATA%/Iron Jarvis/.ironjarvis/ironjarvis.db``, ``eventrecord`` where
+(``%APPDATA%/STEC OS/.ironjarvis/ironjarvis.db``, ``eventrecord`` where
 ``type='tool.executed'``, 482 calls between 2026-07-06 and 2026-08-20) says the
 documents module is load-bearing — ``read_document`` alone is the second
 most-used tool in the app — and that 12 of its 18 tools have NEVER RUN ONCE.

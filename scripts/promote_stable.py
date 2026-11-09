@@ -97,7 +97,7 @@ _VERSION_RX = re.compile(r"^v?(\d+)\.(\d+)\.(\d+)$")
 
 README = """# updates-stable
 
-Machine-read by the installed Iron Jarvis desktop app when its update channel is
+Machine-read by the installed STEC OS desktop app when its update channel is
 **Stable** (Settings › System › Updates). `latest.yml` names the version Stable
 offers and its installer (absolute URLs on the GitHub release).
 

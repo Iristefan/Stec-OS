@@ -105,7 +105,7 @@ def _working(turn: str = "t1") -> list[dict]:
 
 
 def _graceful(turn: str = "t1") -> list[dict]:
-    """The same reply, ended by Iron Jarvis's own stop (a graceful shutdown)."""
+    """The same reply, ended by STEC OS's own stop (a graceful shutdown)."""
     return _working(turn) + [
         {**S.W.error(S.STOPPED_TITLE, S.STOPPED_FIX, ""), "turn": turn},
         _ev("done", turn, stop="interrupted"),

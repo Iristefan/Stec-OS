@@ -58,7 +58,7 @@ def test_share_full_markdown_is_verbatim(tmp_path):
     body = out["content"]
     # Verbatim content under role headings, with honest footnotes.
     assert "# What is the S-corp deadline?" in body
-    assert "### You" in body and "### Iron Jarvis" in body
+    assert "### You" in body and "### STEC OS" in body
     assert "March 16 (the 15th is a Sunday)." in body
     assert "Attached: notes.pdf" in body
     assert "Tools used: web_search" in body
@@ -187,7 +187,7 @@ def test_share_compact_mock_default_never_spends_a_key_nobody_chose(tmp_path):
     r = client.post(f"/chat/threads/{tid}/share", json={"mode": "compact"})
     assert r.status_code == 400, r.text
     assert r.json()["detail"].endswith(
-        "Iron Jarvis didn't switch to Anthropic, which bills per use, because you "
+        "STEC OS didn't switch to Anthropic, which bills per use, because you "
         "didn't choose a pay-per-use model for this."
     ), r.json()
     assert fake.calls == []

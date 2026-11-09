@@ -130,7 +130,7 @@ import { runReachedAModel } from "@/components/sessions/runPageWords";
 import type { SessionView } from "@/lib/types";
 
 const ID = "session_reached_13610";
-const WS = "C:/Users/me/Documents/Iron Jarvis/2026-10-20 reached";
+const WS = "C:/Users/me/Documents/STEC OS/2026-10-20 reached";
 const RESULT = `/sessions/${ID}/result`;
 
 function fakeParams(id: string): Promise<{ id: string }> {
@@ -231,7 +231,7 @@ function setRefused(runs: Record<string, unknown>[], tools: Record<string, unkno
 describe("a run the router refused before sending anything claims neither local nor cloud", () => {
   it("one failed run, no step, no tokens, no tool call: no '· cloud', whatever the receipt or the row says", async () => {
     setRefused([REFUSED_RUN]);
-    // An older Iron Jarvis judged the stored provider anyway (false); the
+    // An older STEC OS judged the stored provider anyway (false); the
     // page must not take its word for a run that reached no model.
     setReceipt("openrouter", false);
     open();

@@ -1,7 +1,7 @@
 """The add-on's PAGE READER is pinned — what it collects, and what it must never read.
 
 Ship 2 of the Browser capability (v1.236.0). ``extensions/chrome/src/content/`` is the
-only Iron Jarvis code that touches a page the user is signed in to, and there is no
+only STEC OS code that touches a page the user is signed in to, and there is no
 TypeScript test harness in this repository (``extensions/chrome`` has no vitest
 project), so these are SOURCE pins — the shape ``tests/test_browser_addon_ui_v1235.py``
 established for the add-on's other untestable surface — plus real executable
@@ -280,7 +280,7 @@ def test_the_sensitive_vocabulary_is_imported_and_never_retyped():
             assert f'"{token}"' not in _code(path), (
                 f"{path.name} spells the sensitive token {token!r} by hand; the "
                 "vocabulary is generated from computeruse/policy.py so the two "
-                "halves of Iron Jarvis cannot disagree about what a credential is"
+                "halves of STEC OS cannot disagree about what a credential is"
             )
 
 

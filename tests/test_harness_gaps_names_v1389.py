@@ -1,4 +1,4 @@
-"""Harness gaps, fix 4: Iron Jarvis's own sentences say the everyday names.
+"""Harness gaps, fix 4: STEC OS's own sentences say the everyday names.
 
 The v1.388.0 re-audit (0g.6): a Build terminal's coding tool was told to
 "relaunch the harness" (the MCP door's 503, the expired and missing terminal

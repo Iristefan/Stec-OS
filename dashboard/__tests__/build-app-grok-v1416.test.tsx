@@ -1,7 +1,7 @@
 /**
  * v1.416.0 — Grok in Build's Code view: the user's REAL Grok (`grok agent
  * --no-leader stdio`, the Agent Client Protocol), its own tools and config on;
- * Iron Jarvis turns every permission question Grok asks into a card. Driven
+ * STEC OS turns every permission question Grok asks into a card. Driven
  * through the real view and lib/buildApp; only the network (lib/api), the
  * stream reader and the folder tree are stand-ins.
  *

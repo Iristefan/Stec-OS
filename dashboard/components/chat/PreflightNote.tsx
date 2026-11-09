@@ -77,7 +77,7 @@ export function PreflightNote({
           : signedOutCase
             ? `${Name} is installed but not signed in, so this turn will fail.`
           : stale
-            ? `${Name} may be offline. The last check couldn't reach Iron Jarvis. Pick another model or check the endpoint.`
+            ? `${Name} may be offline. The last check couldn't reach STEC OS. Pick another model or check the endpoint.`
             : `${Name} isn't reachable right now. This turn will fail. Pick another model or bring the endpoint back.`}
       </span>
       {signedOutCase && (

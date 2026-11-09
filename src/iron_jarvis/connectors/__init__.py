@@ -1,6 +1,6 @@
 """Connector Marketplace (CX-01).
 
-A curated, one-tap gallery over everything Iron Jarvis can connect to — MCP
+A curated, one-tap gallery over everything STEC OS can connect to — MCP
 servers, OAuth apps, and API-key services — unifying the MCP catalog, the
 ConnectionRegistry, and the vault behind one surface with health, scopes, and a
 plain-English 'what this unlocks'.

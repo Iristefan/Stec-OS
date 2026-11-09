@@ -398,7 +398,7 @@ describe("a picture in a reply opens full screen", () => {
     const p = "C:/Users/x/media/pixio/mj_7.png";
     H.stream.replies.push(`Your image is ready.\n\n![image](<${p}>)`);
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "make a picture of a lighthouse" } });
     fireEvent.keyDown(box, { key: "Enter" });
     const btn = await screen.findByRole("button", { name: "View mj_7.png full screen" });
@@ -421,7 +421,7 @@ describe("an attached picture shows a thumbnail in its composer chip", () => {
     };
   }
   async function attach(...files: Array<[string, string]>) {
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     const input = document.querySelector('input[type="file"]') as HTMLInputElement;
     fireEvent.change(input, {
       target: { files: files.map(([n, type]) => new File(["abc"], n, { type })) },

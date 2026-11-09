@@ -11,7 +11,7 @@ Code's carry-on found, each pinned RED on the builder's code first.
    older one.
 2. A reply the USER STOPPED, when the app went before the coding tool
    confirmed the Stop (Stop, then Quit or Restart to update at once), was
-   written as cut by Iron Jarvis's own stop and carried on by itself at the
+   written as cut by STEC OS's own stop and carried on by itself at the
    next start — "never for a reply the user stopped". The Stop press is now
    kept beside the log, and the reconcile never records that turn as cut.
 3. With "Carry on by itself after an account's limit" turned OFF while a
@@ -293,7 +293,7 @@ from iron_jarvis.terminals.limit_state import PaneLimit  # noqa: E402
 
 
 async def _limit_again(svc, drivers, sid, reset):
-    """The carry-on Iron Jarvis just started hits the account's limit AT ONCE
+    """The carry-on STEC OS just started hits the account's limit AT ONCE
     (the account served nothing)."""
     await until(lambda: svc.live[sid].turn is not None and drivers[sid].turn_open)
     drv = drivers[sid]
@@ -423,7 +423,7 @@ async def test_a_move_by_itself_waits_while_the_tool_still_runs_background_work(
     """A move stops the coding tool's process (a tree kill): a background
     command (a dev server, a long test run) or helper agent still running in
     it would die. Like the idle reaper, the pool and a restart (v1.417.0), a
-    move Iron Jarvis makes by itself waits until that work is done."""
+    move STEC OS makes by itself waits until that work is done."""
     ip, homes = _accounts(tmp_path)
     monkeypatch.setattr(app.state.platform, "iron_proxy", ip, raising=False)
     monkeypatch.setattr(app.state.platform.config, "account_groups", {"Work": ["p1", "p2"]})
@@ -446,11 +446,11 @@ async def test_a_move_by_itself_waits_while_the_tool_still_runs_background_work(
 
 
 # --------------------------------------------------------------------------- #
-# 7. Emergency stop stops a Build › Code reply Iron Jarvis carried on by itself
+# 7. Emergency stop stops a Build › Code reply STEC OS carried on by itself
 # --------------------------------------------------------------------------- #
 async def test_emergency_stop_stops_a_carry_on_already_running_never_the_users_own(home, app, work, monkeypatch):
     """Chat › Code's rule since v1.398.0: engaging Emergency stop stops every
-    coding turn Iron Jarvis started BY ITSELF. Build › Code starts such turns
+    coding turn STEC OS started BY ITSELF. Build › Code starts such turns
     since v1.422.0 (a carry-on after a restart, a reset or a move); the
     user's own reply and a Continue the user pressed keep going."""
     from iron_jarvis.agents.orchestrator import Orchestrator
@@ -489,7 +489,7 @@ async def test_emergency_stop_stops_a_carry_on_already_running_never_the_users_o
 async def test_emergency_stop_engaged_during_the_restart_pass_starts_nothing_more(home, app, work, monkeypatch):
     """The pass reads Emergency stop once at its top; the user can turn it
     on while it goes through the sessions (each start is awaited). Every
-    start Iron Jarvis makes by itself checks it again — a reply after the
+    start STEC OS makes by itself checks it again — a reply after the
     switch is offered, never started (a Continue the user presses still
     goes)."""
     first, second = _row(app, work), _row(app, work, hid="22222222-3333-4444-5555-666666666666")

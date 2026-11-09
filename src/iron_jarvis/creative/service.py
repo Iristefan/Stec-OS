@@ -1,4 +1,4 @@
-"""Creative gallery service — list and resolve the media Iron Jarvis has made.
+"""Creative gallery service — list and resolve the media STEC OS has made.
 
 The gallery is a VIEW over the artifact store: pixio generations save into it
 via the artifact sink (tools/pixio.py), computer-use screenshots were already
@@ -173,7 +173,7 @@ def transcode_to_playable(src: Path, dst: Path, *, timeout: int = 900) -> Path:
     if not ff:
         raise RuntimeError(
             "ffmpeg isn't available — install it (winget install Gyan.FFmpeg) so "
-            "Iron Jarvis can make videos playable."
+            "STEC OS can make videos playable."
         )
     dst.parent.mkdir(parents=True, exist_ok=True)
     cmd = [

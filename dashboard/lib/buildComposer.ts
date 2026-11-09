@@ -153,7 +153,7 @@ function holds(text: string, q: string): boolean {
   return text.toLowerCase().includes(q);
 }
 
-/** The commands list, by whitelist (an older Iron Jarvis has none: []). */
+/** The commands list, by whitelist (an older STEC OS has none: []). */
 export function decodeCommands(raw: unknown): CustomCommand[] {
   const list = raw && typeof raw === "object" ? (raw as { commands?: unknown }).commands : null;
   if (!Array.isArray(list)) return [];
@@ -506,7 +506,7 @@ function str(v: unknown, cap: number): string {
 }
 
 /** One waiting message from the session view (`queued`), by whitelist: an
- *  older Iron Jarvis's `{text}` reads as words only. Null when it carries
+ *  older STEC OS's `{text}` reads as words only. Null when it carries
  *  nothing to send. */
 export function decodeQueuedItem(raw: unknown): QueuedItem | null {
   if (!raw || typeof raw !== "object") return null;

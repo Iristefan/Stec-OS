@@ -27,8 +27,8 @@ class AgentType(str, enum.Enum):
     RESEARCHER = "researcher"
     MEMORY = "memory"
     AUTOMATION = "automation"
-    MAINTAINER = "maintainer"  # self-development: edits Iron Jarvis's own source
-    GUIDE = "guide"  # v1.224.0: the built-in expert on Iron Jarvis itself
+    MAINTAINER = "maintainer"  # self-development: edits STEC OS's own source
+    GUIDE = "guide"  # v1.224.0: the built-in expert on STEC OS itself
 
 
 class AgentState(str, enum.Enum):
