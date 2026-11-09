@@ -5652,7 +5652,7 @@ async function startup() {
   userDataDir = app.getPath("userData"); // writable per-user state dir
   // Windows toast notifications (crash-loop, hotkey conflicts) need a stable
   // AppUserModelID that matches the installer's appId.
-  app.setAppUserModelId("com.realdealcpa.ironjarvis");
+  app.setAppUserModelId("com.iristefan.stecos");
   loadDesktopSettings(); // load the close-to-tray preference before menus/tray
   // v1.438.0: a desktop switch changed in STEC OS's settings while this
   // app was closed applies now (nothing is sent: the daemon is not up yet).

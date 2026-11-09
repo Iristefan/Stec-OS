@@ -187,12 +187,12 @@ def _built(tmp_path: Path, *, payload: bytes = b"installer bytes") -> Path:
 
     rel = tmp_path / "desktop" / "release"
     rel.mkdir(parents=True)
-    (rel / "Iron Jarvis Setup 1.2.3.exe").write_bytes(payload)
-    (rel / "Iron Jarvis Setup 1.2.3.exe.blockmap").write_bytes(b"blockmap")
+    (rel / "STEC OS Setup 1.2.3.exe").write_bytes(payload)
+    (rel / "STEC OS Setup 1.2.3.exe.blockmap").write_bytes(b"blockmap")
     sha = base64.b64encode(hashlib.sha512(payload).digest()).decode()
     (rel / "latest.yml").write_text(
-        "version: 1.2.3\nfiles:\n  - url: Iron-Jarvis-Setup-1.2.3.exe\n"
-        f"    sha512: {sha}\n    size: {len(payload)}\npath: Iron-Jarvis-Setup-1.2.3.exe\n"
+        "version: 1.2.3\nfiles:\n  - url: STEC-OS-Setup-1.2.3.exe\n"
+        f"    sha512: {sha}\n    size: {len(payload)}\npath: STEC-OS-Setup-1.2.3.exe\n"
         f"sha512: {sha}\nreleaseDate: '2026-10-22T12:47:00.000Z'\n",
         encoding="utf-8",
     )
@@ -213,13 +213,13 @@ def test_the_installer_check_keeps_what_electron_builder_really_writes(tmp_path)
     proc = _run_check(tmp_path)
     assert proc.returncode == 0, proc.stdout + proc.stderr
     names = sorted(p.name for p in rel.iterdir())
-    assert names == ["Iron-Jarvis-Setup-1.2.3.exe", "Iron-Jarvis-Setup-1.2.3.exe.blockmap", "latest.yml"]
+    assert names == ["STEC-OS-Setup-1.2.3.exe", "STEC-OS-Setup-1.2.3.exe.blockmap", "latest.yml"]
 
 
 @needs_bash
 def test_the_installer_check_refuses_an_installer_latest_yml_does_not_describe(tmp_path):
     rel = _built(tmp_path)
-    (rel / "Iron Jarvis Setup 1.2.3.exe").write_bytes(b"some other build")
+    (rel / "STEC OS Setup 1.2.3.exe").write_bytes(b"some other build")
     proc = _run_check(tmp_path)
     assert proc.returncode != 0 and "sha512 is not this installer" in proc.stdout + proc.stderr
 

@@ -138,7 +138,7 @@ def clean_version(text: Any) -> str:
 def required_assets(version: str) -> tuple[str, ...]:
     """The files an installed app needs from a release: the manifest, the
     installer and its blockmap (differential download)."""
-    return ("latest.yml", f"Iron-Jarvis-Setup-{version}.exe", f"Iron-Jarvis-Setup-{version}.exe.blockmap")
+    return ("latest.yml", f"STEC-OS-Setup-{version}.exe", f"STEC-OS-Setup-{version}.exe.blockmap")
 
 
 # --------------------------------------------------------------------------- #

@@ -335,9 +335,9 @@ jobs:
       - name: Build the installer (not published)
         run: powershell -ExecutionPolicy Bypass -File desktop/build-installer.ps1 -SkipDaemon
 
-      # electron-builder writes the files under productName ("Iron Jarvis Setup
+      # electron-builder writes the files under productName ("STEC OS Setup
       # X.exe", spaces), while latest.yml names the GitHub-safe
-      # "Iron-Jarvis-Setup-X.exe": its own GitHub publisher uploaded them under
+      # "STEC-OS-Setup-X.exe": its own GitHub publisher uploaded them under
       # that name, and `--publish never` leaves them as written (the first dry
       # run of this layout failed here on exactly that). Give them the name
       # latest.yml uses, then prove the installer kept IS the one latest.yml
@@ -348,11 +348,11 @@ jobs:
         run: |
           set -euo pipefail
           ver="${{ needs.plan.outputs.version }}"
-          exe="Iron-Jarvis-Setup-$ver.exe"
+          exe="STEC-OS-Setup-$ver.exe"
           cd desktop/release
           for ext in exe exe.blockmap; do
-            if [ ! -e "Iron-Jarvis-Setup-$ver.$ext" ] && [ -e "Iron Jarvis Setup $ver.$ext" ]; then
-              mv "Iron Jarvis Setup $ver.$ext" "Iron-Jarvis-Setup-$ver.$ext"
+            if [ ! -e "STEC-OS-Setup-$ver.$ext" ] && [ -e "STEC OS Setup $ver.$ext" ]; then
+              mv "STEC OS Setup $ver.$ext" "STEC-OS-Setup-$ver.$ext"
             fi
           done
           for f in "$exe" "$exe.blockmap" latest.yml; do
@@ -368,8 +368,8 @@ jobs:
         with:
           name: installer
           path: |
-            desktop/release/Iron-Jarvis-Setup-${{ needs.plan.outputs.version }}.exe
-            desktop/release/Iron-Jarvis-Setup-${{ needs.plan.outputs.version }}.exe.blockmap
+            desktop/release/STEC-OS-Setup-${{ needs.plan.outputs.version }}.exe
+            desktop/release/STEC-OS-Setup-${{ needs.plan.outputs.version }}.exe.blockmap
             desktop/release/latest.yml
           if-no-files-found: error
           retention-days: 7
@@ -405,7 +405,7 @@ jobs:
       RELEASE_NOTES: |
         **Iron Jarvis @VERSION@ for Windows**
 
-        **Which file to download:** `Iron-Jarvis-Setup-@VERSION@.exe` in the Assets list below. Ignore the `.blockmap` and `latest.yml` files; the app's updater reads those.
+        **Which file to download:** `STEC-OS-Setup-@VERSION@.exe` in the Assets list below. Ignore the `.blockmap` and `latest.yml` files; the app's updater reads those.
 
         **The Windows warning:** the installer isn't code-signed yet, so Windows may say "Windows protected your PC". Press **More info**, then **Run anyway**. It happens once per download, not every launch. [Why it isn't signed yet](${{ github.server_url }}/${{ github.repository }}/blob/master/docs/SIGNING.md)
 
@@ -490,12 +490,12 @@ jobs:
           set -euo pipefail
           ver="${{ needs.plan.outputs.version }}"
           gh release upload "v$ver" --repo "$GITHUB_REPOSITORY" --clobber \
-            "installer/Iron-Jarvis-Setup-$ver.exe" \
-            "installer/Iron-Jarvis-Setup-$ver.exe.blockmap" \
+            "installer/STEC-OS-Setup-$ver.exe" \
+            "installer/STEC-OS-Setup-$ver.exe.blockmap" \
             "installer/latest.yml"
           # All three must be on the release before it can go public.
           have="$(gh release view "v$ver" --repo "$GITHUB_REPOSITORY" --json assets -q '.assets[].name')"
-          for f in "Iron-Jarvis-Setup-$ver.exe" "Iron-Jarvis-Setup-$ver.exe.blockmap" latest.yml; do
+          for f in "STEC-OS-Setup-$ver.exe" "STEC-OS-Setup-$ver.exe.blockmap" latest.yml; do
             grep -qxF "$f" <<< "$have" || { echo "::error::$f is not on the release"; exit 1; }
           done
 

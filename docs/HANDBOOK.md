@@ -1,7 +1,7 @@
 # STEC OS — The Handbook
 
 *The user guide. What this app is, how to work it daily, and the rules it
-holds itself to. Current as of v1.445.0 (2026-11-06).*
+holds itself to. Current as of v1.446.0 (2026-11-06).*
 
 ---
 
@@ -2005,14 +2005,22 @@ answers. The app's data folder moved with the name, to
 `%APPDATA%/STEC OS` (it was `%APPDATA%/Iron Jarvis`), and the chat work
 folder is now `Documents/STEC OS`. The update does not copy anything from the
 old folders, so after it you add your API keys and settings again. The old
-folders stay on disk until you delete them. The installer file keeps its old
-name, `Iron-Jarvis-Setup-<version>.exe`. The assistant still answers to
+folders stay on disk until you delete them. The assistant still answers to
 "Jarvis" in voice commands.
 
 From v1.445.0 the app, its taskbar button, the tray,
 the installer, the browser add-on, the browser tab and the sidebar all show
 the STEC OS "S" logo. Windows may keep showing the old icon on a desktop
 shortcut until it refreshes its icon cache (signing out and back in does it).
+
+From v1.446.0 STEC OS is its own app to Windows: it has its own app ID
+(`com.iristefan.stecos`, it was Iron Jarvis's `com.realdealcpa.ironjarvis`)
+and the installer is `STEC-OS-Setup-<version>.exe`. Because Windows sees a
+new app, moving to v1.446.0 is a one-time manual step on each PC: uninstall
+the old STEC OS (Settings › Apps), then run the new installer. Uninstalling
+keeps your data folder, so your keys and settings stay. STEC OS and the
+original Iron Jarvis can now be installed on the same PC, but not run at the
+same time: both use ports 8787 and 8788.
 
 ## Voice commands: Ctrl+Shift+V (v1.443.0)
 
@@ -7496,7 +7504,7 @@ one press, and sends you to one place for each kind of thing. The chat looks
 the same.
 
 - **Installing.** The release page names the file to download
-  (`Iron-Jarvis-Setup-<version>.exe`; ignore the `.blockmap` and `latest.yml`
+  (`STEC-OS-Setup-<version>.exe`; ignore the `.blockmap` and `latest.yml`
   files) and what to press at Windows' "Windows protected your PC" warning:
   **More info**, then **Run anyway**.
 - **Choosing what answers you.** The empty chat's heading reads "Ready —
