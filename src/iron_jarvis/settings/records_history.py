@@ -168,7 +168,7 @@ _CHANGES_LIST_RX = re.compile(
     r"(?:changes|edits)\s+(?:you|jarvis|(?:stec\s+os|iron\s+jarvis))\b"
     r"|\b(?:show|list|give)\s+(?:me\s+)?(?:(?:your|all|recent|latest|last)\s+){1,3}(?:changes|edits)\b"
     r"|\b(?:show|list|tell)\s+(?:me\s+)?what\s+" + _ACTOR + r"\s+(?:changed|edited|did)\b"
-    r"|\bchanges\s+(?:you(?:'ve|\s+have)?\s+made|you\s+did|(?:iron\s+)?jarvis\s+made)\b"
+    r"|\bchanges\s+(?:you(?:'ve|\s+have)?\s+made|you\s+did|(?:iron\s+)?jarvis\s+made|stec\s+os\s+made)\b"
     r"|\b(?:change|undo)\s+history\b"
     r"|\bhistory\s+of\s+(?:your|the|my)\s+changes\b",
     re.IGNORECASE,

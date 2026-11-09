@@ -3652,7 +3652,7 @@ _CODE_NAMED_AHEAD = (
     r"|back\s*-?\s*end|compile|unit\s+tests?)\b)"
 )
 _APP_SETTING_AHEAD = (
-    r"(?!make\s+(?:the|this)\s+(?:(?:iron\s+)?jarvis\s+|desktop\s+)?(?:app|application)\s+"
+    r"(?!make\s+(?:the|this)\s+(?:(?:iron\s+)?jarvis\s+|stec\s+os\s+|desktop\s+)?(?:app|application)\s+"
     r"(?:(?:always|never|automatically|just|also|not|to|itself)\s+)?"
     r"(?:(?:start|open|launch|use|look|show|run|keep|stop|remember|turn"
     # v1.434.0 (chat-first plan, Wave 2 group E, B1.4): how the APP behaves

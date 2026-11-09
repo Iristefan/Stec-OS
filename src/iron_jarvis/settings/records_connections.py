@@ -1658,7 +1658,7 @@ _ACCOUNT_ADD = re.compile(
     r"husband|partner|mom|mother|dad|father|friend|clients?|interns?|employees?|staff|students?|"
     r"school|class|niece|nephew|brother|sister|grandma|grandpa|parents?)\b)"
     # …never into another product ("add my ChatGPT account TO Zapier").
-    r"(?!\s+(?:to|into|in|on|with|inside)\s+(?!(?:iron\s+)?jarvis\b|you\b|this\s+(?:pc|app|computer)\b"
+    r"(?!\s+(?:to|into|in|on|with|inside)\s+(?!(?:iron\s+)?jarvis\b|stec\s+os\b|you\b|this\s+(?:pc|app|computer)\b"
     r"|here\b|several\b|iron[\s-]proxy\b))",
     re.IGNORECASE,
 )
