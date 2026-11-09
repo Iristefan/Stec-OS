@@ -1,11 +1,12 @@
 # STEC OS Desktop — assets
 
-The application icon (v1.380.0): the "iU" tile the user chose.
+The application icon (v1.445.0): the STEC OS "S" logo the user chose (white
+over cyan, on black). It replaced the "iU" tile of v1.380.0.
 
-- `icon-source.png` — the artwork exactly as the user gave it (a dark rounded
-  tile on a dark background). Keep it: every other file is made from it.
-- `icon.png` — the tile cropped to its rounded square, corners made
-  transparent, 256×256 RGBA.
+- `icon-source.png` — the artwork exactly as the user gave it (512×512, the
+  logo on black). Keep it: every other file is made from it.
+- `icon.png` — the logo at 84% on a black 256×256 tile, its corners rounded
+  (radius 52) and made transparent, RGBA.
 - `icon.ico` — the same at 16, 20, 24, 32, 40, 48, 64, 96, 128 and 256 px, so
   Windows draws each place (tray, taskbar, desktop shortcut, installer) from
   a size made for it.
@@ -17,6 +18,8 @@ They are referenced by:
 - `main.js` → `windowIcon()` (the `.ico` on Windows, else the `.png`) for the
   main window and pop-out windows — the taskbar button.
 - `main.js` → `createTray()` (the `.ico`, else the `.png`) for the tray.
+- `dashboard/app/icon.svg` (v1.445.0) — the tab icon and the sidebar's mark
+  (`ArcMark` in `components/AppSidebar.tsx`): `icon.png` at 128 px, embedded.
 - `extensions/chrome/src/icons/icon-{16,32,48,128}.png` (v1.400.6) — the
   browser add-on's icon, `icon.png` resized exactly as the `.ico`'s frames
   were. Remake with `uv run python scripts/make_addon_icons.py`;
