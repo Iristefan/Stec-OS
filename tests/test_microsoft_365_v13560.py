@@ -8,7 +8,7 @@ code, and chat can answer what is on the calendar tomorrow.
 v1.428.0 (moved on purpose): the card is LOCKED DOWN (``connectors/ms365.py``,
 ``connectors/locked_pack.py``). The card also asks for the account's email
 (only that account can sign in) and, optionally, the firm's own app ID; the
-pack is the program installed once from Iron Jarvis's own lock, run as
+pack is the program installed once from STEC OS's own lock, run as
 ``node <entry>`` from its own folder (never ``npx`` at its newest), with read
 and draft tools only (``ms365.SAFE_TOOLS``), and marked ``local_only`` +
 ``locked``. There is ONE sign-in job (``microsoft-365-signin``): it types the
@@ -347,7 +347,7 @@ def test_connect_saves_the_pack_through_the_one_door_and_loads_the_24_tools(
     client, spawned, monkeypatch, answer, key
 ):
     """v1.428.0 (moved on purpose): the one door saves the LOCKED row — the
-    program from Iron Jarvis's lock, run from its own folder, the card's rules'
+    program from STEC OS's lock, run from its own folder, the card's rules'
     settings, ``local_only`` + ``locked`` — and the pack loads the read and
     draft tools (``TOOLS_LOADED``), no longer the 24 of the old filter.
     MUTATION: drop the env from locked_body -> the pack loads all 119 tools
@@ -469,8 +469,8 @@ def test_sign_in_opens_a_pane_running_the_packs_own_program_with_its_settings(
 
 def test_the_sign_in_terminal_never_inherits_the_daemons_microsoft_settings(client, monkeypatch):
     """v1.428.0 review (b): the Sign in terminal starts from the daemon's
-    environment WITHOUT the settings the program must only get from Iron
-    Jarvis — a stray ``MS365_MCP_*`` (an OAuth token that skips the account
+    environment WITHOUT the settings the program must only get from STEC
+    OS — a stray ``MS365_MCP_*`` (an OAuth token that skips the account
     lock, a command that stores the sign-in), a wider ENABLED_TOOLS or
     NODE_OPTIONS. MUTATION: build the job's base from ``os.environ`` -> red."""
     stray = {"MS365_MCP_OAUTH_TOKEN": "stray", "MS365_MCP_AUTH_CACHE_COMMAND": "calc.exe",
@@ -546,7 +546,7 @@ def test_the_sign_in_jobs_stay_off_the_launch_menu_and_match_the_catalog(client)
 
 def test_the_sign_in_is_typed_by_the_full_path_of_node_quoted_for_the_shell(client, monkeypatch):
     """v1.428.0 (moved on purpose; was "typed by full path when npx predates
-    the daemon"): there is no npx now. Node installed while Iron Jarvis was
+    the daemon"): there is no npx now. Node installed while STEC OS was
     running is still found: the sign-in types the program by the full path
     ``mcp.tools.resolve_launcher`` finds (the pack's own launcher rule), quoted
     for the pane's shell so a path with a space runs that program.
@@ -721,7 +721,7 @@ def test_the_tools_catalog_never_names_the_locked_package(client):
     choice and no Sign in, so a row there would add a pack that could never
     sign in from that page. v1.428.0 (moved on purpose; was "agrees if it
     ever names the package"): a row there would also run the package with
-    ``npx`` at its newest instead of Iron Jarvis's lock, so it must never
+    ``npx`` at its newest instead of STEC OS's lock, so it must never
     name it at all."""
     rows = client.get("/mcp/catalog").json()["catalog"]
     for row in rows:

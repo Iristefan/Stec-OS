@@ -43,7 +43,7 @@ def _coach(d):
     if coach is None:
         raise HTTPException(
             status_code=503,
-            detail="The reflection coach is not available right now. Restart Iron Jarvis to bring it back.",
+            detail="The reflection coach is not available right now. Restart STEC OS to bring it back.",
         )
     return coach
 

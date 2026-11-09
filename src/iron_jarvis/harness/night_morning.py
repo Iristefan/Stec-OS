@@ -1,7 +1,7 @@
 """NIGHT SHIFT: THE MORNING (v1.399.0, phase N2 of ``docs/NIGHT-SHIFT-PLAN.md``
 — the user's decision 2 of 2026-10-26).
 
-The user wakes up to ONE "Last night" summary of the tasks Iron Jarvis ran in
+The user wakes up to ONE "Last night" summary of the tasks STEC OS ran in
 the night window (``harness/night``): in the bell, on the phone when one is
 set up, and as a view in Coding sessions beside Tonight. Per task: its
 branch, how it ended, its tests, the files it changed, its time, its usage
@@ -12,8 +12,8 @@ This module is the durable part and the words:
 * THE NIGHT (:func:`night_key`): the LOCAL date the night window OPENED for a
   moment — 01:30 on the 27th belongs to the night of the 26th. A task keeps
   the night it started in (``NightTaskRecord.night``).
-* THE COMMIT MESSAGE (:func:`commit_message`): the task's own words — Iron
-  Jarvis commits each ended task's work to its own branch the way the Commit
+* THE COMMIT MESSAGE (:func:`commit_message`): the task's own words — STEC
+  OS commits each ended task's work to its own branch the way the Commit
   button does (``routes/build_git.commit_for_night``; never a push, never a
   merge).
 * THE FACTS (:func:`usage_by_account`, :func:`summary_row`): read off the
@@ -115,7 +115,7 @@ def _parse_iso(value: Any) -> "datetime | None":
 
 def task_night(task: dict[str, Any], start: str, end: str = "") -> str:
     """The night a task ran in: the one it kept when it started, else (a
-    task an older Iron Jarvis started) the night of its ``started_at`` in
+    task an older STEC OS started) the night of its ``started_at`` in
     this PC's local time. "" for a task that never started. Pure."""
     kept = str(task.get("night") or "").strip()
     if kept:
@@ -144,7 +144,7 @@ SUBJECT_CHARS = 72
 #: The line every night commit's message ends with (how the task ended
 #: follows) — v1.399.0 review: also how a settle that runs again after a
 #: crash finds the commit it already made (``build_git._night_commit_on_branch``).
-TRAILER = "Committed by Iron Jarvis when this night task ended"
+TRAILER = "Committed by STEC OS when this night task ended"
 
 
 _CONTROL_RX = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
@@ -167,7 +167,7 @@ def masked(text: str) -> str:
 def commit_message(words: str, state: str) -> str:
     """The commit message of a night task's work: the task's OWN words — its
     first line as the subject (cut at :data:`SUBJECT_CHARS`), the rest of its
-    words as the body — and one line saying Iron Jarvis committed it when the
+    words as the body — and one line saying STEC OS committed it when the
     task ended, and how it ended (a failed or needs-you task's work is kept
     too, so nothing is lost). Bounded to ``branches.MAX_MESSAGE_CHARS``.
     Pure."""
@@ -208,7 +208,7 @@ def committed_words(state: str, branch: str) -> str:
 
 NOTHING_CHANGED = "Nothing changed, so nothing was committed."
 EMERGENCY_NOT_COMMITTED = (
-    "Emergency stop was on, so Iron Jarvis did not commit its work; it is still in its branch folder."
+    "Emergency stop was on, so STEC OS did not commit its work; it is still in its branch folder."
 )
 TRY_ON_NOTE = "It was tried on several models, each on its own branch: open the session to keep one."
 
@@ -217,7 +217,7 @@ def commit_note_words(branch: str, sha: str) -> str:
     """The task's note when its work was committed (Tonight's "What
     happened")."""
     where = f" on {branch}" if branch else ""
-    return f"Iron Jarvis committed its work{where} ({sha[:12]}). Nothing was pushed."
+    return f"STEC OS committed its work{where} ({sha[:12]}). Nothing was pushed."
 
 
 # --------------------------------------------------------------------------- #
@@ -451,7 +451,7 @@ def _row_detail(r: dict[str, Any]) -> str:
 #: leave this PC (the notice: the phone, a webhook) — never its words or its
 #: branch (which is made from its words).
 LOCAL_ONLY_TITLE = "A Local only task"
-LOCAL_ONLY_LINE = "open Iron Jarvis on this PC to see it"
+LOCAL_ONLY_LINE = "open STEC OS on this PC to see it"
 
 
 def shared_row(r: dict[str, Any]) -> dict[str, Any]:
@@ -496,7 +496,7 @@ def phone_message(payload: dict[str, Any]) -> str:
     the notice's title, a short line per task, and where to act. Pure."""
     title = str(payload.get("title") or "Last night's tasks ended")
     lines = [str(x) for x in (payload.get("lines") or []) if isinstance(x, str) and x.strip()]
-    tail = f"Open {PLACE} in Iron Jarvis to push, open a pull request or throw a branch away."
+    tail = f"Open {PLACE} in STEC OS to push, open a pull request or throw a branch away."
     return "\n".join([title, *lines, tail])
 
 

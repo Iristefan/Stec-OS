@@ -11,7 +11,7 @@
  *    session's create): now that row is removed with the daemon's own
  *    `only_if_empty` guard and the view goes back to the composer with the
  *    words, the chips and the refusal — nothing was made.
- *  - A refusal that is not about the folder (Iron Jarvis not answering, the
+ *  - A refusal that is not about the folder (STEC OS not answering, the
  *    model, a team) was said ON THE FOLDER CHIP, in red, as if the folder
  *    were wrong.
  *  - The posture chip was claimed to ride the create but never pinned.
@@ -130,7 +130,7 @@ beforeEach(() => {
   delete (window as unknown as { ironjarvis?: unknown }).ironjarvis;
   api.calls = [];
   api.gets = {
-    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis" },
+    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\STEC OS" },
     "/build/sessions?archived=1": { folders: [] },
   };
   api.posts = {
@@ -227,7 +227,7 @@ describe("review: the start composer keeps what the user wrote", () => {
   });
 
   it("a refusal that is not about the folder is said under the box, never on the folder chip", async () => {
-    api.posts["/build/sessions"] = new api.ApiError("Iron Jarvis isn't responding.", 0);
+    api.posts["/build/sessions"] = new api.ApiError("STEC OS isn't responding.", 0);
     renderView();
     const box = await screen.findByTestId("harness-new-box");
     fireEvent.change(box, { target: { value: "Hello" } });

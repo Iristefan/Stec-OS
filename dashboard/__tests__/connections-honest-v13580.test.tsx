@@ -138,7 +138,7 @@ describe("(1) separate versions of built-in tools", () => {
       const card = screen.getByTestId(`connector-card-${id}`);
       expect(fold.contains(card), `${id} is inside the fold`).toBe(true);
       expect(within(card).getByTestId(`connector-built-in-note-${id}`).textContent).toMatch(
-        /^Iron Jarvis already .* without this\. This is a separate /,
+        /^STEC OS already .* without this\. This is a separate /,
       );
     }
     // A real app stays among the apps.

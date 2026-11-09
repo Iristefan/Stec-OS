@@ -180,7 +180,7 @@ beforeEach(() => {
   };
   window.history.replaceState({}, "", "/chat");
   window.localStorage.clear();
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
   Element.prototype.scrollIntoView = vi.fn();
 });
 afterEach(() => {
@@ -191,7 +191,7 @@ afterEach(() => {
 
 async function askAndPark(): Promise<{ turnId: string; viewer: string; unmount: () => void }> {
   const { unmount } = render(<ChatPage />);
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: "run the command `echo hi` in the terminal" } });
   fireEvent.keyDown(box, { key: "Enter" });
   await waitFor(() => expect(H.runs.length).toBe(1));
@@ -228,7 +228,7 @@ describe("the chat page says when it leaves the screen", () => {
 
   it("a page unmounted with no turn running says nothing", async () => {
     const { unmount } = render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     unmount();
     await new Promise((r) => setTimeout(r, 50));
     expect(awayPosts()).toEqual([]);

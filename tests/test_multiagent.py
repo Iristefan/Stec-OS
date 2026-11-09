@@ -136,4 +136,4 @@ async def test_delegate_tool_runs_subagent_directly(platform, tmp_path):
     workspace = platform.config.workspaces_dir / child_session_id
     result_md = workspace / "RESULT.md"
     assert result_md.exists()
-    assert "Iron Jarvis" in result_md.read_text(encoding="utf-8")
+    assert "STEC OS" in result_md.read_text(encoding="utf-8")

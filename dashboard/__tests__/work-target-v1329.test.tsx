@@ -454,7 +454,7 @@ describe("on the chat page, the target is saved with the step and read back", ()
     H.stream.replies.push("Pier 9 is closing the gap.");
     H.stream.extra.push({ steps: await realStepsFromTools(cards), toolsUsed: ["read_file", "web_search", "excel_query"] });
     render(<ChatPage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(el, { target: { value: "compare them" } });
     fireEvent.keyDown(el, { key: "Enter" });
     // The save that carries the reply (wait for THAT, not for any save).

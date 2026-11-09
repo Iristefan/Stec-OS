@@ -36,7 +36,7 @@
 import { useCallback, useRef, useState, useSyncExternalStore } from "react";
 import { dropCodePoints } from "@/lib/buildPatience";
 import { API_BASE, ApiError, flattenDetail, ijToken } from "./api";
-// v1.354.0 (G30): a chat bubble says "Iron Jarvis", never "the daemon".
+// v1.354.0 (G30): a chat bubble says "STEC OS", never "the daemon".
 import { OFFLINE_WORDS } from "./offlineWords";
 import { VIEWER_HEADER, noteFollowing, noteNotFollowing } from "./chatAway";
 import { turnUsageFrom, type TurnUsage, type WorkflowDraft } from "@/lib/types";
@@ -75,7 +75,7 @@ export type { McpAsk, McpProgress, ResourceReceipt } from "./mcpInteract";
 /** A single decoded SSE frame. Discriminated on `type` (the event name). */
 export type SSEEvent =
   /** v1.417.0 (C2.4): `check: "finish"` marks a frame of the finish check's
-   *  own round (Iron Jarvis's bookkeeping, never the reply) — on token,
+   *  own round (STEC OS's bookkeeping, never the reply) — on token,
    *  thinking, reset, round and tool_call frames. Absent everywhere else. */
   | { type: "token"; text: string; check?: "finish" }
   /** v1.323.0: a REASONING delta — the model's thinking, shown in its own
@@ -107,7 +107,7 @@ export type SSEEvent =
        *  Whitelisted to exactly those two strings; absent on started frames
        *  and from an older daemon. */
       detail?: StepDetail;
-      /** v1.390.0: a step Iron Jarvis ran itself (decoded since v1.417.0). */
+      /** v1.390.0: a step STEC OS ran itself (decoded since v1.417.0). */
       check?: "finish";
     }
   | {
@@ -148,7 +148,7 @@ export type SSEEvent =
        *  (the once-only reason, "not in this chat's grants", an automatic
        *  rule's words). Absent from an older daemon. */
       why?: string;
-      /** v1.417.0 (C1.7): who asks — the model, or Iron Jarvis itself (its
+      /** v1.417.0 (C1.7): who asks — the model, or STEC OS itself (its
        *  own finish-check re-run, a project checker). */
       asker?: "model" | "iron_jarvis";
       /** v1.433.0 (A16): the tool is NEW in its app (or changed) since the
@@ -1015,7 +1015,7 @@ export const STREAM_PREP_MS = 10 * 60_000;
 
 export function stallDetail(ms: number): string {
   return (
-    `Nothing came back from Iron Jarvis for ${Math.round(ms / 1000)} s, so this ` +
+    `Nothing came back from STEC OS for ${Math.round(ms / 1000)} s, so this ` +
     "turn was stopped. Anything it already finished is kept — press Retry to " +
     "run it again."
   );
@@ -1023,7 +1023,7 @@ export function stallDetail(ms: number): string {
 
 export function prepDetail(ms: number): string {
   return (
-    `Iron Jarvis spent over ${Math.max(1, Math.round(ms / 60_000))} minutes ` +
+    `STEC OS spent over ${Math.max(1, Math.round(ms / 60_000))} minutes ` +
     "preparing this turn without starting it, so it was stopped. Press Retry, " +
     "or attach fewer or smaller files."
   );
@@ -1382,7 +1382,7 @@ export interface PendingApproval {
   /** v1.417.0 (C1.7): why it asks, in the daemon's one sentence; the card's
    *  one explanatory line. Absent = an older daemon (today's card). */
   why?: string;
-  /** v1.417.0 (C1.7): who asks; "iron_jarvis" = Iron Jarvis's own check. */
+  /** v1.417.0 (C1.7): who asks; "iron_jarvis" = STEC OS's own check. */
   asker?: "model" | "iron_jarvis";
   /** v1.433.0 (A16): the tool is new (or changed) in its app since the user
    *  added the app; the card says so. Absent = not said (an older daemon,

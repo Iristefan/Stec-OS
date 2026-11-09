@@ -147,7 +147,7 @@ afterEach(() => {
 const SECRET = "sk-proj-NEVERINTHECHAT0123456789";
 
 async function send(text: string, reply: string, extra: Record<string, unknown> = {}) {
-  const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   H.stream.replies.push(reply);
   H.stream.extras.push(extra);
   fireEvent.change(el, { target: { value: text } });
@@ -220,7 +220,7 @@ describe("settings cards in chat (redesign S3/S4)", () => {
     H.api.getResponses["/settings/schema"] = { secrets: [] };
     H.api.postResponses["/config/secret"] = { status: "stored", action_id: "tool_3" };
     render(<ChatPage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(el, { target: { value: `here is my key ${SECRET} thanks` } });
     fireEvent.keyDown(el, { key: "Enter" });
     await screen.findByTestId("secret-held");
@@ -242,7 +242,7 @@ describe("settings cards in chat (redesign S3/S4)", () => {
 
   it("Send anyway lets that one message through", async () => {
     render(<ChatPage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     H.stream.replies.push("ok");
     fireEvent.change(el, { target: { value: `test ${SECRET}` } });
     fireEvent.keyDown(el, { key: "Enter" });

@@ -157,7 +157,7 @@ function ContinueStrip({
     setError(null);
     try {
       const res = await post<unknown>(`/terminals/${encodeURIComponent(paneId)}/continue-on-next`);
-      if (!isContinueAnswer(res)) throw new Error("Iron Jarvis did not open a new terminal.");
+      if (!isContinueAnswer(res)) throw new Error("STEC OS did not open a new terminal.");
       rememberContinued(res.pane.id, res.from?.title || account.title, continueNote(res));
       // This pane is still at its limit: it has been answered, so it stops asking.
       dismissedLine.set(paneId, limitKey(limit));
@@ -363,7 +363,7 @@ export function ResumeFailedStrip({
         Dismiss
       </button>
       <span data-testid={`pane-start-fresh-how-${paneId}`} className="basis-full text-[10px] text-tone-warn/80">
-        Iron Jarvis writes a short summary of the conversation so far (your first request, the last few
+        STEC OS writes a short summary of the conversation so far (your first request, the last few
         messages, the files involved) and starts a new Claude session on {hereShort} with it.
       </span>
       {error && (
@@ -400,7 +400,7 @@ function SignInNeededStrip({
     try {
       const res = await post<unknown>(`/iron-proxy/accounts/${encodeURIComponent(need.account.id)}/signin`);
       const id = openedPaneId(res);
-      if (!id) throw new Error("Iron Jarvis did not open a sign-in terminal.");
+      if (!id) throw new Error("STEC OS did not open a sign-in terminal.");
       // The page adopts a FULL pane row; the sign-in answer is only its id.
       let row: ContinuedPane | undefined;
       try {

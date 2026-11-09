@@ -27,12 +27,12 @@ def test_parses_chatgpt_style_numbered_dump():
 
 1. You are a CPA running a tax firm in Virginia.
 2. You prefer concise answers without preamble.
-3. **Projects**: You are building a local-first AI OS called Iron Jarvis.
+3. **Projects**: You are building a local-first AI OS called STEC OS.
 """
     facts = parse_memory_dump(text)
     assert len(facts) == 3
     assert facts[0] == "You are a CPA running a tax firm in Virginia."
-    assert "Iron Jarvis" in facts[2]
+    assert "STEC OS" in facts[2]
     assert "**" not in facts[2]  # markdown bold stripped
 
 

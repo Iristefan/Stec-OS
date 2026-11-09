@@ -1,6 +1,6 @@
 /**
  * v1.413.0 — OpenCode in Build's Code view: the user's REAL OpenCode
- * (`opencode acp`), its own tools, agents and config on; Iron Jarvis turns
+ * (`opencode acp`), its own tools, agents and config on; STEC OS turns
  * every permission question OpenCode asks into a card. Driven through the
  * real view and lib/buildApp; only the network (lib/api), the stream reader
  * and the folder tree are stand-ins.
@@ -111,7 +111,7 @@ const SC = (JSON.parse(readFileSync(REAL, "utf8")) as { scenarios: Record<string
 const decodeAll = (evs: Record<string, unknown>[]) => evs.map((e) => decodeCodeEvent(e)).filter(Boolean) as CodeEvent[];
 
 const OC_HINT =
-  "OpenCode signs in by itself, per provider: to change it, run opencode auth login in a Build terminal. Iron Jarvis's accounts do not apply.";
+  "OpenCode signs in by itself, per provider: to change it, run opencode auth login in a Build terminal. STEC OS's accounts do not apply.";
 const OC_TOOL = {
   id: "opencode",
   label: "OpenCode",

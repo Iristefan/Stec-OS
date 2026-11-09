@@ -1,8 +1,8 @@
-# IronCore → Iron Jarvis: the Capability Envelope integration
+# IronCore → STEC OS: the Capability Envelope integration
 
 *Written 2026-08-22 at v1.200.0, from a direct study of Projects/IronCore
 (branch phase-12/local-model-polish, 2,739 tests) and its project memory.
-Goal: Iron Jarvis's loop measures the model it was given and bends itself to
+Goal: STEC OS's loop measures the model it was given and bends itself to
 fit — a small local model gets a decomposed, verified, narrow-tool loop; a
 frontier model sees ZERO change. Extremely user-friendly: no new pages, no
 new decisions; the envelope is invisible machinery surfaced only where the
@@ -40,7 +40,7 @@ IronCore is the user's own Codex-style CLI for open-source models. Its thesis
 6. **Narrated adaptation**: a `LadderChanged` event — the single most
    differentiating behavior must not be silent.
 
-## What Iron Jarvis already has (the sockets)
+## What STEC OS already has (the sockets)
 
 - `providers/manager._context_window`: pin → probe → default (window only).
 - `tools/autoselect`: auto-arm with a cap — built exactly because a local
@@ -76,8 +76,8 @@ IronCore is the user's own Codex-style CLI for open-source models. Its thesis
 
 ## Deliberately NOT ported (recorded so nobody re-files these as gaps)
 
-- **Edit-format ladders** (unified_diff→search_replace→whole_file): Iron
-  Jarvis edits through structured tools, not diff negotiation with the
+- **Edit-format ladders** (unified_diff→search_replace→whole_file): STEC
+  OS edits through structured tools, not diff negotiation with the
   model. No socket, no need.
 - **Per-model sampling defaults**: the router owns parameters; revisit only
   with evidence.

@@ -1,4 +1,4 @@
-// Iron Jarvis — bundled-install integrity.
+// STEC OS — bundled-install integrity.
 //
 // WHY THIS EXISTS: the v1.124.0 auto-update once landed with
 // resources/dashboard/node_modules cut off mid-extraction (the NSIS installer

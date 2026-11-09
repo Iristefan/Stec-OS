@@ -191,7 +191,7 @@ export interface ActivityItem {
   /** v1.361.0 (lane 11A): on a FAILED workflow's row, the run of the step
    *  that ENDED it (`workflow.completed` `failed_session`; "" = a step with
    *  no run of its own — a tool, notify or ask step, or an expectation).
-   *  Absent on an event an older Iron Jarvis wrote. */
+   *  Absent on an event an older STEC OS wrote. */
   endedBy?: string;
   /** v1.361.0 (lane 11A): the folded rows that say THIS outcome — only the
    *  row of the step that ended the run (set by `oneRowPerWorkflow`). Only
@@ -331,7 +331,7 @@ const UNATTENDED_SUBJECT: Record<string, (name: string) => string> = {
   reflex: (n) => (n ? `Your reflex ${n}` : "A reflex rule"),
   comm: (n) => (n ? `Your request from ${n}` : "A request from your phone"),
   autonomy: () => "An autonomy run",
-  // v1.357.0 (G76, with G61): a task another computer running Iron Jarvis
+  // v1.357.0 (G76, with G61): a task another computer running STEC OS
   // sent (`remote:<caller>`). Nobody at this PC watches it, so a failure
   // rings like the other doors; keyed on the prefix (lib/remoteTask).
   [REMOTE_KIND]: (n) => remoteTaskSubject(n),
@@ -434,7 +434,7 @@ function quietHere(): boolean {
  * ENDED the run (`endedBy`) says the same outcome (`standsInFor`), so only
  * a step row already pinged or seen for THAT step keeps the workflow row
  * from being pinged or counted again — an earlier attempt that failed and
- * was retried is another outcome (an event an older Iron Jarvis wrote names
+ * was retried is another outcome (an event an older STEC OS wrote names
  * no step: every folded row stands in, as in v1.360.0). A step row whose
  * workflow finished (a step its author let fail, a retry) stays: nothing
  * else says it. Rows from `alsoCovered` (the live list, for the replayed
@@ -943,7 +943,7 @@ export function toActivity(e: IJEvent): ActivityItem | null {
       title: limitRow
         ? buildLimitHeadline(p.kind, name)
         : restartRow
-          ? `A ${CODING_SESSION} carried on after Iron Jarvis restarted`
+          ? `A ${CODING_SESSION} carried on after STEC OS restarted`
           : from
             ? buildMovedHeadline(from, name)
             : `A coding session resumed${name ? ` on the ${name} account` : ""}`,
@@ -2369,7 +2369,7 @@ export function NotificationBell() {
 
     // v1.283.0: a popped-out module titles its window by name (TitleBar
     // leaves the base title on <html data-ij-title>); the count rides in front.
-    const base = document.documentElement.dataset.ijTitle || "Iron Jarvis";
+    const base = document.documentElement.dataset.ijTitle || "STEC OS";
     if (badge === 0) {
       document.title = base;
     } else {
@@ -2438,11 +2438,11 @@ export function NotificationBell() {
       if (interrupted.jobs.length)
         parts.push(
           // v1.354.0: the words the bell's own rows and the run page say.
-          `${interrupted.jobs.length} task${interrupted.jobs.length === 1 ? "" : "s"} stopped when Iron Jarvis restarted`,
+          `${interrupted.jobs.length} task${interrupted.jobs.length === 1 ? "" : "s"} stopped when STEC OS restarted`,
         );
       if (busyAsk) parts.push(`${busyAsk.running} background runs going at once`);
       const body = parts.join(" · ") || "Something needs your attention.";
-      notify(`Iron Jarvis: ${count} pending`, body, () => setOpen(true));
+      notify(`STEC OS: ${count} pending`, body, () => setOpen(true));
     }
   }, [
     count,

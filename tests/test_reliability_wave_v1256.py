@@ -206,7 +206,7 @@ def test_a_missing_launcher_is_named_even_when_a_shell_can_find_it(monkeypatch):
     # nothing at all. These are the halves that actually differ.
     assert "exists on this PC" in v["reason"], v["reason"]
     assert "isn't installed" not in v["reason"], "this is the found-but-invisible case"
-    assert "Restart Iron Jarvis" in v["fix"], v["fix"]
+    assert "Restart STEC OS" in v["fix"], v["fix"]
     assert "nodejs.org" not in v["fix"], "reinstalling is not the remedy here"
 
     monkeypatch.setattr(ai_clis, "_find", lambda cmd: None)
@@ -214,7 +214,7 @@ def test_a_missing_launcher_is_named_even_when_a_shell_can_find_it(monkeypatch):
     assert "isn't installed" in absent["reason"]
     assert "exists on this PC" not in absent["reason"]
     assert "nodejs.org" in absent["fix"], "name where to get it"
-    assert "Restart Iron Jarvis" not in absent["fix"]
+    assert "Restart STEC OS" not in absent["fix"]
 
 
 def test_each_failure_shape_gets_its_own_plain_sentence():

@@ -542,7 +542,7 @@ def test_a_hand_edit_is_never_overwritten_and_the_answer_says_so(tmp_path):
     assert path.read_text(encoding="utf-8") == mine
     member = next(m for m in client.get("/team").json()["members"] if m["name"] == WORKER)
     assert member["notes"]["hand_edited"] is True
-    # Put back as Iron Jarvis wrote it: rendered again, the previous text kept.
+    # Put back as STEC OS wrote it: rendered again, the previous text kept.
     path.write_text(TN.render_text([HABIT]), encoding="utf-8")
     third = _add(p, CoachProposalRecord(agent=f"custom:{WORKER}", kind="team_note", target=WORKER,
                                         after="Name every file you changed in the report"))

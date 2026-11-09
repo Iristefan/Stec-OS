@@ -68,7 +68,7 @@ the bar; each of these was GREEN and asserting nothing:
    withdraw, and CHECKS ITS OWN PREMISE.
 7. ``_paths_in`` SPLIT ON WHITESPACE, so it works only because ``tmp_path`` has
    no space in it — and the one folder this feature ships against is
-   ``%APPDATA%/Iron Jarvis/.ironjarvis/uploads``.
+   ``%APPDATA%/STEC OS/.ironjarvis/uploads``.
 
 ROUND 3 — THE CONSENT WIDENING THIS WAVE INTRODUCED, AND CLOSED (§6). Rounds 1-2
 made "named" and "armed" the same set, which was right, and then armed that whole
@@ -253,7 +253,7 @@ def _paths_in(block: str, *suffixes: str) -> list[str]:
     SPACE-SAFE, and that is not hypothetical. The first cut split the block on
     whitespace, which works only because ``tmp_path`` never contains a space —
     while the ONE directory this feature exists for does: a packaged install
-    uploads to ``%APPDATA%/Iron Jarvis/.ironjarvis/uploads`` (CLAUDE.md, "State
+    uploads to ``%APPDATA%/STEC OS/.ironjarvis/uploads`` (CLAUDE.md, "State
     home"). A whitespace split truncates that to ``C:\\Users\\VR\\AppData\\
     Roaming\\Iron`` and finds no ``.xlsx`` at all, so every path assertion in
     this file would have gone quietly vacuous on the user's real machine and
@@ -309,13 +309,13 @@ async def test_paths_in_survives_a_workspace_with_a_space(scene, tmp_path):
 
     Every path assertion in this file runs through ``_paths_in``, and every
     fixture here lives under ``tmp_path``, which never contains a space. The
-    real install's upload folder is ``%APPDATA%/Iron Jarvis/.ironjarvis/
+    real install's upload folder is ``%APPDATA%/STEC OS/.ironjarvis/
     uploads`` — so a whitespace-split helper reports "no absolute workbook path
     reached the model" nowhere and silently reports the WRONG path everywhere
     that matters. Proven the same way as the rest of the file: the parsed path
     is handed to the real tool.
     """
-    spaced = tmp_path / "Iron Jarvis" / "uploads"
+    spaced = tmp_path / "STEC OS" / "uploads"
     spaced.mkdir(parents=True)
     book = spaced / "client fees.xlsx"
     _workbook(book)

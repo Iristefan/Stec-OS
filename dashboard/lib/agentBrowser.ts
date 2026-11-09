@@ -86,7 +86,7 @@ export function closedWords(v: AgentBrowserView): string {
     case "idle":
       return "Its browser closed after a while without use.";
     case "shutdown":
-      return "Its browser closed when Iron Jarvis stopped.";
+      return "Its browser closed when STEC OS stopped.";
     case "timed out":
       return "Its browser stopped answering, so it was closed.";
     // v1.376.0 review: Edge went away under it; the cap of four; Local only.

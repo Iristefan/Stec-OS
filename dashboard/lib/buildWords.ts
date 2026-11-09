@@ -75,7 +75,7 @@ export const BUILD_BLURB =
 
 /** Chat in one plain line (v1.406.0): its Code switch is where the coding
  *  sessions are. */
-export const CHAT_BLURB = `Talk to Iron Jarvis — quick answers or real work. Its ${CODE_VIEW_NAME} switch holds your ${CODING_SESSION}s.`;
+export const CHAT_BLURB = `Talk to STEC OS — quick answers or real work. Its ${CODE_VIEW_NAME} switch holds your ${CODING_SESSION}s.`;
 
 /** The Code view in one plain line (Ctrl K's row for it). */
 export const CODE_BLURB = `${CODING_SESSIONS_LIST}: Jarvis writes, runs and checks code in a folder you pick.`;

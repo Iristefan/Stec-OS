@@ -535,7 +535,7 @@ class BrowserRuntime:
     # --- BrowserService: implemented in Ship 1 ---------------------------
 
     async def status(self) -> dict[str, Any]:
-        """What Iron Jarvis knows about the user's browser. Answers even when off.
+        """What STEC OS knows about the user's browser. Answers even when off.
 
         ``browser_get_status`` is the one browser tool that works at every access
         level, mirroring ``computer_use_status``: it is where a model (and the card)
@@ -1203,7 +1203,7 @@ class BrowserRuntime:
                 BrowserErrorCode.BROWSER_NOT_CONNECTED,
                 message=(
                     "The browser that asked to pair is no longer connected, so nothing "
-                    "was paired. Open the Iron Jarvis add-on's side panel (or reload the "
+                    "was paired. Open the STEC OS add-on's side panel (or reload the "
                     "add-on) and press Pair when this card offers it again."
                 ),
             )
@@ -1212,7 +1212,7 @@ class BrowserRuntime:
                 BrowserErrorCode.AUTHENTICATION_FAILED,
                 message=(
                     "Another browser is paired and connected right now. Press Forget on "
-                    "the Browser page in Iron Jarvis to end that pairing, then press Pair "
+                    "the Browser page in STEC OS to end that pairing, then press Pair "
                     "for this one."
                 ),
             )
@@ -1288,7 +1288,7 @@ class BrowserRuntime:
                 logger.debug("browser disconnect directive not delivered: %s", exc.code)
             except Exception:  # noqa: BLE001 — never fail a stop because the stop failed
                 logger.debug("browser disconnect directive failed", exc_info=True)
-        await self.backend.release(conn, reason="closed", detail="disconnected from Iron Jarvis")
+        await self.backend.release(conn, reason="closed", detail="disconnected from STEC OS")
         return True
 
     # --- per-tab approval grants (v1.266.0) -----------------------------------

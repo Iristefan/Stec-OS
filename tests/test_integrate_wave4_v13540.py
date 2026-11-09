@@ -12,7 +12,7 @@ SEAMS
   the bell row print it — is ``The run failed: title. fix``; the phone line
   carries that summary; a ``provider.failed`` alert says the same sentence. A
   restart: the reconcile's summary is the run page's own sentence
-  ("Stopped when Iron Jarvis restarted."), the chat line a chat-started run
+  ("Stopped when STEC OS restarted."), the chat line a chat-started run
   delivers home is that sentence, and a goal's breaker reason says it too.
   The values are written to ``dashboard/__tests__/fixtures/
   wave4-seams-v13540.json`` (``IJ_REGEN_WAVE4_SEAMS=1``) and the dashboard
@@ -177,7 +177,7 @@ ASKED = "Summarise the lease" + chr(10) + "then email it to Sam's accountant"
 
 #: The bell's Continue message (dashboard components/InterruptedJobs
 #: CONTINUE_AFTER_RESTART, pinned equal there by the dashboard side).
-CONTINUE_AFTER_RESTART = "Continue where you left off — Iron Jarvis restarted while this was running."
+CONTINUE_AFTER_RESTART = "Continue where you left off — STEC OS restarted while this was running."
 
 
 def test_a_restart_reads_as_one_sentence_on_the_run_in_the_chat_and_for_a_goal(tmp_path):
@@ -192,7 +192,7 @@ def test_a_restart_reads_as_one_sentence_on_the_run_in_the_chat_and_for_a_goal(t
     assert fresh.reconcile_interrupted_sessions() >= 1
     row = fresh.get_session(s.id)
     assert row.status is SessionStatus.FAILED and row.interrupted_at is not None
-    assert row.summary == RESTART_SUMMARY == "Stopped when Iron Jarvis restarted."
+    assert row.summary == RESTART_SUMMARY == "Stopped when STEC OS restarted."
     # The chat line a chat-started run delivers home is that sentence.
     assert content_for_session(row) == RESTART_SUMMARY
     # A goal's breaker reason (it reaches the phone after "Goal breaker
@@ -255,7 +255,7 @@ ALERT_PAYLOADS: dict[str, dict] = {
     # v1.406.0 part 3 (moved on purpose): a pull request's check-fix news.
     EventType.BUILD_CI_DONE: {
         "thread_id": "bs_ci", "kind": "passing", "title": "Your pull request's checks pass now",
-        "body": "Fix the parser · The checks pass now with the reviewed fix Iron Jarvis pushed.", "round": 0,
+        "body": "Fix the parser · The checks pass now with the reviewed fix STEC OS pushed.", "round": 0,
         "session_title": "Fix the parser",
     },
 }
@@ -266,7 +266,7 @@ ALERT_WORDS: dict[str, str] = {
     EventType.WORKFLOW_COMPLETED: "Your workflow nightly digest could not finish",
     EventType.PROVIDER_FAILED: "Anthropic is busy. Try again shortly, or pick another model for this chat.",
     EventType.SESSION_COMPLETED: "Your schedule morning brief finished — Wrote summary.md",
-    EventType.AUTONOMY_EXECUTED: "Iron Jarvis ran an action on its own",
+    EventType.AUTONOMY_EXECUTED: "STEC OS ran an action on its own",
     EventType.PROVIDER_FAILOVER: "OpenAI couldn't answer (timeout), so Claude Code answered instead.",
     EventType.SKILL_PROPOSAL_CREATED: "New skill suggested: tidy-downloads",
     EventType.APPROVAL_REQUESTED: "An agent is asking to use shell",
@@ -295,7 +295,7 @@ def test_every_default_alert_reaches_the_phone_in_plain_words(tmp_path, etype):
     assert ALERT_WORDS[etype] in line, line
     assert etype not in line, f"the event type leaked: {line}"
     assert not re.search(r"\b[a-z_]+=", line), f"a key=value pair leaked: {line}"
-    for engine_word in ("session_7b32f746bc3a", "(session", "wfr_9", "prop_1", "ij/session_abc123", "Iron Jarvis: " + etype):
+    for engine_word in ("session_7b32f746bc3a", "(session", "wfr_9", "prop_1", "ij/session_abc123", "STEC OS: " + etype):
         assert engine_word not in line, f"{engine_word!r} leaked: {line}"
 
 
@@ -323,7 +323,7 @@ def test_a_run_that_ended_says_how_in_the_bells_words(payload, words):
 def test_a_type_with_no_words_says_so_in_a_sentence_never_by_its_name():
     assert format_event({"type": "zzz.internal_thing", "payload": {"a": 1}}) == UNKNOWN_EVENT_LINE
     line = format_event({"type": "tool.executed", "payload": {"tool": "shell", "ok": True}})
-    assert line == "Iron Jarvis: Ran a tool" and "tool.executed" not in line
+    assert line == "STEC OS: Ran a tool" and "tool.executed" not in line
 
 
 def test_the_notifiers_event_words_are_the_dashboards():

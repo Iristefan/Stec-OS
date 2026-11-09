@@ -1,4 +1,4 @@
-"""ImprovementEngine — close the loop so Iron Jarvis visibly gets smarter.
+"""ImprovementEngine — close the loop so STEC OS visibly gets smarter.
 
 The Evaluator scores sessions; this engine is the missing CONSUMER of those
 scores. It does four things, ordered from cheapest/always-on to gated:
@@ -529,7 +529,7 @@ class ImprovementEngine:
             return None
         system = (
             get_agent_definition(AgentType.REVIEWER).system_prompt
-            + "\n\nYou are Iron Jarvis's self-improvement reviewer. Given recent "
+            + "\n\nYou are STEC OS's self-improvement reviewer. Given recent "
             "LOW-scoring sessions, propose a FEW specific, safe improvements. Reply "
             "ONLY with a compact JSON array; each item: "
             '{"kind": "lesson"|"prompt"|"tool", "target": str, "suggestion": str}. '
@@ -688,10 +688,10 @@ class ImprovementEngine:
                     return existing.id
             gate = (
                 "Self-dev is enabled: on approval this can run the Maintainer on a "
-                "worktree of Iron Jarvis's own source (review-gated, never auto-merge)."
+                "worktree of STEC OS's own source (review-gated, never auto-merge)."
                 if self_dev
                 else "Self-dev is OFF: enable self_dev_enabled before the Maintainer "
-                "can patch Iron Jarvis's source; until then, investigate manually."
+                "can patch STEC OS's source; until then, investigate manually."
             )
             rec = intent._create_proposal(
                 goal_id=None,
@@ -703,7 +703,7 @@ class ImprovementEngine:
                 agent_type="maintainer",
                 task=(
                     f"Investigate and fix the recurring failures of the '{tool}' tool "
-                    "in Iron Jarvis. Keep the change small, match the surrounding "
+                    "in STEC OS. Keep the change small, match the surrounding "
                     "style, and leave the test suite green."
                 ),
                 risk="high",  # high risk => never auto-executes under any dial

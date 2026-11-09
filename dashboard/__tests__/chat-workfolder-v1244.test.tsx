@@ -121,7 +121,7 @@ vi.mock("remark-gfm", () => ({ default: () => {} }));
 import ChatPage from "@/app/chat/page";
 
 const UPLOADS = "C:\\home\\uploads";
-const FOLDER = "C:\\Users\\me\\Documents\\Iron Jarvis\\2026-09-11 HarborPoint Q1 Expenses";
+const FOLDER = "C:\\Users\\me\\Documents\\STEC OS\\2026-09-11 HarborPoint Q1 Expenses";
 const PROJECT_FILE_TOOLS = ["file_search", "read_document", "write_document", "write_file"];
 
 function uploadFor(body: Record<string, unknown>) {
@@ -167,14 +167,14 @@ afterEach(() => {
 });
 
 async function attach(...names: string[]) {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   const input = document.querySelector('input[type="file"]') as HTMLInputElement;
   const files = names.map((n) => new File(["abc"], n, { type: "application/pdf" }));
   fireEvent.change(input, { target: { files } });
 }
 
 async function send(text: string) {
-  const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  const box = await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.change(box, { target: { value: text } });
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
   await waitFor(() => expect(H.stream.bodies.length).toBeGreaterThan(0));
@@ -203,7 +203,7 @@ describe("attaching without the hassle (v1.275.0)", () => {
 
   it("a pasted file becomes an attachment, exactly like a drop; text pastes fall through", async () => {
     render(<ChatPage />);
-    const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    const box = await screen.findByPlaceholderText(/Message STEC OS/);
     const file = new File(["png"], "shot.png", { type: "image/png" });
     fireEvent.paste(box, { clipboardData: { files: [file], items: [], getData: () => "" } });
     await waitFor(() => expect(H.api.posts.some((p) => p.path === "/documents/upload")).toBe(true));
@@ -232,7 +232,7 @@ describe("attaching without the hassle (v1.275.0)", () => {
     render(<ChatPage />);
     await attach("slow.pdf");
     await waitFor(() => expect(uploads.count).toBe(1));
-    const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    const box = await screen.findByPlaceholderText(/Message STEC OS/);
     fireEvent.change(box, { target: { value: "summarise this" } });
     fireEvent.keyDown(box, { key: "Enter", code: "Enter" });
     // Nothing went out: the file is still on its way.
@@ -303,7 +303,7 @@ describe("attach with no project → the conversation gets its own folder", () =
 
   it("tools the user armed themselves are kept, not replaced", async () => {
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     window.localStorage.setItem("ij_chat_workspace", "");
     await attach("x.pdf");
     await screen.findByTestId("workfolder-chip");
@@ -314,7 +314,7 @@ describe("attach with no project → the conversation gets its own folder", () =
 
   it("a folder refusal keeps the attachment (the old behaviour) and says why", async () => {
     H.api.postResponses["/documents/workfolder"] = new H.FakeApiError(
-      "could not make a working folder under D:\\Iron Jarvis",
+      "could not make a working folder under D:\\STEC OS",
       409,
     );
     render(<ChatPage />);

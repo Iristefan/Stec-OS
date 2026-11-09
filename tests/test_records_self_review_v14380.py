@@ -97,15 +97,15 @@ def test_a_machine_that_starts_with_windows_is_not_the_apps_switch():
         ask = settings_ask(text)
         assert "start_with_windows" not in ask.keys, (text, ask)
     # …while the app's own switch is still reached.
-    for text in ("start Iron Jarvis with Windows", "don't start with windows anymore",
-                 "make Iron Jarvis start at login"):
+    for text in ("start STEC OS with Windows", "don't start with windows anymore",
+                 "make STEC OS start at login"):
         ask = settings_ask(text)
         assert ask.writers and "start_with_windows" in ask.keys, (text, ask)
 
 
 def test_jarvis_opening_when_i_log_in_arms_the_settings_writer():
     for text in ("make Jarvis open automatically when I log in to my computer",
-                 "I want Iron Jarvis to start when I sign in"):
+                 "I want STEC OS to start when I sign in"):
         assert settings_ask(text).writers, text
     # Not a request about the app opening by itself.
     assert not settings_ask("open the email when I log in tomorrow").writers

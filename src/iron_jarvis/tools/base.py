@@ -98,7 +98,7 @@ class SpendCheck:
     cost_note: str = ""
     once_only: bool = False
     reason: str = ""
-    #: v1.407.2 (Ask first's guard for Git's and Iron Jarvis's own files —
+    #: v1.407.2 (Ask first's guard for Git's and STEC OS's own files —
     #: ``core/auto_approve.guarded_edit``): "Don't ask" (``yolo``) drops this
     #: verdict, so the call runs exactly as it did before (the user chose that
     #: posture). A spend and the git guard keep False: they card even there.
@@ -311,7 +311,7 @@ class Tool(ABC):
 
 
 def guarded_edit_check(name: str, args: Any, workspace: Any) -> "SpendCheck | None":
-    """Ask first's guard for Git's and Iron Jarvis's own files (v1.407.2):
+    """Ask first's guard for Git's and STEC OS's own files (v1.407.2):
     a FILE EDIT of ``.git/**``, ``.ironjarvis/**``, ``.claude/**`` (and the
     rest of ``core/auto_approve``'s sensitive families) inside the folder is
     asked about ONCE, every time — Allow once and Deny only, no grant covers

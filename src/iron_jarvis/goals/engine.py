@@ -103,8 +103,8 @@ _CHECKPOINT_MAX_REMAINING = 2000
 #: The breaker reason for a goal whose iteration session died with the daemon.
 #: v1.354.0 (G30): in the app's name, the words the run's own summary uses
 #: (``agents.orchestrator.RESTART_SUMMARY``) — it reaches the phone as
-#: "Goal breaker tripped: <name> — stopped when Iron Jarvis restarted".
-_INTERRUPTED_REASON = "stopped when Iron Jarvis restarted"
+#: "Goal breaker tripped: <name> — stopped when STEC OS restarted".
+_INTERRUPTED_REASON = "stopped when STEC OS restarted"
 
 #: HONEST-MOCK REFUSAL (G2). Recorded on the iteration when the adversarial/
 #: judged tier's judge cannot run — no real provider, a route that resolved to
@@ -859,7 +859,7 @@ class GoalEngine:
           a boot side effect.
         * anything else (FAILED / CANCELLED / missing / still marked
           ACTIVE-QUEUED because reconcile didn't run) → ONE breaker failure
-          with reason "stopped when Iron Jarvis restarted"; the goal stays active
+          with reason "stopped when STEC OS restarted"; the goal stays active
           or trips per the 3-in-30-min window, exactly like any other failure.
 
         Synchronous (the lifespan pattern); events are scheduled onto the

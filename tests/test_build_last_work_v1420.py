@@ -76,7 +76,7 @@ def test_the_note_says_what_was_read_changed_and_run_never_an_output():
     assert "read a.py, b.py" in note, "each file once, in order"
     assert "edited cart.py" in note
     assert "ran `python -m pytest -q` (failed)" in note
-    assert "(Iron Jarvis's own check)" in note
+    assert "(STEC OS's own check)" in note
     assert "OUTPUT-BODY-NEVER-SHOWN" not in note and "1 failed" not in note, "never a step's output"
     assert SECRET not in note, "masked"
     assert "plan_update" not in note, "bookkeeping is left out"

@@ -72,7 +72,7 @@ def _channel_config_problem(ctype: str, config: dict) -> str | None:
             return (
                 "Email two-way (inbound) needs an IMAP host and a mailbox "
                 "password. Add an IMAP host (e.g. imap.gmail.com) and a password "
-                "so Iron Jarvis can read the inbox, or turn two-way off."
+                "so STEC OS can read the inbox, or turn two-way off."
             )
         return None
     return None
@@ -886,7 +886,7 @@ def register(app: FastAPI, d) -> None:
         if d.platform.notifier.get(name) is None:
             raise HTTPException(status_code=404, detail=f"no channel named '{name}'")
         results = d.platform.notifier.notify(
-            "✅ Iron Jarvis test — this channel is wired up and working.", [name]
+            "✅ STEC OS test — this channel is wired up and working.", [name]
         )
         r = results.get(name) or {"ok": False, "detail": "channel produced no result"}
         # Persist the outcome on the CONFIGURED row (v1.118.0) so the state dot

@@ -2,14 +2,14 @@
 """v1.406.0 part 3 follow-ups: the five open items of the review, each closed
 the SAFE way — the fix waits for the user, and nothing is pushed by itself.
 
-1. THE FIX TURN'S POSTURE. A fix is Iron Jarvis starting work by itself while
+1. THE FIX TURN'S POSTURE. A fix is STEC OS starting work by itself while
    it reads a log an attacker may influence, so it runs under the night
    shift's guarded posture whatever the session's own (yolo included): the
    night allow-list runs unasked, everything else is carded and, with nobody
    there, declined after the night's card wait — and the watch then waits for
    the user, saying which step. A session set to "Ask before everything"
    keeps that stricter posture.
-2. INTERMEDIATE COMMITS. A commit Iron Jarvis did not make between the
+2. INTERMEDIATE COMMITS. A commit STEC OS did not make between the
    failing head and what would be pushed: the fix waits for the user, the
    commit named.
 3. THE PUSH ADDRESS. The branch's push URL (as git really resolves it,

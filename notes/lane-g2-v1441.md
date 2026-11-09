@@ -17,7 +17,7 @@
   | OpenCode | yes | no; a request names the message, the whole conversation is branched, and the line says so | no |
   | Grok, Antigravity | no | no | no |
 
-- An older Iron Jarvis (no `branch` in the view, no `can_branch` on rows) shows none of this.
+- An older STEC OS (no `branch` in the view, no `can_branch` on rows) shows none of this.
 
 ## What was measured, and how (no model call anywhere)
 
@@ -188,7 +188,7 @@ Each defect below is pinned in `tests/test_build_app_branch_review_v14410.py` (1
    - When: the conversation lives outside the view again (`mark_outside` on Open in terminal), or the log is empty after a rewind to the first message.
    - Why it happened:
      - Claude Code keeps the old branch in its file, and `history._claude_events` reads that file linearly.
-     - Iron Jarvis's Codex reader has no revert handling.
+     - STEC OS's Codex reader has no revert handling.
      - Removing `outside.json` only held until the next `mark_outside`.
    - The first pin passed vacuously: two turns a few milliseconds apart sit inside the merge's 2 s `EDGE_S` of the kept turn. It now waits past that edge.
    - Fix: `rewound.json` (`note_rewound`), written by `_cut_log` and copied into a branch of a rewound session. `_with_transcript` drops the transcript entries dated at or before it (`without_rewound`).

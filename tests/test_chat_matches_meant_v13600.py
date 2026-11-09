@@ -18,7 +18,7 @@ right door, the right help (the final re-audit's regressions at v1.359.0).
     Microsoft 365 card loaded from its stand-in server.
 (3) G38: the Guide's lookups armed for any how-to ("how do I connect my
     printer to wifi", "how do I send a wire transfer", "how do I install
-    node"); now only for a question about Iron Jarvis. Probe table both ways.
+    node"); now only for a question about STEC OS. Probe table both ways.
 (4) G21: a reply from the user's own model server (the custom endpoint)
     names the machine (``route.label`` = the label the user gave it), on both
     lanes; the registry's default label is not a name.

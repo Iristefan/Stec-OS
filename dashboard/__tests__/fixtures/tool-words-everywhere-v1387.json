@@ -221,10 +221,10 @@
     "agent_update": "change an agent",
     "app_connect": "connect an app",
     "app_disconnect": "disconnect an app",
-    "app_health": "check how Iron Jarvis is doing",
+    "app_health": "check how STEC OS is doing",
     "app_import": "add an app from another program on this PC",
-    "app_search": "search your Iron Jarvis setup",
-    "app_status": "check your Iron Jarvis setup",
+    "app_search": "search your STEC OS setup",
+    "app_status": "check your STEC OS setup",
     "app_switch": "turn an app on or off",
     "apply_patch": "change files with a patch",
     "ask_user": "ask you a question",
@@ -257,7 +257,7 @@
     "build_folder_show": "look up a folder's coding settings",
     "build_team_clear": "stop using a coding team in a folder",
     "build_team_set": "set a folder's coding team",
-    "capability_propose": "suggest a new ability for Iron Jarvis",
+    "capability_propose": "suggest a new ability for STEC OS",
     "change_undo": "undo one of its changes",
     "changes_list": "list its recent changes",
     "channel_alerts": "choose which alerts a destination gets",
@@ -303,8 +303,8 @@
     "goal_update": "change a goal",
     "grant_revoke": "take back an always-allow",
     "grep": "search files",
-    "guide_read": "read the Iron Jarvis guide",
-    "guide_search": "search the Iron Jarvis guide",
+    "guide_read": "read the STEC OS guide",
+    "guide_search": "search the STEC OS guide",
     "history_search": "search your chats",
     "image_convert": "make a file",
     "image_info": "read a file",
@@ -456,20 +456,20 @@
       "Disconnecting an app"
     ],
     "app_health": [
-      "Checked how Iron Jarvis is doing",
-      "Checking how Iron Jarvis is doing"
+      "Checked how STEC OS is doing",
+      "Checking how STEC OS is doing"
     ],
     "app_import": [
       "Added an app from another program",
       "Adding an app from another program"
     ],
     "app_search": [
-      "Searched your Iron Jarvis setup",
-      "Searching your Iron Jarvis setup"
+      "Searched your STEC OS setup",
+      "Searching your STEC OS setup"
     ],
     "app_status": [
-      "Checked your Iron Jarvis setup",
-      "Checking your Iron Jarvis setup"
+      "Checked your STEC OS setup",
+      "Checking your STEC OS setup"
     ],
     "app_switch": [
       "Switched an app on or off",
@@ -540,8 +540,8 @@
       "Setting a folder's coding team"
     ],
     "capability_propose": [
-      "Suggested a new ability for Iron Jarvis",
-      "Suggesting a new ability for Iron Jarvis"
+      "Suggested a new ability for STEC OS",
+      "Suggesting a new ability for STEC OS"
     ],
     "change_undo": [
       "Undid a change",
@@ -684,12 +684,12 @@
       "Taking back an always-allow"
     ],
     "guide_read": [
-      "Read the Iron Jarvis guide",
-      "Reading the Iron Jarvis guide"
+      "Read the STEC OS guide",
+      "Reading the STEC OS guide"
     ],
     "guide_search": [
-      "Searched the Iron Jarvis guide",
-      "Searching the Iron Jarvis guide"
+      "Searched the STEC OS guide",
+      "Searching the STEC OS guide"
     ],
     "history_search": [
       "Searched your chats",

@@ -9,7 +9,7 @@ first.
    reply line's ``finish.review``), and one the router refused twice (the
    ledger row AND the reply line). The reply line is its one record.
 2. THE USER'S OUTPUT STAYS OUT: a command that could not run is shown by the
-   line that shows it (the shell's own words, Iron Jarvis's hint), never by
+   line that shows it (the shell's own words, STEC OS's hint), never by
    whatever else the command printed (a client file ``type``d before the
    pipe failed).
 3. ARGUMENTS SHOW THE CALL, NOT THE FILE: a ``write_file`` / ``edit_file``
@@ -21,7 +21,7 @@ first.
    a low-trust reply — so those calls are left out, and the count is said.
 5. ONE PROBLEM, ONE GROUP: a Windows path with a space ("Open Source QB")
    gave the same error a different shape, so one problem was listed twice.
-6. A BASH LINE WRITTEN FOR cmd.exe: Iron Jarvis's own hint ("This shell is
+6. A BASH LINE WRITTEN FOR cmd.exe: STEC OS's own hint ("This shell is
    Git for Windows' bash, not cmd.exe: …") marks a command written for the
    other shell; it was read as ordinary work and left out.
 7. THE ROUTE SAYS HOW MANY IT LISTED (``listed``), so the button never says
@@ -375,7 +375,7 @@ def test_a_command_that_ran_and_merely_prints_the_words_is_the_users_work():
 
 
 # --------------------------------------------------------------------------- #
-# 9. Iron Jarvis's own calls are named as its own
+# 9. STEC OS's own calls are named as its own
 # --------------------------------------------------------------------------- #
 
 
@@ -398,9 +398,9 @@ def test_a_command_the_finish_check_ran_is_iron_jarviss_not_the_leads(tmp_path):
         ))
         db.commit()
     text = _report(engine)["text"]
-    assert "who: Iron Jarvis's finish check" in text
-    block = text.split("Iron Jarvis's finish check", 1)[1].split("\n## ", 1)[0]
-    assert "Where in Iron Jarvis: `src/iron_jarvis/harness/finish.py`" in block
+    assert "who: STEC OS's finish check" in text
+    block = text.split("STEC OS's finish check", 1)[1].split("\n## ", 1)[0]
+    assert "Where in STEC OS: `src/iron_jarvis/harness/finish.py`" in block
     assert "who: the lead" in text and "shell (as Bash)" in text
     assert "(as finish check)" not in text
 
@@ -467,8 +467,8 @@ def test_the_route_is_a_sync_def_so_its_reads_never_run_on_the_event_loop(tmp_pa
 def test_a_helper_that_failed_on_the_users_own_sign_in_key_limit_or_a_safety_refusal_is_left_out(tmp_path):
     """The module's rule ("a sign-in or key the user has to fix, an account's
     limit, a provider's safety refusal" are left out) held for the lead's
-    replies only — a HELPER that failed the same way was listed as an Iron
-    Jarvis problem."""
+    replies only — a HELPER that failed the same way was listed as an STEC
+    OS problem."""
     engine = _engine(tmp_path)
     summaries = (
         "The run failed: Claude Code isn't signed in. Press Sign in beside Claude Code in Settings › Connections.",
@@ -487,7 +487,7 @@ def test_a_helper_that_failed_on_the_users_own_sign_in_key_limit_or_a_safety_ref
               verdict=PermissionMode.ALLOW, args={"agent": "custom:opus"},
               output="Claude Code isn't signed in. Press Sign in beside Claude Code in Settings › Connections.",
               at=T0 + timedelta(minutes=9))
-        # ...while a helper that failed on Iron Jarvis's side is still listed.
+        # ...while a helper that failed on STEC OS's side is still listed.
         _helper_session(db, sid="session_realfail001", status=SessionStatus.FAILED,
                         summary="The run failed: The connection to your own endpoint dropped mid-answer.",
                         at=T0 + timedelta(minutes=10))

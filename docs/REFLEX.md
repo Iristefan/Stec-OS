@@ -1,6 +1,6 @@
 # Reflexes — the Ambient Operator
 
-A **reflex** makes Iron Jarvis act on its own: an inbound signal (a webhook
+A **reflex** makes STEC OS act on its own: an inbound signal (a webhook
 firing, or a message on a comm channel) runs a bound action — a saved workflow,
 a remote agent, or a supervised session. A **command grammar** lets you drive the
 machine from your phone. Everything is opt-in and runs through the normal

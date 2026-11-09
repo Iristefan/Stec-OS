@@ -1,6 +1,6 @@
-# Iron Jarvis — Agent Operating Manual
+# STEC OS — Agent Operating Manual
 
-You are working on Iron Jarvis: a local-first AI operating system. One Python
+You are working on STEC OS: a local-first AI operating system. One Python
 daemon (FastAPI), one Next.js dashboard, one Electron desktop wrapper. The user
 runs the PACKAGED desktop app daily — treat every change as production.
 
@@ -15,9 +15,9 @@ runs the PACKAGED desktop app daily — treat every change as production.
 Packaged layout: PyInstaller-frozen daemon (`packaging/ironjarvis.spec`) +
 Next standalone run by Electron's node + electron-builder NSIS installer.
 State home: dev = `~/.ironjarvis` unless `--root`; packaged =
-`%APPDATA%/Iron Jarvis/.ironjarvis` (config.toml, ironjarvis.db (SQLite),
+`%APPDATA%/STEC OS/.ironjarvis` (config.toml, ironjarvis.db (SQLite),
 secrets/, skills/, terminals.json, backups/). The desktop app's per-install
-bearer token: `%APPDATA%/Iron Jarvis/token.txt` — every daemon request needs
+bearer token: `%APPDATA%/STEC OS/token.txt` — every daemon request needs
 `Authorization: Bearer <it>`.
 
 ## Commands
@@ -243,7 +243,7 @@ and read only the matching lines in small chunks (Read limit <= 100).
   image_convert/resize/info (Pillow). `tools/pixio.py` — generative media.
 - **A Store program is never asked into the pane job, and starts one at a
   time; a frozen loop says where it is stuck** (v1.407.1, a USER BUG on
-  v1.407.0: Build stuck at "Attaching to sessions…", then "Iron Jarvis isn't
+  v1.407.0: Build stuck at "Attaching to sessions…", then "STEC OS isn't
   responding", across restarts). The panes run the Store pwsh
   (`%LOCALAPPDATA%\Microsoft\WindowsApps\pwsh.EXE`, an App Execution Alias,
   reparse tag 0x8000001B). v1.407.0 stopped the BOOT waiting on stuck pane
@@ -308,7 +308,7 @@ and read only the matching lines in small chunks (Read limit <= 100).
   /terminals` adds `restore_failed: {count, ids, reason}` only when non-empty;
   the Build page (`lib/restoreFailed`) drops "Reopening…", says "N terminals
   from before the restart couldn't be reopened: their shell didn't start. Open
-  a new terminal, or restart Iron Jarvis to try again." in the stage (beside
+  a new terminal, or restart STEC OS to try again." in the stage (beside
   the normal New terminal door) and the rail, keeps their saved keys, and
   keeps re-reading while one could still open. `_PACKAGED_SPAWN` is acquired
   with `PACKAGED_SPAWN_WAIT_S` (15 s): past it a Store shell raises
@@ -384,10 +384,10 @@ and read only the matching lines in small chunks (Read limit <= 100).
 ## Verifying against the LIVE app (the user's running install)
 
 ```bash
-tok=$(cat "C:/Users/VR/AppData/Roaming/Iron Jarvis/token.txt")
+tok=$(cat "C:/Users/VR/AppData/Roaming/STEC OS/token.txt")
 curl -s -H "Authorization: Bearer $tok" http://127.0.0.1:8787/health
 # Event forensics (provider failures etc.):
-#   SQLite: %APPDATA%/Iron Jarvis/.ironjarvis/ironjarvis.db, table eventrecord
+#   SQLite: %APPDATA%/STEC OS/.ironjarvis/ironjarvis.db, table eventrecord
 ```
 Live-probing beats speculation — most "it's broken" reports this project has
 seen were diagnosed in one curl (wrong version running, retired model id,

@@ -177,15 +177,15 @@ NO_EDGE = (
     "Install Microsoft Edge (https://www.microsoft.com/edge) to let the agent open pages."
 )
 NO_PLAYWRIGHT = (
-    "The agent's browser is missing from this install of Iron Jarvis (its browser driver, "
-    "Playwright, is not there). Reinstall Iron Jarvis to bring it back."
+    "The agent's browser is missing from this install of STEC OS (its browser driver, "
+    "Playwright, is not there). Reinstall STEC OS to bring it back."
 )
 #: v1.376.0 review (item 8): the packaged daemon ships no node.exe of
 #: Playwright's; its driver runs on the desktop app's own engine, which only
 #: the app hands over (:data:`NODE_ENV`).
 NO_DRIVER_NODE = (
-    "The agent's browser starts only inside the Iron Jarvis app (its driver runs on the app's own "
-    "engine), and this copy of Iron Jarvis was started without it. Open the Iron Jarvis app, or "
+    "The agent's browser starts only inside the STEC OS app (its driver runs on the app's own "
+    "engine), and this copy of STEC OS was started without it. Open the STEC OS app, or "
     "restart it, and try again."
 )
 #: v1.376.0 review (item 8): the desktop app tells the daemon its own Electron
@@ -203,11 +203,11 @@ NOT_LOCAL = (
     "It does not open public websites."
 )
 NO_PAGE = "No page is open in the agent's browser. Call page_open with the page's address first."
-#: v1.376.0 review: Windows would not let Iron Jarvis hold the browser's
+#: v1.376.0 review: Windows would not let STEC OS hold the browser's
 #: processes (a kill-on-close job), so none is started.
 NO_JOB = (
-    "The agent's browser was not started: Windows would not let Iron Jarvis hold its "
-    "processes so that they end when Iron Jarvis does. Restart Iron Jarvis and try again."
+    "The agent's browser was not started: Windows would not let STEC OS hold its "
+    "processes so that they end when STEC OS does. Restart STEC OS and try again."
 )
 STOPPED = "Stopped: you pressed Stop, so the agent's browser was closed."
 #: v1.376.0 review: Edge closed under the agent (by the user, a crash).
@@ -485,7 +485,7 @@ def playwright_problem() -> str:
 
 def _new_work() -> Path:
     """BLOCKING: the browser's throwaway folder, in the SYSTEM temp folder —
-    never in Iron Jarvis's home (a running browser locks ~60 profile files
+    never in STEC OS's home (a running browser locks ~60 profile files
     and a backup walks the whole home, the v1.337.1 / v1.371.0 lesson) and
     never the user's Edge profile. The profile is seeded so a download, if
     one ever started, lands in this folder too (downloads are refused
@@ -520,7 +520,7 @@ def _sweep_stale(now: float | None = None, folder: "Path | None" = None) -> int:
     """BLOCKING: remove leftover throwaway folders of a daemon that died
     (their Edge died with its job, so nothing holds them). Only folders older
     than :data:`STALE_WORK_S` that can be RENAMED (Windows refuses to rename a
-    folder with a file open inside — another running Iron Jarvis's browser).
+    folder with a file open inside — another running STEC OS's browser).
     Returns how many were removed. Never raises."""
     base = Path(folder or tempfile.gettempdir())
     now = time.time() if now is None else now

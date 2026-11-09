@@ -87,7 +87,7 @@ const base: Status = {
   active_tab: null,
   pending_pairing: null,
   paired: false,
-  addon_dir: "C:\\Users\\vr\\AppData\\Local\\Programs\\Iron Jarvis\\resources\\browser-addon",
+  addon_dir: "C:\\Users\\vr\\AppData\\Local\\Programs\\STEC OS\\resources\\browser-addon",
   last_error: null,
   installed_browsers: [],
 };

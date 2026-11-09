@@ -152,7 +152,7 @@ const advance = (ms: number) =>
 
 const FAILED_3 =
   "3 terminals from before the restart couldn't be reopened: their shell didn't start. " +
-  "Open a new terminal, or restart Iron Jarvis to try again.";
+  "Open a new terminal, or restart STEC OS to try again.";
 
 describe("the daemon gave up reopening (v1.418.1)", () => {
   it("swaps 'Reopening…' for one plain line beside the New terminal door", async () => {
@@ -197,7 +197,7 @@ describe("the daemon gave up reopening (v1.418.1)", () => {
     // With a terminal open, the line rides the rail only.
     expect(screen.getByTestId("rail-restore-failed").textContent).toBe(
       "1 terminal from before the restart couldn't be reopened: its shell didn't start. " +
-        "Open a new terminal, or restart Iron Jarvis to try again.",
+        "Open a new terminal, or restart STEC OS to try again.",
     );
     expect(screen.queryByTestId("build-restore-failed")).toBeNull();
   });
@@ -247,7 +247,7 @@ describe("decodeRestoreFailed (v1.418.1)", () => {
     expect(b).toEqual({ count: 1, ids: ["x"], reason: "its shell didn't start" });
     expect(restoreFailedWords(b!)).toBe(
       "1 terminal from before the restart couldn't be reopened: its shell didn't start. " +
-        "Open a new terminal, or restart Iron Jarvis to try again.",
+        "Open a new terminal, or restart STEC OS to try again.",
     );
   });
 });

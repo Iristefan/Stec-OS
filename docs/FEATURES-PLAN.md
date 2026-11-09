@@ -1,4 +1,4 @@
-# Iron Jarvis — Feature Completeness Plan (master to-do)
+# STEC OS — Feature Completeness Plan (master to-do)
 
 > ✅ **COMPLETE (2026-06-26).** All 34 discovered gaps built and shipped. New-features
 > audit found 9 issues (2 high, 3 med, 4 low) — all fixed; a verification pass then

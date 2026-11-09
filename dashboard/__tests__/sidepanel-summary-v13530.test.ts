@@ -221,7 +221,7 @@ if (absent.length) {
       vi.spyOn(Date, "now").mockImplementation(() => now);
       delivered = false;
       await send(h, "are you there?");
-      await waitFor(() => expect(el("transcript").textContent ?? "").toContain("did not reach Iron Jarvis"));
+      await waitFor(() => expect(el("transcript").textContent ?? "").toContain("did not reach STEC OS"));
       now += 300_000;
       h.emit("tool", { name: "browser_click", text: "Clicked 'Next'.", status: "finished", ok: true });
       now += 5_000;

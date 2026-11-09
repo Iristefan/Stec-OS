@@ -298,7 +298,7 @@ describe("the library's suggestions: Accept / Decline", () => {
     await waitFor(() => expect(screen.queryByTestId("library-kept")).toBeNull());
   });
 
-  it("an older Iron Jarvis (no library route) shows nothing", async () => {
+  it("an older STEC OS (no library route) shows nothing", async () => {
     render(<LibraryCards threadId="s1" refreshKey={0} />);
     await waitFor(() => expect(api.calls.some((c) => c.path === LIB)).toBe(true));
     expect(screen.queryByTestId("library-cards")).toBeNull();

@@ -4,7 +4,7 @@
  *
  * Before: the card read "The assistant wants to run assign_work" and the work
  * line "Ran guide_search" (counted "ran 1 tool") for every built-in their hand
- * tables did not list, while the run log said "searched the Iron Jarvis
+ * tables did not list, while the run log said "searched the STEC OS
  * guide". Now agents/mission.card_words and step_line_words are the source,
  * generated into lib/builtinToolWords (scripts/gen_tool_words.py).
  *
@@ -124,7 +124,7 @@ describe("the chat's work line says what every built-in did (G22)", () => {
     }
   });
 
-  it("the live work line: 'Searching the Iron Jarvis guide' while it runs, counted in words", () => {
+  it("the live work line: 'Searching the STEC OS guide' while it runs, counted in words", () => {
     render(
       <LiveToolRows
         cards={[
@@ -136,7 +136,7 @@ describe("the chat's work line says what every built-in did (G22)", () => {
     );
     const rows = screen.getByTestId("live-tool-rows");
     expect(rows.textContent).toContain("Searched your chats");
-    expect(rows.textContent).toContain("Searching the Iron Jarvis guide");
+    expect(rows.textContent).toContain("Searching the STEC OS guide");
     expect(screen.getByTestId("live-work-words").textContent).toMatch(/searched your chats$/);
     expect(rows.textContent).not.toMatch(/history_search|guide_search|Ran |ran 1 tool/);
   });

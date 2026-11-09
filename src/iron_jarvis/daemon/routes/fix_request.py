@@ -4,9 +4,9 @@
 "problems", "listed", "complete", "since", "until", "sessions"}`` (v1.423.0
 review: ``listed`` — how many problems the text holds; ``complete`` — False
 when a source could not be read): the Markdown report of the
-problems Iron Jarvis's own coding sessions and model team ran into
+problems STEC OS's own coding sessions and model team ran into
 (``agents/fix_request`` — what it reads, what it leaves out and why), for the
-owner to paste to the coding agent that works on Iron Jarvis.
+owner to paste to the coding agent that works on STEC OS.
 
 * ``days`` — 1 to 30 (anything else is a 422 before anything is read);
 * ``session`` — optional: ONE coding session (its thread id, or

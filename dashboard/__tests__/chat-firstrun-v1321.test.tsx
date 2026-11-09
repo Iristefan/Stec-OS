@@ -252,7 +252,7 @@ afterEach(() => {
 });
 
 async function sendOne() {
-  const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(el, { target: { value: "hello" } });
   fireEvent.keyDown(el, { key: "Enter" });
   await screen.findByText("answered");
@@ -295,7 +295,7 @@ describe("first run with no blocking screen (redesign S9, AUDIT Q7)", () => {
 describe("one model selector — the composer's (redesign S9, AUDIT Q3)", () => {
   it("the app-wide 'switch model' door opens the composer's menu", async () => {
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     expect(screen.queryByTestId("model-menu")).toBeNull();
     await act(async () => {
       window.dispatchEvent(new Event("ij:open-switcher"));
@@ -315,7 +315,7 @@ describe("one model selector — the composer's (redesign S9, AUDIT Q3)", () => 
       models: [{ provider: "anthropic", model: "claude-opus-4-8", available: true, kind: "subscription" }],
     };
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     await act(async () => {
       window.dispatchEvent(new Event("ij:open-switcher"));
     });

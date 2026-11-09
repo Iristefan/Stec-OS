@@ -64,7 +64,7 @@ export function AnotherJarvisCard() {
       setSupported(true);
       setLoadError(null);
     } catch (err) {
-      // An older Iron Jarvis has no door: show nothing, never a broken control.
+      // An older STEC OS has no door: show nothing, never a broken control.
       if (err instanceof ApiError && err.status === 404) {
         setSupported(false);
         return;

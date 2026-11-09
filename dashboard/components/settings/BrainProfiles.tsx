@@ -9,7 +9,7 @@
  * saved through the ONE settings writer (`PUT /settings/values`); the plain
  * schema row is not drawn beside it (SettingsHome.CONTROLLED_IN_SECTION).
  *
- * An older Iron Jarvis has no `/brain` (404): nothing renders. The words live
+ * An older STEC OS has no `/brain` (404): nothing renders. The words live
  * in lib/brainProfiles (pure, no lib/api import — the tests that mock lib/api
  * wholesale are unaffected).
  */
@@ -53,7 +53,7 @@ export function BrainProfiles() {
   const [formError, setFormError] = useState("");
   const [note, setNote] = useState("");
   const [globalError, setGlobalError] = useState("");
-  // v1.408.0: an older Iron Jarvis has no check routes (404): no buttons.
+  // v1.408.0: an older STEC OS has no check routes (404): no buttons.
   const [noCheck, setNoCheck] = useState(false);
 
   const load = useCallback(async () => {

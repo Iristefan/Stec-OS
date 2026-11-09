@@ -3,7 +3,7 @@
 Pure: no processes, no files, no network. Ported in shape from NousResearch's
 MIT-licensed claude-subscription-directsdk plugin (commit ef73726,
 ``directsdk.prepare_history`` / ``normalize_input_schema`` / ``request_body``),
-re-expressed over Iron Jarvis's ``LLMMessage`` / ``ToolCall`` vocabulary.
+re-expressed over STEC OS's ``LLMMessage`` / ``ToolCall`` vocabulary.
 
 THREE RULES this module exists to keep:
 
@@ -375,7 +375,7 @@ def not_a_command(text: str) -> str:
     Code run its built-in /goal — a synthetic reply, then a goal check that
     needs requests the one-request relay refuses — so every such turn ended
     "Claude Code couldn't finish this answer" (measured on 2.1.309: /goal and
-    /help fail every time). Iron Jarvis runs the loop and every tool; the CLI
+    /help fail every time). STEC OS runs the loop and every tool; the CLI
     only answers. One leading space is enough (measured) and is the same on
     every replay, so the cache pin still holds."""
     return " " + text if text.startswith("/") else text

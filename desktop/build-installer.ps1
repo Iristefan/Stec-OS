@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Build the SELF-CONTAINED Iron Jarvis Windows installer (NSIS .exe).
+    Build the SELF-CONTAINED STEC OS Windows installer (NSIS .exe).
 
 .DESCRIPTION
     End-to-end pipeline (the installed app needs NO Python / uv / Node / pnpm):

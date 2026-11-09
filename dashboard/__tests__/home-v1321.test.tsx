@@ -145,7 +145,7 @@ afterEach(() => {
 describe("T1 — the home is a chat (unit half; e2e/t1 runs it in a browser)", () => {
   it("/ renders the composer, focused, and no dashboard, stat tiles or module grid", async () => {
     render(<HomePage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     await waitFor(() => expect(document.activeElement).toBe(box));
     expect(screen.queryByTestId("app-desk")).toBeNull();
     expect(screen.queryByRole("heading", { name: "Overview" })).toBeNull();
@@ -191,7 +191,7 @@ describe("the one conditional line", () => {
     H.api.getResponses["/ui/status-line"] = { interrupted: 0, failing_loops: 0, failing_packs: 0, running: 0 };
     H.api.getResponses["/chat/approvals/pending"] = { approvals: [] };
     render(<HomePage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     await act(async () => {
       await new Promise((r) => setTimeout(r, 20));
     });

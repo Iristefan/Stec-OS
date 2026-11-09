@@ -1,6 +1,6 @@
 """The Capability Envelope: measure the model you were given, then bend the
 loop to fit it — ported from the user's own IronCore project (its proven
-thesis) and adapted to Iron Jarvis.
+thesis) and adapted to STEC OS.
 
 Package map:
     profile.py — CapabilityProfile, the provenance vocabulary (incl. the

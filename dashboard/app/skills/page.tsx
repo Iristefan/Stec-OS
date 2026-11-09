@@ -42,7 +42,7 @@ function CopyButton({ text }: { text: string }) {
 }
 
 // Where a skill came from — a small colored badge so Claude/Codex skills are
-// visually distinct from Iron Jarvis's own.
+// visually distinct from STEC OS's own.
 const SOURCE_META: Record<string, { label: string; cls: string }> = {
   claude: { label: "Claude", cls: "border-orange-500/30 bg-orange-500/10 text-orange-300" },
   codex: { label: "Codex", cls: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300" },

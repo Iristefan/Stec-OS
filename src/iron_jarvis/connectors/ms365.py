@@ -21,7 +21,7 @@ What a connect from the Directory card now always does (``env_for``):
   account signs in with the package's own app, named explicitly
   (:data:`DEFAULT_APP`) so nothing else can choose it.
 * ITS OWN SIGN-IN FOLDER: ``MS365_MCP_TOKEN_CACHE_PATH`` and
-  ``MS365_MCP_SELECTED_ACCOUNT_PATH`` point into Iron Jarvis's own folder
+  ``MS365_MCP_SELECTED_ACCOUNT_PATH`` point into STEC OS's own folder
   (``locked_pack.signin_dir``), never the package's shared one another copy of
   it would read. The cache file is encrypted by the package with a key it
   keeps in Windows Credential Manager (0.170.2's token-cache-storage.js).
@@ -29,7 +29,7 @@ What a connect from the Directory card now always does (``env_for``):
 * LOCAL MODELS ONLY: the saved row says ``local_only`` (``service.pack_body``);
   ``mcp.tools`` refuses its tools in a turn that may reach a cloud model.
 
-The program itself runs from Iron Jarvis's own lock
+The program itself runs from STEC OS's own lock
 (``connectors.locked_pack.MS365``), never ``npx`` at its newest.
 """
 
@@ -94,7 +94,7 @@ BAD_APP_ID = (
 BAD_KIND = "Choose whether this is a work or school account or a personal one."
 NEED_APP = (
     "A work or school account needs your firm's own app ID: ask your Microsoft 365 "
-    "admin to register an app for Iron Jarvis (the Handbook has the steps), then "
+    "admin to register an app for STEC OS (the Handbook has the steps), then "
     "paste its Application (client) ID here."
 )
 

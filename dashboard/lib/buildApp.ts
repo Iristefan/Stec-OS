@@ -7,10 +7,10 @@
  * hands over (docs/BUILD-APP-VIEW-PLAN.md "Normalized events" — THE
  * CONTRACT).
  *
- * Different from the chat page's Code view: there Iron Jarvis runs every
+ * Different from the chat page's Code view: there STEC OS runs every
  * tool and the model only thinks; HERE the coding tool runs everything
  * itself (its own tools, settings, permission rules, its own saved session)
- * and Iron Jarvis only starts it, draws what it does, relays the user's
+ * and STEC OS only starts it, draws what it does, relays the user's
  * messages and answers its permission questions.
  *
  * This file is the PURE half: the address and the window's memory, the
@@ -321,7 +321,7 @@ export interface CodingTool {
   commands: ToolCommand[];
   /** v1.441.0 (g1): an effort change reaches the RUNNING tool at once (Claude
    *  Code's own apply_flag_settings) — the chip stays open while a reply
-   *  runs. Absent (an older Iron Jarvis) = the old rule. */
+   *  runs. Absent (an older STEC OS) = the old rule. */
   effortLive?: boolean;
 }
 
@@ -524,16 +524,16 @@ export interface CodeSession {
   /** v1.412.0: where such a session's own folder goes (the chat files
    *  folder); "" otherwise. */
   workRoot: string;
-  /** v1.414.0: which of Iron Jarvis's own tools the coding tool may use in
+  /** v1.414.0: which of STEC OS's own tools the coding tool may use in
    *  this session (all off until the user ticks one). Absent from an older
-   *  Iron Jarvis and from a conversation found on disk. */
+   *  STEC OS and from a conversation found on disk. */
   jarvisTools?: JarvisTools;
   /** v1.441.0 (review A5): false when this session's tool said it takes no
-   *  Iron Jarvis tools (Antigravity 1.5.2) — the chip is hidden. Absent =
-   *  it takes them (or an older Iron Jarvis, which never says). */
+   *  STEC OS tools (Antigravity 1.5.2) — the chip is hidden. Absent =
+   *  it takes them (or an older STEC OS, which never says). */
   jarvisToolsTaken?: false;
   /** v1.441.0: the row's "Branch" — the tool can branch a conversation and
-   *  this session has one. Absent from an older Iron Jarvis (no Branch). */
+   *  this session has one. Absent from an older STEC OS (no Branch). */
   canBranch?: boolean;
 }
 
@@ -543,7 +543,7 @@ export interface KeptProgram {
   ports: number[];
 }
 
-/** v1.414.0: the two Capabilities Iron Jarvis serves to a coding tool (the
+/** v1.414.0: the two Capabilities STEC OS serves to a coding tool (the
  *  same two a Build terminal's boxes give: mcpserver CAPABILITY_TOOLS). */
 export interface JarvisTools {
   memory: boolean;
@@ -563,10 +563,10 @@ export function toolVendor(tool: string): string {
   return "the coding tool's model provider";
 }
 
-/** The chip's words: which of Iron Jarvis's tools are on. */
+/** The chip's words: which of STEC OS's tools are on. */
 export function jarvisToolsWords(t: JarvisTools | null | undefined): string {
   const on = JARVIS_TOOL_KEYS.filter((k) => t?.[k]).map((k) => (k === "memory" ? "Memory" : "Browser"));
-  return on.length ? `Iron Jarvis tools: ${on.join(", ")}` : "Iron Jarvis tools: off";
+  return on.length ? `STEC OS tools: ${on.join(", ")}` : "STEC OS tools: off";
 }
 
 /** What each box gives, and what it costs (said before the press). */
@@ -574,7 +574,7 @@ export function jarvisToolHint(key: keyof JarvisTools, toolName: string, tool: s
   if (key === "memory") {
     return `${toolName} may search and read your memory and your memory profile (read-only). What it reads goes to ${toolVendor(tool)} with the conversation.`;
   }
-  return `${toolName} may use your browser through Iron Jarvis. Every click, typing or page change asks you first.`;
+  return `${toolName} may use your browser through STEC OS. Every click, typing or page change asks you first.`;
 }
 
 /** v1.441.0 review: a Pi session runs a message that starts with `!` as a
@@ -635,12 +635,12 @@ export function backgroundRereadMs(
   if (s.selfReply || s.backgroundHelpers > 0) return CODE_BACKGROUND_REREAD_MS;
   // v1.422.0 (B4): a session kept open for a program it runs is read again
   // like one with background commands — its line stays true (the program can
-  // end), and each read tells Iron Jarvis the session is still in front.
+  // end), and each read tells STEC OS the session is still in front.
   if (s.background > 0 || (s.programs?.length ?? 0) > 0) return CODE_COMMANDS_REREAD_MS;
   return 0;
 }
 
-/** v1.422.0 (C4.7): how often the Code view tells Iron Jarvis it still shows
+/** v1.422.0 (C4.7): how often the Code view tells STEC OS it still shows
  *  a session (only while the window is seen): the session in front is closed
  *  after 60 minutes with nothing to do, not 15 (hosted/programs BEAT_S). */
 export const CODE_SEEN_BEAT_MS = 60_000;
@@ -825,17 +825,17 @@ export function ownSignInWords(tool: string, tools?: readonly CodingTool[] | nul
 /** What the chip's title says about a tool that signs in by itself. */
 export const OWN_SIGN_IN_TITLE =
   "Pi signs in by itself, per model provider: to change it, open Pi in a Build terminal and type /login there. " +
-  "Iron Jarvis's accounts do not apply.";
+  "STEC OS's accounts do not apply.";
 
 /** v1.413.0: what the chip's title says about THIS tool's own sign-in. */
 export const OPENCODE_SIGN_IN_TITLE =
   "OpenCode signs in by itself, per provider: to change it, run opencode auth login in a Build terminal. " +
-  "Iron Jarvis's accounts do not apply.";
+  "STEC OS's accounts do not apply.";
 
 /** v1.439.0: Antigravity signs in by itself, with its own Google sign-in. */
 export const ANTIGRAVITY_SIGN_IN_TITLE =
   "Antigravity signs in by itself, with its own Google sign-in: to change it, run agy in a Build terminal and " +
-  "sign in there. Iron Jarvis's accounts do not apply.";
+  "sign in there. STEC OS's accounts do not apply.";
 
 /** v1.413.0: the own-sign-in title for a tool — the daemon's words when it
  *  sent them, else the tool's own (Pi's for Pi, OpenCode's for OpenCode,
@@ -927,7 +927,7 @@ export type CodeEvent = CodeEventBody & { turn?: string };
 
 type CodeEventBody =
   | { type: "session"; at: string; harness: string; harnessSessionId: string; model: string; cwd: string; mode: string }
-  /** v1.422.0: `carry` = a message Iron Jarvis sent BY ITSELF to carry the
+  /** v1.422.0: `carry` = a message STEC OS sent BY ITSELF to carry the
    *  reply on (after a restart, an account's reset, a move) — drawn as a
    *  quiet line, never as the user's bubble. */
   | { type: "user"; at: string; text: string; files: string[]; carry?: CarryMark }
@@ -945,7 +945,7 @@ type CodeEventBody =
       name: string;
       title: string;
       input: string;
-      /** v1.427.2: "stopped" = the coding tool (or Iron Jarvis) stopped
+      /** v1.427.2: "stopped" = the coding tool (or STEC OS) stopped
        *  before the step finished — drawn "did not finish", never a spinner. */
       status: "running" | "done" | "failed" | "stopped";
       output: string;
@@ -1554,7 +1554,7 @@ export function foldConversation(
   const turnSteps = new Set<string>();
   const turnFiles = new Set<string>();
   // (review) the turn's last moment of WORK: a turn the daemon's restart cut
-  // off gets its error and done only when Iron Jarvis starts again
+  // off gets its error and done only when STEC OS starts again
   // (service.reconcile_at_boot), hours later — such a turn is timed to its
   // last step, never to the next start. The app's own words (a notice, an
   // error) are not work.
@@ -1817,7 +1817,7 @@ export function helperSummary(children: readonly ConvItem[] | undefined): { step
   return { steps, finalText };
 }
 
-/** v1.427.2: a step the coding tool (or Iron Jarvis) stopped before it
+/** v1.427.2: a step the coding tool (or STEC OS) stopped before it
  *  finished — beside its title, where a running step shows its spinner. */
 export const STEP_STOPPED_WORDS = "did not finish";
 
@@ -2192,8 +2192,8 @@ const FIELD_WORDS: Record<string, string> = {
   model: "The model",
   effort: "The effort",
   mode: "The mode",
-  // v1.414.0: turning Iron Jarvis's tools on or off for the session.
-  capabilities: "The change to Iron Jarvis's tools",
+  // v1.414.0: turning STEC OS's tools on or off for the session.
+  capabilities: "The change to STEC OS's tools",
 };
 
 /** "The effort applies from your next message." for every field the daemon
@@ -2232,7 +2232,7 @@ export function signInProvider(tool: string): string {
 export const CONTINUE_ON_ANOTHER = "Continue on another account";
 
 /** v1.427.3 (a USER BUG): Continue on another account found none free, but
- *  Iron-Proxy's "at its limit" can be Iron Jarvis's own guess — the accounts
+ *  Iron-Proxy's "at its limit" can be STEC OS's own guess — the accounts
  *  the daemon offers to try anyway (`choices` of its `none_free` refusal). */
 export interface TryChoice {
   id: string;

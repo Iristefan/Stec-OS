@@ -37,7 +37,7 @@ STRUCTURED_REPLY = """Here is your export:
 
 ## Projects
 
-[2025-06-20] - Iron Jarvis: a local-first AI OS you build and use daily.
+[2025-06-20] - STEC OS: a local-first AI OS you build and use daily.
 [2025-07-01] - IronCore: your own Codex CLI for open-source models.
 
 ## Preferences
@@ -77,7 +77,7 @@ def test_parses_the_faithful_reply_with_categories_and_dates():
     assert set(by_cat) == set(CATEGORIES)
     assert by_cat["Instructions"][0]["date"] == "2025-03-14"
     assert by_cat["Instructions"][1]["date"] == ""  # [unknown] normalizes to ""
-    assert by_cat["Projects"][0]["text"].startswith("Iron Jarvis:")
+    assert by_cat["Projects"][0]["text"].startswith("STEC OS:")
     # The fence and the completeness sentence are not entries.
     assert not any("complete set" in e["text"] for e in entries)
     assert not any("```" in e["text"] for e in entries)
@@ -147,7 +147,7 @@ def test_preview_keeps_category_and_date_and_never_distills_structured(client):
     # Two entries: below the loose lane's distill threshold — structured
     # input must stay exact (offline distillation would 400 here).
     text = (
-        "```\n## Projects\n[2025-06-20] - Iron Jarvis: a local-first AI OS.\n"
+        "```\n## Projects\n[2025-06-20] - STEC OS: a local-first AI OS.\n"
         "## Preferences\n[2024-01-05] - Prefers concise answers.\n```\n"
     )
     r = client.post("/memory/import/preview", json={"text": text, "provider": "chatgpt"})
@@ -169,7 +169,7 @@ def _imported_dir(client, provider: str):
 def test_commit_stores_category_and_original_date_with_provenance(client, tmp_path):
     entries = [
         {
-            "text": "Iron Jarvis: a local-first AI OS the user builds.",
+            "text": "STEC OS: a local-first AI OS the user builds.",
             "category": "Projects",
             "date": "2025-06-20",
         },

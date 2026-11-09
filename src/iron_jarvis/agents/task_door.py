@@ -1,13 +1,13 @@
-"""Another computer running Iron Jarvis can hand THIS one a task (v1.357.0, G61).
+"""Another computer running STEC OS can hand THIS one a task (v1.357.0, G61).
 
-The readiness audit's finding: there was no way to connect a second Iron
-Jarvis as a teammate. Remote agents were other systems, fleet nodes were model
-servers, and Iron Jarvis exposed no task endpoint another Iron Jarvis could
+The readiness audit's finding: there was no way to connect a second STEC
+OS as a teammate. Remote agents were other systems, fleet nodes were model
+servers, and STEC OS exposed no task endpoint another STEC OS could
 register. This module is that endpoint's whole contract, and it is built from
 pieces that already existed — nothing on the SENDING side is new except what
 the reply needs:
 
-* THE DOOR speaks exactly the ``http-task`` body another Iron Jarvis's
+* THE DOOR speaks exactly the ``http-task`` body another STEC OS's
   :class:`~iron_jarvis.agents.remote.RemoteAgentRegistry` already sends
   (v1.285.0): ``{task, conversation_id?, history?, reply_to?}``. So the OTHER
   computer registers this one through its EXISTING remote-agent form —
@@ -35,7 +35,7 @@ the reply needs:
   inbound door, ``/agents/remote/<name>/inbound``) with the caller's inbound
   token, which the caller sent for that purpose as ``reply_token`` beside
   ``reply_to`` (the one, backward-compatible addition to the body; only a
-  sender talking to an Iron Jarvis door adds it). The reply key is kept in the
+  sender talking to a STEC OS door adds it). The reply key is kept in the
   vault per session (``REPLY_TOKEN_PREFIX``) and removed the moment the reply
   is attempted. One attempt, bounded, masked, off the loop; a reply that fails
   is RECORDED on the session's summary and on the door's status, named (who,
@@ -118,7 +118,7 @@ REPLY_FILES_TOTAL_BYTES = 25 * 1024 * 1024
 
 #: The words a run's task opens with, so the run (and a person reading its
 #: page) knows where the task came from.
-TASK_INTRO = "A task sent from {caller}, another computer running Iron Jarvis:"
+TASK_INTRO = "A task sent from {caller}, another computer running STEC OS:"
 
 #: The door refuses while it is off — the sender's room shows this.
 DOOR_OFF = (
@@ -128,7 +128,7 @@ DOOR_OFF = (
 
 _CALLER_OK = re.compile(r"[^A-Za-z0-9 _.\-]")
 
-#: ``reply_to`` must be another Iron Jarvis's inbound door (any host, the
+#: ``reply_to`` must be another STEC OS's inbound door (any host, the
 #: exact leaf) — a sender cannot point this computer's answer at an arbitrary
 #: address on its network.
 _REPLY_PATH = re.compile(r"^/agents/remote/[^/]+/inbound$")
@@ -149,7 +149,7 @@ def remote_origin(caller: object) -> str:
 
 
 def is_remote_task_origin(origin: object) -> bool:
-    """Was this run sent by another computer running Iron Jarvis?"""
+    """Was this run sent by another computer running STEC OS?"""
     return str(origin or "").startswith(f"{REMOTE_TASK_ORIGIN}:")
 
 
@@ -162,7 +162,7 @@ def _door_path() -> str:
 
 
 def is_task_door_url(url: object) -> bool:
-    """Does ``url`` point at an Iron Jarvis task door? (Its path is exactly
+    """Does ``url`` point at a STEC OS task door? (Its path is exactly
     the door's leaf; any host — a tunnel or proxy keeps the path.)"""
     try:
         parsed = urlparse(str(url or "").strip())
@@ -178,7 +178,7 @@ def door_address(url: object) -> str:
     trailing slashes of its path removed, anything else unchanged.
 
     v1.357.0 re-review: :func:`is_task_door_url` accepts ``…/task/`` (the
-    form says "another Iron Jarvis" for it and message-back is turned on), but
+    form says "another STEC OS" for it and message-back is turned on), but
     the install-bearer exemption is an EXACT match on ``TASK_DOOR_PATH``. Sent
     as typed, every task and every Test came back 401 from the install guard,
     and the sender was told "its token does not match — copy the token again",
@@ -191,8 +191,8 @@ def door_address(url: object) -> str:
 
 
 def valid_reply_to(url: object) -> bool:
-    """Is ``url`` a place this computer may send an answer to — another Iron
-    Jarvis's inbound door over http(s)? Anything else is refused at the door."""
+    """Is ``url`` a place this computer may send an answer to — another STEC
+    OS's inbound door over http(s)? Anything else is refused at the door."""
     try:
         parsed = urlparse(str(url or "").strip())
     except Exception:  # noqa: BLE001
@@ -276,7 +276,7 @@ class TaskDoor:
             DOOR_TOKEN_SECRET,
             token,
             kind="token",
-            description="Lets another computer running Iron Jarvis send tasks here",
+            description="Lets another computer running STEC OS send tasks here",
         )
         prior = self.state()
         name = clean_caller(caller) if str(caller or "").strip() else clean_caller(prior.get("caller"))

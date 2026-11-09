@@ -4,7 +4,7 @@
  * way (G68). Every check drives the REAL component or helper; only the API,
  * the daemon hook and neighbours that are not under test are stood in.
  *
- *   G59  Settings › Maintenance offers "Restart Iron Jarvis" (two presses,
+ *   G59  Settings › Maintenance offers "Restart STEC OS" (two presses,
  *        POST /shutdown as before), and a project board that fails to load
  *        says "The board couldn't load. Try again." — no HTTP code and no
  *        "daemon" in the visible text; the code rides the line's title, and
@@ -140,15 +140,15 @@ describe("G59: the words a panel says when a read fails", () => {
   it("one sentence shape: '<Thing> couldn't load.' + the next step; the code is detail only", () => {
     expect(couldntLoad("The board", { status: 500, message: "boom" })).toBe("The board couldn't load. Try again.");
     expect(couldntLoad("The board", { status: 0, message: "offline" })).toBe(
-      "The board couldn't load. Iron Jarvis isn't responding.",
+      "The board couldn't load. STEC OS isn't responding.",
     );
-    expect(NOT_RESPONDING).toBe("Iron Jarvis isn't responding.");
+    expect(NOT_RESPONDING).toBe("STEC OS isn't responding.");
     expect(failureDetail({ status: 500, message: "Internal Server Error" })).toBe("HTTP 500: Internal Server Error");
     expect(failureDetail({ status: 404, message: "" })).toBe("HTTP 404");
     // Nothing answered: there is no code to show.
     expect(failureDetail({ status: 0, message: "Failed to fetch" })).toBeUndefined();
     expect(failureDetail(null)).toBeUndefined();
-    expect(couldntWhileNoAnswer("upload")).toBe("Couldn't upload. Iron Jarvis isn't responding.");
+    expect(couldntWhileNoAnswer("upload")).toBe("Couldn't upload. STEC OS isn't responding.");
   });
 });
 
@@ -194,7 +194,7 @@ describe("G59: a project board that fails to load", () => {
   it("when nothing answers it says so in the app's name, never 'the daemon'", async () => {
     H.gets[BOARD] = () => new H.FakeApiError("Failed to fetch", 0);
     render(<ProjectSurface projectId="proj_1" hasRoot view="board" />);
-    const p = await screen.findByText(line("The board couldn't load. Iron Jarvis isn't responding."), {}, W);
+    const p = await screen.findByText(line("The board couldn't load. STEC OS isn't responding."), {}, W);
     expect(p.getAttribute("title")).toBeNull();
     expect(within(p).queryByRole("button")).toBeNull();
   });
@@ -208,11 +208,11 @@ describe("G59: a project board that fails to load", () => {
   });
 });
 
-describe("G59: Settings › Maintenance offers 'Restart Iron Jarvis'", () => {
+describe("G59: Settings › Maintenance offers 'Restart STEC OS'", () => {
   it("the heading and the button name the app; two presses still POST /shutdown", async () => {
     const { container } = render(<MaintenanceCard />);
-    const btn = screen.getByRole("button", { name: "Restart Iron Jarvis" });
-    expect(screen.getAllByText("Restart Iron Jarvis")).toHaveLength(2); // the heading and the button
+    const btn = screen.getByRole("button", { name: "Restart STEC OS" });
+    expect(screen.getAllByText("Restart STEC OS")).toHaveLength(2); // the heading and the button
     // v1.433.0 (moved on purpose): jsdom has no desktop app, so the title says
     // what a browser page's press really does (wave1-restart-v1433 pins the
     // desktop words and the tidy bridge).
@@ -233,8 +233,8 @@ describe("G59: Settings › Maintenance offers 'Restart Iron Jarvis'", () => {
     // v1.433.0 (moved on purpose): the desktop words, or the browser's.
     expect(legacy).toContain("title={restartDesktop ? RESTART_WORDS.title : RESTART_WORDS.browserTitle}");
     expect(legacy).toContain("{RESTART_WORDS.needed}");
-    expect(RESTART_WORDS.label).toBe("Restart Iron Jarvis");
-    expect(RESTART_WORDS.title).toContain("Iron Jarvis stops tidily and the desktop app starts it again");
+    expect(RESTART_WORDS.label).toBe("Restart STEC OS");
+    expect(RESTART_WORDS.title).toContain("STEC OS stops tidily and the desktop app starts it again");
     for (const words of Object.values(RESTART_WORDS)) expect(words).not.toMatch(/daemon/i);
   });
 });

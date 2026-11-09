@@ -39,7 +39,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
-#: The task folders that ship with Iron Jarvis.
+#: The task folders that ship with STEC OS.
 TASKS_DIR = Path(__file__).resolve().parent / "tasks"
 
 #: The kinds of task the set mixes (the IJ harness plan, Phase 0).

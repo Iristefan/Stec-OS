@@ -112,7 +112,7 @@ def test_a_restored_windows_powershell_pane_follows_the_policy_rule_of_today(mon
     from its saved argv, so a saved ``-ExecutionPolicy RemoteSigned`` would
     beat a CurrentUser / LocalMachine policy the user set since (process scope
     wins over both). The flag a restore starts with is decided by the same
-    rule as a new terminal's — for the two argvs Iron Jarvis itself gives
+    rule as a new terminal's — for the two argvs STEC OS itself gives
     Windows PowerShell only; any other saved argv is kept as it was."""
     from iron_jarvis.terminals.backend import FakeBackend
     from iron_jarvis.terminals.manager import TerminalManager
@@ -129,7 +129,7 @@ def test_a_restored_windows_powershell_pane_follows_the_policy_rule_of_today(mon
 
 @pytest.mark.parametrize("unset", [True, False])
 @pytest.mark.parametrize("shell,saved", [
-    ("powershell", ["powershell", "-NoLogo", "-NoProfile"]),  # not an argv Iron Jarvis gives
+    ("powershell", ["powershell", "-NoLogo", "-NoProfile"]),  # not an argv STEC OS gives
     ("powershell", ["powershell", "-NoLogo", "-ExecutionPolicy", "AllSigned"]),
     ("pwsh", ["C:/Program Files/PowerShell/7/pwsh.exe", "-NoLogo"]),
     ("cmd", ["cmd"]),

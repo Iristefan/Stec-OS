@@ -14,9 +14,9 @@ first cut left, each pinned red on the merged doer branch first.
    length rides beside it as ``timing.ms`` (the Timeline's axis).
 2. ``timing.ms`` also tells a reply written since the Timeline from an older
    one, so a reply that ended before it did anything is never said to have
-   been "made before Iron Jarvis kept the time of each step".
+   been "made before STEC OS kept the time of each step".
 3. The finish check's own test run (``ij-finish-N``) and a project check
-   (``ij-check-N``) are steps Iron Jarvis ran, not the model: the reply line
+   (``ij-check-N``) are steps STEC OS ran, not the model: the reply line
    and the live frames mark them (``check``), so the Timeline tells them
    apart from the reply's own work.
 """
@@ -158,7 +158,7 @@ async def test_every_bar_lies_inside_the_replys_own_length(app, work, monkeypatc
 
 
 # --------------------------------------------------------------------------- #
-# 3. the checks Iron Jarvis ran are told apart from the model's own work
+# 3. the checks STEC OS ran are told apart from the model's own work
 # --------------------------------------------------------------------------- #
 
 TEST_CMD = "python -m unittest -q test_mini"
@@ -239,9 +239,9 @@ async def test_a_reply_that_never_got_going_still_carries_its_length(app, work, 
 def test_a_reply_a_crash_cut_off_is_rebuilt_with_no_times(app, work):
     """The boot's rebuild of a reply cut off mid-way keeps what was streamed,
     marked interrupted, and NO ``timing`` — the one line the reply's own
-    writer did not write. The Timeline reads exactly that to say "Iron Jarvis
+    writer did not write. The Timeline reads exactly that to say "STEC OS
     stopped while answering" (lib/buildTimeline ``noTimelineReason``), never
-    "made before Iron Jarvis kept the time of each step".
+    "made before STEC OS kept the time of each step".
 
     v1.391.0, MOVED ON PURPOSE: that is now true only of a reply whose stored
     frames carry NO offsets (a record stored before the Timeline). Frames

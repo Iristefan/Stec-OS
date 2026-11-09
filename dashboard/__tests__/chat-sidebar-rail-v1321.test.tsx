@@ -141,7 +141,7 @@ afterEach(() => {
 });
 
 async function send(text: string, reply: string) {
-  const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   H.stream.replies.push(reply);
   fireEvent.change(el, { target: { value: text } });
   fireEvent.keyDown(el, { key: "Enter" });
@@ -205,7 +205,7 @@ describe("Chat's thread list in the app sidebar (redesign S7, AUDIT Q5)", () => 
     window.sessionStorage.setItem("ij_chat_open_thread", JSON.stringify({ id: "t9", project: null }));
     window.history.replaceState({}, "", "/chat?new=1");
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     await act(async () => {
       await new Promise((r) => setTimeout(r, 20));
     });

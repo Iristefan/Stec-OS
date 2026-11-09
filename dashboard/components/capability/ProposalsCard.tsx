@@ -239,7 +239,7 @@ export function ProposalsCard() {
         icon={<Inbox size={15} aria-hidden="true" />}
       >
         <p className="mb-3 text-[13px] leading-relaxed text-zinc-500">
-          When a task would have gone better with a tool Iron Jarvis doesn&apos;t have,
+          When a task would have gone better with a tool STEC OS doesn&apos;t have,
           the agent asks for it here instead of working around it.{" "}
           <span className="text-zinc-300">
             Asking creates nothing — approving is what creates it.
@@ -391,7 +391,7 @@ export function ProposalsCard() {
                           ? "This can never be granted — see the reason above"
                           : canApply
                             ? `Create “${p.name}” now. It will still ask before every use.`
-                            : "Iron Jarvis can't create this one for you — see the note above"
+                            : "STEC OS can't create this one for you — see the note above"
                       }
                       className="btn-accent py-1.5 text-xs disabled:opacity-50"
                     >

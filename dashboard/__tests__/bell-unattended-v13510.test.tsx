@@ -179,7 +179,7 @@ beforeEach(() => {
   H.audit = [];
   H.auditPaths = [];
   window.localStorage.clear();
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
   mockDaemon();
 });
 
@@ -305,7 +305,7 @@ describe("G03: the real bell counts an unattended failure until it is opened", (
     eventsRef.current = [FAILED_7AM];
     render(<NotificationBell />);
     await screen.findByRole("button", { name: "1 notifications" });
-    await waitFor(() => expect(document.title).toBe("(1) Iron Jarvis"));
+    await waitFor(() => expect(document.title).toBe("(1) STEC OS"));
     await waitFor(() =>
       expect(notifyMock).toHaveBeenCalledWith(
         "Your schedule morning-brief could not finish",
@@ -314,14 +314,14 @@ describe("G03: the real bell counts an unattended failure until it is opened", (
       ),
     );
     // Never a second "N pending" ping for the same failure.
-    expect(notifyMock.mock.calls.filter((c) => String(c[0]).startsWith("Iron Jarvis:"))).toEqual([]);
+    expect(notifyMock.mock.calls.filter((c) => String(c[0]).startsWith("STEC OS:"))).toEqual([]);
 
     await openBell();
     const title = await screen.findByText("Your schedule morning-brief could not finish");
     expect(title.closest("a")!.getAttribute("href")).toBe("/sessions/sess_7am");
     // Looked at: the badge clears and the moment is remembered.
     await screen.findByRole("button", { name: "Notifications" });
-    await waitFor(() => expect(document.title).toBe("Iron Jarvis"));
+    await waitFor(() => expect(document.title).toBe("STEC OS"));
     expect(window.localStorage.getItem(BELL_LAST_SEEN_KEY)).not.toBeNull();
   });
 

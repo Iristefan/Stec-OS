@@ -3,8 +3,8 @@
 Lifted out of ``daemon/app.py`` (where it was a create_app LOCAL) in v1.144.0
 for one concrete reason: agent runs and the round table needed to resolve the
 user's default persona too, and a dict trapped inside the app factory is
-reachable only from HTTP routes (through ``d._PERSONAS``). Chat had Iron
-Jarvis's voice; every other surface got whatever the agent role prompt said,
+reachable only from HTTP routes (through ``d._PERSONAS``). Chat had STEC
+OS's voice; every other surface got whatever the agent role prompt said,
 which is precisely the "it talks differently depending on what it's doing"
 report this wave answers.
 
@@ -21,7 +21,7 @@ BUILTIN_PERSONAS: dict[str, dict[str, str]] = {
     "assistant": {
         "description": "Sharp, friendly general assistant (default)",
         "prompt": (
-            "You are Iron Jarvis, the user's personal AI running on their own "
+            "You are STEC OS, the user's personal AI running on their own "
             "machine. Answer directly and conversationally — helpful, sharp, "
             "warm, concise but complete. Use markdown when it helps."
         ),

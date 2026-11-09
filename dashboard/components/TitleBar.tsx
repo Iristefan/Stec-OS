@@ -99,11 +99,11 @@ export function TitleBar({ right }: { right?: React.ReactNode }): React.JSX.Elem
   }, []);
   const isPopout = popout?.isPopout === true;
   // A popped-out window is titled by its module — the OS taskbar and Alt+Tab
-  // are how the user tells two Iron Jarvis windows apart. The NotificationBell
+  // are how the user tells two STEC OS windows apart. The NotificationBell
   // prefixes its count onto whatever base title this leaves behind.
   useEffect(() => {
     if (!isPopout) return;
-    const title = `${pageLabel ?? "Iron Jarvis"} — Iron Jarvis`;
+    const title = `${pageLabel ?? "STEC OS"} — STEC OS`;
     document.documentElement.dataset.ijTitle = title;
     document.title = title;
   }, [isPopout, pageLabel]);
@@ -200,11 +200,11 @@ export function TitleBar({ right }: { right?: React.ReactNode }): React.JSX.Elem
             component to the rail's internals. */}
         <Link
           href="/"
-          title="Iron Jarvis — Overview"
+          title="STEC OS — Overview"
           // v1.313.0: below sm the words hide (the 390px bar had them printed
           // under the search box) and only the dot remains — CSS `hidden`
           // drops them from the accessible name too, so the link names itself.
-          aria-label="Iron Jarvis — Overview"
+          aria-label="STEC OS — Overview"
           style={{ WebkitAppRegion: "no-drag" } as React.CSSProperties}
           className="flex h-9 shrink-0 items-center gap-2 rounded-lg px-1.5 transition-colors hover:bg-white/[0.04] sm:h-8 sm:px-1"
         >
@@ -213,7 +213,7 @@ export function TitleBar({ right }: { right?: React.ReactNode }): React.JSX.Elem
             <span className="relative h-2 w-2 rounded-full bg-accent shadow-[0_0_6px_rgb(var(--accent-rgb)/0.7)]" />
           </span>
           <span className="hidden text-[13px] font-medium tracking-tight text-zinc-100 sm:inline">
-            Iron Jarvis
+            STEC OS
           </span>
         </Link>
 
@@ -230,7 +230,7 @@ export function TitleBar({ right }: { right?: React.ReactNode }): React.JSX.Elem
         )}
         {isPopout && (
           // v1.283.0: this module lives in its own window. Said on the strip so
-          // two Iron Jarvis windows never read as one app opened twice.
+          // two STEC OS windows never read as one app opened twice.
           <span
             data-testid="popout-badge"
             title="This module is open in its own window. Close the window to put it away."
@@ -251,7 +251,7 @@ export function TitleBar({ right }: { right?: React.ReactNode }): React.JSX.Elem
           <button
             type="button"
             onClick={openPalette}
-            aria-label="Search Iron Jarvis (Ctrl K)"
+            aria-label="Search STEC OS (Ctrl K)"
             title="Search — Ctrl K"
             // It LOOKS like a field but is a BUTTON on purpose: the command
             // palette already owns the query, the debounce, and the results.

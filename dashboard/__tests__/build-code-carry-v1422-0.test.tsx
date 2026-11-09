@@ -2,7 +2,7 @@
  * v1.422.0 (Wave 2 "Never lose work", B3 + B5) — Build › Code carrying on by
  * itself after an interruption, as the page draws it:
  *
- *   - a message Iron Jarvis sent BY ITSELF to carry the reply on (`user`
+ *   - a message STEC OS sent BY ITSELF to carry the reply on (`user`
  *     with `carry`) is one quiet line, never the user's bubble;
  *   - a reply a restart cut off that was NOT carried on by itself (the
  *     session read's `cut`) says why and offers **Continue** — in place of
@@ -93,7 +93,7 @@ function events(raw: Record<string, unknown>[]): CodeEvent[] {
 const CUT_REPLY = [
   { type: "user", at: "2026-11-01T10:00:00Z", text: "build the parser", turn: "t1" },
   { type: "text_done", at: "2026-11-01T10:00:05Z", item: "a1", text: "Reading the files first.", turn: "t1" },
-  { type: "error", at: "2026-11-01T10:01:00Z", title: "Iron Jarvis stopped while this was working",
+  { type: "error", at: "2026-11-01T10:01:00Z", title: "STEC OS stopped while this was working",
     fix: "Send the message again — the conversation is kept.", technical: "", turn: "t1" },
   { type: "done", at: "2026-11-01T10:01:00Z", stop: "interrupted", turn: "t1" },
 ];
@@ -131,7 +131,7 @@ describe("the shapes the daemon sends", () => {
 
   it("the words say what happened, in plain words", () => {
     expect(carryLineWords({ why: "restart", fromAccount: "", toAccount: "", accountName: "", group: "", pressed: false }))
-      .toMatch(/after Iron Jarvis restarted/);
+      .toMatch(/after STEC OS restarted/);
     expect(carryLineWords({ why: "move", fromAccount: "Work", toAccount: "Work 2", accountName: "", group: "Work", pressed: false }))
       .toBe("Carried on by itself with Work 2 — Work reached its limit.");
     expect(carryLineWords({ why: "reset", fromAccount: "", toAccount: "", accountName: "Work", group: "", pressed: false }))
@@ -151,13 +151,13 @@ describe("the conversation", () => {
   it("a carry-on message is a quiet line, never the user's bubble", () => {
     const { items } = foldConversation(events([
       ...CUT_REPLY,
-      { type: "user", at: "2026-11-01T10:05:00Z", text: "Iron Jarvis restarted while you were working…",
+      { type: "user", at: "2026-11-01T10:05:00Z", text: "STEC OS restarted while you were working…",
         carry: { why: "restart", from: "t1" }, turn: "t2" },
     ]));
     render(<CodeConversation items={items} folder="C:\\work" tool="claude-code" />);
-    expect(screen.getByTestId("code-carry")).toHaveTextContent(/after Iron Jarvis restarted/);
+    expect(screen.getByTestId("code-carry")).toHaveTextContent(/after STEC OS restarted/);
     expect(screen.getByTestId("code-carry").getAttribute("data-why")).toBe("restart");
-    expect(screen.queryByText(/Iron Jarvis restarted while you were working/)).toBeNull();
+    expect(screen.queryByText(/STEC OS restarted while you were working/)).toBeNull();
     expect(screen.getAllByTestId("code-user")).toHaveLength(1);
     // The cut reply's error is not the newest thing any more: no press.
     expect(screen.queryByTestId("code-continue-cut")).toBeNull();
@@ -254,7 +254,7 @@ describe("the bell", () => {
     const resumed = toActivity(ev("build.resumed", { thread_id: "app_1", title: "Fix the parser",
       reason: "restart", surface: "build_app" }, "build_app:app_1"))!;
     expect(resumed.href).toBe(buildCodeHref("app_1"));
-    expect(resumed.title).toMatch(/carried on after Iron Jarvis restarted/);
+    expect(resumed.title).toMatch(/carried on after STEC OS restarted/);
     const limit = toActivity(ev("build.account_limit", { thread_id: "app_1", title: "Fix the parser",
       account_name: "Work", kind: "usage", waiting: true, surface: "build_app" }, "build_app:app_1"))!;
     expect(limit.href).toBe(buildCodeHref("app_1"));

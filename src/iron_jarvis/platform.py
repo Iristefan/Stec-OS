@@ -2143,7 +2143,7 @@ def build_platform(
                 raise _ScheduleRefused("this schedule has no task to run. Edit it to add one, or remove it")
             if platform.orchestrator is None:
                 raise RuntimeError(
-                    "task schedules need Iron Jarvis's agent orchestrator"
+                    "task schedules need STEC OS's agent orchestrator"
                 )
             # v1.171.0 (contract 3): a schedule may name WHO does the work.
             # Resolution mirrors POST /agents/{name}/spawn exactly — the
@@ -2553,7 +2553,7 @@ def build_platform(
                 raise _ScheduleRefused("this schedule names no goal to work on. Edit it to pick one, or remove it")
             goal_engine = platform.goal_engine
             if goal_engine is None:
-                raise RuntimeError("goal schedules need Iron Jarvis's goal engine")
+                raise RuntimeError("goal schedules need STEC OS's goal engine")
             result = await goal_engine.run_iteration(goal_id)
             sid = str(result.get("session_id") or "")
             if sid:
@@ -2663,7 +2663,7 @@ def build_platform(
                 # failure — one BEFORE any run existed included — is worded by
                 # the run's ONE rule (``failure_words.plain_reason``), never
                 # ``str(exc)``: a sentence the schedule wrote for a person
-                # (``plain_words``) is kept, Iron Jarvis's own fault with no
+                # (``plain_words``) is kept, STEC OS's own fault with no
                 # run says so without pointing at a run there is none of.
                 sid = fired["session_id"]
                 try:

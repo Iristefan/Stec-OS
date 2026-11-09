@@ -30,7 +30,7 @@
           "main_changed_words": "",
           "notes": [
             {"kind": "error", "text": "The model's server went away."},
-            {"kind": "commit", "text": "Iron Jarvis committed its work on ij/fix-the-parser-77aa (77aa66bb55cc). Nothing was pushed."}
+            {"kind": "commit", "text": "STEC OS committed its work on ij/fix-the-parser-77aa (77aa66bb55cc). Nothing was pushed."}
           ],
           "try_on": 0,
           "left_out": [],

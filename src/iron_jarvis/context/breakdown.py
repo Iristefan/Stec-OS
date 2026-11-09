@@ -1,7 +1,7 @@
 """What fills a coding session's conversation (v1.415.0, the Session tab's
 Context drop-down) — ONE shape for both coding-session views.
 
-Chat › Code (Iron Jarvis's own harness) builds its prompt itself, so its
+Chat › Code (STEC OS's own harness) builds its prompt itself, so its
 breakdown is EXACT from the daemon side: :func:`harness_breakdown` counts the
 very strings the turn sent, with the planner's own estimator
 (:func:`context.budget.estimate_tokens`) and the SAME message rule
@@ -36,7 +36,7 @@ from typing import Any, Iterable
 
 from .budget import estimate_tokens
 
-#: Iron Jarvis's own parts, in the order the drop-down lists them.
+#: STEC OS's own parts, in the order the drop-down lists them.
 HARNESS_LABELS: dict[str, str] = {
     "messages": "Messages",
     "rules": "Instruction files",

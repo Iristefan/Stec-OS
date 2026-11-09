@@ -55,7 +55,7 @@ async def test_a_test_that_passed_after_the_last_edit_is_not_run_again(env, lane
     assert done["finish"]["command"] == TEST_CMD
     assert list(done["finish"])[-1] == "reused"  # (no review: it rides last)
     (note,) = model.notes()
-    assert f"`{TEST_CMD}`" in note and "so Iron Jarvis did not run it again." in note
+    assert f"`{TEST_CMD}`" in note and "so STEC OS did not run it again." in note
     # The reply line keeps it.
     assert F.saved_record(done["finish"])["reused"] is True
 
@@ -162,7 +162,7 @@ def test_card_why_order_and_words():
     assert A.card_why(rule="edits_only") == A.ASK_RULES["edits_only"]
     assert A.card_why(rule=A.JUDGE_ASKED_RULE) == A.JUDGE_ASKED_WORDS
     assert A.card_why(strict=True) == A.STRICT_WHY
-    assert A.checker_why("ruff") == "Iron Jarvis runs the project's own checker ruff"
+    assert A.checker_why("ruff") == "STEC OS runs the project's own checker ruff"
     assert len(A.card_why(spend_words="x" * 900)) == A.MAX_WHY_CHARS
 
 

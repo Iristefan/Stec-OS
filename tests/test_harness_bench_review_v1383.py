@@ -3,7 +3,7 @@
 Pinned here, each through the real code:
 
 * A MODEL NAMED "default" IS NO MODEL. ``--model default`` (or
-  ``subscription`` / ``auto``, which Iron Jarvis's Claude adapter reads as
+  ``subscription`` / ``auto``, which STEC OS's Claude adapter reads as
   "the CLI's own default") names no particular model, so a record of it could
   not say which one ran — exactly what this phase removed. It is refused
   before any task starts, like a missing model.
@@ -32,7 +32,7 @@ Pinned here, each through the real code:
   files too.
 * THE TASK DATA IS NOT APP CODE: two source scans (raw process spawns, retired
   words) skip ``harness_bench/tasks/``. That is safe only while nothing there
-  is importable as part of Iron Jarvis — no ``__init__.py`` makes the folder
+  is importable as part of STEC OS — no ``__init__.py`` makes the folder
   (or a task folder) a package, and no module outside it imports from it.
 """
 

@@ -73,19 +73,19 @@ TOKEN = "ghp_PHONE12B0123456789abcdefNEVERSHOWN"
 SENDER = 4242
 SECTION = "# Apps named in this message"
 #: Every line the phone gets wears the sender's name (``InboundPoller.send_chunked``).
-PREFIX = "Iron Jarvis: "
+PREFIX = "STEC OS: "
 #: (Review, moved on purpose) BOTH real ways: an agent the phone hands the
 #: request to (it asks the phone before each use — tests/
 #: test_phone_apps_agent_v1387.py drives it end to end), or Chat on the PC.
 PHONE_LINE = (
     "- GitHub: connected (1 tool), but this quick reply on the phone cannot use its tools. An"
     " agent can: hand the request over with escalate_to_agent — the agent asks the user here,"
-    " on the phone, before each use of GitHub — or the user can ask in Chat in Iron Jarvis on"
+    " on the phone, before each use of GitHub — or the user can ask in Chat in STEC OS on"
     " the PC."
 )
 NOTE = (
     "\n\n_Note: I can't use GitHub in a quick reply on your phone. To have it used, ask me to"
-    " hand this to an agent (it asks you here before each use), or ask in Chat in Iron Jarvis"
+    " hand this to an agent (it asks you here before each use), or ask in Chat in STEC OS"
     " on your PC._"
 )
 
@@ -364,5 +364,5 @@ def test_the_note_names_each_app_once():
     assert phone_apps_note(["GitHub", "Gmail", "GitHub"]) == (
         "\n\n_Note: I can't use GitHub and Gmail in a quick reply on your phone. To have them"
         " used, ask me to hand this to an agent (it asks you here before each use), or ask in"
-        " Chat in Iron Jarvis on your PC._"
+        " Chat in STEC OS on your PC._"
     )

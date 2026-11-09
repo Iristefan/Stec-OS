@@ -1,6 +1,6 @@
 // The DOM and accessibility walk: one page, in, as a bounded semantic snapshot.
 //
-// This is the only code in Iron Jarvis that reads a page the user is signed in to,
+// This is the only code in STEC OS that reads a page the user is signed in to,
 // so three properties matter more than completeness.
 //
 // 1. NO FIELD VALUE IS EVER COLLECTED. Not by this file and not by anything it

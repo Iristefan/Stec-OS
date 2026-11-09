@@ -10,7 +10,7 @@ import {
 } from "@/lib/deviceSettings";
 
 /* -------------------------------------------------------------------------- */
-/*  Voice output (Web Speech Synthesis) — hear Iron Jarvis reply               */
+/*  Voice output (Web Speech Synthesis) — hear STEC OS reply               */
 /* -------------------------------------------------------------------------- */
 
 /** localStorage key that remembers the user's voice-output preference.
@@ -21,7 +21,7 @@ import {
 const PREF_KEY = READ_ALOUD_STORAGE_KEY;
 
 /**
- * Iron Jarvis's spoken persona — a warm, plain-spoken teammate (mirrors the
+ * STEC OS's spoken persona — a warm, plain-spoken teammate (mirrors the
  * `_VOICE` system persona). A slightly-under-1 rate reads naturally; we prefer a
  * natural en-US/en-GB voice when the platform exposes one.
  */
@@ -162,7 +162,7 @@ export interface UseTTS {
 
 /**
  * SSR-safe wrapper around `window.speechSynthesis` that speaks assistant output
- * sentence-by-sentence in the Iron Jarvis voice persona, behind a user toggle
+ * sentence-by-sentence in the STEC OS voice persona, behind a user toggle
  * whose preference is remembered. Everything degrades to a no-op when the API is
  * missing or voice is off, so callers just call `speak()` with the latest text.
  */

@@ -1,4 +1,4 @@
-# Iron Jarvis — "Seamless to use, flawless LLM connections" Audit
+# STEC OS — "Seamless to use, flawless LLM connections" Audit
 
 **Goal:** seamless for anyone to use; LLM connections via OAuth flawless and
 clear; the kind of project no one wants to stop using.

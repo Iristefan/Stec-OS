@@ -38,7 +38,7 @@ from dataclasses import dataclass
 class SubscriptionCli:
     """One subscription CLI, every fact the app keeps about it."""
 
-    #: Iron Jarvis's provider id (routing, /models, the ledger).
+    #: STEC OS's provider id (routing, /models, the ledger).
     provider: str
     #: The word a Build session's account list groups by — the CLI's own
     #: name for itself (``claude`` / ``codex`` / ``grok``).

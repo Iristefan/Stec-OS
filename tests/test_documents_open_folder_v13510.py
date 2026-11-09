@@ -34,9 +34,9 @@ def opened(monkeypatch):
 @pytest.fixture()
 def client(tmp_path):
     c = TestClient(create_app(str(tmp_path / "home")))
-    # A chat's folders live under chat_files_dir (<Documents>\Iron Jarvis by
+    # A chat's folders live under chat_files_dir (<Documents>\STEC OS by
     # default) — point it into the test's own folder.
-    c.app.state.platform.config.chat_files_root = str(tmp_path / "Iron Jarvis")
+    c.app.state.platform.config.chat_files_root = str(tmp_path / "STEC OS")
     return c
 
 
@@ -84,7 +84,7 @@ def test_the_same_gates_still_hold_for_a_folder(client, opened, tmp_path):
     secrets_dir.mkdir(parents=True, exist_ok=True)
     assert client.post("/documents/open", json={"path": str(secrets_dir)}).status_code == 403
     # A relative path is refused before anything is looked at.
-    assert client.post("/documents/open", json={"path": "Iron Jarvis"}).status_code == 400
+    assert client.post("/documents/open", json={"path": "STEC OS"}).status_code == 400
     # A folder that does not exist is still a 404, never an open.
     ghost = tmp_path / "no-such-folder"
     assert client.post("/documents/open", json={"path": str(ghost)}).status_code == 404

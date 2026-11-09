@@ -1,7 +1,7 @@
 """Guided decoding — the strict_json rung of the tool ladder (v1.203.0, C2).
 
 Ported from the user's own IronCore project (``ironcore/core/guided.py``,
-SPEC §6 / CONTRACTS §2 there), adapted to Iron Jarvis's provider vocabulary
+SPEC §6 / CONTRACTS §2 there), adapted to STEC OS's provider vocabulary
 (``adapters.base``: LLMMessage/LLMResponse/ToolCall, Anthropic-style tool
 specs). The middle rung between native function-calling and the fenced
 prompted-tools contract: when the capability envelope says a model cannot

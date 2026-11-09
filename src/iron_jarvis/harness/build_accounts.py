@@ -41,7 +41,7 @@ from ..iron_proxy import accounts as _acc
 
 log = logging.getLogger(__name__)
 
-#: vendor -> (Iron Jarvis provider, Iron-Proxy provider, the group's name).
+#: vendor -> (STEC OS provider, Iron-Proxy provider, the group's name).
 #: v1.424.0 (D6): Grok joins — a Chat › Code session on the Grok CLI is
 #: pinned to one of Iron-Proxy's ``xai`` accounts like Claude Code and Codex
 #: (Build › Code's Grok already ran on them: ``hosted/words.W.PROXY``; the
@@ -52,7 +52,7 @@ VENDORS: dict[str, dict[str, str]] = {
     "codex": {"provider": "codex-cli", "proxy": "openai", "label": "Codex"},
     "grok": {"provider": "grok-cli", "proxy": "xai", "label": "Grok"},
 }
-#: Iron Jarvis provider -> vendor.
+#: STEC OS provider -> vendor.
 VENDOR_OF_PROVIDER = {v["provider"]: k for k, v in VENDORS.items()}
 #: Iron-Proxy provider -> vendor.
 VENDOR_OF_PROXY = {v["proxy"]: k for k, v in VENDORS.items()}

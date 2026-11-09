@@ -33,8 +33,8 @@ record tools are (``settings.records``):
   "Start new chats local only"): changed through the settings tools (off is
   ask-floor), read by the chat page when it starts a new chat.
 
-* UNDO AND HISTORY (D4). ``changes_list`` reads the undo journal — what Iron
-  Jarvis changed recently: settings, records, files, memory notes — names and
+* UNDO AND HISTORY (D4). ``changes_list`` reads the undo journal — what STEC
+  OS changed recently: settings, records, files, memory notes — names and
   plain words only, never a value or a file's contents. ``change_undo``
   reverses one through THE code ``POST /undo/{id}`` runs
   (``routes.undo.perform_undo``, the one ``config_undo`` already shares);
@@ -156,7 +156,7 @@ _OTHER_CHATS_RX = re.compile(
 )
 _THIS_CHAT_RX = re.compile(r"\b" + _THIS_CHAT + r"\b", re.IGNORECASE)
 
-_ACTOR = r"(?:you|jarvis|iron\s+jarvis)"
+_ACTOR = r"(?:you|jarvis|(?:stec\s+os|iron\s+jarvis))"
 _CHANGES_LIST_RX = re.compile(
     # "what did you change today?", "what have you edited?"
     r"\bwhat\s+(?:did|have|has)\s+" + _ACTOR + r"\s+(?:just\s+|already\s+)?"
@@ -165,10 +165,10 @@ _CHANGES_LIST_RX = re.compile(
     r"|\b(?:what|which)\s+(?:changes|edits|files|settings)\s+(?:did|have|has)\s+" + _ACTOR + r"\b"
     # "show me the changes you made", "list your recent changes"
     r"|\b(?:show|list|give|tell)\s+(?:me\s+)?(?:about\s+)?(?:(?:the|your|all|recent|latest|last)\s+){0,3}"
-    r"(?:changes|edits)\s+(?:you|jarvis|iron\s+jarvis)\b"
+    r"(?:changes|edits)\s+(?:you|jarvis|(?:stec\s+os|iron\s+jarvis))\b"
     r"|\b(?:show|list|give)\s+(?:me\s+)?(?:(?:your|all|recent|latest|last)\s+){1,3}(?:changes|edits)\b"
     r"|\b(?:show|list|tell)\s+(?:me\s+)?what\s+" + _ACTOR + r"\s+(?:changed|edited|did)\b"
-    r"|\bchanges\s+(?:you(?:'ve|\s+have)?\s+made|you\s+did|(?:iron\s+)?jarvis\s+made)\b"
+    r"|\bchanges\s+(?:you(?:'ve|\s+have)?\s+made|you\s+did|(?:iron\s+)?jarvis\s+made|stec\s+os\s+made)\b"
     r"|\b(?:change|undo)\s+history\b"
     r"|\bhistory\s+of\s+(?:your|the|my)\s+changes\b",
     re.IGNORECASE,
@@ -848,7 +848,7 @@ _RECORD_WORDS = {
     "chat_local_only": "Local only for a chat",
 }
 NOT_LISTED_NOTE = (
-    "Commands Iron Jarvis ran and messages it sent are not in this list: they have no Undo."
+    "Commands STEC OS ran and messages it sent are not in this list: they have no Undo."
 )
 _SCAN_ROWS = 400
 
@@ -1050,11 +1050,11 @@ def change_row(
     if inv.undone_at is not None:
         state, why = "undone", "already undone"
     elif journal is None:
-        state, why = "cannot", "Iron Jarvis kept no way back for it"
+        state, why = "cannot", "STEC OS kept no way back for it"
     elif rev == Reversibility.IRREVERSIBLE.value:
         state, why = "cannot", "it left this PC (a message sent or money spent)"
     elif not bool(getattr(journal, "reversible", False)):
-        state, why = "cannot", "Iron Jarvis kept no safe way back for it"
+        state, why = "cannot", "STEC OS kept no safe way back for it"
     else:
         state, why = "can", ""
     at = inv.created_at
@@ -1159,11 +1159,11 @@ def _kind_arg(args: dict[str, Any]) -> str:
 
 
 class ChangesListTool(Tool):
-    """What Iron Jarvis changed recently — read-only (D4)."""
+    """What STEC OS changed recently — read-only (D4)."""
 
     name = "changes_list"
     description = (
-        "List what Iron Jarvis changed recently — settings, keys (by name), records (schedules, "
+        "List what STEC OS changed recently — settings, keys (by name), records (schedules, "
         "workflows, goals, rules…), files and memory notes — newest first, each with its id, when, "
         "where (in chat, on a settings page, in a task) and whether it can still be undone. "
         "`hours` (default 24) is how far back; `kind` narrows it (setting, record, file, memory). "
@@ -1220,13 +1220,13 @@ class ChangesListTool(Tool):
 
 
 class ChangeUndoTool(Tool):
-    """Undo one change Iron Jarvis made (D4): ALWAYS a card naming it, then
+    """Undo one change STEC OS made (D4): ALWAYS a card naming it, then
     THE code ``POST /undo/{id}`` runs (``routes.undo.perform_undo``) — the
     Undo the receipts, the Settings ledger and ``config_undo`` share."""
 
     name = "change_undo"
     description = (
-        "Undo ONE change Iron Jarvis made — a file edit, a setting, a key, a schedule, workflow, "
+        "Undo ONE change STEC OS made — a file edit, a setting, a key, a schedule, workflow, "
         "goal, rule or other record — through the same Undo as the receipts. `action_id` names "
         "it (changes_list shows ids); with none it undoes the NEWEST change that can still be "
         "undone, of `kind` if given (file, setting, record, memory). The user always approves on "

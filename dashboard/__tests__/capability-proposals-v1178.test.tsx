@@ -241,7 +241,7 @@ describe("honest about what approval cannot do", () => {
           runs_under: "",
           can_apply: false,
           kind_note:
-            "Iron Jarvis can’t add an MCP server for you: it needs a command and " +
+            "STEC OS can’t add an MCP server for you: it needs a command and " +
             "credentials only you have.",
         },
       ],

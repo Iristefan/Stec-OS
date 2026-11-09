@@ -125,7 +125,7 @@ async def test_a_local_server_that_went_away_mid_reply_is_waited_out(tmp_path, w
     assert [d["attempt"] for d in waiting] == [2, 3, 4, 5], waiting
     assert waits == [5.0, 15.0, 30.0, 60.0]
     err = [d for e, d in frames if e == "error"][0]
-    assert "Iron Jarvis tried 5 times" in err.get("fix", ""), err
+    assert "STEC OS tried 5 times" in err.get("fix", ""), err
 
 
 def test_the_rule_reads_the_router_local_refusal_only_at_a_first_call():

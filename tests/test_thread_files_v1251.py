@@ -169,7 +169,7 @@ def _paths_in(block: str, suffix: str = ".xlsx") -> list[str]:
     """Every absolute path of *suffix* the block hands over, however worded.
 
     SPACE-SAFE on purpose: the one directory this feature ships against is
-    ``%APPDATA%/Iron Jarvis/.ironjarvis/uploads``, and a whitespace split would
+    ``%APPDATA%/STEC OS/.ironjarvis/uploads``, and a whitespace split would
     truncate it and leave every path assertion here vacuously green on the
     user's real machine (the v1.196.0 file learned this the hard way)."""
     found: dict[int, str] = {}

@@ -1,4 +1,4 @@
-// The one WebSocket to the Iron Jarvis daemon, and the pairing state machine
+// The one WebSocket to the STEC OS daemon, and the pairing state machine
 // that runs over it.
 //
 // There is exactly one socket per browser (D08). It carries the pairing token as
@@ -270,12 +270,12 @@ export class BridgeSocket {
       // information), so the only honest words are that the socket failed.
       // `close` follows and drives the retry; this handler exists so the popup
       // has something true to show meanwhile.
-      // v1.264.0: in words that say what to DO. The old "could not reach Iron
-      // Jarvis on 127.0.0.1:8787" read as a broken add-on; the usual cause is
+      // v1.264.0: in words that say what to DO. The old "could not reach STEC
+      // OS on 127.0.0.1:8787" read as a broken add-on; the usual cause is
       // the app not running yet (it restarts during an update).
       this.lastError =
         this.lastError ||
-        "Iron Jarvis did not answer at 127.0.0.1:8787. Make sure the Iron Jarvis app is " +
+        "STEC OS did not answer at 127.0.0.1:8787. Make sure the STEC OS app is " +
           "running on this PC (it restarts during an update), then press Connect.";
     });
   }
@@ -375,10 +375,10 @@ export class BridgeSocket {
       // The daemon refused this credential — Forget was pressed, the pairing was
       // revoked, or the stored hash is gone. Keeping the token would earn the same
       // 1008 forever, so drop it and let the next attempt pair afresh.
-      this.lastError = "Iron Jarvis refused this browser's pairing; pairing again.";
+      this.lastError = "STEC OS refused this browser's pairing; pairing again.";
       void this.forgetToken();
     } else if (event.code === CLOSE_POLICY_VIOLATION) {
-      this.lastError = event.reason || "Iron Jarvis refused the connection.";
+      this.lastError = event.reason || "STEC OS refused the connection.";
     }
     if (this.suspended) {
       this.setState("suspended");
@@ -429,7 +429,7 @@ export class BridgeSocket {
     try {
       frame = JSON.parse(raw) as Record<string, unknown>;
     } catch {
-      this.lastError = "Iron Jarvis sent a frame this add-on could not read.";
+      this.lastError = "STEC OS sent a frame this add-on could not read.";
       this.emitStatus();
       return;
     }
@@ -472,7 +472,7 @@ export class BridgeSocket {
         // An unknown frame type is the daemon running ahead of this add-on.
         // Record it and carry on: closing the socket would break a bridge that
         // otherwise works.
-        this.lastError = `Iron Jarvis sent an unsupported frame (${kind || "no type"}).`;
+        this.lastError = `STEC OS sent an unsupported frame (${kind || "no type"}).`;
         this.emitStatus();
         return;
     }
@@ -488,13 +488,13 @@ export class BridgeSocket {
 
   private async onPaired(token: string): Promise<void> {
     if (!token) {
-      this.lastError = "Iron Jarvis sent an empty pairing token.";
+      this.lastError = "STEC OS sent an empty pairing token.";
       this.emitStatus();
       return;
     }
     // The plaintext arrives exactly once, ever. Storing it before anything else
-    // can throw is deliberate: losing it means the user must press Forget in Iron
-    // Jarvis and pair again, and nothing in the add-on can recover it.
+    // can throw is deliberate: losing it means the user must press Forget in STEC
+    // OS and pair again, and nothing in the add-on can recover it.
     this.token = token;
     await chrome.storage.local.set({ [STORAGE_TOKEN_KEY]: token });
     this.backoffMs = BACKOFF_MIN_MS;

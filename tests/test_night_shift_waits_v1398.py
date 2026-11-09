@@ -2,7 +2,7 @@
 
 A wait armed on an account's limit (by the press, or by itself since
 v1.393.0) is carried on by the wait loop's pass (``routes/build.resume_due``)
-— a coding turn Iron Jarvis starts BY ITSELF. While Emergency stop is on, the
+— a coding turn STEC OS starts BY ITSELF. While Emergency stop is on, the
 pass starts nothing and does not even try (the turn's own refusal is the
 second guard); the wait stays, and once the stop is off the next pass carries
 the reply on as before. Driven through the v1.368.0 harness (the real app, a
@@ -40,7 +40,7 @@ async def test_emergency_stop_holds_resume_when_ready_and_the_wait_stays(app, fa
     assert await build_routes.resume_due(app.state.d) == []
     assert tried == [] and len(beh.calls) == calls, "nothing was started, or even tried"
     assert "account_wait" in setup_of(app, sid), "the wait stays"
-    # Emergency stop off: the next pass carries it on, as Iron Jarvis's own.
+    # Emergency stop off: the next pass carries it on, as STEC OS's own.
     app.state.platform.config.autonomy_kill_switch = False
     assert await build_routes.resume_due(app.state.d) == [sid]
     assert tried == ["wait"]

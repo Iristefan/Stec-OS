@@ -13,7 +13,7 @@ again; a helper already parked on the same card was never woken.
 Now a grant made on any card of a coding session — a helper's or the
 session's own — is the SESSION's:
 
-* :func:`note` keeps it for the life of this Iron Jarvis (every helper the
+* :func:`note` keeps it for the life of this STEC OS (every helper the
   session starts later in the same reply inherits it through
   ``chat_turn.helper_parent_now``), and the runtime writes it to the
   session's ``setup.granted_tools`` (:func:`persist`), which every later

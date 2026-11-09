@@ -15,8 +15,8 @@ only the model is scripted.
 (2) G15/G39: chat armed the first 24 of an app's tools in NAME order, so
     GitHub's pull-request tools were cut. The 24 are now the ones most
     relevant to the message (read-only first on a tie), in both lanes.
-(3) REGRESSION: an unclassified provider failure read an anonymous "Iron
-    Jarvis couldn't finish this answer". The Claude transport's timeout and
+(3) REGRESSION: an unclassified provider failure read an anonymous "STEC
+    OS couldn't finish this answer". The Claude transport's timeout and
     cut-off answers are typed (timeout / interrupted), the generic headline
     names the provider it knows, and "claude-cli:" is never doubled.
 (4) G41: a refused BUILT-IN tool reads in tool words with where to turn it
@@ -421,7 +421,7 @@ def _admission(status=None, *, failure="", network=None, said=""):
 
 def _no_engine_words(words: dict) -> None:
     shown = words["title"] + " " + words["fix"]
-    for raw in ("claude-cli", "CLI timed out", "upstream", "Iron Jarvis couldn't"):
+    for raw in ("claude-cli", "CLI timed out", "upstream", "STEC OS couldn't"):
         assert raw not in shown, (raw, shown)
 
 
@@ -472,7 +472,7 @@ def test_the_reaudits_own_probe_no_longer_reads_anonymous():
 
 def test_an_unclassified_provider_failure_names_the_provider_it_knows():
     exc = ProviderError(
-        "claude-cli: Iron Jarvis could not pass the request on to Anthropic"
+        "claude-cli: STEC OS could not pass the request on to Anthropic"
         " (an internal relay error, not your connection)"
     )
     w = friendly_error(exc, provider="mock")

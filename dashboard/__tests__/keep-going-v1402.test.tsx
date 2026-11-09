@@ -307,12 +307,12 @@ describe("Keep going on the real chat page", () => {
 // from the box.
 describe("Keep going leaves the box alone (v1.402.0 review)", () => {
   const UP = "C:/Users/u/.ironjarvis/uploads/notes.pdf";
-  const IN_FOLDER = "C:/Users/u/Documents/Iron Jarvis/2026-10-28 notes/notes.pdf";
+  const IN_FOLDER = "C:/Users/u/Documents/STEC OS/2026-10-28 notes/notes.pdf";
 
   async function attachNotes() {
     H.api.postResponses["/documents/upload"] = { path: UP, name: "notes.pdf", bytes: 3 };
     H.api.postResponses["/documents/workfolder"] = {
-      path: "C:/Users/u/Documents/Iron Jarvis/2026-10-28 notes",
+      path: "C:/Users/u/Documents/STEC OS/2026-10-28 notes",
       created: true,
       files: [{ name: "notes.pdf", path: IN_FOLDER, bytes: 3, source: UP }],
       skipped: [],
@@ -352,7 +352,7 @@ describe("Keep going leaves the box alone (v1.402.0 review)", () => {
 
   it("a Keep going that did not start takes its bubble back: the press is offered again and the box stays empty", async () => {
     storeThread([QUESTION, STOPPED_REPLY]);
-    H.api.postResponses["/sessions/s1/continue"] = new H.FakeApiError("Iron Jarvis is busy", 409);
+    H.api.postResponses["/sessions/s1/continue"] = new H.FakeApiError("STEC OS is busy", 409);
     render(<ChatPage />);
     const keep = await screen.findByTestId("run-result-keep-going", {}, { timeout: 10_000 });
     fireEvent.click(keep);

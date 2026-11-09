@@ -79,7 +79,7 @@ def _addon(root: Path, *, name: str = "browser-addon") -> Path:
         json.dumps(
             {
                 "manifest_version": 3,
-                "name": "Iron Jarvis",
+                "name": "STEC OS",
                 "version": "1.239.0",
                 "key": PINNED_EXTENSION_KEY,
                 "background": {"service_worker": "dist/background.js", "type": "module"},

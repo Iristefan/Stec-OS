@@ -195,7 +195,7 @@ afterEach(() => {
 });
 
 async function send(text: string, reply: string) {
-  const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   H.stream.replies.push(reply);
   fireEvent.change(el, { target: { value: text } });
   fireEvent.keyDown(el, { key: "Enter" });
@@ -252,7 +252,7 @@ describe("uploads belong to the conversation they started in (v1.322.0)", () => 
   it("a file that finishes uploading after New chat is not attached to the new chat, and a queued send never fires there", async () => {
     const held = heldUploads();
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     attach("return.pdf");
     await waitFor(() => expect(held).toHaveLength(1));
     // Enter while uploading queues the send behind the upload.
@@ -279,7 +279,7 @@ describe("uploads belong to the conversation they started in (v1.322.0)", () => 
     const held = heldUploads();
     H.stream.replies.push("got it");
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     attach("return.pdf");
     await waitFor(() => expect(held).toHaveLength(1));
     fireEvent.change(box, { target: { value: "summarize it" } });
@@ -300,7 +300,7 @@ describe("uploads belong to the conversation they started in (v1.322.0)", () => 
         releaseFolder = () => reject(new H.FakeApiError("no folder", 503));
       });
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     attach("return.pdf");
     await waitFor(() => expect(held).toHaveLength(1));
     await act(async () => {
@@ -322,7 +322,7 @@ describe("uploads belong to the conversation they started in (v1.322.0)", () => 
   it("one failed upload never costs the others: the rest are attached and the failure is named", async () => {
     const held = heldUploads();
     render(<ChatPage />);
-    await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    await screen.findByPlaceholderText(/Message STEC OS/);
     attach("a.pdf", "b.pdf");
     await waitFor(() => expect(held).toHaveLength(2));
     await act(async () => {
@@ -355,7 +355,7 @@ describe("Stop and Edit give work back (v1.322.0)", () => {
   it("Stop before the first word keeps 'Stopped.' and puts the question back in the box", async () => {
     H.stream.hold = true;
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "wrong question" } });
     fireEvent.keyDown(box, { key: "Enter" });
     fireEvent.click(await screen.findByTitle("Stop this turn"));
@@ -367,7 +367,7 @@ describe("Stop and Edit give work back (v1.322.0)", () => {
     render(<ChatPage />);
     await send("first question", "first answer");
     await send("second question", "second answer");
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "half typed" } });
     fireEvent.click(screen.getAllByLabelText("Edit and resend")[0]);
     await waitFor(() => expect(screen.queryByText("second answer")).toBeNull());
@@ -388,7 +388,7 @@ describe("Stop and Edit give work back (v1.322.0)", () => {
 describe("small fixes (v1.322.0)", () => {
   it("an IME commit (keyCode 229) never sends", async () => {
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "こんにちは" } });
     fireEvent.keyDown(box, { key: "Enter", keyCode: 229 });
     await act(async () => {

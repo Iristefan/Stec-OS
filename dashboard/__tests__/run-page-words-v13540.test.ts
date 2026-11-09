@@ -242,10 +242,10 @@ describe("a run a restart cut off — the offer and the summary", () => {
   });
   it("the stock summary is hidden under the line, and in words once answered", () => {
     expect(shownSummary(RESTART_SUMMARY, true)).toBeNull();
-    expect(shownSummary(RESTART_SUMMARY, false)).toBe("Stopped when Iron Jarvis restarted.");
+    expect(shownSummary(RESTART_SUMMARY, false)).toBe("Stopped when STEC OS restarted.");
     // A row stored before v1.354.0 keeps the old words: read the same way.
     expect(shownSummary(OLD_RESTART_SUMMARY, true)).toBeNull();
-    expect(shownSummary(OLD_RESTART_SUMMARY, false)).toBe("Stopped when Iron Jarvis restarted.");
+    expect(shownSummary(OLD_RESTART_SUMMARY, false)).toBe("Stopped when STEC OS restarted.");
     expect(shownSummary("Wrote summary.md", true)).toBe("Wrote summary.md");
     expect(shownSummary("", false)).toBeNull();
     expect(shownSummary(null, false)).toBeNull();

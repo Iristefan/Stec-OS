@@ -120,7 +120,7 @@ vi.mock("remark-gfm", () => ({ default: () => {} }));
 import ChatPage from "@/app/chat/page";
 
 const UPLOADS = "C:\\home\\uploads";
-const FOLDER = "C:\\Users\\me\\Documents\\Iron Jarvis\\2026-09-11 jan";
+const FOLDER = "C:\\Users\\me\\Documents\\STEC OS\\2026-09-11 jan";
 
 /** The page's own cap on carried files — kept in step with `MAX_CARRIED_FILES`
  *  in `app/chat/page.tsx`. The daemon bounds the list again on its side. */
@@ -172,7 +172,7 @@ afterEach(() => {
 });
 
 async function attach(...names: string[]) {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   const input = document.querySelector('input[type="file"]') as HTMLInputElement;
   const files = names.map((n) => new File(["abc"], n, { type: "application/pdf" }));
   fireEvent.change(input, { target: { files } });
@@ -180,7 +180,7 @@ async function attach(...names: string[]) {
 
 async function send(text: string) {
   const before = H.stream.bodies.length;
-  const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  const box = await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.change(box, { target: { value: text } });
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
   await waitFor(() => expect(H.stream.bodies.length).toBeGreaterThan(before));

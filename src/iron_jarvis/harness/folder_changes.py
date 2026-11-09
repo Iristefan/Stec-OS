@@ -157,7 +157,7 @@ PROBLEM_UNREADABLE = "this folder could not be read"
 #: v1.425.0 (C1): the reply began in a git repository and the folder is no
 #: longer one (a command removed its ``.git``) — never compared with a walk.
 PROBLEM_NOT_A_REPO = "this folder stopped being a git repository during the reply"
-#: (Review: it said "(Iron Jarvis restarted after the reply was cut off)" as
+#: (Review: it said "(STEC OS restarted after the reply was cut off)" as
 #: fact; a snapshot is also let go when newer replies of other sessions push
 #: it out — a carry-on can come hours later.)
 PROBLEM_NOT_KEPT = (
@@ -190,7 +190,7 @@ def ignore_for(root: Any) -> Any:
     nested ``.gitignore`` read (review: ``finish.GitIgnore`` reads at most 64
     folders' for the few files the new-files list asks about; a walk asks
     about every folder, and past the 64th a nested ``.gitignore`` was never
-    read — on this PC's own Iron Jarvis checkout ``desktop/.gitignore``'s
+    read — on this PC's own STEC OS checkout ``desktop/.gitignore``'s
     ``release/`` (3,696 files) was walked and the snapshot always said "more
     than 5000 files"). Bounded by the walk itself (its file cap and
     deadline) and by the paths a comparison names."""

@@ -1338,7 +1338,7 @@ def resolve_max_steps(session, config) -> int:
 
 
 #: v1.402.0 (3b): what the model reads when an attended run spent its step
-#: budget and Iron Jarvis carries it on ONCE by itself — the same run, its
+#: budget and STEC OS carries it on ONCE by itself — the same run, its
 #: whole conversation kept (no step is repeated), one more budget of the same
 #: size. ``{steps}`` is that budget.
 STEP_LIMIT_CARRY_ON_NOTE = (
@@ -2618,7 +2618,7 @@ class AgentRuntime:
         # started from agent_def.system_prompt (the ROLE) and knew nothing about
         # who it was writing for or how they read. Both sections land here, in
         # the same order and with the same text chat uses, so the user reads one
-        # Iron Jarvis whether a 14B local model or a cloud model took the work.
+        # STEC OS whether a 14B local model or a cloud model took the work.
         # Bounded + never-raising, exactly like the injections below it.
         try:
             from ..personas.voice import voice_section
@@ -3275,7 +3275,7 @@ class AgentRuntime:
             and getattr(spend, "attended_only", False)
             and not str(getattr(session, "origin", None) or "").startswith(ATTENDED_ORIGINS)
         ):
-            # v1.407.2 (Ask first's guard for Git's and Iron Jarvis's own
+            # v1.407.2 (Ask first's guard for Git's and STEC OS's own
             # files — tools/base.guarded_edit_check): an UNATTENDED run (a
             # schedule, a goal, a rule, the phone, a delegated child with no
             # origin) never parks this for a phone answer; it is refused in
@@ -3288,7 +3288,7 @@ class AgentRuntime:
             ) is not PermissionMode.DENY:
                 words = str(getattr(spend, "words", "") or "").strip() or tc.name
                 return (
-                    f"{words}. Iron Jarvis asks the user before this every time, and nobody "
+                    f"{words}. STEC OS asks the user before this every time, and nobody "
                     "is watching this run to answer, so it was not done. Ask the user to do "
                     "it from chat.",
                     set(),
@@ -4317,7 +4317,7 @@ class AgentRuntime:
                     self.p.registry, resp.tool_calls, ctx, armed_names,
                     # v1.407.2: the run's posture (yolo never reaches a run —
                     # ``inherited_approval_mode`` — so Ask first's guard for
-                    # Git's and Iron Jarvis's own files always applies here).
+                    # Git's and STEC OS's own files always applies here).
                     approval_mode=inherited_approval_mode(
                         getattr(session, "approval_mode", ""), getattr(session, "origin", None)
                     ),

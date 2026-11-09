@@ -1,7 +1,7 @@
 """v1.398.0 review (night shift N1): A NIGHT TASK CARRIES ON BY ITSELF ONLY
 INSIDE THE WINDOW AND WITHIN ITS OWN TIME LIMIT.
 
-The first cut carried a night task's work on whenever Iron Jarvis could:
+The first cut carried a night task's work on whenever STEC OS could:
 
 * a reply a restart cut off was carried on at the next boot — at 9 AM too,
   under the NIGHT posture (its record still says "running");
@@ -63,7 +63,7 @@ def clock(monkeypatch):
 
 async def _cut_off_night_task(tmp_path, clock) -> tuple[str, dict]:
     """A night task whose reply wrote one file and is asking the model for
-    its next step when Iron Jarvis stops (the update's tidy stop)."""
+    its next step when STEC OS stops (the update's tidy stop)."""
     repo = make_repo(tmp_path / "proj")
     home = str(tmp_path / "home")
     first = create_app(home)

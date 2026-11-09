@@ -13,7 +13,7 @@ night pass and the real notifier; only the model is a scripted double.
 * SECRETS NEVER LEAVE IN THE WORDS: the commit message, the summary row and
   the notice (the bell, the tray, the phone, every webhook) are masked.
 * A GIT HOOK IS WATCHED TOO: the main-folder guard reads the user's main
-  checkout AFTER Iron Jarvis's own commit (a post-commit hook that writes
+  checkout AFTER STEC OS's own commit (a post-commit hook that writes
   there is caught), and Emergency stop stops a hook that is still running
   (and git leaves no lock behind it for the morning's Commit button).
 * LOCAL ONLY STAYS ABSOLUTE: a task whose session is Local only never has its
@@ -21,7 +21,7 @@ night pass and the real notifier; only the model is a scripted double.
 * NEVER A LOST NOTICE: a summary made but not yet announced (a crash between
   the two, a publish that failed) is announced on the next pass, once.
 * A CRASH BETWEEN THE COMMIT AND THE RECORD keeps the commit as the task's
-  (never "Nothing changed" beside a branch that holds Iron Jarvis's commit).
+  (never "Nothing changed" beside a branch that holds STEC OS's commit).
 """
 
 from __future__ import annotations
@@ -367,7 +367,7 @@ async def _ended_quiet_night(tmp_path, monkeypatch, token: str):
 
 
 async def test_a_summary_made_but_never_announced_is_announced_on_the_next_pass(tmp_path, monkeypatch):
-    """Iron Jarvis stopped (or the claim failed) after the summary was made and
+    """STEC OS stopped (or the claim failed) after the summary was made and
     before its notice: the next pass announces it — once."""
     repo, app, d, notices = await _ended_quiet_night(tmp_path, monkeypatch, "TASK-CRASH")
     real_claim = M.claim_notice
@@ -432,7 +432,7 @@ async def test_a_crash_between_the_commit_and_its_record_keeps_the_commit_as_the
     ended = await _ended(app, d, task["id"])
     sha = git("rev-parse", "--short=12", ended["branch"], cwd=repo)
     assert ended["commit_sha"][:12] == sha
-    # As if Iron Jarvis stopped right after git made the commit: no record of it.
+    # As if STEC OS stopped right after git made the commit: no record of it.
     engine = app.state.platform.engine
     N.set_morning(engine, task["id"], {})
     from iron_jarvis.core.db import session_scope
@@ -582,7 +582,7 @@ async def test_the_nights_commit_refuses_a_worktree_moved_off_its_branch_or_gone
     git("switch", "-q", ended["branch"], cwd=worktree)
     git("worktree", "remove", "--force", str(worktree), cwd=repo)
     done = await commit_for_night(d, sid, M.commit_message("TASK-MOVED: again", "done"))
-    assert not done["committed"] and done["note"].startswith("Iron Jarvis could not commit its work"), done
+    assert not done["committed"] and done["note"].startswith("STEC OS could not commit its work"), done
     assert git("rev-parse", "main", cwd=repo) == main_head
     assert git("rev-parse", ended["branch"], cwd=repo) == branch_head
 
@@ -640,7 +640,7 @@ async def test_a_hook_that_stages_everything_again_never_slips_a_secret_into_the
     hook often does): it stages what the screen left out back into the
     commit — a new secret file, or a key added to a file the branch already
     tracked. What WENT INTO the commit is checked again; a commit that holds
-    what must not be committed is undone (Iron Jarvis's own, seconds old,
+    what must not be committed is undone (STEC OS's own, seconds old,
     never pushed) and the work stays in the branch folder."""
     repo = make_repo(tmp_path / "proj")
     (repo / "config.py").write_bytes(b"DEBUG = True\n")
@@ -698,7 +698,7 @@ async def test_a_screen_whose_unstaging_fails_commits_nothing(tmp_path, monkeypa
 
 
 async def test_a_row_that_ended_after_the_summary_is_brought_up_to_date_without_its_settle(tmp_path, monkeypatch):
-    """Iron Jarvis stopped between a task's end and the pass that would have
+    """STEC OS stopped between a task's end and the pass that would have
     refreshed its row: the next pass reads the records, not only its own
     settle, and the row stops saying "still running"."""
     from tests.test_night_morning_v1399 import _put, _set_state
@@ -751,7 +751,7 @@ def test_the_night_is_the_date_its_window_opened_across_a_clock_change(wall, fol
     assert M.night_key(at, "23:00", "07:00") == want
     # The clock the loop really reads: this PC's local time with a FIXED offset.
     assert M.night_key(at.astimezone(at.utcoffset() and timezone(at.utcoffset())), "23:00", "07:00") == want
-    # And a task an older Iron Jarvis started is placed by its UTC start the same way.
+    # And a task an older STEC OS started is placed by its UTC start the same way.
     began = at.astimezone(timezone.utc).replace(tzinfo=None).isoformat() + "Z"
     assert M.night_key(M._parse_iso(began).astimezone(ZoneInfo("America/New_York")), "23:00") == want
 
@@ -776,7 +776,7 @@ def test_the_left_out_line_fits_the_row_and_counts_what_it_does_not_name():
 @pytest.mark.parametrize("plant", ["hook", "config"])
 async def test_a_command_that_plants_a_git_hook_or_setting_is_caught_by_the_guard(tmp_path, monkeypatch, plant):
     """A night task's command writes a hook into the repository's shared hooks
-    folder (or changes its .git/config): Iron Jarvis's own commit of the
+    folder (or changes its .git/config): STEC OS's own commit of the
     night's work RUNS that hook unattended, and so does every commit the user
     makes afterwards. The guard says so, and the task needs the user."""
     repo = make_repo(tmp_path / "proj")

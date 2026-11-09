@@ -189,7 +189,7 @@ async def test_past_the_bound_it_is_stopped_and_what_it_ran_is_said_everywhere(
             assert _gone_soon(pid), "the stop did not end the tool's tree"
             # 1. the session's own conversation says it at once
             notes = await _notices(c, s["id"])
-            said = [n for n in notes if n.startswith("Iron Jarvis closed Claude Code after 8 hours")]
+            said = [n for n in notes if n.startswith("STEC OS closed Claude Code after 8 hours")]
             assert said, notes
             assert f"(port {port})" in said[0] and "listen_server_v14220.py" in said[0]
             assert SECRET not in said[0] and PLAIN not in said[0]
@@ -313,7 +313,7 @@ async def test_a_restart_for_new_settings_says_what_it_stopped(app, work, tmp_pa
             assert live.restart, "an effort change no longer restarts Claude Code (this pin needs another way)"
             evs = await _say(c, s["id"], "t2")
             said = [e["text"] for e in evs if e.get("type") == "notice"
-                    and e["text"].startswith("Iron Jarvis restarted Claude Code for your new settings.")]
+                    and e["text"].startswith("STEC OS restarted Claude Code for your new settings.")]
             assert said and f"(port {port})" in said[0], [e for e in evs if e.get("type") == "notice"]
             assert _gone_soon(pid)
     finally:
@@ -463,7 +463,7 @@ def test_a_read_that_did_not_answer_keeps_a_few_minutes_then_the_old_rule():
 def test_the_words_name_each_program_on_its_own_line():
     progs = [PG.Program(1, 1.0, (3000,), "node server.js"), PG.Program(2, 2.0, (8000, 8001), "python -m http.server")]
     words = PG.stopped_words("Codex", progs, why="idle", after_s=S.IDLE_S)
-    assert words == ("Iron Jarvis closed Codex after 15 minutes with nothing to do. The programs it ran stopped "
+    assert words == ("STEC OS closed Codex after 15 minutes with nothing to do. The programs it ran stopped "
                      "with it:\n- node server.js (port 3000)\n- python -m http.server (ports 8000 and 8001)")
     assert PG.stopped_words("Codex", [], why="idle") == ""
     keep = PG.keep_words("Codex", progs)

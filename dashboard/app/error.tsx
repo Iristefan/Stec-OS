@@ -17,14 +17,14 @@ export default function RouteError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("Iron Jarvis page error:", error);
+    console.error("STEC OS page error:", error);
   }, [error]);
 
   return (
     <div className="mx-auto max-w-md py-10">
       <Card title="This view ran into a problem">
         <ErrorNote>
-          Something broke while loading this page. The rest of Iron Jarvis is still running —
+          Something broke while loading this page. The rest of STEC OS is still running —
           retry, or head back to the dashboard.
         </ErrorNote>
         {(error.message || error.digest) && (

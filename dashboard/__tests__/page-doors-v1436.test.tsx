@@ -251,7 +251,7 @@ describe("the Help page opens a door's guide on its section", () => {
     ],
   };
   const MARKDOWN = [
-    "# Iron Jarvis — The Handbook",
+    "# STEC OS — The Handbook",
     "",
     "## Something else (v1.1.0)",
     "",

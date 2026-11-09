@@ -47,7 +47,7 @@ if TYPE_CHECKING:  # avoid heavy imports at module load
 #:    registry; files downloaded, text-extracted, chunked + embedded locally).
 #:  * http_rag — any external/offsite RAG service reachable over HTTP (the
 #:    remote does its own ranking; we normalise its hits). The universal
-#:    "point Iron Jarvis at my own RAG" option.
+#:    "point STEC OS at my own RAG" option.
 #:  * mcp — a memory/brain served over the Model Context Protocol (an Obsidian
 #:    brain behind mcp-remote, a notes MCP…): tools are DISCOVERED and mapped
 #:    to search/append (see ltm/mcp_brain.py). HTTP url or stdio command.

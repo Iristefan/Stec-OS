@@ -8,9 +8,9 @@
  *     wall clock that stepped mid-reply must not stretch the axis.
  *  2. A reply written since the Timeline that ended before any work started
  *     (an error or a Stop before the model was first asked) is never said to
- *     have been "made before Iron Jarvis kept the time of each step"; nor is
+ *     have been "made before STEC OS kept the time of each step"; nor is
  *     one a crash cut off (its line rebuilt at boot keeps no times).
- *  3. A check Iron Jarvis ran itself — the finish check's test run, a
+ *  3. A check STEC OS ran itself — the finish check's test run, a
  *     project check — is told apart from the model's own work: its row says
  *     so, its card says the model did not ask for it, and the top counts it
  *     apart from the reply's steps.
@@ -96,9 +96,9 @@ const FIXTURE = JSON.parse(
 /** The words this review added (kept literal here, so the pins fail on the
  *  first cut by what it drew, not by a missing export). */
 const EARLY = "It ended before any work started.";
-const BEFORE = "It was made before Iron Jarvis kept the time of each step.";
-const CUT = "Iron Jarvis stopped while answering, so this reply's times were not kept.";
-const CHECK_NOTE = "Iron Jarvis ran this itself, to check the reply's work. The model did not ask for it.";
+const BEFORE = "It was made before STEC OS kept the time of each step.";
+const CUT = "STEC OS stopped while answering, so this reply's times were not kept.";
+const CHECK_NOTE = "STEC OS ran this itself, to check the reply's work. The model did not ask for it.";
 
 function viewOf(messages: unknown[]): BuildSessionView {
   return {
@@ -160,7 +160,7 @@ describe("a reply with no timeline says WHY truthfully", () => {
       role: "assistant",
       content: "",
       turnId: "t-early",
-      error: "Iron Jarvis couldn't read the folder.",
+      error: "STEC OS couldn't read the folder.",
       timing: { startedAt: 1_000, firstTokenAt: null, endedAt: 1_040, ms: 40 },
     };
     render(<HarnessTimeline view={viewOf([question, early])} live={null} />);
@@ -169,7 +169,7 @@ describe("a reply with no timeline says WHY truthfully", () => {
     expect(none).not.toHaveTextContent(BEFORE);
   });
 
-  it("a reply a crash cut off (its line rebuilt at boot, with no times): Iron Jarvis stopped", () => {
+  it("a reply a crash cut off (its line rebuilt at boot, with no times): STEC OS stopped", () => {
     // sessions.reconcile_interrupted_turns writes what was streamed, marked
     // interrupted, and no `timing` (its writer never reached its end).
     const cut = {
@@ -177,7 +177,7 @@ describe("a reply with no timeline says WHY truthfully", () => {
       content: "Half an ans",
       turnId: "t-early",
       interrupted: true,
-      error: "Iron Jarvis stopped while answering (a restart or a crash).",
+      error: "STEC OS stopped while answering (a restart or a crash).",
     };
     render(<HarnessTimeline view={viewOf([question, cut])} live={null} />);
     const none = screen.getByTestId("timeline-none");
@@ -210,7 +210,7 @@ function withFinishCheck(): Record<string, unknown> {
   };
 }
 
-describe("a check Iron Jarvis ran is told apart from the model's own work", () => {
+describe("a check STEC OS ran is told apart from the model's own work", () => {
   it("its row says it is the finish check; the top counts it apart from the steps", () => {
     const line = withFinishCheck();
     const tl = replyTimeline(decodeMessage(line) as BuildMessage)!;

@@ -2,7 +2,7 @@
 
 ``codex-cli`` used to be TEXT-ONLY (``codex exec``, the conversation
 flattened into one prompt). The native adapter drives the user's own ``codex
-app-server`` over JSON-RPC: Iron Jarvis's armed tools are offered as Codex
+app-server`` over JSON-RPC: STEC OS's armed tools are offered as Codex
 DYNAMIC TOOLS, Codex's own tools that act are switched off, and every tool
 call comes back to the lane — which runs it through ``registry.invoke`` and
 calls the adapter again; that next call RESUMES the same paused Codex turn.
@@ -483,12 +483,12 @@ async def test_a_builtin_approval_request_is_denied_and_reported(tmp_path, monke
     # (protocol.rs `Denied { rejection: String }`); the bare string "denied"
     # this pin first asserted does not deserialize as one.
     assert decisions["execCommandApproval"] == {
-        "decision": {"denied": {"rejection": "Iron Jarvis runs every tool itself"}}}
+        "decision": {"denied": {"rejection": "STEC OS runs every tool itself"}}}
     assert decisions["item/commandExecution/requestApproval"] == {"decision": "decline"}
     assert decisions["item/fileChange/requestApproval"] == {"decision": "decline"}
     assert resp.text == "ok"
     assert resp.extra["codex_builtins"]["denied"] == list(decisions)
-    assert "Iron Jarvis runs every tool itself" in caplog.text
+    assert "STEC OS runs every tool itself" in caplog.text
 
 
 @pytest.mark.parametrize("step", [{"unknown_tool": "shell_out"}, {"foreign_call": 0}],
@@ -510,7 +510,7 @@ async def test_a_tool_codex_was_not_offered_is_answered_with_the_tools_it_has(tm
     text = fake.answers()[0]["response"]["contentItems"][0]["text"]
     offered = sorted(P.ToolNames.build([t["name"] for t in TOOLS]).forward.values())
     assert text == (
-        "Iron Jarvis does not offer a tool named 'shell_out' in this conversation; nothing was run. "
+        "STEC OS does not offer a tool named 'shell_out' in this conversation; nothing was run. "
         "The tools you can call here: " + ", ".join(offered) + "."
     )
 

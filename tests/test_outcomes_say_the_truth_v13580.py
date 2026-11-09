@@ -287,8 +287,8 @@ def test_a_failure_with_no_reason_never_points_at_the_daemon_log(tmp_path):
     detail = body["last_detail"]
     assert "daemon" not in detail.lower(), detail
     # Readiness 12A review: a failure BEFORE any run existed is worded by the
-    # run's one rule (failure_words.plain_reason, started=False): Iron
-    # Jarvis's own fault, never pointing at a run there is none of.
+    # run's one rule (failure_words.plain_reason, started=False): STEC
+    # OS's own fault, never pointing at a run there is none of.
     from iron_jarvis.providers import failure_words as fw
 
     assert detail == ro.failure_detail(f"{fw.GENERIC_TITLE_UNSTARTED}. {fw.GENERIC_FIX_UNSTARTED}"), detail

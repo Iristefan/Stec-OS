@@ -38,7 +38,7 @@ function failed(extra: Partial<BuildMessage> = {}): BuildMessage {
     role: "assistant",
     content: "",
     turnId: "bt-f",
-    error: "Claude Code is busy. Iron Jarvis tried 5 times over 1 min 50 s. Try again shortly.",
+    error: "Claude Code is busy. STEC OS tried 5 times over 1 min 50 s. Try again shortly.",
     canContinue: true,
     ...extra,
   } as BuildMessage;

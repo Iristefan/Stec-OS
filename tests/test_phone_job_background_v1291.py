@@ -250,7 +250,7 @@ async def test_one_shot_returns_at_once_and_shutdown_cancels_the_run(platform):
     assert len(results) == 1 and results[0]["status"] == "handled", results
     sid = results[0]["session_id"]
     assert results[0]["sent"] is True
-    assert fake.texts() == [f"Iron Jarvis: {ONESHOT_ACK}"]  # the ack, nothing else yet
+    assert fake.texts() == [f"STEC OS: {ONESHOT_ACK}"]  # the ack, nothing else yet
     await asyncio.sleep(0)
     assert orch.get_session(sid).status is SessionStatus.ACTIVE
     assert len(poller._session_tasks) == 1
@@ -273,7 +273,7 @@ async def test_one_shot_returns_at_once_and_shutdown_cancels_the_run(platform):
     assert not poller._session_tasks
     assert orch.get_session(sid).status is SessionStatus.CANCELLED
     # A shutdown cancel is not a crash: no "I hit a problem" went to the phone.
-    assert fake.texts() == [f"Iron Jarvis: {ONESHOT_ACK}"]
+    assert fake.texts() == [f"STEC OS: {ONESHOT_ACK}"]
 
 
 def test_lifespan_shutdown_cancels_the_pollers_background_sessions(tmp_path, monkeypatch):
@@ -342,7 +342,7 @@ def _boot_and_crash_mid_job(tmp_path) -> str:
 
     sid = asyncio.run(_dispatch_then_die())
     # The phone heard "On it" (the app's notifier may add its own alert lines).
-    assert fake1.texts()[0] == f"Iron Jarvis: {ONESHOT_ACK}", fake1.texts()
+    assert fake1.texts()[0] == f"STEC OS: {ONESHOT_ACK}", fake1.texts()
     assert _marker(platform1.engine) == (None, "")  # the old resend path has nothing to say
     return sid
 
@@ -365,7 +365,7 @@ def test_a_restart_mid_job_tells_the_phone_its_job_was_cut_off(tmp_path):
         expected = INTERRUPTED_REPLY.format(
             task="rename the client files in the Acme folder tonight"
         )
-        wire = f"Iron Jarvis: {expected}"
+        wire = f"STEC OS: {expected}"
         for _ in range(2000):  # wait for the thing we assert (a tracked task)
             if any(p.get("text") == wire for p in fake2.sent):
                 break
@@ -419,10 +419,10 @@ async def test_a_crashed_background_run_tells_the_phone(platform):
     await poller.drain()
 
     assert fake.texts() == [
-        f"Iron Jarvis: {ONESHOT_ACK}",
+        f"STEC OS: {ONESHOT_ACK}",
         # Readiness 12A review (G28): the run's ONE rule, never the class
         # name and raw text ("RuntimeError: provider down").
-        "Iron Jarvis: I hit a problem: Iron Jarvis couldn't finish this task. Run it again. "
+        "STEC OS: I hit a problem: STEC OS couldn't finish this task. Run it again. "
         "If it happens again, open the run to see the details.",
     ]
 
@@ -460,7 +460,7 @@ async def test_one_shot_lane_counts_against_the_rate_cap(platform):
     res = await poller.poll_once()
     assert res == [{"channel": "tg", "status": "rate_limited", "sender": str(SENDER), "sent": True}]
     assert orch.created == RATE_MAX_TURNS  # no ninth session
-    assert fake.texts()[-1] == f"Iron Jarvis: {RATE_LIMIT_REPLY}"
+    assert fake.texts()[-1] == f"STEC OS: {RATE_LIMIT_REPLY}"
     await poller.drain()
 
 
@@ -519,7 +519,7 @@ def test_a_graceful_shutdown_mid_job_re_arms_the_marker_so_the_next_boot_tells_t
         assert _marker(platform1.engine) == (None, "")  # dispatch done: clear
         assert client.get(f"/sessions/{sid}").json()["session"]["status"] == "active"
     # ... the context exit IS the graceful shutdown (an app update / `stop`).
-    assert fake1.texts()[0] == f"Iron Jarvis: {ONESHOT_ACK}", fake1.texts()
+    assert fake1.texts()[0] == f"STEC OS: {ONESHOT_ACK}", fake1.texts()
     assert not any(DROPPED_REPLY in t for t in fake1.texts())
     row = _row(platform1.engine, sid)
     assert row.status is SessionStatus.CANCELLED and row.interrupted_at is None
@@ -536,7 +536,7 @@ def test_a_graceful_shutdown_mid_job_re_arms_the_marker_so_the_next_boot_tells_t
         health = client.get("/diagnostics").json()["background_loops"]
     assert health["notify_interrupted_comm"]["ok"] is True, health
     assert passed and passed[0]["status"] == "dropped" and passed[0]["notified"] is True, passed
-    wire = f"Iron Jarvis: {DROPPED_REPLY}"
+    wire = f"STEC OS: {DROPPED_REPLY}"
     notices = [p for p in fake2.sent if p.get("text") == wire]
     assert len(notices) == 1 and str(notices[0]["chat_id"]) == str(SENDER), fake2.sent
     # One story only: the CANCELLED row is not also announced as "cut off".
@@ -568,7 +568,7 @@ async def test_a_desktop_cancel_of_a_phone_job_does_not_re_arm_the_marker(platfo
     assert orch.get_session(sid).status is SessionStatus.CANCELLED
     assert poller._shutting_down is False
     assert _marker(platform.engine) == (None, ""), "a desktop cancel must not re-arm the marker"
-    assert fake.texts() == [f"Iron Jarvis: {ONESHOT_ACK}"]
+    assert fake.texts() == [f"STEC OS: {ONESHOT_ACK}"]
 
 
 # --------------------------------------------------------------------------- #
@@ -588,7 +588,7 @@ def test_the_restart_notice_reaches_a_channel_with_no_chat_id_configured(tmp_pat
     assert ch2.send("probe")["ok"] is False  # the bare send has nowhere to go
     app2.state.platform.notifier.add_channel("tg", ch2)
     expected = INTERRUPTED_REPLY.format(task=CRASH_TASK)
-    wire = f"Iron Jarvis: {expected}"
+    wire = f"STEC OS: {expected}"
     with TestClient(app2) as client:
         assert client.get("/health").json()["status"] == "ok"
         for _ in range(2000):  # wait for the thing we assert (a tracked task)

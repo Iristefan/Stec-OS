@@ -187,7 +187,7 @@ const DEEP_LINK_ITEMS: PaletteRow[] = [
     id: "deep:import-ai-memories",
     kind: "page",
     label: "Memory → Import from another AI",
-    blurb: "Bring what ChatGPT, Claude or Gemini remembers about you into Iron Jarvis.",
+    blurb: "Bring what ChatGPT, Claude or Gemini remembers about you into STEC OS.",
     aliases: ["import chatgpt memories", "chatgpt memory", "import memories", "bring memories", "gemini saved info"],
     // scope picks the tab, focus picks the card, and view=list overrides a
     // persisted graph view (the card only exists in list view).
@@ -220,7 +220,7 @@ const DEEP_LINK_ITEMS: PaletteRow[] = [
     id: "deep:ltm",
     kind: "page",
     label: "Memory → Long-term",
-    blurb: "The durable facts and notes Iron Jarvis recalls across sessions.",
+    blurb: "The durable facts and notes STEC OS recalls across sessions.",
     aliases: ["long-term", "obsidian", "notion", "vault", "brain", "store"],
     href: "/memory?scope=longterm",
     icon: Database,
@@ -236,7 +236,7 @@ const ACTION_ITEMS: PaletteRow[] = [
     id: "action:new-session",
     kind: "action",
     label: "New session",
-    blurb: "Hand Iron Jarvis a task and let an agent run it.",
+    blurb: "Hand STEC OS a task and let an agent run it.",
     aliases: ["run", "task", "agent", "start", "launch", "create"],
     href: "/sessions?new=1",
     icon: Plus,
@@ -1210,7 +1210,7 @@ export function CommandPalette() {
           <m.div
             role="dialog"
             aria-modal="true"
-            aria-label="Search Iron Jarvis"
+            aria-label="Search STEC OS"
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
@@ -1365,7 +1365,7 @@ function askRow(query: string): PaletteRow {
   return {
     id: ASK_ID,
     kind: "action",
-    label: `Ask Iron Jarvis: “${query}”`,
+    label: `Ask STEC OS: “${query}”`,
     blurb: "Open a chat with this as your first message.",
     href: `/chat?ask=${encodeURIComponent(query)}`,
     icon: Bot,

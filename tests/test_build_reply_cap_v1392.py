@@ -220,7 +220,7 @@ async def test_a_resumed_reply_counts_from_its_original_question(tmp_path, work,
     """v1.392.0 review (moved on purpose): the reply carried on counts the
     time its cut-off part RAN (its line's ``timing.ms``) — 31 minutes (or 5)
     — never the wall-clock time since its question, which would count the
-    hours Iron Jarvis was off (tests/test_build_reply_cap_review_v1392.py)."""
+    hours STEC OS was off (tests/test_build_reply_cap_review_v1392.py)."""
     home = str(tmp_path / "home2")
     first = create_app(home)
     sid = new_session(first, work)["id"]

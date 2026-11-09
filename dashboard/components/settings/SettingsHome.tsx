@@ -103,7 +103,7 @@ const SUB_DEFS: Record<string, SubDef[]> = {
     },
     {
       id: "connections-notifications",
-      blurb: "Where Iron Jarvis messages you: Telegram, Slack, Discord and email.",
+      blurb: "Where STEC OS messages you: Telegram, Slack, Discord and email.",
       Comp: page(() => import("@/components/settings/pages/NotificationsPage")),
     },
     {
@@ -168,13 +168,13 @@ const SUB_DEFS: Record<string, SubDef[]> = {
     {
       id: "system-maintenance",
       label: "Maintenance",
-      blurb: "Back up now, restore, and restart Iron Jarvis.",
+      blurb: "Back up now, restore, and restart STEC OS.",
       Comp: named(() => import("@/components/settings/MaintenanceCard"), "MaintenanceCard"),
     },
     {
       id: "system-token",
       label: "Access token",
-      blurb: "The key a browser outside the app uses to reach Iron Jarvis.",
+      blurb: "The key a browser outside the app uses to reach STEC OS.",
       Comp: named(() => import("@/components/settings/DaemonTokenCard"), "DaemonTokenCard"),
     },
   ],

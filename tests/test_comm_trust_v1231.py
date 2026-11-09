@@ -264,7 +264,7 @@ async def test_message_in_flight_at_restart_is_dropped_with_a_trace(platform):
     assert results == [{"channel": "tg", "status": "dropped", "update_id": 10, "notified": True}]
     assert orch2.list_sessions() == []  # the message itself is gone (by design)
     # The phone hears it, in the poller's voice, in the same chat.
-    assert fake.sent == [{"chat_id": "777", "text": f"Iron Jarvis: {DROPPED_REPLY}"}]
+    assert fake.sent == [{"chat_id": "777", "text": f"STEC OS: {DROPPED_REPLY}"}]
     # The desktop timeline has it.
     dropped = [e for e in platform.event_bus.history if e.type == "comm.dropped"]
     assert len(dropped) == 1

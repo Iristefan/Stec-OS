@@ -1,6 +1,6 @@
 """One pack shape for every door (v1.343.0, "add a pack in one paste").
 
-Every way a pack reaches Iron Jarvis — a pasted JSON blob, a Claude Desktop
+Every way a pack reaches STEC OS — a pasted JSON blob, a Claude Desktop
 or Claude Code config, a Codex ``config.toml``, a Cursor or VS Code file, a
 bare ``npx`` line, a URL, the Tools-page form — produces a :class:`PackSpec`,
 and every route that stores a pack consumes one. The dict a spec turns into
@@ -490,7 +490,7 @@ def _with_asks(specs: list[PackSpec]) -> list[PackSpec]:
 # spec to the one add door, which splits the secrets into the vault.
 # --------------------------------------------------------------------------- #
 
-#: Marks of Iron Jarvis's OWN MCP server (the Build-pane door, the inert
+#: Marks of STEC OS's OWN MCP server (the Build-pane door, the inert
 #: claude-cli server): a config that lists it is pointing back at us, and
 #: importing it would make the daemon a client of itself.
 _OWN_SERVER_MARKS: tuple[str, ...] = (
@@ -643,8 +643,8 @@ def _str_map(value: Any) -> dict[str, str]:
 
 
 def _spec_from_entry(raw_name: str, entry: dict[str, Any], *, source: str, origin: str) -> PackSpec | None:
-    """One config-dialect server entry → a spec, or ``None`` for Iron
-    Jarvis's own server / an entry with neither a command nor a URL."""
+    """One config-dialect server entry → a spec, or ``None`` for STEC
+    OS's own server / an entry with neither a command nor a URL."""
     command = str(entry.get("command") or "").strip()
     args = _str_list(entry.get("args"))
     # Codex's `command = "npx -y pkg"` and VS Code's "command": "npx" both
@@ -778,7 +778,7 @@ def _guess_source(obj: dict[str, Any], default: str) -> str:
 def _specs_from_json(obj: dict[str, Any], *, source: str, origin: str) -> tuple[list[PackSpec], bool]:
     """``(specs, recognised)`` for a parsed JSON object. ``recognised`` is
     True when the object had one of the known shapes, even if every entry
-    was dropped (Iron Jarvis's own server, a broken entry)."""
+    was dropped (STEC OS's own server, a broken entry)."""
     specs: list[PackSpec] = []
     recognised = False
     if isinstance(obj.get("mcpServers"), dict):
@@ -1202,7 +1202,7 @@ def parse_any(text: str) -> list[PackSpec]:
     single server object, TOML ``[mcp_servers.<name>]`` tables (Codex), one
     command line (or one per line), a bare URL (``/sse`` → sse), an
     ``npx mcp-remote <url> [--header X]`` line → http with the headers.
-    Iron Jarvis's own server entries are dropped."""
+    STEC OS's own server entries are dropped."""
     specs, _recognised = _parse_text(text, source="paste", origin="paste")
     return specs
 

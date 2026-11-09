@@ -191,7 +191,7 @@ export function ContextBreakdown({
             {reading.extra.length ? (
               <div data-testid={`${prefix}-context-extra`} className="space-y-1">
                 <p className={QUIET}>
-                  {/* v1.415.0 review: only Iron Jarvis's OWN tool descriptions
+                  {/* v1.415.0 review: only STEC OS's OWN tool descriptions
                       go with each message; a tool's extras are what it loads
                       only when needed (Claude Code's deferred tools). */}
                   {reading.source === "app" ? "Sent with each message, not counted above:" : "Not counted above:"}

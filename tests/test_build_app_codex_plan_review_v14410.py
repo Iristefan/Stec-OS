@@ -39,7 +39,7 @@ def _waiting_plan_card():
 
 
 def _restored(d, ask):
-    """What a restarted Iron Jarvis holds after the code host kept the session:
+    """What a restarted STEC OS holds after the code host kept the session:
     the driver's state put back on a NEW driver, the card rebuilt from its
     kept form (``hosted/adopt``)."""
     d2, got2 = _driver()
@@ -113,7 +113,7 @@ async def test_a_chosen_effort_still_wins_over_the_threads():
 # -- OpenCode ----------------------------------------------------------------
 def test_an_opencode_agent_mode_can_be_kept_as_a_folder_default():
     """The start box offers to keep the chosen mode as the folder's default;
-    an agent mode was refused "That mode is not one Iron Jarvis knows"."""
+    an agent mode was refused "That mode is not one STEC OS knows"."""
     from iron_jarvis.harness import folder_defaults as F
 
     got = F.clean_tool({"harness": "opencode", "mode": "agent:docs"})

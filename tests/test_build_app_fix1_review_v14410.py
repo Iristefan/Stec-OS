@@ -136,7 +136,7 @@ async def test_two_renames_while_stopped_tell_claude_code_the_last_one_once(app,
 
 
 # --------------------------------------------------------------------------- #
-# A5 (review): an Antigravity that says it DOES take Iron Jarvis's tools
+# A5 (review): an Antigravity that says it DOES take STEC OS's tools
 # --------------------------------------------------------------------------- #
 @pytest.mark.parametrize("says_http", [True, False])
 async def test_a_box_ticked_before_antigravity_said_it_takes_tools_restarts_it_once_it_does(
@@ -164,7 +164,7 @@ async def test_a_box_ticked_before_antigravity_said_it_takes_tools_restarts_it_o
     try:
         async with client(app) as c:
             sid = (await new_session(c, work, harness="antigravity"))["id"]
-            # Ticked in an earlier run of Iron Jarvis (the chip was shown then).
+            # Ticked in an earlier run of STEC OS (the chip was shown then).
             store.update(app.state.platform.engine, sid, capabilities_json='{"memory": true}')
             r = await asyncio.wait_for(c.post(f"/build/app/sessions/{sid}/turn",
                                               json={"text": "hi", "turn_id": "t1"}), 30)

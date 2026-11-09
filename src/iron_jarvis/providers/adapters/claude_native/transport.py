@@ -1,7 +1,7 @@
 """One Claude CLI process per request, spoken over stream-json (v1.300.0).
 
 Their ``Client._run`` (NousResearch claude-subscription-directsdk, MIT, commit
-ef73726, ``directsdk.py``) adapted to asyncio and to Iron Jarvis's rules:
+ef73726, ``directsdk.py``) adapted to asyncio and to STEC OS's rules:
 
 * PER REQUEST, a private temp dir holds ``tools.json`` (the inert MCP
   manifest), ``settings.json`` (``{"env": {"CLAUDE_CODE_EXTRA_BODY": ...}}`` —
@@ -928,7 +928,7 @@ def upstream_failure(got: Collected, admission: Any, *, probe: bool = True) -> E
         )
     if status is None and admission.failure and getattr(admission, "failure_network", None) is False:
         return ProviderError(
-            f"{PROVIDER}: Iron Jarvis could not pass the request on to Anthropic "
+            f"{PROVIDER}: STEC OS could not pass the request on to Anthropic "
             "(an internal relay error, not your connection)"
         )
     return _typed(ProviderError(DROPPED, transient=True), "interrupted")

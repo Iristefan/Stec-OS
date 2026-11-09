@@ -150,9 +150,9 @@ _BUILTIN_STRENGTHS: dict[str, str] = {
     "supervisor": "coordinates specialist subagents on multi-part goals",
     "researcher": "gathers and synthesizes findings from files and web",
     "memory": "curates and tidies the platform's stored knowledge",
-    "maintainer": "carefully edits and tests Iron Jarvis's own code",
+    "maintainer": "carefully edits and tests STEC OS's own code",
     "automation": "wires up schedules, webhooks, workflows, and integrations",
-    "guide": "the Iron Jarvis expert who explains the app and finds your things in it",
+    "guide": "the STEC OS expert who explains the app and finds your things in it",
 }
 
 #: Character cap for one rendered line inside :func:`roster_block` — keeps

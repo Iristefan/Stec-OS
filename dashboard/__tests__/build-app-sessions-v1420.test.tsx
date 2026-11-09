@@ -172,7 +172,7 @@ describe("Delete", () => {
     expect(screen.getByTestId("code-row-a1")).toBeInTheDocument();
   });
 
-  it("a running session is refused by Iron Jarvis: its words are said, the row stays", async () => {
+  it("a running session is refused by STEC OS: its words are said, the row stays", async () => {
     const REFUSAL = "This session's reply is still running. Stop it first, then delete it.";
     H.delFail[`${SESSIONS}/a1`] = { status: 409, message: REFUSAL };
     H.gets[SESSIONS] = { sessions: [sess("a1", { title: "Fix the cart", running: true })] };

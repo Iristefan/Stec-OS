@@ -1293,7 +1293,7 @@ function KnobFields({
           >
             <option value="">Run in the task&apos;s folder (workspace)</option>
             <option value="workspace">workspace</option>
-            <option value="home">Iron Jarvis home</option>
+            <option value="home">STEC OS home</option>
           </select>
         </div>
         <div className="mt-1 text-[11px] text-zinc-600">
@@ -1381,7 +1381,7 @@ function ScheduleEditor({
       onSaved(`Schedule "${schedule.name}" updated.`);
     } catch (err) {
       if (err instanceof ApiError && err.status === 404) {
-        setError("This version of Iron Jarvis cannot edit schedules yet — update it, or delete and re-add the schedule.");
+        setError("This version of STEC OS cannot edit schedules yet — update it, or delete and re-add the schedule.");
       } else {
         setError(err instanceof ApiError ? err.message : String(err));
       }

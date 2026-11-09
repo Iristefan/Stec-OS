@@ -27,7 +27,7 @@ _BUILTIN_NAMES = {
     "memory",
     "automation",
     "maintainer",
-    "guide",  # v1.224.0: the Iron Jarvis expert
+    "guide",  # v1.224.0: the STEC OS expert
 }
 
 

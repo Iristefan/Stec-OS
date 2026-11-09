@@ -53,7 +53,7 @@ button?.addEventListener("click", () => {
   requestHostPermission()
     .then(async (granted) => {
       if (granted) {
-        report("granted", "Site access granted. Iron Jarvis can now see the tabs you have open.");
+        report("granted", "Site access granted. STEC OS can now see the tabs you have open.");
         button.disabled = true;
         await tellWorker(true);
         return;

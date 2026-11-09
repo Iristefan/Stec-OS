@@ -663,7 +663,7 @@ def set_verdict(key: tuple, ok: bool, reason: str = "") -> None:
     said = before is not None and before.key == key and not before.ok and not before.expired()
     if not ok and not said:
         log.warning(
-            "codex-cli: this Codex does not offer the app-server shapes Iron Jarvis needs for "
+            "codex-cli: this Codex does not offer the app-server shapes STEC OS needs for "
             "native tool calls (%s) — using the text-only `codex exec` path instead",
             reason,
         )

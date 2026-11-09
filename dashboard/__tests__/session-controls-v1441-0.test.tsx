@@ -8,7 +8,7 @@
  *   - each MCP row the tool can act on (`actions`) gets a ⋯ menu with ONLY
  *     those actions, posting `/build/app/sessions/{id}/mcp/{server}`
  *     `{action}`; a sign-in opens the tool's own page in the browser;
- *   - an older Iron Jarvis (no `background_work`, no `actions`) shows the tab
+ *   - an older STEC OS (no `background_work`, no `actions`) shows the tab
  *     exactly as before: no menu anywhere;
  *   - the effort chip stays open while a reply runs when the daemon says the
  *     tool takes a new effort live (`effort_live`).
@@ -178,7 +178,7 @@ describe("background work with Stop", () => {
     expect((await screen.findByRole("alert")).textContent).toBe("That task already ended.");
   });
 
-  it("an older Iron Jarvis (no background_work) shows the Background section as before", async () => {
+  it("an older STEC OS (no background_work) shows the Background section as before", async () => {
     const { background_work: _drop, ...older } = OVERVIEW;
     void _drop;
     setGets(older);
@@ -247,7 +247,7 @@ describe("MCP rows: only the actions the tool offers", () => {
     ]);
   });
 
-  it("an older Iron Jarvis (no actions) shows no menu on any row", async () => {
+  it("an older STEC OS (no actions) shows no menu on any row", async () => {
     setGets({
       ...OVERVIEW,
       mcp: { known: true, at: "", servers: [{ name: "notes", state: "connected", words: "Connected" }] },

@@ -1,6 +1,6 @@
 {
  "harness": "codex",
- "source": "v1.439.0: tests/fixtures/build_app_v1409/codex_resume.json (recorded live, codex-cli 0.157.0) with six notifications inserted after turn/started, in the shapes of codex 0.157.0's own `codex app-server generate-json-schema` (ServerNotification: configWarning, warning, deprecationNotice, hook/completed). The recorded resume's own deprecationNotice (about how Iron Jarvis calls Codex) is kept as recorded.",
+ "source": "v1.439.0: tests/fixtures/build_app_v1409/codex_resume.json (recorded live, codex-cli 0.157.0) with six notifications inserted after turn/started, in the shapes of codex 0.157.0's own `codex app-server generate-json-schema` (ServerNotification: configWarning, warning, deprecationNotice, hook/completed). The recorded resume's own deprecationNotice (about how STEC OS calls Codex) is kept as recorded.",
  "steps": [
   {
    "await": "request",

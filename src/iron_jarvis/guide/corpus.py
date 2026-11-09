@@ -1,4 +1,4 @@
-"""The Guide's corpus — what the built-in Iron Jarvis expert is allowed to know.
+"""The Guide's corpus — what the built-in STEC OS expert is allowed to know.
 
 Two kinds of source, and the distinction is the honesty argument:
 
@@ -298,14 +298,14 @@ def live_sections(platform, app=None) -> list[Section]:
 
         cfg = platform.config
         lines = [
-            f"- Iron Jarvis version: {__version__}",
+            f"- STEC OS version: {__version__}",
             f"- Packaged (frozen) build: {'yes' if getattr(sys, 'frozen', False) else 'no (running from source)'}",
             f"- State home (config.toml, ironjarvis.db, secrets/, skills/): {getattr(cfg, 'home', '')}",
             f"- Default provider / model: {getattr(cfg, 'default_provider', '')} / {getattr(cfg, 'default_model', '') or '(provider default)'}",
             f"- Default persona: {getattr(cfg, 'default_persona', '') or 'assistant'}",
             f"- Active project id: {getattr(cfg, 'active_project_id', None) or 'none'}",
             "- Daemon: http://127.0.0.1:8787 (every request needs the bearer token from "
-            "%APPDATA%/Iron Jarvis/token.txt in the packaged app); dashboard: http://127.0.0.1:8788",
+            "%APPDATA%/STEC OS/token.txt in the packaged app); dashboard: http://127.0.0.1:8788",
         ]
         add("Version and install", lines)
     except Exception:  # noqa: BLE001
@@ -504,7 +504,7 @@ class GuideIndex:
             log.exception("guide retrieval failed")
             hits = []
         header = [
-            "# Iron Jarvis reference",
+            "# STEC OS reference",
             "(Retrieved for this question from the app's own docs and live "
             "catalogs. Answer from it. When it does not cover the question, say "
             "so and point to where the answer lives — do not invent a page, "
@@ -540,7 +540,7 @@ class GuideIndex:
         live = self.live()
         parts += [s for s in live if s.heading.startswith("Version")]
         lines = [
-            "# Iron Jarvis reference (base knowledge)",
+            "# STEC OS reference (base knowledge)",
             "(From the app's own Handbook and this install's live facts. For "
             "anything beyond it, call guide_search / guide_read; for the user's "
             "own things call app_search / app_status. Do not invent what is not "

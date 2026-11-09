@@ -541,7 +541,7 @@ export default function SessionDetailPage({
                       onClick={tts.toggle}
                       title={
                         tts.enabled
-                          ? "Voice on — Iron Jarvis reads replies aloud"
+                          ? "Voice on — STEC OS reads replies aloud"
                           : "Voice off — click to hear replies"
                       }
                       aria-pressed={tts.enabled}

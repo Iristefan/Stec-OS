@@ -3,10 +3,10 @@
 ## What changed, for the user
 
 - **Codex has Plan in Build › Code.** It is Codex's own plan mode. Codex looks and plans, and changes no file: every file change it asks for is declined at once, and it asks before every command. Its plan is the reply. Under it waits the same plan card every tool uses: "Approve, then ask first" or Deny. Approve leaves Plan for Ask first, and Codex starts on the plan in the same reply, with its own words "Implement the plan." Deny keeps it in Plan.
-- **Codex's Auto review stays off, and the mode menu says why**: a reviewer model of Codex's own would answer each approval instead of you, and Iron Jarvis cannot show you yet what it decided. **Auto edits stays off on Windows.** Its reason now also says that Codex's own Windows protection for commands is not set up on this PC, and that Iron Jarvis does not set it up.
+- **Codex's Auto review stays off, and the mode menu says why**: a reviewer model of Codex's own would answer each approval instead of you, and STEC OS cannot show you yet what it decided. **Auto edits stays off on Windows.** Its reason now also says that Codex's own Windows protection for commands is not set up on this PC, and that STEC OS does not set it up.
 - **OpenCode's model menu is filled before the first session**, from one quiet background read of `opencode models --verbose`. The read starts no session, makes no model call, and never fetches models.dev. Each model keeps its own effort levels.
 - **The user's own OpenCode agents are modes.** Each primary agent that OpenCode lists appears in the mode menu by its name, before Full access, with its description. It runs as Ask first, except where the agent's own permission rules say otherwise. If a folder does not have that agent, the session says so and uses build.
-- **OpenCode starts no helpers outside Full access.** Before, in Ask first or Auto edits, a helper whose step needed approval waited for ever, because its question never reached Iron Jarvis. Now `task` is refused, so the model does the work itself. A `task` rule of the user's own is kept.
+- **OpenCode starts no helpers outside Full access.** Before, in Ask first or Auto edits, a helper whose step needed approval waited for ever, because its question never reached STEC OS. Now `task` is refused, so the model does the work itself. A `task` rule of the user's own is kept.
 - **OpenCode's question tool is never switched on**, because its question would never reach the screen.
 
 ## What was measured, and how
@@ -62,7 +62,7 @@ All 18 went red. M15 survived the first time: only the second of two guards had 
 ## OPEN
 
 - Codex Plan is not kept across a code-host restart. A plan card that is waiting when the daemon restarts is lost, and the reply is closed as cut off.
-- In Codex Plan, a command the user allows may still change files. Codex's own instructions say not to, but only file-change requests are blocked by Iron Jarvis.
+- In Codex Plan, a command the user allows may still change files. Codex's own instructions say not to, but only file-change requests are blocked by STEC OS.
 - Codex Auto review: not offered. Drawing `item/autoApprovalReview/*` and `thread/approveGuardianDeniedAction` is the work left.
 - Codex Auto edits after `windowsSandbox/setupStart`: not measured. The setup changes Windows and needs administrator rights.
 - OpenCode helpers in Full access still work. A user's own `task` rule that allows helpers can still hang if a helper's step asks. That is the user's rule, and the rules note already says the user's rules apply.
@@ -88,7 +88,7 @@ All 18 went red. M15 survived the first time: only the second of two guards had 
 
 **Codex: Plan.** Choose Plan in the mode menu. Codex looks around and writes a plan, and changes no file while it plans. It still asks before it runs a command. When the plan is ready, the card under it asks you: "Approve, then ask first" starts the work at once in Ask first, and Deny keeps Codex planning. Tell it what to change, and it plans again. Codex's Auto review is not offered yet.
 
-**OpenCode: your own agents and models.** OpenCode's model menu shows OpenCode's own model list, even before your first OpenCode session. Your own OpenCode agents (primary agents in your OpenCode config) appear in the mode menu by their names. They ask first, except where the agent's own permission rules say otherwise. Outside Full access, OpenCode does not start helper agents, because a helper's questions cannot reach Iron Jarvis and it would wait for ever.
+**OpenCode: your own agents and models.** OpenCode's model menu shows OpenCode's own model list, even before your first OpenCode session. Your own OpenCode agents (primary agents in your OpenCode config) appear in the mode menu by their names. They ask first, except where the agent's own permission rules say otherwise. Outside Full access, OpenCode does not start helper agents, because a helper's questions cannot reach STEC OS and it would wait for ever.
 
 ## Review (independent reviewer)
 
@@ -123,7 +123,7 @@ Pins: `tests/test_build_app_codex_plan_review_v14410.py` (each red on the lane's
    mode line that refuses `task` (and the agent line) with the reason in plain words.
 5. **An agent mode could not be kept as a folder's default**: the start box offers the
    save press for any mode, and `folder_defaults.clean_tool` answered "That mode is not
-   one Iron Jarvis knows". It now keeps `agent:<name>` for OpenCode only (`_opencode_agent`);
+   one STEC OS knows". It now keeps `agent:<name>` for OpenCode only (`_opencode_agent`);
    the composer still uses a kept mode only while the tool lists it.
 6. Two doc comments orphaned in `hosted/words.py` (inserted between a comment and its
    declaration) were put back above their own constants.

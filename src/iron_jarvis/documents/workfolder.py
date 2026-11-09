@@ -15,7 +15,7 @@ project none of that happens, because selecting a project gives the chat a
 REAL folder and the file essentials.
 
 So a no-project conversation that is handed a file now gets the same two
-things: a dated folder under the user's Documents (``Documents\\Iron Jarvis``
+things: a dated folder under the user's Documents (``Documents\\STEC OS``
 by default — ``config.chat_files_root``), with the attached files copied in so
 the conversation's inputs and outputs sit side by side where the user will
 look. The page binds it as the chat's working folder, so everything the

@@ -144,7 +144,7 @@ beforeEach(() => {
   delete (window as unknown as { ironjarvis?: unknown }).ironjarvis;
   api.calls = [];
   api.gets = {
-    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis" },
+    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\STEC OS" },
     "/build/sessions?archived=1": { folders: [] },
   };
   api.posts = {

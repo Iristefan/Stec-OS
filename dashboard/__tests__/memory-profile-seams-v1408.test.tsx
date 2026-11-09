@@ -17,7 +17,7 @@
  *   D4 a server that did not answer had its confirmed tools labelled "the
  *      server no longer offers it".
  *   D5 a profile deleted elsewhere (404 "That profile no longer exists.") hid
- *      Check and Try a test save for EVERY profile, as if Iron Jarvis were old.
+ *      Check and Try a test save for EVERY profile, as if STEC OS were old.
  *   D6 saving with every role on "Not used" said "Jarvis now uses these tools".
  */
 

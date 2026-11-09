@@ -14,7 +14,7 @@ async def test_single_agent_loop_end_to_end(orchestrator):
     assert session.status is SessionStatus.COMPLETED
     result = Path(session.workspace_path) / "RESULT.md"
     assert result.exists()
-    assert "Iron Jarvis" in result.read_text(encoding="utf-8")
+    assert "STEC OS" in result.read_text(encoding="utf-8")
 
     transcript = orchestrator.transcript(session.id)
     assert any(t["tool"] == "write_file" and t["ok"] for t in transcript["tools"])

@@ -1,7 +1,7 @@
 """v1.415.0: the Session tab's Context drop-down — what fills a coding
 session's conversation, part by part.
 
-Chat › Code (Iron Jarvis's own harness): the build turn's done frame and the
+Chat › Code (STEC OS's own harness): the build turn's done frame and the
 reply line it saves carry ``context.breakdown`` — counted from the very strings
 the turn sent, with the planner's estimator, so the parts add up EXACTLY to the
 report's ``tokens`` (the figure the Compact offer keys off); tool descriptions

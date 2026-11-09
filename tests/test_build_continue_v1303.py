@@ -745,7 +745,7 @@ def test_a_recorded_id_that_is_no_longer_the_newest_is_not_carried(client, fake,
 def test_a_round_trip_brings_the_grown_conversation_back(client, fake, repo):
     """K1: ``--resume`` KEEPS the id, so A -> B -> A finds A holding the OLDER
     prefix of the conversation that grew on B. It is replaced (resumed both
-    times, A's file == B's) and A's old copy is MOVED into Iron Jarvis's trash,
+    times, A's file == B's) and A's old copy is MOVED into STEC OS's trash,
     never deleted; the sibling folder follows the same rule. MUTATION: treat a
     prefix as divergence -> the way back starts fresh -> red. MUTATION: skip
     the trash copy -> red."""

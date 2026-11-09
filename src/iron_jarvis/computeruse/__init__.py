@@ -1,6 +1,6 @@
 """Computer Use — a safety-critical, OPT-IN browser-automation subsystem.
 
-Iron Jarvis can drive a real browser, but only when explicitly enabled. The
+STEC OS can drive a real browser, but only when explicitly enabled. The
 design encodes the agent-computer-use best practices as *real code*:
 
 * Prefer APIs over UI; prefer DOM/accessibility selectors over screenshots —

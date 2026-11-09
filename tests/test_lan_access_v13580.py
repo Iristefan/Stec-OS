@@ -1,4 +1,4 @@
-"""v1.358.0 lane 8E (G61) — another computer can reach this Iron Jarvis ON
+"""v1.358.0 lane 8E (G61) — another computer can reach this STEC OS ON
 PURPOSE, through ONE setting, and only then.
 
 The re-audit (v1.357.0): "The packaged app listens on 127.0.0.1 only. The
@@ -6,7 +6,7 @@ card's reachability note (daemon/routes/agents.py:101-108) tells a desktop-app
 user to run 'ironjarvis serve --host <ip>' and set IRONJARVIS_HOST_ALLOWLIST,
 which they cannot do from the app."
 
-Now: "Let other computers on my network reach this Iron Jarvis" (`lan_access`)
+Now: "Let other computers on my network reach this STEC OS" (`lan_access`)
 is a schema row — off by default, ask-floor from chat, restart required,
 saved by the ONE settings writer into config.toml. The desktop shell reads it
 at every daemon spawn (desktop/main.js readDaemonNetwork) and only when it is
@@ -37,7 +37,7 @@ from iron_jarvis.settings import schema
 from tests.test_desktop_reliability_v1249 import _lift, _run, _src, requires_node
 
 ROOT = Path(__file__).resolve().parents[1]
-LABEL = "Let other computers on my network reach this Iron Jarvis"
+LABEL = "Let other computers on my network reach this STEC OS"
 DOOR_URL = f"http://192.168.1.20:8787{TASK_DOOR_PATH}"
 
 #: os.networkInterfaces() as Windows reports it: loopback, a Wi-Fi LAN
@@ -270,7 +270,7 @@ def test_an_allowlist_the_user_already_set_is_kept_beside_ours(tmp_path):
 
 def test_both_spawn_sites_read_the_setting_at_every_spawn():
     """The setting is read INSIDE the spawn closure, so the tray's / Settings'
-    "Restart Iron Jarvis" (which calls the stored spawnFn again) applies a
+    "Restart STEC OS" (which calls the stored spawnFn again) applies a
     change — a value read once at startup would need a full relaunch."""
     src = _src()
     packaged = src[src.index("// 1) Frozen daemon.") : src.index("// 2) Next.js standalone server")]
@@ -310,17 +310,17 @@ def test_the_task_door_sentence_points_at_the_setting_never_a_command_line(tmp_p
     assert "restart" in note.lower() and "token" in note
     for gone in ("ironjarvis serve", "--host", "IRONJARVIS_HOST_ALLOWLIST", "daemon"):
         assert gone not in note, (gone, note)
-    assert note.startswith("Iron Jarvis on this computer")
+    assert note.startswith("STEC OS on this computer")
 
     # Turned on but not yet applied: the sentence says what is left (a restart).
     assert client.put("/settings/values", json={"values": {"lan_access": True}}).status_code == 200
     pending = client.get("/agents/task-door").json()["reachable"]
     assert pending["host_allowed"] is False
-    assert "is on and takes effect when Iron Jarvis restarts" in pending["note"], pending["note"]
+    assert "is on and takes effect when STEC OS restarts" in pending["note"], pending["note"]
     assert "--host" not in pending["note"]
     # review: the press it names is one that is always there — the tray's
     # Restart item shows only once something is stuck.
-    assert "“Restart Iron Jarvis” in Settings › System › Maintenance" in pending["note"], pending["note"]
+    assert "“Restart STEC OS” in Settings › System › Maintenance" in pending["note"], pending["note"]
     assert "the tray" not in pending["note"], pending["note"]
 
     # After the restart the desktop spawned it with the allowlist: reachable, no note.

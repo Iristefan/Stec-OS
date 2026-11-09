@@ -292,7 +292,7 @@ describe("D. the picker downloads only what is picked", () => {
 
   it("a refused download says why and changes nothing", async () => {
     H.post.mockRejectedValue(
-      new Error("The downloaded background did not match the one this version of Iron Jarvis expects, so it was not saved."),
+      new Error("The downloaded background did not match the one this version of STEC OS expects, so it was not saved."),
     );
     const onChange = vi.fn();
     render(<BackgroundPicker value={null} onChange={onChange} />);

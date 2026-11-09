@@ -1,5 +1,5 @@
 /**
- * v1.354.0 (G59): what a panel or a press says when Iron Jarvis did not answer
+ * v1.354.0 (G59): what a panel or a press says when STEC OS did not answer
  * the way it should — in the user's words, never the engine's.
  *
  * Before, a project's Board, Media and Recent activity, the saved-workflows
@@ -9,7 +9,7 @@
  * code is not a next step. Now one sentence shape everywhere:
  *
  *   - it answered with an error:  "The board couldn't load. Try again."
- *   - nothing answered at all:    "The board couldn't load. Iron Jarvis isn't responding."
+ *   - nothing answered at all:    "The board couldn't load. STEC OS isn't responding."
  *
  * The code and the server's own message stay available, but only as a hover
  * title (`failureDetail`) for whoever is troubleshooting — never in the text.
@@ -59,7 +59,7 @@ export function failureDetail(error: FailureLike | null | undefined): string | u
   return msg ? `HTTP ${error!.status}: ${msg}` : `HTTP ${error!.status}`;
 }
 
-/** A press that could not reach Iron Jarvis: "Couldn't upload. Iron Jarvis
+/** A press that could not reach STEC OS: "Couldn't upload. STEC OS
  *  isn't responding." `action` is the verb phrase ("upload", "start the
  *  session"). */
 export function couldntWhileNoAnswer(action: string): string {

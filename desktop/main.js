@@ -1,11 +1,11 @@
-// Iron Jarvis — Electron main process (CommonJS).
+// STEC OS — Electron main process (CommonJS).
 //
 // What this does:
 //   1. Spawns the Python daemon (dev: `uv run ironjarvis serve`; packaged: the
 //      frozen ironjarvis.exe) with a per-install IRONJARVIS_TOKEN.
 //   2. Spawns the Next.js dashboard (dev: `pnpm start`; packaged: standalone
 //      server.js via Electron's bundled Node).
-//   3. Shows a dark "Starting Iron Jarvis…" splash while polling the dashboard.
+//   3. Shows a dark "Starting STEC OS…" splash while polling the dashboard.
 //   4. When the dashboard answers, opens the real window (size/pos restored from
 //      window-state.json) on http://localhost:<DASHBOARD_PORT>.
 //   5. CLOSE BEHAVIOR (user-controlled): closing the window can either hide to a
@@ -119,16 +119,16 @@ function ironProxyEnv() {
   };
 }
 
-// --- Let other computers on my network reach this Iron Jarvis (v1.358.0, G61)
+// --- Let other computers on my network reach this STEC OS (v1.358.0, G61)
 // The daemon listens on 127.0.0.1 and its Host guard (daemon/auth._host_ok)
-// admits loopback names only, so another computer running Iron Jarvis could
+// admits loopback names only, so another computer running STEC OS could
 // never reach this one's task door or remote inbound door from the app — the
 // card told the user to run `ironjarvis serve --host` and set an environment
 // variable, which nobody can do from the desktop app. The setting
 // `lan_access` (Settings › Connections, "Let other computers on my network
-// reach this Iron Jarvis") is OFF by default, asks every time from chat, and
+// reach this STEC OS") is OFF by default, asks every time from chat, and
 // is saved by the daemon's ONE settings writer into <home>/config.toml. This
-// shell reads it at EVERY daemon spawn (so "Restart Iron Jarvis" applies a
+// shell reads it at EVERY daemon spawn (so "Restart STEC OS" applies a
 // change) and only when it is on AND this PC has a private network address
 // does it start the daemon listening on every interface (the window keeps
 // talking to 127.0.0.1: the dashboard's address is baked at build time, so a
@@ -237,8 +237,8 @@ function readDaemonNetwork(homeDir, ifaces) {
 // 127.0.0.1:8787, so the bundled daemon MUST listen on 8787.
 const DAEMON_PORT = parseInt(process.env.IJ_DAEMON_PORT || "8787", 10);
 // 8788 (next to the daemon's 8787), NOT 3000: every Next/CRA dev server on the
-// machine defaults to 3000, and a foreign app squatting there would break Iron
-// Jarvis. The daemon's Host/Origin guard + CORS trust any loopback origin, so
+// machine defaults to 3000, and a foreign app squatting there would break STEC
+// OS. The daemon's Host/Origin guard + CORS trust any loopback origin, so
 // the port choice needs no daemon-side allowlist change.
 const DASHBOARD_PORT = parseInt(process.env.IJ_DASHBOARD_PORT || "8788", 10);
 
@@ -549,8 +549,8 @@ function setKeepRunningPref(value) {
   writeDesktopSetting("keepRunningInBackground", keepRunningPref);
   refreshMenus(); // reflect the new state in the tray + app-menu checkboxes
   // v1.438.0 (Wave 4 group C): every caller is the USER's choice (the tray,
-  // the app menu, the close question's "Remember my choice"), so Iron
-  // Jarvis's own setting says it too.
+  // the app menu, the close question's "Remember my choice"), so STEC
+  // OS's own setting says it too.
   noteDesktopSwitchByUser(KEEP_IN_BACKGROUND_KEY, keepRunningPref);
 }
 
@@ -571,13 +571,13 @@ function maybeShowTrayHint() {
   writeDesktopSetting("trayHintShown", true);
   try {
     new Notification({
-      title: "Iron Jarvis is still running",
+      title: "STEC OS is still running",
       body:
         "Find it in the system tray (near the clock). " +
         (hotkeyState.window
           ? `Press ${accelLabel(hotkeyState.window)} to reopen the window; `
           : "Click the tray icon to reopen the window; ") +
-        "to stop it completely use the tray icon → Quit Iron Jarvis.",
+        "to stop it completely use the tray icon → Quit STEC OS.",
     }).show();
   } catch {
     /* notifications unavailable — the tray tooltip still carries the truth */
@@ -643,8 +643,8 @@ function setStartAtLoginFromMenu(enabled) {
   noteDesktopSwitchByUser(START_WITH_WINDOWS_KEY, !!enabled); // v1.438.0
 }
 
-// --- The desktop app's own switches, in Iron Jarvis's settings (v1.438.0) --
-// The chat-first plan's Wave 4 (decision D5): "Start Iron Jarvis with
+// --- The desktop app's own switches, in STEC OS's settings (v1.438.0) --
+// The chat-first plan's Wave 4 (decision D5): "Start STEC OS with
 // Windows" and "Keep running in the background when I close the window" are
 // rows of the ONE settings schema (`start_with_windows`,
 // `keep_running_in_background` — settings/schema.py and the Config fields,
@@ -751,7 +751,7 @@ function desktopSwitchDecision(setting, seen, pending, before) {
 }
 
 //: This shell's own switch as it is (review, v1.438.0) — kept before a value
-//: from Iron Jarvis's settings is first applied, so an Undo back to "not set"
+//: from STEC OS's settings is first applied, so an Undo back to "not set"
 //: can put it back: the login item (true/false; null off the installed app)
 //: and the close choice (true/false, or null = ask when the window closes).
 function rawDesktopSwitch(key) {
@@ -809,7 +809,7 @@ function localDesktopSwitch(key) {
   return typeof keepRunningPref === "boolean" ? keepRunningPref : null;
 }
 
-//: Apply a value that came from Iron Jarvis's settings — never written back.
+//: Apply a value that came from STEC OS's settings — never written back.
 function applyDesktopSwitch(key, value) {
   if (key === START_WITH_WINDOWS_KEY) {
     if (IS_PACKAGED && process.platform === "win32") {
@@ -823,7 +823,7 @@ function applyDesktopSwitch(key, value) {
     writeDesktopSetting("keepRunningInBackground", keepRunningPref);
     refreshMenus();
   }
-  desktopLog("info", `[settings] ${key} is now ${value ? "on" : "off"} (from Iron Jarvis's settings)`);
+  desktopLog("info", `[settings] ${key} is now ${value ? "on" : "off"} (from STEC OS's settings)`);
 }
 
 //: PUT one switch to the daemon (actor "desktop"). Resolves true when the
@@ -887,7 +887,7 @@ function pushDesktopSwitch(key, value) {
 }
 
 //: The USER changed a switch here (the tray, the app menu, a question's
-//: answer): Iron Jarvis's setting is told. Never throws.
+//: answer): STEC OS's setting is told. Never throws.
 function noteDesktopSwitchByUser(key, value) {
   try {
     // Review (v1.438.0): the user's own press is the newer choice — an Undo
@@ -948,7 +948,7 @@ function installDesktopSwitches() {
 const START_WITH_WINDOWS_AFTER_MS = 24 * 60 * 60 * 1000;
 
 // One question, asked once (v1.249.0, R-04). A Windows Update restart at 03:29
-// on 2026-09-09 left Iron Jarvis closed for ~18 hours — schedules, Slack and
+// on 2026-09-09 left STEC OS closed for ~18 hours — schedules, Slack and
 // webhooks all off, and nothing on the machine would have brought it back.
 // Start-at-login already exists (tray + app menu) but ships OFF and nobody
 // finds it, so ASK, with Yes pre-selected, and never ask again once answered.
@@ -985,11 +985,11 @@ function maybeOfferStartWithWindows() {
     defaultId: 0,
     cancelId: 1,
     noLink: true,
-    title: "Iron Jarvis",
-    message: "Start Iron Jarvis with Windows (in the tray)?",
+    title: "STEC OS",
+    message: "Start STEC OS with Windows (in the tray)?",
     detail:
       "Then schedules, messages and tasks waiting for you keep working after Windows " +
-      "restarts — an overnight update no longer leaves Iron Jarvis closed. It starts " +
+      "restarts — an overnight update no longer leaves STEC OS closed. It starts " +
       "quietly in the tray, and you can turn this off any time from the tray menu.",
   };
   // Parented when there is a live window (a sheet the user sees in context);
@@ -1201,7 +1201,7 @@ const RESTART_BACKOFF_MS = [1000, 5000, 15000, 60000];
 // against the install manifest first (a half-applied update → the Repair
 // dialog, not a 60 s loop forever); a clean install that still cannot keep
 // its child alive stops after RESTART_CAP_MAX restarts in RESTART_CAP_WINDOW_MS,
-// says so once, and hands the user a tray "Restart Iron Jarvis" item.
+// says so once, and hands the user a tray "Restart STEC OS" item.
 const FAST_DEATH_MS = 3000;
 const FAST_DEATHS_TO_VERIFY = 3;
 const RESTART_CAP_MAX = 10;
@@ -1230,7 +1230,7 @@ function markTrayDegraded(label, text) {
 function markTrayHealthy(label) {
   if (!_trayDegraded.delete(label) || _trayDegraded.size) return;
   try {
-    if (tray) tray.setToolTip("Iron Jarvis — running");
+    if (tray) tray.setToolTip("STEC OS — running");
   } catch {
     /* tray may be gone */
   }
@@ -1288,7 +1288,7 @@ function startService(label, spawnFn) {
       }, WINDOWS_SHUTDOWN_GRACE_MS);
       return;
     }
-    // Contract C2 (v1.226.0, F-E-2): serve exits 75 when an Iron Jarvis daemon
+    // Contract C2 (v1.226.0, F-E-2): serve exits 75 when a STEC OS daemon
     // ALREADY listens on the port — it attached, it did not start. That is not
     // a crash: restarting it looped forever against a stale daemon (13 spawns
     // in 10 minutes and a false "keeps crashing" toast).
@@ -1298,7 +1298,7 @@ function startService(label, spawnFn) {
     }
     const now = Date.now();
     if (rec.manualRestart) {
-      // The tray's "Restart Iron Jarvis" killed it on purpose: respawn at
+      // The tray's "Restart STEC OS" killed it on purpose: respawn at
       // once, counters already reset, nothing counted as a crash.
       rec.manualRestart = false;
       fileLogger(label)(`[main] ${new Date(now).toISOString()} restarting on request\n`);
@@ -1342,10 +1342,10 @@ function startService(label, spawnFn) {
       // while this window counts on, so it could say "stopped after 2 crashes".
       rec.cappedCrashes = rec.restartTimes.length;
       rec.cappedWindowMin = minutes;
-      desktopLog("error", `[${label}] ${rec.restartTimes.length} restarts in ${minutes} minutes — giving up; use the tray's "Restart Iron Jarvis"`);
-      fileLogger(label)(`[main] ${new Date(now).toISOString()} ${rec.restartTimes.length} restarts in ${minutes} minutes — giving up; use the tray's "Restart Iron Jarvis"\n`);
-      notifyCrashLoop(label, (who) => `${who} crashed ${rec.restartTimes.length} times in ${minutes} minutes and is no longer being restarted. Use the tray's "Restart Iron Jarvis" to try again.`);
-      refreshTrayMenu(); // adds the "Restart Iron Jarvis" item
+      desktopLog("error", `[${label}] ${rec.restartTimes.length} restarts in ${minutes} minutes — giving up; use the tray's "Restart STEC OS"`);
+      fileLogger(label)(`[main] ${new Date(now).toISOString()} ${rec.restartTimes.length} restarts in ${minutes} minutes — giving up; use the tray's "Restart STEC OS"\n`);
+      notifyCrashLoop(label, (who) => `${who} crashed ${rec.restartTimes.length} times in ${minutes} minutes and is no longer being restarted. Use the tray's "Restart STEC OS" to try again.`);
+      refreshTrayMenu(); // adds the "Restart STEC OS" item
       return;
     }
     rec.restartTimes.push(now);
@@ -1356,8 +1356,8 @@ function startService(label, spawnFn) {
     else if (rec.deaths.length === DEATHS_DAY_TOAST_AT) {
       notifyCrashLoop(label, (who) => `${who} has crashed ${rec.deaths.length} times in the last 24 hours and is being restarted each time. Logs: ${path.join(userDataDir || "", "logs")}`);
     }
-    // The handle lives on the record (review of D1): the tray "Restart Iron
-    // Jarvis" spawns a dead child at once and must cancel this pending spawn,
+    // The handle lives on the record (review of D1): the tray "Restart STEC
+    // OS" spawns a dead child at once and must cancel this pending spawn,
     // or two dashboards race for :8788 and the ladder supervises the loser.
     const seq = (rec.restartSeq = (rec.restartSeq || 0) + 1);
     rec.restartTimer = setTimeout(() => {
@@ -1378,7 +1378,7 @@ function startService(label, spawnFn) {
   return child;
 }
 
-// Tray "Restart Iron Jarvis" (audit D1): resets every ladder counter, respawns
+// Tray "Restart STEC OS" (audit D1): resets every ladder counter, respawns
 // a capped child, and restarts a live one on purpose (manualRestart keeps
 // the ladder from counting that kill as a crash).
 function restartServicesFromTray() {
@@ -1411,7 +1411,7 @@ function restartServicesFromTray() {
   refreshTrayMenu();
 }
 
-// The window's "Restart Iron Jarvis" (v1.312.0, wave 4
+// The window's "Restart STEC OS" (v1.312.0, wave 4
 // desktop-offline-banner-lies-when-capped): the DAEMON's ladder only. It must
 // never reuse restartServicesFromTray, which also kills and respawns a live
 // dashboard — the very page the user pressed the button on would reload under
@@ -1456,17 +1456,17 @@ function restartDaemonFromShell(why) {
   return true;
 }
 
-// How long a tidy restart waits for Iron Jarvis to stop by itself before it is
+// How long a tidy restart waits for STEC OS to stop by itself before it is
 // stopped by force (still a restart the user asked for, never a crash).
 const TIDY_RESTART_KILL_MS = 20000;
 
-// Settings › Maintenance's "Restart Iron Jarvis" (v1.433.0, A8). The page used
+// Settings › Maintenance's "Restart STEC OS" (v1.433.0, A8). The page used
 // to post /shutdown with no body — the daemon's QUIT — and the supervisor then
 // counted that exit as a crash (the 10-in-15-minutes cap, "has crashed N times"
 // toasts, the offline banner's last exit). Now the shell does it: it marks the
 // exit as asked for FIRST (`manualRestart`, read by onGone, which then respawns
 // at once and counts nothing), then posts `{"restart": true}`, which keeps the
-// code host and its coding tools running for the next Iron Jarvis to carry on.
+// code host and its coding tools running for the next STEC OS to carry on.
 // `opts.stopping`: the daemon is already stopping itself (a restore from a
 // backup answers, then stops) — mark it, post nothing. A daemon that has not
 // gone after TIDY_RESTART_KILL_MS is stopped by force, still as a restart.
@@ -1523,7 +1523,7 @@ function restartDaemonTidy(opts) {
 
 // v1.433.0 review: Settings' restart of an ADOPTED daemon (exit 75: one of ours
 // already held the port, so no child of ours runs and nothing here watches its
-// exit). It used to be refused ("Quit Iron Jarvis from the tray menu…") where
+// exit). It used to be refused ("Quit STEC OS from the tray menu…") where
 // the old plain /shutdown had brought it back through the watchdog ~90 s
 // later. Now: ask it to stop as a restart (the code host keeps its coding
 // tools), wait for its PORT to be free, then start our own — the watchdog's
@@ -1597,8 +1597,8 @@ function waitForDaemonPortFree(timeoutMs) {
 
 // v1.358.0 (G30): a tooltip or a toast names what the user knows, never the
 // code's label. The labels "daemon" / "dashboard" stay ids (logs, the services
-// map, killChild reasons); the program the window talks to is "Iron Jarvis"
-// (VOCABULARY.md) and the window's own server is "the Iron Jarvis dashboard"
+// map, killChild reasons); the program the window talks to is "STEC OS"
+// (VOCABULARY.md) and the window's own server is "the STEC OS dashboard"
 // (classifyStartupFailure's words). The table lives INSIDE this function on
 // purpose: the node harnesses lift it by name (fnSource), so a top-level
 // helper would be undefined there. A caller's body may be a function of the
@@ -1606,8 +1606,8 @@ function waitForDaemonPortFree(timeoutMs) {
 function notifyCrashLoop(label, body) {
   const logsDir = path.join(userDataDir || "", "logs");
   const rec = _services[label];
-  const who = label === "dashboard" ? "The Iron Jarvis dashboard" : "Iron Jarvis";
-  const tip = label === "dashboard" ? "Iron Jarvis — the dashboard" : "Iron Jarvis";
+  const who = label === "dashboard" ? "The STEC OS dashboard" : "STEC OS";
+  const tip = label === "dashboard" ? "STEC OS — the dashboard" : "STEC OS";
   markTrayDegraded(
     label,
     rec && rec.capped
@@ -1617,7 +1617,7 @@ function notifyCrashLoop(label, body) {
   const text = typeof body === "function" ? body(who) : body;
   try {
     new Notification({
-      title: "Iron Jarvis — problem",
+      title: "STEC OS — problem",
       body: text || `${who} keeps crashing and is being restarted. Logs: ${logsDir}`,
     }).show();
   } catch {
@@ -1625,7 +1625,7 @@ function notifyCrashLoop(label, body) {
   }
 }
 
-// Exit 75 (contract C2 as amended, v1.226.0): an Iron Jarvis daemon already
+// Exit 75 (contract C2 as amended, v1.226.0): a STEC OS daemon already
 // owns the port. "Ours" is decided by the OWNERSHIP PROBE — never by version
 // alone, because a same-version dev daemon (no token) would have been adopted
 // silently: the wrong HOME on screen, then killed by our Quit.
@@ -1670,8 +1670,8 @@ function adoptOrReplaceExistingDaemon(rec, attempt = 1) {
       return;
     }
     if (owner === "foreign") {
-      desktopLog("error", `[daemon] port ${DAEMON_PORT} is held by an Iron Jarvis daemon that is not ours (${found}) — not adopting, not restarting`);
-      fileLogger("daemon")(`[main] port ${DAEMON_PORT} is held by an Iron Jarvis daemon that is not ours (${found}) — not adopting, not restarting\n`);
+      desktopLog("error", `[daemon] port ${DAEMON_PORT} is held by a STEC OS daemon that is not ours (${found}) — not adopting, not restarting`);
+      fileLogger("daemon")(`[main] port ${DAEMON_PORT} is held by a STEC OS daemon that is not ours (${found}) — not adopting, not restarting\n`);
       if (!rec.foreignNotified) {
         rec.foreignNotified = true;
         notifyForeignDaemon(found);
@@ -1686,7 +1686,7 @@ function adoptOrReplaceExistingDaemon(rec, attempt = 1) {
       desktopLog("warn", `[daemon] adopted an existing daemon (v${health.version}) on port ${DAEMON_PORT}`);
       fileLogger("daemon")(`[main] adopted an existing daemon (v${health.version}) on port ${DAEMON_PORT}\n`);
       try {
-        if (tray) tray.setToolTip("Iron Jarvis — running");
+        if (tray) tray.setToolTip("STEC OS — running");
       } catch {
         /* tray may be gone */
       }
@@ -1763,14 +1763,14 @@ function probeDaemonOwnership(timeoutMs) {
 
 function notifyForeignDaemon(found) {
   try {
-    if (tray) tray.setToolTip(`Iron Jarvis — another copy of Iron Jarvis (${found}) holds port ${DAEMON_PORT}`);
+    if (tray) tray.setToolTip(`STEC OS — another copy of STEC OS (${found}) holds port ${DAEMON_PORT}`);
   } catch {
     /* tray may be gone */
   }
   try {
     new Notification({
-      title: "Iron Jarvis — problem",
-      body: `Another copy of Iron Jarvis (${found}) is using port ${DAEMON_PORT} and could not be replaced. Close it, then Quit and relaunch.`,
+      title: "STEC OS — problem",
+      body: `Another copy of STEC OS (${found}) is using port ${DAEMON_PORT} and could not be replaced. Close it, then Quit and relaunch.`,
     }).show();
   } catch {
     /* notifications unavailable */
@@ -1946,7 +1946,7 @@ function requestDaemonShutdown(timeoutMs) {
 // --- Dashboard readiness polling ----------------------------------------
 // Like the daemon gate below, this must not be fooled by a FOREIGN server on
 // the port: "any HTTP response" would happily load someone else's app into the
-// Iron Jarvis window. Require the dashboard's own marker (its <title>) in the
+// STEC OS window. Require the dashboard's own marker (its <title>) in the
 // response body before declaring ready.
 
 function waitForDashboard(timeoutMs, intervalMs) {
@@ -1957,7 +1957,7 @@ function waitForDashboard(timeoutMs, intervalMs) {
         if (Date.now() >= deadline) {
           reject(
             new Error(
-              `dashboard did not answer with the Iron Jarvis app within ${timeoutMs}ms` +
+              `dashboard did not answer with the STEC OS app within ${timeoutMs}ms` +
                 (why ? ` (${why})` : "")
             )
           );
@@ -1972,7 +1972,7 @@ function waitForDashboard(timeoutMs, intervalMs) {
           if (body.length < 256 * 1024) body += c; // cap: the marker is in <head>
         });
         res.on("end", () => {
-          if (/iron\s*jarvis/i.test(body)) resolve();
+          if (/stec\s*os|iron\s*jarvis/i.test(body)) resolve();
           else retry("a different app answered on this port");
         });
         res.on("error", () => retry());
@@ -1986,7 +1986,7 @@ function waitForDashboard(timeoutMs, intervalMs) {
 
 // --- Daemon readiness polling -------------------------------------------
 // A foreign process (or a stale daemon) squatting on port 8787 must NOT be
-// mistaken for a healthy Iron Jarvis: the client URL is baked to 127.0.0.1:8787,
+// mistaken for a healthy STEC OS: the client URL is baked to 127.0.0.1:8787,
 // so if the wrong thing answers there, the whole app is silently broken. We
 // require a real /health 200 from OUR daemon (bearer token) before proceeding.
 // A daemon that is STILL RUNNING when the startup gate runs out is restarted
@@ -2007,7 +2007,7 @@ function waitForDaemon(timeoutMs, intervalMs) {
     const attempt = () => {
       // Fail FAST if the daemon child already exited — e.g. serve()'s preflight
       // found a foreign program on the port and exited non-zero. Don't wait 30s.
-      // 75 is contract C2 (v1.226.0): "attached to an existing Iron Jarvis
+      // 75 is contract C2 (v1.226.0): "attached to an existing STEC OS
       // daemon" — the supervisor adopts or replaces it; keep polling.
       if (
         daemonProc &&
@@ -2018,15 +2018,15 @@ function waitForDaemon(timeoutMs, intervalMs) {
         // A NEGATIVE code is a spawn failure (ENOENT/EACCES — v1.226.0, F-E-3):
         // the daemon program itself, not the port, is the problem.
         // v1.358.0 (G30): these reasons reach the startup dialog's
-        // "Details:" line, so they say "Iron Jarvis", never "the daemon".
+        // "Details:" line, so they say "STEC OS", never "the daemon".
         if (daemonProc.exitCode < 0) {
           return reject(
             new Error(
-              `the Iron Jarvis program could not be started (missing or blocked file; spawn code ${daemonProc.exitCode})`
+              `the STEC OS program could not be started (missing or blocked file; spawn code ${daemonProc.exitCode})`
             )
           );
         }
-        return reject(new Error(`Iron Jarvis stopped while starting (code ${daemonProc.exitCode}) — port in use?`));
+        return reject(new Error(`STEC OS stopped while starting (code ${daemonProc.exitCode}) — port in use?`));
       }
       const req = http.get(
         `http://127.0.0.1:${DAEMON_PORT}/health`,
@@ -2050,7 +2050,7 @@ function waitForDaemon(timeoutMs, intervalMs) {
                 // kept equal by the suite, so this compares like with like.
                 if (ok && d.version !== app.getVersion()) {
                   ok = false;
-                  why = `a copy of Iron Jarvis of a different version (v${d.version}; this app is v${app.getVersion()}) answers on the port`;
+                  why = `a copy of STEC OS of a different version (v${d.version}; this app is v${app.getVersion()}) answers on the port`;
                 }
                 // A version match is not ownership (review S1): a token-less
                 // dev daemon of the same version passed this gate at t=1s and
@@ -2059,7 +2059,7 @@ function waitForDaemon(timeoutMs, intervalMs) {
                 // foreign (exit 75 → foreignNotified) fail now, not at 90s.
                 if (ok) {
                   const rec = _services.daemon;
-                  const foreignWhy = `port ${DAEMON_PORT} is held by a copy of Iron Jarvis that is not ours (v${d.version}) — stop it or change its port`;
+                  const foreignWhy = `port ${DAEMON_PORT} is held by a copy of STEC OS that is not ours (v${d.version}) — stop it or change its port`;
                   if (rec && rec.foreignNotified) return reject(new Error(foreignWhy));
                   probeDaemonOwnership(2500).then((owner) => {
                     if (owner === "ours") return resolve();
@@ -2081,7 +2081,7 @@ function waitForDaemon(timeoutMs, intervalMs) {
         if (why) lastWhy = why;
         if (Date.now() >= deadline) {
           reject(
-            new Error(`Iron Jarvis did not answer within ${timeoutMs}ms` + (lastWhy ? ` (${lastWhy})` : ""))
+            new Error(`STEC OS did not answer within ${timeoutMs}ms` + (lastWhy ? ` (${lastWhy})` : ""))
           );
         } else setTimeout(attempt, intervalMs);
       }
@@ -2252,14 +2252,14 @@ function daemonWatchdogTick() {
 
 function notifyWatchdogExhausted() {
   const logsDir = path.join(userDataDir || "", "logs");
-  // v1.358.0 (G30): "Iron Jarvis", never "the daemon" (VOCABULARY.md).
-  markTrayDegraded("daemon", "Iron Jarvis keeps stalling (Restart from the tray)");
+  // v1.358.0 (G30): "STEC OS", never "the daemon" (VOCABULARY.md).
+  markTrayDegraded("daemon", "STEC OS keeps stalling (Restart from the tray)");
   try {
     new Notification({
-      title: "Iron Jarvis — problem",
-      // v1.312.0: the tray offers "Restart Iron Jarvis" in this state now (so
+      title: "STEC OS — problem",
+      // v1.312.0: the tray offers "Restart STEC OS" in this state now (so
       // does the window's offline banner) — the short way back, not a Quit.
-      body: `Iron Jarvis stopped answering repeatedly and automatic restarts are paused. Use "Restart Iron Jarvis" in the tray menu to start it again. Logs: ${logsDir}`,
+      body: `STEC OS stopped answering repeatedly and automatic restarts are paused. Use "Restart STEC OS" in the tray menu to start it again. Logs: ${logsDir}`,
     }).show();
   } catch {
     /* notifications unavailable */
@@ -2345,8 +2345,8 @@ function verifyInstallIntegrity() {
 
 // Orphaned frozen daemons (a crashed session's child that never died) hold
 // file locks inside resources/daemon — NSIS then can't replace those files and
-// the next boot comes up half-installed. The image name is unique to Iron
-// Jarvis, so force-killing every instance is safe. Best-effort, synchronous
+// the next boot comes up half-installed. The image name is unique to STEC
+// OS, so force-killing every instance is safe. Best-effort, synchronous
 // (the installer must not start until the locks are gone).
 function sweepOrphanDaemons(opts = {}) {
   if (process.platform !== "win32") return;
@@ -2481,7 +2481,7 @@ function handleCorruptInstall(result) {
     defaultId: 0,
     cancelId: buttons.length - 1,
     noLink: true,
-    title: "Iron Jarvis — installation damaged",
+    title: "STEC OS — installation damaged",
     message: "The last update did not install completely.",
     detail:
       `${result.missing.length} bundled file(s) are missing and ${result.mismatched.length} ` +
@@ -2563,7 +2563,7 @@ function createLoadingWindow() {
     resizable: false,
     center: true,
     show: true,
-    title: "Starting Iron Jarvis…",
+    title: "Starting STEC OS…",
     webPreferences: { contextIsolation: true, nodeIntegration: false },
   });
   loadingWin.loadFile(path.join(__dirname, "loading.html"));
@@ -2618,7 +2618,7 @@ function createMainWindow() {
     ...(center ? { center: true } : { x: bounds.x, y: bounds.y }),
     backgroundColor: "#0a0a0f",
     show: false,
-    title: "Iron Jarvis",
+    title: "STEC OS",
     // Custom title bar (v1.111.0) — the frontier-desktop chrome the user asked
     // for: the app draws its own top strip (hamburger · mark · global search)
     // while close/max/min stay NATIVE via the Windows controls overlay, so
@@ -2744,8 +2744,8 @@ function createMainWindow() {
         defaultId: 1, // Enter = Quit (the fresh-install default)
         cancelId: 0, // Esc aborts the teardown (safe: keep running)
         noLink: true,
-        title: "Close Iron Jarvis?",
-        message: "Keep Iron Jarvis running in the background?",
+        title: "Close STEC OS?",
+        message: "Keep STEC OS running in the background?",
         detail:
           "Keeping it running lets schedules, rules and webhooks stay active " +
           "while the window is closed. Quitting stops everything until you next open the app.",
@@ -2796,8 +2796,8 @@ function createMainWindow() {
 
 // A dashboard-child outage used to strand the window on Chromium's error page
 // for good (v1.226.0, F-E-7): a reload during the 1-60s restart window failed
-// and nothing ever retried. Wait for the dashboard to answer with the Iron
-// Jarvis app again, then load it. -3 is ERR_ABORTED — a navigation superseded
+// and nothing ever retried. Wait for the dashboard to answer with the STEC
+// OS app again, then load it. -3 is ERR_ABORTED — a navigation superseded
 // by another one — not a failure.
 // That wait was ONE-SHOT (v1.229.0, audit D1): after 60 s it gave up and a
 // dashboard the ladder brought back five minutes later never reached the
@@ -2864,7 +2864,7 @@ function showMainWindow() {
 // A frameless always-on-top input that opens ANYWHERE in Windows on
 // Ctrl+Shift+Space: type a task, Enter, and an agent runs it in the
 // background — a notification (click -> the session) fires when it's done. This
-// is the daily-driver gesture that makes Iron Jarvis ambient, not an app you
+// is the daily-driver gesture that makes STEC OS ambient, not an app you
 // have to go open.
 
 // A tiny promise-based HTTP call to OUR daemon from the MAIN process (Node http,
@@ -2901,7 +2901,7 @@ function daemonRequest(method, apiPath, body) {
       }
     );
     req.on("error", reject);
-    req.setTimeout(15000, () => req.destroy(new Error("Iron Jarvis did not answer in time")));
+    req.setTimeout(15000, () => req.destroy(new Error("STEC OS did not answer in time")));
     if (payload) req.write(payload);
     req.end();
   });
@@ -3080,13 +3080,13 @@ function installSpotlightIpc() {
   // Native toast for the "This PC" notification destination (v1.118.0).
   // Clicking it restores the window — the alert is an invitation back in.
   // v1.433.0 review (D5): sender-checked like the clipboard. A toast titled
-  // "Iron Jarvis" is a voice the user trusts; a frame that is not the
+  // "STEC OS" is a voice the user trusts; a frame that is not the
   // dashboard must not be able to make it say "sign in again at …".
   ipcMain.handle("notify:show", (event, opts) => {
     if (!isTrustedDashboardSender(event)) return false;
     try {
       const note = new Notification({
-        title: String(opts?.title || "Iron Jarvis"),
+        title: String(opts?.title || "STEC OS"),
         body: String(opts?.body || ""),
       });
       note.on("click", () => {
@@ -3255,7 +3255,7 @@ function installSpotlightIpc() {
     if (!isTrustedDashboardSender(event)) return null;
     return restartDaemonFromShell();
   });
-  // Settings › Maintenance's "Restart Iron Jarvis" (v1.433.0, A8): a TIDY
+  // Settings › Maintenance's "Restart STEC OS" (v1.433.0, A8): a TIDY
   // restart — marked as asked for, then `/shutdown {"restart": true}`, so the
   // exit is never counted as a crash and the coding tools keep running.
   // `{stopping: true}` = the daemon is already stopping itself (a restore).
@@ -3357,8 +3357,8 @@ function buildTrayContextMenu() {
   template.push(
     {
       label: hotkeyState.window
-        ? `Open Iron Jarvis (${accelLabel(hotkeyState.window)})`
-        : "Open Iron Jarvis — hotkey unavailable (taken by another app)",
+        ? `Open STEC OS (${accelLabel(hotkeyState.window)})`
+        : "Open STEC OS — hotkey unavailable (taken by another app)",
       click: () => showMainWindow(),
     },
     {
@@ -3375,7 +3375,7 @@ function buildTrayContextMenu() {
     // watchdog's breaker has stopped restarting a daemon that hangs (`stalled`,
     // v1.312.0) — the user's way back without a Quit + relaunch.
     ...(Object.values(_services).some((r) => r.capped || r.stalled)
-      ? [{ label: "Restart Iron Jarvis", click: () => restartServicesFromTray() }]
+      ? [{ label: "Restart STEC OS", click: () => restartServicesFromTray() }]
       : []),
     // Where the daemon/dashboard/desktop logs live (v1.229.0, audit D8): the
     // path used to appear only inside a crash toast.
@@ -3405,7 +3405,7 @@ function buildTrayContextMenu() {
   template.push(
     { type: "separator" },
     {
-      label: "Quit Iron Jarvis",
+      label: "Quit STEC OS",
       click: () => {
         isQuitting = true;
         app.quit();
@@ -3600,10 +3600,10 @@ const TOOL_WORDS_BUILTIN = {
   agent_update: "change an agent",
   app_connect: "connect an app",
   app_disconnect: "disconnect an app",
-  app_health: "check how Iron Jarvis is doing",
+  app_health: "check how STEC OS is doing",
   app_import: "add an app from another program on this PC",
-  app_search: "search your Iron Jarvis setup",
-  app_status: "check your Iron Jarvis setup",
+  app_search: "search your STEC OS setup",
+  app_status: "check your STEC OS setup",
   app_switch: "turn an app on or off",
   apply_patch: "change files with a patch",
   approve_plan: "follow this plan",
@@ -3637,7 +3637,7 @@ const TOOL_WORDS_BUILTIN = {
   build_folder_show: "look up a folder's coding settings",
   build_team_clear: "stop using a coding team in a folder",
   build_team_set: "set a folder's coding team",
-  capability_propose: "suggest a new ability for Iron Jarvis",
+  capability_propose: "suggest a new ability for STEC OS",
   change_undo: "undo one of its changes",
   changes_list: "list its recent changes",
   channel_alerts: "choose which alerts a destination gets",
@@ -3683,8 +3683,8 @@ const TOOL_WORDS_BUILTIN = {
   goal_update: "change a goal",
   grant_revoke: "take back an always-allow",
   grep: "search files",
-  guide_read: "read the Iron Jarvis guide",
-  guide_search: "search the Iron Jarvis guide",
+  guide_read: "read the STEC OS guide",
+  guide_search: "search the STEC OS guide",
   history_search: "search your chats",
   image_convert: "make a file",
   image_info: "read a file",
@@ -4063,7 +4063,7 @@ function planPaneNotifications(seen, panes, windowOpen) {
 // the bell, the tray and the phone alike; the click opens Coding sessions ›
 // Last night.
 // v1.406.0 part 3: and a coding session's pull-request NEWS (`build.ci_done`:
-// Iron Jarvis stopped fixing its failing checks, or they pass now after the
+// STEC OS stopped fixing its failing checks, or they pass now after the
 // reviewed fix it pushed), in the words the daemon wrote for the bell.
 // v1.420.0 (C6.10): and what used to end in silence while the app sat in the
 // tray — a MISSION that ended (the bell's mission words), a run the user
@@ -4423,8 +4423,8 @@ function setAskWaitingTooltip(count) {
     if (!tray) return;
     tray.setToolTip(
       count > 0
-        ? `Iron Jarvis — ${count} task${count === 1 ? "" : "s"} waiting for you`
-        : "Iron Jarvis — running"
+        ? `STEC OS — ${count} task${count === 1 ? "" : "s"} waiting for you`
+        : "STEC OS — running"
     );
   } catch {
     /* tray may be gone */
@@ -4549,7 +4549,7 @@ function createTray() {
     desktopLog("error", "[tray] could not create tray:", err && err.message);
     return;
   }
-  tray.setToolTip("Iron Jarvis — running");
+  tray.setToolTip("STEC OS — running");
   tray.setContextMenu(buildTrayContextMenu());
   // Left-click / double-click both reopen the window (idempotent).
   tray.on("click", () => showMainWindow());
@@ -5046,7 +5046,7 @@ let installWhenIdleTimer = null;
 function installWhenIdle() {
   if (installWhenIdleTimer) return;
   try {
-    if (tray) tray.setToolTip("Iron Jarvis — update installs when the work finishes");
+    if (tray) tray.setToolTip("STEC OS — update installs when the work finishes");
   } catch {
     /* tray may be gone */
   }
@@ -5228,7 +5228,7 @@ function requestUpdateInstall() {
             defaultId: 1,
             cancelId: 1,
             noLink: true,
-            title: "Iron Jarvis — work in progress",
+            title: "STEC OS — work in progress",
             message: `${describeBusyWork(activity)}.`,
             detail:
               "Installing now stops that work: a reply being written stops, programs running in " +
@@ -5287,7 +5287,7 @@ function abortUpdateInstall(err) {
   }
   refreshTrayMenu();
   try {
-    if (tray) tray.setToolTip("Iron Jarvis — running");
+    if (tray) tray.setToolTip("STEC OS — running");
   } catch {
     /* tray may be gone */
   }
@@ -5301,11 +5301,11 @@ function abortUpdateInstall(err) {
       buttons: ["OK"],
       defaultId: 0,
       noLink: true,
-      title: "Iron Jarvis — update did not install",
-      message: "The update could not be started, so Iron Jarvis is still running the current version.",
+      title: "STEC OS — update did not install",
+      message: "The update could not be started, so STEC OS is still running the current version.",
       detail:
         `${friendly}\n\n` +
-        "Nothing was changed and your data is untouched. Iron Jarvis will look for " +
+        "Nothing was changed and your data is untouched. STEC OS will look for " +
         "the update again shortly; you can also install it manually from the " +
         "Releases page.",
     });
@@ -5363,7 +5363,7 @@ function friendlyUpdateError(msg) {
     const minutes = Math.round(UPDATE_RETRY_MS / 60000);
     return (
       `GitHub did not answer the update check${status ? ` (HTTP ${status})` : ""}. ` +
-      `Nothing is wrong with your install — Iron Jarvis will try again in ${minutes} minutes.`
+      `Nothing is wrong with your install — STEC OS will try again in ${minutes} minutes.`
     );
   }
   // Unknown: the first line only, cut before any response body or header dump.
@@ -5379,7 +5379,7 @@ function friendlyStableError(msg) {
   if (updateErrorKind(msg) === "publishing") {
     return (
       "The Stable channel has no version to offer yet. This PC stays on its version, " +
-      "and Iron Jarvis checks again on its own."
+      "and STEC OS checks again on its own."
     );
   }
   return friendlyUpdateError(msg);
@@ -5526,7 +5526,7 @@ function initUpdater() {
     try {
       if (tray) {
         tray.setToolTip(
-          `Iron Jarvis — update v${pendingUpdateInfo.version} ready (restart to install)`
+          `STEC OS — update v${pendingUpdateInfo.version} ready (restart to install)`
         );
       }
     } catch {
@@ -5534,7 +5534,7 @@ function initUpdater() {
     }
     try {
       const note = new Notification({
-        title: `Iron Jarvis v${pendingUpdateInfo.version} is ready`,
+        title: `STEC OS v${pendingUpdateInfo.version} is ready`,
         body: "Click to restart and install now — or do it later from the tray icon.",
       });
       note.on("click", () => requestUpdateInstall());
@@ -5578,7 +5578,7 @@ function forgetPendingUpdate(au) {
   }
   refreshTrayMenu();
   try {
-    if (tray) tray.setToolTip("Iron Jarvis — running");
+    if (tray) tray.setToolTip("STEC OS — running");
   } catch {
     /* tray may be gone */
   }
@@ -5589,7 +5589,7 @@ function forgetPendingUpdate(au) {
 function buildMenu() {
   const template = [
     {
-      label: "Iron Jarvis",
+      label: "STEC OS",
       submenu: [
         {
           label: "Open / Show Window",
@@ -5621,7 +5621,7 @@ function buildMenu() {
         { role: "toggleDevTools" },
         { type: "separator" },
         {
-          label: "Quit Iron Jarvis",
+          label: "Quit STEC OS",
           accelerator: "CommandOrControl+Q",
           click: () => {
             isQuitting = true;
@@ -5654,7 +5654,7 @@ async function startup() {
   // AppUserModelID that matches the installer's appId.
   app.setAppUserModelId("com.realdealcpa.ironjarvis");
   loadDesktopSettings(); // load the close-to-tray preference before menus/tray
-  // v1.438.0: a desktop switch changed in Iron Jarvis's settings while this
+  // v1.438.0: a desktop switch changed in STEC OS's settings while this
   // app was closed applies now (nothing is sent: the daemon is not up yet).
   syncDesktopSwitches({ push: false });
   authToken = getOrCreateToken();
@@ -5713,7 +5713,7 @@ async function startup() {
     const resourceEnv = { ...voskEnv, ...addonEnv, ...ironProxyEnv(), ...playwrightNodeEnv() };
     // 1) Frozen daemon. Must serve on 8787 to match the build-time-baked client URL.
     // v1.358.0 (G61): where it listens is read from the "Let other computers
-    // on my network reach this Iron Jarvis" setting at EVERY spawn (the
+    // on my network reach this STEC OS" setting at EVERY spawn (the
     // home is userData/.ironjarvis — IRONJARVIS_HOME is blanked below).
     startService("daemon", () => {
       const net = readDaemonNetwork(path.join(stateDir, ".ironjarvis"));
@@ -5756,10 +5756,10 @@ async function startup() {
     if (!hasPnpm) missing.push("pnpm        → https://pnpm.io/installation");
     if (missing.length) {
       dialog.showErrorBox(
-        "Iron Jarvis — missing prerequisites",
+        "STEC OS — missing prerequisites",
         "Could not find the required tool(s) on your PATH:\n\n" +
           "  - " + missing.join("\n  - ") + "\n\n" +
-          "Iron Jarvis (dev mode) launches the local repo's Python service (via uv) and\n" +
+          "STEC OS (dev mode) launches the local repo's Python service (via uv) and\n" +
           "the Next.js dashboard (via pnpm). Install the tool(s) above, then relaunch."
       );
       isQuitting = true;
@@ -5837,7 +5837,7 @@ async function startup() {
     // v1.358.0 (G30): the window title a person reads says the program's
     // name, never the code's "daemon" (VOCABULARY.md).
     handleStartupFailure(
-      "Iron Jarvis did not start",
+      "STEC OS did not start",
       (err && err.message) || "no details",
       pendingUpdate,
       {
@@ -5861,7 +5861,7 @@ async function startup() {
       return;
     }
     handleStartupFailure(
-      "Iron Jarvis — dashboard did not start",
+      "STEC OS — dashboard did not start",
       (err && err.message) ||
         (IS_PACKAGED ? "no details" : "the dashboard may not have been built yet (pnpm build)"),
       pendingUpdate,
@@ -5927,7 +5927,7 @@ function readLogTail(label, maxBytes = 16 * 1024) {
 function classifyStartupFailure(context) {
   const c = context || {};
   const label = c.label === "dashboard" ? "dashboard" : "daemon";
-  const service = label === "dashboard" ? "The Iron Jarvis dashboard" : "The Iron Jarvis service";
+  const service = label === "dashboard" ? "The STEC OS dashboard" : "The STEC OS service";
   const port = c.port || DAEMON_PORT;
   const seconds = c.timeoutS || Math.round(STARTUP_TIMEOUT_MS / 1000);
   const hay = `${String(c.logTail || "")}\n${String(c.gateError || "")}`;
@@ -5939,16 +5939,16 @@ function classifyStartupFailure(context) {
       cause: "port",
       message: `Another program is using the connection ${service.toLowerCase()} needs.`,
       detail:
-        `Port ${port} is taken — often a second copy of Iron Jarvis, or a development server. ` +
+        `Port ${port} is taken — often a second copy of STEC OS, or a development server. ` +
         "Close it and press Retry.",
     };
   }
   if (has(/database is locked|database table is locked/i)) {
     return {
       cause: "db-locked",
-      message: "Iron Jarvis's database is locked by another program.",
+      message: "STEC OS's database is locked by another program.",
       detail:
-        "Usually a second copy of Iron Jarvis, or a backup/sync tool (OneDrive, antivirus) " +
+        "Usually a second copy of STEC OS, or a backup/sync tool (OneDrive, antivirus) " +
         "holding the file. Close it and press Retry. Your data is untouched.",
     };
   }
@@ -5967,7 +5967,7 @@ function classifyStartupFailure(context) {
       message: `${service} could not be started.`,
       detail:
         "Its program file is missing or was blocked — antivirus software sometimes quarantines " +
-        "it. Press Retry; if it fails again, reinstall Iron Jarvis.",
+        "it. Press Retry; if it fails again, reinstall STEC OS.",
     };
   }
   if (has(/Traceback \(most recent call last\)/) || (typeof c.exitCode === "number" && c.exitCode !== 0)) {
@@ -5995,7 +5995,7 @@ function handleStartupFailure(title, message, pendingUpdate, context) {
       type: "error",
       buttons: ["Open Releases page", "Quit"],
       defaultId: 0,
-      title: "Iron Jarvis — update failed to start",
+      title: "STEC OS — update failed to start",
       message: `The update to version ${pendingUpdate.version || "(unknown)"} is not starting.`,
       detail:
         "Reinstall the previous working version from the Releases page, then relaunch. " +
@@ -6144,8 +6144,8 @@ function registerHotkey() {
       // back to a window that closes to the tray.
       try {
         new Notification({
-          title: "Iron Jarvis",
-          body: `The global hotkeys ${HOTKEY_LADDER.map(accelLabel).join(" and ")} are taken by other apps — use the tray icon to open Iron Jarvis.`,
+          title: "STEC OS",
+          body: `The global hotkeys ${HOTKEY_LADDER.map(accelLabel).join(" and ")} are taken by other apps — use the tray icon to open STEC OS.`,
         }).show();
       } catch {
         /* notifications unavailable */
@@ -6238,7 +6238,7 @@ function recoveryAllowed() {
 function notifyRecovered(reason) {
   try {
     new Notification({
-      title: "Iron Jarvis",
+      title: "STEC OS",
       body: `The window stopped responding (${reason}) and was reloaded. Nothing was lost — chats and settings live in the local service.`,
     }).show();
   } catch {
@@ -6252,11 +6252,11 @@ function recoveryExhausted() {
   dialog
     .showMessageBox(mainWin, {
       type: "warning",
-      buttons: ["Restart Iron Jarvis", "Turn off hardware acceleration + restart", "Not now"],
+      buttons: ["Restart STEC OS", "Turn off hardware acceleration + restart", "Not now"],
       defaultId: 0,
       cancelId: 2,
       noLink: true,
-      title: "Iron Jarvis — the window keeps failing",
+      title: "STEC OS — the window keeps failing",
       message: "The app window has stopped responding several times in a row.",
       detail:
         "A full restart usually clears this. If it keeps happening, turning off " +
@@ -6443,7 +6443,7 @@ function installGpuFallback() {
         defaultId: 0,
         cancelId: 1,
         noLink: true,
-        title: "Iron Jarvis — graphics driver trouble",
+        title: "STEC OS — graphics driver trouble",
         message: "The graphics process has crashed twice this session.",
         detail:
           "This is almost always a GPU-driver issue. Running without hardware " +
@@ -6488,7 +6488,7 @@ function setHwAccelPref(disabled) {
       defaultId: 0,
       cancelId: 1,
       noLink: true,
-      title: "Iron Jarvis",
+      title: "STEC OS",
       message: "Restart to apply the graphics change?",
       detail: "The hardware-acceleration setting takes effect on the next launch.",
     })
@@ -6508,7 +6508,7 @@ function setHwAccelPref(disabled) {
 // The browser add-on's "Open Jarvis" button opens the dashboard in a BROWSER
 // TAB, and a browser tab has no token: the user landed on "Daemon rejected
 // your token" with every card empty. The dashboard's token banner now offers
-// "Open in the Iron Jarvis app" — a link to `ironjarvis://<path>` — and this
+// "Open in the STEC OS app" — a link to `ironjarvis://<path>` — and this
 // is the other end of it: the app owns the scheme, a launch with that URL
 // (argv on Windows/Linux, `open-url` on macOS) focuses the window and shows
 // that page. ONLY a dashboard path is honoured — never a host, never `..`.
@@ -6668,7 +6668,7 @@ function openPopout(rawPath) {
       : { center: true }),
     backgroundColor: "#0a0a0f",
     show: false,
-    title: "Iron Jarvis",
+    title: "STEC OS",
     titleBarStyle: "hidden",
     titleBarOverlay: { color: "#0a0a0f", symbolColor: "#a6b0ba", height: 40 },
     icon: windowIcon(),

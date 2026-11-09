@@ -147,13 +147,13 @@ describe("Open logs folder (D8)", () => {
       shell: {
         openLogs: async () => {
           calls.push(1);
-          return { ok: true, path: "C:\\Users\\me\\AppData\\Roaming\\Iron Jarvis\\logs" };
+          return { ok: true, path: "C:\\Users\\me\\AppData\\Roaming\\STEC OS\\logs" };
         },
       },
     };
     render(<MaintenanceTools onRestartRequested={() => {}} />);
     fireEvent.click(await screen.findByRole("button", { name: /Open logs folder/ }));
-    await screen.findByText("Opened C:\\Users\\me\\AppData\\Roaming\\Iron Jarvis\\logs");
+    await screen.findByText("Opened C:\\Users\\me\\AppData\\Roaming\\STEC OS\\logs");
     expect(calls).toHaveLength(1);
   });
 
@@ -182,7 +182,7 @@ describe("Restore from backup (CL7)", () => {
     fireEvent.click(screen.getByRole("button", { name: /Restore from backup…/ }));
     const dialog = await screen.findByRole("dialog", { name: "Confirm restore" });
     expect(dialog.textContent).toContain(BACKUPS[1].name);
-    expect(dialog.textContent).toMatch(/Iron Jarvis restarts/);
+    expect(dialog.textContent).toMatch(/STEC OS restarts/);
     expect(api.post).not.toHaveBeenCalled(); // nothing until confirmed
     fireEvent.click(screen.getByRole("button", { name: "Restore and restart" }));
     await waitFor(() => expect(notes).toHaveLength(1));

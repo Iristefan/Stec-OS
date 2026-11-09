@@ -230,9 +230,9 @@ const EVENT_LABELS: Array<{ key: string; label: string }> = [
   // a list without it and the summary silently stopped. This list must match
   // DEFAULT_ALERT_EVENTS exactly (tests/test_notification_events_v14003.py).
   { key: "build.night_summary", label: "The night shift's summary (one message a night)" },
-  // v1.406.0 part 3: a coding session's pull request — Iron Jarvis stopped
+  // v1.406.0 part 3: a coding session's pull request — STEC OS stopped
   // fixing its failing checks, or they pass after the reviewed fix it pushed.
-  { key: "build.ci_done", label: "Your pull request's checks: fixed, or Iron Jarvis gave up" },
+  { key: "build.ci_done", label: "Your pull request's checks: fixed, or STEC OS gave up" },
 ];
 
 /** v1.420.0 (C6.6): what the user READS on the email fields. The server's
@@ -249,19 +249,19 @@ const EMAIL_FIELD_COPY: Record<string, { label?: string; help?: string }> = {
  * plan: two-way is a per-destination upgrade, not a new noun. */
 const TELEGRAM_FIELD_COPY: Record<string, { label?: string; help?: string }> = {
   chat_enabled: {
-    label: "Chat with Iron Jarvis from this destination",
+    label: "Chat with STEC OS from this destination",
     help:
-      "Message your bot and talk to the full Iron Jarvis. Replies land on your phone AND in a shared conversation on the desktop Chat page. Ticking this also turns on listening and puts your detected chat ID in the allowed senders below.",
+      "Message your bot and talk to the full STEC OS. Replies land on your phone AND in a shared conversation on the desktop Chat page. Ticking this also turns on listening and puts your detected chat ID in the allowed senders below.",
   },
   inbound_enabled: {
     label: "Listen for incoming messages",
     help:
-      "Let Iron Jarvis read messages sent to this bot — required for commands and for chat.",
+      "Let STEC OS read messages sent to this bot — required for commands and for chat.",
   },
   allowed_senders: {
     label: "Allowed senders",
     help:
-      "Telegram user ids allowed to talk to Iron Jarvis, separated by commas. In a private chat with your bot the chat ID above is your user id, so ticking chat fills it in. The list fails closed: empty allows nobody.",
+      "Telegram user ids allowed to talk to STEC OS, separated by commas. In a private chat with your bot the chat ID above is your user id, so ticking chat fills it in. The list fails closed: empty allows nobody.",
   },
 };
 
@@ -564,7 +564,7 @@ export default function ChannelsPage() {
       <Reveal>
         <PageHeader
           title="Notifications"
-          subtitle="Where Iron Jarvis sends alerts. Add a destination, then send a test message to one or all of them."
+          subtitle="Where STEC OS sends alerts. Add a destination, then send a test message to one or all of them."
           actions={
             <button
               type="button"
@@ -1021,12 +1021,12 @@ export default function ChannelsPage() {
               <div className="min-w-0 space-y-3">
                 <div>
                   <h3 className="text-[13px] font-semibold text-zinc-100">
-                    Chat with Iron Jarvis from your phone
+                    Chat with STEC OS from your phone
                   </h3>
                   <p className="mt-1 text-[12px] leading-relaxed text-zinc-400">
                     A destination doesn&apos;t have to be one-way. Turn on chat
-                    and your Telegram bot becomes a real conversation with Iron
-                    Jarvis — the same one you see on the desktop Chat page.
+                    and your Telegram bot becomes a real conversation with STEC
+                    OS — the same one you see on the desktop Chat page.
                   </p>
                 </div>
                 <ol className="space-y-2">
@@ -1038,8 +1038,8 @@ export default function ChannelsPage() {
                     {
                       // v1.353.0 (G56): no Advanced fold and no typed id —
                       // the switch sits under the chat ID and fills the list.
-                      t: "Turn on “Chat with Iron Jarvis from this destination”",
-                      d: "Tick it right under the chat ID. Your detected chat ID goes into the allowed senders for you; that list fails closed, so only the ids on it can talk to Iron Jarvis.",
+                      t: "Turn on “Chat with STEC OS from this destination”",
+                      d: "Tick it right under the chat ID. Your detected chat ID goes into the allowed senders for you; that list fails closed, so only the ids on it can talk to STEC OS.",
                     },
                     {
                       t: "Message your bot",
@@ -1261,7 +1261,7 @@ export default function ChannelsPage() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={3}
-                  placeholder="Hello from Iron Jarvis…"
+                  placeholder="Hello from STEC OS…"
                   className="field resize-y"
                 />
               </div>

@@ -1,7 +1,7 @@
 /**
  * v1.406.0 part 3 — a coding session's pull request: every step of fixing its
  * failing checks is a QUIET bell row (`build.ci_step`: no ping, no badge),
- * and only the news (`build.ci_done`: Iron Jarvis stopped fixing, or the
+ * and only the news (`build.ci_done`: STEC OS stopped fixing, or the
  * checks pass now) rings and counts. The words are the daemon's own
  * (routes/ci_watch); the row opens the coding session. The ringing cases are
  * in fixtures/one-notice-v13600.json (the daemon and the tray read them too).

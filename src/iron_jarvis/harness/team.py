@@ -410,7 +410,7 @@ TEAM_BRIEF_JOB = (
 TEAM_BRIEF_HANDS = (
     "You do not edit files or run commands yourself: those tools are not yours in this "
     "session. Hand a piece to a worker by name, or ask for its role (role:code, role:test or "
-    "role:read) and Iron Jarvis picks the worker. Only when Iron Jarvis tells you that no "
+    "role:read) and STEC OS picks the worker. Only when STEC OS tells you that no "
     "worker can take a piece may you do that piece yourself; then say in your reply that you "
     "did it yourself, and why."
 )
@@ -499,7 +499,7 @@ def brief(platform: Any, team: SessionTeam) -> str:
     parts = [TEAM_BRIEF_HEADER, TEAM_BRIEF_LEAD, "Workers (each takes one piece at a time):"]
     parts += [_line_for(w) for w in team.workers]
     if team.reviewer:
-        parts += ["Reviewer (checks every change; Iron Jarvis hands it the change before you end):",
+        parts += ["Reviewer (checks every change; STEC OS hands it the change before you end):",
                   _line_for(team.reviewer)]
     else:
         parts.append(NO_REVIEWER_LINE)
@@ -865,7 +865,7 @@ def member_from_model(platform: Any, catalog: list[dict[str, Any]], *, provider:
     already on that model keeps everything it has (its prompt, account,
     allowance, notes) and GAINS the role's roles; else a new member named
     after the model (unique, slugged). :class:`TeamRefused` (409) for the demo
-    model, a model Iron Jarvis cannot use or reach now, and a cloud model in a
+    model, a model STEC OS cannot use or reach now, and a cloud model in a
     Local only session. BLOCKING."""
     from ..agents import model_team as MT
 
@@ -884,7 +884,7 @@ def member_from_model(platform: Any, catalog: list[dict[str, Any]], *, provider:
     row = _catalog_row(catalog, provider, model)
     shown = "/".join(p for p in (provider, model) if p)
     if row is None:
-        raise TeamRefused(f"{shown} is not one of the models Iron Jarvis can use right now.", status=409)
+        raise TeamRefused(f"{shown} is not one of the models STEC OS can use right now.", status=409)
     if not row.get("available"):
         raise TeamRefused(f"{shown} is not connected right now, so it cannot join the team.", status=409)
     model = str(row.get("model") or model)

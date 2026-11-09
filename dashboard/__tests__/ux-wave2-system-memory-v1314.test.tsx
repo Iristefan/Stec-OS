@@ -578,7 +578,7 @@ describe("Self-development — switched off reads as 'Turned off', not a config 
       enabled: true,
       repo_root: null,
       available: false,
-      reason: "Iron Jarvis git repo not found (set self_dev_root)",
+      reason: "STEC OS git repo not found (set self_dev_root)",
     };
     render(<SelfDevPage />);
     expect(screen.queryByText("Turned off")).toBeNull();
@@ -588,7 +588,7 @@ describe("Self-development — switched off reads as 'Turned off', not a config 
   it("daemon down: offline notice, never 'Turned off'", () => {
     S.errors["/self-dev"] = 0;
     render(<SelfDevPage />);
-    expect(screen.getByText(/Iron Jarvis isn't responding/)).toBeInTheDocument();
+    expect(screen.getByText(/STEC OS isn't responding/)).toBeInTheDocument();
     expect(screen.queryByText("Turned off")).toBeNull();
   });
 

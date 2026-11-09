@@ -2,7 +2,7 @@
  * v1.401.0 — TEAM REVIEW AT THE FINISH, on the screen.
  *
  * With "Hand work to my team first" on and a member holding the Review role,
- * Iron Jarvis hands a Build reply's change to the team's reviewer before the
+ * STEC OS hands a Build reply's change to the team's reviewer before the
  * reply ends (the daemon's harness/finish). The reply line's `finish` record
  * then carries `review {state, member, model, verdict[, why]}`.
  *

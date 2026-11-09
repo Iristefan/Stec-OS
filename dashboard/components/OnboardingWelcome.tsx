@@ -435,7 +435,7 @@ export function OnboardingWelcome({ state }: { state?: ApiState<Onboarding> } = 
             </span>
             <div>
               <h2 className="text-lg font-semibold tracking-tight text-zinc-50">
-                {data.first_run ? "Welcome to Iron Jarvis" : "Finish setting up"}
+                {data.first_run ? "Welcome to STEC OS" : "Finish setting up"}
               </h2>
               <p className="text-sm text-zinc-400">
                 A few quick steps and Jarvis is ready to help with real work.

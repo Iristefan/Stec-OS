@@ -131,7 +131,7 @@ describe("the orb tells waiting from working (C6.9)", () => {
     expect(orb().getAttribute("data-mood")).toBe("thinking");
   });
 
-  it("an Iron Jarvis that sends no `waiting` behaves exactly as before", () => {
+  it("a STEC OS that sends no `waiting` behaves exactly as before", () => {
     H.health = health({ chat: 1, build: 0 });
     expect(orb().getAttribute("data-mood")).toBe("thinking");
     expect(repliesWaiting(health({ chat: 1 }) as never)).toBe(0);

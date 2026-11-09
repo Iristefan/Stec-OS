@@ -1,20 +1,20 @@
 """v1.424.0 (review of audit D4): a second Claude account's setup, the defects
 the independent review found — each pin red on the first cut.
 
-(a) THE JUNCTION HAZARD. The first cut put DIRECTORY JUNCTIONS in Iron Jarvis's
+(a) THE JUNCTION HAZARD. The first cut put DIRECTORY JUNCTIONS in STEC OS's
 folder (``<userData>/claude-setup/my/skills/<skill>`` → the owner's real
 ``~/.claude/skills/<skill>``; ``commands`` and ``agents`` whole). MEASURED on
 this PC (2026-11-02, scratch junctions to scratch folders): Python 3.12's
 ``shutil.rmtree``, Windows PowerShell 5.1 / 7 ``Remove-Item -Recurse -Force``,
 ``rd /s /q``, Git's ``rm -rf`` and Node 20's ``fs.rmSync`` all remove a junction
 and leave its target — but **NSIS 3.0.4.1 ``RMDir /r``** (what the installed
-app's uninstaller runs over ``%APPDATA%\\Iron Jarvis`` when it is given
+app's uninstaller runs over ``%APPDATA%\\STEC OS`` when it is given
 ``--delete-app-data``) and **Electron 42's Node 24.17 ``fs.rmSync(…,
 {recursive: true})``** (the runtime of the desktop shell, the dashboard server
 and Iron-Proxy) both FOLLOWED the junctions and deleted the target's files. A
 plugin manifest that names the owner's folders directly (absolute or ``../``
 paths) is not loaded by Claude Code 2.1.316 (measured: nothing listed). So the
-skills, commands and agents are COPIED into Iron Jarvis's folder instead,
+skills, commands and agents are COPIED into STEC OS's folder instead,
 refreshed when the source changes: nothing a recursive delete of that folder
 can do reaches the owner's real files, and Claude Code on another account can
 no longer WRITE into them either.
@@ -128,7 +128,7 @@ def test_a_recursive_delete_that_follows_links_never_reaches_the_owners_files(ow
     folder = CS.folder_for(current.home)
     for dirpath, dirs, files in os.walk(folder):
         for name in dirs + files:
-            assert not CS._is_link(Path(dirpath) / name), f"a link in Iron Jarvis's folder: {name}"
+            assert not CS._is_link(Path(dirpath) / name), f"a link in STEC OS's folder: {name}"
     _walk_delete_following_links(folder)
     assert _owner_files(owner) == before, "the owner's real files survive any recursive delete of the folder"
 
@@ -196,12 +196,12 @@ def test_a_hand_edit_in_a_copy_is_never_overwritten_or_removed(owner, account, c
     assert (plugin / "commands" / "owner-cmd.md").read_bytes() == mine
     CS.retire(current.home)
     assert (plugin / "commands" / "owner-cmd.md").read_bytes() == mine, "off never removes a hand edit"
-    assert not (plugin / "skills").exists(), "Iron Jarvis's own copies went"
+    assert not (plugin / "skills").exists(), "STEC OS's own copies went"
 
 
 def test_a_copy_edited_by_hand_with_nothing_newer_is_kept_when_turned_off(owner, account, current):
     """The owner's file did NOT change, so the next start reads nothing (the
-    copy is still recorded as Iron Jarvis's): turning it off must still see
+    copy is still recorded as STEC OS's): turning it off must still see
     the edit by its bytes.
 
     MUTATION: unlink every recorded file on retire, whatever its bytes -> red."""
@@ -217,7 +217,7 @@ def test_a_copy_edited_by_hand_with_nothing_newer_is_kept_when_turned_off(owner,
 
 
 def test_a_junction_the_first_cut_made_is_taken_away_without_touching_its_target(owner, account, current):
-    """A dev or test home that ran the first cut holds Iron Jarvis's own
+    """A dev or test home that ran the first cut holds STEC OS's own
     junctions (recorded in ``state.json``): they are removed with ``os.rmdir``
     and replaced by copies; the owner's files stay.
 

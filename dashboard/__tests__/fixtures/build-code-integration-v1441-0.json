@@ -119,12 +119,12 @@
    {
     "description": "Only in Claude Code's own terminal",
     "name": "exit",
-    "note": "There is nothing to quit here: Iron Jarvis stops Claude Code after the session has been idle a while."
+    "note": "There is nothing to quit here: STEC OS stops Claude Code after the session has been idle a while."
    },
    {
     "description": "Only in Claude Code's own terminal",
     "name": "quit",
-    "note": "There is nothing to quit here: Iron Jarvis stops Claude Code after the session has been idle a while."
+    "note": "There is nothing to quit here: STEC OS stops Claude Code after the session has been idle a while."
    }
   ],
   "dropped": 0,
@@ -383,12 +383,12 @@
    {
     "description": "Only in Claude Code's own terminal",
     "name": "exit",
-    "note": "There is nothing to quit here: Iron Jarvis stops Claude Code after the session has been idle a while."
+    "note": "There is nothing to quit here: STEC OS stops Claude Code after the session has been idle a while."
    },
    {
     "description": "Only in Claude Code's own terminal",
     "name": "quit",
-    "note": "There is nothing to quit here: Iron Jarvis stops Claude Code after the session has been idle a while."
+    "note": "There is nothing to quit here: STEC OS stops Claude Code after the session has been idle a while."
    }
   ],
   "dropped": 0,

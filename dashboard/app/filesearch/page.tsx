@@ -32,11 +32,11 @@ const MODE_WORDS: Record<Mode, { label: string; hint: string }> = {
 };
 
 // Empty root === the daemon's default: `config.search_roots`, else the install's
-// project_root (platform.py) — an Iron Jarvis setting, NOT one of the user's
+// project_root (platform.py) — a STEC OS setting, NOT one of the user's
 // Projects. v1.315.0: it used to read "Project (default)", which a user with
 // real Projects took to mean one of theirs; it now says what it is.
 const DEFAULT_ROOT = "";
-const DEFAULT_LABEL = "Iron Jarvis default folders";
+const DEFAULT_LABEL = "STEC OS default folders";
 
 export default function FileSearchPage() {
   const { data: drivesData } = useApi<{ drives: Drive[] }>("/filesearch/drives");
@@ -148,7 +148,7 @@ export default function FileSearchPage() {
 
             {/* Drive / root selector --------------------------------------- */}
             <div className="flex flex-wrap items-end gap-3">
-              {/* v1.315.0: wide enough for "Iron Jarvis default folders" and a project name. */}
+              {/* v1.315.0: wide enough for "STEC OS default folders" and a project name. */}
               <div className="w-full sm:w-64">
                 <label className="mb-1.5 flex items-center gap-1.5 text-[11px] uppercase tracking-[0.1em] text-zinc-400">
                   <HardDrive size={12} /> Search in
@@ -235,7 +235,7 @@ export default function FileSearchPage() {
                   className="truncate text-accent-soft"
                   title={mode === "semantic" ? undefined : effectiveRoot || DEFAULT_LABEL}
                 >
-                  {mode === "semantic" ? "the folders Iron Jarvis has indexed" : rootLabel}
+                  {mode === "semantic" ? "the folders STEC OS has indexed" : rootLabel}
                 </span>
               </div>
             </div>

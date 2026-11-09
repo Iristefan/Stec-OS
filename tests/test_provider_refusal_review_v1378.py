@@ -475,8 +475,8 @@ async def test_a_phone_started_job_that_is_refused_tells_the_phone_in_words(plat
     await poller.poll_once()
     await poller.drain()
     texts = fake.texts()
-    assert texts[0] == f"Iron Jarvis: {ONESHOT_ACK}"
-    assert texts[1].startswith("Iron Jarvis: I hit a problem: Claude Code declined to do this task."), texts
+    assert texts[0] == f"STEC OS: {ONESHOT_ACK}"
+    assert texts[1].startswith("STEC OS: I hit a problem: Claude Code declined to do this task."), texts
     assert texts[1].endswith("Change the task, then run it again.")
     assert "stop_reason" not in texts[1] and "ProviderRefusal" not in texts[1]
 

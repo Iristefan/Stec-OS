@@ -249,7 +249,7 @@ describe("the sidebar footer", () => {
     const status = screen.getByTestId("sidebar-status");
     expect(status.textContent).toContain("Ready");
     expect(status.textContent).not.toMatch(/Running/);
-    expect(status.getAttribute("title")).toMatch(/^Iron Jarvis is up/);
+    expect(status.getAttribute("title")).toMatch(/^STEC OS is up/);
     // Its door is unchanged.
     expect(status.getAttribute("href")).toBe("/everything#status");
   });

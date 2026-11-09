@@ -27,7 +27,7 @@ need from you, and the order to build them in.*
 ## Where it stands (v1.395.0, read from the code)
 
 Already there, and reused:
-- A coding turn can be started by Iron Jarvis itself, with no page open. The
+- A coding turn can be started by STEC OS itself, with no page open. The
   account-limit wait and the restart resume already do this.
 - Every coding session in a git folder gets its own branch in its own folder
   (v1.375.0). A follow-up is just a new turn in the same session.
@@ -55,7 +55,7 @@ Missing or unsafe for work nobody watches:
   either. Phone messages run at low trust, which blocks most coding tools.
 - **Nothing knows a reply changed UI files**, and screenshots go only to the
   model, never into the reply.
-- **GitHub cannot reach this PC.** Iron Jarvis listens only on this PC, so the
+- **GitHub cannot reach this PC.** STEC OS listens only on this PC, so the
   loop has to ask GitHub with `gh` on a timer. Nothing reads issues, review
   comments or failed CI logs yet.
 - **Nothing makes benchmark tasks from git history.**
@@ -71,8 +71,8 @@ Missing or unsafe for work nobody watches:
    The alternatives:
    - the task waits until morning (it stops there);
    - approve everything (unsafe).
-2. **Committing overnight work.** Recommended: when a task finishes, Iron
-   Jarvis itself commits it to the task's own branch, the way the Commit
+2. **Committing overnight work.** Recommended: when a task finishes, STEC
+   OS itself commits it to the task's own branch, the way the Commit
    button does, with the task's words as the message. It never pushes and
    never merges. The agent still asks before its own commits. Alternative:
    leave the work uncommitted for you.
@@ -92,7 +92,7 @@ Missing or unsafe for work nobody watches:
    - Emergency stop stops them all.
 5. **What the phone may start.** Recommended:
    - Only your allowed phone sender.
-   - Only in folders you have already used in Iron Jarvis, found by name.
+   - Only in folders you have already used in STEC OS, found by name.
    - Always on a new branch.
    - The same rules as a night task (decision 4).
    - The session runs at full trust inside its branch. Phone messages stay at
@@ -103,7 +103,7 @@ Missing or unsafe for work nobody watches:
    - Only repositories you add, polled every 5 minutes.
    - An issue gets a session only when you add a label you choose
      (`jarvis`).
-   - A review comment starts a follow-up only on Iron Jarvis's own pull
+   - A review comment starts a follow-up only on STEC OS's own pull
      requests.
    - A red CI run starts one fix attempt on that branch, at most 3 per pull
      request.
@@ -122,7 +122,7 @@ Missing or unsafe for work nobody watches:
    taken before the first page edit lands, "after" at the end. Both show on
    the reply line. Alternative: only when you ask.
 9. **Your own-code benchmark.** Recommended:
-   - Iron Jarvis and Open Source QB.
+   - STEC OS and Open Source QB.
    - 20 fixing commits each: commits that changed code and added or changed a
      test.
    - Run overnight like tonight's benchmark.
@@ -197,7 +197,7 @@ Buttons: open the session, see the changes, push, open a pull request, throw
 the branch away.
 
 **How.**
-- Each finished task is committed to its branch by Iron Jarvis (decision 2).
+- Each finished task is committed to its branch by STEC OS (decision 2).
 - The summary is built from each reply's own record (the finish check, the
   Timeline, the branch's status), never written by a model.
 - One notice per night, not one per task.
@@ -268,7 +268,7 @@ issue, comment or run started them.
 
 **How.**
 - A loop asks GitHub every 5 minutes through `gh` for new labelled issues,
-  new review comments on Iron Jarvis's own pull requests, and failed checks
+  new review comments on STEC OS's own pull requests, and failed checks
   on its own branches.
 - An index from pull request to session. A follow-up is a new turn in the
   SAME session, on its branch.
@@ -294,7 +294,7 @@ the same table as today, for your code.
   message.
 - Tasks are kept under the benchmark's own folder, never shipped.
 
-**Done when.** Twenty tasks are made from Iron Jarvis's own history. Each
+**Done when.** Twenty tasks are made from STEC OS's own history. Each
 fails before the fix and passes with the commit's own change.
 
 ## What this plan does not change

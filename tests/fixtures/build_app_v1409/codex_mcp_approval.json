@@ -294,7 +294,7 @@
        "session",
        "always"
       ],
-      "tool_description": "Search Iron Jarvis's layered memory.",
+      "tool_description": "Search STEC OS's layered memory.",
       "tool_params": {
        "query": "project codename"
       },
@@ -572,7 +572,7 @@
         "threadId": "01a189c5-1504-7e62-b678-bbe12e6638f9",
         "turnId": "01a189c5-157d-76e0-9b93-24cc98729fe5",
         "itemId": "msg_mcp_no",
-        "delta": "I could not search Iron Jarvis memory: the call was rejected."
+        "delta": "I could not search STEC OS memory: the call was rejected."
        }
       }
      },
@@ -585,7 +585,7 @@
         "item": {
          "type": "agentMessage",
          "id": "msg_mcp_no",
-         "text": "I could not search Iron Jarvis memory: the call was rejected.",
+         "text": "I could not search STEC OS memory: the call was rejected.",
          "phase": "final_answer",
          "memoryCitation": null,
          "delivery": null,
@@ -668,7 +668,7 @@
         "threadId": "01a189c5-1504-7e62-b678-bbe12e6638f9",
         "turnId": "01a189c5-157d-76e0-9b93-24cc98729fe5",
         "itemId": "msg_mcp_no",
-        "delta": "I could not search Iron Jarvis memory: the call was rejected."
+        "delta": "I could not search STEC OS memory: the call was rejected."
        }
       }
      },
@@ -681,7 +681,7 @@
         "item": {
          "type": "agentMessage",
          "id": "msg_mcp_no",
-         "text": "I could not search Iron Jarvis memory: the call was rejected.",
+         "text": "I could not search STEC OS memory: the call was rejected.",
          "phase": "final_answer",
          "memoryCitation": null,
          "delivery": null,

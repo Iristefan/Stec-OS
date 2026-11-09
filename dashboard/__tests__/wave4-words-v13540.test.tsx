@@ -10,7 +10,7 @@
  *   bell row's body is it — ends with that same sentence.
  * - A restart: the reconcile's summary IS the run page's restart sentence,
  *   and the bell's interrupted rows and desktop ping say the same words.
- * - Iron Jarvis not answering: the banner, a panel's "couldn't load" line,
+ * - STEC OS not answering: the banner, a panel's "couldn't load" line,
  *   the in-page hint, a failed request and the chat's offline frame all say
  *   lib/offlineWords' one sentence.
  *
@@ -122,7 +122,7 @@ describe("a restart: one sentence on the run, in the chat line, in the bell", ()
   });
 });
 
-describe("Iron Jarvis not answering: one sentence on every surface", () => {
+describe("STEC OS not answering: one sentence on every surface", () => {
   it("a panel's line, the in-page hint and a failed request all say the banner's words", () => {
     expect(NOT_RESPONDING).toBe(OFFLINE_TITLE);
     expect(couldntLoad("The board", { status: 0 })).toBe(`The board couldn't load. ${OFFLINE_TITLE}`);

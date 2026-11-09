@@ -22,7 +22,7 @@ switched off arrives with ``disabled`` set (see ``PackSpec.disabled``).
 (``open(..., "rb")`` only, size-capped, never raises) and answers the
 contract rows with NO values: a missing file is ``readable: False`` with an
 empty note; a malformed one is ``readable: False`` with a one-line note that
-names the file and never its contents. Iron Jarvis's own server entries are
+names the file and never its contents. STEC OS's own server entries are
 dropped by the parser. The specs ride the scan in memory for the route to
 turn into preview rows; :func:`read_source` is the apply door's half.
 """
@@ -37,7 +37,7 @@ from typing import Any, Callable
 
 from .import_config import FILE_CAP_BYTES, PackSpec, parse_file, safe_name, unique_names
 
-#: Marks of Iron Jarvis's own server, repeated here only for the doc reader;
+#: Marks of STEC OS's own server, repeated here only for the doc reader;
 #: the parser (``import_config._OWN_SERVER_MARKS``) is what drops them.
 OWN_SERVER_MARKS: tuple[str, ...] = ("ironjarvis", "mcp-stdio", "claude-inert-mcp")
 
@@ -525,7 +525,7 @@ def _scan_one(defn: SourceDef, platform: Any) -> SourceScan:
             specs, readable, note = parse_file(origin, source=defn.dialect)
     except Exception:  # noqa: BLE001 — parse_file never raises; belt and braces
         specs, readable, note = [], False, f"{Path(origin).name} could not be read"
-    # The parser drops Iron Jarvis's own server entries; a config that
+    # The parser drops STEC OS's own server entries; a config that
     # ONLY listed us reads as readable and empty, which is the truth.
     return SourceScan(
         source=defn.source,

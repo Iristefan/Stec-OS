@@ -64,7 +64,7 @@ NO_CHANGE_NOTE = "(the patch left every file as it was)"
 NOT_A_TURN = "That point is not one of this session's turns."
 #: A file a rewound turn made that is already gone: nothing to put back.
 ALREADY_GONE = "already gone"
-NO_TIME = "Iron Jarvis cannot tell when that turn started, so it cannot rewind to it."
+NO_TIME = "STEC OS cannot tell when that turn started, so it cannot rewind to it."
 
 
 class RewindError(Exception):
@@ -349,7 +349,7 @@ def _simulate(row: dict[str, Any], disk: _Disk, home: Any) -> tuple[list[dict[st
     problems: list[dict[str, Any]] = []
     if not isinstance(ws, str) or not ws:
         problems.append({"path": str(meta.get("path") or row["tool"]),
-                         "reason": "the change was recorded before Iron Jarvis kept its folder, so it cannot be put back"})
+                         "reason": "the change was recorded before STEC OS kept its folder, so it cannot be put back"})
         return files, problems
 
     def target_of(rel: str) -> Path | None:
@@ -450,7 +450,7 @@ def _simulate(row: dict[str, Any], disk: _Disk, home: Any) -> tuple[list[dict[st
             return files, problems
         files.append({"path": str(target), "rel": rel.replace("\\", "/"), "change": "put back"})
         return files, problems
-    problems.append({"path": str(target), "reason": f"Iron Jarvis does not know how to put back a {kind} change"})
+    problems.append({"path": str(target), "reason": f"STEC OS does not know how to put back a {kind} change"})
     return files, problems
 
 

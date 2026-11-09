@@ -33,7 +33,7 @@ export const ALLOW_AND_RUN = "Allow and run";
 
 /** v1.402.0: the plan door's one sentence (what Allow and Deny do). */
 export const PLAN_RUN_SENTENCE =
-  "Nothing changes until you answer. “Allow and run” approves this plan and Iron Jarvis starts carrying it out at once, with no message from you; Deny keeps it planning.";
+  "Nothing changes until you answer. “Allow and run” approves this plan and STEC OS starts carrying it out at once, with no message from you; Deny keeps it planning.";
 
 /** The refusal. The assistant (or the run) is told the user declined. */
 export const DENY = "Deny";
@@ -98,11 +98,11 @@ export function answersOnlyOnce(a: {
   return typeof a.costNote === "string" && a.costNote.trim() !== "";
 }
 
-/** v1.417.0 (C1.7): who is asking, as the card's sentence subject. Iron
- *  Jarvis's own checks (the finish check re-running the tests, a project's
+/** v1.417.0 (C1.7): who is asking, as the card's sentence subject. STEC
+ *  OS's own checks (the finish check re-running the tests, a project's
  *  checker) say so; everything else is "The assistant", as before. */
 export function askerSubject(asker: unknown): string {
-  return asker === "iron_jarvis" ? "Iron Jarvis" : "The assistant";
+  return asker === "iron_jarvis" ? "STEC OS" : "The assistant";
 }
 
 /** The card's labels, in one object, for any surface that lists them. */

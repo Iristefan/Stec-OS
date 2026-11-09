@@ -183,7 +183,7 @@ beforeEach(() => {
   eventsRef.current = [];
   H.responses = {};
   window.localStorage.clear();
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
 });
 afterEach(() => {
   cleanup();
@@ -198,14 +198,14 @@ const EXPECTED: Record<string, string[][]> = {
   // summary); This PC is quiet for it.
   skipped_agent_step: [["bell", STEP_FAILED, INBOX]],
   // A tool step has no run, so no bell row: This PC says the schedule's line.
-  skipped_tool_step: [["this-pc", "Iron Jarvis", FIX.skipped_tool_step.phone[0]]],
+  skipped_tool_step: [["this-pc", "STEC OS", FIX.skipped_tool_step.phone[0]]],
   // The step that ENDED the run rang; the workflow's row stands in for it.
   halted_by_agent_step: [["bell", STEP_FAILED, INBOX]],
   // Two outcomes: the attempt that failed (the bell) and the run that
   // finished (This PC's "done").
   clean_after_a_retried_step: [
     ["bell", STEP_FAILED, INBOX],
-    ["this-pc", "Iron Jarvis", "Schedule “nightly”: done — workflow “Nightly” ran"],
+    ["this-pc", "STEC OS", "Schedule “nightly”: done — workflow “Nightly” ran"],
   ],
 };
 
@@ -249,7 +249,7 @@ describe("(b) a pop-out that becomes the one that speaks never repeats a line", 
       type: "comm.desktop",
       ts: "2026-10-20T03:00:00Z",
       session_id: null,
-      payload: { title: "Iron Jarvis", message },
+      payload: { title: "STEC OS", message },
     });
     await deliver(view, [line("cd_a", "Schedule “a”: done")]);
     expect(bridgeNotify).not.toHaveBeenCalled(); // the main window said it
@@ -257,7 +257,7 @@ describe("(b) a pop-out that becomes the one that speaks never repeats a line", 
     await deliver(view, [line("cd_b", "Schedule “b”: done")]);
     // MUTATION: a quiet window that skips recording (v1.360.1's `break`)
     // says "a" again here.
-    expect(bridgeNotify.mock.calls).toEqual([["Iron Jarvis", "Schedule “b”: done"]]);
+    expect(bridgeNotify.mock.calls).toEqual([["STEC OS", "Schedule “b”: done"]]);
   });
 
   it("the bell and the bridge switch together on a real fire: only what came after is said", async () => {
@@ -269,7 +269,7 @@ describe("(b) a pop-out that becomes the one that speaks never repeats a line", 
     await deliver(view, events.slice(0, 1));
     speaks = true;
     await deliver(view, events.slice(1));
-    expect(notices()).toEqual([["this-pc", "Iron Jarvis", "Schedule “nightly”: done — workflow “Nightly” ran"]]);
+    expect(notices()).toEqual([["this-pc", "STEC OS", "Schedule “nightly”: done — workflow “Nightly” ran"]]);
   });
 });
 

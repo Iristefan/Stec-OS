@@ -1,4 +1,4 @@
-"""History search: one ranked index over every conversation Iron Jarvis keeps.
+"""History search: one ranked index over every conversation STEC OS keeps.
 
 Public surface (FROZEN — other subsystems code against exactly this)::
 

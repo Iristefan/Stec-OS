@@ -1,7 +1,7 @@
 """SQLite FTS5 history search — the substrate every "what did we say about X"
 feature reads.
 
-Iron Jarvis remembers conversations in four places (browser-owned chat threads,
+STEC OS remembers conversations in four places (browser-owned chat threads,
 daemon-owned comm threads, Agents-page rounds, agent sessions) and, until this
 module, could not SEARCH any of them: the memory fabric's ``sessions`` source
 full-scanned 400 rows and counted overlapping words. :class:`SearchIndex` gives
@@ -20,7 +20,7 @@ The two alternatives were weighed and rejected:
 * **external content** (``content='searchdocrecord', content_rowid='n'``) halves
   storage, but its delete protocol is
   ``INSERT INTO fts(fts, rowid, text) VALUES('delete', ?, <THE ORIGINAL TEXT>)``
-  and it MUST run BEFORE the content row disappears. Iron Jarvis deletes history
+  and it MUST run BEFORE the content row disappears. STEC OS deletes history
   from at least three places outside this module — ``DELETE /chat/threads/{id}``,
   ``prune_events``' bulk ``sa_delete`` (which bypasses ORM events entirely), and
   a future steward — and any one of them running first silently corrupts the
@@ -432,7 +432,7 @@ def _basic_snippet(text: str, tokens: Sequence[str]) -> str:
 
 
 class SearchIndex:
-    """Ranked full-text search over Iron Jarvis' conversation history.
+    """Ranked full-text search over STEC OS' conversation history.
 
     Construct once per engine and share it — the canonical accessor is
     ``core.db.search_index(engine)`` (the platform exposes the same object as

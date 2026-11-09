@@ -97,7 +97,7 @@ async def test_a_local_answered_error_says_the_policy_in_plain_words_and_the_ban
     with pytest.raises(ProviderError) as ei:
         await router.complete(system="", messages=_msgs(), tools=[])
     text = str(ei.value)
-    assert "Iron Jarvis won't switch to a different AI without asking. You can allow that in Settings." in text
+    assert "STEC OS won't switch to a different AI without asking. You can allow that in Settings." in text
     assert "local_primary_policy" not in text and "failover" not in text
     banner = bus.of(EventType.PROVIDER_DOWNGRADED)[-1]
     assert "local_primary_policy" not in banner["reason"]
@@ -285,7 +285,7 @@ async def test_an_unrecognised_failure_keeps_its_own_words_without_the_class(tmp
     s = await orch.create_session("go", AgentType.BUILDER)
     await orch._finalize_failed(s, RuntimeError("the build script exited 2"))
     assert _summary(p.engine, s.id) == (
-        "The run failed: Iron Jarvis couldn't finish this task. Run it again. If it happens "
+        "The run failed: STEC OS couldn't finish this task. Run it again. If it happens "
         "again, open the run to see the details."
     )
     with session_scope(p.engine) as db:

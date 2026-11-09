@@ -360,7 +360,7 @@ async def test_a_restart_continue_keeps_the_restart_note(platform):
     with session_scope(platform.engine) as db:
         row = db.get(Session, session.id)
         row.status = SessionStatus.FAILED
-        row.summary = "Stopped when Iron Jarvis restarted."
+        row.summary = "Stopped when STEC OS restarted."
         row.interrupted_at = utcnow()
         db.add(row)
         db.commit()

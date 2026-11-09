@@ -1,11 +1,11 @@
-"""v1.433.0 (Wave 1, W1) — an outbound webhook names events Iron Jarvis SENDS.
+"""v1.433.0 (Wave 1, W1) — an outbound webhook names events STEC OS SENDS.
 
 Delivery matches an event's type EXACTLY (``OutboundWebhooks.on_event`` looks
 the type up in its index), and the save only checked the list was not empty.
 So "sesion.completed" (or a name nothing publishes, like "session.failed")
 saved happily and the webhook was never sent anything — silently.
 
-Now every door that writes an outbound webhook refuses a name Iron Jarvis
+Now every door that writes an outbound webhook refuses a name STEC OS
 never publishes, in one sentence naming the closest real names:
 ``POST /webhooks`` (the page shows the route's ``detail``), the chat tools
 ``webhook_add`` and ``webhook_update`` (both go through
@@ -123,7 +123,7 @@ def test_the_sentence_helpers():
     known = known_event_types()
     assert unknown_event_types(["session.completed", " x.y ", "x.y", ""], known) == ["x.y"]
     one = unknown_event_types_sentence(["sesion.completed"], known)
-    assert one.startswith("Iron Jarvis never sends an event called “sesion.completed”"), one
+    assert one.startswith("STEC OS never sends an event called “sesion.completed”"), one
     many = unknown_event_types_sentence(["zzz.qqq", "yyy.ppp"], known)
     assert "events called “zzz.qqq” or “yyy.ppp”" in many and "session.completed" in many, many
     long = unknown_event_types_sentence(["a." + "b" * 200], known)

@@ -324,7 +324,7 @@ describe("Session", () => {
     expect(screen.getByTestId("code-session-rules").textContent).toBe("Instruction files here: CLAUDE.md");
     expect(screen.getByTestId("code-session-model").textContent).toBe("Claude Code · claude-sonnet-5 · effort low");
     expect(screen.getByTestId("code-session-mode").textContent).toContain("Ask first — Asks before it edits");
-    expect(screen.getByTestId("code-session-jarvis-tools").textContent).toBe("Iron Jarvis tools: Memory");
+    expect(screen.getByTestId("code-session-jarvis-tools").textContent).toBe("STEC OS tools: Memory");
     expect(screen.getByTestId("code-session-context-percent").textContent).toBe("4% used");
     // The NEWEST message that carried files, not the newest message.
     expect(within(screen.getByTestId("code-session-attachment")).getByAltText("shot.png")).toBeTruthy();

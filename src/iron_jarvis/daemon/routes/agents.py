@@ -90,7 +90,7 @@ def _lan_access_label() -> str:
 
 
 def reachability(url: str, *, who: str, instead: str, lan_access: bool = False) -> dict[str, Any]:
-    """Whether THIS Iron Jarvis would even accept a request addressed to
+    """Whether THIS STEC OS would even accept a request addressed to
     ``url``'s host, and what it takes if not — ``{host_allowed, note}``.
 
     ONE sentence for every door another machine posts to (v1.285.0's remote
@@ -103,12 +103,12 @@ def reachability(url: str, *, who: str, instead: str, lan_access: bool = False) 
     machine"); ``instead`` says where a tunnel's address goes.
 
     v1.358.0 (G61): the way in is a SETTING the user turns on ON PURPOSE
-    ("Let other computers on my network reach this Iron Jarvis", key
+    ("Let other computers on my network reach this STEC OS", key
     ``lan_access``, read by the desktop shell at every daemon spawn), so the
     note names that setting — never ``ironjarvis serve --host`` or an
     environment variable, which the desktop app cannot do. ``lan_access`` is
     the SAVED value: on but not yet allowing this address means it takes
-    effect when Iron Jarvis restarts (or this computer has no such address);
+    effect when STEC OS restarts (or this computer has no such address);
     the verdict itself is still the Host guard's own answer."""
     from urllib.parse import urlparse
 
@@ -128,22 +128,22 @@ def reachability(url: str, *, who: str, instead: str, lan_access: bool = False) 
         )
         if lan_access:
             note = (
-                f"Iron Jarvis on this computer still accepts requests from this computer "
+                f"STEC OS on this computer still accepts requests from this computer "
                 f"only, so {who} cannot reach it yet. The setting {setting} is on and "
-                # v1.358.0 review: the tray offers "Restart Iron Jarvis" only
+                # v1.358.0 review: the tray offers "Restart STEC OS" only
                 # once something is stuck, so the sentence names the press
                 # that is always there (Settings › System › Maintenance) and
                 # the plain quit-and-reopen.
-                f"takes effect when Iron Jarvis restarts: press “Restart Iron Jarvis” in "
-                f"Settings › System › Maintenance, or quit Iron Jarvis and open it again. "
+                f"takes effect when STEC OS restarts: press “Restart STEC OS” in "
+                f"Settings › System › Maintenance, or quit STEC OS and open it again. "
                 f"If it still cannot be reached after that, this computer has "
                 f"no address on your network that the setting can use. {tunnel}"
             )
         else:
             note = (
-                f"Iron Jarvis on this computer accepts requests from this computer only, "
+                f"STEC OS on this computer accepts requests from this computer only, "
                 f"so {who} cannot reach it yet. To allow it, turn on {setting} and restart "
-                f"Iron Jarvis. Every request still needs its token. {tunnel}"
+                f"STEC OS. Every request still needs its token. {tunnel}"
             )
     return {"host_allowed": allowed, "note": note}
 
@@ -1544,7 +1544,7 @@ def update_mcp_pack(d, name: str, body: McpServerPatchBody) -> dict[str, Any]:
         _switch_off_pack(d.platform.registry, name)
         off_notes = ["saved; it's switched off, so it starts when you turn it on"]
         if body.auto_approve is not None and bool(body.auto_approve) != bool(old.get("auto_approve")):
-            off_notes.append("restart Iron Jarvis for autonomous agents to pick up the auto-approve change")
+            off_notes.append("restart STEC OS for autonomous agents to pick up the auto-approve change")
         return {
             **mcp_server_row(d, new),
             "reloaded": False,
@@ -1577,7 +1577,7 @@ def update_mcp_pack(d, name: str, body: McpServerPatchBody) -> dict[str, Any]:
         else:
             notes.append("saved; it connected but advertised no tools, see its row")
     if body.auto_approve is not None and bool(body.auto_approve) != bool(old.get("auto_approve")):
-        notes.append("restart Iron Jarvis for autonomous agents to pick up the auto-approve change")
+        notes.append("restart STEC OS for autonomous agents to pick up the auto-approve change")
     return {
         **mcp_server_row(d, new),
         "reloaded": loaded > 0,
@@ -2426,7 +2426,7 @@ def register(app: FastAPI, d) -> None:
     _PANEL_HISTORY_ROWS = 600
     #: A participant key — "<source>:<name>" as the room stores it. Anything
     #: that is not this, "user" or "jarvis" is attributed to the USER: a row
-    #: must not be able to spell "Iron Jarvis" (or any free label) and put
+    #: must not be able to spell "STEC OS" (or any free label) and put
     #: words in the assistant's mouth inside the speaker's prompt.
     _PANEL_HISTORY_KEY = re.compile(r"^(builtin|dynamic|remote):[A-Za-z0-9._\- ]{1,120}$")
 
@@ -2693,7 +2693,7 @@ def register(app: FastAPI, d) -> None:
     def _jarvis_reply_on(request: Request, rec) -> dict[str, Any]:
         """ANOTHER IRON JARVIS ANSWERS HOME (v1.357.0, G61). A remote whose
         address IS a task door (``task_door.is_task_door_url``) is another
-        computer running Iron Jarvis, and its answer comes back through THIS
+        computer running STEC OS, and its answer comes back through THIS
         computer's inbound door for it — so registering one turns message-back
         on (the token minted into the vault exactly as "Let it message back"
         does; it rides to that computer beside ``reply_to`` with each task, so
@@ -2722,7 +2722,7 @@ def register(app: FastAPI, d) -> None:
         }
 
     def _refuse_door_kind(base_url: str, kind: str) -> None:
-        """Another Iron Jarvis's task door speaks ``http-task`` only — a chat
+        """Another STEC OS's task door speaks ``http-task`` only — a chat
         body sent there could only be turned away, so say it at the form."""
         from ...agents.task_door import is_task_door_url
 
@@ -2730,7 +2730,7 @@ def register(app: FastAPI, d) -> None:
             raise HTTPException(
                 status_code=400,
                 detail=(
-                    "This address is another computer running Iron Jarvis. Choose "
+                    "This address is another computer running STEC OS. Choose "
                     "http-task (task API) for it."
                 ),
             )
@@ -2842,7 +2842,7 @@ def register(app: FastAPI, d) -> None:
         updated = reg.update(name, **fields)
         if updated is None:  # raced with a delete
             raise HTTPException(status_code=404, detail="no such remote agent")
-        # v1.357.0 (G61): an address fixed to point at another Iron Jarvis's
+        # v1.357.0 (G61): an address fixed to point at another STEC OS's
         # task door turns its answer path on, exactly as registering one does.
         if "base_url" in fields:
             return {**_remote_view(updated), **_jarvis_reply_on(request, updated)}
@@ -2979,8 +2979,8 @@ def register(app: FastAPI, d) -> None:
         return _lan_url_for(request, f"/agents/remote/{quote(name, safe='')}/inbound")
 
     def _lan_access_saved() -> bool:
-        """The SAVED "Let other computers on my network reach this Iron
-        Jarvis" (v1.358.0, G61) — read off the live config object, the one
+        """The SAVED "Let other computers on my network reach this STEC
+        OS" (v1.358.0, G61) — read off the live config object, the one
         the settings writer changes in place. Never raises."""
         try:
             return bool(getattr(d.platform.config, LAN_ACCESS_KEY, False))
@@ -2989,7 +2989,7 @@ def register(app: FastAPI, d) -> None:
 
     def _inbound_reachability(url: str) -> dict[str, Any]:
         """The remote inbound door's reachability verdict (v1.285.0) — the ONE
-        sentence (:func:`reachability`, v1.357.0: "Iron Jarvis on this
+        sentence (:func:`reachability`, v1.357.0: "STEC OS on this
         computer", never "this daemon"), with where a tunnel's address goes
         and the same-machine case spelled out."""
         return reachability(
@@ -3307,8 +3307,8 @@ def register(app: FastAPI, d) -> None:
             "homed": homed,
         }
 
-    # --- Another computer running Iron Jarvis (v1.357.0, G61) ----------------
-    # The task door: another Iron Jarvis registers THIS one through its own
+    # --- Another computer running STEC OS (v1.357.0, G61) ----------------
+    # The task door: another STEC OS registers THIS one through its own
     # remote-agent form (http-task, this door's address, this door's token)
     # and "@desk do X" lands here as a run whose answer goes home. The whole
     # contract is ``agents/task_door.py``; these routes are its controls (the
@@ -3344,7 +3344,7 @@ def register(app: FastAPI, d) -> None:
     @app.get("/agents/task-door")
     def task_door_status() -> dict[str, Any]:
         """Whether this computer takes tasks from another computer running
-        Iron Jarvis, the address to give it, the reachability sentence, and
+        STEC OS, the address to give it, the reachability sentence, and
         what happened last. Never the token."""
         return _door_view(_task_door().status())
 
@@ -3397,7 +3397,7 @@ def register(app: FastAPI, d) -> None:
 
     @app.post(_TASK_DOOR_PATH, status_code=202)
     async def task_door_task(request: Request) -> dict[str, Any]:
-        """A task from another computer running Iron Jarvis (v1.357.0, G61).
+        """A task from another computer running STEC OS (v1.357.0, G61).
 
         Speaks exactly the ``http-task`` body its remote-agent registry sends:
         ``{task, conversation_id?, history?, reply_to?, reply_token?}``.
@@ -3443,7 +3443,7 @@ def register(app: FastAPI, d) -> None:
         if reply_to and not td.valid_reply_to(reply_to):
             raise HTTPException(
                 status_code=400,
-                detail="reply_to must be another Iron Jarvis's inbound address",
+                detail="reply_to must be another STEC OS's inbound address",
             )
         reply_token = str(body.get("reply_token") or "").strip()
         caller = await asyncio.to_thread(door.caller)
@@ -3470,7 +3470,7 @@ def register(app: FastAPI, d) -> None:
                 AgentType.SUPERVISOR,
                 origin=origin,
                 trust="low",
-                trust_reason=f"a task sent by {caller}, another computer running Iron Jarvis",
+                trust_reason=f"a task sent by {caller}, another computer running STEC OS",
                 options=options,
             )
         except EmergencyStopOn as exc:
@@ -3643,10 +3643,10 @@ def register(app: FastAPI, d) -> None:
         store = getattr(d.platform, "assignments", None)
         if store is None:
             # v1.358.0 (lane 8E, G76): the canon's words — a queued task, and
-            # Iron Jarvis (never "assignments" or "this daemon").
+            # STEC OS (never "assignments" or "this daemon").
             raise HTTPException(
                 status_code=503,
-                detail="Queued tasks are not available right now. Restart Iron Jarvis to bring them back.",
+                detail="Queued tasks are not available right now. Restart STEC OS to bring them back.",
             )
         raw = store.inbox(assignee) or {}
         inbox = {
@@ -4221,8 +4221,8 @@ def register(app: FastAPI, d) -> None:
         row is ``{source, label, origin, readable, note, servers}`` with the
         same preview rows the paste door answers — names only, never a
         value. A missing file is ``readable: false`` with an empty note; a
-        malformed one names the file in one line, never its contents. Iron
-        Jarvis's own server entries are not listed.
+        malformed one names the file in one line, never its contents. STEC
+        OS's own server entries are not listed.
 
         v1.354.0 (G50): also VS Code's ``User/mcp.json``, a project's
         ``.vscode/mcp.json`` and ``.cursor/mcp.json`` (only while a project
@@ -4318,7 +4318,7 @@ def register(app: FastAPI, d) -> None:
             "auto_approve_global": bool(body.auto_approve),
             "auto_approve_effective": bool(body.auto_approve),
             "note": (
-                "saved — restart Iron Jarvis so autonomous agents may use extension tools without asking"
+                "saved — restart STEC OS so autonomous agents may use extension tools without asking"
                 if body.auto_approve
                 else "saved — every extension will ask before use again after the next restart"
             ),
@@ -4487,7 +4487,7 @@ def register(app: FastAPI, d) -> None:
             "name": name,
             "auto_approve": bool(body.auto_approve),
             "note": (
-                "saved — restart Iron Jarvis for autonomous agents to pick this up"
+                "saved — restart STEC OS for autonomous agents to pick this up"
             ),
         }
         if switch is not None:

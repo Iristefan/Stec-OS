@@ -1,7 +1,7 @@
 /**
  * The Connections page cannot claim a capability that isn't there (v1.172.0).
  *
- * A user reported Iron Jarvis was "blind as a bat" with no access to their
+ * A user reported STEC OS was "blind as a bat" with no access to their
  * wikis — while the Connections page showed the connector green. The badge
  * was computed from "a config entry exists", and MCP tools load ONCE at
  * daemon boot, so a server that failed to launch (or was added since startup)

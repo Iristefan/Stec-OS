@@ -1,7 +1,7 @@
 """v1.259.0 — the add-on says WHICH browser it is; the daemon keeps and repeats it.
 
 Plain words: Chrome and Edge load the same add-on with the same identity, so
-Iron Jarvis could not tell an Edge user from a Chrome one — and every setup
+STEC OS could not tell an Edge user from a Chrome one — and every setup
 step was written for Chrome. Now ``browser.hello`` may carry
 ``browser: {name, version}``; the daemon records it, the Browser card prints it,
 and the doctor names the browser actually installed on this PC.

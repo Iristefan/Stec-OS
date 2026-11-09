@@ -8,7 +8,7 @@ from Iron-Proxy's own message/hint, never from request headers).
 Shapes:
 
 * ``GET /iron-proxy`` → ``{status, accounts, discovered, providers_used_by_jarvis,
-  account_groups}`` (v1.393.0: the user's account groups, from Iron Jarvis's config)
+  account_groups}`` (v1.393.0: the user's account groups, from STEC OS's config)
   (v1.424.0: plus ``claude_setup: {on, words}`` — the Claude group's line about
   the owner's setup on the other accounts — only when a Claude account other
   than this PC's own login is listed)
@@ -56,7 +56,7 @@ from pydantic import BaseModel
 from ...iron_proxy.client import IronProxyError
 from ...iron_proxy.service import JARVIS_TO_PROXY
 
-#: Which Iron Jarvis provider runs as each Iron-Proxy provider's accounts.
+#: Which STEC OS provider runs as each Iron-Proxy provider's accounts.
 PROVIDERS_USED_BY_JARVIS = {proxy: ij for ij, proxy in JARVIS_TO_PROXY.items()}
 
 #: cmd.exe metacharacters: an argument carrying any of them (or a space) is
@@ -91,7 +91,7 @@ _STRIP_ENV = frozenset(
 def _said(exc: IronProxyError) -> str:
     """Iron-Proxy's sentence for a route answer, with its CLI / tray-switcher
     instructions ("iron-proxy profiles list", "open the switcher") rewritten
-    into what an Iron Jarvis user can do (``accounts.plain_hint``)."""
+    into what a STEC OS user can do (``accounts.plain_hint``)."""
     text = exc.sentence
     try:
         from ...iron_proxy.accounts import plain_hint
@@ -333,7 +333,7 @@ async def open_account_signin(d: Any, svc: Any, client: Any, account_id: str) ->
     ``POST /iron-proxy/accounts/{id}/signin`` so chat's ``account_add`` opens
     the same one). A Build terminal named ``Sign in: <title>`` whose shell runs
     the account's login command AS that account; the user signs in there, in
-    their own browser — Iron Jarvis never handles the login. Answers
+    their own browser — STEC OS never handles the login. Answers
     ``{terminal_id, name}``. Raises ``HTTPException`` (404 no such account,
     400 not a subscription account, 502 no login command, 429 the terminal
     cap) or :class:`IronProxyError` (the caller words it)."""
@@ -411,7 +411,7 @@ def register(app: FastAPI, d) -> None:
             # The client already re-read proxy.json once (a restarted proxy).
             return HTTPException(
                 status_code=409,
-                detail="Iron-Proxy refused Iron Jarvis's access token; "
+                detail="Iron-Proxy refused STEC OS's access token; "
                 "turn Iron-Proxy off and on again.",
             )
         if status < 400 or status >= 500:
@@ -431,7 +431,7 @@ def register(app: FastAPI, d) -> None:
 
     def _groups() -> dict[str, list[str]]:
         # v1.393.0 (the long-jobs plan's Phase 4): the user's account groups
-        # (Iron Jarvis's own config — never Iron-Proxy's), so the card's
+        # (STEC OS's own config — never Iron-Proxy's), so the card's
         # Group choice shows them; it saves through PUT /settings/values.
         raw = getattr(getattr(d.platform, "config", None), "account_groups", None)
         if not isinstance(raw, dict):
@@ -553,7 +553,7 @@ def register(app: FastAPI, d) -> None:
         version/error/bundled — never the token), ``accounts`` (grouped by
         provider in failover order, each with its state chip data and usage),
         ``discovered`` (this PC's existing CLI logins not yet an account) and
-        ``providers_used_by_jarvis`` (which Iron Jarvis provider runs as each
+        ``providers_used_by_jarvis`` (which STEC OS provider runs as each
         Iron-Proxy provider's accounts). ``?discover=0``: no login scan
         (``discovered: []``, ``discover_skipped: true``) — the light read."""
         return await _view(_svc(), discover=discover)
@@ -576,7 +576,7 @@ def register(app: FastAPI, d) -> None:
     @app.post("/iron-proxy/disable")
     async def iron_proxy_disable() -> dict[str, Any]:
         """Turn Iron-Proxy off: persist the switch and stop the Iron-Proxy that
-        Iron Jarvis started (one the user started keeps running). CLI calls go
+        STEC OS started (one the user started keeps running). CLI calls go
         back to the default login."""
         svc = _svc()
         from .settings import config_writer

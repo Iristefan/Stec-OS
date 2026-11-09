@@ -10,7 +10,7 @@
  *   looks for another account of the user's group) and carries on BY
  *   ITSELF; the limit card says until when, with **Cancel** (POST
  *   …/wait/cancel).
- * - a `user` event's `carry`: a message Iron Jarvis sent by itself to carry
+ * - a `user` event's `carry`: a message STEC OS sent by itself to carry
  *   the reply on — drawn as one quiet line, never as the user's bubble.
  *
  * Dependency-free (the conversation and the page import it).
@@ -112,8 +112,8 @@ export function carryLineWords(m: CarryMark): string {
   if (m.retry) return "You pressed Retry: carrying the reply on again.";
   if (m.why === "restart") {
     return m.pressed
-      ? "You pressed Continue: carrying on the reply Iron Jarvis's restart cut off."
-      : "Carried on by itself after Iron Jarvis restarted — it checks what was already done first.";
+      ? "You pressed Continue: carrying on the reply STEC OS's restart cut off."
+      : "Carried on by itself after STEC OS restarted — it checks what was already done first.";
   }
   if (m.why === "move") {
     const to = m.toAccount ? ` with ${m.toAccount}` : " on another account";
@@ -157,10 +157,10 @@ export const CANCEL_WAIT_TITLE = "Stop waiting — nothing carries on by itself"
 /** The line under a cut reply that was not carried on by itself. */
 export function cutWords(c: CutFacts): string {
   if (!c.resumable) {
-    return "Iron Jarvis restarted before the coding tool saved this conversation, so it cannot be carried on — send your message again.";
+    return "STEC OS restarted before the coding tool saved this conversation, so it cannot be carried on — send your message again.";
   }
   if (!c.whyNot) {
-    return "Iron Jarvis restarted while this was working. Press Continue to carry it on from where it stopped.";
+    return "STEC OS restarted while this was working. Press Continue to carry it on from where it stopped.";
   }
   // v1.422.0 review: a reason the coding tool's own refusal gave is a whole
   // SENTENCE ("This conversation is open in a Build terminal — …."), never a

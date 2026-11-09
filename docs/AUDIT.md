@@ -1,4 +1,4 @@
-# Iron Jarvis — File-Access, Human-Feel & Self-Correction Audit
+# STEC OS — File-Access, Human-Feel & Self-Correction Audit
 
 **Scope:** can the system access and interact with all common file types (PDF,
 Word, Excel, PowerPoint, CSV, TXT, MD, …); does it feel like working with an
@@ -47,4 +47,4 @@ actual person; and does it self-correct — getting better every interaction.
 - **Endpoints live:** `POST /documents/write` + `GET /documents/read` round-trip a Word doc; `POST /sessions/{id}/feedback` → `GET /lessons` returns the distilled lesson (weight 3).
 - Tool count grew to **31** (added `read_document`, `write_document`, `extract_pdf`, `remember_preference`, `recall_lessons`).
 
-Iron Jarvis can now open and work with your real files like a colleague would — and it gets a little better every time you use it.
+STEC OS can now open and work with your real files like a colleague would — and it gets a little better every time you use it.

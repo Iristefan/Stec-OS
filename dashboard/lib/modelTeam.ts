@@ -118,7 +118,7 @@ export interface TeamNotes {
   accepted: TeamNoteRow[];
   /** Suggested habits waiting for Accept / Decline on its coach card. */
   suggested: number;
-  /** Its TEAM-NOTES.md holds text Iron Jarvis did not write (kept as is). */
+  /** Its TEAM-NOTES.md holds text STEC OS did not write (kept as is). */
   handEdited: boolean;
 }
 

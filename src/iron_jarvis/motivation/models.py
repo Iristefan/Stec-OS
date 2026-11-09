@@ -1,6 +1,6 @@
 """Motivation Layer persistence models — standing goals + deliberated proposals.
 
-The Motivation Layer ("the pulse") lets Iron Jarvis hold *standing goals* and,
+The Motivation Layer ("the pulse") lets STEC OS hold *standing goals* and,
 when the user has opted in, periodically deliberate on the single highest-value
 next action toward them. Two SQLModel tables back that loop (auto-created via
 ``init_db`` once this module is imported, §22):

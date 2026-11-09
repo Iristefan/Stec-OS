@@ -15,7 +15,7 @@
  * Every read goes through ONE in-memory cache per folder (a composer opening
  * again on a folder reads nothing); a save replaces the folder's entry and
  * every reader on screen hears it (`onFolderDefaultsSaved`, v1.426.0 review).
- * An older Iron Jarvis (a 404) reads as "no defaults", quietly.
+ * An older STEC OS (a 404) reads as "no defaults", quietly.
  */
 
 import { get, put } from "@/lib/api";
@@ -114,7 +114,7 @@ export function cachedFolderDefaults(folder: string): FolderDefaults | undefined
 }
 
 /** Read `folder`'s defaults (once; joined while a read is out). Never throws:
- *  a refusal or an older Iron Jarvis reads as none. */
+ *  a refusal or an older STEC OS reads as none. */
 export function readFolderDefaults(folder: string): Promise<FolderDefaults> {
   const key = folderDefaultsKey(folder);
   if (!key) return Promise.resolve(NO_DEFAULTS);

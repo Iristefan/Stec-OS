@@ -1,6 +1,6 @@
 """Documents module — read and write real-world file types.
 
-Gives Iron Jarvis the ability to read AND write PDF, Word (.docx), Excel
+Gives STEC OS the ability to read AND write PDF, Word (.docx), Excel
 (.xlsx), PowerPoint (.pptx), CSV, HTML, plus .txt/.md/code, so agents can work
 with a user's actual documents. String content is markdown-aware: headings,
 lists, tables, code fences and bold/italic render as REAL structure in

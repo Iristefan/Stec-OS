@@ -74,7 +74,7 @@ export function originalTaskOf(recap: string): string {
 /** What the user asked a run, without the wrapping the chat and the continue
  *  door add around it (above). Unwrapped text is returned as it is.
  *  v1.354.0 integrate: a restart Continue's run was asked the APP's words
- *  ("Continue where you left off — Iron Jarvis restarted…"), so it is titled
+ *  ("Continue where you left off — STEC OS restarted…"), so it is titled
  *  by the run it continues — the earlier task in the door's recap — the way
  *  the mission screen keeps a resumed mission's objective. */
 export function askedText(task: string | null | undefined, depth = 0): string {
@@ -289,7 +289,7 @@ export function liveEventWords(e: IJEvent): { label: string; detail: string } {
 /* ---- A run a restart cut off (v1.354.0 review) ---------------------------- */
 
 /** The run page's words for a run a restart cut off. */
-export const RESTART_WORDS = "Stopped when Iron Jarvis restarted";
+export const RESTART_WORDS = "Stopped when STEC OS restarted";
 
 /** The summary the boot reconcile writes on such a run when it had none
  *  (agents/orchestrator.RESTART_SUMMARY, v1.354.0 integrate): the run
@@ -357,7 +357,7 @@ export function failureDetailShown(
 }
 
 /** The summary the receipt shows. The reconcile's stock words are hidden
- *  while the "Stopped when Iron Jarvis restarted" line stands (it says the
+ *  while the "Stopped when STEC OS restarted" line stands (it says the
  *  same, in words), and read as that sentence once the offer is answered;
  *  an older stopped run's engine words read as the shared stopped sentence;
  *  every other summary is shown as it is. */

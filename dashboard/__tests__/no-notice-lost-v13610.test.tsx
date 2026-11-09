@@ -156,7 +156,7 @@ beforeEach(() => {
   eventsRef.current = [];
   H.responses = {};
   window.localStorage.clear();
-  document.title = "Iron Jarvis";
+  document.title = "STEC OS";
 });
 afterEach(() => {
   cleanup();
@@ -208,7 +208,7 @@ describe("(1) the window that speaks: the main window, else ONE pop-out", () => 
     view.rerender(<NotificationBell />);
     await waitFor(() => expect(notifyMock).toHaveBeenCalledTimes(2));
     const got = pings();
-    const pending = got.find(([t]) => t === "Iron Jarvis: 1 pending")!;
+    const pending = got.find(([t]) => t === "STEC OS: 1 pending")!;
     expect(pending[1]).toContain("Nightly");
     expect(pending[1]).toContain("Send it?");
     expect(got).toContainEqual(["Your objective could not be finished", "The team stopped."]);
@@ -311,7 +311,7 @@ describe("(3) only the step that ENDED the run stands in for the workflow", () =
     expect(ended("").absorbs).toEqual(["e1", "e2"]);
     expect(ended("").standsInFor).toEqual([]);
     expect(ended("s2").standsInFor).toEqual(["e2"]);
-    // An event an older Iron Jarvis wrote names no step: every folded row
+    // An event an older STEC OS wrote names no step: every folded row
     // stands in, as in v1.360.0 (never a duplicate).
     expect(ended(undefined).standsInFor).toEqual(["e1", "e2"]);
   });
@@ -332,7 +332,7 @@ describe("(4) the 'N pending' ping names ONE new ask in its row's words", () => 
     await mountThenPoll({ [RUNS_PATH]: { runs: [NIGHTLY] } });
     await waitFor(() => expect(notifyMock).toHaveBeenCalledTimes(1));
     const [title, body] = pings()[0];
-    expect(title).toBe("Iron Jarvis: 1 pending");
+    expect(title).toBe("STEC OS: 1 pending");
     expect(body).toBe("1 workflow question waiting: “Nightly” asks “Send it?”");
   });
 
@@ -340,7 +340,7 @@ describe("(4) the 'N pending' ping names ONE new ask in its row's words", () => 
     await mountThenPoll({ [PENDING_PATH]: { approvals: [AGENT_ASK] } });
     await waitFor(() => expect(notifyMock).toHaveBeenCalledTimes(1));
     expect(pings()[0]).toEqual([
-      "Iron Jarvis: 1 pending",
+      "STEC OS: 1 pending",
       "1 agent asking permission: Your nightly-brief run wants to save a file for “Draft the Q3 letter”",
     ]);
   });
@@ -371,7 +371,7 @@ describe("(4) the 'N pending' ping names ONE new ask in its row's words", () => 
     await mountThenPoll({ [RUNS_PATH]: { runs: [NIGHTLY] }, [PENDING_PATH]: { approvals: [AGENT_ASK] } });
     await waitFor(() => expect(notifyMock).toHaveBeenCalledTimes(1));
     expect(pings()[0]).toEqual([
-      "Iron Jarvis: 2 pending",
+      "STEC OS: 2 pending",
       "1 workflow question waiting · 1 agent asking permission",
     ]);
   });
@@ -386,7 +386,7 @@ describe("(4) the 'N pending' ping names ONE new ask in its row's words", () => 
     view.rerender(<NotificationBell />);
     await waitFor(() => expect(notifyMock).toHaveBeenCalledTimes(2));
     expect(pings()[1]).toEqual([
-      "Iron Jarvis: 2 pending",
+      "STEC OS: 2 pending",
       "1 workflow question waiting · 1 chat waiting for your OK",
     ]);
   });
@@ -398,7 +398,7 @@ describe("(4) the 'N pending' ping names ONE new ask in its row's words", () => 
     view.rerender(<NotificationBell />);
     await waitFor(() => expect(notifyMock).toHaveBeenCalledTimes(2));
     expect(pings()[1]).toEqual([
-      "Iron Jarvis: 2 pending",
+      "STEC OS: 2 pending",
       "1 workflow question waiting · 1 agent asking permission: Your nightly-brief run wants to save a file for “Draft the Q3 letter”",
     ]);
   });

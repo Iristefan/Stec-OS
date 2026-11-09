@@ -179,7 +179,7 @@ describe("the contract from the real daemon", () => {
     expect(resolvedWords("allow_commands")).toBe("Allowed all commands for this session");
   });
 
-  it("a failure no rule knows names the tool (never Iron Jarvis)", () => {
+  it("a failure no rule knows names the tool (never STEC OS)", () => {
     const err = SC.claude_failed_generic.find((e) => e.type === "error");
     expect(err?.title).toBe("Claude Code couldn't finish this answer");
     expect(String(err?.fix)).toMatch(/^Press Retry\./);
@@ -361,7 +361,7 @@ describe("a failure has a press, and a reply has a receipt (C4.9)", () => {
     expect(receiptLine({ model: "", seconds: 9, actions: 1, files: 0, usage: null })).toBe("9 s · 1 action");
   });
 
-  it("a turn Iron Jarvis's restart cut off is timed to its last step, never to the next start (review)", () => {
+  it("a turn STEC OS's restart cut off is timed to its last step, never to the next start (review)", () => {
     // The boot reconcile writes the error and the done when the daemon starts
     // AGAIN (service.reconcile_at_boot) — hours later; the receipt must not
     // say the reply took that long.

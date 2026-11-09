@@ -31,7 +31,7 @@ def is_archived_path(path: Path) -> bool:
 
 
 def builtin_dir() -> Path:
-    """Path to the bundled example skills shipped with Iron Jarvis (§23)."""
+    """Path to the bundled example skills shipped with STEC OS (§23)."""
     return Path(__file__).resolve().parent / "builtin"
 
 

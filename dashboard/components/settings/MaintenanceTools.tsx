@@ -197,7 +197,7 @@ export interface StorageReport {
 }
 
 /**
- * What Iron Jarvis is keeping on disk, and a way to clear the part that is safe
+ * What STEC OS is keeping on disk, and a way to clear the part that is safe
  * to clear (v1.256.0, R-01).
  *
  * WHY THIS EXISTS. Measured on the live install: 814 MB of state, of which
@@ -275,7 +275,7 @@ function StorageReportCard({ disabled, refreshKey }: { disabled: boolean; refres
 
   return (
     <div className="border-t hairline pt-4" data-testid="storage-report">
-      <SectionLabel>What Iron Jarvis is keeping</SectionLabel>
+      <SectionLabel>What STEC OS is keeping</SectionLabel>
       <p className="mt-1 text-[12px] leading-relaxed text-zinc-500">
         Everything the app stores on this PC, largest first. Only generated pictures, video and
         audio can be cleared here — your backups, undo history and project files are never touched.
@@ -514,7 +514,7 @@ function BackupMirror({ disabled, refreshKey }: { disabled: boolean; refreshKey?
             setNote(null);
             setErr(null);
           }}
-          placeholder="e.g. D:\Iron Jarvis backups"
+          placeholder="e.g. D:\STEC OS backups"
           disabled={disabled || busy}
           spellCheck={false}
           className="min-w-0 flex-1 rounded-lg border hairline bg-ink-900/60 px-2 py-1.5 font-mono text-xs text-zinc-200"
@@ -650,13 +650,13 @@ export function MaintenanceTools({
         { name: pickedRow.name },
       );
       setConfirming(false);
-      // v1.433.0 (A8): the restore stops Iron Jarvis itself (half a second
+      // v1.433.0 (A8): the restore stops STEC OS itself (half a second
       // after it answers). Tell the desktop app first that this stop is a
       // restart it should expect, or its supervisor counts it as a crash. A
       // browser tab has no bridge: nothing to tell.
       await requestTidyRestart({ stopping: true });
       await onRestartRequested(
-        `Restored ${r.files} file(s) from ${r.restored_from} — Iron Jarvis is restarting on that snapshot.`,
+        `Restored ${r.files} file(s) from ${r.restored_from} — STEC OS is restarting on that snapshot.`,
       );
     } catch (err) {
       setRestoreErr(errorText(err));
@@ -729,7 +729,7 @@ export function MaintenanceTools({
       <div className="border-t hairline pt-4" data-testid="restore-backup">
         <SectionLabel>Restore from backup</SectionLabel>
         <p className="mt-1 text-[12px] leading-relaxed text-zinc-500">
-          Replace the database and settings with an earlier snapshot. Iron Jarvis restarts right
+          Replace the database and settings with an earlier snapshot. STEC OS restarts right
           after; anything running is refused first.
         </p>
         {backupsErr && <p className="mt-2 text-[11px] text-amber-300/80">Couldn’t list backups: {backupsErr}</p>}
@@ -777,7 +777,7 @@ export function MaintenanceTools({
                   Restore <span className="font-mono text-amber-200">{pickedRow?.name}</span> (from{" "}
                   {pickedRow ? fmtWhen(pickedRow.modified_at) : ""})? Your current database and
                   settings will be replaced by that snapshot, and{" "}
-                  <strong>Iron Jarvis restarts</strong> right after.
+                  <strong>STEC OS restarts</strong> right after.
                 </p>
                 <div className="mt-2 flex gap-2">
                   <button

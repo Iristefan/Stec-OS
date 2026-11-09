@@ -1,6 +1,6 @@
 /**
  * A project's CODING SESSIONS (v1.414.0) — from both Code views: Chat › Code
- * (Iron Jarvis's own harness, `/chat?view=code&session=<id>`) and Build ›
+ * (STEC OS's own harness, `/chat?view=code&session=<id>`) and Build ›
  * Code (the user's real Claude Code / Codex, `/terminals?view=code&code=<id>`).
  *
  * The daemon finds them by FOLDER at read time (projects/coding_sessions:

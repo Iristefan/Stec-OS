@@ -1014,7 +1014,7 @@ function TurnReceiptImpl({
     );
   }
   if (cutText) {
-    // v1.387.0 (review): the same quiet class as a refit — Iron Jarvis ran
+    // v1.387.0 (review): the same quiet class as a refit — STEC OS ran
     // nothing from a reply the model could not finish and asked it to carry
     // on. Why is on hover and in the expanded receipt (a phone has no hover).
     parts.push(
@@ -1024,7 +1024,7 @@ function TurnReceiptImpl({
     );
   }
   if (refitText) {
-    // v1.355.0 (G55): the same quiet class as an adapted turn — Iron Jarvis
+    // v1.355.0 (G55): the same quiet class as an adapted turn — STEC OS
     // recovered on the user's behalf (left the oldest messages out, or with
     // `dropped: 0` only shortened this reply's earlier step results). Said
     // where the user reads the reply; why (`refitTitle`, the words for what

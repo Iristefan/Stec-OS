@@ -1,5 +1,5 @@
 /**
- * v1.407.2: an edit of Git's own files or of Iron Jarvis's / Claude Code's own
+ * v1.407.2: an edit of Git's own files or of STEC OS's / Claude Code's own
  * rules (`.git/**`, `.ironjarvis/**`, `.claude/**` …) asks under Ask first,
  * Allow once only (src/iron_jarvis/core/auto_approve.py `guarded_edit`). Its
  * card names that reason (never the local-only line), shows the daemon's own
@@ -41,7 +41,7 @@ describe("a guarded-file edit card", () => {
     render(<ApprovalCard approval={ASK} scope="chat" />);
     const line = screen.getByTestId("approval-guarded-once").textContent ?? "";
     expect(line).toMatch(/Git's own files/);
-    expect(line).toMatch(/Iron Jarvis's or Claude Code's own rules/);
+    expect(line).toMatch(/STEC OS's or Claude Code's own rules/);
     expect(line).toMatch(/Don't ask/);
     expect(screen.queryByTestId("approval-local-only")).toBeNull();
   });

@@ -550,7 +550,7 @@ _CHAT_FIXES = [
     (dict(kind="signed_out", provider="anthropic", cli="claude-cli"),
      f"Press Sign in beside Claude Code in {fw.ACCOUNTS_PLACE}, then retry."),
     (dict(kind="answered_error", provider="custom"),
-     "Check it, or pick another model for this chat, and retry. Iron Jarvis won't switch to a"
+     "Check it, or pick another model for this chat, and retry. STEC OS won't switch to a"
      " different AI without asking. You can allow that in Settings."),
     (dict(kind="cooldown", provider="openai", retry_in=30), "Try again in 30 s, or pick another model for this chat."),
     (dict(kind="timeout", provider="openai"), "Press Retry, or pick another model for this chat."),

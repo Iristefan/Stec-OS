@@ -1,6 +1,6 @@
 """WHAT A NIGHT TASK'S OWN COMMIT MAY TAKE (v1.399.0 review of night shift N2).
 
-When a night task ends, Iron Jarvis commits its work to the task's own branch
+When a night task ends, STEC OS commits its work to the task's own branch
 while the user sleeps (decision 2). The Commit button's ``git add -A`` takes
 EVERYTHING in the branch folder — and a night task can leave a ``.env`` it
 made, a key it pasted into a config file, a 200 MB build artefact or a whole
@@ -26,7 +26,7 @@ Each is UNSTAGED — it stays in the branch folder, uncommitted — and the
 record names it with why (:func:`left_out_words`). If what is left staged
 cannot be proved clean, NOTHING is committed. A screen is a guardrail on
 shapes, not a proof that no secret is ever committed: the summary says what
-was left out, and the branch is never pushed by Iron Jarvis.
+was left out, and the branch is never pushed by STEC OS.
 
 BLOCKING (git and file reads): callers hop off the loop.
 """
@@ -37,7 +37,7 @@ import re
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-#: A file larger than this is never committed by Iron Jarvis at night
+#: A file larger than this is never committed by STEC OS at night
 #: (GitHub warns past 50 MB and refuses a push past 100 MB).
 MAX_COMMIT_FILE_BYTES = 50 * 1024 * 1024
 #: The record keeps at most this many left-out paths (the count is kept too).
@@ -230,7 +230,7 @@ def screen(wt: Path) -> list[dict[str, str]]:
     if not unstaged.ok or still & set(paths):
         _g(["reset", "-q"], wt)  # nothing half-screened stays staged
         raise GitRefused(
-            "Iron Jarvis could not leave out the files it must not commit, so it committed nothing.", 409,
+            "STEC OS could not leave out the files it must not commit, so it committed nothing.", 409,
         )
     return [{"path": rel, "why": left[rel]} for rel in paths]
 

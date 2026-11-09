@@ -20,7 +20,7 @@ center. Before this, the model answered those from memory. Now:
   :data:`doors.MAX_DOORS`, and never when a door to the same place is
   already there.
 * :func:`prompt_block` gives the model, in that turn's system prompt, one
-  plain sentence per step the message is about and per thing Iron Jarvis
+  plain sentence per step the message is about and per thing STEC OS
   does NOT offer (controlling the Windows desktop, opening its screens from
   another computer, Full access as a folder default), so the reply says it
   plainly and never pretends. ``""`` when nothing matches — the system
@@ -115,7 +115,7 @@ class PageStep:
 
 @dataclass(frozen=True)
 class NotOffered:
-    """Something Iron Jarvis does not offer at all: a line, never a door."""
+    """Something STEC OS does not offer at all: a line, never a door."""
 
     id: str
     line: str
@@ -200,13 +200,13 @@ _ACCOUNT_RULES = tuple(
 )
 
 _M365 = r"(?:(?:microsoft|office)[\s-]*365|m365)"
-#: "sign in to Outlook" is Iron Jarvis's only when the sentence says it is
+#: "sign in to Outlook" is STEC OS's only when the sentence says it is
 #: for Jarvis ("so you can read my mail") — "how do I log in to Outlook on my
 #: phone" is the user's own Outlook.
 _NOT_ON_A_DEVICE = (
     # Review: a laptop or a work computer is the user's own device too ("sign
     # in to my Microsoft account on the new laptop"); "on this PC" is not
-    # excluded (Iron Jarvis runs there).
+    # excluded (STEC OS runs there).
     r"(?![^.!?\n]{0,30}?\bon\s+(?:my|the|her|his|our|a|another)\s+(?:(?:new|old|work|home|personal|other"
     r"|second|office)\s+)?(?:phone|iphone|android|ipad|tablet|mac|macbook|laptop|computer|pc|desktop"
     r"|surface|chromebook)\b)"
@@ -218,7 +218,7 @@ _M365_RULES = tuple(
         r"\b" + _M365 + _NOUN_SIGNIN,
         r"\b" + _M365 + _SUBJECT_VERB + _GAP + _STATE,
         r"\b(?:you|jarvis)\b" + _GAP + _ACT + r"\s+" + _PREP + r"outlook\b" + _NOT_ON_A_DEVICE,
-        _ACT + r"\s+" + _PREP + r"outlook\b(?=" + _GAP + r"\b(?:you|jarvis|iron\s+jarvis)\b)",
+        _ACT + r"\s+" + _PREP + r"outlook\b(?=" + _GAP + r"\b(?:you|jarvis|(?:stec\s+os|iron\s+jarvis))\b)",
     )
 )
 
@@ -231,7 +231,7 @@ _MS_APPROVAL = re.compile(
     r"\b(?:admin(?:istrator)?\s+(?:consent|approval)|grant\s+(?:admin\s+)?consent"
     r"|app\s+registrations?|register(?:ing)?\s+(?:the|an|our|a|this)\s+app|conditional\s+access"
     r"|assignment\s+required|enterprise\s+applications?"
-    r"|(?:approve|consent\s+to|allow)\s+(?:the\s+|this\s+|our\s+|my\s+)?(?:iron\s+jarvis(?:\s+app)?|app))\b",
+    r"|(?:approve|consent\s+to|allow)\s+(?:the\s+|this\s+|our\s+|my\s+)?(?:(?:stec\s+os|iron\s+jarvis)(?:\s+app)?|app))\b",
     re.IGNORECASE,
 )
 _ENTRA = re.compile(r"\bentra\b" + _GAP + r"\b(?:apps?|registration|consent|permissions?|approv\w*)\b", re.IGNORECASE)
@@ -270,7 +270,7 @@ _SLACK_SETUP = re.compile(
     # ("send the member ID to the team on Slack"): only Slack's own, or one
     # for Jarvis, or the user's own looked up.
     r"|\bslack\s+member\s+id\b"
-    r"|\bmember\s+id\b(?=[^.!?\n]{0,40}?\bfor\s+(?:you|jarvis|iron\s+jarvis|notifications?)\b)"
+    r"|\bmember\s+id\b(?=[^.!?\n]{0,40}?\bfor\s+(?:you|jarvis|(?:stec\s+os|iron\s+jarvis)|notifications?)\b)"
     r"|\b(?:find|get|copy|where['’]s|where\s+is|where\s+do\s+i\s+find)\s+my\s+member\s+id\b"
     r"|\bsocket\s+mode\b|\bmessages\s+tab\b"
     r"|\b(?:create|make|set\s*up|register)\s+(?:a\s+|an\s+|the\s+|my\s+|our\s+)?(?:new\s+)?slack\s+(?:app|bot)\b"
@@ -298,7 +298,7 @@ _BROWSER_RULES = tuple(
         r"|\b(?:connect|link)\w*\s+(?:the|my|your|this)\s+(?:(?:browser|chrome|edge)\s+)?add[\s-]?on\b",
         r"\bbrowser\s+pairing\b|\bpairing\s+(?:code\s+for\s+)?(?:the|my|your)\s+browser\b",
         r"\b(?:install|set\s*up|setup|add|get|load|download|enable|turn\s+on|reinstall|update)\w*\s+"
-        r"(?:your|iron\s+jarvis['’]?s?|jarvis['’]?s?|its)\s+(?:(?:browser|chrome|edge)\s+" + _ADDON
+        r"(?:your|(?:stec\s+os|iron\s+jarvis)['’]?s?|jarvis['’]?s?|its)\s+(?:(?:browser|chrome|edge)\s+" + _ADDON
         + r"|add[\s-]?on)\b",
         r"\b(?:install|set\s*up|setup|add|get|load|download|enable|turn\s+on|reinstall|update)\w*\s+"
         r"(?:the|a|an)\s+(?:browser\s+add[\s-]?on|(?:browser|chrome|edge)\s+" + _ADDON
@@ -310,7 +310,7 @@ _BROWSER_RULES = tuple(
         + _GAP
         + r"(?:(?:won['’]?t|doesn['’]?t|isn['’]?t|not|can['’]?t|never)\s+(?:pair|connect|work|show|load|install)"
         r"|(?:keeps\s+)?(?:disconnect|dropp)(?:s|ed|ing)\b)",
-        r"\b(?:iron\s+)?jarvis\s+(?:browser\s+)?" + _ADDON + r"\b",
+        r"\b(?:stec\s+os|(?:iron\s+)?jarvis)\s+(?:browser\s+)?" + _ADDON + r"\b",
     )
 )
 
@@ -367,10 +367,10 @@ _DESKTOP_RULES = tuple(
     )
 )
 
-#: Opening Iron Jarvis's screens from another computer (not offered).
+#: Opening STEC OS's screens from another computer (not offered).
 _JARVIS_OBJ = (
-    r"(?:iron\s+jarvis|jarvis|you|this\s+app|the\s+app|the\s+dashboard|my\s+dashboard|this\s+dashboard"
-    r"|the\s+iron\s+jarvis\s+app|your\s+(?:screens?|dashboard|pages?))"
+    r"(?:(?:stec\s+os|iron\s+jarvis)|jarvis|you|this\s+app|the\s+app|the\s+dashboard|my\s+dashboard|this\s+dashboard"
+    r"|the\s+(?:stec\s+os|iron\s+jarvis)\s+app|your\s+(?:screens?|dashboard|pages?))"
 )
 _OPEN_VERB = (
     r"(?:open|use|access|reach|see|view|get\s+to|log\s+in(?:to)?|sign\s+in(?:to)?|connect\s+to"
@@ -387,7 +387,7 @@ _ELSEWHERE_RULES = tuple(
     for r in (
         r"\b" + _OPEN_VERB + r"\s+" + _JARVIS_OBJ + r"\b" + _GAP + r"\b" + _OTHER_COMPUTER,
         r"\b(?:open|use|access|reach|control|get\s+to)\s+" + _JARVIS_OBJ + r"\s+remotely\b",
-        r"\bremote\s+access\s+(?:to\s+)?(?:iron\s+jarvis|jarvis|the\s+dashboard|this\s+app)\b",
+        r"\bremote\s+access\s+(?:to\s+)?(?:(?:stec\s+os|iron\s+jarvis)|jarvis|the\s+dashboard|this\s+app)\b",
         r"\b" + _OPEN_VERB + r"\s+" + _JARVIS_OBJ + r"\b" + _GAP
         + r"\b(?:over|across|from|through)\s+(?:my|the|our)\s+(?:network|lan|wi-?fi|internet|tailscale|vpn)\b",
     )
@@ -450,7 +450,7 @@ def _full_default(t: str) -> bool:
 # the table
 # --------------------------------------------------------------------------- #
 
-_NOT_FOR_THEM = "Iron Jarvis cannot do it for the user, so say so plainly and point there"
+_NOT_FOR_THEM = "STEC OS cannot do it for the user, so say so plainly and point there"
 
 #: Where the places are called ON SCREEN today (review): the Settings rows
 #: are named like the pages they hold since v1.354.0 (G67), so "Accounts &
@@ -462,7 +462,7 @@ DIRECTORY_PLACE = "the Directory in Settings › Connections"
 #: The Iron-Proxy card's own title (``components/connections/IronProxyCard
 #: CARD_TITLE``; pinned equal).
 ACCOUNTS_CARD = "Several accounts (Iron-Proxy)"
-#: The one model Iron Jarvis downloads itself, and the words of the place
+#: The one model STEC OS downloads itself, and the words of the place
 #: that offers it (``dashboard/lib/starterModel.STARTER_MODEL_LABEL`` and the
 #: chat page's "Connect a model for real answers" line; pinned equal).
 STARTER_MODEL_NAME = "Llama 3.2"
@@ -499,9 +499,9 @@ STEPS: tuple[PageStep, ...] = (
     ),
     PageStep(
         "vendor_approval", help_href("handbook", M365_ADMIN_SECTION), "Read the Microsoft 365 setup steps",
-        "Approving Iron Jarvis in the firm's Microsoft 365 (registering its app, Grant admin consent, and who "
+        "Approving STEC OS in the firm's Microsoft 365 (registering its app, Grant admin consent, and who "
         "may use it) is done by the Microsoft 365 admin in the Microsoft Entra admin center, in their own "
-        "browser; Iron Jarvis cannot do it for them. The Handbook section \"Microsoft 365, locked down for "
+        "browser; STEC OS cannot do it for them. The Handbook section \"Microsoft 365, locked down for "
         "client data\" (in Help) walks it step by step; say so plainly and point there.",
     ),
     PageStep(
@@ -531,33 +531,33 @@ STEPS: tuple[PageStep, ...] = (
     PageStep(
         "signin_pi", TERMINALS_HREF, "Open Build to sign in to Pi",
         "Pi signs in by itself, for each model provider: the user opens a terminal in Build, starts Pi from "
-        "its Launch menu and types /login there. Iron Jarvis's accounts do not apply to Pi. "
+        "its Launch menu and types /login there. STEC OS's accounts do not apply to Pi. "
         f"{_NOT_FOR_THEM}.",
     ),
     PageStep(
         "signin_opencode", TERMINALS_HREF, "Open Build to sign in to OpenCode",
         "OpenCode signs in by itself, for each model provider: the user opens a terminal in Build and runs "
-        "opencode auth login there. Iron Jarvis's accounts do not apply to OpenCode. "
+        "opencode auth login there. STEC OS's accounts do not apply to OpenCode. "
         f"{_NOT_FOR_THEM}.",
     ),
     PageStep(
         "google_setup", ACCOUNTS_HREF, "Open Google's one-time setup in Settings",
         "Google Drive and Gmail need a one-time Google developer setup that the user makes in their own "
-        "Google account, in their browser (the Google Cloud console); Iron Jarvis cannot make it for them. "
+        "Google account, in their browser (the Google Cloud console); STEC OS cannot make it for them. "
         f"Google Drive's steps are on its card in {CONNECTIONS_PLACE} (its One-time setup), and Gmail's "
         f"card in {DIRECTORY_PLACE} links its own steps; say so plainly and point there.",
     ),
     PageStep(
         "slack_setup", NOTIFICATIONS_HREF, "Set up Slack in Settings",
         "A Slack app (its bot and app tokens, the app manifest, the user's member ID) is made by the user on "
-        "Slack's own website, signed in as themselves; Iron Jarvis cannot make it for them. Settings › "
+        "Slack's own website, signed in as themselves; STEC OS cannot make it for them. Settings › "
         "Connections › Notifications has the Slack form, a manifest to copy and the steps (for Jarvis to "
         f"message the user there); the Slack card in {DIRECTORY_PLACE}, for reading and posting in their "
         "channels, takes the bot token of such an app too. Say so plainly and point there.",
     ),
     PageStep(
         "browser_addon", _BROWSER_FIX_HREF, "Set up the browser add-on",
-        "Iron Jarvis's browser add-on is installed and paired by the user in Chrome or Edge, from Settings › "
+        "STEC OS's browser add-on is installed and paired by the user in Chrome or Edge, from Settings › "
         "Connections › Browser, which gives the steps and the pairing button. "
         f"{_NOT_FOR_THEM}.",
     ),
@@ -566,7 +566,7 @@ STEPS: tuple[PageStep, ...] = (
         # Review: the first-run wizard is gone (an orphan module); the starter
         # model is offered by a NEW chat's connect doors while no model is set
         # up (components/onboarding/ConnectDoors, the chat page's own words).
-        f"Iron Jarvis does not download models by itself (only the small starter model, {STARTER_MODEL_NAME}, "
+        f"STEC OS does not download models by itself (only the small starter model, {STARTER_MODEL_NAME}, "
         f"that a new chat's \"{CONNECT_DOORS_WORDS}\" choices offer while no model is set up). A local model "
         "is downloaded with Ollama (ollama pull followed by the model's name, which can run in a terminal in "
         f"Build) and then chosen in {CONNECTIONS_PLACE}. The guide \"Local Models by RAM Tier\" (in Help) says "
@@ -604,7 +604,7 @@ NOT_OFFERED: tuple[NotOffered, ...] = (
         # real registry is pinned for it), but an app the user connected may
         # offer such tools, and a flat "cannot" would make the model refuse a
         # tool it holds.
-        "Iron Jarvis has no way of its own to control the Windows desktop: it cannot move the mouse, type "
+        "STEC OS has no way of its own to control the Windows desktop: it cannot move the mouse, type "
         "on the keyboard, watch the screen, or click and type in desktop programs (only an app the user "
         "connected could, through its own tools in your list). It works in a web browser (through its "
         "browser add-on or its own browser), with the user's files (it can read and write documents such as "
@@ -617,9 +617,9 @@ NOT_OFFERED: tuple[NotOffered, ...] = (
         # _is_exempt: the task door AND a remote agent's message back), and
         # only a destination with two-way chat on takes messages (Telegram,
         # Slack, email; never Discord).
-        "Iron Jarvis's screens open only on this PC; another computer cannot open them. Another computer can "
-        "run its own copy of Iron Jarvis, with its own settings and data, and the setting \"Let other "
-        "computers on my network reach this Iron Jarvis\" only lets such a copy hand this one tasks (and a "
+        "STEC OS's screens open only on this PC; another computer cannot open them. Another computer can "
+        "run its own copy of STEC OS, with its own settings and data, and the setting \"Let other "
+        "computers on my network reach this STEC OS\" only lets such a copy hand this one tasks (and a "
         "remote agent the user connected send its messages back); it never opens these screens there. From "
         "a phone, the user can chat with Jarvis through a notification destination with two-way chat "
         "turned on (Telegram, Slack or email). Say so plainly.",
@@ -650,7 +650,7 @@ ALL_PATTERNS: tuple[re.Pattern[str], ...] = (
 )
 
 #: The heading the model reads the lines under.
-BLOCK_HEADING = "# What Iron Jarvis can and cannot do for this request"
+BLOCK_HEADING = "# What STEC OS can and cannot do for this request"
 #: Most lines one message adds (a long message naming everything stays short).
 MAX_LINES = 4
 
@@ -681,7 +681,7 @@ def page_step(text: Any) -> "PageStep | None":
 
 
 def not_offered(text: Any) -> list[NotOffered]:
-    """What the message asks for that Iron Jarvis does not offer (pure)."""
+    """What the message asks for that STEC OS does not offer (pure)."""
     t = _scan(text)
     if not t.strip():
         return []

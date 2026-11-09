@@ -1,14 +1,14 @@
 """v1.427.2 (a USER BUG, with a screenshot): Build › Code showed spinners on
 steps for DAYS. On Oct 31 Claude Code's reply ended, and Claude Code went on
 working ON ITS OWN (helper agents running tests, then a reply it started
-itself). Iron Jarvis closed in the middle of that, and the session's log ended
+itself). STEC OS closed in the middle of that, and the session's log ended
 with six ``tool`` rows still ``running``. The boot reconcile closed only a reply
 the USER started (a ``user`` event with no ``done``), and nothing closed a
 step when the tool's process ended with no reply open, so every later visit
 drew six spinners on steps nothing ran.
 
 Now a step is "running" only while the tool runs it: every step left open is
-closed ``stopped`` ("did not finish") when the process ends, when Iron Jarvis
+closed ``stopped`` ("did not finish") when the process ends, when STEC OS
 closes, and at the next start for a log an earlier version left open, and a
 step the tool ran on its own gets ONE notice saying why. The log shapes below
 are the real log's, with its commands left out.
@@ -98,7 +98,7 @@ def test_the_users_log_closes_every_step_left_running_with_one_notice():
 
 
 def test_a_cut_replys_own_steps_close_without_a_notice():
-    """The cut reply's own error ("Iron Jarvis stopped while this was working")
+    """The cut reply's own error ("STEC OS stopped while this was working")
     already says why: its steps close silently."""
     t = "t9"
     tail = [
@@ -199,7 +199,7 @@ async def test_when_the_tool_exits_on_its_own_its_open_steps_did_not_finish(app,
         assert _last_status(await _events(c, s["id"])).get("toolu_self") == "running"
         assert "toolu_self" in live.open_steps
         proc = live.proc
-        # The process ends by itself (not through Iron Jarvis's own stop).
+        # The process ends by itself (not through STEC OS's own stop).
         await asyncio.to_thread(proc.stop)
         await until(lambda: live.proc is None)
         events = await _events(c, s["id"])

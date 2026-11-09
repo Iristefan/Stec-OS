@@ -265,7 +265,7 @@ describe("the server type", () => {
     const panel = await within(card).findByTestId("endpoint-model-picker");
     expect(protocols()).toEqual(["openai", "anthropic"]);
     expect(within(panel).getByTestId("endpoint-models-protocol-note").textContent).toMatch(
-      /answered the Anthropic way, so Iron\s+Jarvis will talk to it as Anthropic-compatible\./,
+      /answered the Anthropic way, so STEC\s+OS will talk to it as Anthropic-compatible\./,
     );
     // the server told, so the choice never showed
     expect(within(card).queryByTestId("endpoint-protocol")).toBeNull();
@@ -288,7 +288,7 @@ describe("the server type", () => {
     const panel = await within(card).findByTestId("endpoint-model-picker");
     expect(protocols().slice(before)).toEqual(["anthropic", "openai"]);
     expect(within(panel).getByTestId("endpoint-models-protocol-note").textContent).toMatch(
-      /answered the OpenAI way, so Iron\s+Jarvis will talk to it as OpenAI-compatible\./,
+      /answered the OpenAI way, so STEC\s+OS will talk to it as OpenAI-compatible\./,
     );
     fireEvent.click(within(panel).getByText("qwen3"));
     fireEvent.click(within(card).getByRole("button", { name: /Save endpoint/ }));

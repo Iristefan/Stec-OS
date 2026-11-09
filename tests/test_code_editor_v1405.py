@@ -436,7 +436,7 @@ def test_a_launch_the_os_refuses_is_said_plainly(client, monkeypatch, source):
     monkeypatch.setattr(editor_routes, "_launch_url", boom)
     r = client.post("/editor/open", json={"path": str(source)})
     assert r.status_code == 422
-    assert r.json()["detail"] == "Iron Jarvis could not open VS Code. Open VS Code once by itself, then try again."
+    assert r.json()["detail"] == "STEC OS could not open VS Code. Open VS Code once by itself, then try again."
 
 
 # -------------------------------------------------------------- setting

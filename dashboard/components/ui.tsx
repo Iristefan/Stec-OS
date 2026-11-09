@@ -15,7 +15,7 @@ import { DESKTOP_OFFLINE_HINT, isDesktopShell } from "@/lib/desktopShell";
 import { OFFLINE_SAVED_SENTENCE, OFFLINE_TITLE } from "@/lib/offlineWords";
 import { DEMO_CHIP_TITLE, DEMO_MODEL } from "@/lib/demoWords";
 
-/** v1.354.0 (G30): the app's own words for an outage ("Iron Jarvis isn't
+/** v1.354.0 (G30): the app's own words for an outage ("STEC OS isn't
  *  responding"), never "the daemon". Defined in lib/offlineWords (lib/api
  *  and the chat stream need them too, and a lib must not import a
  *  component); re-exported here beside the primitives that say them. */

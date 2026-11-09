@@ -157,7 +157,7 @@ const lastUser = (body: Record<string, unknown> | undefined): string => {
 
 async function ask(question: string, reply: string) {
   H.dones.push({ reply, route: { provider: "mock", model: "mock" } });
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: question } });
   fireEvent.keyDown(box, { key: "Enter" });
   await waitFor(() => expect(H.streamBodies.length).toBeGreaterThan(0));

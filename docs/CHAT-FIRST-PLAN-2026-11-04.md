@@ -45,7 +45,7 @@ done**. The review also found **17 real bugs**. A few of them mislead the user, 
 | A5 | The browser sidebar never shows the app's own words at the end of a turn: "the model wrote nothing after its tools", the honesty notes, refusal footnotes. It says "finished without an answer" instead. | The sidebar reads `text` from the final frame, but the frame carries `reply` (`browser/panel.py:1621` vs `daemon/routes/chat.py:7363`). Two tests feed it the wrong shape. | Read `reply`; send the missing part as words; correct the tests. | V |
 | A6 | The sidebar shows a reply **twice**, or leaves raw `<tool_call>` text, after a rewrite. | The sidebar ignores the "start the reply over" frame (`panel.py:1525-1528`). | Handle it: clear the reply so far. | R |
 | A7 | Sidebar errors show technical text where every other place shows plain words. | Only `detail` is shown (`panel.py:1636-1645`). | Show the plain title and fix, and keep the technical text folded. | R |
-| A8 | Settings › Maintenance **"Restart Iron Jarvis" quits instead**. Running coding tools are stopped as on Quit, and after a few uses in a day the desktop shows a false **"Iron Jarvis has crashed 3 times"** warning. | The button posts `/shutdown` with no body, which means Quit (`MaintenanceCard.tsx:67`, `LegacySettingsForm.tsx:1123`). The desktop app counts the exit as a crash. | Restart through the desktop app's own restart, which marks it as on purpose. | V |
+| A8 | Settings › Maintenance **"Restart STEC OS" quits instead**. Running coding tools are stopped as on Quit, and after a few uses in a day the desktop shows a false **"STEC OS has crashed 3 times"** warning. | The button posts `/shutdown` with no body, which means Quit (`MaintenanceCard.tsx:67`, `LegacySettingsForm.tsx:1123`). The desktop app counts the exit as a crash. | Restart through the desktop app's own restart, which marks it as on purpose. | V |
 | A9 | After an update fails to install, the next Quit **runs that same installer anyway**, skipping the safety steps. | `abortUpdateInstall` forgets the update but leaves "install on quit" on (`desktop/main.js` ~4650-4673). | Turn install-on-quit off there. | V |
 | A10 | After Approve or Reject on a review, the **bell keeps counting it and the orb stays red** until a reload. | Approve and Reject publish no event (`routes/sessions.py:1360-1371`); the bell and orb wait for one. | Publish `review.approved` / `review.rejected`. | V |
 | A11 | Turn a feature off (Slack, calendar, phone, watchers, autonomy, fleet) after it failed, and its **"isn't working · for N min" alarm stays forever**. | The off-switch paths leave the failing health row (`daemon/app.py:1481, 1659, 1707, 1983`…). Only Iron-Proxy and the backup copy clear theirs. | Clear the row when a loop is turned off. | V |
@@ -140,7 +140,7 @@ one of them.
 - About 30 routes have no caller, including leftovers of the removed round table (`/agents/threads` create/say/remember/delete) and older copies of current routes.
 
 **Small honesty gaps:**
-- Help names a tray item ("Restart Iron Jarvis") that only appears when something is stuck.
+- Help names a tray item ("Restart STEC OS") that only appears when something is stuck.
 - The hotkeys are shown nowhere in the app.
 
 ---
@@ -184,6 +184,6 @@ the same review discipline as recent waves.
 ## Not changing (by design or out of reach)
 
 - Controlling the Windows desktop screen: the app has no such feature (browser automation only). Chat should say so.
-- Opening the dashboard from another computer: the dashboard listens on this PC only. LAN access lets another Iron Jarvis hand it tasks; it is not remote use of the screen.
+- Opening the dashboard from another computer: the dashboard listens on this PC only. LAN access lets another STEC OS hand it tasks; it is not remote use of the screen.
 - A Google or Slack developer app, and a vendor's own sign-in, cannot be done for the user; chat gives the door.
 - Full access as a folder default stays refused (v1.426.0 decision).

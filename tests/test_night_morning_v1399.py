@@ -1,7 +1,7 @@
 """v1.399.0 (night shift N2, "the morning") — the rules, one at a time.
 
 * THE NIGHT: a task belongs to the night its window opened on (01:30 on the
-  27th is the night of the 26th); a task an older Iron Jarvis started is
+  27th is the night of the 26th); a task an older STEC OS started is
   placed by its ``started_at``.
 * THE COMMIT MESSAGE is the task's own words, and says how the task ended.
 * THE FACTS are read off the records: usage per account from each reply
@@ -83,9 +83,9 @@ def test_the_commit_message_is_the_tasks_own_words_and_says_how_it_ended():
     subject, *rest = msg.split("\n")
     assert subject == "Fix the parser"
     assert "The test in test_parse.py says how." in msg
-    assert msg.endswith("Committed by Iron Jarvis when this night task ended (needs you).")
+    assert msg.endswith("Committed by STEC OS when this night task ended (needs you).")
     one = M.commit_message("Make add() add", "done")
-    assert one == "Make add() add\n\nCommitted by Iron Jarvis when this night task ended (done)."
+    assert one == "Make add() add\n\nCommitted by STEC OS when this night task ended (done)."
     long = M.commit_message("x" * 100, "failed")
     assert len(long.split("\n")[0]) == M.SUBJECT_CHARS and long.split("\n")[0].endswith("…")
     assert ("x" * 100) in long  # the words are kept whole in the body
@@ -183,7 +183,7 @@ def test_the_phone_gets_one_message_with_a_line_per_task():
     assert lines[0] == "Last night: 12 done"
     assert len([ln for ln in lines if ln.startswith("• ")]) == M.PHONE_LINES
     assert "…and 2 more." in lines
-    assert lines[-1].startswith("Open Coding sessions › Last night in Iron Jarvis")
+    assert lines[-1].startswith("Open Coding sessions › Last night in STEC OS")
     assert all(len(ln) <= M.PHONE_LINE_CHARS for ln in lines[1:-1])
     # The daemon's alert IS this message (comm/notifier.format_event).
     assert format_event({"type": EventType.BUILD_NIGHT_SUMMARY, "payload": payload}) == text

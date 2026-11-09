@@ -35,7 +35,7 @@ FIXTURE = Path(__file__).parent / "fixtures" / "fake_iron_proxy_v1301.py"
 sys.path.insert(0, str(FIXTURE.parent))
 from fake_iron_proxy_v1301 import FEATURES_PICK_PROFILE, FakeIronProxy  # noqa: E402
 
-#: The owner's secrets — none may appear in any file Iron Jarvis writes.
+#: The owner's secrets — none may appear in any file STEC OS writes.
 SECRETS = ("sk-owner-env-secret-0123456789", "Bearer owner-header-token-abcdef",
            "https://example.test/mcp?api_key=owner-url-secret-xyz", "--token=owner-arg-secret-777")
 
@@ -201,7 +201,7 @@ def test_no_secret_and_nothing_account_private_is_written_anywhere(owner, accoun
 def test_the_synced_and_trashed_skills_never_cross(owner, account, current):
     """claude.ai's synced skills are the owner's ACCOUNT's: each skill is linked
     on its own, so ``synced`` and ``.trash`` never reach the other account —
-    Iron Jarvis's guarantee, not Claude Code's one-level read.
+    STEC OS's guarantee, not Claude Code's one-level read.
 
     MUTATION: drop ``synced`` from ``_NOT_SKILLS`` (or the dot-folder skip) ->
     linked -> red."""
@@ -263,7 +263,7 @@ def test_off_is_byte_identical_and_takes_the_folder_away(owner, account, current
     plain = _with_pane_env(dict(base), {"IRONJARVIS_PANE_ID": "p"}, None)
     plain.update({"CLAUDE_CONFIG_DIR": str(account)})
     assert got == plain, "off: exactly the account's environment, nothing added"
-    # Iron Jarvis's files and links are gone; the OWNER's folders are intact.
+    # STEC OS's files and links are gone; the OWNER's folders are intact.
     assert not (plugin / ".mcp.json").exists() and not (plugin / "skills").exists()
     assert (owner / "skills" / "owner-skill" / "SKILL.md").is_file()
     assert (owner / "commands" / "owner-cmd.md").is_file() and (owner / "agents" / "owner-agent.md").is_file()
@@ -296,7 +296,7 @@ def test_a_hand_edit_is_never_overwritten_and_the_card_says_so(owner, account, c
 
 
 def test_a_real_folder_or_a_foreign_link_in_its_place_is_left_alone(owner, account, current, tmp_path):
-    """MUTATION: drop the "a link Iron Jarvis did not make" check -> the foreign
+    """MUTATION: drop the "a link STEC OS did not make" check -> the foreign
     link is replaced -> red."""
     plugin = CS.folder_for(current.home) / CS.PLUGIN_DIR
     (plugin / "commands").mkdir(parents=True)
@@ -314,7 +314,7 @@ def test_a_real_folder_or_a_foreign_link_in_its_place_is_left_alone(owner, accou
     CS.retire(current.home)
     assert (plugin / "commands" / "keep.txt").is_file() and CS._is_link(plugin / "agents")
     assert (plugin / "skills" / "keep.txt").is_file(), "a file put in the skills folder keeps its folder"
-    assert not (plugin / "skills" / "owner-skill").exists(), "Iron Jarvis's own link went"
+    assert not (plugin / "skills" / "owner-skill").exists(), "STEC OS's own link went"
 
 
 def test_a_foreign_link_as_the_skills_folder_never_receives_a_skill(owner, account, current, tmp_path):
@@ -329,7 +329,7 @@ def test_a_foreign_link_as_the_skills_folder_never_receives_a_skill(owner, accou
     assert CS._is_link(plugin / "skills")
     CS.retire(current.home)
     assert CS._is_link(plugin / "skills") and target.is_dir()
-    assert "Skills in Iron Jarvis's folder is a link" in CS.card_line(current)["words"]
+    assert "Skills in STEC OS's folder is a link" in CS.card_line(current)["words"]
 
 
 def test_a_reference_name_changes_with_the_servers_definition(owner, account, current):

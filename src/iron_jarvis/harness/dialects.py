@@ -163,7 +163,7 @@ FAMILY_MEASURED: dict[str, "Measurement | str"] = {
         setup=(
             "ironjarvis bench-harness run --runner jarvis --provider custom --model "
             "glm-5.3-flash (the DGX Spark proxy, called by that exact name), all 30 tasks "
-            "(core 20, hard 10), Iron Jarvis 1.363.0 + IJ harness Phase 3"
+            "(core 20, hard 10), STEC OS 1.363.0 + IJ harness Phase 3"
         ),
         rows=(
             ("generic", "8405051e0b9f",
@@ -1054,7 +1054,7 @@ _CLAUDE_TOOLS: tuple[DialectTool, ...] = (
         "code in parallel. Give each a complete prompt: it cannot see this conversation. "
         "subagent_type: general-purpose (can change files, default), Explore (reads and "
         "searches), or a name from list_agents — a member of the user's model team (listed "
-        "under 'Your model team') works on its OWN model instead. To let Iron Jarvis pick the "
+        "under 'Your model team') works on its OWN model instead. To let STEC OS pick the "
         "team member, give subagent_type role:read, role:code, role:review or role:test (a "
         "local member first when its record for that role is good). model and effort are not "
         "used here.",
@@ -1223,7 +1223,7 @@ _GPT_TOOLS: tuple[DialectTool, ...] = (
         "sub-agent cannot see this conversation: put everything it needs in message. "
         "agent_type: default or worker (can change files), explorer (reads and searches), or a "
         "name from list_agents — a member of the user's model team (listed under 'Your model "
-        "team') works on its OWN model instead. To let Iron Jarvis pick the team member, give "
+        "team') works on its OWN model instead. To let STEC OS pick the team member, give "
         "agent_type role:read, role:code, role:review or role:test.",
         # Codex 0.157.0's multi_agent_v1.spawn_agent arguments that mean
         # something here (v2's task_name is still accepted by the translation).
@@ -1405,7 +1405,7 @@ QWEN = Dialect(
 
 GENERIC = Dialect(
     id="generic",
-    label="Iron Jarvis",
+    label="STEC OS",
     description_style="jarvis",
     tools=(),
     hides=frozenset(),

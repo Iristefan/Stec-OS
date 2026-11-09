@@ -195,7 +195,7 @@ def test_answered_error_keeps_the_endpoints_own_words_and_the_policy():
     text = str(_router()._unavailable_error(PROVIDER, False, kind="answered_error", exc=exc))
     assert text.startswith("Office Spark answered HTTP 404: model 'llama3.1' not found.")
     # v1.354.0 (G28): the policy in plain words, never its config key.
-    assert "Iron Jarvis won't switch to a different AI without asking." in text
+    assert "STEC OS won't switch to a different AI without asking." in text
     assert "local_primary_policy" not in text
     assert ".." not in text
 

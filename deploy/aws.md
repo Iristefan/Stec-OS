@@ -1,4 +1,4 @@
-# Deploy Iron Jarvis to AWS
+# Deploy STEC OS to AWS
 
 Two supported shapes. Pick one:
 

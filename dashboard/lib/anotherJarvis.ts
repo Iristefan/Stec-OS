@@ -1,5 +1,5 @@
 /**
- * Another computer running Iron Jarvis (v1.357.0, G61) — the words and the
+ * Another computer running STEC OS (v1.357.0, G61) — the words and the
  * shape of THIS computer's task door, in one place.
  *
  * The daemon side is `agents/task_door.py` (GET /agents/task-door, POST
@@ -70,19 +70,19 @@ export const LAN_SETTING_KEY = "lan_access";
 export const LAN_SETTING_HREF = `/settings?focus=${LAN_SETTING_KEY}`;
 export const LAN_SETTING_LINK = "Open the setting";
 
-/** Said quietly when Iron Jarvis ACCEPTS requests at the address shown (the
+/** Said quietly when STEC OS ACCEPTS requests at the address shown (the
  *  daemon's Host-guard verdict). It cannot see Windows Firewall, so it never
  *  claims more than that, and says where to look if one still cannot get
  *  through (v1.358.0 review). */
 export const REACHABLE_LINE =
-  "Iron Jarvis accepts requests at this address from your network. If another computer still cannot reach it, allow Iron Jarvis in Windows Firewall.";
+  "STEC OS accepts requests at this address from your network. If another computer still cannot reach it, allow STEC OS in Windows Firewall.";
 
 /** The card's title — the Agents › Your team tile. */
 export const CARD_TITLE = "Another computer running Jarvis";
 
 /** What the door is, said once while it is off. */
 export const OFF_EXPLAINER =
-  "Let another computer running Iron Jarvis hand this one tasks. Turn it on here, " +
+  "Let another computer running STEC OS hand this one tasks. Turn it on here, " +
   "then add this computer on the other one as a remote agent with the address and " +
   "token shown below. Its tasks run here on their own: anything that would need " +
   "someone's OK at this computer is not done, and each answer goes back to the chat " +

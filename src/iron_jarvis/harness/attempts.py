@@ -54,7 +54,7 @@ the session onto the kept attempt's branch (``sessions.adopt_branch``) — the
 work joins the session on a branch of its own and the user's main checkout
 is never touched (a merge into the folder's branch would change it).
 
-KEEP (:func:`keep`, a person's press, never the agent): Iron Jarvis commits
+KEEP (:func:`keep`, a person's press, never the agent): STEC OS commits
 the kept attempt's work on its branch (``branches.commit``, the Commit
 button's own call) and merges that branch into the session's branch
 (``branches.merge`` — the merge machinery's own safety: a conflict is
@@ -105,7 +105,7 @@ WHY_WORDS = {
     "failed": "Failed",
     "stopped": "Stopped",
     "limit": "Stopped at an account limit",
-    "cut_off": "Cut off when Iron Jarvis stopped",
+    "cut_off": "Cut off when STEC OS stopped",
 }
 #: Never armed in an attempt: an attempt is ONE model's own try — it starts no
 #: helpers (they would run on other models and muddy the comparison) and no
@@ -179,7 +179,7 @@ KEEP_COPIED = (
 #: attempt again (new branches, new spend) while a finished one can still be
 #: kept, and a retry of the "Try on…" control's message was a plain turn.
 CUT_OFF_LINE = (
-    "Iron Jarvis stopped while the attempts worked (a restart or a crash), and nothing restarts on "
+    "STEC OS stopped while the attempts worked (a restart or a crash), and nothing restarts on "
     "its own. The card shows what each attempt did; a finished one can still be kept."
 )
 DISCARD_NONE = "There is nothing to discard: every attempt's folder is already in the trash."
@@ -872,7 +872,7 @@ class StartPoint:
 
     ``carried`` (review, v1.397.0): the session had work NOT COMMITTED yet
     (the agent asks before every commit, so a session that did anything has
-    some) — ``sha`` is then a commit Iron Jarvis made of the session's CURRENT
+    some) — ``sha`` is then a commit STEC OS made of the session's CURRENT
     files on top of ``head`` (:func:`snapshot_commit`), every attempt starts
     from it, and Keep lands the kept result in the session's folder instead
     of merging (:func:`land`)."""
@@ -1968,7 +1968,7 @@ def _keep_message(card: dict[str, Any], item: dict[str, Any]) -> str:
     pair = "/".join(p for p in (item.get("provider"), item.get("model")) if p)
     return (
         f"{title}\n\nKept from the attempt on {item.get('label')} ({pair}), one of "
-        f"{len(card.get('items') or [])} tried in Iron Jarvis."
+        f"{len(card.get('items') or [])} tried in STEC OS."
     )
 
 
@@ -2084,7 +2084,7 @@ def keep(platform: Any, thread_id: str, turn_id: str, attempt_id: str) -> dict[s
             out["merged_into"] = merged.get("into", "")
             out["merge_commit"] = merged.get("commit", "")
     except (B.GitRefused, AttemptsRefused) as exc:
-        # NOTHING MOVES on a refusal: the commit Iron Jarvis made a moment ago
+        # NOTHING MOVES on a refusal: the commit STEC OS made a moment ago
         # on the attempt's OWN branch is taken back (its work is uncommitted
         # in its folder again, exactly as before the press) — only while the
         # branch still points at that commit.

@@ -604,7 +604,7 @@ class Config(BaseModel):
     sandbox_runtime: str = "native"  # "native" | "docker" (§16)
     git_native: bool = False  # run sessions on a git worktree branch (§27)
     # Self-development (opt-in, OFF by default): when enabled, a `self_dev`
-    # session runs a Maintainer agent on a git worktree of Iron Jarvis's OWN
+    # session runs a Maintainer agent on a git worktree of STEC OS's OWN
     # source so agents can read/edit/fix this project — changes land only via
     # the same review/approve gate (never auto-merge). `self_dev_root` overrides
     # the auto-detected repo path (e.g. when running from an installed package).
@@ -661,7 +661,7 @@ class Config(BaseModel):
     #: so a change applies at the next check; the daemon never acts on it.
     update_channel: str = "fresh"
     #: THE DESKTOP APP'S OWN TWO SWITCHES (v1.438.0, chat-first plan Wave 4
-    #: group C, decision D5): "Start Iron Jarvis with Windows" and "Keep
+    #: group C, decision D5): "Start STEC OS with Windows" and "Keep
     #: running in the background when I close the window". None = never
     #: chosen here (the tray and the close question decide, as before). The
     #: DESKTOP SHELL reads both from config.toml at start and about every 15
@@ -674,7 +674,7 @@ class Config(BaseModel):
     keep_running_in_background: bool | None = None
     # Where a chat with NO project keeps the files it was handed and the files
     # it makes (v1.244.0): one dated folder per conversation, so the work lands
-    # somewhere the user will look. "" = <Documents>\Iron Jarvis. Read through
+    # somewhere the user will look. "" = <Documents>\STEC OS. Read through
     # `chat_files_dir`; see documents/workfolder.py for why it exists.
     chat_files_root: str = ""
     #: Follow-up questions under a chat reply (v1.323.0): one extra short call
@@ -952,7 +952,7 @@ class Config(BaseModel):
     #: v1.424.0 (audit D4): Claude Code on an Iron-Proxy account that is NOT
     #: this PC's own login starts with the owner's MCP servers, skills,
     #: commands, agents, hooks and installed plugins — through one environment
-    #: variable naming Iron Jarvis's own plugin folder
+    #: variable naming STEC OS's own plugin folder
     #: (``iron_proxy/claude_setup.py``; nothing written in the account's home,
     #: no credential copied). Off: a Build terminal and a Build › Code process
     #: start exactly as before. Read live at every start.
@@ -984,7 +984,7 @@ class Config(BaseModel):
     #: account in the SAME group and of the SAME vendor (Claude to Claude,
     #: Codex to Codex); an account in no group never moves and never receives
     #: a move, so work and personal accounts never mix. Empty (the default) =
-    #: no move ever. Kept HERE (Iron Jarvis's config, through the one settings
+    #: no move ever. Kept HERE (STEC OS's config, through the one settings
     #: writer), never in Iron-Proxy. Which ids exist is checked when it is
     #: SAVED (``harness/build_accounts.group_problem``), never at load.
     account_groups: dict[str, list[str]] = Field(default_factory=dict)
@@ -1029,7 +1029,7 @@ class Config(BaseModel):
     #: it meanwhile) before that one step is declined and the task carries on.
     night_card_wait_minutes: int = Field(default=15, ge=1, le=240)
     # SHARE MY PROFILE WITH BUILD (v1.306.0) — one switch per vendor CLI, OFF
-    # by default: when on, Iron Jarvis keeps a generated block (the profile +
+    # by default: when on, STEC OS keeps a generated block (the profile +
     # confirmed preferences) in that CLI's user-level instruction file
     # (profile/share.py). Persisted by PUT /profile/share ONLY, like
     # iron_proxy_enabled and for the same reason: a settings-page write would
@@ -1181,13 +1181,13 @@ class Config(BaseModel):
     @property
     def chat_files_dir(self) -> Path:
         """Where no-project conversations get their folders (v1.244.0):
-        ``chat_files_root`` when set, else ``<Documents>\\Iron Jarvis``."""
+        ``chat_files_root`` when set, else ``<Documents>\\STEC OS``."""
         raw = (self.chat_files_root or "").strip()
         if raw:
             return Path(raw).expanduser()
         from .userdirs import documents_dir
 
-        return documents_dir() / "Iron Jarvis"
+        return documents_dir() / "STEC OS"
 
     @property
     def browser_dir(self) -> Path:
@@ -1335,7 +1335,7 @@ def resolve_home(project_root: str | Path) -> Path:
     """The state home (DB, secrets, memory, sessions, schedules, workspaces).
 
     ``IRONJARVIS_HOME`` (when set) DECOUPLES all persistent state from the
-    per-invocation project directory, so ONE Iron Jarvis brain — one vault of
+    per-invocation project directory, so ONE STEC OS brain — one vault of
     provider logins/keys, one memory, one session history — serves EVERY project
     the owner works in (the "daily driver for all projects" model). Unset (the
     default) keeps the per-project ``<project_root>/.ironjarvis`` home, so existing

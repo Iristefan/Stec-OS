@@ -159,7 +159,7 @@ function dropOnWindow() {
 async function openOn(view: "chat" | "code") {
   window.history.replaceState({}, "", view === "code" ? "/chat?view=code" : "/chat?view=chat");
   render(<ChatPage />);
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   if (view === "code") {
     await waitFor(() => expect(screen.getByTestId("chat-surface")).toHaveAttribute("data-view", "code"));
     await screen.findByTestId("code-view-stub", {}, { timeout: 10_000 });

@@ -204,11 +204,11 @@ describe("an edit whose pack did not reload says so in the warn words", () => {
   it("keeps the auto-approve restart note as its own sentence after it", () => {
     expect(
       editedButNotStarted(
-        "saved, but it did not start: boom; see its row for the fix; restart Iron Jarvis for autonomous agents to pick up the auto-approve change",
+        "saved, but it did not start: boom; see its row for the fix; restart STEC OS for autonomous agents to pick up the auto-approve change",
         '"x"',
       ),
     ).toBe(
-      `"x" saved, but it didn't start: boom. Open its row below to retry. Restart Iron Jarvis for autonomous agents to pick up the auto-approve change.`,
+      `"x" saved, but it didn't start: boom. Open its row below to retry. Restart STEC OS for autonomous agents to pick up the auto-approve change.`,
     );
   });
 

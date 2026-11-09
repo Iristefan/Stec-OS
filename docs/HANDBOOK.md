@@ -1,13 +1,13 @@
-# Iron Jarvis — The Handbook
+# STEC OS — The Handbook
 
 *The user guide. What this app is, how to work it daily, and the rules it
-holds itself to. Current as of v1.443.4 (2026-11-06).*
+holds itself to. Current as of v1.444.0 (2026-11-06).*
 
 ---
 
-## What Iron Jarvis is
+## What STEC OS is
 
-Iron Jarvis is a **local-first AI operating system** for daily creative,
+STEC OS is a **local-first AI operating system** for daily creative,
 coding, and office work. One Python daemon owns all state, agents, tools, and
 memory on **your machine**; a dashboard renders it; an Electron desktop app
 wraps both with a tray, global hotkeys, and auto-updates. Client documents,
@@ -30,7 +30,7 @@ undo can be captured truthfully.
 another app holds it (the desktop app tries the two in order and retries a
 taken key every 30 minutes); the tray menu and the Overview tips card show
 the key that is live, or say "hotkey unavailable" when both are taken.
-`Ctrl+Shift+Space` opens Spotlight. State lives in `%APPDATA%/Iron Jarvis/.ironjarvis/` (SQLite DB,
+`Ctrl+Shift+Space` opens Spotlight. State lives in `%APPDATA%/STEC OS/.ironjarvis/` (SQLite DB,
 config.toml, secrets vault, skills, backups). Updates download automatically
 (checked at boot and every 30 min) and install only when you click
 **Restart to update**. Since v1.260.0 the check reads a small manifest file the
@@ -48,7 +48,7 @@ refreshes everything the moment you bring it back.
 ## Getting started — your first five minutes
 
 *(v1.321.0, the calm layout)* The aim of the first five minutes is one real
-answer to one real question. There is no setup screen: Iron Jarvis opens on a
+answer to one real question. There is no setup screen: STEC OS opens on a
 new chat with the box ready to type in.
 
 **1. Ask something.** The home **is** a chat. Type a question and press
@@ -111,7 +111,7 @@ job waiting for an answer — one quiet line appears above the chat box, with
 
 ## The calm layout (v1.321.0)
 
-Iron Jarvis now looks like the chat apps you already know: the conversation
+STEC OS now looks like the chat apps you already know: the conversation
 is the product and everything else is found when you need it. Nothing was
 taken away — every feature moved to a place you can reach in two clicks or by
 searching.
@@ -120,7 +120,7 @@ searching.
   v1.407.0), **Build** (the terminals), **Projects**, **Everything**,
   **Settings**; then **Chats** (by day — on the chat screen this is the
   chat's own list, with search, rename, pin, move and delete; in its Code
-  view, the coding sessions) and **Projects**. At the bottom: whether Iron Jarvis is running and its version
+  view, the coding sessions) and **Projects**. At the bottom: whether STEC OS is running and its version
   (press it for Status), and **Help** (the guides, *Ask the Guide*, and
   what's new). Collapse it to icons with the arrows at the top. On a phone it
   is the ☰ menu.
@@ -170,7 +170,7 @@ Anything on the Settings page can be changed in chat, in your own words —
   token, the reply shows a **secure card**: paste it there and it goes
   straight into the encrypted vault — the model never sees it, and it is not
   written to the conversation, the history or any log. If you paste something
-  that looks like a key into the chat box, Iron Jarvis holds the message and
+  that looks like a key into the chat box, STEC OS holds the message and
   offers to **Save it securely** instead (or **Send anyway**).
 
 ## The surfaces, in the order you'll use them
@@ -193,7 +193,7 @@ Chat is where most work happens, and it is wired into everything:
   in Settings if you would rather every page went to a vision model.
 - **Attach and ask, no project needed** (v1.244.0): the first file you attach
   to a chat that has no project gives that conversation its own folder —
-  `Documents\Iron Jarvis\<date> <file name>` — with your file copied in, and
+  `Documents\STEC OS\<date> <file name>` — with your file copied in, and
   arms the same file tools a project does (find, read, create a document,
   write a file). The chat then does the job itself and saves what it makes
   next to your file; the folder shows as a chip above the message box with an
@@ -225,7 +225,7 @@ Chat is where most work happens, and it is wired into everything:
   if it still runs out, tells you what it did and what is left instead of
   handing the job to a background agent.
 - **The app opens sooner, and says where its start-up time goes**
-  (v1.251.0): Iron Jarvis now checks the two things it waits for at the same
+  (v1.251.0): STEC OS now checks the two things it waits for at the same
   time instead of one after the other, and looks up your local model list
   while it starts rather than on the first check afterwards — about half a
   second off a cold start, measured on a real installed build. It also writes
@@ -493,7 +493,7 @@ Failed and its card says **Stopped** (grey, not red).
   the Agent runs and Tool invocations tables and Model calls sit under one
   collapsed **Full record** chevron. **Back** returns to where you came
   from. A run a restart (an update or a crash) cut off reads
-  **Interrupted** and says **Stopped when Iron Jarvis restarted**, with the
+  **Interrupted** and says **Stopped when STEC OS restarted**, with the
   same **Continue** / **Dismiss** the bell offers: Continue resumes the
   run's own conversation and the page follows the new run; a follow-up
   typed in the box resumes it too.
@@ -541,7 +541,7 @@ with the request typed in.
 
 ### Settings → System → Maintenance
 - **What the app is keeping on your disk** (v1.256.0): Maintenance now lists
-  everything Iron Jarvis stores here — generated pictures and video, backups,
+  everything STEC OS stores here — generated pictures and video, backups,
   undo history, the scan-text cache, code workspaces and the database — largest
   first, with a total. Before this it was invisible: on the machine this shipped
   from, 783 MB of the 814 MB was old generated video that nothing ever cleared
@@ -555,14 +555,14 @@ with the request typed in.
   never touched, however old they are.
 - **A tool pack that can't start tells you why, in words** (v1.256.0): if an
   add-on pack fails, Tools now says what actually happened — "npx exists on this
-  PC but not on the PATH Iron Jarvis was started with" — and what to do about
+  PC but not on the PATH STEC OS was started with" — and what to do about
   it, instead of only showing the error the computer produced. The raw text is
   still there underneath for a bug report. On this machine one pack had been
   failing silently at every start for weeks.
 - **A model you can't reach says so** (v1.256.0): if the model you picked for
   routing or as your default can't be reached, the start-up check names it and
-  says whether no address is configured or the server isn't answering. Iron
-  Jarvis never quietly uses a different model instead, which is exactly why it
+  says whether no address is configured or the server isn't answering. STEC
+  OS never quietly uses a different model instead, which is exactly why it
   has to tell you the setting is doing nothing.
 
 ### Memory
@@ -628,7 +628,7 @@ with the request typed in.
   4,000 characters. The sentence under each switch names the files and says
   that Anthropic or OpenAI sees the block when that CLI runs. Nothing outside
   the block is ever changed, and before Jarvis first writes into a file you
-  already had, a copy of it goes to Iron Jarvis's trash folder. A file that
+  already had, a copy of it goes to STEC OS's trash folder. A file that
   is a link to another file is left alone (the card says so), and Jarvis
   reads the file once more just before it writes and backs off if you saved
   it in the meantime. Change your
@@ -761,7 +761,7 @@ with the request typed in.
   your profile picture → Profile → ⋯ → Copy member ID) — with the allowlist
   empty, Jarvis does not listen at all. When one is missing, the destination's
   row and the save say which, in plain words. Slack can now also hold a real
-  conversation with Jarvis: tick **Chat with Iron Jarvis**. The Slack app
+  conversation with Jarvis: tick **Chat with STEC OS**. The Slack app
   manifest turns on the app's **Messages tab**; an app made from an older
   manifest needs it switched on once in Slack: App Home → Messages Tab → tick
   **Allow users to send Slash commands and messages from the messages tab**.
@@ -838,7 +838,7 @@ seam); Train (teach it your writing voice, suggest-only).
 - **Build after an update: Resume** (v1.245.0): an app update or a crash
   still ends whatever was running in a pane — the shell comes back fresh in
   the same folder — but a pane that was running Claude Code or Codex now
-  shows a strip: "*Claude Code was running here before Iron Jarvis
+  shows a strip: "*Claude Code was running here before STEC OS
   restarted.*" **Resume** types `claude --continue` (or `codex resume
   --last`) and presses Enter, picking the last conversation back up; **×**
   dismisses it. Pane history is saved every 30 seconds, so a crash loses at
@@ -869,11 +869,11 @@ seam); Train (teach it your writing voice, suggest-only).
   restart appear on your Overview and in the bell with a **Continue** button,
   for three days. Pressing Continue picks the job up where it stopped.
 - **Jobs waiting on you reach you with the window closed** (v1.249.0): when a
-  job needs your permission and Iron Jarvis is in the tray, Windows shows a
+  job needs your permission and STEC OS is in the tray, Windows shows a
   notice ("Jarvis is waiting for you: …"), the tray says how many are waiting,
   and it reminds you after an hour and again after eight. Clicking opens the
   job.
-- **A Windows restart no longer leaves it closed** (v1.249.0): Iron Jarvis
+- **A Windows restart no longer leaves it closed** (v1.249.0): STEC OS
   offers to start with Windows, quietly in the tray, so schedules and messages
   keep running after an overnight restart — and a Windows shutdown is no longer
   counted as a crash. You can turn it off in Settings.
@@ -883,7 +883,7 @@ seam); Train (teach it your writing voice, suggest-only).
   **Retry**, **Open logs** and **Quit**.
 - **Backups can go to a second drive** (v1.249.0): Settings → Maintenance →
   Backups can copy every backup to another drive, and with it the images,
-  video and audio Iron Jarvis has made for you (which backups never included
+  video and audio STEC OS has made for you (which backups never included
   before). The card says when the last copy happened, or names the folder if
   the drive is not plugged in — backups keep running on this PC either way.
   That copy holds your database, settings and saved logins, so keep the drive
@@ -943,7 +943,7 @@ tell which browser had paired until the add-on started saying so: since
 v1.259.0 the Browser card names it ("Microsoft Edge 153"), and the doctor's
 browser line names the one installed on this PC.
 
-**The steps are written for your browser (v1.261.0).** Iron Jarvis looks at
+**The steps are written for your browser (v1.261.0).** STEC OS looks at
 which browsers are installed on this PC and which one paired, and writes every
 step of the guided window — and the card's own notes — for that one: on an
 Edge-only machine you read Edge's page (`edge://extensions`) and Edge's way of
@@ -954,7 +954,7 @@ it, and that choice is remembered on this PC.
 
 **The last step is the one that makes the rest reachable.** Neither Chrome nor Edge
 puts a newly loaded add-on on the toolbar — both hide it behind the **puzzle-piece**
-button at the top right. Open that menu, find **Iron Jarvis**, and press the **pin**
+button at the top right. Open that menu, find **STEC OS**, and press the **pin**
 (in Edge it is the eye icon, **Show in toolbar**), and
 the icon stays on the toolbar where one click opens the sidebar. That icon is the
 app's own "iU" tile (since v1.400.6), the same picture as the desktop app, and it
@@ -965,8 +965,8 @@ never opens the guided window again.
 
 **If clicking the icon opens a small popup rather than a sidebar**, your browser is
 still running an older copy of the add-on: your browser keeps the copy it loaded
-until you reload it, so updating Iron Jarvis does not update what it runs. Open
-`chrome://extensions` (in Edge, `edge://extensions`) and press **Reload** on Iron Jarvis. The add-on carries the
+until you reload it, so updating STEC OS does not update what it runs. Open
+`chrome://extensions` (in Edge, `edge://extensions`) and press **Reload** on STEC OS. The add-on carries the
 same version number as the app it shipped with, the sidebar prints that number in
 its own header, and the Browser card prints the app's — an older number in the
 sidebar is the copy to reload.
@@ -1044,7 +1044,7 @@ same gates. Three steps, and none of them are automatic:
 
 **That credential belongs to the pane, and to nothing else.** It is not the app's
 access token and it cannot be used for anything else. It lives in memory only, so
-closing the pane, or restarting Iron Jarvis, ends it — if a harness starts reporting
+closing the pane, or restarting STEC OS, ends it — if a harness starts reporting
 that Jarvis refuses it, relaunch it from the Build pane rather than looking for a
 setting. Untick **Browser** and the harness's very next call is refused, without
 anything having to be restarted. Jarvis's configuration file is written into the
@@ -1072,7 +1072,7 @@ there is nothing to download and no repository to clone: the Browser card names
 the add-on folder, and your browser's **Load unpacked** takes it from there. The
 picker wants a *directory*, so you need where the folder is as well as what it is
 called — on a default Windows install that is
-`%LOCALAPPDATA%\Programs\Iron Jarvis\resources\browser-addon`, and if you chose your own
+`%LOCALAPPDATA%\Programs\STEC OS\resources\browser-addon`, and if you chose your own
 install location it is `resources\browser-addon` underneath it. `docs/BROWSER.md`
 walks the whole thing. (Running from a source checkout instead? The card says so
 and gives the one build command first — the built files are deliberately not
@@ -1112,7 +1112,7 @@ so you never have to guess whether a promise is in force or merely planned:
 - **Passwords are never read** (live): a password field arrives with its value
   stripped, and in fact **no** field's value is ever collected — not just password
   ones. The stripping happens inside the page, before anything is sent, so a password
-  never reaches Iron Jarvis at all. Your browser's own password manager keeps working,
+  never reaches STEC OS at all. Your browser's own password manager keeps working,
   because Jarvis never sees what it fills.
 - **Changing a page asks first** (live): a click, typing, a key press or a
   navigation is gated the same way the agent browser is gated. Every one of them asks
@@ -1140,7 +1140,7 @@ takes over, the first is told why, and anything in flight on it fails with a rea
 instead of hanging. The daemon listens on this computer's loopback address only, and
 the browser socket admits the add-on's own fixed identity and refuses everything else.
 No field's value is ever collected — the stripping happens inside the page, so a
-password never reaches Iron Jarvis at all — and what Jarvis types is redacted before
+password never reaches STEC OS at all — and what Jarvis types is redacted before
 the record is written. Everything a browser tool does is on the Activity ledger, with
 no credential ever written down.
 
@@ -1153,18 +1153,18 @@ higher is slower and, on a metered API, costs more. The choice is saved with
 the thread, sent on every turn, and the receipt under the reply says
 "reasoning high" when it actually reached the model. For a model with no such
 knob there is no control at all — nothing is sent, and nothing is quietly
-dropped. If a server refuses the parameter, Iron Jarvis asks again without it,
+dropped. If a server refuses the parameter, STEC OS asks again without it,
 so you get the answer rather than an error.
 
 **Talk to the sidebar, and pick its model where you type (v1.269.0).** The
-sidebar's top is now just the Iron Jarvis mark (the connection dot sits on it)
+sidebar's top is now just the STEC OS mark (the connection dot sits on it)
 and the access pill. The model picker moved to the bottom right of the
 composer as a small icon — click it and Jarvis's models appear; hover it to
 see the one in use. Next to it is one button with two jobs: with nothing typed
 it is a **microphone**, and as soon as you type it becomes the **send arrow**.
 Press the microphone and speak; press it again to stop. What you said is
-written into the box for you to read, then send. The audio goes through Iron
-Jarvis's own speech engine — the bundled offline model when it is installed
+written into the box for you to read, then send. The audio goes through STEC
+OS's own speech engine — the bundled offline model when it is installed
 (words appear as you speak), otherwise the transcription endpoint you set up
 on the Connections page — and never through your browser's own cloud speech
 service. If no speech engine is set up, the microphone is greyed and its
@@ -1172,10 +1172,10 @@ tooltip says what to connect.
 
 **The sidebar remembers, has one switch, and folds its work (v1.270.0).**
 Three changes from one report. *It remembers:* the sidebar's conversation now
-lives in Iron Jarvis, so "now do the second one" refers to what you said
+lives in STEC OS, so "now do the second one" refers to what you said
 before; reopening the panel shows the conversation, and the **+** icon in the
 header starts a new one (Jarvis forgets the old). The conversation is kept in
-memory only — it ends when Iron Jarvis restarts. *One switch:* the header's
+memory only — it ends when STEC OS restarts. *One switch:* the header's
 **Auto-allow** switch (shown at Interactive) replaces the per-action cards: on,
 Jarvis acts on pages without asking each time, across every tab and every
 message, until you turn it off; off, each page action shows a card with
@@ -1222,7 +1222,7 @@ browser" rather than naming Chrome to an Edge user.
 **The microphone can be allowed (v1.272.0).** Pressing the sidebar's
 microphone used to say it was blocked with nowhere to allow it — a browser
 side panel cannot show the microphone prompt at all. Now the first press opens
-a small Iron Jarvis page in a tab with one button, **Allow the microphone**;
+a small STEC OS page in a tab with one button, **Allow the microphone**;
 press it, choose Allow in your browser's prompt, come back to the sidebar and
 press the microphone again. Nothing is recorded on that page; it only earns the
 permission, which then covers the sidebar. If your browser had already blocked
@@ -1234,7 +1234,7 @@ reads, clicks, types, scrolls or navigates a tab, that tab's page carries a soft
 cyan glow around its edges — the app's own accent — so you can see at a glance
 which tab the agent has. The glow lets every click of yours through (it is
 purely visual), reads nothing on the page, and disappears when the turn ends,
-when the connection drops, or, for a job driven from the Iron Jarvis window,
+when the connection drops, or, for a job driven from the STEC OS window,
 about twenty seconds after the last action. A page the browser closes to
 add-ons (a settings page, a new-tab page) cannot show it.
 
@@ -1267,8 +1267,8 @@ default model** in one press.
 **The questions that are yours are asked where you are (v1.276.0).** The
 four things Jarvis always stops for in a browser — a payment or password
 field, a delete-shaped control, a page that tried to instruct it, a control
-it cannot read — used to stop with a note telling you to approve it "in Iron
-Jarvis" and ask again: from the sidebar, a dead end. That stop is now a card
+it cannot read — used to stop with a note telling you to approve it "in STEC
+OS" and ask again: from the sidebar, a dead end. That stop is now a card
 in the sidebar itself, with the reason in it, and one Allow runs exactly that
 one action. Two quieter savings: a page still loading is read again after a
 moment instead of being handed back as a refusal, and a click named by what it
@@ -1278,7 +1278,7 @@ first, itself, rather than spend a turn being told to.
 **Fewer reaches (v1.277.0).** Four small things that each cost a reach every
 time. In the browser, **Alt+J** opens the sidebar (your browser's own shortcuts
 page shows and changes the key), **Esc** stops a running turn from the box you
-are typing in, and **Open Jarvis** brings the Iron Jarvis tab you already have
+are typing in, and **Open Jarvis** brings the STEC OS tab you already have
 to the front instead of opening another. In chat, the model menu opens with a
 box: type part of a model's name and every match across your providers is
 listed — Enter picks the first — and with the box empty the menu opens on the
@@ -1375,7 +1375,7 @@ has a second screen the new window opens centred there; on one screen it
 steps off the main window. Each window remembers where you left it, per
 module, and comes back there next time (or on-screen, if that monitor is
 gone). A popped-out window says **own window** in its strip and is named by
-its module in the taskbar, so two Iron Jarvis windows never look like the app
+its module in the taskbar, so two STEC OS windows never look like the app
 opened twice. Closing it just closes it — the main window keeps its
 keep-running behaviour, and Quit closes them all. Opening a module that is
 already popped out brings that window to the front instead of making another.
@@ -1401,12 +1401,12 @@ conversation is one you are having from
 your phone — on your phone, named ("hermes: Done — 3 files."). **Rotate
 token** mints a new one and the old stops working; **Turn off message-back**
 forgets it, and disabling the agent silences it in both directions. One
-honest limit: out of the box Iron Jarvis listens on this machine only
+honest limit: out of the box STEC OS listens on this machine only
 (127.0.0.1) and answers only requests addressed to it, so a remote agent
 running on THIS machine can message back as is, while one on another
 machine cannot until you choose to open a door — the token box says so and
 names the two ways: turn on **Let other computers on my network reach this
-Iron Jarvis** in Settings › Connections and restart Iron Jarvis (since
+STEC OS** in Settings › Connections and restart STEC OS (since
 v1.358.0; Windows may ask once to allow it on your network, and every
 request still needs its token), or put a tunnel or reverse proxy in front of
 127.0.0.1:8787 and paste its address as the inbound URL. Nothing opens on
@@ -1416,7 +1416,7 @@ its earlier file hand-backs had. From your phone (Telegram, Slack, or any
 chat-enabled channel), "@hermes what is the ledger total?" goes to hermes as a
 conversation; the reply comes back named on the same thread; your next
 messages keep going to hermes until you say **@jarvis**, which hands the
-conversation back to Iron Jarvis. A local agent named from the phone still
+conversation back to STEC OS. A local agent named from the phone still
 goes through Jarvis. For someone wiring a remote agent: its outward request
 now carries `conversation_id`, `history` and `reply_to` beside `task` (the
 OpenAI-style kinds get real multi-turn `messages` / `input`); answering `202`
@@ -1456,7 +1456,7 @@ of on another page.
 **The sidebar stays connected, and looks like the app (v1.268.0).** The
 random "disconnected… reconnected" was the browser putting the add-on's
 background worker to sleep after half a minute of quiet, which closed its
-link; the next tab switch woke it and it came back. Iron Jarvis now sends the
+link; the next tab switch woke it and it came back. STEC OS now sends the
 add-on a heartbeat every 20 seconds and the add-on answers, which is exactly
 what keeps that worker awake — so a connected sidebar stays connected. (If the
 app itself restarts, the sidebar says so and reconnects when it is back.) And
@@ -1511,11 +1511,11 @@ Mode; or the system setting when either is left on System).
 **The sidebar's first minute (v1.264.0).** Three things that used to go wrong
 right after loading the add-on, fixed: **Enter sends** in the sidebar (Steer
 while Jarvis is working; Shift+Enter for a new line). If the sidebar says
-"Iron Jarvis did not answer at 127.0.0.1:8787", the app is not running yet —
+"STEC OS did not answer at 127.0.0.1:8787", the app is not running yet —
 it restarts during an update — so start it and press **Connect**, which tries
 again at once instead of waiting out the retry timer. And **Open Jarvis** from
 the sidebar opens the dashboard in a browser tab, which has no token: the
-banner at the top now offers **Open in the Iron Jarvis app**, which brings the
+banner at the top now offers **Open in the STEC OS app**, which brings the
 app's own window to that same page (the app registers `ironjarvis://` links),
 and names the token file if you would rather paste it. A Browser card that
 says "not signed in" is that same browser-tab situation — not a reason to
@@ -1682,7 +1682,7 @@ nothing was taken away.
   always asks before an upload is published to the public link. The Browser
   page names its two parts: **your browser** (your own Chrome or Edge) and
   the **agent browser**. File search's "By meaning" says it searches the
-  folders Iron Jarvis has indexed.
+  folders STEC OS has indexed.
 - **Settings, usage, memory and connections, plainer** (v1.316.0). Change
   any setting and a **Save changes** bar stays at the bottom of the window
   until you save or reset; a row of links at the top jumps to each section.
@@ -1723,7 +1723,7 @@ gets downloaded while making the code harder to follow.
 
 ## What got faster (v1.257.0)
 
-**Opening the app when you have several tool packs.** Iron Jarvis says hello to
+**Opening the app when you have several tool packs.** STEC OS says hello to
 each of your tool packs when it starts. It used to do that one pack at a time,
 so the wait was every pack's greeting added together — two packs meant twice the
 wait, three meant three times. Now it greets them all at once, so the wait is
@@ -1807,7 +1807,7 @@ now it stops while you are not looking and catches up the moment you come back.
    render or a cold OneDrive folder can't freeze the app. Since v1.226.0 that
    includes notifications going out, project-knowledge lookups, and every
    run-record write, so a slow Slack or a busy database never shows up as
-   "Iron Jarvis isn't responding" (the banner said "Daemon offline" before
+   "STEC OS isn't responding" (the banner said "Daemon offline" before
    v1.354.0).
 7. **Self-healing supervision (v1.226.0).** The desktop app watches the
    daemon's health every 30 s, not just its process: a daemon that is alive but
@@ -1842,7 +1842,7 @@ now it stops while you are not looking and catches up the moment you come back.
 ## Ask the Guide
 
 The **Guide** is a built-in agent — it is on your team beside the builder,
-researcher and the rest — and it is the expert on Iron Jarvis itself. Ask it
+researcher and the rest — and it is the expert on STEC OS itself. Ask it
 in chat with **@guide** (the **Ask the Guide** box at the top of the Help page
 puts your question into chat that way, ready to send), or run a session as the
 *guide* agent for a longer lookup. It starts every session knowing what the app is and how your
@@ -1859,7 +1859,7 @@ reads; it never writes, runs commands, or starts work on its own.
 ## Troubleshooting in one minute
 
 - **"Claude Code isn't signed in" / "Codex isn't signed in"** (v1.234.0) →
-  the subscription CLI is installed but logged out, so Iron Jarvis refuses
+  the subscription CLI is installed but logged out, so STEC OS refuses
   the turn instead of failing over. Press **Sign in to Claude Code** (or
   **Codex**) on **Settings → Connections → Connections** (v1.353.0): a
   Build pane opens with the tool running on this PC's own login — type
@@ -1869,15 +1869,15 @@ reads; it never writes, runs commands, or starts work on its own.
   type. Installed is not
   connected: the app asks the CLI itself (`claude auth status`, `codex
   login status`) and re-checks every couple of minutes.
-- **"Iron Jarvis isn't responding"** (it said "Daemon offline" before
+- **"STEC OS isn't responding"** (it said "Daemon offline" before
   v1.354.0; your chats and files are saved while it shows, and when the
-  service answers again the banner says **"Iron Jarvis is back."** for a
+  service answers again the banner says **"STEC OS is back."** for a
   few seconds — plus "Anything it stopped is in the bell." when a restart
   cut work off) → the desktop app restarts a crashed daemon by
   itself, and the banner needs two missed polls before it shows (one slow
   request never shows it; a search you superseded by typing is not counted
   as a miss). If it stays: quit from the tray and relaunch (or tray →
-  **Restart Iron Jarvis**), then **Settings → Maintenance → Copy
+  **Restart STEC OS**), then **Settings → Maintenance → Copy
   diagnostics** / **Open logs folder** to see why. The Help page's "If
   something looks wrong" card says the same. It is also, often, a
   provider/endpoint issue rather than the daemon: check Connections. In the
@@ -1888,45 +1888,45 @@ reads; it never writes, runs commands, or starts work on its own.
   (v1.229.0): three deaths within seconds of a start make it verify the
   install first (a damaged install gets the Repair dialog), and after 10
   restarts in 15 minutes it stops, tells you, and the tray gains a
-  **Restart Iron Jarvis** item that clears the counters and starts both
+  **Restart STEC OS** item that clears the counters and starts both
   processes again. A process that crashes only every few minutes is
   restarted every time, and you are told once it has died 3 times in a day.
   The tray tooltip reads "running" again as soon as the process is back.
   The per-process logs (tray → Open logs folder) stamp every line with a
   time and say `killed pid=… reason=quit|update|watchdog|restart` when the
   app itself stopped a process, so a crash and a kill no longer look alike.
-- **"Starting Iron Jarvis…"** (v1.407.0) → a page that loads while Iron
-  Jarvis is still starting (a browser tab, a window opened during a restart)
-  says this, calmly, until Iron Jarvis first answers; only after a minute and
+- **"Starting STEC OS…"** (v1.407.0) → a page that loads while STEC
+  OS is still starting (a browser tab, a window opened during a restart)
+  says this, calmly, until STEC OS first answers; only after a minute and
   a half with no answer does it say **isn't responding**. A start also no
   longer waits for a Build terminal whose shell is slow to open: after a few
-  seconds Iron Jarvis is ready, and that terminal joins the Build page by
+  seconds STEC OS is ready, and that terminal joins the Build page by
   itself the moment its shell starts. (It used to hold the whole start, and
   on some updates the app restarted itself after 90 s because of it.)
-- **Build stuck at "Attaching to sessions…", then "Iron Jarvis isn't
+- **Build stuck at "Attaching to sessions…", then "STEC OS isn't
   responding"** (fixed in v1.407.1) → with PowerShell installed from the
   Microsoft Store, each terminal used to make one start attempt that Windows
-  always refuses for a Store program (putting it in a group Iron Jarvis uses
+  always refuses for a Store program (putting it in a group STEC OS uses
   to tidy up what a terminal leaves running), then try again; with two
-  terminals doing that at once, Windows sometimes never finished, and Iron
-  Jarvis stopped answering until the desktop app restarted it. Terminals now
+  terminals doing that at once, Windows sometimes never finished, and STEC
+  OS stopped answering until the desktop app restarted it. Terminals now
   skip the refused attempt for Store programs and start them one at a time.
   Nothing you could see changes: Windows never allowed that group for these
-  terminals. If Iron Jarvis ever freezes again, it now writes where it is
+  terminals. If STEC OS ever freezes again, it now writes where it is
   stuck in its log (Settings › System › Open logs) before it is restarted:
   look for a line starting "event loop frozen for".
-  Since v1.409.1 a freeze that stops every part of Iron Jarvis at once (it
+  Since v1.409.1 a freeze that stops every part of STEC OS at once (it
   happened again on the first start after the v1.409.0 update, and nothing
   was written) is still recorded: the stack of every part of the app goes to
   **daemon-freeze.txt** beside the log, about 30 seconds into a freeze, and
-  again every 30 seconds while it lasts. The file holds Iron Jarvis's own
+  again every 30 seconds while it lasts. The file holds STEC OS's own
   program file names (which include your Windows user folder), nothing you
-  typed. Iron Jarvis also reports when every worker that answers requests is
+  typed. STEC OS also reports when every worker that answers requests is
   busy.
 - **"Tool pack didn't start: <name> — launcher 'npx' was not found"** (v1.233.0)
   → the pack's launcher (`npx` for Node packs, `uvx` for Python packs) is not
   installed or not where the app looks (PATH, then the usual per-user Node and
-  uv folders). Install Node.js LTS or uv, restart Iron Jarvis, then press
+  uv folders). Install Node.js LTS or uv, restart STEC OS, then press
   **Retry** on the pack under Tools. A pack whose launcher IS installed now
   starts from the packaged app too — before v1.233.0 the bare name never
   resolved on Windows even when it was on PATH.
@@ -1965,8 +1965,8 @@ reads; it never writes, runs commands, or starts work on its own.
   *before* you type.
 - **An update seems stuck** → Updates page; a release can take ~10 min to
   finish uploading after the version bumps.
-- **"Iron Jarvis did not answer within 90 seconds … Press Retry" after an
-  update** (v1.400.4) → if Iron Jarvis is still running but has not answered
+- **"STEC OS did not answer within 90 seconds … Press Retry" after an
+  update** (v1.400.4) → if STEC OS is still running but has not answered
   by then, the app now restarts it once by itself and waits again before
   showing this. You see the message only if that second try also fails. A
   start that has not finished after 30 seconds now writes to `daemon.log`
@@ -1996,6 +1996,18 @@ reads; it never writes, runs commands, or starts work on its own.
   newest one is younger than the auto-backup interval (24 h by default).
 - **Something wrote the wrong thing** → Activity page (or the file's row in
   chat) → Undo. Session-level revert exists for whole runs.
+
+## The app is called STEC OS (v1.444.0)
+
+Before v1.444.0 this app was called Iron Jarvis. Everything you see now says
+STEC OS: the window, the sidebar, the Start menu, the tray and the Guide's
+answers. The app's data folder moved with the name, to
+`%APPDATA%/STEC OS` (it was `%APPDATA%/Iron Jarvis`), and the chat work
+folder is now `Documents/STEC OS`. The update does not copy anything from the
+old folders, so after it you add your API keys and settings again. The old
+folders stay on disk until you delete them. The installer file keeps its old
+name, `Iron-Jarvis-Setup-<version>.exe`. The assistant still answers to
+"Jarvis" in voice commands.
 
 ## Voice commands: Ctrl+Shift+V (v1.443.0)
 
@@ -2086,7 +2098,7 @@ conversation works for any session.
   what that tool can do. Claude Code: Reconnect, Turn off and Turn on (like
   its own `/mcp`, it remembers "off" for this folder). Codex: Sign in… on a
   server that needs it, which opens Codex's own sign-in page in your browser.
-  Iron Jarvis never signs in for you.
+  STEC OS never signs in for you.
 
 **Claude Code.**
 
@@ -2098,7 +2110,7 @@ conversation works for any session.
   keeps the mode you picked. Approving never puts the session back in Full
   access by surprise, and Enter never approves a plan that would.
 - `/model opus`, `/model sonnet` and `/model haiku` set the model chip. A name
-  Iron Jarvis does not know goes to Claude Code as you typed it.
+  STEC OS does not know goes to Claude Code as you typed it.
 - Your own commands named like a Claude Code terminal command (for example
   your own `/status`) now reach Claude Code, and the `/` menu shows only this
   project's commands.
@@ -2111,7 +2123,7 @@ plan, and declines every file change while it plans; it still asks before it
 runs a command, and a command you allow can still change files. When the plan
 is ready, the card under it asks you: "Approve, then ask first" starts the
 work at once in Ask first, and Deny keeps Codex planning so you can say what
-to change. Plan has to name a model to Codex: when none is picked, Iron Jarvis
+to change. Plan has to name a model to Codex: when none is picked, STEC OS
 asks Codex which model the conversation runs on. If Codex cannot say, a line in
 the conversation tells you this message was not put in Plan; pick a model in
 the model chip and send it again.
@@ -2127,7 +2139,7 @@ the model chip and send it again.
   default. Shift+Tab never steps into one of your agents: pick it from the
   menu.
 - Outside Full access, OpenCode does not start helper agents. A helper's
-  questions cannot reach Iron Jarvis, so it would wait for ever. A rule of
+  questions cannot reach STEC OS, so it would wait for ever. A rule of
   your own about helpers is kept.
 - OpenCode's question tool stays off for the same reason: its questions never
   reach the screen.
@@ -2138,7 +2150,7 @@ the model chip and send it again.
   before, read from Grok's own saved files (they are never changed).
 - The Session tab lists Grok's own MCP servers by name with their state. If
   one needs a sign-in: press Open in terminal, type `/mcps`, choose the server
-  and press i. Iron Jarvis never shows or keeps a server's address or key.
+  and press i. STEC OS never shows or keeps a server's address or key.
 - **Share with Build** on the Memory page has a switch for Grok (off until you
   turn it on). Good to know: Grok also reads Claude Code's own
   instructions file (`~/.claude/CLAUDE.md`). With both the Claude Code and the
@@ -2149,7 +2161,7 @@ the model chip and send it again.
 **Pi.** Start a message with `!` to run a command yourself: Pi runs it, and its
 model sees the command and its output. Start it with `!!` to keep it out of
 the conversation. A line under the box says so while the words would run.
-Stop stops the command. Pi does not list its MCP servers to Iron Jarvis; type
+Stop stops the command. Pi does not list its MCP servers to STEC OS; type
 `/mcp` in the box and Pi says each one's state.
 
 **Antigravity.**
@@ -2158,7 +2170,7 @@ Stop stops the command. Pi does not list its MCP servers to Iron Jarvis; type
 - A note typed while a card or a question waits is refused, and your words
   stay in the box: answer the card first. Before, the reply failed.
 - A question that lets you pick several answers shows checkboxes.
-- The Iron Jarvis tools chip is not shown: Antigravity does not take them.
+- The STEC OS tools chip is not shown: Antigravity does not take them.
 - Antigravity does not report its account's usage limits, so the Usage tab
   cannot show them; its own terminal's `/usage` does.
 - Signing in to Antigravity in its own terminal may not be enough for the
@@ -2171,8 +2183,8 @@ Stop stops the command. Pi does not list its MCP servers to Iron Jarvis; type
   Iron-Proxy, or one that is not answering, says so at once.
 - A login with no Claude plan says it has no plan usage to report, instead of
   "try again in a minute" for ever.
-- While a coding session or a Build terminal is working on an account, Iron
-  Jarvis checks its usage again by itself every few minutes (less often when
+- While a coding session or a Build terminal is working on an account, STEC
+  OS checks its usage again by itself every few minutes (less often when
   the login reports no numbers). A session waiting for your answer is not
   checked, and nor is a terminal that has printed nothing for minutes.
 
@@ -2191,11 +2203,11 @@ Stop stops the command. Pi does not list its MCP servers to Iron Jarvis; type
 |---|---|---|
 | Claude Code | Signing in to an MCP server from the Session tab | Use Open in terminal, then `/mcp` |
 | Codex | Reconnect or Turn off for an MCP server | Codex has no switch for one server |
-| Codex | Auto review; Auto edits on Windows | Iron Jarvis cannot show you yet what Codex's own reviewer decided; Codex's Windows protection is not set up on this PC |
-| OpenCode | Rewind; branching from one message; helpers outside Full access; its question tool | OpenCode offers no rewind, and its helpers' and questions' messages never reach Iron Jarvis |
+| Codex | Auto review; Auto edits on Windows | STEC OS cannot show you yet what Codex's own reviewer decided; Codex's Windows protection is not set up on this PC |
+| OpenCode | Rewind; branching from one message; helpers outside Full access; its question tool | OpenCode offers no rewind, and its helpers' and questions' messages never reach STEC OS |
 | Grok, Antigravity | Branch and Rewind | Neither tool offers it |
 | Pi | A list of its MCP servers | Pi says them only as a message (type `/mcp`) |
-| Antigravity | Iron Jarvis's tools; usage numbers | It takes no tools from another app and reports no usage |
+| Antigravity | STEC OS's tools; usage numbers | It takes no tools from another app and reports no usage |
 
 The full comparison of Build › Code against each tool's own terminal is in
 `docs/BUILD-CODE-PARITY-2026-11-06.md`.
@@ -2209,8 +2221,8 @@ The full comparison of Build › Code against each tool's own terminal is in
   press Sign out twice. The account stays and needs a new sign-in before it
   is used again. A terminal or coding session running on that account at the
   time may stop being able to answer.
-- **A coding session's pull request says what Iron Jarvis is doing with its
-  checks:** one quiet line under the pull request, for example "Iron Jarvis
+- **A coding session's pull request says what STEC OS is doing with its
+  checks:** one quiet line under the pull request, for example "STEC OS
   is watching its checks. Next look at 3:40 PM." It goes away once the pull
   request is merged.
 - **Remove a saved calendar link** on the Reflex page (press Remove twice).
@@ -2226,7 +2238,7 @@ The full comparison of Build › Code against each tool's own terminal is in
 **Google Antigravity is the sixth tool in Build › Code.** If Google's
 Antigravity CLI (`agy`) is installed on this PC, the Code view offers it
 beside Claude Code, Codex, Pi, OpenCode and Grok. It runs with all of its own
-tools, skills and settings; Iron Jarvis starts it, draws it, and answers its
+tools, skills and settings; STEC OS starts it, draws it, and answers its
 questions as cards.
 
 - **Sign in once, in Antigravity.** Antigravity uses its own sign-in, not
@@ -2239,7 +2251,7 @@ questions as cards.
   (Plan is not read-only). Full access lets it act without any card and
   starts a new Antigravity before your next message. To be asked before
   every file change, set `"toolPermission": "strict"` in Antigravity's own
-  settings file (`~/.gemini/antigravity-cli/settings.json`). Iron Jarvis
+  settings file (`~/.gemini/antigravity-cli/settings.json`). STEC OS
   never changes that file for you.
 - **Cards and questions.** Antigravity offers only Allow once or Deny, never
   "for this session". Denying ends its reply. When it asks you a question,
@@ -2259,7 +2271,7 @@ Connections, on the account cards in Chat › Code, and on the Usage tab in
 Build › Code. The check is not a model call and uses none of your usage. The
 new number reaches every place that shows it, including the model menu.
 
-- While a reply runs on an account, Iron Jarvis checks it again by itself
+- While a reply runs on an account, STEC OS checks it again by itself
   about every three minutes. When nothing runs, it checks nothing.
 - One account is checked at most once every 20 seconds, so a second press
   shows the last answer.
@@ -2317,7 +2329,7 @@ go only on the secure card, never in the chat.
   on this PC or your network, or on the internet. The default can only be a
   model that server lists itself; if the list can't be read, chat says so.
 - **Accounts.** "Add a second Claude account" makes it in Iron-Proxy and opens
-  its own sign-in window; you sign in there, and Iron Jarvis never sees the
+  its own sign-in window; you sign in there, and STEC OS never sees the
   login. "Put TSI and VR2 in a group called Work" changes only that group;
   your other groups stay.
 - **Memory bases.** "Use Notion as your long-term memory" (the token goes on
@@ -2331,7 +2343,7 @@ go only on the secure card, never in the chat.
 - **Answer language.** "Answer me in Spanish from now on", "stick to Spanish
   even when I write English", "use bullet points by default". These change
   your profile, so every later chat and agent follows them.
-- **The desktop app.** "Start Iron Jarvis with Windows" (always asks first) and
+- **The desktop app.** "Start STEC OS with Windows" (always asks first) and
   "keep running in the background when I close the window". The desktop app
   picks the change up within about 15 seconds, and the tray switch and these
   settings always agree; the newer choice wins.
@@ -2364,7 +2376,7 @@ with all of them, and your first message is tried on the models you picked.
   that step, and it does nothing until you press it.
 - **Help can open at the right section.** A button can open the Help page
   scrolled to the part that explains the step.
-- **Plain answers for what Iron Jarvis doesn't do.** Chat says clearly that it
+- **Plain answers for what STEC OS doesn't do.** Chat says clearly that it
   has no way of its own to use your desktop programs (it works in a browser,
   with your files and through apps you connect — you can paste a screenshot),
   that its screens open only on this PC, and that Full access and "Don't ask"
@@ -2411,7 +2423,7 @@ thing again since, it says so and leaves your newer work alone.
   Microsoft 365 holds stays local only. Either way it applies from your next
   message. Settings › Models › "Start new chats local only" makes every new
   chat start that way.
-- **What changed, and Undo.** "What did you change today?" lists Iron Jarvis's
+- **What changed, and Undo.** "What did you change today?" lists STEC OS's
   recent changes by name only — never values, passwords or file contents.
   "Undo that" shows a card naming the exact change before it undoes it (click
   only; Enter does not answer it).
@@ -2471,7 +2483,7 @@ A deep review of the whole app found 17 bugs. All are fixed in this release:
   - no longer shows a rewritten reply twice;
   - uses plain words for errors, with the technical text folded under Details;
   - never tells you to press a button it doesn't have.
-- **Settings › Maintenance "Restart Iron Jarvis"** now really restarts it,
+- **Settings › Maintenance "Restart STEC OS"** now really restarts it,
   keeping running coding tools, instead of quitting. It no longer causes a
   false "keeps crashing" warning.
 - **A failed update install** is no longer run anyway on the next Quit.
@@ -2482,8 +2494,8 @@ A deep review of the whole app found 17 bugs. All are fixed in this release:
   from chat: "Helpers one agent may run at once", "Start tasks queued for
   agents", and "Tidy away unused skills" with its three numbers.
 - **Lowering "Keep activity history"** always asks first, because it deletes
-  the record of what Iron Jarvis did.
-- **A webhook** for an event Iron Jarvis never sends is refused when you save
+  the record of what STEC OS did.
+- **A webhook** for an event STEC OS never sends is refused when you save
   it, with the closest real event named.
 - **Links** in the app open in your browser only when they are web or email
   addresses.
@@ -2517,23 +2529,23 @@ now costs about 2–4% of one CPU core and almost no graphics work, down from
 chat and Settings pages). It still stops when Windows is set to show less
 motion and while an animated background is showing.
 
-## "Iron Jarvis isn't responding" after an update, fixed (v1.410.2)
+## "STEC OS isn't responding" after an update, fixed (v1.410.2)
 
-After the v1.409.x updates, Iron Jarvis could stop answering a few seconds
-after every start, show **Iron Jarvis isn't responding**, restart itself and
-stop again. The freeze record Iron Jarvis keeps (`logs/daemon-freeze.txt`)
-named the cause every time. When Iron Jarvis starts, it reopens your Build
+After the v1.409.x updates, STEC OS could stop answering a few seconds
+after every start, show **STEC OS isn't responding**, restart itself and
+stop again. The freeze record STEC OS keeps (`logs/daemon-freeze.txt`)
+named the cause every time. When STEC OS starts, it reopens your Build
 terminals and checks that **reading text from pictures on this PC** (Windows'
 built-in text recognition) works. Windows sometimes takes a long time to start
 the Store version of PowerShell for a terminal. While it did, the
-text-recognition check waited inside Windows **and held up all of Iron
-Jarvis** while it waited.
+text-recognition check waited inside Windows **and held up all of STEC
+OS** while it waited.
 
-Text recognition now runs in a small separate helper program that Iron Jarvis
+Text recognition now runs in a small separate helper program that STEC OS
 starts for each job and stops if it does not answer in time. If Windows stalls
 it, only that one reading is lost: a scanned page then goes to a vision model
 (or says it could not be read), exactly as it does on a PC without Windows text
-recognition, and the next attempt tries again. Iron Jarvis itself keeps
+recognition, and the next attempt tries again. STEC OS itself keeps
 answering. Reading a scan works as before; the first page of a job takes a
 moment longer while the helper starts.
 
@@ -2552,22 +2564,22 @@ one under **Animated background**:
 Each one draws only in your theme's colours (the main colour, the second
 colour and the page colour), in both the dark and the light version.
 
-**Nothing extra is installed.** The backgrounds are not part of Iron Jarvis's
+**Nothing extra is installed.** The backgrounds are not part of STEC OS's
 installer. The one you pick is downloaded then — a single small file (7–10 KB)
-from Iron Jarvis's own release on GitHub, the exact release you are running —
+from STEC OS's own release on GitHub, the exact release you are running —
 and checked against the fingerprint this version carries. A file that does
-not match is refused ("did not match the one this version of Iron Jarvis
+not match is refused ("did not match the one this version of STEC OS
 expects") and nothing is saved. It is kept on this PC until you delete it;
 picking it again later downloads nothing. **Backgrounds on this PC** under
 your themes lists what is kept and its size, and **Delete** frees the space
 (a theme that used it simply shows its plain colours). After an update, a
 background that did not change is kept as it is; one that did is downloaded
-again the next time it is shown. The files live beside Iron Jarvis's data
+again the next time it is shown. The files live beside STEC OS's data
 folder, not in it, so backups do not carry them.
 
 **Sealed off.** The background runs in a sealed frame behind the app. It
-cannot read anything in Iron Jarvis (your sign-in, your chats, the page), it
-cannot reach the internet or Iron Jarvis itself, it takes no clicks or
+cannot read anything in STEC OS (your sign-in, your chats, the page), it
+cannot reach the internet or STEC OS itself, it takes no clicks or
 keyboard focus, and screen readers skip it.
 
 **Every word stays readable.** A layer of your page colour lies over the
@@ -2623,22 +2635,22 @@ dependable:
 **Check** on a Memory profile runs a read-only check against the real base —
 can it be reached, does a search answer, can the operating guide be read, and
 can it save — and **Try a test save** (two presses) saves one note called
-"Iron Jarvis test note" through the same path a chat uses and reads it back,
+"STEC OS test note" through the same path a chat uses and reads it back,
 so you can see it work on your own Notion, vault or server. The test note is
 left for you to delete.
 
 ## Your durable brain: Brain Profiles (v1.406.0)
 
 If you keep your long-term memory somewhere specific — Notion with an
-operating guide, an Obsidian vault, Iron Jarvis's own memory, a folder in a
-repository — you can now tell Iron Jarvis that this is your **durable brain**,
+operating guide, an Obsidian vault, STEC OS's own memory, a folder in a
+repository — you can now tell STEC OS that this is your **durable brain**,
 instead of pasting a long "always check my Notion first…" prompt into every
 chat. A **Brain Profile** says where it lives and how Jarvis treats it.
 
 Set one up in **Settings › Memory & you › Brain profile**:
 
 - **Primary** — any place you have added under Memory › Long-term
-  (Iron Jarvis memory is always there).
+  (STEC OS memory is always there).
 - **Search it before answering** (on by default). Jarvis searches the brain
   with your message before it answers, and can search again or open a whole
   note while it works.
@@ -2696,9 +2708,9 @@ same switch as the chat page's Chat | Code, in the same place on the page.
 - **Code** runs the real **Claude Code**, **Codex** or **Pi** in a window instead of
   a terminal. The coding tool does everything itself, exactly as it would in
   a terminal: its own tools, its own settings, your CLAUDE.md / AGENTS.md,
-  its MCP servers, its slash commands and its permission rules. Iron Jarvis
+  its MCP servers, its slash commands and its permission rules. STEC OS
   starts it, draws what it does, and passes on your messages and your
-  answers. (This is different from **Chat › Code**, where Iron Jarvis does
+  answers. (This is different from **Chat › Code**, where STEC OS does
   the work and the model only thinks.)
 - **The list** on the left holds your sessions, grouped by folder. Each row
   says which tool it runs (Claude Code or Codex) and which account it runs
@@ -2778,7 +2790,7 @@ same switch as the chat page's Chat | Code, in the same place on the page.
   - **The model** list (v1.429.0) is the one Pi's own `/model` shows:
     every model of every provider you signed Pi in to, grouped by provider,
     with each model named as Pi names it. It is there from the first look,
-    even before you ever started a Pi session here: Iron Jarvis asks Pi for
+    even before you ever started a Pi session here: STEC OS asks Pi for
     it once in the background (a quick, quiet Pi run that calls no model,
     saves no session, makes no network call and starts none of your MCP
     servers), and asks again when the list is older than ten minutes or when
@@ -2823,7 +2835,7 @@ same switch as the chat page's Chat | Code, in the same place on the page.
     servers or system prompt (in its `.pi` folder, or skills in an
     `.agents/skills` folder in it or above it). Pi loads those only for a
     folder you trust, and its terminal asks you the first time. In the Code
-    view Pi cannot ask, so it skips them without a word. Iron Jarvis now
+    view Pi cannot ask, so it skips them without a word. STEC OS now
     notices this and says it in one quiet line above the box ("This folder
     has its own Pi extensions…"), with one press: **Load them for this
     session**. Nothing of the folder's loads before you press it. The press
@@ -2834,8 +2846,8 @@ same switch as the chat page's Chat | Code, in the same place on the page.
     not to trust (or a Pi set to always or never trust folders), says
     nothing here: that is your own choice. To make a choice that lasts, open
     Pi in a terminal and type `/trust`. If one of your own Pi extensions
-    decides trust itself, Pi may load a folder's extensions anyway; Iron
-    Jarvis cannot see that. A folder's extensions run as programs on this PC,
+    decides trust itself, Pi may load a folder's extensions anyway; STEC
+    OS cannot see that. A folder's extensions run as programs on this PC,
     so load them only for a folder you trust.
   - **When an extension starts work by itself**, Pi works on it outside any
     message: the session stays busy until it finishes, and a message sent
@@ -2859,11 +2871,11 @@ of choices sits under the box:
 
 - **Folder** — "No folder" until you choose one. Press **Choose…** to pick a
   folder: in the desktop app this opens Windows' own folder window, where you
-  can go to any drive and any folder; in a browser it opens Iron Jarvis's own
-  folder list. Iron Jarvis checks the folder when the session is made, and a
+  can go to any drive and any folder; in a browser it opens STEC OS's own
+  folder list. STEC OS checks the folder when the session is made, and a
   folder it cannot use is named under the chip, with the reason, and nothing
   starts. With no folder, the session gets a folder of its own in your chat
-  files folder (Documents\Iron Jarvis), named by the date and your first
+  files folder (Documents\STEC OS), named by the date and your first
   words, made with your first message — and taken back if that message never
   starts (or the tool could not start at all). Archiving the session keeps
   its folder, so unarchiving carries on where it was; deleting it removes the
@@ -2890,7 +2902,7 @@ of choices sits under the box:
   Codex, so you choose the account as you choose the model.
 - **Mode**, **model** and **effort** — effort only when the chosen model
   offers levels (a model that takes none hides it, and an effort the new model
-  does not offer goes back to the default). A choice Iron Jarvis refuses is
+  does not offer goes back to the default). A choice STEC OS refuses is
   named under that choice.
 
 Sending makes the session with those choices and sends your message in one
@@ -2938,8 +2950,8 @@ press.
 OpenCode is the fourth coding tool in Build's **Code** view, beside Claude
 Code, Codex and Pi. The Code view starts your own OpenCode (the `opencode`
 you run in a terminal) with everything it has there: its tools, its agents,
-your plugins and MCP servers, AGENTS.md, and your OpenCode config. Iron
-Jarvis starts it, shows what it does, and turns every permission question it
+your plugins and MCP servers, AGENTS.md, and your OpenCode config. STEC
+OS starts it, shows what it does, and turns every permission question it
 asks into a card you answer.
 
 - **Starting one**: choose **OpenCode** on the Tool chip under the box, pick
@@ -2977,20 +2989,20 @@ asks into a card you answer.
   servers and plugins in your OpenCode config run without asking unless a
   rule of yours says otherwise; the session says so.
 - **Helpers**: in Ask first and Auto edits, OpenCode starts one of its
-  helpers (its `task` tool) without a card, as Iron Jarvis's own coding
+  helpers (its `task` tool) without a card, as STEC OS's own coding
   sessions do; every step the helper takes still asks under the same mode.
   In Plan, OpenCode's own rule for helpers applies.
 - **Cards**: a card shows what OpenCode wants to do (the command, or the file
   and its changes). **Allow once** allows that one step; **Allow for this
   session** is OpenCode's own "Always allow"; **Deny** says no, and OpenCode
   stops that step. OpenCode keeps an "Always allow" only while its process
-  runs, and changing the mode starts a new one, so Iron Jarvis remembers your
+  runs, and changing the mode starts a new one, so STEC OS remembers your
   answer for the conversation and gives it again itself when the new
   OpenCode asks the same thing: every file change (and every web fetch,
   search, helper) when you allowed one for the session, or the exact same
   command. A similar but different command asks again (OpenCode's own rule
-  covers a whole command family, which it does not tell Iron Jarvis). These
-  answers are forgotten when Iron Jarvis restarts.
+  covers a whole command family, which it does not tell STEC OS). These
+  answers are forgotten when STEC OS restarts.
 - **Notes while it works**: type while OpenCode is working and press Enter.
   OpenCode reads the note at its next step, and the reply goes on with it. If
   you press Stop before OpenCode reached a note, the note stays in OpenCode's
@@ -3019,17 +3031,17 @@ asks into a card you answer.
   terminal where OpenCode has finished offers **Open in Code view**.
 - **Processes**: one OpenCode per open session, like the other tools. It is
   stopped after 15 minutes idle (the next message reopens the same
-  conversation), when you archive or delete the session, and when Iron Jarvis
-  quits; everything it started goes with it. OpenCode talks to Iron Jarvis
+  conversation), when you archive or delete the session, and when STEC OS
+  quits; everything it started goes with it. OpenCode talks to STEC OS
   over its own input and output, not over a network port. OpenCode also runs
-  a small server of its own inside that process; Iron Jarvis starts it on
+  a small server of its own inside that process; STEC OS starts it on
   this PC only (127.0.0.1), whatever the `server` settings in your OpenCode
   config say.
 
 ## Faster steps in a coding session on your Claude plan (v1.427.0)
 
 A coding session in Chat › Code works in steps: the model asks for some
-tools, Iron Jarvis runs them, the model reads the results and decides what
+tools, STEC OS runs them, the model reads the results and decides what
 to do next. On your Claude plan each step used to start Claude Code again
 and send it the whole conversation, which cost about half a second a step
 and made Claude re-read the conversation instead of remembering it.
@@ -3048,20 +3060,20 @@ Now one Claude Code stays running for the whole reply:
 - **The cost shown is the model that answered.** Each step is priced by the
   model Claude Code actually used (for "Sonnet", Sonnet 5), at list price,
   as before.
-- **Iron Jarvis still runs every tool.** Claude Code is never allowed to run
-  one itself; Iron Jarvis runs it, with your approval settings, and hands the
+- **STEC OS still runs every tool.** Claude Code is never allowed to run
+  one itself; STEC OS runs it, with your approval settings, and hands the
   result back. A step that waits on your approval keeps its Claude Code (we
   checked a wait of over five minutes); one nobody continues within 30
   minutes is ended, and the next step simply starts Claude Code again.
 - **Nothing breaks when it can't be used.** If the conversation changed in a
   way the running Claude Code doesn't know about (an earlier message edited,
-  the model or account changed, the tools changed), Iron Jarvis ends it and
+  the model or account changed, the tools changed), STEC OS ends it and
   starts a fresh one exactly as before. Stop still ends Claude Code at once.
 
 This applies to Chat › Code coding sessions on Claude Code. Plain chat,
 agents and schedules work as before. If you ever need the old behaviour, set
-the environment variable `IRONJARVIS_CLAUDE_LIVE=off` before starting Iron
-Jarvis.
+the environment variable `IRONJARVIS_CLAUDE_LIVE=off` before starting STEC
+OS.
 
 ## See what a coding session is told, and folders that keep their own defaults (v1.426.0)
 
@@ -3077,34 +3089,34 @@ Jarvis.
 
 ## Working habits for your model team, and a truer coding session (v1.425.0)
 
-**Working habits from your reviewers' findings.** When your team's reviewers have confirmed at least 4 of one member's findings fixed, across at least 2 coding sessions, Iron Jarvis suggests up to 3 working habits for that member — one line each, every one citing the findings it comes from. It asks the reviewer's own model, once a day at most, while the session is idle. It never runs near an account's limit, and never with a Local only finding on a model that leaves this network. The demo model suggests nothing. A suggestion waits for you on the member's own card (Agents › Your team); Settings › Model team lists each member's accepted habits. Accept writes the habit into the member's TEAM-NOTES.md in its agent folder, and from then on only that member's team pieces see it; Decline keeps that suggestion away for 14 days. If you edited TEAM-NOTES.md yourself, Iron Jarvis never writes over it — and if you save it while Iron Jarvis is updating it, your save is kept. When two members of the same role were given the same habit, the library suggests adding it to that role's brief instead (only with "learn from Build sessions" on). This is on by default; turn off "Learn working habits from reviews" in Settings › Model team to stop it (the habits you accepted are kept, but no model is shown them).
+**Working habits from your reviewers' findings.** When your team's reviewers have confirmed at least 4 of one member's findings fixed, across at least 2 coding sessions, STEC OS suggests up to 3 working habits for that member — one line each, every one citing the findings it comes from. It asks the reviewer's own model, once a day at most, while the session is idle. It never runs near an account's limit, and never with a Local only finding on a model that leaves this network. The demo model suggests nothing. A suggestion waits for you on the member's own card (Agents › Your team); Settings › Model team lists each member's accepted habits. Accept writes the habit into the member's TEAM-NOTES.md in its agent folder, and from then on only that member's team pieces see it; Decline keeps that suggestion away for 14 days. If you edited TEAM-NOTES.md yourself, STEC OS never writes over it — and if you save it while STEC OS is updating it, your save is kept. When two members of the same role were given the same habit, the library suggests adding it to that role's brief instead (only with "learn from Build sessions" on). This is on by default; turn off "Learn working habits from reviews" in Settings › Model team to stop it (the habits you accepted are kept, but no model is shown them).
 
-**Does a habit help?** For each accepted habit, Settings › Model team compares the member's work before and after you accepted it: after runs from the acceptance to now; before covers the same length of time just before it, at most 30 days, and never reaches back into a time the same habit was already in force (a habit removed and accepted again is compared with the time it was not). Work is counted by reply: a member reads its habits once per reply, so a reply that started before you accepted the habit counts entirely as "before". The comparison covers how often a reviewer approved its first piece, how many confirmed findings it got per piece, and how often the finish check passed. Once both sides have at least 5 pieces, a quiet line shows the numbers ("Since this habit: first-pass approval 2 of 6 → 5 of 7"). If the work looks worse since the habit, an amber line says "This habit may be making things worse — consider removing it". Iron Jarvis never removes a habit by itself; press Remove twice. With "learn from Build sessions" off, no library suggestion of any kind is made — even one whose model call was already running when you turned it off — and the same holds for team notes.
+**Does a habit help?** For each accepted habit, Settings › Model team compares the member's work before and after you accepted it: after runs from the acceptance to now; before covers the same length of time just before it, at most 30 days, and never reaches back into a time the same habit was already in force (a habit removed and accepted again is compared with the time it was not). Work is counted by reply: a member reads its habits once per reply, so a reply that started before you accepted the habit counts entirely as "before". The comparison covers how often a reviewer approved its first piece, how many confirmed findings it got per piece, and how often the finish check passed. Once both sides have at least 5 pieces, a quiet line shows the numbers ("Since this habit: first-pass approval 2 of 6 → 5 of 7"). If the work looks worse since the habit, an amber line says "This habit may be making things worse — consider removing it". STEC OS never removes a habit by itself; press Remove twice. With "learn from Build sessions" off, no library suggestion of any kind is made — even one whose model call was already running when you turned it off — and the same holds for team notes.
 
 **Copy as a fix request knows the team.** The report now also lists what the reviewers found about the team's own way of working: a finding the lead said did not apply (with the lead's reason), one the lead never answered, one called fixed that no later piece confirmed, and the same kind of finding against one member in two or more sessions. A finding confirmed fixed is never listed. Nothing is read from a reply that ran at low trust — including one you stopped after it read something flagged, and one still running (the report says so). A "Try on several models" attempt is read only when it is known to have ended at full trust; the report says how many it left out.
 
 **A stopped reply keeps its record.** If you stop a coding reply after it ran steps but before it wrote any words, its line still shows what it did.
 
-**What the coding model is told is now true.** When the model reads a picture (Claude's Read, Qwen's read_file, Codex's view_image), Claude and Codex see the picture itself (shrunk if large) instead of another model's description; a model that cannot be shown pictures gets a description and is told it is one. Before the picture is sent, Iron Jarvis reads its text on this PC with Windows' own text recognition (offline, about half a second); if that text reads like instructions to the AI, the session goes to low trust and the AI is told the text was withheld, but it still gets the picture. If local text recognition is off, unavailable or slow, the picture goes unchecked. A BMP or TIFF named like a PNG is converted first. Claude's and Qwen's command tools wait 2 minutes when no timeout is given; a long file read stops at a whole line and says which lines it showed; the approval sentence the model reads says exactly what runs without asking in each permission setting; descriptions never mention tools the session does not have; and the "what I did last reply" note rides the newest reply that actually used tools.
+**What the coding model is told is now true.** When the model reads a picture (Claude's Read, Qwen's read_file, Codex's view_image), Claude and Codex see the picture itself (shrunk if large) instead of another model's description; a model that cannot be shown pictures gets a description and is told it is one. Before the picture is sent, STEC OS reads its text on this PC with Windows' own text recognition (offline, about half a second); if that text reads like instructions to the AI, the session goes to low trust and the AI is told the text was withheld, but it still gets the picture. If local text recognition is off, unavailable or slow, the picture goes unchecked. A BMP or TIFF named like a PNG is converted first. Claude's and Qwen's command tools wait 2 minutes when no timeout is given; a long file read stops at a whole line and says which lines it showed; the approval sentence the model reads says exactly what runs without asking in each permission setting; descriptions never mention tools the session does not have; and the "what I did last reply" note rides the newest reply that actually used tools.
 
-**The benchmark measures what you use.** `ironjarvis bench-harness` now runs each task as a real Chat › Code coding session by default (`--path product`): "Ask first", every card answered "Allow once", the session's own step limit unless you give `--rounds`, and the time limit pressed as your Stop. `--path lane` keeps the old bare lane. The benchmark refuses a `--root` whose state folder is your user folder's `.ironjarvis` (every Iron Jarvis on the PC reads its settings from there), and a task the time limit cut off leaves nothing behind that the app would carry on after a restart.
+**The benchmark measures what you use.** `ironjarvis bench-harness` now runs each task as a real Chat › Code coding session by default (`--path product`): "Ask first", every card answered "Allow once", the session's own step limit unless you give `--rounds`, and the time limit pressed as your Stop. `--path lane` keeps the old bare lane. The benchmark refuses a `--root` whose state folder is your user folder's `.ironjarvis` (every STEC OS on the PC reads its settings from there), and a task the time limit cut off leaves nothing behind that the app would carry on after a restart.
 
-**Coding sessions start sooner and check their work in big projects.** In a coding session in Chat › Code, Iron Jarvis looks at the project folder before any of the reply's commands run, so it can tell what those commands changed. It now does this at the same moment it asks the model instead of before, so the first words come sooner; the first command still waits until the look is finished. In a git repository it asks git for the list of files, so projects bigger than 5,000 files are checked too (before, the check gave up). A folder that is not a repository is still read file by file, as before — and so is a folder the repository's own `.gitignore` leaves out, a whole home folder that is a repository, and a project whose git data sits on a network share.
+**Coding sessions start sooner and check their work in big projects.** In a coding session in Chat › Code, STEC OS looks at the project folder before any of the reply's commands run, so it can tell what those commands changed. It now does this at the same moment it asks the model instead of before, so the first words come sooner; the first command still waits until the look is finished. In a git repository it asks git for the list of files, so projects bigger than 5,000 files are checked too (before, the check gave up). A folder that is not a repository is still read file by file, as before — and so is a folder the repository's own `.gitignore` leaves out, a whole home folder that is a repository, and a project whose git data sits on a network share.
 
 **Build › Code's "This message" is cheaper.** The Changes tab's "This message" view now keeps its own copy of git's file list for each session, so the picture taken before each message is about a quarter faster on a 50,000-file project. The copy is rebuilt whenever an ignore rule changes, so files you later tell git to ignore drop out of the list. It is never backed up and is deleted with its session.
 
-**A seventh coding session waits instead of failing.** When six Build › Code sessions are already busy, a new message no longer fails at once: Iron Jarvis says it is waiting and starts the moment one finishes, giving up after 15 minutes with the old message. If a place can be freed, it stops the least recently used idle session first; it never stops a session that is working, starting, or still running background work. One session's slow start no longer holds up another session's message. Pressing Stop while a message is waiting, or while the coding tool is still starting, ends it there, and the tool never receives that message.
+**A seventh coding session waits instead of failing.** When six Build › Code sessions are already busy, a new message no longer fails at once: STEC OS says it is waiting and starts the moment one finishes, giving up after 15 minutes with the old message. If a place can be freed, it stops the least recently used idle session first; it never stops a session that is working, starting, or still running background work. One session's slow start no longer holds up another session's message. Pressing Stop while a message is waiting, or while the coding tool is still starting, ends it there, and the tool never receives that message.
 
 ## Every subscription, everywhere (v1.424.0)
 
 - **Failover stays within what you chose.** When the model you picked can't
-  answer, Iron Jarvis tries another of your models — but it only moves to one
+  answer, STEC OS tries another of your models — but it only moves to one
   that bills per use (an API key, a cloud endpoint, or a Claude model that
   draws usage credits, shown as "pay per use" in the menu) when the model you
   picked bills per use too. If you picked Claude Code, Codex, Grok or a model
   on your own network, it moves only among your subscriptions and local
   models. When nothing like that is left, the message says so, for example:
-  "Iron Jarvis didn't switch to OpenAI, which bills per use, because you
+  "STEC OS didn't switch to OpenAI, which bills per use, because you
   didn't choose a pay-per-use model for this." A picture follows the same
   rule: it is never sent to a paid key you didn't pick, and the reply says
   when an image was not seen.
@@ -3116,7 +3128,7 @@ Jarvis.
 - **Codex's own models.** Every model menu lists the models your ChatGPT plan
   offers, from Codex's own list on this PC, with their effort levels
   (including Extra); your plan's default is marked. With no OpenAI key,
-  OpenAI's list is Codex's list. Iron Jarvis refuses a model in words before
+  OpenAI's list is Codex's list. STEC OS refuses a model in words before
   anything is sent only when that list, for the account the work really runs
   on, is recent and does not hold it; otherwise Codex's own answer decides.
 - **Choose an account anywhere.** With Iron-Proxy on, you can choose the
@@ -3133,7 +3145,7 @@ Jarvis.
   terminal or a Build › Code session runs Claude Code on an account other
   than the one this PC is signed in to, it starts with your own MCP servers,
   skills, commands, agents, hooks and installed plugins, shown with "my:" in
-  front (for example /my:pixio-story). Iron Jarvis keeps its own copies of
+  front (for example /my:pixio-story). STEC OS keeps its own copies of
   your skills, commands and agents in its folder, so deleting that folder can
   never touch your originals; copies never include a file that holds a key,
   and your server keys never go into a file — they ride in the session's
@@ -3144,18 +3156,18 @@ Jarvis.
   accounts ("Use my Claude Code setup on my other accounts"); chat can turn it
   off at once but always asks before turning it on.
 - **OpenCode behind a chat never acts on its own.** When OpenCode is the model
-  behind a chat or an agent run, Iron Jarvis runs it as its own agent with
-  every one of OpenCode's tools off: Iron Jarvis carries out every action
+  behind a chat or an agent run, STEC OS runs it as its own agent with
+  every one of OpenCode's tools off: STEC OS carries out every action
   itself, with its usual cards, record and Undo. If OpenCode ever cannot find
   that agent, the run stops before anything happens instead of using your own
   OpenCode agent. A reply cut off at its output limit says so and offers
   Continue. Build › Code is unchanged: there OpenCode keeps its own tools.
 - **Grok's real output limit.** Grok replies are no longer stopped at 4,096
-  tokens: Iron Jarvis sends the limit your Grok settings give (your
+  tokens: STEC OS sends the limit your Grok settings give (your
   `max_completion_tokens`, if set). A cut Grok reply offers Continue, and a
   Grok tool call whose details cannot be read runs nothing and says so.
 
-## Your team's reviews are kept, and a report for fixing Iron Jarvis (v1.423.0)
+## Your team's reviews are kept, and a report for fixing STEC OS (v1.423.0)
 
 - **What your reviewers found is kept.** When a coding session's reviewer
   checks a change, each problem it lists ("R1. app.py:12 — what is wrong —
@@ -3181,14 +3193,14 @@ Jarvis.
   one and confirmed by nothing.
 - **Copy as a fix request.** Settings › Models › Model team, and a coding
   session's Session tab, have a quiet "Copy as a fix request" button. It
-  copies a report of the problems Iron Jarvis's own coding sessions and model
+  copies a report of the problems STEC OS's own coding sessions and model
   team ran into in the last 7 days (or in that one session): a command the
   shell could not run, a tool a worker kept calling wrong, a helper that could
   not start or failed, the team router finding no one, a reply cut off at its
   output limit, a team review that did not run. Each problem says where it
-  happened, what was seen, what was expected, which part of Iron Jarvis owns
+  happened, what was seen, what was expected, which part of STEC OS owns
   it, and up to three examples. Paste it to the coding agent that works on
-  Iron Jarvis.
+  STEC OS.
   - It says how many it copied ("Copied: 15 of 60 problems …" when the report
     could not hold them all), and says when something could not be read
     instead of "Nothing to report".
@@ -3205,7 +3217,7 @@ Jarvis.
 A long job should never be lost, cut off or stuck with nobody told and no
 way to carry on. This release closes the ways it could happen.
 
-**Chat › Code (Iron Jarvis's own coding sessions)**
+**Chat › Code (STEC OS's own coding sessions)**
 
 - **A brief outage no longer ends a long reply.** If the model's service
   fails for a moment (busy, overloaded, a server error, a timeout, a dropped
@@ -3223,7 +3235,7 @@ way to carry on. This release closes the ways it could happen.
   still asks the question again from the start. Sending a new message ends
   the offer, and kept work expires after a week. A reply that had read
   something suspicious stays at low trust when you continue it, and when
-  Iron Jarvis carries it on after a restart.
+  STEC OS carries it on after a restart.
 - **Stop and Esc stop a running command.** Before, Stop ended the answer but
   a command that was running carried on for up to 10 minutes. Now, after a
   few seconds, the command and everything it started is ended and its step
@@ -3233,31 +3245,31 @@ way to carry on. This release closes the ways it could happen.
 
 **Build › Code (Claude Code, Codex, Pi, OpenCode, Grok, Antigravity)**
 
-- **A restart of Iron Jarvis no longer stops your coding tools.** Your
-  coding tool now runs in a small helper process of its own, not inside Iron
-  Jarvis. When Iron Jarvis restarts (the watchdog, Restart in the tray, a
-  crash), that helper and its tools keep running, and when Iron Jarvis is
+- **A restart of STEC OS no longer stops your coding tools.** Your
+  coding tool now runs in a small helper process of its own, not inside STEC
+  OS. When STEC OS restarts (the watchdog, Restart in the tray, a
+  crash), that helper and its tools keep running, and when STEC OS is
   back it reconnects: a session that was idle answers your next message on
   the same running tool, a reply that was being written carries on and you
   see the rest as it comes, a card that was waiting for your answer is shown
   again, and helper agents and dev servers the tool started keep running.
-  Quitting Iron Jarvis, or installing an update, ends the helper and every
-  tool in it (each tool saves its conversation first). If Iron Jarvis does
+  Quitting STEC OS, or installing an update, ends the helper and every
+  tool in it (each tool saves its conversation first). If STEC OS does
   not come back, the helper stops its tools on its own after 10 minutes when
-  nothing is working, and always within 3 hours. If Iron Jarvis cannot pick a
+  nothing is working, and always within 3 hours. If STEC OS cannot pick a
   session back up, or the helper cannot be used, the reply says so and
   carries on as described next.
 - **When the tool did stop, the reply carries on.** After an update, a PC
   restart or a crash, a Build › Code reply that was working carries on by
   itself once, through the coding tool's own resume, told to check what was
-  already done first. You see one line: "Carried on by itself after Iron
-  Jarvis restarted." This happens only for a reply cut within the last week,
+  already done first. You see one line: "Carried on by itself after STEC
+  OS restarted." This happens only for a reply cut within the last week,
   and never for a reply you stopped, one that was waiting for your answer,
   one you followed with a newer message, or while Emergency stop is on; then
   the reply shows **Continue** and says why. On the first start after you
   update to this version, a reply the update itself cut off is only offered
-  (it was cut before this version could carry replies on). If a reply Iron
-  Jarvis carried on by itself fails, **Retry** runs that carry-on again.
+  (it was cut before this version could carry replies on). If a reply STEC
+  OS carried on by itself fails, **Retry** runs that carry-on again.
 - **Account limits are waited out, or moved past.** When an account reaches
   its limit and the reset time is known, the reply waits and carries on at
   the reset ("Waiting for Work to reset at 3:45 PM — it carries on by itself
@@ -3276,7 +3288,7 @@ way to carry on. This release closes the ways it could happen.
   up to 8 hours with nothing new. It says so ("Keeping Claude Code open: it
   runs a program on port 3000…") and offers **Close Claude Code**, which
   stops the tool and the program now (not while the tool is still working on
-  its own). Whenever Iron Jarvis does close a tool that was running programs
+  its own). Whenever STEC OS does close a tool that was running programs
   (to make room, for new settings, Open in terminal, moving accounts), the
   conversation names them, and your next message reminds you to start them
   again. The update warning now names a coding session running a program, so
@@ -3287,7 +3299,7 @@ way to carry on. This release closes the ways it could happen.
 - **New terminals use your installed PowerShell 7, or Windows PowerShell.**
   The Microsoft Store copy of PowerShell 7 is still in the shell menu,
   labelled as such, but is no longer the default: starting it is what froze
-  Iron Jarvis when it reopened terminals. Terminals you already have keep the
+  STEC OS when it reopened terminals. Terminals you already have keep the
   shell they had. Windows PowerShell does not have some PowerShell 7
   shortcuts (`&&`, `??`); pick PowerShell 7 from the menu, or install it
   normally, if you want them.
@@ -3312,7 +3324,7 @@ way to carry on. This release closes the ways it could happen.
 - **What was checked in the installed form of the app.** The background
   program that keeps your Build › Code tools running across a restart was
   built and run the way the installer ships it, with the real Claude Code:
-  it starts with no window; after Iron Jarvis was killed outright, the same
+  it starts with no window; after STEC OS was killed outright, the same
   Claude Code answered the next message, and a long reply that was being
   written finished and was recorded once; quitting left nothing running.
 - **Not tried yet:** moving a Codex conversation between two real ChatGPT
@@ -3343,8 +3355,8 @@ way to carry on. This release closes the ways it could happen.
   the guardrails, the lessons you kept for that folder, the folder's brief
   for its role (`.ironjarvis/harness/sub_agents/<name>.md`) and what the
   finish check will look at. When a helper runs on a model that can only
-  take in a little at once (a local model loaded with a small window), Iron
-  Jarvis shortens that section to fit and tells the helper what it left
+  take in a little at once (a local model loaded with a small window), STEC
+  OS shortens that section to fit and tells the helper what it left
   out, so the helper never loses its task. When your folder has briefs for
   helpers, the session now hands a piece that fits one to a helper and
   tells it to read that brief, instead of doing the piece itself.
@@ -3368,7 +3380,7 @@ way to carry on. This release closes the ways it could happen.
   answered.
 - **A step written out as text is turned into a real step in every run.**
   When a local model writes a step out as text instead of making it (for
-  example GLM's `<tool_call>` markup), Iron Jarvis now tells it once to make
+  example GLM's `<tool_call>` markup), STEC OS now tells it once to make
   the call, in a helper, a teammate or any agent run, not only in a coding
   session. The written text is never run. This happens at most twice per
   run and never twice in a row, and each one shows on the Autonomy card as
@@ -3383,14 +3395,14 @@ way to carry on. This release closes the ways it could happen.
   conversations are trimmed to fit it: raise `OLLAMA_CONTEXT_LENGTH`, or set
   the window yourself in Settings.
 - **A model too small for the job says so.** When an agent's model has a
-  known window (set by you, measured, or read from its server), Iron Jarvis
+  known window (set by you, measured, or read from its server), STEC OS
   now counts the agent's tool list against it as well as its instructions
   and conversation. If the task, or the results the agent has to act on
   next, cannot fit, the run stops at once with one sentence naming the
   window ("This model's context window (4,096 tokens) is too small for this
-  job…") instead of repeating itself until its step limit. A window Iron
-  Jarvis only guesses never stops a run. When older steps are left out to
-  fit, a note Iron Jarvis added after a reply is kept or left out together
+  job…") instead of repeating itself until its step limit. A window STEC
+  OS only guesses never stops a run. When older steps are left out to
+  fit, a note STEC OS added after a reply is kept or left out together
   with that reply. A coding helper's tools alone take about 6,000 tokens,
   so a local model loaded with a 4,096-token window cannot work as a coding
   helper: give a model you use as a helper a window of at least 16,384
@@ -3426,7 +3438,7 @@ way to carry on. This release closes the ways it could happen.
 ## Fewer things end in silence (v1.420.0)
 
 - **Another computer that takes a task "for later" is followed to the
-  end.** When you hand work to a remote agent (another Iron Jarvis, a Hermes
+  end.** When you hand work to a remote agent (another STEC OS, a Hermes
   on another PC) and it answers "I have it, I'll report back", the agent
   card on the mission screen now says "Accepted, will report back" instead of
   "Done" over an empty answer. When the remote posts its report back (Let it
@@ -3450,12 +3462,12 @@ way to carry on. This release closes the ways it could happen.
   terminal with Grok started on this PC's own login; Grok opens its sign-in
   there (or type `/login`). Grok's messages no longer tell you to run a
   command in a terminal.
-- **The status light knows when it is waiting for you.** Iron Jarvis now
+- **The status light knows when it is waiting for you.** STEC OS now
   tells the dashboard how many running replies are parked on your answer (a
   card or a question), so the status light can say "Waiting for you" instead
   of "Working".
 - **The tray tells you when more things end.** With every window closed to
-  the tray, Iron Jarvis now also raises a Windows notification when a
+  the tray, STEC OS now also raises a Windows notification when a
   mission ends ("Your objective is done", or why it is not), when an agent
   you started from chat ends, and when a chat answer that took longer than a
   minute is ready ("Jarvis finished your chat's answer"). Each is said once,
@@ -3481,7 +3493,7 @@ way to carry on. This release closes the ways it could happen.
   without checking the files they import.
 - **The same cards as before.** Under "Don't ask", or when you allowed the
   command tool for the session, they run with no card. Otherwise the test
-  run and the checkers share one card, and it says Iron Jarvis asks.
+  run and the checkers share one card, and it says STEC OS asks.
 - **Turning the finish check off turns them off too.** A folder whose
   `.ironjarvis/harness/finish.toml` says `enabled = false` runs no checker.
   A folder's own checks in `plugins.toml` still run after each edit, as you
@@ -3493,7 +3505,7 @@ way to carry on. This release closes the ways it could happen.
   coding session's history is sent to the model as plain words (so it can
   move to another account or vendor). Before, that meant the model forgot
   which files it had just read and read them again. Now the newest reply in
-  the history carries one short line Iron Jarvis writes from that reply's
+  the history carries one short line STEC OS writes from that reply's
   own steps, for example "read a.py, b.py; edited cart.py; ran `python -m
   pytest -q` (failed)". It names files, commands and whether they worked —
   never what a tool printed — hides anything that looks like a key, and is
@@ -3511,7 +3523,7 @@ way to carry on. This release closes the ways it could happen.
   are left out of a coding reply (they never apply there). Chat is unchanged.
 - **Codex sessions use Codex's real window.** A Codex reply used to plan as
   if the model could hold 32,000 tokens, so older messages were dropped and
-  summarised early. Iron Jarvis now reads the window from Codex's own model
+  summarised early. STEC OS now reads the window from Codex's own model
   list on this PC (`models_cache.json` in Codex's folder, read in the
   background) — 258,400 tokens for today's models, the share Codex itself
   lets a conversation fill — and uses that figure when the file cannot be
@@ -3526,13 +3538,13 @@ way to carry on. This release closes the ways it could happen.
 ## Each Claude Code round wastes less time around the model (v1.420.0)
 
 Every round of a coding session on your Claude plan starts Claude Code once,
-sends it the conversation, and lets it make one request to Anthropic. Iron
-Jarvis measured what that costs on this PC, phase by phase
+sends it the conversation, and lets it make one request to Anthropic. STEC
+OS measured what that costs on this PC, phase by phase
 (`docs/CLAUDE-NATIVE-ROUND-COST.md`): the model took about half a second a
 round, and about as much again went to Claude Code starting up, a new secure
 connection to Anthropic, and waiting for Claude Code to quit.
 
-- **The answer arrives the moment it is complete.** Iron Jarvis used to wait
+- **The answer arrives the moment it is complete.** STEC OS used to wait
   for Claude Code to quit (30-45 ms after it finished) and then clean up
   (up to 50 ms) before showing the answer or running the next tool. Now the
   answer is used at once and the clean-up happens in the background. The
@@ -3583,7 +3595,7 @@ connection to Anthropic, and waiting for Claude Code to quit.
 ## A reply starts sooner, and a long one costs less to keep (v1.418.0)
 
 - **A slow memory source no longer holds the first word.** Before a reply,
-  Iron Jarvis gathers what grounds it: your project's notes, your lessons,
+  STEC OS gathers what grounds it: your project's notes, your lessons,
   your memory bases (some of them on other machines), the saved workflows.
   It used to wait for the slowest of these. Now it waits at most 2.5 seconds
   for the optional ones; a source still answering then is left out of THAT
@@ -3592,7 +3604,7 @@ connection to Anthropic, and waiting for Claude Code to quit.
   AGENTS.md / CLAUDE.md, and the apps you switched on for the chat are never
   left out: the reply waits for those.
 - **A coding session does not walk its whole folder before every reply.**
-  The project map at the top of a coding reply is kept, and Iron Jarvis only
+  The project map at the top of a coding reply is kept, and STEC OS only
   looks at the folder's top two levels to see whether anything there changed
   (a file added, removed, renamed or edited at those levels makes a new map).
   A change deeper in the folder shows in the map at the next change near the
@@ -3618,7 +3630,7 @@ connection to Anthropic, and waiting for Claude Code to quit.
   asks before acting, the model, and Local only. Type and press Enter: the
   session is made in that folder with those choices and your words go to it
   as its first message. Nothing is made until you send, so leaving the box
-  leaves nothing behind. A folder Iron Jarvis cannot use is said on the
+  leaves nothing behind. A folder STEC OS cannot use is said on the
   folder chip and your words stay in the box; any other reason is said under
   the box. If the session is made but cannot take your first message, it is
   not kept: you are back at the box with your words, your choices and the
@@ -3631,7 +3643,7 @@ connection to Anthropic, and waiting for Claude Code to quit.
   file") that opens to the steps themselves; the run it is working in shows
   its steps as they go. A reply you watched keeps that order once it is
   saved. A reply you did not watch (it ran while the window was closed)
-  shows its steps before its final words, because Iron Jarvis keeps only the
+  shows its steps before its final words, because STEC OS keeps only the
   last part of what a reply said.
 - **One line under each reply.** Instead of a stack of lines, a finished
   reply has one: "Worked for 2 min 14 s · 7 steps · Checked: tests passed",
@@ -3645,7 +3657,7 @@ connection to Anthropic, and waiting for Claude Code to quit.
   button, and a session you open from there (or from a link) says it is
   archived with a Bring back button where you type.
 
-## Chat reads "my latest emails" and questions about Iron Jarvis (v1.420.0)
+## Chat reads "my latest emails" and questions about STEC OS (v1.420.0)
 
 - **Your own mail is your mail, never a web search.** "Summarize my latest
   emails", "check my new mail", "any new emails from Bob?" and "read my
@@ -3655,13 +3667,13 @@ connection to Anthropic, and waiting for Claude Code to quit.
   the reply carries one Connect button naming both mail choices. "My new
   messages on Slack" is Slack, and "my mail carrier" or "email marketing
   tips" are not your mailbox.
-- **Questions about Iron Jarvis ask the Guide.** "What apps can you work
+- **Questions about STEC OS ask the Guide.** "What apps can you work
   with?", "what can you connect to?", "what are missions?", "what is Build
   for?", "what does the Code view do?" and "how do I use Build?" look the
   answer up in the Handbook and in your own setup. The everyday meanings
   stay everyday: "what are missions in the Bible" or "what is the build for
   the release" are answered as usual.
-- **Coding work can be offered a coding session.** Iron Jarvis can now tell
+- **Coding work can be offered a coding session.** STEC OS can now tell
   a request to build a piece of software ("build me a todo app", "write me
   a Chrome extension") or work in a repository ("fix the failing test in my
   repo") from office work or a shed. Chat still answers; the offer is a
@@ -3673,7 +3685,7 @@ connection to Anthropic, and waiting for Claude Code to quit.
 - **This message or the whole session.** Build › Code's Changes tab has
   two buttons at the top: **Whole session** (what it always listed:
   everything since the session started here) and **This message** (only
-  what changed while the newest message ran). Iron Jarvis tells the two
+  what changed while the newest message ran). STEC OS tells the two
   apart by reading the folder before each message; when it did not get to
   read it in time, the pane says so and lists the whole session instead.
   The first message of a session is the whole session.
@@ -3681,7 +3693,7 @@ connection to Anthropic, and waiting for Claude Code to quit.
   **Revert this file** button: press it, then press again to confirm. The
   file goes back to how it was at the start of what the list shows (the
   session's start, or this message's). A file that did not exist then is
-  moved to Iron Jarvis's trash folder, never deleted. Nothing else moves:
+  moved to STEC OS's trash folder, never deleted. Nothing else moves:
   the branch, its commits, what git has staged and every other file stay as
   they are. Revert waits while a reply is running, refuses a file that
   changed after the list was read (read the changes again first), and is
@@ -3699,8 +3711,8 @@ such as "done": a finished reply has no label, a question says "has a
 question", and a remote still at it says "working…".
 
 **Stop works while an agent answers.** While an @-agent round is running, the
-send button turns into Stop (Esc does the same). Stop ends the round on Iron
-Jarvis's side too and leaves a "Stopped." line; your question stays in the
+send button turns into Stop (Esc does the same). Stop ends the round on STEC
+OS's side too and leaves a "Stopped." line; your question stays in the
 chat.
 
 **A key check says what it found, in words.** On the first-run key door and on
@@ -3714,7 +3726,7 @@ Connections." The raw text is still there, folded under **Details**.
 **Your plans and your own model servers**, and its **Rescan local CLIs** button
 is **Look again**. A Google, Microsoft or Dropbox card that needs an app id
 says what it is for ("Dropbox needs one to know which app is asking you to sign
-in") before the name to save it under. When you add a model server, Iron Jarvis
+in") before the name to save it under. When you add a model server, STEC OS
 asks it how it answers when you press **Fetch available models**; the choice
 between OpenAI-compatible and Anthropic-compatible appears only when it could
 not tell. The email words follow suit: **Email (sending)** and **Email
@@ -3748,8 +3760,8 @@ instead of "Working".
 **Two views called Code, told apart by the tool.** The chat page's **Chat |
 Code** switch is where Jarvis writes, runs and checks the code itself
 (**Chat › Code**). Build has a **Code | Terminal** switch of its own, where
-your own Claude Code, Codex, Pi, OpenCode, Grok or Antigravity does the work and Iron
-Jarvis shows it (**Build › Code**). Both stay "Code" — each page names its
+your own Claude Code, Codex, Pi, OpenCode, Grok or Antigravity does the work and STEC
+OS shows it (**Build › Code**). Both stay "Code" — each page names its
 own — and where a list has to tell them apart, a session says which tool
 writes its code: **Running now** lists "Coding session (Jarvis) · 12 min" for
 Chat › Code and "Coding session (Claude Code) · 3 min" (or Codex, Pi,
@@ -3799,8 +3811,8 @@ the right level.
 - **Older steps are a press away.** A long session shows its newest steps;
   above them a line says how many earlier steps there are, and **Load
   earlier** puts the page before them on top (press again for more) — the
-  first message is never lost. Opening a session is also quicker: once Iron
-  Jarvis has driven a session, it keeps the newest steps in memory instead of
+  first message is never lost. Opening a session is also quicker: once STEC
+  OS has driven a session, it keeps the newest steps in memory instead of
   reading the whole record from disk each time.
 - **A conversation from elsewhere shows what was said there.** Open a
   conversation Claude Code, Codex, Pi or OpenCode saved by itself, or bring
@@ -3810,9 +3822,9 @@ the right level.
   you did in the terminal shows in order with the rest.
 - **Send while it works: your message waits.** Press Enter while the tool is
   working and your message waits under the box ("Waiting", with an × to take
-  it off). When the reply ends normally, Iron Jarvis sends it as your next
+  it off). When the reply ends normally, STEC OS sends it as your next
   message — even if you closed the page. If the reply was stopped, failed, or
-  hit an account's limit, or Iron Jarvis restarted meanwhile, nothing is
+  hit an account's limit, or STEC OS restarted meanwhile, nothing is
   sent: the words come back to your message box, and a line says so. To tell the running reply something now,
   press **Shift+Enter** (or the arrow) — that sends it a note, as before.
 - **Keys.** **Esc** stops a running reply (when no list is open). **Shift+Tab**
@@ -3834,14 +3846,14 @@ reply streams. Nothing about what the session does changed.
 
 - **The answer no longer blinks out at the end.** When a reply finished,
   its live text used to vanish for a moment (up to about two seconds) while
-  Iron Jarvis read the saved copy back, then reappear. The live text now
+  STEC OS read the saved copy back, then reappear. The live text now
   stays where it is until the saved reply is on screen, and the two swap in
   one step.
 - **The conversation follows the reply as it grows**, as long as you are at
   (or within a few lines of) the bottom. Scroll up to read something earlier
   and it stays where you put it.
 - **The finish check no longer writes itself into the reply.** After a
-  reply that changed files, Iron Jarvis checks the work (it runs your tests
+  reply that changed files, STEC OS checks the work (it runs your tests
   again and goes through what you asked for). That check's own notes used to
   stream into the reply and then disappear when the reply was saved. Now the
   reply shows one quiet line while the check runs, "Checking the work…",
@@ -3861,7 +3873,7 @@ conversations slow to scroll and type into.
 ## What fills a coding session's conversation: the Context drop-down (v1.415.0)
 
 The **Session** tab of a coding session, in both Chat › Code and Build ›
-Code, has a **Context** drop-down. Press the heading to close it; Iron Jarvis
+Code, has a **Context** drop-down. Press the heading to close it; STEC OS
 remembers that for the window.
 
 - **The headline**: how full the conversation is for the model ("72% used")
@@ -3875,7 +3887,7 @@ remembers that for the window.
   never the only way to tell them apart.
 - **Not counted above**: in Chat › Code, the descriptions of the tools the
   model can use, which are sent with each message ("Sent with each message,
-  not counted above"). Iron Jarvis has always measured how full a
+  not counted above"). STEC OS has always measured how full a
   conversation is without them, so they are listed apart and the percent
   stays the one the Summarize offer uses. In Build › Code, Claude Code's tools
   that load only when needed.
@@ -3886,7 +3898,7 @@ remembers that for the window.
   (**Summarize** in Chat › Code, **Compact session** in Build › Code), which
   you can press only when no reply is running.
 
-**Chat › Code** (Iron Jarvis's own coding sessions) counts every part itself,
+**Chat › Code** (STEC OS's own coding sessions) counts every part itself,
 from the very text each reply sent, so the parts add up exactly to the
 percent. **Summarize earlier messages at** is a real setting (Auto is 92%;
 85%, 80% and 75% keep more room free). It applies to every chat and coding
@@ -3909,7 +3921,7 @@ session. Summarize writes the same checked summary as the box's Summarize.
   full; Compact session is offered for Claude Code only.
 
 Also fixed: in a long Claude Code session, the percent could read far too low
-(1%). Iron Jarvis read the size of the last call in Claude Code's report, and
+(1%). STEC OS read the size of the last call in Claude Code's report, and
 that call could be a side call (an advisor or a summary) rather than the
 conversation. It now reads it the way Claude Code itself does.
 
@@ -3926,10 +3938,10 @@ conversation. It now reads it the way Claude Code itself does.
 - **Thinking says when it is happening.** The thinking line reads
   "Thinking…" while Claude is thinking, then "Thought for N s".
 - **What Claude Code says about its own work shows.** Your hooks' output
-  (Iron Jarvis asks Claude Code for every hook's), "compacting the
+  (STEC OS asks Claude Code for every hook's), "compacting the
   conversation", an action Claude Code refused by itself, and a background
-  helper that finished are quiet lines in the conversation. A request Iron
-  Jarvis does not answer (a hook callback, a form for one of its added tools)
+  helper that finished are quiet lines in the conversation. A request STEC
+  OS does not answer (a hook callback, a form for one of its added tools)
   is still refused, and the line says what was asked.
 - **A command is named in Claude Code's words.** Its row reads the short
   description Claude Code wrote ("List tracked files and remotes") with the
@@ -3974,7 +3986,7 @@ conversation. It now reads it the way Claude Code itself does.
   seconds.
 - Your answers to these cards now count in **Autonomy › Hands-off** under
   coding sessions, as interruptions. A Build › Code reply is not counted as
-  a task there (Iron Jarvis does not read its outcome), so it never changes
+  a task there (STEC OS does not read its outcome), so it never changes
   the hands-off rate.
 
 ## One approval means one approval in Chat › Code (v1.417.0)
@@ -4005,7 +4017,7 @@ conversation. It now reads it the way Claude Code itself does.
   checker (ruff, mypy, ESLint, tsc) runs with no card; a folder's own checks
   and a project's command file still ask.
 - **A card says who asks and why.** A card for the finish check's test run
-  or a project checker says Iron Jarvis asks, not the assistant, and every
+  or a project checker says STEC OS asks, not the assistant, and every
   card carries one reason line (for example "it is not in this chat's grants
   yet", or the rule that kept it under Accept edits or Auto).
 - **Auto decides faster.** The quick checks of one round run together and
@@ -4018,7 +4030,7 @@ conversation. It now reads it the way Claude Code itself does.
 ## Build › Code is part of the app (v1.414.0)
 
 A coding session in Build's **Code** view (your own Claude Code, Codex, Pi or
-OpenCode) is now seen, and can know you, everywhere else in Iron Jarvis.
+OpenCode) is now seen, and can know you, everywhere else in STEC OS.
 
 **Seen everywhere.**
 
@@ -4041,23 +4053,23 @@ OpenCode) is now seen, and can know you, everywhere else in Iron Jarvis.
   **deny**. Never sent: a question that needs words, a card that must be
   allowed once every time, and any card while the session is in Full access.
 
-**Iron Jarvis's own tools, if you want them.** The session's header has an
-**Iron Jarvis tools** button with two boxes, both off until you tick one:
+**STEC OS's own tools, if you want them.** The session's header has an
+**STEC OS tools** button with two boxes, both off until you tick one:
 
 - **Memory**: the coding tool may search and read your memory and your
   memory profile (read-only; it can never write). What it reads goes to the
   tool's model provider (Anthropic for Claude Code, OpenAI for Codex, the
   provider you chose in Pi or OpenCode) with the conversation.
-- **Browser**: the coding tool may use your browser through Iron Jarvis;
+- **Browser**: the coding tool may use your browser through STEC OS;
   every click, typing or page change asks you first.
 
 These are the same two boxes a Build terminal has. Ticking the first box (or
 unticking the last) applies from your next message: the tool starts again on
-the same conversation, connected to Iron Jarvis. Unticking a box takes effect
-on the tool's very next call. Iron Jarvis never changes your own config files
-for this: Claude Code gets a configuration file of Iron Jarvis's own, Codex
-gets the setting on its command line, Pi gets a small extension of Iron
-Jarvis's own, and OpenCode gets it when the conversation opens. None of them
+the same conversation, connected to STEC OS. Unticking a box takes effect
+on the tool's very next call. STEC OS never changes your own config files
+for this: Claude Code gets a configuration file of STEC OS's own, Codex
+gets the setting on its command line, Pi gets a small extension of STEC
+OS's own, and OpenCode gets it when the conversation opens. None of them
 holds a password: the connection's key lives only while that process runs.
 The connection is named `iron-jarvis-code` (the tools show up as, for
 example, `mcp__iron-jarvis-code__memory_search`), never the `iron-jarvis`
@@ -4067,10 +4079,10 @@ Build › Code sessions have no Local only setting; when you want nothing to
 reach a cloud model, leave Memory off.
 
 **Codex asks before it uses one of these tools.** In **Ask first**, Codex
-asks before every call to a connected tool server — Iron Jarvis's Memory and
+asks before every call to a connected tool server — STEC OS's Memory and
 Browser, and any server you set up in Codex yourself. That question is an
-ordinary card in the Code view, for example *Codex wants to: Search Iron
-Jarvis memory for "project codename"*, with the call's details underneath:
+ordinary card in the Code view, for example *Codex wants to: Search STEC
+OS memory for "project codename"*, with the call's details underneath:
 **Allow once**, **Allow for this session** (only when Codex offers it for
 that call), or **Deny**. Pressing Stop while the card waits says no. In
 **Full access** Codex does not ask. When a tool server asks Codex to fill in
@@ -4091,7 +4103,7 @@ Build now has a switch for **Pi** and **OpenCode** too (off by default):
   that one instead, so the profile goes there.
 - OpenCode reads `AGENTS.md` in `%USERPROFILE%\.config\opencode` (or
   `XDG_CONFIG_HOME`). While that file does not exist, OpenCode reads your
-  Claude Code instructions (`.claude\CLAUDE.md`) instead, so Iron Jarvis
+  Claude Code instructions (`.claude\CLAUDE.md`) instead, so STEC OS
   will not create it then: making it would stop OpenCode reading your Claude
   Code file. Turn on **Share with Claude Code** instead, and OpenCode reads
   your profile there.
@@ -4106,7 +4118,7 @@ Rest the pointer on an icon to see its name.
 
 - **Changes** lists every file that changed, each diff in one scrolling list,
   with **Reviewed** marks and **Open in VS Code / Cursor** at each change. The
-  coding tool writes files by itself, so Iron Jarvis reads the changes from
+  coding tool writes files by itself, so STEC OS reads the changes from
   **git**: every file in the session's folder that differs from where the
   repository was when the session started here, committed since or not, new
   files included. That includes changes you or another program made in the
@@ -4128,7 +4140,7 @@ Rest the pointer on an icon to see its name.
 - **Session**: where it works (this computer, the folder with **Open**, the
   git branch, instruction files such as `CLAUDE.md` in the folder), what
   answers (the tool, model, effort, account, the permission mode and what it
-  means, and which Iron Jarvis tools are on), how full the conversation was
+  means, and which STEC OS tools are on), how full the conversation was
   at the tool's last report, your last attachment, how many files changed
   (**See changes**), and the programs running under the tool right now (its
   own helpers included). When the tool is not running, nothing is listed; it
@@ -4223,27 +4235,27 @@ answer, and from then on starts the server from those files itself.
   start time runs out (15 seconds), it is tried once more through its
   launcher. Either way the pack's record says what happened.
 - **Turning it off.** Set the environment variable
-  `IRONJARVIS_MCP_DIRECT=off` before starting Iron Jarvis to start every
+  `IRONJARVIS_MCP_DIRECT=off` before starting STEC OS to start every
   pack through its launcher.
 - One difference: `npx` adds its own `npm_…` settings to the server's
   environment; a direct start does not. No known pack reads them.
 
 ## Jarvis fixes its own pull request's failing checks (v1.407.0)
 
-When a coding session on its own branch has opened a pull request, Iron
-Jarvis watches the pull request's checks on GitHub. When a check fails, the
+When a coding session on its own branch has opened a pull request, STEC
+OS watches the pull request's checks on GitHub. When a check fails, the
 session fixes it by itself, a reviewer on Claude Code or Codex checks the
 fix, and only a fix the reviewer approves is pushed.
 
 What happens, step by step (each step is a line in the session and a row in
 the bell):
 
-1. **The checks are read.** While a check still runs, Iron Jarvis looks again
+1. **The checks are read.** While a check still runs, STEC OS looks again
    after a minute, then less often (up to every 10 minutes), and stops
    watching after 6 hours if the checks never finish. When every check
    passed, it rests until the branch is pushed again.
 2. **A check failed.** As soon as the session is free (never while a reply of
-   yours is running), Iron Jarvis reads the failed check's log on GitHub and
+   yours is running), STEC OS reads the failed check's log on GitHub and
    starts a reply in the session by itself: "Checks failed on this session's
    pull request: …". It runs on the session's own model and account, with its
    Local only and trust. Because nobody is watching and the log comes from
@@ -4258,10 +4270,10 @@ the bell):
    change them, and it ends its report with its verdict. The setting **Who
    reviews a check fix** picks Claude Code or Codex; Automatic picks the one
    that is connected and did not write the fix, when there is one.
-4. **Approved: pushed.** Iron Jarvis commits the fix (leaving out anything
+4. **Approved: pushed.** STEC OS commits the fix (leaving out anything
    that looks like a secret, a huge file or a dependency folder, and naming
    it) and pushes it to the pull request's own branch, with no card. This is
-   the one push Iron Jarvis makes without asking: only after an approved
+   the one push STEC OS makes without asking: only after an approved
    review, only to the branch of that pull request, never to its base branch,
    never with force. It then watches the new checks; when they pass, you get
    one notice: "Your pull request's checks pass now".
@@ -4271,8 +4283,8 @@ the bell):
    When it approves, the pull request's branch takes the fix (a fast-forward)
    and it is pushed.
 6. **At most 3 rounds.** A round is one fix and one review. After 3 rounds
-   without passing checks or an approval, Iron Jarvis stops and tells you
-   ("Iron Jarvis stopped fixing your pull request's checks"); everything stays
+   without passing checks or an approval, STEC OS stops and tells you
+   ("STEC OS stopped fixing your pull request's checks"); everything stays
    on its branches for you. The count starts again when the checks pass or
    when you push the branch yourself.
 
@@ -4285,19 +4297,19 @@ What it never does:
   Codex is connected.
 - **Push what the reviewer could not judge.** The fix waits for you, and the
   session says why, when: a step of the fix needed your OK and was not done;
-  a commit Iron Jarvis did not make sits between the failing checks and the
+  a commit STEC OS did not make sits between the failing checks and the
   fix (it names the commit); the fix changes a file that is not text; or the
   branch would push anywhere but the pull request's own repository on GitHub
   (a folder on this PC, another host, an ssh shortcut name).
 - **Work under Emergency stop.** With Emergency stop on, nothing is read or
   started; a fix reply that is running is stopped, a review in flight is
   stopped, and the commit (with the repository's own hooks) or the push in
-  progress is ended. If a push was cut off, Iron Jarvis reads the pull
+  progress is ended. If a push was cut off, STEC OS reads the pull
   request's branch back and says what really happened: pushed, or not.
 - **Change what the agent itself may do.** A commit or a push the session's
   own model tries in its shell still asks you every time, as before.
 
-You get a desktop or phone notice only twice: when Iron Jarvis gives up, and
+You get a desktop or phone notice only twice: when STEC OS gives up, and
 when the checks pass after the fix it pushed. Every other step is a quiet row
 in the bell and a line in the session.
 
@@ -4321,7 +4333,7 @@ first:
   keep exactly what they had; only the names moved.
 - **Accept edits**: as Ask before commands, and a file edit inside the chat's or the
   session's folder never stops for a card, even where the folder's own rules
-  would ask. An edit outside the folder (or into a folder Iron Jarvis keeps
+  would ask. An edit outside the folder (or into a folder STEC OS keeps
   for itself) still asks.
 - **Auto**: lets routine work through and asks only about risky things. It
   starts from what Ask before commands would ask about and, for each of those, first
@@ -4370,7 +4382,7 @@ first, as Don't ask does.
 **What else always waits for you under Accept edits and Auto.**
 
 - An edit of a file inside the folder that steers git, your editor, CI or
-  Iron Jarvis itself: anything under `.git`, `.ironjarvis` or `.claude`,
+  STEC OS itself: anything under `.git`, `.ironjarvis` or `.claude`,
   `.vscode/tasks.json` and `.vscode/settings.json`, anything under
   `.github/workflows`, and `.gitattributes`, `.gitconfig`, `.gitmodules`
   (whatever the letter case, and however the path is spelled).
@@ -4382,13 +4394,13 @@ first, as Don't ask does.
 - Code Jarvis writes and runs (`run_code`) that deletes, overwrites, starts
   another program or sends something over the network. Other code gets the
   quick check.
-- A coding-session reply Iron Jarvis carries on by itself (after a restart,
+- A coding-session reply STEC OS carries on by itself (after a restart,
   when an account's limit resets, on another account, the work of a plan you
   approved, the night shift) runs as Ask before commands: nobody is watching it start.
 
 **Edits to Git's own files and Jarvis's own rules ask under Ask before commands too
 (v1.408.1).** File edits run on their own under Ask before commands, but an edit of a
-file that steers Git, your editor, CI or Iron Jarvis itself — the same list
+file that steers Git, your editor, CI or STEC OS itself — the same list
 as above: anything under `.git` (its settings and hooks, which Git can run as
 programs), `.ironjarvis` (this folder's own permission rules and harness),
 `.claude` (Claude Code's settings and commands), the coding agents' own
@@ -4398,7 +4410,7 @@ instructions files (`AGENTS.md`, `CLAUDE.md`, their `.local.md` versions,
 `.gitconfig`, `.gitmodules` — now stops for a card under **Ask before commands** and
 **Ask before every action**, in a chat, a coding session and the helpers it
 starts. The card says why in plain words ("it changes Git's own settings",
-"it changes Iron Jarvis's own safety rules for this folder") and offers
+"it changes STEC OS's own safety rules for this folder") and offers
 **Allow once** and Deny only: it asks every time, no "for this chat" answer
 or standing grant covers it, and Enter never allows it (click Allow once).
 A chat sent through the API (no card) refuses it and says so; a schedule, a
@@ -4574,25 +4586,25 @@ report, every place it names like `src/app.py:12`, `src/app.py:12:5` or
 the session's folder opens from a report; a web address or a path that climbs
 out of the folder stays plain text.
 
-**Which editor.** Iron Jarvis finds VS Code and Cursor on this PC by the links
+**Which editor.** STEC OS finds VS Code and Cursor on this PC by the links
 they register when installed. **Settings › Agents & automation › Code editor**
 chooses: **Automatic** (VS Code when it is installed, else Cursor), **VS
 Code** or **Cursor**. With no editor found, no Open button is shown. On a Mac
 or Linux the app cannot tell which editors are installed, so choose one there
 to see the buttons. A press opens the editor through its own link; if the
-file is gone, outside the folders Iron Jarvis may read, or on a network share,
+file is gone, outside the folders STEC OS may read, or on a network share,
 the button says so in one line beside it. The chat page shows none of these
 buttons, and neither does a session whose folder is on a network share. VS
-Code shows its own confirmation dialog the first time a link from Iron Jarvis
-opens it (asking whether to allow it); that question is VS Code's, and Iron
-Jarvis cannot answer it for you. A workspace file (`.code-workspace`) is never
+Code shows its own confirmation dialog the first time a link from STEC OS
+opens it (asking whether to allow it); that question is VS Code's, and STEC
+OS cannot answer it for you. A workspace file (`.code-workspace`) is never
 opened this way, because the editor would load that workspace's settings and
 tasks, and a shortcut (a link) that leads into a network share is refused
 before anything follows it.
 
 ## Stable or Fresh updates (v1.405.0)
 
-Iron Jarvis ships often, and now and then a release has a problem the next one
+STEC OS ships often, and now and then a release has a problem the next one
 fixes. So each PC can choose how soon it takes a release, in **Settings ›
 System › Updates** (the desktop app):
 
@@ -4627,7 +4639,7 @@ GitHub's test results for the newest candidate cannot be read, the job puts
 nothing older on Stable that hour, so a Stable PC never downloads two versions
 an hour apart.
 
-**The day's wait is time only.** Iron Jarvis cannot see whether your other PC
+**The day's wait is time only.** STEC OS cannot see whether your other PC
 ran a version, how long for, or whether it worked. If a version misbehaves on
 your Fresh PC, hold it back: on the Updates page of that PC, press **Keep this
 version off Stable** twice. That asks GitHub, through the GitHub CLI (`gh`) on
@@ -4651,7 +4663,7 @@ older version.
 Chat can switch a PC to Stable on its own; switching to Fresh from chat always
 asks first, because it lets every release reach the PC.
 
-For whoever ships Iron Jarvis: this release adds a workflow file, so its
+For whoever ships STEC OS: this release adds a workflow file, so its
 release tag must be pushed by hand (`git tag vX.Y.Z <sha> && git push origin
 vX.Y.Z`), as for any change under `.github/workflows/`.
 
@@ -4710,11 +4722,11 @@ Files. It shows the session at a glance:
   it has run. A command that ended but left what it started running (such as
   `start /b node server.js`) says so and can be stopped too. **Stop** ends the
   program and everything it started; it stays listed as stopped, and the
-  session reads that it was stopped. If Iron Jarvis cannot reach a program a
+  session reads that it was stopped. If STEC OS cannot reach a program a
   finished command left behind, Stop says so instead of claiming it. Programs
   a command left running with a plain `&` are counted, not listed: they are
-  stopped when the session is archived or deleted, or when you quit Iron
-  Jarvis (a window such a command opened, like an editor, is left open and is
+  stopped when the session is archived or deleted, or when you quit STEC
+  OS (a window such a command opened, like an editor, is left open and is
   not counted). Programs a helper agent started belong to the helper's own run
   and are not listed here. The list is read again every few seconds only while
   something runs or the session is working, and only while the tab is shown.
@@ -4730,7 +4742,7 @@ known shape (such as `-pS3cret`) can still show.
 A coding session can have its own small team: one model leads, one or two
 others write the code, and one checks every change. Telling a planner to hand
 work to a team did not work (in 108 measured runs it handed out nothing), so
-here the roles are kept by Iron Jarvis, not suggested.
+here the roles are kept by STEC OS, not suggested.
 
 - **The roles.**
   - **Team lead** is the session's own model. It talks with you, reads the
@@ -4756,7 +4768,7 @@ here the roles are kept by Iron Jarvis, not suggested.
   file or runs a command (no writing, editing, patching, shell, program or
   page clicking and typing). It keeps reading, searching, the plan, your
   questions, skills and the tools that hand work out. It can hand a piece to
-  a worker by name, or ask for a role (code, test or read) and Iron Jarvis
+  a worker by name, or ask for a role (code, test or read) and STEC OS
   picks the worker. Only the session's own workers and reviewer can be
   handed work; anyone else, a built-in helper included, is refused.
 - **The one exception.** When no worker can take a piece right now (every
@@ -4769,7 +4781,7 @@ here the roles are kept by Iron Jarvis, not suggested.
   was removed from your model team (or no longer writes code), the session
   still says so: the lead does the work and the reply shows the same line.
   A member that hands work out to other agents itself cannot be a worker.
-- **The reviewer, twice at most.** When a reply changed files, Iron Jarvis
+- **The reviewer, twice at most.** When a reply changed files, STEC OS
   hands the change to the session's reviewer before the reply ends (you do
   not need "Hand work to my team first" for this). If it says changes are
   needed and the lead has a worker fix them, the reviewer reads the fix once
@@ -4827,7 +4839,7 @@ finished when its result reads "completed". A run a chat started belongs to
 that chat's task, and a coding session's helpers belong to their session.
 
 **How it is counted.** Nothing here asks a model: the numbers come from what
-Iron Jarvis already records. Each card or question is noted once when it is
+STEC OS already records. Each card or question is noted once when it is
 asked and once when it is settled (what you answered, whether you answered in
 the app or on your phone, and how long it waited). A card that "Allow for
 this run" on another card answered for you is not counted a second time. A
@@ -4857,7 +4869,7 @@ by themselves.
 
 - **An approved plan runs.** In a coding session's plan mode, the plan card's
   button now reads **Allow and run**. Pressing it approves the plan, and as
-  soon as the planning reply ends, Iron Jarvis starts carrying the plan out
+  soon as the planning reply ends, STEC OS starts carrying the plan out
   in the same session: the same model, account, folder and branch. You don't
   send anything, and the screen follows the work as it starts. **Deny**
   keeps the session planning, as before. Nothing starts by itself if you
@@ -4891,7 +4903,7 @@ by themselves.
 
 ## Asks about what you want, decides the rest (v1.402.0)
 
-Iron Jarvis now asks you fewer questions, and better ones.
+STEC OS now asks you fewer questions, and better ones.
 
 - **One rule about asking.** Every coding session (whatever model it runs on,
   planning or not), every agent run, and every chat message that can change
@@ -4905,7 +4917,7 @@ Iron Jarvis now asks you fewer questions, and better ones.
 - **"Want me to …?" is done, not asked.** When a coding session's reply, or an
   agent's final answer, ends by offering more work ("Want me to also add
   tests?", "Shall I proceed?", "Let me know if you'd like me to …") and there
-  is room left to work, Iron Jarvis tells it once: if that work is part of
+  is room left to work, STEC OS tells it once: if that work is part of
   what you asked, or plainly needed to finish it, do it now and then sum up;
   if only you can decide, end with that one question and a recommendation.
   The reply you keep is the first answer, then what came after it.
@@ -4939,7 +4951,7 @@ Three things in a coding session's box and panes read more simply.
   just **Opus 5.5**, and a session set to the plan's default shows "Opus 5.5"
   on its model chip. This holds in a session's menu, the chat's model menu and
   **Try on…**. Lists that keep both choices, such as **Settings › Default
-  model**, say "Claude Code's default (Opus 5.5)". Until Iron Jarvis has read Claude
+  model**, say "Claude Code's default (Opus 5.5)". Until STEC OS has read Claude
   Code's model list (a moment after Claude Code is signed in), the old words
   stay. Codex does not say which model is its default, so "Your ChatGPT plan"
   stays.
@@ -4977,9 +4989,9 @@ handed it a piece: nothing told it you wanted to save its usage.
   It names only the roles your members hold. The helper tool's description
   also points to your team first. A planner on a free local model is told the
   team should take its share of the work rather than told to save usage.
-- **Iron Jarvis hands the review to your team itself (v1.401.0).** Telling
+- **STEC OS hands the review to your team itself (v1.401.0).** Telling
   the planner was not enough: in the next measured night it handed the team
-  nothing in 108 runs. So when the setting is on, Iron Jarvis does one part of
+  nothing in 108 runs. So when the setting is on, STEC OS does one part of
   it on its own. When a coding reply changed files and is about to end, its
   finish check also hands the change to the member of your team with the
   **Review** role:
@@ -5052,7 +5064,7 @@ How to use them:
   team and the planner alone.
 - **The team at work.** Each team's answer starts by saying in how many runs
   the planner handed at least one piece to a team member. With team first
-  on, it also says in how many runs Iron Jarvis's own finish check handed the
+  on, it also says in how many runs STEC OS's own finish check handed the
   change to the team's reviewer (v1.401.0). That review is never counted as
   a piece the planner handed.
 - **No step limit on the team tasks (v1.400.2).** The other tiers give Jarvis
@@ -5090,11 +5102,11 @@ the Reasoning chip pushed the right-hand controls onto a second line.
 
 ## Night shift: the morning (v1.399.0)
 
-When a night task ends, Iron Jarvis saves its work, and in the morning one
+When a night task ends, STEC OS saves its work, and in the morning one
 summary tells you how the night went.
 
 - **Each task's work is saved on its own branch.**
-  - Iron Jarvis commits it the way the Commit button does, using your task's
+  - STEC OS commits it the way the Commit button does, using your task's
     words as the message.
   - It never pushes and never merges. Pushing and pull requests are yours.
   - A task that failed or needs you is saved too, so nothing is lost.
@@ -5117,7 +5129,7 @@ summary tells you how the night went.
     is open, and one phone message if a phone channel is set up. Never one
     per task.
   - A task that ran with **Local only** on appears on the phone only as "A
-    Local only task: open Iron Jarvis on this PC to see it". Its words stay
+    Local only task: open STEC OS on this PC to see it". Its words stay
     on this PC.
 - **The Last night view.** In Coding sessions, open **Last night** (under
   Tonight).
@@ -5168,7 +5180,7 @@ branch.
   - The task carries on with the rest of its work, and ends as **Needs
     you**.
 - **Your main folder is watched.** Commands run as you, so they could reach
-  other folders. Before and after each task, Iron Jarvis checks your main
+  other folders. Before and after each task, STEC OS checks your main
   folder: its commit, branches, changed files and `.venv` packages. A change
   ends the task as **Needs you**, shown on its row.
 - **Tests on a branch** use your main folder's `.venv` and `node_modules`.
@@ -5179,7 +5191,7 @@ branch.
 - **Limits hold.** Pay-per-use stays within your monthly limit. A carry-on
   after a restart or an account reset happens only inside the window, and
   only with the task's own time left.
-- **Emergency stop** stops every night task, and everything Iron Jarvis
+- **Emergency stop** stops every night task, and everything STEC OS
   started by itself, such as an automatic resume. A coding reply you started
   yourself is never stopped.
 - **The PC stays awake** while a night task runs, and from 6 hours before
@@ -5309,7 +5321,7 @@ benchmark a model team against one model.
 
 ## Local first, limits watched (v1.395.0)
 
-- **The planner asks for a role, and Iron Jarvis picks the member.** When a
+- **The planner asks for a role, and STEC OS picks the member.** When a
   coding session or an objective hands out a piece of work, the planner can
   ask for "a team member for coding" (or reading, reviewing, testing)
   instead of naming one. The order:
@@ -5377,7 +5389,7 @@ benchmark a model team against one model.
     planner sees, for each member: its model, where it runs (this PC, your
     network or the cloud), what it costs (free, your plan or pay per use),
     and how much of its plan it has used.
-  - Usage comes from numbers Iron Jarvis already has. When it has none for a
+  - Usage comes from numbers STEC OS already has. When it has none for a
     member, it says "Not known yet".
 - **Make a starter team.** In Settings › Models › Model team, **Make a
   starter team** shows a preview of the models you have connected. Nothing
@@ -5424,7 +5436,7 @@ benchmark a model team against one model.
   - When an account in a group reaches its limit, another account of the
     **same group and the same kind** carries the reply on at once. The reply
     says so: "Work Max reached its limit; carried on with Spare (same group)".
-  - Accounts known to be least used go first. An account Iron Jarvis has no
+  - Accounts known to be least used go first. An account STEC OS has no
     numbers for yet is tried only after them.
   - An account in no group never moves, and never takes over.
   - A Claude Code account never takes over from Codex, or the other way round.
@@ -5432,7 +5444,7 @@ benchmark a model team against one model.
     until you make them, and changing groups from chat always asks first.
 - **Usage you can see.** The account chip and the top of the Timeline show
   the account's current usage, for example "63% of the 5-hour window, resets
-  3:40 PM". An account Iron Jarvis has no numbers for yet says "usage not
+  3:40 PM". An account STEC OS has no numbers for yet says "usage not
   known yet".
 
 ## A long coding reply never goes quiet without telling you (v1.392.0)
@@ -5477,13 +5489,13 @@ benchmark a model team against one model.
   - To turn this off: **Settings › System › Power › Keep this PC awake while
     work runs**.
 - **A coding reply carries on after a restart.** If a reply was working when
-  Iron Jarvis stopped (an update, a restart or a crash), it carries on by
+  STEC OS stopped (an update, a restart or a crash), it carries on by
   itself at the next start, from its last finished step.
-  - The reply above says Iron Jarvis stopped there, the next one says it
+  - The reply above says STEC OS stopped there, the next one says it
     carried on, and the bell says so too.
   - A step that was cut off midway is not run again blindly: the model is told
     it was cut off and checks before going on.
-  - A reply that was waiting for your answer when Iron Jarvis stopped stays
+  - A reply that was waiting for your answer when STEC OS stopped stays
     waiting, with **Retry**, as before.
   - When a very long reply's record is too big to keep whole, its newest steps
     are kept.
@@ -5507,7 +5519,7 @@ bars on one time axis.
     of it;
   - every step, in the same words as the steps under the reply ("Read
     app.py");
-  - Iron Jarvis's own checks (the finish check, a project check), marked as
+  - STEC OS's own checks (the finish check, a project check), marked as
     checks, not as the model's work;
   - each helper, with its model and its steps.
   Steps that ran at the same time overlap.
@@ -5556,9 +5568,9 @@ Timeline. For now a helper's own model calls are drawn as one bar.
   shows the running reply's plan, else whichever is newer: the newest reply's
   plan or the plan you approved.
 
-## Closing Iron Jarvis never gets stuck waiting on finished work (v1.388.2)
+## Closing STEC OS never gets stuck waiting on finished work (v1.388.2)
 
-When Iron Jarvis stops (Quit, or an update's tidy stop), it waits up to five
+When STEC OS stops (Quit, or an update's tidy stop), it waits up to five
 seconds for jobs started from your phone and for picture and video renders to
 finish. If one of them had finished a moment before the stop began, that wait
 could get stuck forever, using a whole processor core, and the five-second
@@ -5630,9 +5642,9 @@ chat instead of saved.
   its answer is done. One that runs to the full budget at about 55 tokens a
   second takes about ten minutes; Stop still ends it at once.
 - **A server that refuses the budget is asked once more** with the size it
-  says fits, and that size is remembered until Iron Jarvis restarts.
-- **A reply cut off in the middle of a tool call is picked up again.** Iron
-  Jarvis runs nothing from the half call (complete calls in the same reply
+  says fits, and that size is remembered until STEC OS restarts.
+- **A reply cut off in the middle of a tool call is picked up again.** STEC
+  OS runs nothing from the half call (complete calls in the same reply
   still run), tells the model what happened, and asks it to carry on, writing
   a large file in parts. This happens at most twice in a row and eight times
   in one reply; after that the reply says plainly it was cut off and suggests
@@ -5648,7 +5660,7 @@ tools. Claude now often writes a file with a shell command instead, and then
 the check never ran: both of its remaining benchmark failures were that.
 
 - **The folder is compared before and after.** When a reply ran a command,
-  Iron Jarvis compares the session folder as the reply began with the folder
+  STEC OS compares the session folder as the reply began with the folder
   at the end, so a file a command wrote or changed counts. It takes a few
   hundredths of a second on a few thousand files. Caches, build output and
   anything `.gitignore` ignores never count.
@@ -5673,7 +5685,7 @@ the check never ran: both of its remaining benchmark failures were that.
   they run on the files the agent changed, and any problem they find goes
   back to the agent. They run your project's own programs, so they ask first
   unless you allowed the command tool for longer. A project without them
-  works exactly as before. Iron Jarvis never installs a checker. (Since
+  works exactly as before. STEC OS never installs a checker. (Since
   v1.420.0 they run once per reply, at its end; see "A coding reply checks
   your project once, quickly".)
 - **Several files in one read** for the generic and Codex model families, so
@@ -5687,13 +5699,13 @@ the check never ran: both of its remaining benchmark failures were that.
 ## A Build session on Claude runs its commands in bash (v1.386.2)
 
 Claude was trained in Claude Code, whose command tool is called Bash, so in a
-Build session it writes bash commands. On Windows Iron Jarvis ran them in
+Build session it writes bash commands. On Windows STEC OS ran them in
 cmd.exe, which reads them differently: a `;` does not separate commands
 there. In a benchmark run the line `rm -f server.port; python server.py & …`
 made `rm` delete the project's own `server.py`.
 
 - **Claude's commands now run in Git for Windows' bash**, the way Claude Code
-  runs them on Windows. Iron Jarvis finds it where Claude Code does
+  runs them on Windows. STEC OS finds it where Claude Code does
   (`CLAUDE_CODE_GIT_BASH_PATH`, then Git's own folder) and never uses the WSL
   `bash` in System32. Without Git for Windows the commands still run in cmd,
   and the agent is told so.
@@ -5742,12 +5754,12 @@ run the tests again.
 
 ## Codex no longer thinks your folder is read-only (v1.385.1)
 
-When Iron Jarvis worked through Codex (a chat or a Build session on
+When STEC OS worked through Codex (a chat or a Build session on
 codex-cli), the model could answer "The working folder is read-only in this
 session, so I couldn't apply the fix" and paste the change for you to make
 by hand. The coding benchmark found it: on gpt-6-astra it was every one of
-the 26 failed runs. Iron Jarvis starts Codex with a read-only setting on
-purpose, so that Codex's own tools cannot act; Iron Jarvis carries out the
+the 26 failed runs. STEC OS starts Codex with a read-only setting on
+purpose, so that Codex's own tools cannot act; STEC OS carries out the
 model's tools itself. The model is now told that plainly, so it makes the
 change itself (still asking you first wherever your approval setting says
 to). Nothing about what Codex itself may do has changed.
@@ -5767,7 +5779,7 @@ reading. It also stopped if nobody had looked at it for an hour.
   in the same session. Nothing continues on its own.
 - **Leaving does not stop it.** A Build reply keeps working while you are
   elsewhere in the app, for as long as it needs. It still stops on Stop,
-  archive, delete, closing Iron Jarvis, your account's limit, or its step
+  archive, delete, closing STEC OS, your account's limit, or its step
   limit. A reply waiting for your OK on a card waits until you answer.
 - **Coming back shows it at once.** The reply is on screen as you left it,
   your question included, and it carries on from there: no replay, no jump,
@@ -5782,8 +5794,8 @@ reading. It also stopped if nobody had looked at it for an hour.
 ## The coding benchmark can rank harnesses (v1.384.0)
 
 `ironjarvis bench-harness` (a developer tool, not in the app's menus) was too
-easy to tell the best coding harnesses apart: Claude Code, Codex and Iron
-Jarvis on Codex all scored 30 of 30. This release makes it able to rank them.
+easy to tell the best coding harnesses apart: Claude Code, Codex and STEC
+OS on Codex all scored 30 of 30. This release makes it able to rank them.
 
 - **Each task can run several times.** `--repeats 3` runs every task three
   times (every task's first run before any second run). The report gives each
@@ -5819,7 +5831,7 @@ Jarvis on Codex all scored 30 of 30. This release makes it able to rank them.
   opens under its row instead of covering the menu.
 
 - **Your model server's key goes with every request — and only to it.** When
-  a model server (for example a LiteLLM gateway) needs a key, Iron Jarvis now
+  a model server (for example a LiteLLM gateway) needs a key, STEC OS now
   sends the key you saved for it on every request, including the background
   checks that see whether it is up, what models it has and what each model can
   do. Those checks used to go without the key, and the server refused them.
@@ -5831,7 +5843,7 @@ Jarvis on Codex all scored 30 of 30. This release makes it able to rank them.
 - **What a model can do is read from the server.** For a LiteLLM gateway,
   whether a model can look at pictures or use tools, and how much text it
   takes, now come from the gateway's own model list, so a vision model is no
-  longer reported as unable to see. Iron Jarvis no longer tries Ollama-only
+  longer reported as unable to see. STEC OS no longer tries Ollama-only
   addresses on servers that are not Ollama.
 
 - **"Needs to sign in again" no longer sticks.** An Iron-Proxy account you
@@ -5843,7 +5855,7 @@ Jarvis on Codex all scored 30 of 30. This release makes it able to rank them.
 
 ## Shell lines from a project's or plugin's command always ask (v1.381.0)
 
-A Claude Code command file can contain shell lines (`` !`…` ``). Iron Jarvis
+A Claude Code command file can contain shell lines (`` !`…` ``). STEC OS
 never runs them by itself; the agent runs them with its own terminal. From
 now on, when the command comes from the **project** you opened or from a
 **plugin**, those lines always ask you first, whatever the session's approval
@@ -5869,7 +5881,7 @@ extra.
 
 ## A new app icon (v1.380.0)
 
-Iron Jarvis has a new icon: the blue-and-white "iU" on a dark rounded tile.
+STEC OS has a new icon: the blue-and-white "iU" on a dark rounded tile.
 It is used for the desktop and Start-menu shortcuts, the taskbar button, the
 tray icon and the installer, each drawn from a size made for it (16 to 256
 pixels). After the update installs, Windows may keep showing the old picture
@@ -5878,7 +5890,7 @@ on a shortcut for a while; signing out and back in refreshes it.
 ## Coding sessions keep going while Claude Code's helpers work (v1.418.0)
 
 When Claude Code hands work to helper agents in the background and its reply
-ends ("I'll report as the teams finish"), Iron Jarvis now keeps Claude Code
+ends ("I'll report as the teams finish"), STEC OS now keeps Claude Code
 running until the helpers are done. Before, it stopped Claude Code fifteen
 minutes after the last reply, and every helper stopped with it, so the
 session looked stuck.
@@ -5899,17 +5911,17 @@ Only Claude Code reports its helpers; the other tools' sessions do not show
 the line (since v1.441.0 the Session tab lists Codex's background commands).
 
 - **A step never spins after its tool stopped (v1.427.2).** If Claude Code
-  (or Iron Jarvis) stops while a step is still running, for example when you
+  (or STEC OS) stops while a step is still running, for example when you
   close or update the app while Claude Code is working on its own, that step
   now reads "did not finish" instead of spinning forever, and one line says
   why. Steps left spinning by an earlier version are fixed the next time
-  Iron Jarvis starts. Send a message to carry on.
+  STEC OS starts. Send a message to carry on.
 
 - **Two accounts can hold the same Claude login (v1.427.3).** Claude Code's
   sign-in uses whichever claude.ai account your browser has open, so signing
   a second account in can quietly give it your first account's login. Two
   such accounts share ONE usage limit, so moving between them never helps.
-  Iron Jarvis now reads which Claude account each one is signed in to (only
+  STEC OS now reads which Claude account each one is signed in to (only
   two ids from Claude Code's own `.claude.json`; never your e-mail). The
   Iron-Proxy card on Settings › Connections says which accounts share a
   login. **Continue on another account** skips them and says why. To fix one,
@@ -5920,7 +5932,7 @@ the line (since v1.441.0 the Session tab lists Codex's background commands).
   there. A signed-out account is never offered; sign it in first.
 
 - **Chat › Code and chat skip a shared login too (v1.427.4).** The same rule
-  now holds everywhere Iron Jarvis picks "the next account": a Chat › Code
+  now holds everywhere STEC OS picks "the next account": a Chat › Code
   session that moves within an account group at its limit, **Choose
   account** on its limit card (an account with the same login is refused in
   words, and nothing moves), and plain chat when one account runs out.
@@ -5949,7 +5961,7 @@ firm that holds client information. Connecting it always means:
   (the steps are below): the sign-in page shows your firm's app and goes to
   your firm's own directory, and you can switch it off in one place. A
   personal Outlook.com account can leave it empty.
-- **A locked copy of the program.** Iron Jarvis installs the Microsoft 365
+- **A locked copy of the program.** STEC OS installs the Microsoft 365
   program once, from a list of exact versions it ships, with a tamper check on
   every package. It never downloads a newer version by itself. Only one
   package runs an install step: the one that keeps the sign-in's key in
@@ -5965,17 +5977,17 @@ firm that holds client information. Connecting it always means:
 - **It always asks first.** Jarvis asks you before each use of it; "run
   without asking" cannot be turned on for it, and it cannot sign out, switch
   or remove accounts from a chat — that happens only in its Sign in terminal.
-- **Its sign-in stays with Iron Jarvis.** The sign-in is kept in Iron
-  Jarvis's own folder, encrypted, with its key in Windows Credential Manager —
+- **Its sign-in stays with STEC OS.** The sign-in is kept in STEC
+  OS's own folder, encrypted, with its key in Windows Credential Manager —
   not in the program's shared folder another copy of it would read.
 
 **Set up your firm's app (once, about 5 minutes, with your Microsoft 365 admin
-account, in your browser — never inside Iron Jarvis):**
+account, in your browser — never inside STEC OS):**
 
 1. Open the Microsoft Entra admin center (entra.microsoft.com) and sign in
    with your admin account.
-2. Go to **Entra ID › App registrations › New registration**. Name it "Iron
-   Jarvis (Outlook)". Choose **Accounts in this organizational directory only
+2. Go to **Entra ID › App registrations › New registration**. Name it "STEC
+   OS (Outlook)". Choose **Accounts in this organizational directory only
    (single tenant)**. Leave the redirect address empty. Press **Register**.
 3. On the app's **Overview** page, copy the **Application (client) ID**.
 4. Open **Authentication**. Under **Advanced settings**, set **Allow public
@@ -5986,11 +5998,11 @@ account, in your browser — never inside Iron Jarvis):**
    Mail.ReadWrite, offline_access, openid and profile (User.Read is already
    there). Press **Grant admin consent** for your firm.
 6. Limit who can use it: go to **Entra ID › Enterprise applications**, open
-   "Iron Jarvis (Outlook)", then **Properties**. Set **Assignment required?**
+   "STEC OS (Outlook)", then **Properties**. Set **Assignment required?**
    to **Yes** and **Save**. Then open **Users and groups › Add user/group** and
    add only your main account.
 
-**Connect it in Iron Jarvis:** on Settings › Connections, open the Directory
+**Connect it in STEC OS:** on Settings › Connections, open the Directory
 card **Microsoft 365**. Choose **Work or school account**, type your main
 email, paste the app ID, and press **Connect**. Then press **Sign in to
 Microsoft**: a Build terminal shows a web address and a code. Open the address
@@ -6009,7 +6021,7 @@ Asking the chat to connect it points you to the card.
 ## Grok in the Code view (v1.418.0)
 
 If the Grok CLI is installed and signed in on this PC, the Code view offers
-Grok beside Claude Code, Codex, Pi and OpenCode. Iron Jarvis asks Grok to
+Grok beside Claude Code, Codex, Pi and OpenCode. STEC OS asks Grok to
 ask before it edits files or runs commands (your own Grok setting to approve
 everything is not used here), and never chooses Grok's "always allow" or
 "always reject", which would save a rule into your project. Auto edits and
@@ -6083,7 +6095,7 @@ as ordinary text.
 **A session does not need a folder.** On New session the folder is
 optional: press **Start with no folder** (or Start with the box empty). The
 session keeps its files in a new folder of its own in your chat files folder
-(Documents\Iron Jarvis), named by the date and your first words and made
+(Documents\STEC OS), named by the date and your first words and made
 only when you send the first message. The header shows that folder with
 **Open**; these sessions sit together under **No folder** in the left pane.
 Archiving or deleting the session removes its folder only when it is empty
@@ -6118,7 +6130,7 @@ Small changes the walkthrough led to:
 Sometimes a model's own safety check declines to answer. Claude does this
 for the whole conversation: once something earlier in a conversation has
 been flagged, every new message in that same conversation is declined too —
-even "Say hello" — so pressing Retry can never help. Iron Jarvis used to
+even "Say hello" — so pressing Retry can never help. STEC OS used to
 show that as an empty reply with "Press Retry". Now it says what happened
 and where the way out is:
 
@@ -6162,7 +6174,7 @@ name, the way they do in your own terminal, and a commit carries your own
 git name and e-mail. Secrets are still kept out: any variable whose name or
 value looks like a key, a token, a password or a sign-in (including a
 password inside an address — the address is kept without it) never reaches
-the agent's commands, and neither does anything of Iron Jarvis's own. Your
+the agent's commands, and neither does anything of STEC OS's own. Your
 account selectors (for example the cloud profile you work under) and your
 SSH agent are kept, so your tools act as the account you chose. Chat,
 agents, and scheduled or other unattended runs keep the plain, stripped-down
@@ -6226,7 +6238,7 @@ and the picture taken after its last step.
   orders is withheld, and the session stops acting on pages for the rest of
   the turn.
 - **It closes itself** when you press Stop, archive or delete the session,
-  after 10 minutes without use, and when Iron Jarvis quits — nothing is left
+  after 10 minutes without use, and when STEC OS quits — nothing is left
   running. At most four agent browsers are open at once; a fifth closes the
   one used least recently (its panel says so).
 
@@ -6277,7 +6289,7 @@ to **Branch** to see everything the branch changed against where it started
   merge would conflict, when your checkout of main has changes you have not
   committed, or when that checkout is in the middle of a rebase.
 - **Discard** — two presses; the second one says how many files are not
-  committed. The worktree folder moves to Iron Jarvis's trash (never
+  committed. The worktree folder moves to STEC OS's trash (never
   deleted) and the branch stays, with its commits, until you delete it
   yourself. A folder still in use (a program or terminal open in it) is
   refused with nothing moved. After a merge, **Remove the worktree** does
@@ -6306,8 +6318,8 @@ own row. The side **Plan** panel is unchanged.
 
 **How full the conversation is.** A small ring and a percent beside the model
 name show how much of what the model can read at once this conversation
-fills. For a model whose own limit Iron Jarvis does not know, the number is
-measured against the safe size Iron Jarvis sends it, and the ring's tooltip
+fills. For a model whose own limit STEC OS does not know, the number is
+measured against the safe size STEC OS sends it, and the ring's tooltip
 says so. Past about 70% the ring turns amber and a **Compact** button
 appears (you can also type `/compact`).
 
@@ -6412,7 +6424,7 @@ everything the session does along the way too: reading a picture or a
 scanned PDF, summarising a long helper run, and planning a big task in
 steps. If the session's model cannot look at pictures, the session says so
 instead of guessing what a picture shows. (Choosing **Auto** for a session
-still lets Iron Jarvis pick.)
+still lets STEC OS pick.)
 
 ## Pictures and your dev server in the IJ harness (v1.371.0)
 
@@ -6420,7 +6432,7 @@ still lets Iron Jarvis pick.)
 paperclip under the message box, paste a picture straight into the box
 (Ctrl+V), or drag one onto it. Each picture shows as a small thumbnail you
 can remove with ×. A picture on its own is a message too. If you press Enter
-while a picture is still uploading, Iron Jarvis waits for it and sends both
+while a picture is still uploading, STEC OS waits for it and sends both
 together. The picture stays in the conversation as a thumbnail.
 
 **The agent can look at your dev server.** When the Browser pane shows a
@@ -6448,7 +6460,7 @@ or extensions, and it never opens public websites this way.
 
 **Fixed at the same time:** a Codex coding session that had a picture in it
 (attached, or a screenshot) was quietly answered by Claude instead, because
-Iron Jarvis thought Codex could not take pictures. Codex now answers it
+STEC OS thought Codex could not take pictures. Codex now answers it
 itself.
 
 ## How the coding harness measured up (v1.370.4)
@@ -6514,10 +6526,10 @@ at 1024 px the conversation was squeezed to a sliver between them.
 
 ## Coding sessions and accounts
 
-Coding sessions (called the IJ harness before v1.389.0) are Iron Jarvis
+Coding sessions (called the IJ harness before v1.389.0) are STEC OS
 working as a coding agent in one of your
 project folders, on whichever model you choose — the way Claude Code or Codex
-work, but inside Iron Jarvis, with its approvals, Undo and activity log. It
+work, but inside STEC OS, with its approvals, Undo and activity log. It
 lives in Build, beside your terminals. It was built in steps (v1.366.0 to
 v1.370.0); this section is the whole picture in one place.
 
@@ -6544,8 +6556,8 @@ v1.370.0); this section is the whole picture in one place.
   reading parts of files, exact edits, patches across files, search,
   programs that keep running, a step list. Each model sees them in the shape
   it was trained on (Claude sees Claude Code's tools, GPT sees Codex's, Qwen
-  sees Qwen Code's, others see Iron Jarvis's own). Every call is translated
-  to the real Iron Jarvis tool before it runs, so approvals, Undo, the
+  sees Qwen Code's, others see STEC OS's own). Every call is translated
+  to the real STEC OS tool before it runs, so approvals, Undo, the
   activity log and your limits always apply.
 - Four rules come first in every session and can never be removed: work
   inside the session's folder; never stop a program the session did not
@@ -6598,7 +6610,7 @@ v1.370.0); this section is the whole picture in one place.
 **The experience library (v1.370.0)**
 
 - Once a session has been idle for 10 minutes after replies that changed
-  files or ran commands (or when you archive it), Iron Jarvis may suggest ONE
+  files or ran commands (or when you archive it), STEC OS may suggest ONE
   short lesson for that folder — for example how the project's tests are
   run, or which file holds what — and sometimes a small edit to one of the
   folder's harness files (usually `memory.md`). That is ONE extra request
@@ -6624,7 +6636,7 @@ v1.370.0); this section is the whole picture in one place.
   told why. You can forget a kept lesson at any time. Declining one means the
   same suggestion is not made again for 14 days, and at most three
   suggestions wait in a folder at once.
-- Lessons are kept in Iron Jarvis's own data, never in your folder — only an
+- Lessons are kept in STEC OS's own data, never in your folder — only an
   edit you accept writes into the folder.
 
 **Improving the harness itself (developer tool, v1.370.0)**
@@ -6664,7 +6676,7 @@ v1.370.0); this section is the whole picture in one place.
 **The benchmark on this harness (2026-10-22, this PC)**
 
 - **The harness as it ships in v1.370.0**, on your DGX Spark's
-  `glm-5.3-flash` with Iron Jarvis's own tool names (all 30 tasks, one run
+  `glm-5.3-flash` with STEC OS's own tool names (all 30 tasks, one run
   each): **28 of 30** (93%) — 19 of 20 core tasks and 9 of 10 hard ones,
   none left unscored, at no cost. On average a task took 10.9 tool calls and
   34 seconds; the whole run read 2,164,692 tokens and wrote 49,397. The two
@@ -6747,7 +6759,7 @@ Since v1.369.0, Build's IJ harness view shows it.
 - **At a limit, the session pauses.** It stops after the last finished step,
   and the files it already changed stay changed. It tells you when the
   account resets. Then you choose:
-  - **Resume when ready:** Iron Jarvis waits for the reset and carries on by
+  - **Resume when ready:** STEC OS waits for the reset and carries on by
     itself, even after a restart. You can cancel the wait.
   - **Choose account:** pick another account and carry on with the same
     conversation. Choosing a Codex account switches the session to Codex's
@@ -6755,7 +6767,7 @@ Since v1.369.0, Build's IJ harness view shows it.
 - **Nothing runs on an account you did not pick.** If Iron-Proxy is off,
   out of date or not answering, the session says so instead of running on
   this PC's own sign-in.
-- **The accounts' own numbers stay accurate.** After each reply, Iron Jarvis
+- **The accounts' own numbers stay accurate.** After each reply, STEC OS
   reports the vendor's usage headers to Iron-Proxy, and nothing else.
 
 ## Coding sessions keep going without you (v1.367.0)
@@ -6826,7 +6838,7 @@ one. If you set the address again later, your name for it comes back.
 
 ## Codex can use Jarvis's tools (v1.365.0)
 
-When a chat or a task runs on Codex (your ChatGPT plan), Iron Jarvis used to
+When a chat or a task runs on Codex (your ChatGPT plan), STEC OS used to
 send the conversation as one block of text, so Codex could only answer in
 words and never use a tool. Jarvis now talks to Codex the way the Codex app
 does, through Codex's own app server.
@@ -6837,7 +6849,7 @@ does, through Codex's own app server.
   switched off, so nothing runs behind Jarvis's back.
 - **One conversation, one Codex process.** A chat with several tool steps
   stays in one Codex session. The session is closed when the chat finishes,
-  after 10 idle minutes, or when Iron Jarvis quits. At most six run at once.
+  after 10 idle minutes, or when STEC OS quits. At most six run at once.
 - **Usage is shown as plan value.** The reply's details show what Codex used,
   at its list-price value. Goal summaries say "ChatGPT plan" for this work.
 - **If your Codex is too old or different.** Jarvis checks first, without
@@ -6890,7 +6902,7 @@ step is held to a measured number rather than a claim. This release adds the
 measuring tool. Nothing on the screens changes yet.
 
 - **What it is.** `ironjarvis bench-harness run` gives a set of 30 small
-  coding tasks to one runner — Iron Jarvis with any model, Claude Code, or
+  coding tasks to one runner — STEC OS with any model, Claude Code, or
   Codex — each in a fresh throwaway copy. The tasks are bug fixes, small
   features, refactors, explain-the-code questions, shell work, traps, and
   programs that keep running. They come in two tiers: 20 core tasks and 10
@@ -6903,11 +6915,11 @@ measuring tool. Nothing on the screens changes yet.
   is left out of the pass rate and listed on its own. A run that hung, hit
   its time or round limit, or stopped part-way counts as a fail.
 - **It never touches your real data.** The runs need a scratch folder of
-  their own (`--root`). Iron Jarvis refuses its own data folder and the
+  their own (`--root`). STEC OS refuses its own data folder and the
   source code folder. Every task is told to work only in its folder and
   never to stop a program it did not start.
 - **First numbers (2026-10-21, this PC).**
-  - Iron Jarvis on your DGX Spark's `glm-5.3-flash`: 20 of 20 core tasks and
+  - STEC OS on your DGX Spark's `glm-5.3-flash`: 20 of 20 core tasks and
     8 of 10 hard ones, at no cost.
   - The same model with thinking on (`glm-5.3-flash-think`): also 20 of 20
     and 8 of 10, but it failed different hard tasks.
@@ -6921,11 +6933,11 @@ measuring tool. Nothing on the screens changes yet.
 A model server on your own network can pass some of its models on to a cloud
 service. A LiteLLM proxy on your DGX Spark, for example, can serve
 `glm-5.3-flash` from a box on your network and `frontier` from OpenRouter.
-Until now Iron Jarvis judged the whole server by its address, so a cloud name
+Until now STEC OS judged the whole server by its address, so a cloud name
 like `frontier` read as local everywhere, and a Local only chat would send to
 it.
 
-- **Each name is judged by where it really goes.** Iron Jarvis reads the
+- **Each name is judged by where it really goes.** STEC OS reads the
   server's own routing list in the background (about once a minute) and marks
   every name that leaves your network as cloud. The model menu shows it as
   cloud, the reply's "answered by" line says cloud, and the model is told it
@@ -6935,12 +6947,12 @@ it.
   refused, the message says which name and why: "DGX Spark passes frontier on
   to a cloud service." Its local names on the same server send as before.
 - **Hidden names count as cloud on a mixed server.** A server can answer to a
-  name it does not list (a shortcut such as `fleet`). Iron Jarvis cannot see
+  name it does not list (a shortcut such as `fleet`). STEC OS cannot see
   where a hidden name goes without sending a message. On a server that sends
   any name to the cloud, a hidden name is treated as cloud in Local only chats.
   On a server whose every name stays home, it stays local. To keep a Local only
   chat on such a server, pick one of its listed local names.
-- **What it can read.** This works for LiteLLM proxies. Iron Jarvis keeps the
+- **What it can read.** This works for LiteLLM proxies. STEC OS keeps the
   last list it read, including across a restart. A server that is not a proxy
   (Ollama, vLLM, LM Studio) is judged by its address as before. A proxy that
   shows its list only with a key is read with the key you saved for that
@@ -6981,7 +6993,7 @@ same.
   - A sentence about an app rather than your own things in it still offers
     nothing: "write an article on Stripe", "compare Slack and Teams for a
     small team", "In my outlook, the market will recover".
-- **Ask how Iron Jarvis works in your own words.** Questions like "how do I
+- **Ask how STEC OS works in your own words.** Questions like "how do I
   connect my phone", "how do I set up a backup", "how do I use the bell" and
   "Hi Jarvis! How do I connect my phone?" are looked up in the Handbook
   again. "How do I make a cake" isn't.
@@ -7003,12 +7015,12 @@ your own model server is called by the name you gave it. The look of the app
 is the same.
 
 - **One notice for each outcome.**
-  - While Iron Jarvis is open, a scheduled task or workflow that fails or
+  - While STEC OS is open, a scheduled task or workflow that fails or
     needs you raises one desktop notice, the bell's. It used to raise two or
     three, in different words.
   - A failed workflow is one row in the bell, not one row for the workflow
     and another for the step that stopped it.
-  - When Iron Jarvis sits in the tray with no window open, a background run
+  - When STEC OS sits in the tray with no window open, a background run
     that failed or did not finish raises one Windows notice in the same
     words. Clicking it opens the run, or the Workflows page for a workflow.
     Nothing is said twice, and nothing you already saw in an open window is
@@ -7036,7 +7048,7 @@ is the same.
     connected, "check my inbox" uses Outlook. With no mail app connected, one
     button names both choices, Gmail and Microsoft 365. "My calendar" with no
     calendar app offers nothing, because the words did not say which one.
-  - Chat looks things up in the Handbook only when you ask about Iron Jarvis
+  - Chat looks things up in the Handbook only when you ask about STEC OS
     itself. "How do I install node" no longer sends it there.
 - **Your own model server, by name.** A reply from the model server you set
   up says the name you gave it, for example "answered by DGX Spark". The model
@@ -7048,7 +7060,7 @@ is the same.
   the Access summary and an agent's approval choices all say "Reads files only
   in the folders you chose, without asking".
 - **Found extensions say what they are.** When you bring servers in from
-  Claude, VS Code or another app, one Iron Jarvis doesn't know says what it
+  Claude, VS Code or another app, one STEC OS doesn't know says what it
   is, for example "QuickBooks Desktop · runs a program on this PC
   (quickbooks-desktop-mcp)" or "Linear · reached at a web address
   (mcp.linear.app)". Once it is added and started, its row lists its tools
@@ -7133,7 +7145,7 @@ setting you turn on. The look of the app is the same.
   - The bell shows a report's first words plainly (never "# Final Report"),
     and a browser task that stopped to ask reads "Your browser task is
     waiting for your OK", not as a failure. A failure that gave no reason
-    says "Iron Jarvis kept the details in its log; Status shows how the app
+    says "STEC OS kept the details in its log; Status shows how the app
     is doing."
 - **One receipt for a helper's run in chat.** The row above the reply says
   how it ended, what it did, the model, the folder and, folded, **Step by
@@ -7174,17 +7186,17 @@ setting you turn on. The look of the app is the same.
   (the chat's start, the first-run steps, the suggestion chip, the Overview,
   Accounts), and **Re-detect** looks for them again at once.
 - **The desktop speaks plainly.** The tray, Windows notifications and the
-  startup message say **Iron Jarvis**. A question waiting while the window
+  startup message say **STEC OS**. A question waiting while the window
   is closed uses the approval card's words and names the task ("save a file
   for “Draft the Q3 letter”").
 - **Another computer can reach this one, on purpose.** Settings ›
-  Connections › **Let other computers on my network reach this Iron Jarvis**
+  Connections › **Let other computers on my network reach this STEC OS**
   is off until you turn it on (from chat it always asks), and works after a
-  restart (Settings › System › Maintenance › **Restart Iron Jarvis**).
+  restart (Settings › System › Maintenance › **Restart STEC OS**).
   Windows may ask once to allow it on your network. Every request still
   needs this computer's token. The **Another computer running Jarvis** tile
   links to it with **Open the setting**, and **Connect a remote agent** picks
-  the task API for you when the address is another Iron Jarvis.
+  the task API for you when the address is another STEC OS.
 - **Plainer Settings names.** "How the assistant talks by default", "Use
   several accounts", "Time limit for one step (seconds)", "Work on my goals by
   itself", "Most model use in a day (tokens)", "Most actions it may take in a
@@ -7193,7 +7205,7 @@ setting you turn on. The look of the app is the same.
 
 ## Another computer as a teammate, your web services from chat, and one set of words (v1.357.0)
 
-You can now hand a task to Iron Jarvis on another computer, let chat use a
+You can now hand a task to STEC OS on another computer, let chat use a
 web service you saved, and read the same words for the same thing on every
 screen. The look of the app is the same.
 
@@ -7208,7 +7220,7 @@ screen. The look of the app is the same.
   - *On the computer that sends tasks:* on its own **New & manage** tab, use
     **Connect a remote agent**: a name (for example "desk"), **http-task (task
     API)**, that address and that key. The form says when the address is another
-    Iron Jarvis, and the answers come back to you without a second key.
+    STEC OS, and the answers come back to you without a second key.
     **Test** only checks the key with the other computer; it starts nothing
     there.
   - In a chat, "@desk summarise the Q3 notes" goes to that computer. The chat
@@ -7305,7 +7317,7 @@ read every control in plain words. The look of the app is the same.
   can't do (change settings, schedules, rules, connections, memory, agents or
   skills, type into your terminals, spend credits); the session page says the
   same. A setting marked **after a restart** is a press that opens Settings ›
-  System › Maintenance, where **Restart Iron Jarvis** is. The Sessions page
+  System › Maintenance, where **Restart STEC OS** is. The Sessions page
   button reads **Clear finished, failed and stopped** and asks before it
   deletes. Everything › Status names your models as the model menu does and
   names the browser you paired.
@@ -7322,8 +7334,8 @@ read every control in plain words. The look of the app is the same.
   ("Generate 1 image on Pixio for 12 credits (your price)") before **Allow**.
 - **One quiet status chip.** Status chips on Sessions, Tools (including the
   catalog cards) and Schedules are the same calm word with a small coloured
-  dot. Only the **Close this terminal?** dialog and the **Restart Iron
-  Jarvis** button keep their outline on purpose.
+  dot. Only the **Close this terminal?** dialog and the **Restart STEC
+  OS** button keep their outline on purpose.
 - **Bringing tools from your other apps, honestly.** A tool already added
   under a slightly different name is skipped with "already added as
   brave_search" unless you choose **Replace**. A saved Pixio key is said on
@@ -7349,7 +7361,7 @@ is the same.
   box." says your question was kept. This is the same whether the answer was
   streaming or not.
 - **A reply says what it had to leave out.** On a very long chat a model can
-  refuse because it is too long. Iron Jarvis shortens it and asks once more,
+  refuse because it is too long. STEC OS shortens it and asks once more,
   and the reply's line says so: "Left out 12 older messages to fit this
   model" (or "Shortened earlier tool results to fit this model" when nothing
   was left out). Open the reply's line to see why, and every approval you
@@ -7410,7 +7422,7 @@ is the same.
 
 ## Plain words everywhere; chat knows your apps (v1.354.0)
 
-Iron Jarvis now says what happened in plain words, in the same words
+STEC OS now says what happened in plain words, in the same words
 wherever you meet them, and the chat knows which of your apps are connected.
 The look of the app is the same.
 
@@ -7420,22 +7432,22 @@ The look of the app is the same.
   Connections, then retry." The service's own message is still there: hover
   the line. A run that fails for the same reason says the same sentence on
   its page and in the bell ("The run failed: OpenRouter refused your key…"),
-  and so does the message on your phone. Iron Jarvis still never switches to
+  and so does the message on your phone. STEC OS still never switches to
   a different AI without asking; the words now say that, and that you can
   allow it in Settings.
-- **Iron Jarvis, not "the daemon".** When the app stops answering, the
-  banner says **Iron Jarvis isn't responding.** and that your chats and files
-  are saved. When it answers again you see **Iron Jarvis is back.** for a
+- **STEC OS, not "the daemon".** When the app stops answering, the
+  banner says **STEC OS isn't responding.** and that your chats and files
+  are saved. When it answers again you see **STEC OS is back.** for a
   few seconds, and anything a restart stopped is waiting in the bell. A panel
   that could not load says so in one quiet line ("The board couldn't load.
   Try again."); the code behind it is on hover. Settings › Maintenance says
-  **Restart Iron Jarvis**, and the token card is called **Access token** like
+  **Restart STEC OS**, and the token card is called **Access token** like
   its row.
 - **A run's page reads like a receipt.** It is titled by what you asked,
   says which agent and model did it and how long it took ("Took 2 min 5 s"),
   shows the steps in the chat's words, and folds the full record under one
   **Full record** line. A run a restart cut off reads **Interrupted**, says
-  "Stopped when Iron Jarvis restarted", and offers the bell's **Continue** /
+  "Stopped when STEC OS restarted", and offers the bell's **Continue** /
   **Dismiss**. Continue opens the new run, titled by what you first asked.
 - **Chat knows your apps by name.** Say "check my Gmail", "search my Google
   Drive for the lease" or "is GitHub connected?" and the chat knows whether
@@ -7620,7 +7632,7 @@ it, where it ran, and what it wants from you. The chat looks the same.
 - **A chat's card says why it asks, and who asks** (v1.417.0; a chat or a
   coding session's reply; an agent run's ask keeps the longer card). It is
   short: who wants to do what ("The assistant wants to save a file", or
-  "Iron Jarvis wants to run a command" when it is Iron Jarvis's own check,
+  "STEC OS wants to run a command" when it is STEC OS's own check,
   such as re-running your tests), what will run, the price if it costs
   money, and ONE line saying why it asks: the rule that kept it under
   Accept edits or Auto, "not in this chat's grants", or the reason it asks
@@ -8072,7 +8084,7 @@ lost work. Now:
 ## Every release rehearses an update (v1.338.0)
 
 Two bugs in one week (backups after v1.335.0, Build terminals after an update)
-happened only when Iron Jarvis started again on a new version, a path no test
+happened only when STEC OS started again on a new version, a path no test
 went down. Now every release is checked by an **update rehearsal** before its
 installer is built: a real copy of the app, on a throwaway data folder, is set
 up with a Build terminal running a program, a backup copy folder, and the
@@ -8132,7 +8144,7 @@ message names the file.
 To keep a second copy on another drive (D:, a USB disk or a network share),
 set **Backup copy folder** in Settings. Do not type it into `config.toml` by
 hand: a Windows path in plain quotes (`"D:\Backups"`) is not valid there, and
-Iron Jarvis then ignores the whole file and starts with default settings.
+STEC OS then ignores the whole file and starts with default settings.
 
 ## Continue picks up the real conversation (v1.337.0)
 
@@ -8143,7 +8155,7 @@ read, every result it saw and every step it took, exactly as they were.
 Before, Continue started over from a one-paragraph summary, so the job had to
 find its way back (and sometimes redid work).
 
-A step that was running when Iron Jarvis stopped is shown to the job for what
+A step that was running when STEC OS stopped is shown to the job for what
 it is: a step that only reads is safe to do again; anything else may already
 have happened, and the job is told to check before doing it again.
 
@@ -8155,17 +8167,17 @@ continues from a summary, as before.
 Nothing looks different. A chat reply no longer depends on the window that
 asked for it.
 
-- **Reload, close the window or switch chats: the answer keeps coming.** Iron
-  Jarvis now writes the answer itself, as it goes, instead of the window doing
+- **Reload, close the window or switch chats: the answer keeps coming.** STEC
+  OS now writes the answer itself, as it goes, instead of the window doing
   it. Come back to the chat (or reload the page) and the reply carries on where
   it is, or is simply there if it finished while you were away. Only **Stop**
   stops an answer now. (An answer nobody has looked at for an hour stops by
   itself, so a question it is waiting on cannot hold it forever.)
-- **A restart keeps what was written.** If Iron Jarvis stops in the middle of
+- **A restart keeps what was written.** If STEC OS stops in the middle of
   an answer (an update or a crash), the chat shows what it had written so far,
   says it was cut off, and offers Retry.
-- **A message sent twice is answered once.** If the same message reaches Iron
-  Jarvis twice (a retried connection, two windows), the second one follows the
+- **A message sent twice is answered once.** If the same message reaches STEC
+  OS twice (a retried connection, two windows), the second one follows the
   answer already being written instead of starting another.
 - **Waiting messages are kept.** Messages you queued with Ctrl+Enter while a
   reply was being written are kept with the chat; after a reload they are still
@@ -8173,12 +8185,12 @@ asked for it.
 
 ## Nothing done is forgotten (v1.335.0)
 
-Nothing looks different. Iron Jarvis now keeps a better record of work that a
+Nothing looks different. STEC OS now keeps a better record of work that a
 crash or restart cuts off, and recovers from a few failures by itself. (Ideas
 borrowed from the open-source pi-durable agent harness; no code was taken.)
 
 - **A tool that was running when the app stopped is on the record.** Every
-  tool call is written down as "started" before it runs. If Iron Jarvis stops
+  tool call is written down as "started" before it runs. If STEC OS stops
   in the middle (a crash or a forced restart), the next start records that
   call as stopped while running, with the job's other steps and on the
   Activity page. A call that only reads says it is safe to run again; anything
@@ -8190,13 +8202,13 @@ borrowed from the open-source pi-durable agent harness; no code was taken.)
   never as money spent. Chats are counted from this version on.
 - **"Too long for this model" fixes itself once.** When a model refuses a
   message because the conversation no longer fits its window (often a proxy or
-  endpoint whose real limit is smaller than it says), Iron Jarvis leaves the
+  endpoint whose real limit is smaller than it says), STEC OS leaves the
   oldest messages out, tells the model it did, and tries once more. Your
   question and the work of the current step are never left out. It also
   remembers the limit the model reported, so the next messages fit from the
   start. If even the shortened request does not fit, the refusal is shown as
   before.
-- **One copy of Iron Jarvis per data folder.** A second copy started on the
+- **One copy of STEC OS per data folder.** A second copy started on the
   same data (for example a development copy beside the installed app) now
   refuses to start and names the copy that is running, instead of both writing
   the same database at once.
@@ -8204,7 +8216,7 @@ borrowed from the open-source pi-durable agent harness; no code was taken.)
 ## Status is a picture (v1.334.0)
 
 Everything › Status no longer repeats the Directory's list of modules. It is
-one picture of the whole app: every part of Iron Jarvis is a star around the
+one picture of the whole app: every part of STEC OS is a star around the
 reactor, grouped like the Directory (Work, Automations, System, Knowledge,
 Setup). A dim dashed star is not set up yet; a ringed star is set up; a bigger,
 brighter star was used this week; rings ripple out from a star that is in use
@@ -8217,13 +8229,13 @@ cut off and the notes about a failing background task stay at the top.
 
 ## Lighter on your PC, steadier over days (v1.333.0)
 
-Nothing looks different. Iron Jarvis now uses far less of your computer while
+Nothing looks different. STEC OS now uses far less of your computer while
 it runs, and a Build workload can run for days without slowing the PC down.
 
 - **Much less memory.** The app's background service used about 900 MB the
   moment it started, almost all of it reserved by a maths library for 24
   threads it never used. It now starts at under 100 MB. The helper programs it
-  starts for Python cells and for Codex's connection to Iron Jarvis used to
+  starts for Python cells and for Codex's connection to STEC OS used to
   load the whole app each (about 800 MB apiece); they now load only what they
   need (about 15 MB).
 - **Background work stays in the background.** Programs started by schedules,
@@ -8244,7 +8256,7 @@ it runs, and a Build workload can run for days without slowing the PC down.
 - **No more text typing itself into a terminal.** When a full-screen program
   (Claude Code, for example) crashed while it was tracking the mouse, every move
   of the pointer over the pane typed something like `[<35;10;5M` into the
-  shell. Iron Jarvis now switches that mode off when the program is gone, drops
+  shell. STEC OS now switches that mode off when the program is gone, drops
   stray mouse text sent to a bare prompt, and switches it off for panes
   restored after a restart (the mouse wheel scrolls again there too).
 - **Too many background runs at once? The bell asks.** There is still no limit
@@ -8410,7 +8422,7 @@ Harness ideas only).
   **Fetch available models** sets it to the way the server answered. Replies
   then use that server's own API (an Anthropic-compatible server is asked at
   /v1/messages with its key). Like every custom server, it starts with tools
-  off until **Verify tools** passes, and if it is down it says so; Iron Jarvis
+  off until **Verify tools** passes, and if it is down it says so; STEC OS
   never switches to another provider on its own.
 - **A refusal says what happened.** When the model you asked for cannot
   answer, the chat shows one plain line naming it (by the name you gave a
@@ -8418,7 +8430,7 @@ Harness ideas only).
   because none did. A background job that nothing could answer still gets a
   notice at the top, with a link to Connections.
 - **A new server shows up at once.** A custom server you just saved is
-  listed straight away as "not checked yet", then fills in once Iron Jarvis
+  listed straight away as "not checked yet", then fills in once STEC OS
   has checked it. The Fleet page names it by the way it talks
   (OpenAI-compatible or Anthropic-compatible).
 - **The Agents page is calm too.** One message box for the objective, with
@@ -8585,7 +8597,7 @@ itself:
   is sent until you press Enter.
 - **An app's files under "@".** Type **@**: **From your apps** lists what
   your apps can hand over (notes, records, files). Pick one and it is
-  attached to your next message, like a file. Iron Jarvis reads it when you
+  attached to your next message, like a file. STEC OS reads it when you
   send, checks it for hidden instructions, and says under the reply if it
   could not be read. Regenerate reads it again.
 - These questions and requests only reach you in the main chat window. In a
@@ -8832,7 +8844,7 @@ of** another schedule, a **pre-run script** whose output lands in the prompt
 (only you can set one, never an agent), and **skip memory** for a job that
 should not inherit your lessons and notes. Schedules can be edited in place.
 **v1.300.0 — your Claude subscription, done properly.** When a chat or an
-agent runs on **Claude (your subscription)**, Iron Jarvis now talks to the
+agent runs on **Claude (your subscription)**, STEC OS now talks to the
 logged-in Claude app the way a real client does instead of pasting the whole
 conversation into one prompt: earlier turns are replayed as real turns, the
 answer streams in word by word, tools are real tool calls (several at once
@@ -8859,12 +8871,12 @@ for Hermes (MIT licence).
 **v1.301.0 — several accounts per provider, through Iron-Proxy.** The
 Connections page has an **Iron-Proxy** card. Iron-Proxy is RealDealCPA's
 open-source account switcher (MIT), and it now ships inside the app: turn it on
-and Iron Jarvis starts it for you (or uses one that is already running on this
+and STEC OS starts it for you (or uses one that is already running on this
 PC, such as the Iron-Proxy tray app, sharing the same accounts). Add a Claude,
 Codex or Grok account, or press **Use this PC's login** to bring in the one you
 already use; **Sign in** opens a Build terminal that runs that account's own
 sign-in. Put the accounts in the order you want them used. From then on, every
-Claude, Codex and Grok call Iron Jarvis makes runs as the first account that is
+Claude, Codex and Grok call STEC OS makes runs as the first account that is
 free; when one hits its limit, Iron-Proxy parks it until its reset time and the
 next account takes over — only ever another account of the SAME provider,
 never a different provider. The switch happens only before any of the answer
@@ -8874,12 +8886,12 @@ says why for each one (request limit, usage limit, needs to sign in) and when
 the first is free again — and the chat stays on that provider (with the
 model set to Auto, it may move to another provider, and the receipt says so). A momentary
 Anthropic overload is not blamed on an account; it is retried as before. While
-Iron-Proxy is on, Iron Jarvis never quietly falls back to this PC's own login:
+Iron-Proxy is on, STEC OS never quietly falls back to this PC's own login:
 if Iron-Proxy is not answering, or is an older copy (for example an outdated
 tray app), the error says so. Your accounts also keep Claude, Codex and Grok
 usable when this PC's own sign-in has expired. Everything else about these calls is
 unchanged: tools, pictures, streaming and the cost line work as before. API-key
-accounts can be managed in Iron-Proxy too, but Iron Jarvis keeps using its own
+accounts can be managed in Iron-Proxy too, but STEC OS keeps using its own
 keys for API providers. With Iron-Proxy off, nothing changes.
 
 **Several accounts in Build (v1.302.0).** Chat, agents and the Build pane's
@@ -8918,8 +8930,8 @@ own (an expired or revoked login) stays "Needs sign-in" until you sign it in
 again — it is never quietly marked ready. The
 first time you start `claude` on a new account, Claude Code shows its one-time
 welcome — that is not a second sign-in. If the Iron-Proxy running on this PC is
-an older copy that Iron Jarvis started, Iron Jarvis replaces it with the current
-one; if it is one Iron Jarvis did not start (the tray app, or a copy started
+an older copy that STEC OS started, STEC OS replaces it with the current
+one; if it is one STEC OS did not start (the tray app, or a copy started
 from elsewhere), the card names that process so you can close or update it.
 
 **When an account runs out (v1.303.0).** When Claude Code in a pane on an
@@ -8936,20 +8948,20 @@ pane: which account ran out, when it is free again, and **Continue on
   into the other account's history and continues there, which means it is sent
   to Anthropic under that account (worth knowing between a work and a personal
   account). Nothing is deleted or overwritten in either account.
-- Iron Jarvis knows exactly which conversation a pane holds when it started
+- STEC OS knows exactly which conversation a pane holds when it started
   Claude there (Launch, Open in Build, Continue). If you typed `claude`
   yourself, it carries the conversation only when exactly one conversation in
   that folder just hit the limit; otherwise the new pane starts fresh and says
   why (use `/resume` there to pick one).
 - Taking turns works: when the second account runs out later and you continue
   back on the first, the first account's older copy of the conversation is
-  brought up to date. That older copy is kept in Iron Jarvis's trash (Settings
+  brought up to date. That older copy is kept in STEC OS's trash (Settings
   → Storage, "Cleared, awaiting deletion") until you press Empty trash. Close
   Claude in the old pane on that account first: if the conversation is still
   open there, the update is refused ("the conversation file is open in another
   pane") and anything that pane writes meanwhile would not be carried.
 - If the next account cannot pick the conversation up (v1.303.2), the new pane
-  says so and offers **Start fresh with what we were doing**: Iron Jarvis writes
+  says so and offers **Start fresh with what we were doing**: STEC OS writes
   a short handoff — your first request, the last few messages, the files
   involved — into its own folder (never your project), closes that Claude and
   starts a new one on the same account that reads the handoff first. Nothing is
@@ -8957,12 +8969,12 @@ pane: which account ran out, when it is free again, and **Continue on
   needs to sign in again instead, the pane offers **Sign in** for it. You can
   still type `/clear` to start empty.
 (v1.303.1) A Build pane always runs Claude Code as a session of its own, so its
-conversations are saved even when Iron Jarvis itself was started from inside
+conversations are saved even when STEC OS itself was started from inside
 another Claude Code window.
 A "Context limit reached" message is not an account limit (the conversation is
 full; use `/compact`) and shows no strip. It is always the same provider, and
 never this PC's own login unless you added that login to Iron-Proxy.
-**v1.290.0:** the Activity page has a **Safety checks** card: Iron Jarvis
+**v1.290.0:** the Activity page has a **Safety checks** card: STEC OS
 looks at what its agents did — commands, files, web requests — against a set
 of safety rules (reading a password or key file, sending secrets out,
 download-and-run, deleting a whole drive, disabling Defender, and more) and

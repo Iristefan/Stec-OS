@@ -394,7 +394,7 @@ function pageGets(extra: Record<string, unknown> = {}) {
 }
 
 async function send(text: string, reply: string) {
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: text } });
   fireEvent.keyDown(box, { key: "Enter" });
   return screen.findByText(reply);
@@ -426,7 +426,7 @@ describe("on the chat page (calm chat W3-2)", () => {
     });
     // The page re-renders (saves, a second turn) and still never asks again.
     H.stream.extra = {};
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "thanks" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await waitFor(() => expect(screen.getAllByText("Noted.")).toHaveLength(2));

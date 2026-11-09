@@ -30,7 +30,7 @@ export type RemedyFormat = Record<string, string | number | boolean | null | und
 export function remedy(code: BrowserErrorCode | string, fmt: RemedyFormat = {}): string {
   const template = REMEDIES[code as BrowserErrorCode];
   if (!template) {
-    return `Your browser reported ${code}, which Iron Jarvis does not have a remedy for. Call browser_get_status.`;
+    return `Your browser reported ${code}, which STEC OS does not have a remedy for. Call browser_get_status.`;
   }
   return template.replace(/\{(\w+)\}/g, (whole, name: string) => {
     const value = fmt[name];

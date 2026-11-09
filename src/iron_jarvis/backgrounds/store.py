@@ -45,15 +45,15 @@ BASE_ENV = "IRONJARVIS_BACKGROUNDS_BASE"
 
 NOT_FOUND = "There is no background called that."
 MISMATCH = (
-    "The downloaded background did not match the one this version of Iron Jarvis "
+    "The downloaded background did not match the one this version of STEC OS "
     "expects, so it was not saved."
 )
 TOO_BIG = "The download was larger than this background should be, so it was not saved."
 REDIRECTED = (
-    "The download address answered with a redirect. Iron Jarvis only downloads "
+    "The download address answered with a redirect. STEC OS only downloads "
     "backgrounds from their own address, so nothing was saved."
 )
-UNREACHABLE = "Iron Jarvis could not reach GitHub to download this background. Check the internet connection and try again."
+UNREACHABLE = "STEC OS could not reach GitHub to download this background. Check the internet connection and try again."
 TIMED_OUT = "The download took too long, so it was stopped. Try again in a moment."
 
 
@@ -161,7 +161,7 @@ def _fetch(url: str, cap: int) -> bytes:
                     raise BackgroundError(REDIRECTED)
                 if res.status_code == 404:
                     raise BackgroundError(
-                        "GitHub does not have this background for this version of Iron Jarvis yet. "
+                        "GitHub does not have this background for this version of STEC OS yet. "
                         "If the update was just published, try again in a few minutes."
                     )
                 if res.status_code != 200:

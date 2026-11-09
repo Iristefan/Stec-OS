@@ -24,8 +24,8 @@ Review findings U1-U7, X1, X2, X5 (per-account usage refresh) and D1-D4
   - backs off after answers with no numbers (doubling, at most 1 h; a no-plan
     login waits the hour at once). A press is never held back by it.
 - A usage read never inherits an API key (Iron-Proxy's `COMMON_STRIP` names
-  plus `CODEX_API_KEY` / `CODEX_ACCESS_TOKEN`), and no Claude child of Iron
-  Jarvis inherits a parent Claude Code session's account
+  plus `CODEX_API_KEY` / `CODEX_ACCESS_TOKEN`), and no Claude child of STEC
+  OS inherits a parent Claude Code session's account
   (`CLAUDE_CODE_ACCOUNT_UUID` / `_USER_EMAIL` / `_ORGANIZATION_UUID`).
 - The "Check usage now" note: a failed read's words wrap (no more cut on a
   phone) and the note's text is its tooltip; "as of N min ago" redraws itself
@@ -151,7 +151,7 @@ Review findings U1-U7, X1, X2, X5 (per-account usage refresh) and D1-D4
 **Check usage now.** The button reads an account's usage only when Iron-Proxy
 can keep the number; an older Iron-Proxy, or one that is not answering, says so
 right away. A login with no Claude plan says it has no plan usage to report.
-While a coding session or a Build terminal works on an account, Iron Jarvis
+While a coding session or a Build terminal works on an account, STEC OS
 re-reads its usage every few minutes (less often when the login reports no
 numbers); a session waiting for your answer is not re-read.
 

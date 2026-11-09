@@ -164,7 +164,7 @@ def test_the_recap_only_quotes_what_was_actually_said():
     dropped = [_msg("user", "Reconcile the Q3 vendor ledger"), _msg("assistant", "Done.")]
     recap = build_recap(dropped)
     assert "Reconcile the Q3 vendor ledger" in recap
-    assert "You:" in recap and "Iron Jarvis:" in recap
+    assert "You:" in recap and "STEC OS:" in recap
 
 
 def test_the_recap_says_it_is_partial():

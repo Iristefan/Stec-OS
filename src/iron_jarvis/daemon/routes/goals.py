@@ -457,7 +457,7 @@ def register(app: FastAPI, d) -> None:
         if exact and store is None:
             raise HTTPException(
                 status_code=503,
-                detail="Standing grants are not available right now. Restart Iron Jarvis to bring them back.",
+                detail="Standing grants are not available right now. Restart STEC OS to bring them back.",
             )
         from ...core.db import session_scope
         from ...core.grants import grant_label

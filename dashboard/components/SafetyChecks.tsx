@@ -88,7 +88,7 @@ export function actionWord(action: string): string {
 }
 
 const SOURCE_WORDS: Record<string, string> = {
-  ironjarvis: "Iron Jarvis",
+  ironjarvis: "STEC OS",
   "claude-code": "Claude Code",
   codex: "Codex",
 };
@@ -103,7 +103,7 @@ export function sourceWord(source: string | undefined): string {
  *  which has a /sessions page — so ONLY this shape earns that link. */
 export const SESSION_ID_RE = /^session_[0-9a-f]{12}$/;
 
-/** Where an Iron Jarvis finding's session lives in the app, or null when it
+/** Where a STEC OS finding's session lives in the app, or null when it
  *  has no page (a link to a route that 404s is worse than no link). */
 export function findingLink(
   source: string | undefined,
@@ -141,7 +141,7 @@ export function SubagentTag({ name, testId }: { name: string; testId: string }) 
 /** Evidence shown before "+ N more": enough to see the pattern, never a wall. */
 const EVIDENCE_SHOWN = 8;
 
-/** One finding: severity, title, reason, when, a session link (Iron Jarvis
+/** One finding: severity, title, reason, when, a session link (STEC OS
  *  sessions with a page — see findingLink) and collapsible evidence. */
 export function FindingRow({ finding }: { finding: DetectionFinding }) {
   const [open, setOpen] = useState(false);
@@ -293,7 +293,7 @@ export function SafetyChecksCard() {
         }
       >
         <p className="mb-3 text-[12.5px] leading-relaxed text-zinc-500">
-          Iron Jarvis checks what its agents did — commands, files, web requests — against a set of
+          STEC OS checks what its agents did — commands, files, web requests — against a set of
           safety rules. Nothing is blocked by this; it shows you what is worth a look.
         </p>
 

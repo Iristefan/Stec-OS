@@ -4,7 +4,7 @@
  * preload exposes `window.ironjarvis.isDesktop`; there the daemon is
  * supervised (restart ladder), so both offline surfaces — the OfflineHint
  * card and the app-wide DaemonBanner — say the service is restarting and
- * point at the tray (v1.312.0: its Restart Iron Jarvis item, no longer Quit and
+ * point at the tray (v1.312.0: its Restart STEC OS item, no longer Quit and
  * relaunch). A browser tab keeps the CLI line.
  */
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -81,7 +81,7 @@ describe("offline copy inside the desktop shell (v1.226.0)", () => {
     render(<OfflineHint detail="settings" />);
     expect(screen.getByText(/restarting its local service/)).toBeInTheDocument();
     // v1.312.0: the tray's own Restart item (offered once restarts stop), never Quit (wave 4).
-    expect(screen.getByText(/Restart Iron Jarvis option will appear in the tray menu/)).toBeInTheDocument();
+    expect(screen.getByText(/Restart STEC OS option will appear in the tray menu/)).toBeInTheDocument();
     expect(screen.queryByText(/uv run ironjarvis serve/)).toBeNull();
     // The per-page detail still rides along.
     expect(screen.getByText(/— settings/)).toBeInTheDocument();
@@ -97,7 +97,7 @@ describe("offline copy inside the desktop shell (v1.226.0)", () => {
     D.online = false;
     setDesktop(true);
     render(<DaemonBanner />);
-    expect(screen.getByText(/Iron Jarvis isn't responding\./)).toBeInTheDocument();
+    expect(screen.getByText(/STEC OS isn't responding\./)).toBeInTheDocument();
     expect(screen.getByText(/restarting its local service/)).toBeInTheDocument();
     expect(screen.queryByText(/uv run ironjarvis serve/)).toBeNull();
     cleanup();

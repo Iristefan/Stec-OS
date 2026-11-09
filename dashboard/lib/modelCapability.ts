@@ -104,7 +104,7 @@ export function capabilityOf(
 /** What a model that cannot call tools gets, said once (the router's rule
  *  since v1.131.0: no other model takes the turn). */
 const NO_TOOLS_MEANS =
-  "Picked by name, it answers in text only; as your default model, Iron Jarvis writes the tools into its instructions instead.";
+  "Picked by name, it answers in text only; as your default model, STEC OS writes the tools into its instructions instead.";
 
 /** What a model that cannot see gets (v1.424.0, decision D1: never a key
  *  that bills per use unless the model you picked does). */

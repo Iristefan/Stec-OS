@@ -1,4 +1,4 @@
-# Iron Jarvis — Completeness, Deployment & Computer-Use Audit
+# STEC OS — Completeness, Deployment & Computer-Use Audit
 
 A read-only auditor graded three areas; the swarm fixed the high/medium items.
 **277 offline tests pass. 35 agent tools registered.**
@@ -47,6 +47,6 @@ defense, programmatic verification, full tracing, step/retry budgets, and
 checkpoints. 15 offline tests, one per practice.
 
 ## Bottom line
-Iron Jarvis is now **complete for local use, safe to deploy to a VPS** (with a
+STEC OS is now **complete for local use, safe to deploy to a VPS** (with a
 token + the security checklist), and capable of **opt-in, safety-gated computer
 use**. 277 tests green.

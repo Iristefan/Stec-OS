@@ -295,7 +295,7 @@ class PairingStore:
                 BrowserErrorCode.AUTHENTICATION_FAILED,
                 message=(
                     "This install is already paired with a browser. Press Forget "
-                    "on the Browser page in Iron Jarvis before pairing another."
+                    "on the Browser page in STEC OS before pairing another."
                 ),
             )
         token = secrets.token_urlsafe(TOKEN_BYTES)

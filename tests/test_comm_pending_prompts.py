@@ -247,7 +247,7 @@ def test_waiting_event_registers_prompt_appends_thread_and_sends(platform):
     assert line["role"] == "assistant"
     assert "Workflow 'gated' is waiting: Go?" in line["content"]
     assert "/answer" in line["content"]
-    assert ch.sent and ch.sent[-1].startswith("Iron Jarvis: Workflow 'gated' is waiting")
+    assert ch.sent and ch.sent[-1].startswith("STEC OS: Workflow 'gated' is waiting")
 
 
 def test_waiting_event_with_options_enumerates_numbered_picks(platform):
@@ -458,7 +458,7 @@ async def test_no_reminder_without_open_prompt(platform):
     ch = ChatMockChannel(dict(CHAT_CFG))
     poller, _o, _t, _p, _n = _poller(platform, ch, turn=_fake_turn("plain"))
     await poller._handle("tg", ch, _msg("hi"))
-    assert ch.sent[-1] == "Iron Jarvis: plain"
+    assert ch.sent[-1] == "STEC OS: plain"
 
 
 # --------------------------------------------------------------------------- #

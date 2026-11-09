@@ -54,7 +54,7 @@ STARTER_MODEL = "llama3.2"
 #: shell. ``agent_cli`` is the CLI the job runs (the pane is labelled and
 #: classified as that CLI); ``command`` is the exact line, and
 #: :func:`launch_line` gives it the program's full path when the daemon's own
-#: PATH predates the program's install (Ollama installed while Iron Jarvis was
+#: PATH predates the program's install (Ollama installed while STEC OS was
 #: already running — the first-run door's own step 1).
 #:
 #: v1.356.0 (G60): an app that SIGNS IN on this PC is a set-up job too — the
@@ -83,7 +83,7 @@ SETUP_LAUNCHES: list[dict[str, str]] = [
         # only names it.
         "id": "microsoft-365-signin",
         "label": "Microsoft sign-in",
-        "command": "node <Microsoft 365 (Outlook, Calendar, OneDrive): Iron Jarvis's locked copy> --login",
+        "command": "node <Microsoft 365 (Outlook, Calendar, OneDrive): STEC OS's locked copy> --login",
         "agent_cli": "",
         "provider": "Microsoft",
         "url": "https://github.com/Softeria/ms-365-mcp-server",
@@ -144,8 +144,8 @@ def launch_line(entry: dict[str, str], shell: str | None) -> str:
     byte what the route typed before v1.355.0. A set-up job's line is its
     ``command`` too, UNLESS its program is not on the daemon's PATH but is
     installed where its installer puts it: a shell started by the daemon
-    inherits the daemon's environment, so a program installed after Iron
-    Jarvis started is "not recognized" in the pane even though it is on the
+    inherits the daemon's environment, so a program installed after STEC
+    OS started is "not recognized" in the pane even though it is on the
     PC. Then the program is typed by its full path, quoted for ``shell`` by the
     sign-in pane's own quoting (``routes.iron_proxy.shell_line``). Never
     raises: anything unexpected types the catalog command as it is."""
@@ -185,7 +185,7 @@ AUTOPILOT_FLAGS: dict[str, str] = {
 }
 
 #: How to pick a CLI's LAST conversation back up, in the same folder
-#: (v1.245.0) — the one-click Resume a Build pane offers after Iron Jarvis
+#: (v1.245.0) — the one-click Resume a Build pane offers after STEC OS
 #: restarted. A pane's shell is a child of the daemon, so an update or a crash
 #: ends the CLI running in it; the pane comes back as a fresh shell in the same
 #: folder, and these continue the conversation from the CLI's OWN saved

@@ -40,11 +40,11 @@ export function decodeRestoreFailed(raw: unknown): RestoreFailed | null {
 }
 
 /** "3 terminals from before the restart couldn't be reopened: their shell
- *  didn't start. Open a new terminal, or restart Iron Jarvis to try again." */
+ *  didn't start. Open a new terminal, or restart STEC OS to try again." */
 export function restoreFailedWords(note: RestoreFailed): string {
   const n = note.count;
   return (
     `${n} ${n === 1 ? "terminal" : "terminals"} from before the restart couldn't be reopened: ` +
-    `${note.reason}. Open a new terminal, or restart Iron Jarvis to try again.`
+    `${note.reason}. Open a new terminal, or restart STEC OS to try again.`
   );
 }

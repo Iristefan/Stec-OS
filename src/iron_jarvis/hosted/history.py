@@ -172,7 +172,7 @@ _LAST_SEQ = 0
 
 def next_seq() -> int:
     """A process-wide, strictly increasing number that is also larger than
-    any a previous run of Iron Jarvis wrote (microseconds since 1970)."""
+    any a previous run of STEC OS wrote (microseconds since 1970)."""
     global _LAST_SEQ
     with _SEQ_LOCK:
         now = time.time_ns() // 1000
@@ -730,7 +730,7 @@ def _grok_failed(text: str) -> bool:
 
 def _grok_events(path: Path) -> list[dict[str, Any]]:
     """Grok's ``chat_history.jsonl`` (v1.441.0; grok 1.0.70, measured on the
-    sessions it saved for Iron Jarvis's own recordings): ``user`` (the user's
+    sessions it saved for STEC OS's own recordings): ``user`` (the user's
     words carry ``prompt_index``; ``synthetic_reason`` "system_reminder"
     records and the first workspace note are Grok's own, an "interjection" is
     a note the user sent while it worked), ``assistant`` {content,
@@ -1045,7 +1045,7 @@ def turn_windows(events: list[dict[str, Any]]) -> list[tuple[datetime, datetime 
 
 
 #: A transcript entry this close to a log turn's edge is that turn's (the
-#: tool stamps its records a moment before or after Iron Jarvis's own).
+#: tool stamps its records a moment before or after STEC OS's own).
 EDGE_S = 2.0
 
 
@@ -1106,7 +1106,7 @@ def mark_outside(home: Any, sid: str, why: str) -> None:
     """BLOCKING, never raises: this session's conversation lived (or lives)
     outside the Code view — opened from the tool's saved sessions, brought
     from a terminal, or opened in one — so its view merges the tool's own
-    transcript in from now on. Written in Iron Jarvis's own folder only."""
+    transcript in from now on. Written in STEC OS's own folder only."""
     path = _outside_path(home, sid)
     try:
         path.parent.mkdir(parents=True, exist_ok=True)

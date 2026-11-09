@@ -672,7 +672,7 @@ async def test_changes_list_names_what_changed_and_never_a_value(tmp_path):
     out = _out(fin)
     assert "notes.txt" in out and "the schedule “nightly”" in out and "openai" in out.lower()
     assert "in chat" in out and "can be undone" in out
-    assert "Commands Iron Jarvis ran" in out, "what has no Undo is said, not hidden"
+    assert "Commands STEC OS ran" in out, "what has no Undo is said, not hidden"
     assert SECRET not in json.dumps(frames) and "second draft" not in out and "first draft" not in out
     # The tool's own data, read straight: kinds and states, never a value.
     res = await p.registry.get(LIST).execute({"kind": "file"}, _ctx(p, tmp_path))

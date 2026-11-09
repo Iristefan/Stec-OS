@@ -3,7 +3,7 @@
  * what Pair will do to the pairing this install already holds.
  *
  * THE REPORT: every Pair press answered "AUTHENTICATION_FAILED: This install is
- * already paired with a browser. Press Forget on the Browser page in Iron Jarvis
+ * already paired with a browser. Press Forget on the Browser page in STEC OS
  * before pairing another." — and the Browser page had no Forget button. It was
  * rendered only under Connected, and the install was "paired" with a browser
  * that was not there (a credential minted for a socket that had already closed).

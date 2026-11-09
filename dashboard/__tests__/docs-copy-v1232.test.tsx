@@ -170,12 +170,12 @@ describe("Help 'Daemon offline' entry (v1.232.0)", () => {
   it("says the same thing as the Handbook: tray restarts, two misses, Maintenance", () => {
     render(<HelpPage />);
     // v1.354.0 (G30, on purpose): the entry is named by the banner's own words.
-    const row = screen.getByText(/“Iron Jarvis isn't responding” in the dashboard/).closest("li");
+    const row = screen.getByText(/“STEC OS isn't responding” in the dashboard/).closest("li");
     expect(row).not.toBeNull();
     const text = row!.textContent ?? "";
     expect(text).toMatch(/two missed polls/);
     expect(text).toMatch(/quit from the tray and relaunch/i);
-    expect(text).toMatch(/Restart Iron Jarvis/);
+    expect(text).toMatch(/Restart STEC OS/);
     expect(text).toMatch(/Copy diagnostics/);
     expect(text).toMatch(/Open logs folder/);
     expect(within(row as HTMLElement).getByRole("link", { name: /Settings → Maintenance/ })).toHaveAttribute(

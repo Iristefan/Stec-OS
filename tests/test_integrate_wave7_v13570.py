@@ -1,6 +1,6 @@
 """v1.357.0 integrate (product-readiness Wave 7): the lanes joined.
 
-(a) G61 x G76 — a task another computer running Iron Jarvis sent
+(a) G61 x G76 — a task another computer running STEC OS sent
     (``task_door``'s ``remote:<caller>`` origin, lane 7A) reads in the ONE
     vocabulary (lane 7C) wherever it is said: the phone/desktop alert
     (``comm/notifier``) says the bell's "A task from <caller> …", it is

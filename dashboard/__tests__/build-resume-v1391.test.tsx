@@ -103,7 +103,7 @@ const REBUILT = JSON.parse(
 ).line as Record<string, unknown>;
 
 const INTERRUPTED_DETAIL =
-  "Iron Jarvis stopped while answering (a restart or a crash). What it had written so far is kept; press Retry to ask again.";
+  "STEC OS stopped while answering (a restart or a crash). What it had written so far is kept; press Retry to ask again.";
 
 const QUESTION = { role: "user", content: "Add a cart page", turnId: "t1", at: "2026-10-25T10:05:00" };
 const CUT = {
@@ -115,7 +115,7 @@ const CUT = {
 };
 const CARRY_Q = {
   role: "user",
-  content: "Carry on with the reply that stopped when Iron Jarvis restarted, from where it stopped.",
+  content: "Carry on with the reply that stopped when STEC OS restarted, from where it stopped.",
   turnId: "t2",
   continuation: true,
   resumedFrom: "t1",
@@ -254,7 +254,7 @@ describe("the bell", () => {
     const item = toActivity(
       ev("build.resumed", { thread_id: "bs_1", title: "Add a cart", reason: "restart", resumed_from: "t1" }, "build:bs_1"),
     )!;
-    expect(item.title).toBe("A coding session carried on after Iron Jarvis restarted");
+    expect(item.title).toBe("A coding session carried on after STEC OS restarted");
     expect(item.href).toBe("/chat?view=code&session=bs_1");
     expect(item.body).toBe("Add a cart");
     expect(item.attention).toBeUndefined();

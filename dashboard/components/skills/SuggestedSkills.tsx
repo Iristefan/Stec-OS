@@ -206,12 +206,12 @@ export function SuggestedSkills({
       {pending.length === 0 ? (
         <p className="text-[13px] leading-relaxed text-zinc-600">
           {!overview.enabled
-            ? "Skill learning is off. Turn on “Learn new skills from finished tasks” and Iron Jarvis will suggest skills here."
+            ? "Skill learning is off. Turn on “Learn new skills from finished tasks” and STEC OS will suggest skills here."
             : queued > 0
               ? `No suggestions to review right now — ${queued} finished ${
                   queued === 1 ? "task is" : "tasks are"
                 } queued for the next distill.`
-              : "No suggestions right now. As tasks finish, Iron Jarvis drafts skills from what worked — they show up here for your review."}
+              : "No suggestions right now. As tasks finish, STEC OS drafts skills from what worked — they show up here for your review."}
         </p>
       ) : (
         <ul className="space-y-3">

@@ -651,7 +651,7 @@ async def test_a_built_in_agent_or_an_unknown_one_is_refused_in_words(tmp_path):
     frames = await _drive_stream(app, _body("pause the builder agent, then delete the ghost agent"), await _approve_all(app, []))
     pause = _finished(frames, "agent_pause")[0]
     gone = _finished(frames, "agent_delete")[0]
-    assert "one of Iron Jarvis's own agents" in (pause.get("output") or pause.get("error") or "")
+    assert "one of STEC OS's own agents" in (pause.get("output") or pause.get("error") or "")
     words = gone.get("output") or gone.get("error") or ""
     assert "no agent “ghost”" in words and "“intake”" in words, words
 

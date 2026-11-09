@@ -70,8 +70,8 @@ DEFAULT_ALERT_EVENTS: frozenset[str] = frozenset(
         # summary with a short line per task (never one per task). On this PC
         # the bell / the tray say it, so "This PC" stays quiet for it.
         EventType.BUILD_NIGHT_SUMMARY,
-        # v1.406.0 part 3: a pull request's check fix — ONLY its news (Iron
-        # Jarvis stopped fixing, or the checks pass after its reviewed push);
+        # v1.406.0 part 3: a pull request's check fix — ONLY its news (STEC
+        # OS stopped fixing, or the checks pass after its reviewed push);
         # every other step (``build.ci_step``) is a quiet bell row. On this PC
         # the bell / the tray say it, so "This PC" stays quiet for it.
         EventType.BUILD_CI_DONE,
@@ -107,7 +107,7 @@ def _event_field(event: Any, attr: str, default: Any = None) -> Any:
 #
 # The phone, Telegram, email, Slack, Discord and this PC's desktop toast all
 # receive ``format_event``'s line. Every event type without a branch below
-# used to fall through to ``"Iron Jarvis: session.completed — status=failed,
+# used to fall through to ``"STEC OS: session.completed — status=failed,
 # summary=…, origin=schedule:daily (session session_7b32…)"`` — an event type
 # name, key=value pairs and an internal id, on the user's lock screen. Each
 # default alert now says what happened in the words the dashboard's bell
@@ -141,7 +141,7 @@ EVENT_WORDS: dict[str, str] = {
 }
 
 #: The line for a subscribed type nothing here has words for.
-UNKNOWN_EVENT_LINE = "Iron Jarvis has an update for you. Open the app to see it."
+UNKNOWN_EVENT_LINE = "STEC OS has an update for you. Open the app to see it."
 
 #: How an unattended run is named — the bell's ``UNATTENDED_SUBJECT``
 #: (``Session.origin`` is ``<door>:<name>``; a goal's suffix is an internal
@@ -153,7 +153,7 @@ _UNATTENDED_SUBJECT: dict[str, Any] = {
     "reflex": lambda n: f"Your reflex {n}" if n else "A reflex rule",
     "comm": lambda n: f"Your request from {n}" if n else "A request from your phone",
     "autonomy": lambda n: "An autonomy run",
-    # v1.357.0 (G61 + G76): a task another computer running Iron Jarvis sent
+    # v1.357.0 (G61 + G76): a task another computer running STEC OS sent
     # (agents/task_door.REMOTE_TASK_ORIGIN, "remote:<caller>") — the bell's
     # lib/remoteTask.remoteTaskSubject words, and its DEFAULT_CALLER.
     "remote": lambda n: f"A task from {n}" if n else "A task from another computer",
@@ -425,7 +425,7 @@ def _review_line(payload: dict) -> str:
     if risk:
         bits.append(f"{risk} risk")
     detail = f" ({', '.join(bits)})" if bits else ""
-    return f"A change is waiting for your review{detail}. Open Iron Jarvis to look it over."
+    return f"A change is waiting for your review{detail}. Open STEC OS to look it over."
 
 
 def format_event(event: Any) -> str:
@@ -452,7 +452,7 @@ def format_event(event: Any) -> str:
             # v1.392.0 (decision 3): a coding session's card nobody answered
             # in the app for five minutes — the session by its title, what
             # the call would do in the card's own words.
-            return f"⏸ {build_ask_words(payload)} — answer in Iron Jarvis, or reply here: approve / deny."
+            return f"⏸ {build_ask_words(payload)} — answer in STEC OS, or reply here: approve / deny."
         return (
             f"⏸ An agent is asking to use {tool} — approve from the "
             "dashboard bell, or reply here: approve / deny."
@@ -496,7 +496,7 @@ def format_event(event: Any) -> str:
     if etype == EventType.REVIEW_REQUESTED:
         return _review_line(payload)
     if etype == EventType.AUTONOMY_EXECUTED:
-        return "Iron Jarvis ran an action on its own — see it on the Autonomy page."
+        return "STEC OS ran an action on its own — see it on the Autonomy page."
     if etype == EventType.BUILD_TURN_FINISHED:
         return _build_finished_line(payload)
     if etype == EventType.CHAT_TURN_FINISHED:
@@ -518,7 +518,7 @@ def format_event(event: Any) -> str:
         return phone_message(payload)
     words = EVENT_WORDS.get(str(etype or ""))
     if words:
-        return _with_summary(f"Iron Jarvis: {words}", payload.get("summary"))
+        return _with_summary(f"STEC OS: {words}", payload.get("summary"))
     return UNKNOWN_EVENT_LINE
 
 
@@ -595,7 +595,7 @@ def bell_pings(event: Any) -> bool:
       night summary — ONE row per night, counted on the badge (nobody was
       watching the night's work), the tray says it with no window open.
 
-    * ``build.ci_done`` (v1.406.0 part 3): Iron Jarvis stopped fixing a
+    * ``build.ci_done`` (v1.406.0 part 3): STEC OS stopped fixing a
       pull request's failing checks, or they pass after the fix it pushed —
       counted, said from the tray, one phone line.
 

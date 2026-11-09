@@ -3,7 +3,7 @@ independent review found, each pinned red-first.
 
 THE PERMISSION MODEL below is OpenCode 1.18.18's own, read from the installed
 program (``opencode.exe``'s bundled source, the Permission and Agent modules
-and the config loader), so the tests judge the ENVIRONMENT Iron Jarvis builds
+and the config loader), so the tests judge the ENVIRONMENT STEC OS builds
 by what OpenCode would really decide, not by the env's shape:
 
 * the config's ``permission`` objects are merged in load order, and the
@@ -106,8 +106,8 @@ def verdict(agent: str, perm: dict, tool: str, pattern: str) -> str:
 
 
 def env_for(tmp_path: Path, monkeypatch, mode: str, user: dict, tools: dict | None = None) -> dict | None:
-    """Write the user's config where Iron Jarvis reads it, and return the
-    OPENCODE_PERMISSION Iron Jarvis would give that OpenCode process."""
+    """Write the user's config where STEC OS reads it, and return the
+    OPENCODE_PERMISSION STEC OS would give that OpenCode process."""
     conf = tmp_path / f"conf-{mode}-{abs(hash(json.dumps([user, tools], sort_keys=True)))}"
     conf.mkdir()
     body: dict = {"permission": user}
@@ -141,7 +141,7 @@ PATTERNS = ["notes.txt", "rm -rf build", "secrets/x.txt", "app.env"]
 @pytest.mark.parametrize("user", USER_CONFIGS)
 def test_plan_mode_denies_every_edit_whatever_the_users_rules(tmp_path, monkeypatch, user):
     """OpenCode puts the config's rules (and so the environment's) AFTER the
-    plan agent's own ``edit`` deny: a ``"*": "ask"`` from Iron Jarvis turned
+    plan agent's own ``edit`` deny: a ``"*": "ask"`` from STEC OS turned
     Plan's refusal into a card, and an Allow on it changed the file."""
     env = env_for(tmp_path, monkeypatch, "plan", user)
     perm = config_permission(user, None, env)
@@ -171,7 +171,7 @@ def test_leaving_plan_needs_a_new_process_and_entering_it_too():
 
 
 def test_a_mode_that_cannot_use_star_says_what_runs_unasked(tmp_path, monkeypatch):
-    """When a rule of the user's keeps Iron Jarvis's ``"*"`` out, tools of the
+    """When a rule of the user's keeps STEC OS's ``"*"`` out, tools of the
     user's MCP servers and plugins run on OpenCode's own default (no card):
     said in plain words, never left silent."""
     from iron_jarvis.hosted import words as W
@@ -220,7 +220,7 @@ def test_no_rule_of_the_users_is_ever_widened(tmp_path, monkeypatch, mode, user)
 @pytest.mark.parametrize("mode", ["ask", "edits", "plan"])
 def test_the_legacy_tools_switch_is_a_rule_of_the_users_too(tmp_path, monkeypatch, mode):
     """``"tools": {"bash": false}`` (OpenCode's older way to switch a tool off)
-    becomes a ``bash`` deny placed BEFORE the permission object — Iron Jarvis's
+    becomes a ``bash`` deny placed BEFORE the permission object — STEC OS's
     ``"*"`` after it turned the off switch into a card."""
     env = env_for(tmp_path, monkeypatch, mode, {}, tools={"bash": False, "write": False})
     perm = config_permission({}, {"bash": False, "write": False}, env)
@@ -231,7 +231,7 @@ def test_the_legacy_tools_switch_is_a_rule_of_the_users_too(tmp_path, monkeypatc
 @pytest.mark.parametrize("mode", ["ask", "edits", "plan"])
 def test_a_dot_env_file_still_asks_before_it_is_read(tmp_path, monkeypatch, mode):
     """OpenCode's own default asks before it reads a ``.env`` file (keys,
-    passwords). Iron Jarvis's ``"read": "allow"`` landed after that default and
+    passwords). STEC OS's ``"read": "allow"`` landed after that default and
     read every ``.env`` without a word in every mode but Full access."""
     env = env_for(tmp_path, monkeypatch, mode, {})
     perm = config_permission({}, None, env)
@@ -244,7 +244,7 @@ def test_a_dot_env_file_still_asks_before_it_is_read(tmp_path, monkeypatch, mode
 def test_the_managed_and_home_config_files_are_read(tmp_path, monkeypatch):
     """OpenCode also merges ``%ProgramData%\\opencode`` (an admin's policy),
     ``~/.opencode`` and the global ``config.json``: a deny there must keep
-    Iron Jarvis's ``"*"`` out."""
+    STEC OS's ``"*"`` out."""
     managed = tmp_path / "managed"
     managed.mkdir()
     (managed / "opencode.json").write_text('{"permission": {"bash": "deny"}}', encoding="utf-8")

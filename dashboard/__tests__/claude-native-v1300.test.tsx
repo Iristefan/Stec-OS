@@ -389,7 +389,7 @@ describe("whose cost it is: subscription, metered, free", () => {
 /* ---------------------------------------------------- both chat lanes */
 
 async function sendOnChatPage(text: string) {
-  const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  const box = await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.change(box, { target: { value: text } });
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
 }
@@ -472,7 +472,7 @@ describe("both chat lanes store usage on the message and pass it to the receipt"
 /* ------------------------------------------------------- the model menus */
 
 async function openComposerMenu() {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.click(await screen.findByTitle("Switch model"));
   return (await screen.findByTestId("model-filter")) as HTMLInputElement;
 }

@@ -1,6 +1,6 @@
-# Iron Jarvis — Desktop
+# STEC OS — Desktop
 
-A thin **Electron** wrapper that turns Iron Jarvis into a native desktop app. It
+A thin **Electron** wrapper that turns STEC OS into a native desktop app. It
 launches the local Python daemon and the Next.js dashboard for you, waits for
 them to come up behind a splash screen, then opens the dashboard in a real
 window — no terminal juggling.
@@ -15,7 +15,7 @@ desktop/
 ├── package.json     # iron-jarvis-desktop — its own deps, separate from the dashboard
 ├── main.js          # Electron main process: spawns daemon + dashboard, manages windows
 ├── preload.js       # exposes window.ironjarvis = { isDesktop, version }
-├── loading.html     # the lighthouse "Starting Iron Jarvis…" splash (inline SVG)
+├── loading.html     # the lighthouse "Starting STEC OS…" splash (inline SVG)
 └── assets/
     ├── icon.png     # placeholder app icon (replace with your brand icon)
     └── README.md
@@ -25,7 +25,7 @@ desktop/
 
 On launch, `main.js`:
 
-1. Shows the **"Starting Iron Jarvis…"** splash window (a glowing lighthouse).
+1. Shows the **"Starting STEC OS…"** splash window (a glowing lighthouse).
 2. Verifies `uv` and `pnpm` are on your `PATH` (friendly error dialog if not).
 3. Spawns the **daemon**:
    `uv run ironjarvis serve --host 127.0.0.1 --port 8787 --root <repoRoot>`
@@ -100,7 +100,7 @@ pnpm run dist:full   # build-installer.ps1: freeze daemon → build dashboard �
 
 The `electron-builder` config lives in `package.json` under `build`:
 
-- `appId`: `com.realdealcpa.ironjarvis` · `productName`: `Iron Jarvis` · `win.target`: `nsis`
+- `appId`: `com.realdealcpa.ironjarvis` · `productName`: `STEC OS` · `win.target`: `nsis`
 - `extraResources`: the frozen daemon (`packaging/dist/ironjarvis` → `daemon`) and the
   standalone dashboard (`dashboard/.next/standalone` → `dashboard`)
 - `publish`: GitHub Releases with `releaseType: release` — the packaged app

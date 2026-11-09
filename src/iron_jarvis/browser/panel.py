@@ -15,7 +15,7 @@ THE SIDEBAR IS SCOPED TO THE BROWSER. It is a Jarvis window docked in Chrome,
 and what it may reach is the browser and nothing else — reading tabs, reading a
 page, and (at ``interactive``, behind the approval card) acting on one.
 Anything else the user wants Jarvis to do — write a file, fetch a URL, run a
-command, start an agent — belongs in the Iron Jarvis window, where the user is
+command, start an agent — belongs in the STEC OS window, where the user is
 looking at the surface that owns those capabilities. That is not a UI
 preference; it is the security boundary of this whole feature, and it is
 enforced by a HARD CEILING passed into the turn, not by hoping the model stays
@@ -327,7 +327,7 @@ def describe_browser_call(name: str, args: object, *, card: bool = False) -> str
     """A browser tool call as the user would say it (v1.262.0): "click 'Search'",
     "type 'flights to denver' into the search box", "open https://…".
 
-    Lower-case, no trailing period, so it composes: "Iron Jarvis wants to
+    Lower-case, no trailing period, so it composes: "STEC OS wants to
     {this}. Allow it?", "{This}…", "Could not {this}." A name this function has
     never heard of is described as "run <name>" — never dropped, never guessed.
     The args are whatever the lane sent, already redacted by the tool's own
@@ -467,7 +467,7 @@ def parse_sse(chunk: str) -> list[tuple[str, dict[str, Any]]]:
 
 #: The sidebar's demo notice when the reply already says it is the demo
 #: (v1.359.0 integrate): only what to do, so the demo is named once.
-DEMO_SHORT_NOTICE = "Choose a model in Iron Jarvis to get real answers."
+DEMO_SHORT_NOTICE = "Choose a model in STEC OS to get real answers."
 
 
 def _opens_as_demo(reply: object) -> bool:
@@ -746,7 +746,7 @@ class PanelTurns:
         await self.emit(
             conn,
             P.PANEL_EVENT_ERROR,
-            {"text": f"Iron Jarvis does not know the sidebar action {act!r}."},
+            {"text": f"STEC OS does not know the sidebar action {act!r}."},
         )
 
     async def resolve_risk_ask(
@@ -759,7 +759,7 @@ class PanelTurns:
         inside the tool (``_ActingTool._require_approval``), after the lane's
         own card (or the switch) already let the call through. Without a
         resolver that stop was a queue row and a refusal telling the model to
-        have the user "approve it in Iron Jarvis, then make the identical call
+        have the user "approve it in STEC OS, then make the identical call
         again" — from the sidebar, a task that could not be completed. Now the
         stop is a card HERE, with the door's own reason, answered through the
         same registry as every other card, and one Allow authorises exactly
@@ -800,9 +800,9 @@ class PanelTurns:
                 "id": ap_id,
                 "tool": name,
                 "text": (
-                    f"Iron Jarvis wants to {what}, and stops to ask because {reason}. Allow it?"
+                    f"STEC OS wants to {what}, and stops to ask because {reason}. Allow it?"
                     if reason
-                    else f"Iron Jarvis wants to {what}. Allow it?"
+                    else f"STEC OS wants to {what}. Allow it?"
                 ),
                 "floor": True,
             },
@@ -840,7 +840,7 @@ class PanelTurns:
     MODEL_ROW_KEYS = ("provider", "model", "name", "available", "kind")
 
     async def models(self, *, force: bool = False) -> dict[str, Any]:
-        """The ``models`` payload: THE catalog every Iron Jarvis picker reads, projected.
+        """The ``models`` payload: THE catalog every STEC OS picker reads, projected.
 
         ``selectable_models`` (the function behind ``GET /models``) is the one
         source, so the sidebar can never offer a model the app would not, and
@@ -903,7 +903,7 @@ class PanelTurns:
         """``{available, backend, hint}`` — the same answer ``GET /voice/status`` gives."""
         deps = self.deps
         if deps is None:
-            return {"available": False, "backend": None, "hint": "Voice is not wired in this copy of Iron Jarvis."}
+            return {"available": False, "backend": None, "hint": "Voice is not wired in this copy of STEC OS."}
         try:
             from ..daemon.routes.voice import voice_capability
 
@@ -940,7 +940,7 @@ class PanelTurns:
             await self.emit(
                 conn,
                 P.PANEL_EVENT_ERROR,
-                {"text": f"Iron Jarvis does not know the voice step {op!r}.", "reason": "voice_failed"},
+                {"text": f"STEC OS does not know the voice step {op!r}.", "reason": "voice_failed"},
             )
 
     async def _voice_start(self, conn: Any) -> None:
@@ -951,7 +951,7 @@ class PanelTurns:
                 conn,
                 P.PANEL_EVENT_ERROR,
                 {
-                    "text": cap.get("hint") or "Voice is not set up in Iron Jarvis yet.",
+                    "text": cap.get("hint") or "Voice is not set up in STEC OS yet.",
                     "reason": "voice_unavailable",
                 },
             )
@@ -1089,7 +1089,7 @@ class PanelTurns:
                 conn,
                 P.PANEL_EVENT_ERROR,
                 {
-                    "text": f"{model or provider} is not on Iron Jarvis's model list any"
+                    "text": f"{model or provider} is not on STEC OS's model list any"
                     " more. Pick another model in the sidebar.",
                     "reason": "model_unknown",
                 },
@@ -1130,7 +1130,7 @@ class PanelTurns:
                 conn,
                 P.PANEL_EVENT_ERROR,
                 {
-                    "text": "Iron Jarvis is still working on the last message."
+                    "text": "STEC OS is still working on the last message."
                     " Stop it first."
                 },
             )
@@ -1227,7 +1227,7 @@ class PanelTurns:
         self._remember("user", self._turn_text)
         self._remember(
             "assistant",
-            "".join(self._answer) or "(Iron Jarvis gave no answer.)",
+            "".join(self._answer) or "(STEC OS gave no answer.)",
         )
         self._answer = []
 
@@ -1239,7 +1239,7 @@ class PanelTurns:
                 conn,
                 P.PANEL_EVENT_ERROR,
                 {
-                    "text": "Iron Jarvis is still working on the last message."
+                    "text": "STEC OS is still working on the last message."
                     " Stop it before starting a new conversation.",
                     "reason": "still_running",
                 },
@@ -1323,7 +1323,7 @@ class PanelTurns:
                 return DEMO_SHORT_NOTICE
             return (
                 "Answered by the demo model: a scripted demo, not real answers. "
-                "Choose a model in Iron Jarvis to get real answers."
+                "Choose a model in STEC OS to get real answers."
             )
         return ""
 
@@ -1352,7 +1352,7 @@ class PanelTurns:
         return (
             f"The sidebar is limited to {PANEL_TURNS_PER_WINDOW} messages a"
             f" minute, and that many have just been sent. Try again in about"
-            f" {wait_s} seconds, or use the Iron Jarvis window."
+            f" {wait_s} seconds, or use the STEC OS window."
         )
 
     async def _stop(self, conn: Any) -> None:
@@ -1579,7 +1579,7 @@ class PanelTurns:
             await self.emit(
                 conn,
                 P.PANEL_EVENT_ERROR,
-                {"text": f"Iron Jarvis could not finish that: {exc}"},
+                {"text": f"STEC OS could not finish that: {exc}"},
             )
             emitted_done = True
         finally:
@@ -1615,23 +1615,23 @@ class PanelTurns:
         exhaustion, which no ceiling can prevent; and a surface whose honesty
         depends on a bound in another module is one refactor from lying again.
 
-        Every sentence names the Iron Jarvis window, because that is where the
+        Every sentence names the STEC OS window, because that is where the
         work the sidebar declined to do can actually be done.
         """
         if data.get("escalate"):
             reason = str(data.get("escalate_reason") or "").strip()
             tail = f" ({reason})" if reason else ""
             return (
-                "This needs the full Iron Jarvis agent, which the sidebar does"
-                f" not start{tail}. Ask again in the Iron Jarvis window."
+                "This needs the full STEC OS agent, which the sidebar does"
+                f" not start{tail}. Ask again in the STEC OS window."
             )
         if data.get("workflow_draft"):
             return (
-                "Iron Jarvis drafted a reusable workflow for this. The sidebar"
-                " cannot show it — open the Iron Jarvis window to review and"
+                "STEC OS drafted a reusable workflow for this. The sidebar"
+                " cannot show it — open the STEC OS window to review and"
                 " save it."
             )
-        return "Iron Jarvis finished this turn without an answer."
+        return "STEC OS finished this turn without an answer."
 
     async def _translate(self, conn: Any, event: str, data: dict[str, Any]) -> None:
         """One SSE frame -> the ``browser.panel_event`` frames it means (most
@@ -1720,7 +1720,7 @@ class PanelTurns:
                 {
                     "id": approval_id,
                     "tool": tool,
-                    "text": f"Iron Jarvis wants to {what}{ask}",
+                    "text": f"STEC OS wants to {what}{ask}",
                 },
             )
             return
@@ -1795,7 +1795,7 @@ class PanelTurns:
             # a wording fault) reads exactly as before.
             sentence = failure_sentence(data.get("title"), data.get("fix"))
             payload: dict[str, Any] = {
-                "text": sentence or str(data.get("detail") or "Iron Jarvis could not finish that.")
+                "text": sentence or str(data.get("detail") or "STEC OS could not finish that.")
             }
             technical = str(data.get("technical") or "").strip()
             if sentence and technical and technical != sentence:

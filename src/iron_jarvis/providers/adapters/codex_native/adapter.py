@@ -1,12 +1,12 @@
 """``CodexNativeAdapter`` — codex-cli with REAL tool calls (IJ harness phase 2).
 
 THE BRIDGE. Codex runs its own agent loop and asks the client to run a tool
-(``item/tool/call``, then waits). Iron Jarvis's lanes call an adapter, get
+(``item/tool/call``, then waits). STEC OS's lanes call an adapter, get
 tool calls back, run them through ``registry.invoke`` and call again with the
 results. So one Codex TURN spans several adapter calls:
 
 1. A call that is not a resume starts a NEW session (process + ephemeral
-   thread, Iron Jarvis's tools offered as dynamic tools, Codex's own tools
+   thread, STEC OS's tools offered as dynamic tools, Codex's own tools
    off), sends the turn, and streams until Codex asks for tools or ends the
    turn.
 2. When Codex asks for tools, the call RETURNS them (``finish_reason
@@ -69,7 +69,7 @@ log = logging.getLogger("ironjarvis.codex_native")
 #: Model ids that mean "Codex's own default" (no ``model`` on thread/start).
 PLACEHOLDER_MODELS = ("", "subscription", "default", "auto")
 
-#: v1.424.0 (D2): the effort words Codex takes from Iron Jarvis. ``xhigh``
+#: v1.424.0 (D2): the effort words Codex takes from STEC OS. ``xhigh``
 #: ("Extra") joins low/medium/high — offered only for a model whose own entry
 #: in Codex's list names it (``providers.reasoning`` / ``codex_models``); the
 #: router never sends a level the serving model was not offered.
@@ -364,7 +364,7 @@ def stderr_for_log(text: str) -> str:
 class CodexNativeAdapter(LLMAdapter):
     """codex-cli over the user's own ``codex app-server``: native tool calls,
     streaming text and reasoning, token usage and the account's rate limits.
-    Iron Jarvis executes every tool."""
+    STEC OS executes every tool."""
 
     provider = P.PROVIDER
     #: v1.425.0 (C4): a tool's picture goes back as ``inputImage`` items
@@ -647,7 +647,7 @@ class CodexNativeAdapter(LLMAdapter):
         try:
             victims = S.POOL.admit(s)
         except S.PoolFull as exc:
-            # Iron Jarvis's own cap, not an outage: never retried, never moved
+            # STEC OS's own cap, not an outage: never retried, never moved
             # to another provider (that is the user's privacy decision).
             full = ProviderError(f"{P.PROVIDER}: {exc}", transient=False)
             full.no_failover = True  # type: ignore[attr-defined]
@@ -689,7 +689,7 @@ class CodexNativeAdapter(LLMAdapter):
         try:
             init = await s.request(
                 "initialize",
-                {"clientInfo": {"name": "iron-jarvis", "title": "Iron Jarvis", "version": __version__},
+                {"clientInfo": {"name": "iron-jarvis", "title": "STEC OS", "version": __version__},
                  "capabilities": {"experimentalApi": True}},
                 timeout,
             )
@@ -1067,7 +1067,7 @@ class CodexNativeAdapter(LLMAdapter):
                 have = (" The tools you can call here: " + ", ".join(offered[:60]) + ".") if offered else ""
                 await s.respond(rid, {
                     "contentItems": [{"type": "inputText", "text": (
-                        f"Iron Jarvis does not offer a tool named {str(tool)[:80]!r} in this "
+                        f"STEC OS does not offer a tool named {str(tool)[:80]!r} in this "
                         "conversation; nothing was run." + have)}],
                     "success": False,
                 })
@@ -1084,7 +1084,7 @@ class CodexNativeAdapter(LLMAdapter):
             s.refused_builtins.append(method)
             log.warning(
                 "codex-cli: Codex asked to run one of its own tools (%s) and was refused — "
-                "Iron Jarvis runs every tool itself", method,
+                "STEC OS runs every tool itself", method,
             )
             await s.respond(rid, P.APPROVAL_DENIALS[method])
             return None
@@ -1097,7 +1097,7 @@ class CodexNativeAdapter(LLMAdapter):
         if method == "currentTime/read":
             await s.respond(rid, {"currentTimeAt": int(time.time())})
             return None
-        await s.respond_error(rid, -32601, f"{method} is not supported by Iron Jarvis")
+        await s.respond_error(rid, -32601, f"{method} is not supported by STEC OS")
         return None
 
 

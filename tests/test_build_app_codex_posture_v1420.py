@@ -41,7 +41,7 @@ def test_auto_edits_says_the_real_cause_in_plain_words():
         "On Windows, Codex can run commands only with its own file protection switched off, and "
         "then it asks either before every file change and every command, or before none of them. "
         "It has no setting where edits run on their own while commands still ask. Codex's own "
-        "Windows protection for commands is not set up on this PC, and Iron Jarvis does not "
+        "Windows protection for commands is not set up on this PC, and STEC OS does not "
         "set it up."
     )  # v1.441.0 (moved on purpose): the measured readiness is said too
     low = why.lower()

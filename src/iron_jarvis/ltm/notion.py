@@ -262,4 +262,4 @@ class NotionConnector(LTMConnector):
                 self.title_property: {"title": [{"text": {"content": str(to).strip()}}]}
             }}, headers)
             return ref
-        raise NoteOpUnsupported(f"notion: Iron Jarvis cannot {action} a page — do it in Notion")
+        raise NoteOpUnsupported(f"notion: STEC OS cannot {action} a page — do it in Notion")

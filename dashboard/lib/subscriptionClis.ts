@@ -10,7 +10,7 @@
  */
 
 export interface SubscriptionCliRow {
-  /** Iron Jarvis's provider id. */
+  /** STEC OS's provider id. */
   provider: string;
   /** The CLI's own word for itself (Build's account list groups by it). */
   vendor: string;
@@ -24,7 +24,7 @@ export interface SubscriptionCliRow {
   harness: string;
   /** The program it runs as. */
   binary: string;
-  /** Does Iron Jarvis probe its sign-in (Grok's session file is read instead)? */
+  /** Does STEC OS probe its sign-in (Grok's session file is read instead)? */
   probed: boolean;
   /** The name a person knows the provider by. */
   name: string;
@@ -76,12 +76,12 @@ export const SUBSCRIPTION_CLI_ROWS: readonly SubscriptionCliRow[] = [
   }
 ];
 
-/** Iron-Proxy provider -> Iron Jarvis provider id. */
+/** Iron-Proxy provider -> STEC OS provider id. */
 export const PROXY_TO_PROVIDER: Readonly<Record<string, string>> = Object.fromEntries(
   SUBSCRIPTION_CLI_ROWS.map((c) => [c.proxy, c.provider]),
 );
 
-/** Iron Jarvis provider id -> the name a person knows it by. */
+/** STEC OS provider id -> the name a person knows it by. */
 export const SUBSCRIPTION_CLI_NAMES: Readonly<Record<string, string>> = Object.fromEntries(
   SUBSCRIPTION_CLI_ROWS.map((c) => [c.provider, c.name]),
 );

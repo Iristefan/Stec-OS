@@ -56,7 +56,7 @@ _EXTRA_KEYS = ("panelWho", "panelKind", "documents")
 
 #: The ``setup_json`` key the phone lane keeps its sticky addressee under
 #: (v1.285.0): "remote:hermes" while the conversation is with hermes, "" or
-#: absent while it is with Iron Jarvis.
+#: absent while it is with STEC OS.
 ADDRESSEE_KEY = "addressee"
 
 
@@ -64,7 +64,7 @@ def agent_line_label(name: str) -> str:
     """The one sentence that marks another agent's words in a model's history
     (v1.285.0) — the SAME words ``dashboard/app/chat/page.tsx::toRequestMessages``
     uses, so both lanes tell the model the same thing."""
-    return f"[Reply from the agent {name}, on the agent panel — not Iron Jarvis]"
+    return f"[Reply from the agent {name}, on the agent panel — not STEC OS]"
 
 
 class CommThreadStore:
@@ -108,7 +108,7 @@ class CommThreadStore:
 
         Reuses the bound thread when it exists; if the thread row was deleted
         from the dashboard, a fresh one is minted and the identity re-bound
-        (the phone must never lose its line to Iron Jarvis over a tidy-up).
+        (the phone must never lose its line to STEC OS over a tidy-up).
         The heal KEEPS the project binding when recoverable (v1.141.0): every
         resolve caches the bound thread's ``project_id`` per identity, and a
         re-mint copies the last-seen value onto the fresh thread — so deleting
@@ -353,8 +353,8 @@ class CommThreadStore:
                     # ANOTHER AGENT'S LINE (v1.285.0) — labelled the way the
                     # desktop lane labels it (``toRequestMessages``), so the
                     # model reads "what hermes said", never its OWN prior turn.
-                    # A remote's words must not become Iron Jarvis's memory of
-                    # what Iron Jarvis committed to.
+                    # A remote's words must not become STEC OS's memory of
+                    # what STEC OS committed to.
                     name = who.split(":", 1)[1] if ":" in who else who
                     content = f"{agent_line_label(name)}\n{content}"
                 out.append({"role": role, "content": content})

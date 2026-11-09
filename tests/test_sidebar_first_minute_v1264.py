@@ -2,13 +2,13 @@
 
 THE REPORT, after loading the add-on into Edge:
   1. "did not reach iron jarvis" — the add-on's socket said "could not reach
-     Iron Jarvis on 127.0.0.1:8787" and, in the offline state, offered NO
+     STEC OS on 127.0.0.1:8787" and, in the offline state, offered NO
      Connect button: the bridge retries on a backoff that reaches 30 s, and the
      user had just (re)started the app.
   2. Pressing Open Jarvis in the sidebar opened the dashboard in a BROWSER TAB —
      which has no token — so every card was empty under "Daemon rejected your
      token", and the Browser card misread its own 401 as "This daemon does not
-     have the Browser surface yet — restart Iron Jarvis".
+     have the Browser surface yet — restart STEC OS".
   3. Enter in the sidebar's composer did nothing; only the button sent.
 
 WHAT THIS FILE PINS:
@@ -83,8 +83,8 @@ __ARGV__
 const cases = JSON.parse(process.argv[2]);
 process.stdout.write(JSON.stringify({
   parsed: cases.map((c) => dashboardPathFromProtocolUrl(c)),
-  fromArgv: protocolUrlIn(["C:\\\\Iron Jarvis\\\\Iron Jarvis.exe", "--hidden", "ironjarvis://chat"]),
-  noneInArgv: protocolUrlIn(["C:\\\\Iron Jarvis\\\\Iron Jarvis.exe", "--hidden"]),
+  fromArgv: protocolUrlIn(["C:\\\\STEC OS\\\\STEC OS.exe", "--hidden", "ironjarvis://chat"]),
+  noneInArgv: protocolUrlIn(["C:\\\\STEC OS\\\\STEC OS.exe", "--hidden"]),
 }) + "\\n");
 """
 
@@ -187,6 +187,6 @@ def test_offline_offers_connect_and_a_press_reconnects_now():
 
 def test_the_offline_words_name_the_cause_and_the_next_press():
     src = _src(_SOCKET)
-    assert "Iron Jarvis did not answer at 127.0.0.1:8787" in src
+    assert "STEC OS did not answer at 127.0.0.1:8787" in src
     assert "then press Connect" in src
-    assert "could not reach Iron Jarvis on 127.0.0.1:8787" not in src
+    assert "could not reach STEC OS on 127.0.0.1:8787" not in src

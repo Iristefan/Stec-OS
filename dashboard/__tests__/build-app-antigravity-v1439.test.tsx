@@ -1,6 +1,6 @@
 /**
  * v1.439.0 — Google Antigravity (`agy acp`) in Build's Code view: the user's
- * REAL Antigravity, its own tools and settings on; Iron Jarvis turns every
+ * REAL Antigravity, its own tools and settings on; STEC OS turns every
  * question it asks into a card. Driven through the real view and lib/buildApp;
  * only the network (lib/api), the stream reader and the folder tree are
  * stand-ins.
@@ -110,7 +110,7 @@ const AGY_TOOL = {
   own_sign_in: true,
   only_when_installed: true,
   sign_in_hint:
-    "Antigravity signs in by itself, with its own Google sign-in: to change it, run agy in a Build terminal and sign in there. Iron Jarvis's accounts do not apply.",
+    "Antigravity signs in by itself, with its own Google sign-in: to change it, run agy in a Build terminal and sign in there. STEC OS's accounts do not apply.",
   modes: [
     { id: "own", label: "Antigravity's own rules", dangerous: false, about: "Asks before it runs a command." },
     { id: "edits", label: "Auto edits", dangerous: false, about: "Changes files in the folder without asking." },

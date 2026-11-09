@@ -1,7 +1,7 @@
 /**
- * v1.423.0 (Wave 3 lane B) — "Copy as a fix request": the problems Iron
- * Jarvis's coding sessions and model team ran into, copied as a report the
- * owner can paste to the coding agent that fixes Iron Jarvis
+ * v1.423.0 (Wave 3 lane B) — "Copy as a fix request": the problems STEC
+ * OS's coding sessions and model team ran into, copied as a report the
+ * owner can paste to the coding agent that fixes STEC OS
  * (components/team/FixRequestButton; the daemon's GET /team/fix-request).
  *
  * Pinned: a press reads the route (the last 7 days; one session's id when it
@@ -10,7 +10,7 @@
  * browser's); the status line says "Copied: N problems from the last 7 days";
  * nothing to report copies NOTHING and says so; a clipboard that cannot be
  * reached is never reported as a copy (the report is shown to select by
- * hand); FastAPI's own 404 ("Not Found", an older Iron Jarvis) hides the
+ * hand); FastAPI's own 404 ("Not Found", an older STEC OS) hides the
  * button while the route's own 404 is said in its words; any other failure in
  * words; and it is mounted in Settings › Model team and a coding session's
  * Session tab.
@@ -83,7 +83,7 @@ import { ModelTeam } from "@/components/settings/ModelTeam";
 import { SessionRail } from "@/components/harness/HarnessSessionRail";
 import { decodeSessionView } from "@/lib/buildSessions";
 
-const REPORT = "# Fix request: Iron Jarvis coding sessions and model team\n\n## 1. A command the shell could not find";
+const REPORT = "# Fix request: STEC OS coding sessions and model team\n\n## 1. A command the shell could not find";
 const ALL = "/team/fix-request?days=7";
 const ONE = "/team/fix-request?days=7&session=chat_s1";
 
@@ -141,7 +141,7 @@ describe("the words", () => {
 
   it("its title says what it copies and to check it before pasting it anywhere", () => {
     const t = fixRequestTitle();
-    expect(t).toContain("problems Iron Jarvis's coding sessions and model team ran into in the last 7 days");
+    expect(t).toContain("problems STEC OS's coding sessions and model team ran into in the last 7 days");
     expect(t).toContain("Check it before you paste it anywhere");
     expect(fixRequestTitle("chat_s1")).toContain("in this coding session over the last 7 days");
   });
@@ -165,7 +165,7 @@ describe("the button", () => {
   });
 
   it("copies nothing when there is nothing to report, and says so", async () => {
-    api.gets[ALL] = { text: "Nothing to report: Iron Jarvis ran into no problems …", problems: 0 };
+    api.gets[ALL] = { text: "Nothing to report: STEC OS ran into no problems …", problems: 0 };
     render(<FixRequestButton />);
     await press();
     expect(written).toEqual([]);
@@ -184,7 +184,7 @@ describe("the button", () => {
     expect(screen.getByTestId("fix-request-status").textContent).not.toContain("Copied");
   });
 
-  it("hides itself on an older Iron Jarvis (FastAPI's own 404)", async () => {
+  it("hides itself on an older STEC OS (FastAPI's own 404)", async () => {
     render(<FixRequestButton />);
     fireEvent.click(screen.getByTestId("fix-request-copy"));
     await waitFor(() => expect(screen.queryByTestId("fix-request")).toBeNull());
@@ -204,12 +204,12 @@ describe("the button", () => {
   });
 
   it("says any other failure in words", async () => {
-    api.gets[ALL] = new api.ApiError("Iron Jarvis isn't responding", 0);
+    api.gets[ALL] = new api.ApiError("STEC OS isn't responding", 0);
     render(<FixRequestButton />);
     await press();
     await waitFor(() =>
       expect(screen.getByTestId("fix-request-status").textContent).toBe(
-        "The report could not be made: Iron Jarvis isn't responding",
+        "The report could not be made: STEC OS isn't responding",
       ),
     );
     expect(written).toEqual([]);

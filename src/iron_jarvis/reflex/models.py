@@ -1,4 +1,4 @@
-"""Reflex rules — the durable bindings that make Iron Jarvis *ambient*.
+"""Reflex rules — the durable bindings that make STEC OS *ambient*.
 
 A :class:`ReflexRule` binds an inbound SIGNAL (an external webhook firing, or a
 keyword in an inbound comm message) to an ACTION (run a saved workflow, delegate

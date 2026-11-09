@@ -1,4 +1,4 @@
-"""The three runners: Iron Jarvis's own coding turn, Claude Code, and Codex.
+"""The three runners: STEC OS's own coding turn, Claude Code, and Codex.
 
 Every runner works in a FRESH copy of the task's repo, is given the SAME
 prompt (:func:`render_prompt`), and returns the same :class:`RunOutcome`.
@@ -747,7 +747,7 @@ def coding_session_record(line: Any, *, thread_id: str = "") -> dict[str, Any]:
             if s.get("target"):
                 step["target"] = _masked(s.get("target"), STEP_TARGET_CHARS)
             if s.get("check"):
-                # Iron Jarvis's own step (the finish check's test run, a
+                # STEC OS's own step (the finish check's test run, a
                 # project check) — never the model's.
                 step["check"] = str(s.get("check"))
             kept.append(step)
@@ -1378,7 +1378,7 @@ class JarvisRunner:
         out = RunOutcome(usage_source="lane")
         if not await asyncio.to_thread(usable_workspace_root, str(workspace)):
             # The lane would quietly run the tools in its scratch folder instead.
-            out.error = f"Iron Jarvis would not work in {workspace} (the folder was refused)"
+            out.error = f"STEC OS would not work in {workspace} (the folder was refused)"
             return out
         # HARNESS MODE (v1.366.0) arms the coding set itself — no "+" picks.
         body = ChatBody(
@@ -1475,7 +1475,7 @@ class JarvisRunner:
         problem = await asyncio.to_thread(S.folder_problem, folder)
         if problem:
             # The session would not start in it (the app's own rule).
-            out.error = f"Iron Jarvis would not work in {workspace} ({problem})"
+            out.error = f"STEC OS would not work in {workspace} ({problem})"
             return out
         # The routes' own shim: what ``start_build_turn`` reads off ``d``.
         d = SimpleNamespace(platform=self.platform, _PERSONAS=BUILTIN_PERSONAS)

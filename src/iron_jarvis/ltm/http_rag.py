@@ -1,6 +1,6 @@
 """Generic offsite RAG endpoint connector (§21 extension).
 
-Lets a user point Iron Jarvis at *their own* external RAG / semantic-search
+Lets a user point STEC OS at *their own* external RAG / semantic-search
 service over plain HTTP. The remote service owns embeddings + ranking; this
 connector is a thin, DECLARATIVE adapter that delegates the query and normalises
 whatever JSON comes back into the uniform LTM hit shape

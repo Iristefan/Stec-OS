@@ -17,7 +17,7 @@ What it holds (each capped, the whole <= :data:`TOTAL_CAP` characters):
   :data:`PATHS_CAP`.
 
 Secrets are MASKED (``detections.redact.mask``) before anything is written.
-It is written under Iron Jarvis's OWN home
+It is written under STEC OS's OWN home
 (``<home>/handoffs/<id>/handoff.md``, one folder per conversation), never
 into the user's project; folders older than 30 days are pruned. Reading the
 file is BLOCKING; a very large conversation is read as its head (the first
@@ -190,7 +190,7 @@ _SESSION_ID = re.compile(r"[0-9A-Za-z\-]{1,64}")
 
 def _prune(root: Path, keep: str, now: float) -> None:
     """Remove handoff folders (session-id names only) whose handoff is older
-    than :data:`KEEP_DAYS`. They are Iron Jarvis's own derived files — the
+    than :data:`KEEP_DAYS`. They are STEC OS's own derived files — the
     conversation itself stays in each account's home. Never raises."""
     cutoff = now - KEEP_DAYS * 86400.0
     try:

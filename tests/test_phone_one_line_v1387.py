@@ -4,7 +4,7 @@ THE DUPLICATE (measured on v1.386.2 through the real app with a two-way
 Telegram destination): a scheduled workflow whose step asks the user sent the
 SAME phone chat three lines —
 
-1. ``Iron Jarvis: Workflow 'gated' is waiting: Send it? — reply with /answer
+1. ``STEC OS: Workflow 'gated' is waiting: Send it? — reply with /answer
    <your answer>.`` (the answerable question, ``comm/prompts``),
 2. ``Workflow “gated” needs you: Send it? — answer it in chat or on the
    Workflows page.`` (the engine's park line), and
@@ -43,7 +43,7 @@ from iron_jarvis.daemon.app import create_app
 pytestmark = pytest.mark.usefixtures("no_network")
 
 SENDER = 4242
-QUESTION_LINE = "Iron Jarvis: Workflow 'gated' is waiting: Send it? — reply with /answer <your answer>."
+QUESTION_LINE = "STEC OS: Workflow 'gated' is waiting: Send it? — reply with /answer <your answer>."
 PARK_LINE = "Workflow “gated” needs you: Send it? — answer it in chat or on the Workflows page."
 SCHEDULE_HEAD = "Schedule “fire-gated”: needs you"
 

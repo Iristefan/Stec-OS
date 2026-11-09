@@ -468,20 +468,20 @@ _RUN_TOOL_WORDS: dict[str, tuple[str, str]] = {
     "skill_load": ("loaded a skill", "skill load"),
     "remember_preference": ("noted a preference", "preference note"),
     "notebook": ("updated its notebook", "notebook update"),
-    "guide_search": ("searched the Iron Jarvis guide", "guide search"),
-    "guide_read": ("read the Iron Jarvis guide", "guide read"),
-    "app_search": ("searched your Iron Jarvis setup", "setup search"),
-    "app_status": ("checked your Iron Jarvis setup", "setup check"),
+    "guide_search": ("searched the STEC OS guide", "guide search"),
+    "guide_read": ("read the STEC OS guide", "guide read"),
+    "app_search": ("searched your STEC OS setup", "setup search"),
+    "app_status": ("checked your STEC OS setup", "setup check"),
     # v1.359.0 integrate (lane 9A review, follow-up 5): every other registered
     # built-in, so no run-log line (worked, failed, refused, waiting) reads a
     # built-in by its spaced id ("used assign work"). Twin: lib/runWords.ts
     # AGENT_TOOLS (the tool-lines fixture holds the two equal);
     # tests/test_integrate_wave9_v13590.py fails on a NEW registered built-in
     # that no table words.
-    "app_health": ("checked how Iron Jarvis is doing", "health check"),
+    "app_health": ("checked how STEC OS is doing", "health check"),
     "assign_work": ("queued a task for a teammate", "queued task"),
     "batch_documents": ("worked through a folder of documents", "document batch"),
-    "capability_propose": ("suggested a new ability for Iron Jarvis", "ability suggestion"),
+    "capability_propose": ("suggested a new ability for STEC OS", "ability suggestion"),
     "change_undo": ("undid a change", "undo"),
     "changes_list": ("listed its recent changes", "change listing"),
     "channel_connect": ("connected a messaging channel", "channel connection"),

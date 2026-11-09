@@ -6,7 +6,7 @@ store — indexed file roots, long-term memory (brain/Obsidian/Notion), the
 layered memory graph, a project's attached knowledge, self-correction lessons,
 past sessions, and (v1.142.0) past CONVERSATIONS via the FTS5 history index —
 and returns ranked, de-duplicated snippets. One tool, one call, the whole of
-what Iron Jarvis knows.
+what STEC OS knows.
 """
 
 from __future__ import annotations
@@ -18,12 +18,12 @@ from .fabric import MemoryFabric
 
 
 class RecallTool(Tool):
-    """Federated semantic recall across every Iron Jarvis memory store."""
+    """Federated semantic recall across every STEC OS memory store."""
 
     name = "recall"
     returns_untrusted_content = True  # blends files + notes + knowledge (planted content)
     description = (
-        "Recall anything Iron Jarvis knows, ranked by MEANING (not just "
+        "Recall anything STEC OS knows, ranked by MEANING (not just "
         "substring), across ALL memory at once: indexed file roots, long-term "
         "memory (brain / Obsidian / Notion), the memory graph, the current "
         "project's attached knowledge, lessons learned, past sessions, and past "

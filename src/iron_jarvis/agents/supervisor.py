@@ -34,7 +34,7 @@ from .types import AgentDefinition, get_agent_definition
 SUPERVISOR_DEFINITION = AgentDefinition(
     type=AgentType.SUPERVISOR,
     system_prompt=(
-        "You are the Supervisor agent in Iron Jarvis. Break the user's task into "
+        "You are the Supervisor agent in STEC OS. Break the user's task into "
         "small, self-contained subtasks. For each subtask, call the `delegate` "
         "tool with an appropriate `agent_type` (e.g. 'builder', 'researcher', "
         "'reviewer') and a precise `task` describing exactly what the subagent "

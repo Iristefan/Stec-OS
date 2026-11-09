@@ -231,7 +231,7 @@ def launch_pane(
             detail=f"{cat['label']} could not read its app's settings, so nothing was started.",
         ) from None
     # v1.428.0: a LOCKED app's sign-in runs the SAVED pack's own program
-    # (Iron Jarvis's locked copy, by its path on this PC), settings and
+    # (STEC OS's locked copy, by its path on this PC), settings and
     # folder — nothing if it is not saved exactly as its card writes it.
     locked_argv: list[str] | None = None
     locked_cwd = ""
@@ -424,7 +424,7 @@ def coalesced_waker(loop: asyncio.AbstractEventLoop, wake: asyncio.Event):
 def _job_base(locked: bool) -> dict[str, str]:
     """The environment a set-up job's terminal starts from. A LOCKED app's
     sign-in (v1.428.0 review) drops every setting its program must only get
-    from Iron Jarvis (``locked_pack.clean_env``); every other job is unchanged."""
+    from STEC OS (``locked_pack.clean_env``); every other job is unchanged."""
     if not locked:
         return dict(os.environ)
     from ...connectors.locked_pack import clean_env
@@ -451,7 +451,7 @@ def register(app: FastAPI, d) -> None:
     def _account_verifier() -> None:
         """Post-boot (background thread): read Iron-Proxy — locate + health —
         and refresh the account snapshot the chips read. ``check()`` may
-        replace a stale proxy an Iron Jarvis started (v1.303.3), which spawns
+        replace a stale proxy a STEC OS started (v1.303.3), which spawns
         the current bundle; nothing else here spawns."""
         svc = getattr(d.platform, "iron_proxy", None)
         if svc is not None and svc.enabled and svc.check():
@@ -674,7 +674,7 @@ def register(app: FastAPI, d) -> None:
     def start_fresh_with_handoff(term_id: str) -> dict[str, Any]:
         """When the next account cannot continue the conversation it was
         handed (v1.303.2): write a HANDOFF of where it stopped (deterministic,
-        no model call) under Iron Jarvis's own home, quit Claude in THIS pane,
+        no model call) under STEC OS's own home, quit Claude in THIS pane,
         wait for the shell, and start a NEW conversation that reads it —
         ``claude --session-id <new> --add-dir=<its folder> "<prompt>"``. Sync
         ``def``: the file read and the wait block. Answers ``{pane,
@@ -1195,7 +1195,7 @@ def register(app: FastAPI, d) -> None:
             raise HTTPException(status_code=404, detail="no such terminal")
         tail = session.output_tail()
         text = (
-            f"[Context from an Iron Jarvis terminal — {session.shell} @ {session.cwd}]\n"
+            f"[Context from a STEC OS terminal — {session.shell} @ {session.cwd}]\n"
             f"{tail.strip() or '(no output yet)'}"
         )
         return {"text": text, "chars": len(text)}

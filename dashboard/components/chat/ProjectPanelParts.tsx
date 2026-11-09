@@ -175,7 +175,7 @@ export function useOpenTerminal(
     } catch (e) {
       setError(
         e instanceof ApiError && e.status === 0
-          ? "Iron Jarvis is not answering, so no terminal was opened."
+          ? "STEC OS is not answering, so no terminal was opened."
           : e instanceof Error
             ? e.message
             : String(e),

@@ -154,7 +154,7 @@ def register(app: FastAPI, d: Any) -> None:
     async def app_mcp_action(sid: str, server: str, body: McpActionBody) -> dict[str, Any]:
         """v1.441.0 (g1): one of the tool's own MCP actions (reconnect, turn
         off or on, sign in) — only those the tool offers. A sign-in answers
-        the page to open in the user's browser; Iron Jarvis never signs in."""
+        the page to open in the user's browser; STEC OS never signs in."""
         try:
             return await SC.mcp_action(svc(), sid, server, body.action)
         except S.Refused as r:

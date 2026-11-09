@@ -89,7 +89,7 @@ import { HarnessSession } from "@/components/harness/HarnessSession";
 import { HarnessSidebar } from "@/components/harness/HarnessSidebar";
 import type { SessionTerminalApi } from "@/components/harness/HarnessPanes";
 
-const ROOT = "C:\\Users\\me\\Documents\\Iron Jarvis";
+const ROOT = "C:\\Users\\me\\Documents\\STEC OS";
 const terminal: SessionTerminalApi = {
   find: () => null,
   open: async () => null,

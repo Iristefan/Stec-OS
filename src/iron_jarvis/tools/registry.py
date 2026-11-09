@@ -273,11 +273,11 @@ def compose_failure_text(
 #: Two sentences, chosen by the intent's ``replay_safe``: a read can simply be
 #: asked again; anything else may have changed something before the stop.
 INTERRUPTED_SAFE = (
-    "Iron Jarvis stopped while this was running (a restart or a crash), so it"
+    "STEC OS stopped while this was running (a restart or a crash), so it"
     " never finished. It only reads, so it is safe to run again."
 )
 INTERRUPTED_MAY_HAVE_LANDED = (
-    "Iron Jarvis stopped while this was running (a restart or a crash), so its"
+    "STEC OS stopped while this was running (a restart or a crash), so its"
     " result was never recorded — its effect may have landed. Check before"
     " running it again."
 )

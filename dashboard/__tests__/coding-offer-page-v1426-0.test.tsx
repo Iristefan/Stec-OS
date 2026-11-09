@@ -178,7 +178,7 @@ afterEach(() => {
 });
 
 async function askAndAnswer() {
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: REQUEST } });
   fireEvent.keyDown(box, { key: "Enter" });
   await waitFor(() => expect(H.stream.settle).not.toBeNull());

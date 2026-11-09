@@ -60,7 +60,7 @@ def test_the_manifest_suggests_one_key_and_the_worker_answers_it():
     assert isinstance(commands, dict) and list(commands) == ["open-panel"], commands
     cmd = commands["open-panel"]
     assert cmd["suggested_key"]["default"] == "Alt+J"
-    assert "Iron Jarvis" in cmd["description"]
+    assert "STEC OS" in cmd["description"]
     # No permission is needed for `commands`; the permission list is pinned
     # elsewhere and must not grow for this.
     assert "commands" not in _manifest()["permissions"]

@@ -65,7 +65,7 @@ const REPAIR = "/diagnostics/repair";
 /** The live install's shape, scaled down: media dominates, backups do not. */
 function report(over: Record<string, unknown> = {}) {
   return {
-    home: "C:\\Users\\VR\\AppData\\Roaming\\Iron Jarvis\\.ironjarvis",
+    home: "C:\\Users\\VR\\AppData\\Roaming\\STEC OS\\.ironjarvis",
     total_bytes: 820 * 1024 * 1024,
     older_than_days: 30,
     categories: [
@@ -102,7 +102,7 @@ function panel() {
   return render(<MaintenanceTools onRestartRequested={vi.fn()} />);
 }
 
-describe("what Iron Jarvis is keeping", () => {
+describe("what STEC OS is keeping", () => {
   it("lists the categories largest first, with the total and where they live", async () => {
     panel();
     await screen.findByTestId("storage-report");

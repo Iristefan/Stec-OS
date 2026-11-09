@@ -17,7 +17,7 @@
  *  - a level picked on the default model (no model chosen) is not offered as
  *    the folder's default: the box applies a folder's level only beside its
  *    model, so it would be said and never used;
- *  - an account list that got no answer (Iron Jarvis still starting) is read
+ *  - an account list that got no answer (STEC OS still starting) is read
  *    again when the model menu opens — it used to stop asking for good.
  */
 import React from "react";
@@ -179,7 +179,7 @@ beforeEach(() => {
   made = 0;
   DAEMON.health = { default_provider: "mock", default_model: "mock-1", providers: [] };
   api.gets = {
-    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis" },
+    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\STEC OS" },
     "/build/sessions?archived=1": { folders: [] },
     "/build/accounts": ACCOUNTS,
     [teamPath("")]: { folder: "", team: null },
@@ -397,7 +397,7 @@ describe("an account list that got no answer is read again", () => {
     let reads = 0;
     api.gets["/build/accounts"] = () => {
       reads += 1;
-      return reads === 1 ? new api.ApiError("Iron Jarvis isn't responding", 0) : ACCOUNTS;
+      return reads === 1 ? new api.ApiError("STEC OS isn't responding", 0) : ACCOUNTS;
     };
     render(<HarnessStartComposer onStart={async () => null} />);
     await waitFor(() => expect(reads).toBe(1));

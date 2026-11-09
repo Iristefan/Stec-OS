@@ -153,7 +153,7 @@ afterEach(() => {
 });
 
 async function pickModel(model: string) {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.click(await screen.findByTitle("Switch model"));
   const providerRow = (await screen.findAllByText(/^openai$/i))
     .map((el) => el.closest("button"))
@@ -164,7 +164,7 @@ async function pickModel(model: string) {
 }
 
 async function send(text: string) {
-  const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  const box = await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.change(box, { target: { value: text } });
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
   await waitFor(() => expect(H.stream.bodies.length).toBeGreaterThan(0));

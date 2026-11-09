@@ -264,7 +264,7 @@ class SpawnAgentTool(Tool):
         "Args: agent (a built-in type like 'builder' or the name of a "
         "dynamic agent created with `create_agent`) and task (the self-contained "
         "instruction). Instead of an agent you may give role — read, code, "
-        "review or test — and Iron Jarvis picks the member of the user's model "
+        "review or test — and STEC OS picks the member of the user's model "
         "team for it (a local one first when its record for that role is good; "
         "a cloud account near its usage limit gets no new work). Give piece (a "
         "short name for this piece of work) and use the same piece name if you "

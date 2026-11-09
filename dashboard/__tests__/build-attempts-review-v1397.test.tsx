@@ -110,7 +110,7 @@ const CARD = {
     },
     {
       id: "try2", label: "glm-local", provider: "ollama", model: "glm-local", cost: "free",
-      branch: "ij/try-glm-2", state: "stopped", why: "cut_off", words: "Cut off when Iron Jarvis stopped",
+      branch: "ij/try-glm-2", state: "stopped", why: "cut_off", words: "Cut off when STEC OS stopped",
       steps: 1, ms: 2000, usage: { input_tokens: 5, output_tokens: 1 }, git: GIT("try-glm-2"),
     },
   ],
@@ -145,12 +145,12 @@ const column = (id: string) =>
   screen.getAllByTestId("attempt-column").find((el) => el.getAttribute("data-attempt") === id)!;
 
 describe("a restart cut the attempts off: the card is the way out, never Retry", () => {
-  const CUT = "Iron Jarvis stopped while the attempts worked (a restart or a crash), and nothing restarts on its own. The card shows what each attempt did; a finished one can still be kept.";
+  const CUT = "STEC OS stopped while the attempts worked (a restart or a crash), and nothing restarts on its own. The card shows what each attempt did; a finished one can still be kept.";
 
   it("retryOffered says no for a reply that carries an attempts card", () => {
     const m = { role: "assistant", content: "", error: CUT, turnId: "t1", attempts: CARD } as unknown as BuildMessage;
     expect(retryOffered(m, { newest: true, busy: false, archived: false })).toBe(false);
-    const plain = { role: "assistant", content: "", error: "Iron Jarvis stopped while answering.", turnId: "t2" } as unknown as BuildMessage;
+    const plain = { role: "assistant", content: "", error: "STEC OS stopped while answering.", turnId: "t2" } as unknown as BuildMessage;
     expect(retryOffered(plain, { newest: true, busy: false, archived: false })).toBe(true);
   });
 

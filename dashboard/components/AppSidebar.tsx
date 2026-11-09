@@ -278,7 +278,7 @@ function SidebarFooter({ collapsed, onNavigate }: { collapsed: boolean; onNaviga
             onNavigate?.();
           }}
           data-testid="sidebar-status"
-          title={online ? "Iron Jarvis is up — open Status" : "Not running — reopen Iron Jarvis"}
+          title={online ? "STEC OS is up — open Status" : "Not running — reopen STEC OS"}
           className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-1.5 py-1.5 text-[12px] hover:bg-white/[0.04]"
         >
           <span
@@ -548,9 +548,9 @@ export function AppSidebar() {
     >
       <div className={`flex shrink-0 items-center px-2 pt-2 ${collapsed ? "justify-center" : "justify-between"}`}>
         {!collapsed && (
-          <Link href="/" className="flex items-center gap-2 rounded-lg px-1 py-1 text-zinc-100" aria-label="Iron Jarvis — home">
+          <Link href="/" className="flex items-center gap-2 rounded-lg px-1 py-1 text-zinc-100" aria-label="STEC OS — home">
             <ArcMark size="h-6 w-6" />
-            <span className="text-sm font-semibold tracking-tight">Iron Jarvis</span>
+            <span className="text-sm font-semibold tracking-tight">STEC OS</span>
           </Link>
         )}
         <button

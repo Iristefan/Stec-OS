@@ -714,7 +714,7 @@ describe("Iron-Proxy card: Open in Build", () => {
     hooks.results["POST /iron-proxy/accounts/a/open"] = {};
     await mountCard(ON);
     fireEvent.click(await screen.findByTestId("iron-proxy-open-a"));
-    await screen.findByText("Iron Jarvis did not open a Build terminal.");
+    await screen.findByText("STEC OS did not open a Build terminal.");
     expect(hooks.push).not.toHaveBeenCalled();
   });
 

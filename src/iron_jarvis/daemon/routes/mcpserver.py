@@ -73,7 +73,7 @@ logger = get_logger(__name__)
 #: store is told. 503, not 401: refusing a credential we never looked at would
 #: send a harness to check its token, and the token is not the problem.
 NOT_READY_MESSAGE = (
-    "the Iron Jarvis MCP server is not ready on this install; restart Iron "
+    "the STEC OS MCP server is not ready on this install; restart Iron "
     "Jarvis and start the coding tool again in its Build terminal"
 )
 

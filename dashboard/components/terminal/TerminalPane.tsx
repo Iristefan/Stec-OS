@@ -224,7 +224,7 @@ export function ResumeStrip({
     >
       <Play size={12} className="shrink-0" />
       <span className="min-w-0 flex-1 truncate">
-        {cliLabel} was running here before Iron Jarvis restarted.
+        {cliLabel} was running here before STEC OS restarted.
       </span>
       <button
         type="button"

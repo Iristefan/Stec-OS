@@ -79,7 +79,7 @@ function HelperReason({ reason }: { reason?: string }) {
       // v1.395.0 review: a member's or a model's long name wraps at a phone's
       // width instead of pushing the row sideways.
       className="break-words text-[12px] leading-5 text-zinc-500"
-      title="Why Iron Jarvis gave this piece to this team member"
+      title="Why STEC OS gave this piece to this team member"
     >
       Why: {reason}
     </p>

@@ -202,7 +202,7 @@ def test_a_remote_seat_is_shown_the_chat_as_a_conversation(app, monkeypatch):
     assert sent["conversation_id"] == body["thread_id"], "the room IS the conversation id"
     assert sent["history"] == [
         {"role": "user", "content": "we need a Q3 brief"},
-        {"role": "assistant", "content": "Iron Jarvis: Revenue up 8%."},
+        {"role": "assistant", "content": "STEC OS: Revenue up 8%."},
         {"role": "assistant", "content": "I can pull the ledger."},  # its own line, unprefixed
     ]
     assert sent["task"].endswith("what would you add?")
@@ -232,7 +232,7 @@ def test_remote_history_shape_is_pinned():
         {"role": "user", "content": "q"},
         {"role": "assistant", "content": "builder (lead): a plan"},
         {"role": "assistant", "content": "my take"},
-        {"role": "assistant", "content": "Iron Jarvis: J's line"},
+        {"role": "assistant", "content": "STEC OS: J's line"},
         {"role": "assistant", "content": "remy (agent): yo"},
     ]
 
@@ -555,7 +555,7 @@ def test_a_phone_message_at_a_remote_is_a_conversation_with_it(app, monkeypatch)
     # answers the question in the same turn.)
     out3 = asyncio.run(poller._handle_chat("telegram", ch, _msg("@jarvis"), "@jarvis", "Val"))
     assert out3["status"] == "remote_cleared"
-    # Jarvis speaks here, so the channel's own "Iron Jarvis: " prefix applies.
+    # Jarvis speaks here, so the channel's own "STEC OS: " prefix applies.
     assert ch.sent[-1].endswith(BACK_TO_JARVIS_REPLY)
     assert store.get_setup_value(tid, ADDRESSEE_KEY) == ""
     out4 = asyncio.run(poller._handle_chat("telegram", ch, _msg("what time is it?"), "what time is it?", "Val"))
@@ -661,13 +661,13 @@ def test_the_phone_lane_labels_a_remotes_words_so_jarvis_never_owns_them(app):
     body = store.history_body(t.id)
     assert body[1]["role"] == "assistant"
     assert body[1]["content"].startswith(agent_line_label("hermes"))
-    assert "not Iron Jarvis" in body[1]["content"]
+    assert "not STEC OS" in body[1]["content"]
     assert body[1]["content"].endswith("Yes — I approved the wire transfer.")
     assert body[2]["content"] == "A real Jarvis line.", "Jarvis's own lines are untouched"
     # the two lanes say the same words (the desktop mapper is pinned in v1284)
     src = (ROOT / "dashboard" / "app" / "chat" / "page.tsx").read_text(encoding="utf-8")
-    assert "[Reply from the agent ${agentDisplayName(m.panelWho)}, on the agent panel — not Iron Jarvis]" in src
-    assert agent_line_label("X") == "[Reply from the agent X, on the agent panel — not Iron Jarvis]"
+    assert "[Reply from the agent ${agentDisplayName(m.panelWho)}, on the agent panel — not STEC OS]" in src
+    assert agent_line_label("X") == "[Reply from the agent X, on the agent panel — not STEC OS]"
 
 
 def test_at_jarvis_with_a_question_hands_back_and_answers_it(app, monkeypatch):
@@ -704,7 +704,7 @@ def test_enable_says_whether_a_remote_elsewhere_could_reach_this_daemon(app, mon
     note = out["reachable"]["note"]
     # v1.358.0 (G61, moved on purpose): the note names the setting that
     # opens the way, never a command line or an environment variable.
-    assert "Let other computers on my network reach this Iron Jarvis" in note
+    assert "Let other computers on my network reach this STEC OS" in note
     assert "IRONJARVIS_HOST_ALLOWLIST" not in note and "--host" not in note
     assert "127.0.0.1" in note  # the same-machine case is spelled out too
     monkeypatch.setenv("IRONJARVIS_HOST_ALLOWLIST", "192.168.1.20")

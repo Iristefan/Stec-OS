@@ -36,7 +36,7 @@
  * model in one request. The session's own account is always listed and
  * marked; another account that cannot serve (signed out, turned off,
  * removed) is listed but cannot be picked, with its reason. No list (not
- * read yet, a 404 from an older Iron Jarvis, Iron-Proxy off) or no account
+ * read yet, a 404 from an older STEC OS, Iron-Proxy off) or no account
  * for that vendor: the way is the one row it was ("Claude Code", this PC's
  * own sign-in).
  *
@@ -211,7 +211,7 @@ function accountsFor(
  * the CHAT page's model menu, `components/chat/ModelMenu` `chatAccounts`):
  * the vendor's accounts in Iron-Proxy's order, plus `current` (the
  * session's / the chat's own) when the list leaves it out. A CLI with no
- * account (Iron-Proxy off, nothing listed, an older Iron Jarvis) maps to
+ * account (Iron-Proxy off, nothing listed, an older STEC OS) maps to
  * null: its row is the one row it was.
  */
 export function cliAccounts(

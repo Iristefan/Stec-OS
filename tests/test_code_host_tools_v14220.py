@@ -1,11 +1,11 @@
-"""v1.422.0 — Codex and OpenCode carried across an Iron Jarvis restart too
+"""v1.422.0 — Codex and OpenCode carried across a STEC OS restart too
 (``hosted/adopt.py``), end to end, from RECORDED sessions
 (``tests/fixtures/build_app_v1409/codex_resume.json``,
 ``build_app_v1413/oc_read.json``) replayed by the fake harness and re-joined
 into two messages here:
 
 * idle: the next message goes to the SAME process (one start in all);
-* mid-reply: Iron Jarvis dies while the reply is written; afterwards the reply
+* mid-reply: STEC OS dies while the reply is written; afterwards the reply
   ends once — for OpenCode on the prompt's ANSWER, a wait the driver re-arms
   after the restart (``AcpDriver.after_restore``; Grok shares it), for Codex on
   its ``turn/completed`` line, with the turn's id taken from an answer that

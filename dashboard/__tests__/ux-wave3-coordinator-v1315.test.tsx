@@ -16,7 +16,7 @@ const read = (rel: string) =>
 describe("wave 3 coordinator pins", () => {
   it("File search says what 'By meaning' really searches", () => {
     const s = read("app/filesearch/page.tsx");
-    expect(s).toContain('{mode === "semantic" ? "the folders Iron Jarvis has indexed" : rootLabel}');
+    expect(s).toContain('{mode === "semantic" ? "the folders STEC OS has indexed" : rootLabel}');
   });
 
   it("Recent runs reads the task through plainText", () => {

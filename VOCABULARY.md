@@ -15,7 +15,7 @@ PR that ships it.
 
 | Concept | The one name | Retired words (kept as search aliases) |
 |---|---|---|
-| The program on this PC that does the work (what the window talks to) | **Iron Jarvis** | daemon |
+| The program on this PC that does the work (what the window talks to) | **STEC OS** | daemon |
 | One piece of work Jarvis does for you: what a chat hands an agent, a step of an objective, a queued task for an agent, a schedule's fire, a task another Jarvis sent | **task**; one attempt at it is a **run** | job, assignment |
 | Anything recall reads | **memory base** | source, memory source, brain, LTM |
 | Anything the app talks to | **connection** | integration, connector |
@@ -24,7 +24,7 @@ PR that ships it.
 | One shell or CLI window on the Build page | **terminal** | pane |
 | The chat page's other view (v1.406.0: the switch at its top reads **Chat \| Code**), where Jarvis writes, runs and checks code in a folder, one conversation per session | the view is **Code**; its list is **Coding sessions**; one of them is a **coding session** | IJ harness, harness, Build session |
 | **Chat › Code**: the chat page's Code view (the row above), where Jarvis itself writes, runs and checks the code | **Code** under Chat; where a row must be told apart from Build's, one session is a **coding session (Jarvis)** | — |
-| **Build › Code**: Build's Code view (v1.409.0; Build's switch reads **Code \| Terminal**), where the user's OWN Claude Code, Codex, Pi, OpenCode or Grok does the work and Iron Jarvis shows it and answers its questions as cards | **Code** under Build; one session is a **coding session (Claude Code)** / **(Codex)** / **(Pi)** / **(OpenCode)** / **(Grok)**, named by its tool | App view |
+| **Build › Code**: Build's Code view (v1.409.0; Build's switch reads **Code \| Terminal**), where the user's OWN Claude Code, Codex, Pi, OpenCode or Grok does the work and STEC OS shows it and answers its questions as cards | **Code** under Build; one session is a **coding session (Claude Code)** / **(Codex)** / **(Pi)** / **(OpenCode)** / **(Grok)**, named by its tool | App view |
 | A coding session's separate checkout of its own branch, beside the repository (v1.375.0) | **its own copy of the folder** | worktree |
 | The program that keeps several Claude Code / Codex / Grok accounts and picks one for each call (Iron-Proxy) | on the coding surfaces: **your accounts** (the **Several accounts** card on Connections); when the program itself is meant: **the account manager** | Iron-Proxy (on the coding surfaces; it stays the program's own name on its Connections card and in its own errors) |
 | A change the undo journal cannot reverse | **can't be undone** | no safe inverse |
@@ -35,7 +35,7 @@ PR that ships it.
 | The agents that take pieces of a coding session's or an objective's work, each on its OWN model (Settings › Model team, v1.394.0) | **model team**; one of them is a **team member** (a custom agent with one or more **roles**: read, code, review, test); the button that builds one from what is connected is **Make a starter team** | — |
 | How a team member's pieces of work for one role went, and the one sentence that says why it was given a piece (v1.395.0) | its **record** for that role ("good (4 of 5 passed)", "no record yet"); the sentence is the **why** line ("Why: local: good record for reading") | routing decision, dispatch reason |
 | Where a model runs, and what it costs (a team member's facts, the planner's list, Settings › Model team) | **this PC** / **your network** / **cloud**; **free** / **your plan** / **pay per use** | — |
-| Anything Iron Jarvis knows how to do | **skill** | — |
+| Anything STEC OS knows how to do | **skill** | — |
 | Where alerts go | **Notifications** (page) / **destination** (row) | channels |
 | A destination you can talk back to | **two-way destination** | gateway, messaging platform |
 | The one-tap connect gallery | **Directory** | marketplace |
@@ -47,7 +47,7 @@ PR that ships it.
 
 Two-way is a per-destination *upgrade*, not a new noun (decided in the
 messaging plan, shipped v1.136.0): the toggle that creates one reads
-**"Chat with Iron Jarvis from this destination"**. "Gateway" and "messaging
+**"Chat with STEC OS from this destination"**. "Gateway" and "messaging
 platform" never shipped as user-visible words, so they are not search aliases
 in `lib/nav.ts` — they are retired-on-arrival; if one ever gets added to
 search, it goes in as an alias only.
@@ -65,7 +65,7 @@ API (`/missions`) and is kept as a search alias. The round table did not
 vanish — it is the panel that answers an `@`-mention in chat — so its row
 stays, re-scoped to where it lives now.
 
-### One unit of work, one demo, one Iron Jarvis (v1.357.0)
+### One unit of work, one demo, one STEC OS (v1.357.0)
 
 The readiness audit counted the names a new user met for ONE thing. A piece
 of work was a session, a run, a task, an objective, a Mission, a job and an
@@ -84,14 +84,14 @@ error lines still said "the daemon". So:
 - A task another Jarvis sent reads **From <caller>** wherever its origin is
   shown (origin `remote:<caller>`, `OriginChip.originLabel` and the bell).
 - The **demo model** is the one name for the scripted stand-in, and every
-  surface takes its words from `dashboard/lib/demoWords.ts`. Iron Jarvis's
+  surface takes its words from `dashboard/lib/demoWords.ts`. STEC OS's
   own sentences say the same: the note under a demo reply in chat (both
   lanes), a teammate's route note, the browser sidebar's line, the
   connections registry's name for the row and the refusals that need a real
   model. `tests/test_one_vocabulary_v13570.py` reads `demoWords.ts` and
   drives each one.
-- **Iron Jarvis** is the program; a version too old for a feature is "this
-  version of Iron Jarvis". A real file name (`daemon.log`) is a file name.
+- **STEC OS** is the program; a version too old for a feature is "this
+  version of STEC OS". A real file name (`daemon.log`) is a file name.
 - **terminal** is one window on the Build page; the page itself is Build.
   The Windows toast and the update dialog say terminal (and background
   **task**) like the bell (`desktop/main.js`, pinned beside
@@ -112,9 +112,9 @@ matches anything fails too (so a fixed line takes its entry with it).
 ### Beyond the dashboard (v1.358.0)
 
 The dashboard scan reads only `dashboard/app`, `components` and `lib`, so the
-words Iron Jarvis and its desktop shell write THEMSELVES still reached people
+words STEC OS and its desktop shell write THEMSELVES still reached people
 unchecked: the tray said "the daemon keeps stalling", the startup dialog's
-title was "Iron Jarvis — daemon did not start", a schedule with no reason
+title was "STEC OS — daemon did not start", a schedule with no reason
 pointed at "the daemon log". `tests/test_vocabulary_beyond_dashboard_v13580.py`
 is the same rule on the other side, reading the SAME retired-word list
 (`dashboard/__tests__/helpers/retiredWords.ts`, parsed, never copied):
@@ -133,11 +133,11 @@ is the same rule on the other side, reading the SAME retired-word list
 
 Its allowlist works like the dashboard's: each entry names its file, a piece
 of its text and why, and an entry that no longer matches anything fails.
-The program is **Iron Jarvis** in all of these; where the desktop has to tell
-its two children apart, the window's own server is **the Iron Jarvis
+The program is **STEC OS** in all of these; where the desktop has to tell
+its two children apart, the window's own server is **the STEC OS
 dashboard**.
 
-### Everything Iron Jarvis answers (v1.360.0)
+### Everything STEC OS answers (v1.360.0)
 
 The v1.358.0 scan still read a FIXED list of daemon files, so sentences
 outside it reached people in retired words: the Status map's "N of M tool

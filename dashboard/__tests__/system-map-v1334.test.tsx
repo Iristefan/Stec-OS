@@ -160,7 +160,7 @@ describe("the map renders the data, and every star is a door", () => {
     expect(list.textContent).toContain("Automations — Webhooks: not set up yet");
     // The picture's title sums it up.
     expect(document.querySelector("title")?.textContent).toBe(
-      "Iron Jarvis system map: 2 of 3 parts set up, 2 used this week, 1 in use now",
+      "STEC OS system map: 2 of 3 parts set up, 2 used this week, 1 in use now",
     );
   });
 

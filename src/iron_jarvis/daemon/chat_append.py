@@ -208,7 +208,7 @@ def append_to_chat_thread(
                 out["why"] = "no such chat"
                 return out
             if (getattr(r, "owner", "user") or "user") == "daemon":
-                out["why"] = "a messaging thread — Iron Jarvis's messaging store writes it"
+                out["why"] = "a messaging thread — STEC OS's messaging store writes it"
                 return out
             if str(getattr(r, "surface", "") or "") == "build":
                 # v1.367.0 (Phase 4 review): a Build session has ONE writer —

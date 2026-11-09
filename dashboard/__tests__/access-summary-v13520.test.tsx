@@ -120,7 +120,7 @@ const SETTINGS = [
   },
   { key: "mcp_auto_approve", label: "Run app tools without asking", group: "permissions", section: "", type: "bool" },
 ];
-const CHAT_DIR = "C:\\Users\\me\\Documents\\Iron Jarvis";
+const CHAT_DIR = "C:\\Users\\me\\Documents\\STEC OS";
 const DEFAULT_ACCESS = { reads: { limited: false, folders: [] }, writes: { chat_files_dir: CHAT_DIR } };
 const CONNECTORS = {
   connectors: [

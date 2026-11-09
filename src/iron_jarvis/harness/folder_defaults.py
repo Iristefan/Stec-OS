@@ -6,7 +6,7 @@ default reasoning level and "Ask first" — in every folder, however the user
 always worked there. Now a folder can say what its NEW sessions start with,
 for each of the two coding views:
 
-* ``code`` — Chat › Code (Iron Jarvis's own coding sessions): ``provider`` +
+* ``code`` — Chat › Code (STEC OS's own coding sessions): ``provider`` +
   ``model`` (a row of the model menu), ``reasoning`` (a level of
   ``providers/reasoning``) and ``approval_mode`` (the permission chip).
 * ``tool`` — Build › Code (the user's real Claude Code / Codex / …):
@@ -77,7 +77,7 @@ def _ident(raw: Any, what: str, cap: int = 200) -> str:
     if not text:
         return ""
     if len(text) > cap or not _WORD.match(text):
-        raise DefaultsRefused(f"That {what} is not one Iron Jarvis knows.")
+        raise DefaultsRefused(f"That {what} is not one STEC OS knows.")
     return text
 
 
@@ -95,12 +95,12 @@ def clean_code(raw: Any) -> dict[str, str] | None:
         raise DefaultsRefused("A model needs the provider it runs on.")
     reasoning = str(raw.get("reasoning") or "").strip().lower()
     if reasoning and reasoning not in ALL_LEVELS:
-        raise DefaultsRefused("That reasoning level is not one Iron Jarvis knows.")
+        raise DefaultsRefused("That reasoning level is not one STEC OS knows.")
     posture = str(raw.get("approval_mode") or "").strip()
     if posture == "yolo":
         raise DefaultsRefused(NO_DONT_ASK)
     if posture and posture not in CODE_POSTURES:
-        raise DefaultsRefused("That approval level is not one Iron Jarvis knows.")
+        raise DefaultsRefused("That approval level is not one STEC OS knows.")
     out = {k: v for k, v in (("provider", provider), ("model", model), ("reasoning", reasoning),
                              ("approval_mode", posture)) if v}
     return out or None
@@ -116,14 +116,14 @@ def clean_tool(raw: Any) -> dict[str, str] | None:
     if not harness:
         raise DefaultsRefused("Say which coding tool new sessions here start with.")
     if harness not in TOOLS:
-        raise DefaultsRefused("That coding tool is not one Iron Jarvis knows.")
+        raise DefaultsRefused("That coding tool is not one STEC OS knows.")
     model = _ident(raw.get("model"), "model")
     effort = _ident(raw.get("effort"), "effort", 40)
     mode = str(raw.get("mode") or "").strip()
     if mode == "full":
         raise DefaultsRefused(NO_FULL_ACCESS)
     if mode and mode not in TOOL_MODES and not _opencode_agent(harness, mode):
-        raise DefaultsRefused("That mode is not one Iron Jarvis knows.")
+        raise DefaultsRefused("That mode is not one STEC OS knows.")
     return {k: v for k, v in (("harness", harness), ("model", model), ("effort", effort), ("mode", mode)) if v}
 
 
@@ -131,7 +131,7 @@ def _opencode_agent(harness: str, mode: str) -> bool:
     """v1.441.0 (review): one of the user's own OpenCode agents
     (``agent:<name>``). The Code view offers it as a mode and its start box
     offers to keep the chosen mode as the folder's default — refusing it said
-    "not one Iron Jarvis knows". The composer uses a kept mode only while the
+    "not one STEC OS knows". The composer uses a kept mode only while the
     tool still lists it, as for every other mode."""
     if harness != "opencode":
         return False

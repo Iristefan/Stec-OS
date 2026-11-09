@@ -60,7 +60,7 @@ export function decodeFolderGit(raw: unknown): FolderGit | null {
   };
 }
 
-/** The folder's git facts, or null (an older Iron Jarvis, a refusal). */
+/** The folder's git facts, or null (an older STEC OS, a refusal). */
 export async function fetchFolderGit(path: string): Promise<FolderGit | null> {
   try {
     return decodeFolderGit(await get<unknown>(`/build/git/folder?path=${encodeURIComponent(path)}`));

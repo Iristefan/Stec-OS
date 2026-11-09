@@ -5,8 +5,8 @@
  * backup/restore tools and a daemon restart — the same calls the old Settings
  * page's Maintenance card made, lifted out so the System group can show them.
  *
- * v1.354.0 (G59): the words name the app, never its engine: "Restart Iron
- * Jarvis", which stops tidily and the desktop app starts it again.
+ * v1.354.0 (G59): the words name the app, never its engine: "Restart STEC
+ * OS", which stops tidily and the desktop app starts it again.
  */
 
 import { useEffect, useState } from "react";
@@ -49,7 +49,7 @@ export function MaintenanceCard() {
           : "";
         setOk(`Backup written to ${r.result}${copy}`);
         setBackupsVersion((v) => v + 1);
-      } else setErr("Iron Jarvis says the backup did not finish.");
+      } else setErr("STEC OS says the backup did not finish.");
     } catch (e) {
       setErr(e instanceof ApiError ? e.message : String(e));
     } finally {

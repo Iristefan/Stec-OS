@@ -218,6 +218,6 @@ def test_export_session_md_and_json(tmp_path):
         "/sessions", json={"task": "export me", "agent_type": "builder", "wait": True}
     ).json()["id"]
     md = client.get(f"/sessions/{sid}/export", params={"format": "md"})
-    assert md.status_code == 200 and "Iron Jarvis session" in md.text
+    assert md.status_code == 200 and "STEC OS session" in md.text
     js = client.get(f"/sessions/{sid}/export", params={"format": "json"})
     assert js.status_code == 200 and js.json()["session"]["id"] == sid

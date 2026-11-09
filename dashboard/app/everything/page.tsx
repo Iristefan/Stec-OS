@@ -161,7 +161,7 @@ export default function EverythingPage() {
 
   return (
     <PageShell>
-      <PageHeader title="Everything" subtitle="Every part of Iron Jarvis, grouped, each with one line about what it is for." />
+      <PageHeader title="Everything" subtitle="Every part of STEC OS, grouped, each with one line about what it is for." />
       <div role="tablist" aria-label="Everything" className="flex gap-1 border-b border-white/[0.06]">
         {(
           [

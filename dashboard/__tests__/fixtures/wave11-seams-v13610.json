@@ -100,7 +100,7 @@
     ],
     "desktop": [
       {
-        "title": "Iron Jarvis",
+        "title": "STEC OS",
         "message": "Schedule “nightly”: finished, but part of it failed — workflow “Nightly” ran, but its step “Check” could not finish: no such file: no-such-report.txt."
       }
     ],
@@ -233,7 +233,7 @@
     ],
     "desktop": [
       {
-        "title": "Iron Jarvis",
+        "title": "STEC OS",
         "message": "Schedule “nightly”: done — workflow “Nightly” ran"
       }
     ],

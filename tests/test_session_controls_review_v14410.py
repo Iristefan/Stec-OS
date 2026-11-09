@@ -7,13 +7,13 @@ Session tab's live controls, each pinned red first.
   ``high``, but the running reply's NEXT request still carried
   ``output_config.effort: "medium"``; the user's next message carried
   ``"high"``. So the words must say "from your next message", never "now".
-* Codex's terminal reads are Iron Jarvis's OWN requests: their answers must
+* Codex's terminal reads are STEC OS's OWN requests: their answers must
   never count as hearing from the tool, or a forgotten dev server keeps the
   session alive past the v1.418.0 two silent hours, for ever.
 * Two presses of Stop on one Claude Code task (re-measured: a second
   ``stop_task`` of the same id answers ``{}`` again) must send one stop and
   say it once; a task being stopped is not listed.
-* Codex's own refusal of a stale id is said in Iron Jarvis's words.
+* Codex's own refusal of a stale id is said in STEC OS's words.
 * The Stop route never waits longer than the list bound on a slow tool.
 """
 
@@ -63,7 +63,7 @@ async def test_an_effort_change_between_replies_says_now_and_names_extra_in_plai
 
 
 # --------------------------------------------------------------------------- #
-# Codex: Iron Jarvis's own reads are not the tool speaking
+# Codex: STEC OS's own reads are not the tool speaking
 # --------------------------------------------------------------------------- #
 
 
@@ -91,7 +91,7 @@ async def test_codex_terminal_reads_never_count_as_hearing_from_the_tool(tmp_pat
         # the process, through the service's own on_message).
         rows = await live.driver._read_terminals()
         assert rows == []
-        assert live.last_heard == old, "Iron Jarvis's own terminal read stamped the tool as heard from"
+        assert live.last_heard == old, "STEC OS's own terminal read stamped the tool as heard from"
         # Anything else the tool says still counts.
         await live.driver.request("thread/list", {})
         assert live.last_heard > old

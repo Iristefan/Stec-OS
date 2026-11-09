@@ -43,8 +43,8 @@ the model had run it —
   never cover it — it cards unless a grant wider than one call covers the
   command tool (the permission table, "Allow for this chat" / "for this
   session", a standing grant). v1.417.0 (C1.3, the user's decision D1): EXCEPT
-  under "Don't ask" (yolo) — the user's standing "never ask me", and Iron
-  Jarvis's own checker after an edit is not a new risk — where it runs with no
+  under "Don't ask" (yolo) — the user's standing "never ask me", and STEC
+  OS's own checker after an edit is not a new risk — where it runs with no
   card. (A folder's own ``plugins.toml`` check and a project's command file
   keep their card there: the v1.386.1 and v1.381.0 rules.) The finish
   round's calls share ONE card (v1.247.0) — under Local only each still cards
@@ -637,7 +637,7 @@ class ProjectCheckers:
         POST lane never auto-grants a call, so it needs no twin).
 
         v1.417.0 (C1.3, decision D1): False under "Don't ask" (``posture``
-        "yolo") — the person's own standing answer covers Iron Jarvis's own
+        "yolo") — the person's own standing answer covers STEC OS's own
         checker run; every other posture as before."""
         if str(posture or "") == "yolo":
             return False
@@ -824,7 +824,7 @@ class ProjectCheckers:
 
     async def note_text(self, fence: "Callable[[str], Awaitable[str]] | None" = None) -> str:
         """The finish note's "## The project's checkers" body: each checker's
-        head line as Iron Jarvis wrote it, and the findings under it — the
+        head line as STEC OS wrote it, and the findings under it — the
         PROGRAM's text (it quotes the project's files), so fenced and scanned
         by the lane's own fence (``fence``). "" when there is nothing."""
         out: list[str] = []

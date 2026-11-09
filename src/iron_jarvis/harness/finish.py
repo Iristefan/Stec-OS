@@ -36,7 +36,7 @@ note goes to the model first, and the model answers it in one more round:
 
 (d) A REVIEW BY THE TEAM (v1.401.0). When "Hand work to my team first" is on
     (``Config.team_first``, read live) and a member of the user's model team
-    holds the Review role, Iron Jarvis ITSELF hands the reply's change to the
+    holds the Review role, STEC OS ITSELF hands the reply's change to the
     team's reviewer — the planner is not asked to (a benchmark showed it never
     did: 0 of 108 runs). It is ONE more call of the same round: ``delegate``
     with ``role: review`` (:data:`REVIEW_CALL_ID`, ledgered ``called_as``
@@ -1974,12 +1974,12 @@ REVIEW_ASK = (
 #: tool that changes a file; its workers make the fixes.
 #: v1.421.0 (A4): each finding goes to the worker who CHANGED that file, by
 #: name (the note lists who changed what), and the lead does a fix itself
-#: only when Iron Jarvis says no worker can take it — ``harness/team``'s own
+#: only when STEC OS says no worker can take it — ``harness/team``'s own
 #: rule (``TEAM_BRIEF_HANDS`` / ``UNLOCK_NOTE``), in the same words.
 TEAM_REVIEW_ASK = (
     "The reviewer can be wrong: check each point against the code first. Hand each finding that "
     "is right to the worker who changed that file, by name, with its R number, the file and what "
-    "to change; only when Iron Jarvis tells you that no worker can take it may you do it yourself, "
+    "to change; only when STEC OS tells you that no worker can take it may you do it yourself, "
     "and then say so. When the fixes are done, " + ANSWER_FORM_ASK
 )
 #: v1.403.0: what a SECOND review's brief adds (the change it reads is the fix).
@@ -3483,7 +3483,7 @@ class FinishCheck:
         self._settle_tests()
         self._note_sent = True
         parts = [
-            f"{NOTE_OPENING} Before you end this reply, check your work once. Iron Jarvis "
+            f"{NOTE_OPENING} Before you end this reply, check your work once. STEC OS "
             "wrote this note; it comes once per reply."
         ]
         if self.config.tests:
@@ -3534,7 +3534,7 @@ class FinishCheck:
         reply. The same fence and verdict rules as the first."""
         self._second_note_due = False
         parts = [
-            f"{NOTE_OPENING} Your reviewer read the fix once more. Iron Jarvis wrote this note; "
+            f"{NOTE_OPENING} Your reviewer read the fix once more. STEC OS wrote this note; "
             "this was the last review of this reply."
         ]
         review = await self._review_text(fence)
@@ -3570,7 +3570,7 @@ class FinishCheck:
                 # v1.417.0 (C1.3): not run again — it passed after the change.
                 lines.append(
                     f"{shown} passed (exit code 0) when you ran it after your last change, "
-                    "so Iron Jarvis did not run it again."
+                    "so STEC OS did not run it again."
                 )
                 continue
             if run.verdict == TESTS_PASSED:

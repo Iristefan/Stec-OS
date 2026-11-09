@@ -265,7 +265,7 @@ describe("a plain answer says how long it took (G63)", () => {
 
   it("on the chat page: a fresh plain turn's own timing reaches the line", async () => {
     render(<ChatPage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     H.stream.replies.push("Rome is the capital.");
     H.stream.extra.push({ timing: { startedAt: 10_000, firstTokenAt: 10_600, endedAt: 12_100 } });
     fireEvent.change(el, { target: { value: "Capital of Italy?" } });
@@ -302,7 +302,7 @@ describe("the home line's Ask Jarvis lands in a chat with the question waiting (
   it("the chat at that address fills the box with the question and sends nothing", async () => {
     window.history.replaceState({}, "", `/?ask=${encodeURIComponent(HEALTH_QUESTION)}`);
     render(<HomePage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     await waitFor(() => expect(el.value).toBe(HEALTH_QUESTION));
     expect(H.stream.bodies).toHaveLength(0);
   });

@@ -100,7 +100,7 @@ async function stub(page: Page): Promise<void> {
   await page.route(`${DAEMON}/build/app/harnesses`, (r) => json(r, TOOLS));
   await page.route(
     (url) => url.href.startsWith(`${DAEMON}/build/app/sessions`) && !url.pathname.includes("/sessions/"),
-    (r) => json(r, { sessions: [], work_root: "C:\\Users\\me\\Documents\\Iron Jarvis" }),
+    (r) => json(r, { sessions: [], work_root: "C:\\Users\\me\\Documents\\STEC OS" }),
   );
 }
 

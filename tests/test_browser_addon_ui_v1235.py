@@ -6,7 +6,7 @@ The popup is gone (D32: Chrome ignores ``openPanelOnActionClick`` while
 header rather than being rewritten there — so every pin below moved with it, none
 was deleted, and the two findings they encode are still the findings.
 
-The panel is the only Iron Jarvis surface that lives inside the user's browser, and
+The panel is the only STEC OS surface that lives inside the user's browser, and
 every word it renders is written at runtime by ``sidepanel.ts``. Two defects in the
 reviewed diff lived exactly there:
 
@@ -338,7 +338,7 @@ def _visible_html(path: Path) -> str:
 
 @pytest.mark.parametrize("path", [PANEL_HTML, SETUP_HTML, MIC_HTML], ids=["sidepanel", "setup", "mic"])
 def test_no_page_of_the_add_on_calls_itself_an_extension(path: Path):
-    """In Iron Jarvis "extension" already means an MCP server (copy rule)."""
+    """In STEC OS "extension" already means an MCP server (copy rule)."""
     visible = _visible_html(path)
     # chrome://extensions is Chrome's own URL, not a name for this add-on.
     visible = visible.replace("chrome://extensions", "")

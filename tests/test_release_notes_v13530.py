@@ -1,7 +1,7 @@
 """v1.353.0 (G37): the release page says which file to take and what to press
 at the Windows warning.
 
-The latest release read "Iron Jarvis 1.351.0 — installer built and uploaded by
+The latest release read "STEC OS 1.351.0 — installer built and uploaded by
 CI." above three files (the .exe, its .blockmap, latest.yml). The installer is
 unsigned, so Windows says "Windows protected your PC" — and only the README
 said which file to download and to press More info, then Run anyway. Someone

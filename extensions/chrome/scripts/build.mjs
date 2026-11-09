@@ -1,4 +1,4 @@
-// Build the Iron Jarvis browser add-on the way a RELEASE builds it, and refuse to
+// Build the STEC OS browser add-on the way a RELEASE builds it, and refuse to
 // finish unless the folder it produced is one Chrome would actually load.
 //
 // WHY THIS FILE EXISTS AT ALL, given that `pnpm run check` already chains the same

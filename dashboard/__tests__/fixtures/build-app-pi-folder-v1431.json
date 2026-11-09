@@ -9,7 +9,7 @@
   "loaded": false,
   "offer": true,
   "line": "This folder has its own Pi extensions and skills. Pi skips them here, because it can only ask about them in its terminal.",
-  "title": "A folder's Pi extensions run as programs on this PC. Load them only if you trust this folder. This applies to this session only and saves nothing in Pi's trust list. If one of your own Pi extensions decides trust itself, Pi may already load them; Iron Jarvis cannot see that."
+  "title": "A folder's Pi extensions run as programs on this PC. Load them only if you trust this folder. This applies to this session only and saves nothing in Pi's trust list. If one of your own Pi extensions decides trust itself, Pi may already load them; STEC OS cannot see that."
  },
  "loaded": {
   "pi_folder": {
@@ -21,7 +21,7 @@
    "loaded": true,
    "offer": false,
    "line": "This folder's own Pi extensions and skills load in this session.",
-   "title": "A folder's Pi extensions run as programs on this PC. Load them only if you trust this folder. This applies to this session only and saves nothing in Pi's trust list. If one of your own Pi extensions decides trust itself, Pi may already load them; Iron Jarvis cannot see that."
+   "title": "A folder's Pi extensions run as programs on this PC. Load them only if you trust this folder. This applies to this session only and saves nothing in Pi's trust list. If one of your own Pi extensions decides trust itself, Pi may already load them; STEC OS cannot see that."
   },
   "applied": {
    "load_folder_resources": "next"
@@ -37,7 +37,7 @@
    "loaded": false,
    "offer": true,
    "line": "This folder has its own Pi extensions and skills. Pi skips them here, because it can only ask about them in its terminal.",
-   "title": "A folder's Pi extensions run as programs on this PC. Load them only if you trust this folder. This applies to this session only and saves nothing in Pi's trust list. If one of your own Pi extensions decides trust itself, Pi may already load them; Iron Jarvis cannot see that."
+   "title": "A folder's Pi extensions run as programs on this PC. Load them only if you trust this folder. This applies to this session only and saves nothing in Pi's trust list. If one of your own Pi extensions decides trust itself, Pi may already load them; STEC OS cannot see that."
   },
   "applied": {
    "load_folder_resources": "next"

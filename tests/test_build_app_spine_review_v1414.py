@@ -3,7 +3,7 @@
 Each test here was RED on 09e65638 (or pins a claim that commit left
 unpinned) and is mutation-checked:
 
-* A process that ENDS BY ITSELF (crash, kill) loses its Iron Jarvis token from
+* A process that ENDS BY ITSELF (crash, kill) loses its STEC OS token from
   the store at once (not only rejected on the next resolve) and takes our own
   two connection files with it — the files used to stay until a later start
   or the session's deletion.
@@ -11,7 +11,7 @@ unpinned) and is mutation-checked:
   fence: ``memory_read`` returns the very stored text ``memory_search``
   returns, and it went out bare.
 * The refusal sentences a Build › Code session's tool reads name the SESSION
-  and the "Iron Jarvis tools" chip — never "this Build terminal", whose
+  and the "STEC OS tools" chip — never "this Build terminal", whose
   Capabilities a Code session does not have. A terminal's words are unchanged.
 * A long reply that ends on an account's limit card is never "Your coding
   session finished" (the card is the news) — the commit's own OPEN item.
@@ -105,10 +105,10 @@ def test_the_refusals_name_the_code_session_never_a_terminal():
     code = JT.grant_id("app_1")
     none = M.no_capability_message(code)
     assert "Build terminal" not in none and "terminal's" not in none
-    assert "Build › Code session" in none and "Iron Jarvis tools" in none
+    assert "Build › Code session" in none and "STEC OS tools" in none
     refused = M.capability_refused_message("memory_search", pane_id=code)
     assert "terminal" not in refused and "start the coding tool again" not in refused
-    assert "Build › Code session" in refused and "Memory" in refused and "Iron Jarvis tools" in refused
+    assert "Build › Code session" in refused and "Memory" in refused and "STEC OS tools" in refused
     # A terminal's own words are unchanged, byte for byte.
     assert M.no_capability_message("term_1") == M.NO_CAPABILITY_MESSAGE
     assert M.capability_refused_message("memory_search", pane_id="term_1") == M.capability_refused_message(

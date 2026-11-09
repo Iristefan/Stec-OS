@@ -866,7 +866,7 @@ export function LongTerm() {
                       Set up long-term memory
                     </h3>
                     <p className="mt-1 text-[12px] leading-relaxed text-zinc-400">
-                      Long-term memory is what Iron Jarvis can look things up in
+                      Long-term memory is what STEC OS can look things up in
                       later — notes you already keep, wherever you keep them.
                       Nothing is copied; each base is searched where it lives.
                     </p>
@@ -1224,7 +1224,7 @@ export function LongTerm() {
                           />
                         </div>
                         <div className="mt-1 text-[11px] text-zinc-600">
-                          Point Iron Jarvis at your own RAG service — it POSTs the query and reads back matches.
+                          Point STEC OS at your own RAG service — it POSTs the query and reads back matches.
                         </div>
                       </div>
                       <div>

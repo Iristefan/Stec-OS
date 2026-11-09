@@ -1,6 +1,6 @@
 """SEE THE HARNESS (v1.426.0, Wave 6, E1 of the 2026-11-01 audit).
 
-A coding session's model is given Iron Jarvis's own instructions — the
+A coding session's model is given STEC OS's own instructions — the
 COMPONENT TREE (``harness/components``: how it works, the guardrails, the
 memory, the tools in its model family's words, the folder's skills, helper
 briefs, scripts and rules, the lessons kept for the folder) — and nothing on
@@ -146,7 +146,7 @@ def instructions_view(platform: Any, row: Any) -> dict[str, Any]:
 def register(app: FastAPI, d: Any) -> None:
     @app.get("/build/sessions/{thread_id}/harness")
     def build_session_harness(thread_id: str) -> dict[str, Any]:
-        """v1.426.0 (Wave 6, E1): the instructions Iron Jarvis gives this
+        """v1.426.0 (Wave 6, E1): the instructions STEC OS gives this
         session's model, read-only (:func:`instructions_view`). 404 for an
         unknown session. Sync: the threadpool runs it."""
         row = S.get_row(d.platform.engine, thread_id)

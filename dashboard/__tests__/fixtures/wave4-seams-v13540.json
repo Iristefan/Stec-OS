@@ -11,8 +11,8 @@
   },
   "restart": {
     "asked": "Summarise the lease\nthen email it to Sam's accountant",
-    "continuation_task": "Continue where you left off — Iron Jarvis restarted while this was running.\n\n[Continuing an earlier session. Original task: \"Summarise the lease\\nthen email it to Sam's accountant\". Prior result: Stopped when Iron Jarvis restarted. The earlier workspace files are available in your workspace.]",
-    "goal_reason": "stopped when Iron Jarvis restarted",
-    "summary": "Stopped when Iron Jarvis restarted."
+    "continuation_task": "Continue where you left off — STEC OS restarted while this was running.\n\n[Continuing an earlier session. Original task: \"Summarise the lease\\nthen email it to Sam's accountant\". Prior result: Stopped when STEC OS restarted. The earlier workspace files are available in your workspace.]",
+    "goal_reason": "stopped when STEC OS restarted",
+    "summary": "Stopped when STEC OS restarted."
   }
 }

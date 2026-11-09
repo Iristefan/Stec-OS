@@ -643,7 +643,7 @@ def classify(
     if kind == "answered_error":
         return (
             f"{Name} answered with an error",
-            f"Check it, or {other}, and {again}. Iron Jarvis"
+            f"Check it, or {other}, and {again}. STEC OS"
             " won't switch to a different AI without asking. You can allow that in"
             " Settings.",
         )
@@ -711,7 +711,7 @@ def classify(
 
 
 #: The generic words when nothing typed says more.
-GENERIC_TITLE = "Iron Jarvis couldn't finish this answer"
+GENERIC_TITLE = "STEC OS couldn't finish this answer"
 GENERIC_FIX = "Press Retry. If it happens again, pick another model for this chat."
 #: v1.389.0: the same words in a CODING SESSION (Build), which is not a chat —
 #: its model is picked in the session's own box.
@@ -755,27 +755,27 @@ GENERIC_FIX_RUN = f"Run it again. If it happens again, choose another model in {
 #: v1.358.0 (the re-audit's confirmed regression): the generic headline's
 #: ending — said after the provider's own name when the failure came from a
 #: provider it knows ("Claude Code couldn't finish this answer"), never an
-#: anonymous "Iron Jarvis" over a model's failure.
+#: anonymous "STEC OS" over a model's failure.
 GENERIC_TITLE_TAIL = " couldn't finish this answer"
 #: Readiness 12A (G28): the generic headline READ OUTSIDE THE CHAT. A run is
 #: a task, not an answer: "Codex couldn't finish this task" on its run page,
 #: its Schedules row, the bell and the phone — where the raw text ("codex-cli:
 #: CLI exited 1: error: unexpected status 400 …") used to stand.
 GENERIC_TITLE_RUN_TAIL = " couldn't finish this task"
-GENERIC_TITLE_RUN = f"Iron Jarvis{GENERIC_TITLE_RUN_TAIL}"
+GENERIC_TITLE_RUN = f"STEC OS{GENERIC_TITLE_RUN_TAIL}"
 #: Readiness 12A (G28): the run's generic fix when NO model caused the
-#: failure (Iron Jarvis's own fault): there is no other model to choose, so it
+#: failure (STEC OS's own fault): there is no other model to choose, so it
 #: says where the folded technical text is — the run page's "Details" fold
 #: (``Session.failure_detail``), which every surface's row links to. Short on
 #: purpose: the bell clips a row at 140 characters, and "The run failed: " +
 #: the title + this must fit (dashboard/__tests__/wave7-seams-v13570).
 GENERIC_FIX_RUN_OWN = "Run it again. If it happens again, open the run to see the details."
-#: Readiness 12A review (the doer's open point 4): Iron Jarvis's own fault
+#: Readiness 12A review (the doer's open point 4): STEC OS's own fault
 #: BEFORE any run existed (a schedule's fire that could not create its run).
 #: There is no run to open — the Schedules row has no "open run" link — so
 #: the words never point at one; Jarvis reads its own recent errors when
 #: asked (``tools/selfcare.app_health``, the Help page's same advice).
-GENERIC_TITLE_UNSTARTED = "Iron Jarvis couldn't start this task"
+GENERIC_TITLE_UNSTARTED = "STEC OS couldn't start this task"
 GENERIC_FIX_UNSTARTED = "Run it again. If it happens again, ask Jarvis “what's wrong?” in chat."
 
 
@@ -830,12 +830,12 @@ def _generic_name(exc: BaseException | None, provider: str, manager: Any) -> str
     itself names (the router's ``failed_provider``, an adapter's own
     "<provider>: …" / "<provider> API error" text), else the caller's hint
     — but only for a PROVIDER's failure (a typed ``ProviderError`` in the
-    chain); Iron Jarvis's own fault, or Auto, stays "Iron Jarvis". Never
+    chain); STEC OS's own fault, or Auto, stays "STEC OS". Never
     raises."""
     try:
         # v1.417.0 (C4.9): a coding tool Build › Code drives names ITSELF
         # (``hosted.words.HostedToolError.tool_label``): "Claude Code
-        # couldn't finish this answer", never an anonymous "Iron Jarvis".
+        # couldn't finish this answer", never an anonymous "STEC OS".
         cur, seen = exc, 0
         while cur is not None and seen < _CHAIN:
             own = getattr(cur, "tool_label", None)
@@ -884,7 +884,7 @@ def undoubled(text: str) -> str:
 def _not_moved(exc: BaseException | None, manager: Any = None) -> str:
     """v1.424.0 (the owner's decision D1): the ONE sentence a failure carries
     when the failover LEFT OUT pay-per-use models because the call's own pick
-    was not one ("Iron Jarvis didn't switch to OpenAI, which bills per use,
+    was not one ("STEC OS didn't switch to OpenAI, which bills per use,
     because you didn't choose a pay-per-use model for this."), read off the
     router's stamp (``providers/billing.mark_left_out``); ``""`` otherwise.
     Never raises."""
@@ -956,11 +956,11 @@ def _run_generic_words(
 ) -> "tuple[str, str]":
     """``(title, fix)`` for a RUN's failure nothing recognised (readiness 12A,
     G28): WHAT failed — the provider by its plain name when a provider's
-    error is in the chain ("Codex couldn't finish this task"), else Iron
-    Jarvis itself — and what to do next: choose another model when a model
+    error is in the chain ("Codex couldn't finish this task"), else STEC
+    OS itself — and what to do next: choose another model when a model
     failed, else where the details are. Never the failure's own text (that is
     the technical detail, kept apart). ``started`` False (12A review): no run
-    existed, so Iron Jarvis's own fault never says "open the run" (there is
+    existed, so STEC OS's own fault never says "open the run" (there is
     none) — :data:`GENERIC_TITLE_UNSTARTED`. Never raises."""
     try:
         name = _generic_name(exc, provider, manager)
@@ -981,7 +981,7 @@ def worded_message(exc: BaseException | None) -> str:
     * ``no_failover`` — the refusals worded BY KIND for the user (Iron-Proxy's
       account sentences, a local-only chat's refusal, a held Build session,
       Codex's own session cap);
-    * ``plain_words`` — Iron Jarvis's own refusals written as one sentence
+    * ``plain_words`` — STEC OS's own refusals written as one sentence
       (``agents.orchestrator.EmergencyStopOn``).
 
     A safety refusal (:class:`~.adapters.base.ProviderRefusal`) is not one
@@ -1041,7 +1041,7 @@ def run_failure_words(
 
     ``provider`` is the run's provider, a hint used only when the failure
     names none itself. ``started`` (12A review): False when the failure came
-    BEFORE any run existed (a schedule's fire) — Iron Jarvis's own fault then
+    BEFORE any run existed (a schedule's fire) — STEC OS's own fault then
     never says "open the run". Never raises; the reason is never empty."""
     hint = _hint(provider)
     try:

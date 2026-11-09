@@ -7,7 +7,7 @@ credentials and the Test button returned
     "type": "invalid_request_error", ...}}
 
 Nothing was wrong with the credentials. The endpoint speaks the Responses API
-(``input``), and Iron Jarvis only knew ``chat/completions`` (``messages``).
+(``input``), and STEC OS only knew ``chat/completions`` (``messages``).
 Two fixes are covered here: the missing dialect, and turning that specific 4xx
 into the setting that fixes it instead of a bare status code.
 """

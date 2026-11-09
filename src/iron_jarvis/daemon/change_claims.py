@@ -375,10 +375,10 @@ _CONTENT = _CONTENT_HEAD | frozenset(
 )
 #: Review (Wave 5 group K): "to", "with" and "using" too — "I've added three
 #: goals TO your plan", "an agent USING LangChain". Never "for": "a schedule
-#: FOR your weekly report" is one of Iron Jarvis's schedules.
+#: FOR your weekly report" is one of STEC OS's schedules.
 _ELSEWHERE_PREPS = frozenset({"in", "of", "inside", "into", "from", "on", "within", "to", "with", "using"})
 _DETS = frozenset({"your", "the", "this", "that", "my", "a", "an", "our", "these", "those"})
-#: A calendar item, never one of Iron Jarvis's schedules.
+#: A calendar item, never one of STEC OS's schedules.
 _NOT_OUR_SCHEDULE = frozenset(
     {"meeting", "meetings", "call", "calls", "appointment", "appointments", "zoom", "interview",
      "visit", "demo", "lunch", "dinner", "coffee", "event", "events", "session", "review",
@@ -424,7 +424,7 @@ _NP_END = _BOUNDARY | frozenset(
 )
 #: Before "schedule": someone else's schedule — a CPA's (depreciation,
 #: amortization, payment, lead…), a person's (work, workout, class…), never
-#: one of Iron Jarvis's. "Schedule C" never reaches here: its head is "c".
+#: one of STEC OS's. "Schedule C" never reaches here: its head is "c".
 _NOT_OUR_SCHEDULE_BEFORE = frozenset(
     {
         "depreciation", "amortization", "amortisation", "payment", "payments", "repayment",
@@ -465,10 +465,10 @@ _EXTERNAL = frozenset(
         "package", "npm", "pip",
     }
 )
-#: Apps that ARE Iron Jarvis's notification destinations ("your Slack alerts"
+#: Apps that ARE STEC OS's notification destinations ("your Slack alerts"
 #: is a destination; "a Slack workflow" is Slack's).
 _NOTIFY_APPS = frozenset({"slack", "telegram", "discord", "email", "phone", "sms", "whatsapp", "signal"})
-#: An action OUTSIDE Iron Jarvis (an app's own tool, a click or typing in a
+#: An action OUTSIDE STEC OS (an app's own tool, a click or typing in a
 #: web page or on the desktop): a claim after one may be about THAT change
 #: ("I turned on dark mode", "I created the project") and is not judged —
 #: the file twin's rule for a command, applied to another app.
@@ -494,7 +494,7 @@ _CODE_WORDS = frozenset(
         "handler", "handlers", "hook", "hooks", "jsx", "tsx", "frontend", "backend",
     }
 )
-#: An undo's object: what Iron Jarvis's own Undo reverses — "that", "it",
+#: An undo's object: what STEC OS's own Undo reverses — "that", "it",
 #: "the change", "your theme change". "I rolled back the release" and "I
 #: reverted the migration" are someone else's.
 _UNDO_OBJECT = frozenset(
@@ -737,7 +737,7 @@ def _object(toks: list[str], after: int) -> list[str]:
 def _elsewhere(phrase: list[str], *, brands: bool = True) -> bool:
     """The words point at the user's own content or another product ("in
     your spreadsheet", "of this essay", "to your plan", "in Asana", "from
-    the support queue"), never one of Iron Jarvis's records. The noun after
+    the support queue"), never one of STEC OS's records. The noun after
     the preposition is read up to three words in (its determiners skipped),
     stopping at the next preposition. *brands* False reads content only (a
     setting's value may be a brand: "your default model to Claude")."""
@@ -757,7 +757,7 @@ def _elsewhere_words(phrase: list[str], *, brands: bool = True) -> set[str]:
         for k in range(j, min(n, j + 3)):
             w = phrase[k]
             if t == "to" and w in _NOTIFY_APPS:
-                break  # "…posts TO Slack": one of Iron Jarvis's destinations
+                break  # "…posts TO Slack": one of STEC OS's destinations
             if w in _CONTENT or (brands and w in _EXTERNAL):
                 out.add(w)
                 break
@@ -811,7 +811,7 @@ def _record_kind(np: list[str], rest: list[str], sentence_toks: list[str]) -> st
     last word) — or "" (Review, Wave 5 group K: the first cut read a record
     noun anywhere in fourteen words, so "the notification email template",
     "a Goals section with three goals" and "the depreciation schedule" were
-    each one of Iron Jarvis's records)."""
+    each one of STEC OS's records)."""
     if not np:
         return ""
     head = np[-1]
@@ -1209,7 +1209,7 @@ def _user_acted(toks: list[str]) -> bool:
 
 
 def _undo_object_ok(obj: list[str]) -> bool:
-    """An undo's object is one of Iron Jarvis's own undos: nothing, "it",
+    """An undo's object is one of STEC OS's own undos: nothing, "it",
     "that change", "your theme change", a record ("the schedule change") —
     never a release, a migration or a document."""
     np = _np(obj)
@@ -1224,12 +1224,12 @@ def _undo_object_ok(obj: list[str]) -> bool:
 
 #: v1.438.0 (Wave 4 group C): a LASTING PROMISE is a claim too — "I'll
 #: answer in Spanish from now on", "From now on I'll use bullet points",
-#: "Iron Jarvis will now start with Windows". Each says a lasting change
+#: "STEC OS will now start with Windows". Each says a lasting change
 #: exists; it exists only when a setting (the profile's answer language or
 #: formatting, the desktop app's switch) — or, for the answer, a kept
 #: preference — changed THIS turn. Bounded, on the cleaned lower-case
 #: sentence; a denial ("won't", "no longer") never matches the forward form,
-#: and the desktop forms need "now" (or "no longer"): "Iron Jarvis will
+#: and the desktop forms need "now" (or "no longer"): "STEC OS will
 #: start with Windows" with no "now" DESCRIBES how it works — never a claim.
 _LANG_WORDS = (
     r"(?:english|spanish|french|german|portuguese|italian|dutch|polish|swedish|turkish|russian"
@@ -1251,7 +1251,7 @@ _PROMISE_FORMAT = re.compile(
     r"(?:short\s+)?(?:bullet(?:\s+points?|ed\s+lists?)?|bullets|headings|numbered\s+lists?|tables"
     r"|short\s+paragraphs|plain\s+prose|prose)\b"
 )
-_APP_NAME = r"(?:iron\s+jarvis|jarvis|the\s+(?:desktop\s+)?app|it)"
+_APP_NAME = r"(?:(?:stec\s+os|iron\s+jarvis)|jarvis|the\s+(?:desktop\s+)?app|it)"
 _PROMISE_START_ON = re.compile(
     r"\b" + _APP_NAME + r"\s+(?:will\s+now\s+|now\s+|will\s+from\s+now\s+on\s+)(?:start|open|launch|run)s?\s+(?:by\s+itself\s+|"
     r"automatically\s+|on\s+its\s+own\s+)?(?:with\s+windows|when\s+(?:you\s+(?:log|sign)\s+in|windows\s+starts)"
@@ -1327,7 +1327,7 @@ def _claims_in_sentence(sentence: str, after_done: bool = False) -> list[Claim]:
         return [Claim(verb=UNDO, word=core[0], undo=True)]
     # Review (Wave 5 group K): a sentence about the user's own content or
     # another product ("In the story, I created a rogue agent", "…the
-    # formatting changes in your doc") names none of Iron Jarvis's records.
+    # formatting changes in your doc") names none of STEC OS's records.
     content_sentence = _elsewhere(toks)
     user_acted = _user_acted(toks)
     done = after_done or bool(_done_lead(toks))
@@ -1440,7 +1440,7 @@ def _claims_in_sentence(sentence: str, after_done: bool = False) -> list[Claim]:
         claim = Claim(verb=family, word=word)
         if family == UNDO:
             # Review: an undo of a release, a migration or a document is not
-            # one of Iron Jarvis's ("I rolled back the release").
+            # one of STEC OS's ("I rolled back the release").
             if _undo_object_ok(obj) and not content_sentence:
                 claim.undo = True
                 out.append(claim)
@@ -1802,7 +1802,7 @@ NEXT_MESSAGE = "; Local only applies from your next message"
 
 
 #: Another agent's words in the chat's history (an @-agent, a remote agent, a
-#: run delivered to the chat): never Iron Jarvis's own earlier claim. The
+#: run delivered to the chat): never STEC OS's own earlier claim. The
 #: SAME words ``comm.threads.agent_line_label`` and the page's
 #: ``toRequestMessages`` put first on such a line.
 _AGENT_LINE_PREFIX = "[Reply from the agent "
@@ -1874,7 +1874,7 @@ def _excused(history: Iterable[Any]) -> list[tuple[set[tuple[str, str]], str, se
         if not isinstance(content, str) or not content.strip():
             continue
         if content.lstrip().startswith(_AGENT_LINE_PREFIX):
-            continue  # another agent said it, never Iron Jarvis
+            continue  # another agent said it, never STEC OS
         text = content[-MAX_HISTORY_CHARS:]
         noted = " ".join(
             ln for ln in text.split("\n") if ln.lstrip().startswith("_Note:") and IN_THIS_REPLY in ln
@@ -1951,7 +1951,7 @@ def claimed_change_note(
         return ""
 
 
-#: The reply Iron Jarvis writes itself when the model wrote none
+#: The reply STEC OS writes itself when the model wrote none
 #: (``chat_turn._no_text_reply``): it quotes a TOOL's own output, which is
 #: never the model's claim.
 _NO_TEXT_LEAD = "The model finished without writing an answer."
@@ -2002,7 +2002,7 @@ def _note(reply, tools_used, config_cards, history, custom_tools, reply_local_on
     for claim in claims:
         if coding:
             # A turn that changed files talks about code: its "I updated the
-            # scheduler" is never one of Iron Jarvis's schedules.
+            # scheduler" is never one of STEC OS's schedules.
             claim.records, claim.apps, claim.undo = [], [], False
             if not claim.named():
                 continue

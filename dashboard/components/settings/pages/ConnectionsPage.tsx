@@ -2279,7 +2279,7 @@ export default function ConnectionsPage() {
       <Reveal>
         <PageHeader
           title="Connections"
-          subtitle="Your accounts: AI models, cloud drives and services. Connect once and everything in Iron Jarvis can use them."
+          subtitle="Your accounts: AI models, cloud drives and services. Connect once and everything in STEC OS can use them."
           actions={
             <div className="flex items-center gap-2">
               {data ? (
@@ -2459,7 +2459,7 @@ export default function ConnectionsPage() {
               type="button"
               onClick={rescanClis}
               disabled={rescanBusy}
-              title="Look again for Claude Code, Codex, Grok and Ollama on this PC, without restarting Iron Jarvis"
+              title="Look again for Claude Code, Codex, Grok and Ollama on this PC, without restarting STEC OS"
               className={CALM_ACTION}
             >
               {rescanBusy ? (

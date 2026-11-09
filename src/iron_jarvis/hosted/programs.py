@@ -548,27 +548,27 @@ def stopped_words(tool: str, programs: list[Program] | tuple[Program, ...], *, w
     if not programs:
         return ""
     if why == "evicted":
-        head = (f"Iron Jarvis closed {tool} to make room for another session (at most {max_live} "
+        head = (f"STEC OS closed {tool} to make room for another session (at most {max_live} "
                 f"run at once).")
     elif why == "restart":
-        head = f"Iron Jarvis restarted {tool} for your new settings."
+        head = f"STEC OS restarted {tool} for your new settings."
     elif why == "terminal":
         # v1.422.0 review: "Open in terminal" stops the tool here (two
         # processes on one conversation corrupt it).
-        head = f"Iron Jarvis closed {tool} here to open this conversation in a terminal."
+        head = f"STEC OS closed {tool} here to open this conversation in a terminal."
     elif why == "account":
         # v1.422.0 review: "Continue on the next account" stops it first.
-        head = f"Iron Jarvis closed {tool} to move this conversation to another account."
+        head = f"STEC OS closed {tool} to move this conversation to another account."
     elif why == "branch":
         # v1.441.0 review: Branch from here stops a tool whose fork switched
         # (Pi) or holds the fork (Codex).
-        head = f"Iron Jarvis closed {tool} here to branch this conversation."
+        head = f"STEC OS closed {tool} here to branch this conversation."
     elif why == "rewind":
-        head = f"Iron Jarvis closed {tool} to rewind this conversation."
+        head = f"STEC OS closed {tool} to rewind this conversation."
     elif why == "bound":
-        head = f"Iron Jarvis closed {tool} after {_duration(after_s)} with nothing new."
+        head = f"STEC OS closed {tool} after {_duration(after_s)} with nothing new."
     else:
-        head = f"Iron Jarvis closed {tool} after {_duration(after_s)} with nothing to do."
+        head = f"STEC OS closed {tool} after {_duration(after_s)} with nothing to do."
     which = "The program it ran stopped" if len(programs) == 1 else "The programs it ran stopped"
     lines = "\n".join(f"- {w}" for w in _named(programs))
     return f"{head} {which} with it:\n{lines}"

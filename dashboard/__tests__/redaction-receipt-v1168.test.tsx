@@ -541,7 +541,7 @@ describe("DocPreview compare-to-original", () => {
     await screen.findByText(/Couldn't compare: path is not readable/);
     expect(
       // v1.354.0 (G59, updated on purpose): the app's name, not "the daemon".
-      screen.getByText(/Iron Jarvis isn't allowed to open organizer\.txt \(a protected folder/),
+      screen.getByText(/STEC OS isn't allowed to open organizer\.txt \(a protected folder/),
     ).toBeInTheDocument();
     expect(
       screen.queryByText(/moved, renamed, or deleted/),

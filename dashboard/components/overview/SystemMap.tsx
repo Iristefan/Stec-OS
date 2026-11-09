@@ -3,8 +3,8 @@
 /**
  * EVERYTHING › STATUS — THE SYSTEM MAP (v1.334.0).
  *
- * The Directory is the list of doors. This is the picture: every part of Iron
- * Jarvis as a star around the reactor, grouped in the Directory's five
+ * The Directory is the list of doors. This is the picture: every part of STEC
+ * OS as a star around the reactor, grouped in the Directory's five
  * constellations, each one saying at a glance whether it is SET UP, USED this
  * week, or IN USE right now. The user asked for something you open "just to
  * look at it", so it carries no lists, no forms and no admin — one picture,
@@ -323,7 +323,7 @@ export function SystemMap({ data, loading }: { data: SystemMapData | null; loadi
         data-hot={hot ? "1" : undefined}
       >
         <title id="system-map-title">
-          {`Iron Jarvis system map: ${totals.setup} of ${totals.all} parts set up, ${totals.used} used this week, ${totals.live} in use now`}
+          {`STEC OS system map: ${totals.setup} of ${totals.all} parts set up, ${totals.used} used this week, ${totals.live} in use now`}
         </title>
         <defs>
           {AREA_ORDER.map((k) => (

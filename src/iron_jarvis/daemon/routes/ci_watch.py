@@ -1,4 +1,4 @@
-"""THE PULL-REQUEST WATCH (v1.406.0 part 3): Iron Jarvis watches the checks
+"""THE PULL-REQUEST WATCH (v1.406.0 part 3): STEC OS watches the checks
 of a pull request a coding session opened, fixes a failure in that session,
 has a CLOUD reviewer approve the fix, and only then pushes it.
 
@@ -10,8 +10,8 @@ archived) and moves its watch (``harness/ci_fix.CiWatchRecord``) one step:
 
 1. **watching** — when it is time (60 s while a check runs, then less often up
    to 10 minutes; at most 6 hours), ``gh pr view`` reads the checks. All
-   passed: the watch rests (``passing``), and when the head is the fix Iron
-   Jarvis pushed, the bell rings "the checks pass now" (one of the two NEWS
+   passed: the watch rests (``passing``), and when the head is the fix STEC
+   OS pushed, the bell rings "the checks pass now" (one of the two NEWS
    kinds). A check failed (and none still runs): a fix is due.
 2. **fix due** — when the session is FREE (no reply running — a running reply
    always blocks a new fix turn, and nothing is read from GitHub meanwhile),
@@ -27,7 +27,7 @@ archived) and moves its watch (``harness/ci_fix.CiWatchRecord``) one step:
 4. **reviewing** — the reviewer (``ci_reviewer``: Claude Code or Codex) reads
    the change as the v1.401.0 team review does (a read-only helper, its tools
    ``REVIEW_TOOLS`` only, bounded by ``finish.REVIEW_DEADLINE_S``, its verdict
-   the LAST line of its report). APPROVED → Iron Jarvis commits (the night
+   the LAST line of its report). APPROVED → STEC OS commits (the night
    shift's screened commit) and PUSHES to the pull request's own ``ij/``
    branch without a card (the ONE exception; ``ci_fix.push_refusal``).
    NOT APPROVED → the fix is committed to a NEW side branch, never pushed, and
@@ -69,7 +69,7 @@ BY_CI = "ci"
 #: The sentences a watch ends with (each a line on the session and a row in
 #: the bell).
 EMERGENCY_WORDS = (
-    "Emergency stop was turned on, so Iron Jarvis stopped fixing this pull request's checks; "
+    "Emergency stop was turned on, so STEC OS stopped fixing this pull request's checks; "
     "nothing more was pushed."
 )
 LOCAL_ONLY_WORDS = (
@@ -77,22 +77,22 @@ LOCAL_ONLY_WORDS = (
     "itself. The fix is in the session's folder: look at it, then commit and push it yourself."
 )
 LOW_TRUST_WORDS = (
-    "The fix turn read something flagged and went to low trust, so Iron Jarvis did not push it by "
+    "The fix turn read something flagged and went to low trust, so STEC OS did not push it by "
     "itself. The fix is in the session's folder: look at it, then commit and push it yourself."
 )
 BUSY_WORDS = (
-    "You started a reply while the fix was being reviewed, so Iron Jarvis did not commit or push "
+    "You started a reply while the fix was being reviewed, so STEC OS did not commit or push "
     "it. The fix is in the session's folder: look at it, then commit and push it yourself."
 )
 NO_CHANGE_WORDS = (
-    "The fix turn changed no files, so there was nothing to review or push. Iron Jarvis stopped "
+    "The fix turn changed no files, so there was nothing to review or push. STEC OS stopped "
     "fixing this pull request's checks."
 )
 STOPPED_FIX_WORDS = "The fix stopped before it finished, so nothing was reviewed or pushed."
 #: v1.406.0 review: the user's own reply came after the fix turn — its
 #: changes are the user's, and are never committed or pushed by themselves.
 USER_REPLY_WORDS = (
-    "You sent a message after the fix turn, so Iron Jarvis did not have the fix reviewed or push it. "
+    "You sent a message after the fix turn, so STEC OS did not have the fix reviewed or push it. "
     "The fix is in the session's folder: look at it, then commit and push it yourself."
 )
 #: v1.406.0 review: the session changed while the fix was reviewed.
@@ -101,12 +101,12 @@ OFF_WORDS = ("Fixing a pull request's checks was turned off while the fix was re
              "pushed. The fix is in the session's folder.")
 #: A Local only session's NEWS carries no words of its own to another
 #: device (the night shift's rule).
-LOCAL_ONLY_NOTICE = "A Local only coding session: open Iron Jarvis on this PC to see it."
+LOCAL_ONLY_NOTICE = "A Local only coding session: open STEC OS on this PC to see it."
 
 #: v1.406.0 part 3 follow-ups: a step of the fix turn the night's guarded
 #: posture carded and nobody (or the user) let run.
 DECLINED_WORDS = (
-    "A step of the fix needed your OK and was not done ({steps}), so Iron Jarvis did not have the fix "
+    "A step of the fix needed your OK and was not done ({steps}), so STEC OS did not have the fix "
     "reviewed or push it. The fix is in the session's folder: look at it, then finish it yourself."
 )
 #: How often the push step looks at the Emergency stop switch while it runs.
@@ -189,7 +189,7 @@ def _headline(kind: str, *, reviewer: str = "", verdict: str = "") -> str:
         CI.KIND_SIDE: "The check fix is on a side branch until it is approved",
         CI.KIND_ASKING: "The check fix waits for you",
         CI.KIND_STOPPED: "Stopped watching your pull request's checks",
-        CI.KIND_GAVE_UP: "Iron Jarvis stopped fixing your pull request's checks",
+        CI.KIND_GAVE_UP: "STEC OS stopped fixing your pull request's checks",
         CI.KIND_PASSING: "Your pull request's checks pass now",
     }.get(kind, "Your pull request's checks")
 
@@ -458,7 +458,7 @@ async def _check(d: Any, thread_id: str, title: str, facts: dict[str, str], rec:
         fails = int(rec.get("read_fails") or 0) + 1
         if fails >= CI.READ_FAILS_MAX:
             await _end(d, thread_id, title, CI.STOPPED, CI.KIND_STOPPED,
-                       f"The pull request's checks could not be read {fails} times in a row, so Iron Jarvis "
+                       f"The pull request's checks could not be read {fails} times in a row, so STEC OS "
                        f"stopped watching them: {exc}", read_fails=fails, local_only=local_only)
             return
         wait = CI.next_interval(rec.get("interval_s"))
@@ -473,7 +473,7 @@ async def _check(d: Any, thread_id: str, title: str, facts: dict[str, str], rec:
         if CI.watched_too_long(rec):
             await _end(d, thread_id, title, CI.STOPPED, CI.KIND_STOPPED,
                        f"The pull request's checks were still running after {int(CI.WATCH_MAX_S // 3600)} "
-                       "hours, so Iron Jarvis stopped watching them.", local_only=local_only)
+                       "hours, so STEC OS stopped watching them.", local_only=local_only)
             return
         wait = CI.next_interval(rec.get("interval_s")) if rec.get("next_check_at") else CI.POLL_FIRST_S
         await asyncio.to_thread(CI.save, engine, thread_id, read_fails=0, interval_s=wait,
@@ -486,11 +486,11 @@ async def _check(d: Any, thread_id: str, title: str, facts: dict[str, str], rec:
                                 failed=[], side_branch="", own_commits=[], words=pr.words())
         if ours:
             await _say(d, thread_id, title, CI.KIND_PASSING,
-                       "The checks pass now with the reviewed fix Iron Jarvis pushed.", local_only=local_only)
+                       "The checks pass now with the reviewed fix STEC OS pushed.", local_only=local_only)
         return
     if int(rec.get("rounds") or 0) >= CI.MAX_ROUNDS:
         await _end(d, thread_id, title, CI.GAVE_UP, CI.KIND_GAVE_UP,
-                   f"The checks still fail after {CI.MAX_ROUNDS} rounds of fixes, so Iron Jarvis stopped "
+                   f"The checks still fail after {CI.MAX_ROUNDS} rounds of fixes, so STEC OS stopped "
                    "fixing them. Nothing more was pushed; look at the pull request yourself.",
                    failed=failed, local_only=local_only)
         return
@@ -515,7 +515,7 @@ async def _start_fix(d: Any, thread_id: str, title: str, facts: dict[str, str], 
     round_ = int(rec.get("rounds") or 0) + 1
     if round_ > CI.MAX_ROUNDS:
         await _end(d, thread_id, title, CI.GAVE_UP, CI.KIND_GAVE_UP,
-                   f"Iron Jarvis stopped after {CI.MAX_ROUNDS} rounds of fixes; nothing more was pushed.",
+                   f"STEC OS stopped after {CI.MAX_ROUNDS} rounds of fixes; nothing more was pushed.",
                    local_only=local_only)
         return
     session_id = S.session_id_for(thread_id)
@@ -547,7 +547,7 @@ async def _start_fix(d: Any, thread_id: str, title: str, facts: dict[str, str], 
         low_trust = flagged[0] if flagged else ""
         kind = CI.KIND_FAILED
         number = f" (#{facts['pr_number']})" if facts.get("pr_number") else ""
-        words = (f"Checks failed on this session's pull request{number}: {CI.names_words(names)}. Iron Jarvis "
+        words = (f"Checks failed on this session's pull request{number}: {CI.names_words(names)}. STEC OS "
                  f"is fixing them by itself (round {round_} of {CI.MAX_ROUNDS}); a reviewer checks the fix "
                  "before anything is pushed.")
     turn_id = "bt_" + secrets.token_hex(8)
@@ -723,7 +723,7 @@ async def _review_and_land(d: Any, thread_id: str, title: str, facts: dict[str, 
 def _commit_message(rec: dict[str, Any]) -> str:
     names = [str(x) for x in rec.get("failed") or []]
     return (f"Fix failing checks: {CI.names_words(names)}\n\n"
-            "Reviewed before it was pushed. Made by Iron Jarvis.")
+            "Reviewed before it was pushed. Made by STEC OS.")
 
 
 async def _land_and_push(d: Any, thread_id: str, title: str, facts: dict[str, str], rec: dict[str, Any],
@@ -779,7 +779,7 @@ async def _land_and_push(d: Any, thread_id: str, title: str, facts: dict[str, st
             raise B.GitRefused(CI.CHANGED_SINCE_REVIEW + " (The commit was made and kept, not pushed.)", 409)
         if on_side:
             CI.land_side(facts, side)
-        # v1.406.0 part 3 follow-ups: ONLY Iron Jarvis's own screened commits
+        # v1.406.0 part 3 follow-ups: ONLY STEC OS's own screened commits
         # between the failing head and what is pushed — any other commit (the
         # fix turn's model, a hook, the user) waits for the user, named.
         foreign = CI.foreign_commits(wt, base_sha, own, f"refs/heads/{facts['branch']}")
@@ -860,7 +860,7 @@ async def _settle_push(d: Any, thread_id: str, title: str, facts: dict[str, str]
             return
         if remote is None:
             await _end(d, thread_id, title, CI.STOPPED, CI.KIND_STOPPED,
-                       "The push was cut off and Iron Jarvis could not read the remote afterwards, so it cannot "
+                       "The push was cut off and STEC OS could not read the remote afterwards, so it cannot "
                        "say whether the fix went out. Look at the pull request; the fix is committed on the "
                        "session's branch.")
             return
@@ -912,7 +912,7 @@ async def _keep_on_side(d: Any, thread_id: str, title: str, facts: dict[str, str
                         report: str) -> None:
     """NOT APPROVED: the fix committed on a side branch (made from the PR
     branch, which does not move), never pushed; the next round works on what
-    the reviewer found — or, past the last round, Iron Jarvis gives up."""
+    the reviewer found — or, past the last round, STEC OS gives up."""
     from .build import _STARTING
     from .build_git import _GIT_ACTING
 
@@ -932,7 +932,7 @@ async def _keep_on_side(d: Any, thread_id: str, title: str, facts: dict[str, str
         if on == facts["branch"]:
             if base_sha and CI.ref_sha(wt, f"refs/heads/{facts['branch']}") != base_sha:
                 raise CI.AskUser(
-                    "Commits were made on the pull request's branch during the fix, so Iron Jarvis left them "
+                    "Commits were made on the pull request's branch during the fix, so STEC OS left them "
                     "where they are; nothing was pushed.", 409)
             side = CI.side_name(facts, wt)
             CI.move_to_side(facts, side)
@@ -962,7 +962,7 @@ async def _keep_on_side(d: Any, thread_id: str, title: str, facts: dict[str, str
     label = CI.reviewer_label(str(rec.get("reviewer") or ""))
     if rounds >= CI.MAX_ROUNDS:
         await _end(d, thread_id, title, CI.GAVE_UP, CI.KIND_GAVE_UP,
-                   f"Iron Jarvis stopped after {CI.MAX_ROUNDS} rounds: {label} did not approve the fix. The "
+                   f"STEC OS stopped after {CI.MAX_ROUNDS} rounds: {label} did not approve the fix. The "
                    f"work is on the side branch {side}; none of it was pushed to the pull request.",
                    side_branch=side)
         return

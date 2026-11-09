@@ -2,7 +2,7 @@
 
 The user's LiteLLM gateway has required a key since 2026-10-21. Chat sent it;
 the background reads of the same server did not — ~139 ``GET /model/info`` an
-hour answered ``401 No api key passed in`` — and Iron Jarvis asked it the
+hour answered ``401 No api key passed in`` — and STEC OS asked it the
 Ollama way (``/api/tags``, ``/api/show``, ``/api/version``), which LiteLLM
 404s, so the gateway's own word on what each model can do (its ``vision``
 model sees) was never read.

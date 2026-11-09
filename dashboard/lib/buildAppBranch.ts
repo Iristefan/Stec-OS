@@ -10,7 +10,7 @@
  *              sent before this version, or one from the tool's own saved
  *              history, offers nothing.
  *
- * An older Iron Jarvis sends no `branch`: `decodeBranch` answers null and the
+ * An older STEC OS sends no `branch`: `decodeBranch` answers null and the
  * screen shows no action at all.
  */
 

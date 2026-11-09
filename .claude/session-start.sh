@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SessionStart hook: inject Iron Jarvis version + repo state into Claude's context.
+# SessionStart hook: inject STEC OS version + repo state into Claude's context.
 cd "$(dirname "$0")/.." || exit 0
 
 py=$(sed -n 's/^version = "\(.*\)"/\1/p' pyproject.toml | head -1)
@@ -26,5 +26,5 @@ else
   sync="ahead $ahead / behind $behind vs origin/master"
 fi
 
-echo "[Iron Jarvis session state] version: $ver | branch: $branch | tree: $tree | $sync"
-echo "RULE: State the current (or new target) Iron Jarvis app version in EVERY response so the user knows what to expect after pulling an update. Version bumps must edit all 3 files with ANCHORED edits: pyproject.toml, src/iron_jarvis/__init__.py, desktop/package.json. Push to master => CI publishes the release (~10 min)."
+echo "[STEC OS session state] version: $ver | branch: $branch | tree: $tree | $sync"
+echo "RULE: State the current (or new target) STEC OS app version in EVERY response so the user knows what to expect after pulling an update. Version bumps must edit all 3 files with ANCHORED edits: pyproject.toml, src/iron_jarvis/__init__.py, desktop/package.json. Push to master => CI publishes the release (~10 min)."

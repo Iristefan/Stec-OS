@@ -56,7 +56,7 @@ import { modelPickTitle, modelPickWords } from "@/lib/onboarding";
 import { cleanRoles, roleWords } from "@/lib/teamRoles";
 import { TeamRoleChecks } from "./TeamRoleChecks";
 
-/** v1.357.0 (G61): is this base URL another computer's Iron Jarvis task door?
+/** v1.357.0 (G61): is this base URL another computer's STEC OS task door?
  *  (The daemon's `task_door.is_task_door_url`: the path is exactly the door.) */
 export function isTaskDoorUrl(url: string): boolean {
   try {
@@ -1364,7 +1364,7 @@ function DynamicRow({
               the lie this feature exists to stop telling. */}
           {origin === "unreported" && (
             <span className="text-[10px] text-zinc-500">
-              Tools · inherits {baseTypePhrase(agent)}. This version of Iron Jarvis doesn’t
+              Tools · inherits {baseTypePhrase(agent)}. This version of STEC OS doesn’t
               report which ones
             </span>
           )}
@@ -1541,7 +1541,7 @@ function DynamicRow({
               <p className="text-[10px] leading-relaxed text-zinc-500">
                 {effectiveTools
                   ? `Inherits ${baseTypePhrase(agent)}: ${effectiveTools.length} tools today, and it follows that roster as it changes.`
-                  : `Inherits ${baseTypePhrase(agent)}. This version of Iron Jarvis doesn’t report the resolved list.`}
+                  : `Inherits ${baseTypePhrase(agent)}. This version of STEC OS doesn’t report the resolved list.`}
               </p>
             ) : (
               <>
@@ -2214,7 +2214,7 @@ function RemoteRow({
         </span>
       </div>
       {minted && isTaskDoorUrl(agent.base_url) && (
-        // v1.357.0 (G61): another computer running Iron Jarvis is handed this
+        // v1.357.0 (G61): another computer running STEC OS is handed this
         // token with each task, so there is nothing to copy — the same box,
         // without the token or the wire details.
         <div
@@ -2222,7 +2222,7 @@ function RemoteRow({
           className="mt-2 rounded-lg bg-tone-success/[0.06] px-3 py-2 text-[12px] text-zinc-200"
         >
           <div className="font-medium">
-            {agent.name} can answer back now. It is another computer running Iron Jarvis, so the
+            {agent.name} can answer back now. It is another computer running STEC OS, so the
             new token goes to it with its next task. There is nothing to copy.
           </div>
           {minted.note && (
@@ -2347,12 +2347,12 @@ export function RemoteAgentsSection({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ok, setOk] = useState<string | null>(null);
-  // v1.357.0 (G61): when the remote is another computer running Iron Jarvis,
+  // v1.357.0 (G61): when the remote is another computer running STEC OS,
   // ITS answers come back through this computer — the daemon says whether
   // that computer could reach this one yet (the same sentence as everywhere).
   const [reachNote, setReachNote] = useState<string | null>(null);
   const doorUrl = isTaskDoorUrl(baseUrl);
-  // v1.358.0 (integrate, G61): another computer running Iron Jarvis has ONE
+  // v1.358.0 (integrate, G61): another computer running STEC OS has ONE
   // kind (its task door), so the form picks it — a new user is never asked
   // to choose "http-task" (the daemon refuses a chat kind for a door anyway).
   const sendKind: RemoteKind = doorUrl ? "http-task" : kind;
@@ -2378,7 +2378,7 @@ export function RemoteAgentsSection({
       });
       if (r && r.another_jarvis) {
         setOk(
-          `"${name.trim()}" is connected. It is another computer running Iron Jarvis: ` +
+          `"${name.trim()}" is connected. It is another computer running STEC OS: ` +
             `"@${name.trim()}" in a chat hands it a task, and its answer comes back to that chat.`,
         );
         setReachNote(
@@ -2446,7 +2446,7 @@ export function RemoteAgentsSection({
             onChange={(e) => setKind(e.target.value as RemoteKind)}
             aria-label="Remote kind"
             disabled={doorUrl}
-            title={doorUrl ? "Picked for you: another computer running Iron Jarvis takes tasks" : undefined}
+            title={doorUrl ? "Picked for you: another computer running STEC OS takes tasks" : undefined}
             className={`${QUIET_FIELD} cursor-pointer disabled:cursor-default disabled:opacity-70`}
           >
             <option value="http-task">http-task (task API)</option>
@@ -2464,7 +2464,7 @@ export function RemoteAgentsSection({
         />
         {doorUrl && (
           <p data-testid="connect-remote-jarvis-hint" className="px-1 text-[11px] leading-relaxed text-zinc-500">
-            This is another computer running Iron Jarvis, so the task API is picked for you.
+            This is another computer running STEC OS, so the task API is picked for you.
             Paste the token from its Another computer running Jarvis card as the secret; its
             answers will come back to the chat that asked.
           </p>

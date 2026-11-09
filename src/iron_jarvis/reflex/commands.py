@@ -1,4 +1,4 @@
-"""The command grammar — operate Iron Jarvis from a phone.
+"""The command grammar — operate STEC OS from a phone.
 
 Inbound comm normally turns a message into a free-form supervised session. But a
 message that starts with ``/`` is a COMMAND: a fast, deterministic operation —
@@ -21,7 +21,7 @@ from ..core.logging import get_logger
 log = get_logger("reflex.commands")
 
 _HELP = (
-    "Iron Jarvis commands:\n"
+    "STEC OS commands:\n"
     "/status — version, model, live work\n"
     "/workflows — list saved workflows\n"
     "/run <name> — start a workflow\n"
@@ -83,7 +83,7 @@ class CommandInterpreter:
         if waiting:
             wf_line += f" ({waiting} waiting on you)"
         return (
-            f"Iron Jarvis v{__version__}\n"
+            f"STEC OS v{__version__}\n"
             f"Model: {cfg.default_provider}/{cfg.default_model}\n"
             f"{wf_line}\n"
             f"Sessions: {len(self.orch.list_sessions(limit=200))} recent"

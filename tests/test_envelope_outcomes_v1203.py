@@ -1,7 +1,7 @@
 """OutcomeLedger + downgrade-only tuning (Wave C4, v1.203.0). Pure/offline.
 
-The tuner's contract, ported from IronCore's MS-8 suite and adapted to Iron
-Jarvis: DOWNGRADE-ONLY (a good ledger never RAISES a score), evidence-gated
+The tuner's contract, ported from IronCore's MS-8 suite and adapted to STEC
+OS: DOWNGRADE-ONLY (a good ledger never RAISES a score), evidence-gated
 (min-sample hysteresis + a matching generation stamp + a measured, untrusted
 base), pure (the input profile is never mutated), and always working through
 the frozen thresholds + mechanical ladder — it edits scores, never selects
@@ -183,8 +183,8 @@ def test_rung_already_below_threshold_is_not_double_downgraded():
 
 
 def test_both_ij_rungs_tune_the_floor_is_below_the_ladder():
-    # IronCore skipped its LAST rung (the unconditional text floor); Iron
-    # Jarvis's floor is "none" below the ladder, so strict_json tunes too.
+    # IronCore skipped its LAST rung (the unconditional text floor); STEC
+    # OS's floor is "none" below the ladder, so strict_json tunes too.
     profile = _probed(tool_protocols={"native": 0.5, "strict_json": 0.95})
     assert profile.select_tool_protocol() == "strict_json"
     result = apply_tuning(profile, _ledger(profile, strict_json=(20, 5)))  # 0.75

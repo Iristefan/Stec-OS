@@ -232,7 +232,7 @@ PANEL_ACTION_CLOSE = "close"
 #: v1.269.0: dictation. ``params.op`` is ``start`` | ``chunk`` | ``stop`` |
 #: ``cancel``; a ``chunk`` carries ``pcm_b64`` — 16 kHz mono PCM16, little-endian,
 #: a quarter second or so. The daemon answers with ``transcript`` events. The
-#: audio goes to whatever Iron Jarvis is configured to transcribe with (the
+#: audio goes to whatever STEC OS is configured to transcribe with (the
 #: bundled offline model, or the user's own endpoint) — never to a browser
 #: vendor's speech service.
 PANEL_ACTION_VOICE = "voice"
@@ -278,7 +278,7 @@ PANEL_EVENT_STEERED = "steered"
 PANEL_EVENT_DONE = "done"
 PANEL_EVENT_ERROR = "error"
 #: v1.267.0: ``{models: [{provider, model, name?, available, kind?}], default:
-#: {provider, model}}`` — the list every picker in Iron Jarvis reads, sent on
+#: {provider, model}}`` — the list every picker in STEC OS reads, sent on
 #: ``open`` so the panel's model select is filled from the daemon's own catalog.
 PANEL_EVENT_MODELS = "models"
 #: v1.269.0: ``{text, partial, final, backend}`` — the dictation so far. ``text``

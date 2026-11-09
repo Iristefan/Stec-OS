@@ -60,7 +60,7 @@ export function DaemonTokenCard() {
             />
           </div>
           <p className="text-[12px] leading-relaxed text-zinc-400" data-testid="token-seeded">
-            Set by the desktop app. It pairs this window with Iron Jarvis on this PC and is
+            Set by the desktop app. It pairs this window with STEC OS on this PC and is
             renewed on every launch — there is nothing to paste or clear here.
           </p>
         </div>
@@ -72,7 +72,7 @@ export function DaemonTokenCard() {
     <Card title="Access token" icon={<KeyRound size={15} />}>
       <div className="space-y-3.5">
         <p className="text-[12px] leading-relaxed text-zinc-500">
-          If Iron Jarvis is protected with a bearer token, paste it here. It&apos;s stored in
+          If STEC OS is protected with a bearer token, paste it here. It&apos;s stored in
           your browser and sent with every request — so you can log into a deployed instance
           without a rebuild.
         </p>
@@ -104,7 +104,7 @@ export function DaemonTokenCard() {
         </div>
         {tokenNote && <SuccessNote>{tokenNote}</SuccessNote>}
         <p className="text-[11px] text-zinc-600">
-          Iron Jarvis started by hand on this machine usually needs no token — leave this
+          STEC OS started by hand on this machine usually needs no token — leave this
           empty. The desktop app sets its own.
         </p>
       </div>

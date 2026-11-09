@@ -12,7 +12,7 @@ this PC on 2026-11-02 with codex-cli 0.157.0): ``{"models": [{slug,
 display_name, description, default_reasoning_level,
 supported_reasoning_levels: [{effort, description}], visibility: "list" |
 "hide", priority, context_window, effective_context_window_percent, …}]}``
-plus account fields Iron Jarvis never reads. This module is the ONE reader of
+plus account fields STEC OS never reads. This module is the ONE reader of
 that file: the model menus (``routes/connections``), Build › Code's Codex list
 (``hosted/service``), the reasoning table (``providers/reasoning``), the
 Codex adapter's "not offered" refusal and the context-window rung
@@ -67,9 +67,9 @@ MAX_BYTES = 8_000_000
 MAX_CONFIG_BYTES = 1_000_000
 #: Ids meaning "Codex's own default" (no ``-m``).
 PLACEHOLDER_MODELS = frozenset({"", "subscription", "default", "auto"})
-#: The effort words Iron Jarvis has (``reasoning.ALL_LEVELS``), in its order.
+#: The effort words STEC OS has (``reasoning.ALL_LEVELS``), in its order.
 #: Codex also lists ``max`` / ``ultra`` (and ``minimal`` on older models): no
-#: Iron Jarvis menu offers those, so they are never offered here either.
+#: STEC OS menu offers those, so they are never offered here either.
 APP_LEVELS: tuple[str, ...] = ("low", "medium", "high", "xhigh")
 
 _lock = threading.Lock()  # guards the fields below
@@ -437,8 +437,8 @@ def refuses(model: Any, home: "Path | str | None" = None) -> "dict[str, Any] | N
 
 
 def effort_levels(model: Any) -> "tuple[str, ...] | None":
-    """The levels Iron Jarvis may offer for ``model`` (:data:`APP_LEVELS`
-    that Codex lists for it, in Iron Jarvis's order), or None when not known
+    """The levels STEC OS may offer for ``model`` (:data:`APP_LEVELS`
+    that Codex lists for it, in STEC OS's order), or None when not known
     (no list, a model it does not hold, or a row that names no levels). A
     placeholder reads the default's row. Never blocks."""
     row = lookup(model)

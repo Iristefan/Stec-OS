@@ -111,7 +111,7 @@ ASK_RULES: dict[str, str] = {
     # editor, CI or the agent itself (.git/**, .ironjarvis/**, .claude/**,
     # .vscode/tasks.json|settings.json, .github/workflows/**, .gitattributes,
     # .gitconfig, .gitmodules) — an edit there can run code later.
-    "sensitive_path": "it edits a file that controls git, your editor, CI or Iron Jarvis itself",
+    "sensitive_path": "it edits a file that controls git, your editor, CI or STEC OS itself",
     "code_destructive": "its code may delete, overwrite or run other programs",
     "code_sends": "its code may send something over the network",
 }
@@ -139,15 +139,15 @@ JUDGE_ASKED_WORDS = "a quick check could not say it is routine for what you aske
 # why a card is up, and who is asking (v1.417.0, C1.7)
 # --------------------------------------------------------------------------- #
 
-#: Who asks on a card: the model chose the call, or Iron Jarvis scheduled it
+#: Who asks on a card: the model chose the call, or STEC OS scheduled it
 #: itself (the finish check's test run, a project's checker).
 ASKER_MODEL = "model"
 ASKER_IRON_JARVIS = "iron_jarvis"
 ASKERS: frozenset[str] = frozenset({ASKER_MODEL, ASKER_IRON_JARVIS})
 
-#: The card's one reason line for Iron Jarvis's own calls.
-FINISH_WHY = "Iron Jarvis re-runs the tests to check the work"
-CHECKER_WHY = "Iron Jarvis runs the project's own checker"
+#: The card's one reason line for STEC OS's own calls.
+FINISH_WHY = "STEC OS re-runs the tests to check the work"
+CHECKER_WHY = "STEC OS runs the project's own checker"
 #: The default card's reason (Ask first: the permission asks and nothing in
 #: this chat granted it yet).
 NOT_GRANTED_WHY = "it is not in this chat's grants yet"
@@ -159,7 +159,7 @@ PLAN_WHY = "it ends planning and starts the work"
 ONCE_REASON_WHY: dict[str, str] = {
     "git": "it changes git history or a remote, so it is asked about every time",
     "command": "it runs a line from a project's own command file",
-    "guarded": "it edits a file that controls Git or Iron Jarvis itself",
+    "guarded": "it edits a file that controls Git or STEC OS itself",
     "page": "it acts on a page in a way that may send or delete something",
     "memory": "it changes your memory base",
 }
@@ -174,7 +174,7 @@ def checker_why(name: str) -> str:
 def card_why(*, own: str = "", spend_words: str = "", once_reason: str = "", forced: str = "",
              rule: str = "", strict: bool = False, plan: bool = False) -> str:
     """The ONE reason line a card carries (``approval`` frame ``why``), in
-    plain words: Iron Jarvis's own call says so first (``own``), then the plan
+    plain words: STEC OS's own call says so first (``own``), then the plan
     door, a spend check's own sentence (a git guard's, a project command's, a
     price), a once-only reason, a forced rule (Local only, the night), the
     eased posture's rule that kept it, "Ask before every action", else the
@@ -215,7 +215,7 @@ def eased(mode: Any) -> bool:
 BY_PERSON = "person"
 
 
-#: v1.417.0 (C1.6): who may carry a person's press into a turn Iron Jarvis
+#: v1.417.0 (C1.6): who may carry a person's press into a turn STEC OS
 #: starts (an approved plan's act turn: "person"; Resume when ready: "wait").
 #: The night, CI and a restart resume never do.
 PRESS_STARTERS: frozenset[str] = frozenset({BY_PERSON, "wait"})
@@ -224,7 +224,7 @@ PRESS_STARTERS: frozenset[str] = frozenset({BY_PERSON, "wait"})
 def unwatched_mode(mode: Any, *, started_by: Any = BY_PERSON, continuation: bool = False,
                    pressed: bool = False) -> str:
     """The posture a coding-session turn runs with (v1.406.0 part 2
-    follow-ups). A turn Iron Jarvis started BY ITSELF — a restart resume,
+    follow-ups). A turn STEC OS started BY ITSELF — a restart resume,
     Resume when ready, a move to another account, an approved plan's act
     turn, the night shift (``started_by`` other than a person, or the
     daemon's own ``continuation`` question) — has nobody watching it start,
@@ -778,7 +778,7 @@ def read_only_call(name: str, args: Any, workspace: "Path | None") -> bool:
             # Review (v1.417.0): git runs programs a repository's OWN config
             # names (``core.fsmonitor`` on status, diff and textconv drivers
             # on diff / log -p / show). The session folder's repository is
-            # the one Iron Jarvis itself already runs git in; a sub-folder may
+            # the one STEC OS itself already runs git in; a sub-folder may
             # hold another (an unpacked archive with its own ``.git``), so git
             # there keeps its card.
             git_ok = p.resolve() == Path(workspace).resolve()
@@ -809,7 +809,7 @@ def _inside(path: Any, workspace: "Path | None") -> bool:
 
 
 #: v1.406.0 part 2 follow-ups: folders inside the folder whose files steer
-#: git (``.git/config``, hooks — ``core.fsmonitor`` runs on Iron Jarvis's own
+#: git (``.git/config``, hooks — ``core.fsmonitor`` runs on STEC OS's own
 #: ``git status``), the agent's own guardrails and permission rules
 #: (``.ironjarvis``), Claude Code (``.claude``): ANY file under one, at any
 #: depth, keeps its card.
@@ -856,7 +856,7 @@ def _target_parts(path: Any, workspace: "Path | None") -> "list[str] | None":
 _GIT_PARTS: frozenset[str] = frozenset({".git"}) | SENSITIVE_NAMES
 _DIR_KIND: dict[str, str] = {".git": "git", ".ironjarvis": "jarvis", ".claude": "claude"}
 #: v1.407.2 (the user's words: "CLAUDE.md/AGENTS.md rules files"): the rules
-#: files Iron Jarvis (``projects/folder_rules.CHAT_RULE_FILES``,
+#: files STEC OS (``projects/folder_rules.CHAT_RULE_FILES``,
 #: ``scheduling/knobs.FOLDER_RULES_FILES``), Claude Code and Codex read as
 #: instructions — at any depth, because Claude Code and Codex read nested
 #: ones too. A FILE name only (the last part), lower case.
@@ -961,12 +961,12 @@ GUARD_REASON = "guarded"
 #: WHY the card asks, per kind — the card's own line (its ``cost_note``).
 GUARD_WHY: dict[str, str] = {
     "git": "it changes Git's own settings, which Git can run as programs",
-    "jarvis": "it changes Iron Jarvis's own safety rules for this folder",
+    "jarvis": "it changes STEC OS's own safety rules for this folder",
     "claude": "it changes Claude Code's own settings and rules",
-    "rules": "it changes the instructions Iron Jarvis and other coding agents follow in this folder",
+    "rules": "it changes the instructions STEC OS and other coding agents follow in this folder",
     "editor": "it changes your editor's settings, which can run programs",
     "ci": "it changes what runs automatically when the code is pushed",
-    "unknown": "its real name cannot be read, so it may be one of Git's or Iron Jarvis's own files",
+    "unknown": "its real name cannot be read, so it may be one of Git's or STEC OS's own files",
 }
 
 #: The tool's verb on the card, before the file.
@@ -983,7 +983,7 @@ def guarded_edit(name: Any, args: Any, workspace: Any) -> "tuple[str, str] | Non
 
     The file tools are allow-tier, so under Ask first (the default) and Ask
     before every action an agent could write ``.git/config`` (a
-    ``core.fsmonitor`` then runs on Iron Jarvis's own ``git status``),
+    ``core.fsmonitor`` then runs on STEC OS's own ``git status``),
     ``.git/hooks/*``, ``.ironjarvis/**`` (its own permission rules and
     harness layer) or ``.claude/**`` with no card. ``tools/base.
     spend_checks_for`` turns this answer into a once-only card in EVERY lane

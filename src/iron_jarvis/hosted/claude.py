@@ -69,7 +69,7 @@ schema and its ``updatedPermissions`` validator):
   for a command is a PREFIX rule (``Bash(npm test *)``, destination
   ``localSettings``), which is why 24 presses of "Allow for this session" did
   not stop 40 command cards in one live session. "Allow all commands this
-  session" (:data:`ALLOW_COMMANDS`) answers allow with Iron Jarvis's OWN rule
+  session" (:data:`ALLOW_COMMANDS`) answers allow with STEC OS's OWN rule
   (:data:`ALL_COMMANDS_RULE`): the whole ``Bash`` and ``PowerShell`` tools
   (Claude Code on Windows runs commands through either), destination
   ``session`` — never written to a settings file. Claude Code's own
@@ -117,7 +117,7 @@ HARNESS = "claude-code"
 ALLOW_COMMANDS = "allow_commands"
 #: The tools whose every call that answer allows (the session's commands).
 ALL_COMMANDS_TOOLS: tuple[str, ...] = ("Bash", "PowerShell")
-#: Iron Jarvis's OWN ``updatedPermissions`` entry for that answer (the shape
+#: STEC OS's OWN ``updatedPermissions`` entry for that answer (the shape
 #: claude 2.1.316 validates — see the module doc): the whole tools, for this
 #: session only.
 ALL_COMMANDS_RULE: dict[str, Any] = {
@@ -525,7 +525,7 @@ def system_notice(obj: dict[str, Any]) -> str:
 
 
 def control_refused_words(req: dict[str, Any]) -> str:
-    """v1.418.0 (C4.3): a control request Iron Jarvis refuses, said."""
+    """v1.418.0 (C4.3): a control request STEC OS refuses, said."""
     sub = str(req.get("subtype") or "")
     what = W.CONTROL_ASKS.get(sub) or W.CONTROL_ASK_OTHER.format(subtype=clip(sub or "?", 60))
     return W.CONTROL_REFUSED.format(what=what)
@@ -1033,7 +1033,7 @@ class ClaudeDriver(Driver):
         elif decision == "deny":
             resp = {"behavior": "deny", "message": (message or "The user said no to this.")[:2000]}
         elif decision == ALLOW_COMMANDS:
-            # v1.417.0 (C1.1): Iron Jarvis's own whole-tool rule for the
+            # v1.417.0 (C1.1): STEC OS's own whole-tool rule for the
             # session — never Claude Code's per-prefix suggestion.
             if not ask.data.get("all_commands") or self.mode in ALL_COMMANDS_NOT_IN:
                 # (review) also when the mode moved to Auto / Plan while the
@@ -1333,11 +1333,11 @@ class ClaudeDriver(Driver):
         req = obj.get("request") or {}
         rid = obj.get("request_id")
         if req.get("subtype") != "can_use_tool":
-            # hook callbacks, MCP messages … Iron Jarvis registered none: say so
+            # hook callbacks, MCP messages … STEC OS registered none: say so
             # — to Claude Code, and (v1.418.0, C4.3) on the screen, with what
             # it asked.
             self.emit(make("notice", text=control_refused_words(req)))
-            asyncio.ensure_future(self._refuse_control(rid, "Iron Jarvis does not handle this request"))
+            asyncio.ensure_future(self._refuse_control(rid, "STEC OS does not handle this request"))
             return
         name = str(req.get("tool_name") or "")
         inp = req.get("input") if isinstance(req.get("input"), dict) else {}
@@ -1350,7 +1350,7 @@ class ClaudeDriver(Driver):
         kind = tool_kind(name)
         akind = {"command": "command", "edit": "edit", "write": "edit", "web": "network"}.get(kind, "tool")
         # v1.417.0 (C1.1): a command card offers "Allow all commands this
-        # session" (Iron Jarvis's own whole-tool rule), never in Full access,
+        # session" (STEC OS's own whole-tool rule), never in Full access,
         # Auto or Plan (:data:`ALL_COMMANDS_NOT_IN`).
         all_commands = akind == "command" and name in ALL_COMMANDS_TOOLS and self.mode not in ALL_COMMANDS_NOT_IN
         detail = clip(req.get("description") or req.get("decision_reason") or "", DETAIL_CHARS)

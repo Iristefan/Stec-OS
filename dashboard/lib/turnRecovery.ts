@@ -2,7 +2,7 @@
  * What a reply's receipt says about what happened AROUND the answer
  * (v1.355.0, product-readiness G55 + G64):
  *
- *  - `refit` — the model refused the chat as too long, so Iron Jarvis left
+ *  - `refit` — the model refused the chat as too long, so STEC OS left
  *    older messages out and tried once more (`chat_turn._overflow_refit`).
  *    Only the model used to be told; the reply now says "Left out 12 older
  *    messages to fit this model", because an answer that ignored earlier
@@ -92,13 +92,13 @@ export function refitLine(refit: TurnRefit | null | undefined): string | null {
 
 /** Hover words for the refit part: why, and what it means for the answer. */
 export const REFIT_TITLE =
-  "The model said this chat was too long for it, so Iron Jarvis left the oldest messages out and asked again. The answer did not see them.";
+  "The model said this chat was too long for it, so STEC OS left the oldest messages out and asked again. The answer did not see them.";
 
 /** The same "why" for a retry that left NO message out (`dropped: 0`): only
  *  the results of this reply's own earlier steps were shortened, so the
  *  REFIT_TITLE words ("left the oldest messages out") would be untrue. */
 export const REFIT_TOOLS_TITLE =
-  "The model said this chat was too long for it, so Iron Jarvis shortened the results of this reply's earlier steps and asked again. No messages were left out.";
+  "The model said this chat was too long for it, so STEC OS shortened the results of this reply's earlier steps and asked again. No messages were left out.";
 
 /** The "why" for a refit (hover and the expanded receipt), or null when
  *  there was none — the words for what actually happened. */
@@ -172,7 +172,7 @@ export function cutOffLine(raw: unknown): string | null {
 /** Hover words (and the expanded receipt's) for a reply that was cut off and
  *  went on. */
 export const CUT_OFF_TITLE =
-  "The model ran out of room for one reply (its output limit) before a tool call was complete. Iron Jarvis ran nothing from that reply and asked it to carry on, writing large files in parts.";
+  "The model ran out of room for one reply (its output limit) before a tool call was complete. STEC OS ran nothing from that reply and asked it to carry on, writing large files in parts.";
 
 /** The same for a turn that ENDED on a cut: nothing from it was run. */
 export const CUT_OFF_END_TITLE =

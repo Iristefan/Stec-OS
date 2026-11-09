@@ -501,7 +501,7 @@ async def _cut_then_carry_on(platform, ws, wire, *, forget: bool, carry_moves: l
         {"role": "user", "content": CONTINUE_TEXT, "turnId": t2, "continuation": True},
     ])
     if forget:
-        FC.forget_kept()  # what a restart of Iron Jarvis does to the kept snapshot
+        FC.forget_kept()  # what a restart of STEC OS does to the kept snapshot
     model = wire(carry_moves)
     body = _body(ws, thread_id=row.id, turn_id=t2)
     body.messages = [ChatMessageBody(role="user", content="set X to 2 in app.py"),

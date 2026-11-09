@@ -342,7 +342,7 @@ def test_daemon_token_prefers_env_then_the_packaged_token_file(tmp_path, monkeyp
     monkeypatch.delenv("IRONJARVIS_TOKEN", raising=False)
     assert daemon_token() == ""
 
-    dest = tmp_path / "Iron Jarvis"
+    dest = tmp_path / "STEC OS"
     dest.mkdir()
     (dest / "token.txt").write_text("filetoken\n", encoding="utf-8")
     assert daemon_token() == "filetoken"
@@ -361,7 +361,7 @@ def test_discovered_token_is_scoped_to_loopback_targets(tmp_path, monkeypatch):
     """
     monkeypatch.setenv("APPDATA", str(tmp_path))
     monkeypatch.delenv("IRONJARVIS_TOKEN", raising=False)
-    dest = tmp_path / "Iron Jarvis"
+    dest = tmp_path / "STEC OS"
     dest.mkdir()
     (dest / "token.txt").write_text("installtoken\n", encoding="utf-8")
     assert daemon_token() == "installtoken"  # discovery itself still works

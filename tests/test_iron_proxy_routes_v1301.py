@@ -290,7 +290,7 @@ def test_a_refused_control_token_is_409_never_a_401(app_client, fake):
     r = c.post("/iron-proxy/accounts", json={"provider": "anthropic", "title": "A"})
     assert r.status_code == 409
     assert r.json()["detail"] == (
-        "Iron-Proxy refused Iron Jarvis's access token; turn Iron-Proxy off and on again."
+        "Iron-Proxy refused STEC OS's access token; turn Iron-Proxy off and on again."
     )
 
 
@@ -529,7 +529,7 @@ def test_the_real_bundle_starts_answers_and_stops(proj, tmp_path, monkeypatch):
     # v1.397.1: the same for each health check. Every route asks
     # /iron/health with a 2 s wait (HEALTH_TIMEOUT_S, bound as `_health`'s
     # default), and on v1.397.0's loaded Tests runner one answer came later:
-    # Iron Jarvis read the bundle as not running and the view listed no
+    # STEC OS read the bundle as not running and the view listed no
     # accounts (line "== [acct['id']]" got []). On this PC 2 s is ample.
     from iron_jarvis.iron_proxy import service as _svc_mod
 
@@ -622,7 +622,7 @@ def test_a_usable_iron_proxy_account_makes_the_cli_provider_available(
 
 
 def test_the_watch_cycle_refreshes_the_snapshot(signed_out_cli, proj, fake):
-    """An account added OUTSIDE Iron Jarvis (tray app) counts after the next
+    """An account added OUTSIDE STEC OS (tray app) counts after the next
     watch cycle (MUTATION: ensure_running skips refresh_accounts)."""
     (proj / ".ironjarvis").mkdir(parents=True)
     (proj / ".ironjarvis" / "config.toml").write_text("iron_proxy_enabled = true\n")

@@ -409,7 +409,7 @@ describe("G48: Accounts & keys hides the dead-end REST hookups and says Add a to
     expect(await screen.findByTestId("more-ways-to-connect")).toBeInTheDocument();
     cleanup();
 
-    // Iron Jarvis not answering: every read fails with status 0.
+    // STEC OS not answering: every read fails with status 0.
     seed(customRow());
     hooks.errors["/connections"] = { status: 0, message: "offline" };
     hooks.errors["/integrations"] = { status: 0, message: "offline" };

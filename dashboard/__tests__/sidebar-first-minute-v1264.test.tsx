@@ -4,10 +4,10 @@
  * The add-on's Open Jarvis button opens the dashboard in the browser, where
  * there is no token. The user saw "Daemon rejected your token … re-enter it"
  * (re-enter WHAT, from WHERE?) and the Browser card announcing "This daemon
- * does not have the Browser surface yet — restart Iron Jarvis" over what was
+ * does not have the Browser surface yet — restart STEC OS" over what was
  * really its own 401. Both now say the true thing and name the way out:
- *   - the token banner, outside the desktop shell, offers "Open in the Iron
- *     Jarvis app" (an ironjarvis:// link to THIS page) and names token.txt;
+ *   - the token banner, outside the desktop shell, offers "Open in the STEC
+ *     OS app" (an ironjarvis:// link to THIS page) and names token.txt;
  *     inside the shell it keeps its old sentence and no link;
  *   - the Browser card tells a 401/403 (this page is not signed in) from a
  *     404 (an older daemon), and only the latter says "restart".
@@ -98,7 +98,7 @@ describe("the token banner names the way out of a tokenless browser tab (v1.264.
     render(<DaemonBanner />);
     const link = screen.getByTestId("open-in-app") as HTMLAnchorElement;
     expect(link.getAttribute("href")).toBe("ironjarvis://computeruse");
-    expect(link.textContent).toContain("Open in the Iron Jarvis app");
+    expect(link.textContent).toContain("Open in the STEC OS app");
     expect(screen.getByRole("alert").textContent).toContain("token.txt");
     expect(screen.getByRole("alert").textContent).toContain("opened in a browser");
   });
@@ -128,9 +128,9 @@ describe("the Browser card tells 'not signed in' from 'no Browser surface'", () 
     render(<YourBrowserCard />);
     const note = await screen.findByTestId("browser-not-signed-in");
     expect(note.textContent).toContain("not signed in");
-    expect(note.textContent).toContain("Iron Jarvis app");
+    expect(note.textContent).toContain("STEC OS app");
     expect(screen.queryByText(/does not have the Browser surface yet/)).toBeNull();
-    expect(document.body.textContent).not.toMatch(/restart Iron Jarvis/);
+    expect(document.body.textContent).not.toMatch(/restart STEC OS/);
   });
 
   it("a 404 is still an older daemon, and still says restart", async () => {

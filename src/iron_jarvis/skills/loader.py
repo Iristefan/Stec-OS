@@ -160,7 +160,7 @@ class Skill:
     templates: list[str] = field(default_factory=list)
     #: Where this skill came from — "builtin", "user", "claude", "codex", or
     #: "custom" (a user-added search path). Surfaced in the dashboard so it's
-    #: clear which skills are Iron Jarvis's own vs pulled in from Claude/Codex.
+    #: clear which skills are STEC OS's own vs pulled in from Claude/Codex.
     source: str = "user"
     #: Provenance (v1.297.0): who wrote the file — "user" (the default, and
     #: what any SKILL.md without the key reads as), "agent" (``skill_create``
@@ -191,7 +191,7 @@ class Skill:
     argument_names: tuple[str, ...] = ()
     #: ``argument-hint`` — the "/" menu's hint.
     argument_hint: str = ""
-    #: ``allowed-tools`` as written. READ, NEVER OBEYED: Iron Jarvis's own
+    #: ``allowed-tools`` as written. READ, NEVER OBEYED: STEC OS's own
     #: approval rules decide every call (a skill never grants a tool).
     allowed_tools: tuple[str, ...] = ()
 

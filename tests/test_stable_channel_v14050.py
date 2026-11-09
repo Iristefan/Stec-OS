@@ -1011,7 +1011,7 @@ def test_scenario_b_a_stable_check_handed_the_fresh_download_does_not_offer_it(t
     assert got["afterX"]["shown"] == []
     # What Stable offered is offered and installs on Quit.
     assert got["pending"] == {"version": "1.405.0"} and got["autoInstall"] is True
-    assert got["shown"] == ["Iron Jarvis v1.405.0 is ready"]
+    assert got["shown"] == ["STEC OS v1.405.0 is ready"]
 
 
 @requires_node
@@ -1034,7 +1034,7 @@ def test_the_install_paths_drop_an_off_channel_download_without_a_check(tmp_path
 def test_on_fresh_a_download_is_offered_as_before_and_stable_stays_stable(tmp_path):
     got = _seq(tmp_path, "fresh")
     assert got["pending"] == {"version": "1.405.2"} and got["autoInstall"] is True
-    assert got["shown"] == ["Iron Jarvis v1.405.2 is ready"] and got["cancelled"] == 0
+    assert got["shown"] == ["STEC OS v1.405.2 is ready"] and got["cancelled"] == 0
     sticky = _seq(tmp_path, "sticky")
     assert sticky["pending"] == {"version": "1.405.2"} and sticky["autoInstall"] is True
 

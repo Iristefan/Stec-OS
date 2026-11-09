@@ -198,7 +198,7 @@ describe("SavedWorkflows", () => {
     render(<SavedWorkflows />);
     // v1.354.0 (G59, updated on purpose): the user's words, not "the daemon".
     expect(
-      await screen.findByText("Saved workflows couldn't load. Iron Jarvis isn't responding."),
+      await screen.findByText("Saved workflows couldn't load. STEC OS isn't responding."),
     ).toBeInTheDocument();
     expect(screen.queryByText(/Nothing saved yet/)).not.toBeInTheDocument();
   });

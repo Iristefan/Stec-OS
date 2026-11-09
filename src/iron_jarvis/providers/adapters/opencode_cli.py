@@ -14,8 +14,8 @@ OPENCODE'S OWN TOOLS ARE OFF (v1.424.0, audit D5). ``opencode run`` keeps
 every tool of OpenCode's on, and OpenCode's own default runs every one of them
 without asking (``"*": "allow"``; an ``ask`` in ``opencode run`` is auto-
 rejected, an ``allow`` just runs). As the model behind a CHAT turn or an agent
-run that meant OpenCode could edit files and run commands Iron Jarvis never
-saw: no card, no ledger row, no Undo. Here Iron Jarvis carries out every tool
+run that meant OpenCode could edit files and run commands STEC OS never
+saw: no card, no ledger row, no Undo. Here STEC OS carries out every tool
 itself (the router's prompted-tools wrap) or the turn is text-only, so the
 call runs with EVERY OpenCode tool denied — and a tool OpenCode denies with
 the pattern ``*`` is REMOVED from what the model is offered (measured, below).
@@ -37,8 +37,8 @@ the agent — no model call). Recorded in
   are only ever read).
 * An AGENT's own ``permission`` in the user's config is placed AFTER the
   config's (and the environment's) rules: ``agent.build.permission.bash =
-  "allow"`` beat every deny above. So the call runs as an agent of Iron
-  Jarvis's OWN, defined for that process only in ``OPENCODE_CONFIG_CONTENT``
+  "allow"`` beat every deny above. So the call runs as an agent of STEC
+  OS's OWN, defined for that process only in ``OPENCODE_CONFIG_CONTENT``
   (merged into an inline config of the user's, never replacing it) and named
   with ``--agent``: its own all-``deny`` permission is the LAST rule for every
   tool. The name is FRESH per call (``iron-jarvis-text-<hex>``): a user agent
@@ -50,7 +50,7 @@ the agent — no model call). Recorded in
   stand-in model server (``tests/test_opencode_text_only_review_v14240.py``)
   — a user's ``agent.build.permission.bash = "allow"`` then RAN a bash call
   before any after-the-run check could see it. So the inline config also
-  names Iron Jarvis's agent as ``default_agent``: OpenCode's own default-agent
+  names STEC OS's agent as ``default_agent``: OpenCode's own default-agent
   lookup THROWS when that agent is missing or a subagent (read from the
   1.18.18 program, and measured), so a fallback ends in an error before any
   model request — the user's own agent never runs. The warning, and any
@@ -99,7 +99,7 @@ _EXTRA_TOOLS: tuple[str, ...] = (
     "write", "patch", "apply_patch", "multiedit", "question", "plan_enter", "plan_exit",
 )
 
-#: The agent each call runs as: Iron Jarvis's own, defined only in that
+#: The agent each call runs as: STEC OS's own, defined only in that
 #: process's ``OPENCODE_CONFIG_CONTENT`` (``iron-jarvis-text-<8 hex>``).
 AGENT_PREFIX = "iron-jarvis-text-"
 
@@ -111,12 +111,12 @@ def _agent_name() -> str:
 
 
 class TextOnlyRefused(RuntimeError):
-    """Iron Jarvis could not make sure OpenCode's own tools are off for this
+    """STEC OS could not make sure OpenCode's own tools are off for this
     call, so OpenCode was not started (fail closed)."""
 
 
 def builtin_tools() -> tuple[str, ...]:
-    """Every OpenCode tool Iron Jarvis knows by name (the Code view's lists +
+    """Every OpenCode tool STEC OS knows by name (the Code view's lists +
     :data:`_EXTRA_TOOLS`), each once, in a stable order."""
     from ...hosted.opencode import ACTING_TOOLS, READ_ONLY_TOOLS
 
@@ -191,7 +191,7 @@ def text_only_setup(environ: dict[str, str], folder: str) -> tuple[dict[str, str
 
     Raises :class:`TextOnlyRefused` when the user's own
     ``OPENCODE_CONFIG_CONTENT`` is not a JSON object with an ``agent`` object
-    (Iron Jarvis would have to drop it to add its agent): nothing starts."""
+    (STEC OS would have to drop it to add its agent): nothing starts."""
     from ...hosted.opencode import user_rules
 
     env = dict(environ)
@@ -208,13 +208,13 @@ def text_only_setup(environ: dict[str, str], folder: str) -> tuple[dict[str, str
     if not isinstance(content, dict) or not isinstance(agents, dict):
         raise TextOnlyRefused(
             "opencode-cli: your OPENCODE_CONFIG_CONTENT setting is not a config "
-            "Iron Jarvis can add to, so it cannot make sure OpenCode's own tools "
+            "STEC OS can add to, so it cannot make sure OpenCode's own tools "
             "stay off — OpenCode was not started. Fix or remove that setting."
         )
     agents = dict(agents)
     agents[name] = {
         "mode": "primary",
-        "description": "Iron Jarvis: answer in text; Iron Jarvis runs every tool itself.",
+        "description": "STEC OS: answer in text; STEC OS runs every tool itself.",
         "permission": dict(deny),
     }
     content = dict(content)
@@ -234,7 +234,7 @@ def text_only_setup(environ: dict[str, str], folder: str) -> tuple[dict[str, str
 
 
 def fell_back(out: str, err: str, agent: str) -> bool:
-    """Did ``opencode run`` refuse Iron Jarvis's agent and fall back to the
+    """Did ``opencode run`` refuse STEC OS's agent and fall back to the
     user's default one (its own tools on)? Its own warning: ``agent "<name>"
     not found. Falling back to default agent`` (or "is a subagent")."""
     needle = f'agent "{agent}"'
@@ -244,7 +244,7 @@ def fell_back(out: str, err: str, agent: str) -> bool:
 #: v1.424.0 review: how OpenCode 1.18.18 words a tool call it REFUSED before
 #: running anything (the start of a ``tool_use`` event's ``state.error`` when
 #: its ``status`` is ``"error"``). The first is the AI SDK's answer to a call
-#: of a tool the model was not offered — MEASURED with Iron Jarvis's agent (no
+#: of a tool the model was not offered — MEASURED with STEC OS's agent (no
 #: tool offered) and a stand-in model that called ``bash`` anyway; the other
 #: two are OpenCode's permission refusals (a deny rule; an ``ask`` that
 #: ``opencode run`` rejects), read from the program. Each is raised before
@@ -457,7 +457,7 @@ class OpencodeCliAdapter(LLMAdapter):
         # 2026-07-20; `opencode run` with no positional message reads its prompt
         # from piped stdin.
         # v1.424.0 (D5): OpenCode's own tools OFF — its permission rules and an
-        # agent of Iron Jarvis's own, built from the user's config (read-only,
+        # agent of STEC OS's own, built from the user's config (read-only,
         # off the loop) for the folder the CLI runs in (it inherits ours).
         env, agent = await asyncio.to_thread(text_only_setup, dict(os.environ), os.getcwd())
         argv = [exe, "run", "--format", "json", "--agent", agent, "-m", model]
@@ -483,7 +483,7 @@ class OpencodeCliAdapter(LLMAdapter):
         # that whatever else went wrong. Its answer is never passed on.
         if fell_back(out, err, agent):
             raise RuntimeError(
-                "opencode-cli: OpenCode did not take the tool-free setup Iron Jarvis "
+                "opencode-cli: OpenCode did not take the tool-free setup STEC OS "
                 "gives it and ran your default agent instead, so its answer was not "
                 "used (OpenCode's own tools may have run)."
             )
@@ -492,7 +492,7 @@ class OpencodeCliAdapter(LLMAdapter):
             raise RuntimeError(
                 "opencode-cli: OpenCode ran its own tools ("
                 + ", ".join(ran[:8])
-                + ") outside Iron Jarvis, so its answer was not used."
+                + ") outside STEC OS, so its answer was not used."
             )
         if code != 0:
             detail = (err or out).strip()[:400]

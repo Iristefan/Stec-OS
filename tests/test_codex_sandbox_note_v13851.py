@@ -3,9 +3,9 @@
 The v1.385.0 benchmark (Jarvis on Codex, gpt-6-astra, medium) failed 26 of
 65 scored runs, and every one of the 26 ended the same way: "The working
 folder is read-only in this session, so I couldn't apply the fix", with a
-patch pasted for the user. Iron Jarvis starts every Codex thread READ-ONLY on
+patch pasted for the user. STEC OS starts every Codex thread READ-ONLY on
 purpose: that posture is what keeps Codex's OWN built-in tools from acting,
-and Iron Jarvis carries out the model's function tools itself. But Codex
+and STEC OS carries out the model's function tools itself. But Codex
 shows the model its sandbox, and the model read "read-only" as "I cannot
 change files".
 

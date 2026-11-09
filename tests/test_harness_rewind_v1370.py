@@ -182,7 +182,7 @@ async def test_rewinding_to_a_later_turn_keeps_the_earlier_one(app, work):
     assert [(m.role, m.content) for m in seen[0].messages] == [
         ("user", "make hello and bump x"),
         ("assistant", "Turn one done.\n\nChecked: nothing needed changing."
-         "\n\n[What I did in that reply (recorded by Iron Jarvis, not shown to the user):"
+         "\n\n[What I did in that reply (recorded by STEC OS, not shown to the user):"
          " created hello.py; edited app.py.]"),
         ("user", "carry on"),
     ]

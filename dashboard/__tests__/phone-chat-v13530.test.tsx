@@ -1,11 +1,11 @@
 /**
- * v1.353.0, lane 3E — chatting with Iron Jarvis from your phone is easy to
+ * v1.353.0, lane 3E — chatting with STEC OS from your phone is easy to
  * find, set up on one screen, and Help tells the truth about the phone.
  *
  * G56 (Notifications): Ctrl K described Notifications as "where alerts go";
  * turning on two-way Telegram chat needed the Advanced fold AND typing your
  * own Telegram user id — which the page itself said is usually the chat ID it
- * had just detected. Now "phone" in Ctrl K finds "chat with Iron Jarvis from
+ * had just detected. Now "phone" in Ctrl K finds "chat with STEC OS from
  * your phone", and the Telegram form shows the chat switch and the allowed
  * senders beside the token and chat ID; ticking chat turns listening on and
  * fills the allowed senders from a detected PRIVATE chat (lib/phoneChat).
@@ -83,7 +83,7 @@ const TELEGRAM_TYPE = {
     { key: "token", label: "Bot token", secret: true, help: "From @BotFather." },
     { key: "chat_id", label: "Chat ID", secret: false },
     { key: "inbound_enabled", label: "Enable two-way (true/false)", secret: false },
-    { key: "chat_enabled", label: "Chat with Iron Jarvis (true/false)", secret: false },
+    { key: "chat_enabled", label: "Chat with STEC OS (true/false)", secret: false },
     { key: "allowed_senders", label: "Allowlist (Telegram user IDs)", secret: false },
   ],
 };
@@ -171,10 +171,10 @@ describe("lib/phoneChat: who may talk once chat is ticked", () => {
 
 /* ------------------------------------------------------------- Ctrl K */
 
-describe("Ctrl K: 'phone' finds chatting with Iron Jarvis from your phone", () => {
+describe("Ctrl K: 'phone' finds chatting with STEC OS from your phone", () => {
   it("the Notifications entry carries the phone words", () => {
     const entry = NAV_ENTRIES.find((e) => e.href === "/channels")!;
-    expect(entry.blurb).toMatch(/chat with Iron Jarvis from your phone/);
+    expect(entry.blurb).toMatch(/chat with STEC OS from your phone/);
     expect(entry.aliases).toEqual(expect.arrayContaining(["phone", "chat from my phone", "two-way"]));
     // The old alerts-only words are kept as aliases, never lost.
     expect(entry.aliases).toEqual(expect.arrayContaining(["alerts to phone", "channels", "telegram"]));
@@ -195,7 +195,7 @@ describe("Ctrl K: 'phone' finds chatting with Iron Jarvis from your phone", () =
       expect(r, "no Notifications row for 'phone'").toBeTruthy();
       return r!;
     });
-    expect(row.textContent).toMatch(/chat with Iron Jarvis from your phone/);
+    expect(row.textContent).toMatch(/chat with STEC OS from your phone/);
   });
 });
 
@@ -211,7 +211,7 @@ async function startTelegram() {
 }
 
 const chatSwitch = () =>
-  screen.getByRole("checkbox", { name: "Chat with Iron Jarvis from this destination" }) as HTMLInputElement;
+  screen.getByRole("checkbox", { name: "Chat with STEC OS from this destination" }) as HTMLInputElement;
 const senders = () => screen.getByLabelText("Allowed senders") as HTMLInputElement;
 const chatId = () => screen.getByLabelText("Chat ID") as HTMLInputElement;
 const advancedFold = () => screen.getByRole("button", { name: /^Advanced/ });
@@ -298,8 +298,8 @@ describe("Notifications: Telegram chat on one screen, no Advanced, no typed id",
   // Review (v1.353.0): the list the FORM filled must follow a corrected chat
   // ID. Picking the wrong private chat (a friend who also messaged the bot)
   // and then detecting again used to correct the chat ID but leave the
-  // friend's id as the only allowed sender: the friend could talk to Iron
-  // Jarvis and the user could not.
+  // friend's id as the only allowed sender: the friend could talk to STEC
+  // OS and the user could not.
   it("a corrected chat ID moves the id the form filled, after a wrong pick", async () => {
     api.postResults["/comm/telegram/detect-chat"] = {
       chats: [
@@ -392,7 +392,7 @@ describe("Help: from a phone, messaging first; the dashboard recipe says what it
   it("the phone card leads with messaging and answers asks there", async () => {
     render(<HelpPage />);
     const lead = await screen.findByTestId("help-phone-lead");
-    expect(lead.textContent).toMatch(/to use Iron Jarvis from your phone is to message it/);
+    expect(lead.textContent).toMatch(/to use STEC OS from your phone is to message it/);
     const chat = screen.getByTestId("help-phone-chat");
     const dash = screen.getByTestId("help-phone-dashboard");
     // Messaging comes BEFORE the dashboard recipe.

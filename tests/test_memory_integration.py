@@ -31,7 +31,7 @@ def _tiny_pdf_b64() -> str:
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Helvetica", size=14)
-    pdf.cell(0, 10, "Iron Jarvis Ingestion Report")
+    pdf.cell(0, 10, "STEC OS Ingestion Report")
     pdf.ln(12)
     pdf.set_font("Helvetica", size=11)
     pdf.multi_cell(0, 8, "The arc reactor telemetry token is zxqmarker42 unique.")

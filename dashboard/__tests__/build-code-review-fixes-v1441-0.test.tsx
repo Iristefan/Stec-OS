@@ -40,7 +40,7 @@ vi.mock("@/lib/api", () => {
     ApiError: FakeApiError,
     get: (path: string) => {
       H.getLog.push(path);
-      if (H.failGets.has(path)) return Promise.reject(new FakeApiError("Iron Jarvis isn't responding", 0));
+      if (H.failGets.has(path)) return Promise.reject(new FakeApiError("STEC OS isn't responding", 0));
       const r = H.gets[path];
       if (r === undefined) return Promise.reject(new FakeApiError(`unmocked GET ${path}`, 404));
       return Promise.resolve(r);
@@ -352,7 +352,7 @@ describe("D4: Copy reply copies the whole reply, once per reply", () => {
     ]);
   });
 
-  it("a message Iron Jarvis sent to carry the reply on is not a new reply", () => {
+  it("a message STEC OS sent to carry the reply on is not a new reply", () => {
     const carried: ConvItem[] = [
       { kind: "user", key: "u1", text: "go", files: [] },
       { kind: "text", key: "t1", text: "part one", done: true },

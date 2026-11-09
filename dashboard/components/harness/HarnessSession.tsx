@@ -794,7 +794,7 @@ export function HarnessSession({
   const [folderSkills, setFolderSkills] = useState<SkillOption[] | null>(null);
   const [folderSkillNote, setFolderSkillNote] = useState("");
   // v1.379.0: Claude Code's own custom commands for this session (GET
-  // /build/sessions/{id}/commands — an older Iron Jarvis has none: []).
+  // /build/sessions/{id}/commands — an older STEC OS has none: []).
   const [customCommands, setCustomCommands] = useState<CustomCommand[] | null>(null);
   const [commandsNote, setCommandsNote] = useState("");
   // v1.379.0: "/usage" — what the session used, said in the conversation.
@@ -871,7 +871,7 @@ export function HarnessSession({
   const [liveSummarized, setLiveSummarized] = useState<Summarized | null>(null);
   const [capOpen, setCapOpen] = useState(false);
   const [capBusy, setCapBusy] = useState(false);
-  // Accounts (Phase 5): undefined = not read yet, null = this Iron Jarvis has
+  // Accounts (Phase 5): undefined = not read yet, null = this STEC OS has
   // none (the chip is hidden).
   const [accounts, setAccounts] = useState<AccountsView | null | undefined>(undefined);
   const [accountsOpen, setAccountsOpen] = useState(false);
@@ -965,7 +965,7 @@ export function HarnessSession({
 
   // ------------------------------------------------------------- reading
   /** Take a session view the daemon answered with: the view, and (from an
-   *  Iron Jarvis that keeps them) its limit card and armed wait. */
+   *  STEC OS that keeps them) its limit card and armed wait. */
   const adopt = useCallback((v: BuildSessionView) => {
     setView(v);
     setLoadError(null);
@@ -1905,7 +1905,7 @@ export function HarnessSession({
         setUsageNote(sessionUsageWords(u));
       } catch (e) {
         setUsageNote(
-          isMissing(e) ? "This version of Iron Jarvis cannot say what a session used." : e instanceof Error ? e.message : String(e),
+          isMissing(e) ? "This version of STEC OS cannot say what a session used." : e instanceof Error ? e.message : String(e),
         );
       }
     } else if (id === "init") {
@@ -2123,7 +2123,7 @@ export function HarnessSession({
     } catch (e) {
       setBranchError(
         isMissing(e) && !(e instanceof ApiError && /message/i.test(e.message))
-          ? "This version of Iron Jarvis cannot branch a session yet."
+          ? "This version of STEC OS cannot branch a session yet."
           : e instanceof Error
             ? e.message
             : String(e),
@@ -2194,7 +2194,7 @@ export function HarnessSession({
   );
   // The list is the daemon's cached snapshot: read it again while it is open
   // — the header chip's list, and (v1.376.0) the model menu, which lists the
-  // same accounts with their states. An Iron Jarvis with no list (a 404:
+  // same accounts with their states. A STEC OS with no list (a 404:
   // `accounts` null) is not asked again.
   useVisibleInterval(() => void refreshAccounts(), ACCOUNTS_POLL_MS, accountsOpen || (modelMenuOpen && accounts !== null));
   // v1.393.0: while a reply works, its usage moves (the chip, the Timeline).
@@ -2290,7 +2290,7 @@ export function HarnessSession({
     } catch (e) {
       setLimitError(
         isMissing(e)
-          ? "This version of Iron Jarvis cannot wait for a reset yet. Choose another account, or send again after the reset."
+          ? "This version of STEC OS cannot wait for a reset yet. Choose another account, or send again after the reset."
           : e instanceof Error
             ? e.message
             : String(e),
@@ -2341,7 +2341,7 @@ export function HarnessSession({
     } catch (e) {
       setLimitError(
         isMissing(e)
-          ? "This version of Iron Jarvis cannot move a session to another account yet."
+          ? "This version of STEC OS cannot move a session to another account yet."
           : e instanceof Error
             ? e.message
             : String(e),
@@ -2462,7 +2462,7 @@ export function HarnessSession({
   const leading = view && !offline ? leadingSlash(input) : null;
   const wantsLists = slashOpen || !!leading;
   // The skill lists and Claude Code's own commands, asked the first time "/"
-  // opens in this session (an older Iron Jarvis has no folder list and no
+  // opens in this session (an older STEC OS has no folder list and no
   // commands list: none, quietly).
   useEffect(() => {
     if (wantsLists) void ensureSlashLists();
@@ -3218,7 +3218,7 @@ export function HarnessSession({
                     confirmLabel="Delete for good"
                     title={
                       view.git && !view.git.removed
-                        ? `Delete this session and its conversation. Its own copy of the folder goes to Iron Jarvis's trash; the branch ${view.git.branch} stays.`
+                        ? `Delete this session and its conversation. Its own copy of the folder goes to STEC OS's trash; the branch ${view.git.branch} stays.`
                         : view.noFolder && view.folder
                           ? "Delete this session and its conversation. Its own folder goes only if it is empty; files in it stay."
                           : "Delete this session and its conversation"
@@ -3429,7 +3429,7 @@ export function HarnessSession({
                       triesLimited
                     />
                   ) : accounts === null ? (
-                    <p className="text-[12px] text-zinc-400">This version of Iron Jarvis has no account list.</p>
+                    <p className="text-[12px] text-zinc-400">This version of STEC OS has no account list.</p>
                   ) : (
                     <p className="flex items-center gap-1.5 text-[12px] text-zinc-500">
                       <Loader2 size={12} className="animate-spin" /> Reading the accounts…
@@ -3741,7 +3741,7 @@ export function HarnessSession({
               />
               {/* v1.403.0: the session's TEAM — its own model leads (plans and
                   checks, never edits files), workers do the code, a reviewer
-                  checks every change. Hidden by an Iron Jarvis without teams. */}
+                  checks every change. Hidden by a STEC OS without teams. */}
               <TeamControl
                 threadId={threadId}
                 // The folder a NEW session is made in: a session on its own

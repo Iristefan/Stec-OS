@@ -286,7 +286,7 @@ describe("the reasoning chip shows on the default model when it offers levels", 
     // v1.401.2 (moved on purpose): the levels only, no "Default" row.
     expect(Array.from(select.options).filter((o) => !o.hidden).map((o) => o.value)).toEqual(["low", "medium", "high"]);
     fireEvent.change(select, { target: { value: "high" } });
-    const box = await screen.findByPlaceholderText(/Message Iron Jarvis/);
+    const box = await screen.findByPlaceholderText(/Message STEC OS/);
     fireEvent.change(box, { target: { value: "think hard" } });
     fireEvent.click(screen.getByRole("button", { name: "Send" }));
     await waitFor(() => expect(H.bodies.length).toBeGreaterThan(0));

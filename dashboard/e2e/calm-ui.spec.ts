@@ -41,7 +41,7 @@ async function expectLanded(page: Page, s: Surface) {
 async function openPalette(page: Page) {
   const box = paletteBox(page);
   for (let i = 0; i < 15; i++) {
-    await page.getByRole("button", { name: /Search Iron Jarvis/ }).click();
+    await page.getByRole("button", { name: /Search STEC OS/ }).click();
     if (await box.isVisible().catch(() => false)) return box;
     await page.waitForTimeout(1000);
     if (await box.isVisible().catch(() => false)) return box;

@@ -103,15 +103,15 @@ MCP_TOKEN_ENV = "IRONJARVIS_MCP_TOKEN"
 #: Plan section 12.2: what an unknown pane token means after a restart (worded
 #: "terminal token" / "Build terminal" since v1.360.0, the canon's words).
 PANE_TOKEN_EXPIRED_MESSAGE = (
-    "the terminal token expired when Iron Jarvis restarted; start the coding tool "
+    "the terminal token expired when STEC OS restarted; start the coding tool "
     "again in the Build terminal"
 )
 MISSING_TOKEN_MESSAGE = (
-    "no terminal token: /mcp needs the token Iron Jarvis put in IRONJARVIS_MCP_TOKEN "
+    "no terminal token: /mcp needs the token STEC OS put in IRONJARVIS_MCP_TOKEN "
     "when the Build terminal started this coding tool"
 )
 INSTALL_BEARER_MESSAGE = (
-    "the Iron Jarvis install token is not accepted at /mcp; use the terminal token "
+    "the STEC OS install token is not accepted at /mcp; use the terminal token "
     "from IRONJARVIS_MCP_TOKEN"
 )
 PAIRING_TOKEN_MESSAGE = (
@@ -309,7 +309,7 @@ class PaneTokenStore:
         return token
 
     def restore(self, pane_id: str, digest: str, capabilities: Mapping[str, Any] | None = None) -> bool:
-        """v1.422.0: take back a token minted BEFORE an Iron Jarvis restart —
+        """v1.422.0: take back a token minted BEFORE a STEC OS restart —
         by its DIGEST (the plaintext was never kept): a Build › Code tool kept
         running across the restart (the code host) still holds it in its
         environment. Replaces any token the pane holds now. False for an

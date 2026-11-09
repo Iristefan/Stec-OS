@@ -109,7 +109,7 @@ def _kept_words(written: list[str]) -> str:
 
 #: The one sentence a removal says when no Undo could be prepared.
 NO_UNDO_PLAN = (
-    "Iron Jarvis couldn't keep a copy to undo this, so nothing was removed. "
+    "STEC OS couldn't keep a copy to undo this, so nothing was removed. "
     "Try again, or remove it on its page."
 )
 
@@ -186,7 +186,7 @@ def _no_such_app(platform: Any, ref: str) -> str:
     if len(alike) > 1:
         return f"Several added apps are spelled like {ref!r} ({', '.join(alike)}): name one exactly."
     have = f" The apps added are: {', '.join(names)}." if names else " No apps are added yet."
-    return f"There is no app called {ref!r} added in Iron Jarvis.{have}"
+    return f"There is no app called {ref!r} added in STEC OS.{have}"
 
 
 def _not_switchable(conn: Any) -> str:
@@ -490,7 +490,7 @@ ALERT_WORDS: dict[str, str] = {
     "goal.tripped": "A goal hit its safety breaker",
     "goal.iteration_refused": "A goal run was held back (budget or state)",
     "build.night_summary": "The night shift's summary (one message a night)",
-    "build.ci_done": "Your pull request's checks: fixed, or Iron Jarvis gave up",
+    "build.ci_done": "Your pull request's checks: fixed, or STEC OS gave up",
 }
 #: The alerts that are only ever bad news — what "only send me failures"
 #: can choose. A finished task or workflow is sent whether it worked or not.
@@ -706,7 +706,7 @@ class AppSwitchTool(R._RecordTool):
 
             copy_of = unlocked_copy(before or {})
             if copy_of:
-                # v1.428.0: Iron Jarvis never starts a copy of a locked app.
+                # v1.428.0: STEC OS never starts a copy of a locked app.
                 return ToolResult(ok=False, error=locked_elsewhere_words(copy_of))
         from ..mcp.pack_door import PackDoorError, set_pack_enabled
 
@@ -777,7 +777,7 @@ class AppDisconnectTool(_RemovalTool):
         except Exception:  # noqa: BLE001 — names only
             return ToolResult(
                 ok=False,
-                error=f"Iron Jarvis couldn't keep a copy of {name}'s keys for an Undo, so nothing was removed.",
+                error=f"STEC OS couldn't keep a copy of {name}'s keys for an Undo, so nothing was removed.",
             )
         try:
             from ..connectors.service import _disconnect_mcp_server
@@ -807,7 +807,7 @@ def _find_server(platform: Any, name: str, source: str) -> tuple[Any, Any, str]:
     if source:
         item = read_source(platform, source)
         if item is None:
-            return None, None, f"There is no app called {source!r} that Iron Jarvis reads. It reads: {places}."
+            return None, None, f"There is no app called {source!r} that STEC OS reads. It reads: {places}."
         if not item.readable:
             return None, None, item.note or f"{item.label}'s settings were not found on this PC."
         scans = [item]
@@ -843,7 +843,7 @@ def list_other_apps(platform: Any) -> str:
         if names:
             lines.append(f"{item.label} ({item.source}): {', '.join(names)}")
     if not lines:
-        return "No other app on this PC lists a server Iron Jarvis can bring over."
+        return "No other app on this PC lists a server STEC OS can bring over."
     return (
         "Servers the user's other apps have (call app_import with `name`, and `source` when "
         "two apps list the same name):\n" + "\n".join(lines)
@@ -1054,7 +1054,7 @@ class ChannelRemoveTool(_RemovalTool):
             await asyncio.to_thread(_drop, secrets, written)
             return ToolResult(
                 ok=False,
-                error=f"Iron Jarvis couldn't keep a copy of the destination {name!r}'s keys for an Undo, so nothing was removed.",
+                error=f"STEC OS couldn't keep a copy of the destination {name!r}'s keys for an Undo, so nothing was removed.",
             )
         await asyncio.to_thread(remove_destination, self.platform, name)
         kind = str(cfg.get("type") or "destination")
@@ -1181,7 +1181,7 @@ _THING = (
 #: another noun ("delete the GitHub issue", "remove the slack from the rope").
 _AFTER = (
     r"(?=\s*(?:$|[.,!?;:)]|\b(?:and|then|please|too|now|again|for\s+now|for\s+a\s+(?:bit|while)"
-    r"|until|so|from\s+(?:jarvis|iron\s+jarvis|chat|here|(?:my|the|your)\s+(?:apps?|connections?"
+    r"|until|so|from\s+(?:jarvis|(?:stec\s+os|iron\s+jarvis)|chat|here|(?:my|the|your)\s+(?:apps?|connections?"
     r"|directory|tools?|connectors?|extensions?|list|setup)))\b))"
 )
 _SWITCH = re.compile(

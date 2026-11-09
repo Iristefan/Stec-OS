@@ -448,7 +448,7 @@ async def test_a_night_task_that_reads_something_flagged_stays_low_and_ends_need
         await asyncio.sleep(0.05)
     assert lg.status != "running"
     N.flush_notes()
-    # Its next turn — started by Iron Jarvis itself, the task still running.
+    # Its next turn — started by STEC OS itself, the task still running.
     await build_routes.start_build_turn(
         app.state.d, first["thread_id"], "Carry on.", "bt-low-2", continuation=True, started_by="wait",
     )

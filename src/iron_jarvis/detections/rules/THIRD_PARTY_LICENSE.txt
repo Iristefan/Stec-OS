@@ -1,7 +1,7 @@
 The detection rules in this folder marked "adapted_from: agent-beacon ..." are
 adapted from agent-beacon (https://github.com/Asymptote-Labs/agent-beacon),
 used under the MIT License below. Their CEL conditions were rewritten into
-Iron Jarvis's declarative matcher and extended with Windows forms.
+STEC OS's declarative matcher and extended with Windows forms.
 
 ----------------------------------------------------------------------------
 

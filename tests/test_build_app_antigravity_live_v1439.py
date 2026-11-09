@@ -7,8 +7,8 @@ Never against Google and never with a sign-in: the agy process gets a scratch
 to a LOCAL stand-in Gemini API (``tests/fixtures/agy_standin_v1439.py`` on
 127.0.0.1, ``GOOGLE_GEMINI_BASE_URL``). The scratch home is given agy's OWN
 "last sign-in method" file (``cache/acp-auth-state.json``) — what agy writes
-itself after ``authenticate`` — so its silent sign-in uses that fake key; Iron
-Jarvis never calls ``authenticate``. ``--disable-telemetry`` is in the product's
+itself after ``authenticate`` — so its silent sign-in uses that fake key; STEC
+OS never calls ``authenticate``. ``--disable-telemetry`` is in the product's
 own argv.
 """
 

@@ -541,7 +541,7 @@ def config_report(config: Mapping[str, Any], records: list[Mapping[str, Any]]) -
     lines = [
         f"# Harness benchmark: {_label(config)}",
         "",
-        f"Iron Jarvis {config.get('version', '?')} · seed {config.get('seed', 0)} · "
+        f"STEC OS {config.get('version', '?')} · seed {config.get('seed', 0)} · "
         f"configuration {str(config.get('key', ''))[:12]}",
         "",
         f"{head} — {s['passed']} passed, {s['failed']} failed "
@@ -669,7 +669,7 @@ def _patience_words(p: Any) -> str:
 def coding_session_section(config: Mapping[str, Any], records: list[Mapping[str, Any]]) -> list[str]:
     """v1.425.0 (C2): "What each coding session did" — for a PRODUCT-PATH
     setup, each run's steps as its session saved them (how many failed, how
-    many were Iron Jarvis's own checks), its finish check in the app's own
+    many were STEC OS's own checks), its finish check in the app's own
     words, the step limit it met, the cards and questions the benchmark
     answered, and the waits the round's patience made; for a LANE setup only
     a line on the waits when there were any. Nothing for a CLI setup."""
@@ -778,7 +778,7 @@ def combined_report(configs: list[tuple[Mapping[str, Any], list[Mapping[str, Any
         "round limit, or stopped part-way after it had started work, is scored. Metered money "
         "and list-price equivalents are separate columns. "
         "Setup is the configuration's fingerprint: rows with the same runner and model but a "
-        "different setup ran on a different harness or Iron Jarvis version. Model is the model "
+        "different setup ran on a different harness or STEC OS version. Model is the model "
         "as passed to the runner.",
         "",
         OUTSIDE_SCOPE,
@@ -789,14 +789,14 @@ def combined_report(configs: list[tuple[Mapping[str, Any], list[Mapping[str, Any
             "Where a setup ran its tasks more than once, Pass rate is the mean of its repeats' rates "
             "and Range is the lowest to the highest of them; Passed / scored counts every run.",
             "",
-            "| Runner | Model | Effort | Iron Jarvis | Setup | Tasks | Repeats | Passed / scored | Pass rate | "
+            "| Runner | Model | Effort | STEC OS | Setup | Tasks | Repeats | Passed / scored | Pass rate | "
             "Range | Did not run | Check could not run | Interrupted | Mean tool calls | Mean rounds | "
             "Mean time (s) | Tokens in | Tokens out | Metered $ | List-price $ |",
             "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
         ]
     else:
         lines += [
-            "| Runner | Model | Effort | Iron Jarvis | Setup | Tasks | Passed / scored | Pass rate | Did not run | "
+            "| Runner | Model | Effort | STEC OS | Setup | Tasks | Passed / scored | Pass rate | Did not run | "
             "Check could not run | Interrupted | Mean tool calls | Mean rounds | Mean time (s) | "
             "Tokens in | Tokens out | Metered $ | List-price $ |",
             "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",

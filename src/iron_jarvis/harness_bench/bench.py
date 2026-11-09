@@ -19,7 +19,7 @@ folder per configuration)::
 COMPLETION IS RECORDED, NOT INFERRED (principle 5). ``complete.json`` is
 written by the code that watched the runner return, and only when the runner
 completed and the budget added up. It carries a FINGERPRINT of (runner,
-provider, model, the task's content hash, the harness's identity, Iron Jarvis's
+provider, model, the task's content hash, the harness's identity, STEC OS's
 version) and a hash of the finished workspace. A later invocation reuses a
 stored result only when the marker exists, its fingerprint is the one this
 configuration computes now, and the workspace is unchanged; anything else —
@@ -133,7 +133,7 @@ MAX_REPEATS = 10
 MODEL_REQUIRED = "Name the model with --model, so the record says which one ran."
 #: v1.383.0 review: model words that name NO particular model — each means
 #: "whatever the runner's own default is" (Claude Code's ``--model default``;
-#: Iron Jarvis's Claude adapter reads all three that way), which is exactly
+#: STEC OS's Claude adapter reads all three that way), which is exactly
 #: the record this phase removed.
 NOT_A_MODEL = frozenset({"default", "subscription", "auto"})
 #: Said, before any task starts, for one of them.
@@ -141,7 +141,7 @@ MODEL_NOT_A_MODEL = (
     "--model {model} names no particular model (it means the runner's own default), so the record "
     "could not say which one ran: name the model itself, for example --model sonnet."
 )
-#: v1.396.0: the runners that name a PROVIDER (Iron Jarvis's own; the team's
+#: v1.396.0: the runners that name a PROVIDER (STEC OS's own; the team's
 #: is its planner's, from the team file).
 PROVIDER_RUNNERS = frozenset({"jarvis", "jarvis-team"})
 #: … and when the Jarvis runner was given no provider.
@@ -836,7 +836,7 @@ def require_model(runner_name: str, provider: str, model: str) -> None:
 RUNNER_NAMES: tuple[str, ...] = ("jarvis", "jarvis-team", "claude", "codex")
 
 
-#: v1.425.0 (C2): the runners that take ``--path`` (Iron Jarvis's own).
+#: v1.425.0 (C2): the runners that take ``--path`` (STEC OS's own).
 PATH_RUNNERS = frozenset({"jarvis", "jarvis-team"})
 
 
@@ -940,7 +940,7 @@ def answer_key_root() -> Path:
 def resolve_bench_home(root: str) -> Path:
     """The state home this benchmark writes under, refusing the running app's
     own home (a benchmark run never shares the app's database) and any folder
-    inside the Iron Jarvis source (the agents' copies would sit a few ``..``
+    inside the STEC OS source (the agents' copies would sit a few ``..``
     away from the hidden checks and reference solutions, inside a git project
     whose own context — its git status, its AGENTS.md — the CLIs read)."""
     from ..core.config import resolve_home
@@ -960,15 +960,15 @@ def resolve_bench_home(root: str) -> Path:
         )
     appdata = os.environ.get("APPDATA", "").strip()
     if appdata:
-        live = (Path(appdata) / "Iron Jarvis" / ".ironjarvis").resolve()
+        live = (Path(appdata) / "STEC OS" / ".ironjarvis").resolve()
         if home.resolve() == live:
             raise BenchRefused(
-                "That is the Iron Jarvis app's own folder. Run the benchmark with --root pointing "
+                "That is the STEC OS app's own folder. Run the benchmark with --root pointing "
                 "at a scratch folder instead."
             )
     # v1.425.0 (review): NOR THE FOLDER OF THE SETTINGS EVERY PROCESS READS.
     # ``--root <your user folder>`` made the bench home ``~/.ironjarvis`` —
-    # the folder whose ``config.toml`` every Iron Jarvis on this PC layers in
+    # the folder whose ``config.toml`` every STEC OS on this PC layers in
     # (``core/config.global_config_path``: the installed app's too). The
     # product path makes real coding sessions there and answers every card
     # "Allow once", so a settings change a task's model asked for would have
@@ -978,7 +978,7 @@ def resolve_bench_home(root: str) -> Path:
     shared = global_config_path().parent.resolve()
     if home.resolve() == shared:
         raise BenchRefused(
-            f"That is the folder of the settings every Iron Jarvis on this PC reads ({shared}). "
+            f"That is the folder of the settings every STEC OS on this PC reads ({shared}). "
             "Run the benchmark with --root pointing at a scratch folder instead."
         )
     return home

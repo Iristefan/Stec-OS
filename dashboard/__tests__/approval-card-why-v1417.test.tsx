@@ -8,7 +8,7 @@
  *    AND the hook (`PendingApproval.why` / `.asker`);
  *  - with `why` the card is the compact one: who wants to do what (the raw
  *    tool id only in a `title`), the preview, the cost, ONE why line, the
- *    buttons; Iron Jarvis's own check says "Iron Jarvis wants to …";
+ *    buttons; STEC OS's own check says "STEC OS wants to …";
  *  - WITHOUT the new keys (an older daemon, a listing row) the card is
  *    today's, byte for byte (`fixtures/approval-card-old-dom-v1417.json`,
  *    captured from the card BEFORE this change; regenerate only on purpose
@@ -164,7 +164,7 @@ describe("a card with none of the new keys is today's, byte for byte", () => {
     );
     const then = JSON.parse(readFileSync(FIXTURE, "utf8").replace(/\r\n/g, "\n")) as Record<string, string>;
     expect(norm(container.innerHTML)).toBe(
-      norm(then.write_chat).replace("The assistant wants to", "Iron Jarvis wants to"),
+      norm(then.write_chat).replace("The assistant wants to", "STEC OS wants to"),
     );
   });
 });
@@ -278,15 +278,15 @@ describe("the card says why and who asks", () => {
     expect(screen.getByTestId("chat-approval-card").querySelector("code")).toBeNull();
   });
 
-  it("Iron Jarvis's own check says so", () => {
+  it("STEC OS's own check says so", () => {
     render(
       <ApprovalCard
         approval={{ ...WRITE, tool: "shell", args: { command: "pytest -q" }, why: WHY, asker: "iron_jarvis" }}
         scope="session"
       />,
     );
-    expect(screen.getByTestId("approval-header").textContent).toBe("Iron Jarvis wants to run a command");
-    expect(askerSubject("iron_jarvis")).toBe("Iron Jarvis");
+    expect(screen.getByTestId("approval-header").textContent).toBe("STEC OS wants to run a command");
+    expect(askerSubject("iron_jarvis")).toBe("STEC OS");
     expect(askerSubject("model")).toBe("The assistant");
     expect(askerSubject(undefined)).toBe("The assistant");
   });

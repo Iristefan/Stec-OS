@@ -1099,8 +1099,8 @@ export default function ToolsPage() {
       });
       setMcpOk(
         next
-          ? `"${server.name}" runs without asking — restart Iron Jarvis for autonomous agents to pick it up.`
-          : `"${server.name}" will ask before each use again — restart Iron Jarvis to apply.`,
+          ? `"${server.name}" runs without asking — restart STEC OS for autonomous agents to pick it up.`
+          : `"${server.name}" will ask before each use again — restart STEC OS to apply.`,
       );
       reloadServers();
     } catch (err) {
@@ -1889,7 +1889,7 @@ export default function ToolsPage() {
                       Create your own
                     </span>
                     <span className="text-[11.5px] leading-relaxed text-zinc-500">
-                      Describe a command in plain language and Iron Jarvis builds it.
+                      Describe a command in plain language and STEC OS builds it.
                     </span>
                   </a>
                 )}
@@ -2094,7 +2094,7 @@ export default function ToolsPage() {
             <code className="rounded bg-black/40 px-1 py-0.5 font-mono text-[11px] text-accent-soft/90">
               owner/repo
             </code>
-            ). Iron Jarvis builds the launch command for you — nothing runs until you
+            ). STEC OS builds the launch command for you — nothing runs until you
             review it and hit Connect.
           </p>
           <div className="flex flex-col gap-2 sm:flex-row">
@@ -2703,10 +2703,10 @@ export default function ToolsPage() {
       {/* ------------------------------------------------------------------ */}
       <Reveal>
         {/* `id` is the "Create your own" tile's target in the built-in grid. */}
-        <Card title="Teach Iron Jarvis something new" icon={<Sparkles size={15} />}>
+        <Card title="Teach STEC OS something new" icon={<Sparkles size={15} />}>
         <span id="teach" className="sr-only" />
           <p className="mb-3.5 text-sm text-zinc-400">
-            Say what you want it to be able to do, in plain language. Iron Jarvis
+            Say what you want it to be able to do, in plain language. STEC OS
             designs the command, names it, and saves it — every agent can use it
             right away.
           </p>
@@ -2794,13 +2794,13 @@ export default function ToolsPage() {
           icon={<Wrench size={15} />}
         >
           <p className="mb-3.5 text-sm text-zinc-400">
-            Commands you&apos;ve taught Iron Jarvis — every agent can use them by name.
+            Commands you&apos;ve taught STEC OS — every agent can use them by name.
           </p>
           {loading && !data ? (
             <SkeletonRows rows={4} />
           ) : tools.length === 0 ? (
             <Empty icon={<Wrench size={24} />}>
-              You haven&apos;t taught Iron Jarvis any commands yet. Describe one above
+              You haven&apos;t taught STEC OS any commands yet. Describe one above
               and hit Build — every agent will be able to use it.
             </Empty>
           ) : (
@@ -2920,7 +2920,7 @@ export default function ToolsPage() {
               <div className="text-sm text-zinc-400">
                 <span className="font-semibold text-zinc-200">How it works.</span> A tool
                 is <span className="text-zinc-200">one command with fill-in-the-blank slots</span>.
-                Iron Jarvis fills each{" "}
+                STEC OS fills each{" "}
                 <code className="rounded bg-black/40 px-1 py-0.5 font-mono text-[12px] text-accent-soft">
                   {"{param}"}
                 </code>{" "}

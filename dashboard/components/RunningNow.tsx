@@ -67,7 +67,7 @@ export function RunningNow({
   const sessions = usePolledApi<{ sessions?: RunningSessionRow[] }>(RUNNING_SESSIONS_PATH, RUNNING_POLL_MS);
   // Harness gaps (fix 1): a Build coding session's reply has no Session row
   // and is not in the chat list, so it is read from the daemon's running
-  // replies (in memory there). An older Iron Jarvis without the route (404)
+  // replies (in memory there). An older STEC OS without the route (404)
   // lists none, as before.
   const replies = usePolledApi<{ replies?: RunningReplyRow[] }>(RUNNING_REPLIES_PATH, RUNNING_POLL_MS);
   const chats = useChatList();

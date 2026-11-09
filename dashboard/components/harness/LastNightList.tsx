@@ -8,7 +8,7 @@
  * Each task's row: its branch, how it ended, its tests, the files it changed,
  * its time, its usage per account and what needs the user; failed and
  * needs-you first (the daemon sorts them). A row whose main folder changed
- * says so un-folded. Iron Jarvis committed each task's work to its own branch
+ * says so un-folded. STEC OS committed each task's work to its own branch
  * when it ended (never pushed); the buttons are the session's own git
  * machinery: Open, Changes (the Branch view), Push, Open a pull request, and
  * Throw away (two presses: the branch's folder goes to the trash, the branch
@@ -216,13 +216,13 @@ function NightTaskRow({
               variant="calm"
               label="Throw away"
               confirmLabel="Move its folder to the trash?"
-              title="Its branch folder goes to Iron Jarvis's trash; the branch itself is kept."
+              title="Its branch folder goes to STEC OS's trash; the branch itself is kept."
               onConfirm={async () => {
                 setProblem(null);
                 setSaid(null);
                 try {
                   const note = await throwAwayNightFolder(row.threadId);
-                  setSaid(note || `The folder is in Iron Jarvis's trash; the branch ${row.branch} is kept.`);
+                  setSaid(note || `The folder is in STEC OS's trash; the branch ${row.branch} is kept.`);
                 } catch (e) {
                   setProblem(errorWords(e));
                 }
@@ -292,7 +292,7 @@ export function LastNightList({
     } catch (e) {
       setLoadError(
         e && typeof e === "object" && "status" in e && (e as { status?: number }).status === 404
-          ? "This version of Iron Jarvis has no Last night summary yet."
+          ? "This version of STEC OS has no Last night summary yet."
           : errorWords(e),
       );
     }
@@ -318,7 +318,7 @@ export function LastNightList({
           </p>
         ) : null}
         <p data-testid="last-night-rule" className="text-[12px] text-zinc-500">
-          When a night task ends, Iron Jarvis commits its work to the task&apos;s own branch. It never pushes or
+          When a night task ends, STEC OS commits its work to the task&apos;s own branch. It never pushes or
           merges: that is yours to do here.
         </p>
       </header>

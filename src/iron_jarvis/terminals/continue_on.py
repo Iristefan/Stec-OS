@@ -88,7 +88,7 @@ class ContinueRefused(Exception):
         self.sentence = sentence
         self.status = status
         #: v1.427.3: the other accounts the user may still TRY (Iron-Proxy
-        #: parked them for a limit — a guess Iron Jarvis itself may have made):
+        #: parked them for a limit — a guess STEC OS itself may have made):
         #: ``[{id, title, why}]``, none of them known to share this account's
         #: sign-in. Empty for every other refusal.
         self.choices = list(choices or [])
@@ -324,7 +324,7 @@ _REPLACE_PAUSE_S = 0.05
 
 def _replace_keeping_old(source: Path, target: Path, trash: Path | None, rel: Path) -> None:
     """Replace ``target`` (an older prefix of ``source``) with ``source``: the
-    old bytes go to Iron Jarvis's own trash FIRST (move, never delete — the
+    old bytes go to STEC OS's own trash FIRST (move, never delete — the
     v1.256.0 rule), then a temp copy beside the target is renamed onto it.
     A target held open is retried briefly, then :class:`CarryBusy`; the temp
     copy never outlives the attempt."""
@@ -395,7 +395,7 @@ def carry_over(
     The destination may already hold this conversation: ``--resume`` KEEPS the
     id, so A -> B -> A finds A holding an OLDER copy of the very conversation
     that grew on B. An older copy is a byte-prefix (the file is append-only):
-    it is replaced, and the old bytes are MOVED into Iron Jarvis's own
+    it is replaced, and the old bytes are MOVED into STEC OS's own
     ``<trash_root>/<stamp>/claude-carry/`` first — never deleted. A copy that
     DIVERGED is never overwritten: nothing is written and Claude starts fresh,
     said so."""
@@ -539,7 +539,7 @@ def _none_free(
     signed in to the same Claude account as this one is said so (that is why
     it is no use), with how to fix it; an account parked for a limit whose
     sign-in is not known to be this one's is offered in ``choices`` (the user
-    may know it has usage left — the park can be Iron Jarvis's own guess)."""
+    may know it has usage left — the park can be STEC OS's own guess)."""
     others = _others(profiles, current)
     if not others:
         return ContinueRefused(NO_OTHER)

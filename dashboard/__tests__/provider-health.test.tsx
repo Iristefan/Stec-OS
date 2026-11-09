@@ -265,7 +265,7 @@ describe("PreflightNote", () => {
   it("softens the message when the health data itself is stale", () => {
     render(<PreflightNote provider="fleet-custom" available={false} stale />);
     const note = screen.getByTestId("ij-preflight-note");
-    expect(note.textContent).toContain("last check couldn't reach Iron Jarvis");
+    expect(note.textContent).toContain("last check couldn't reach STEC OS");
     // A stale map is not certain knowledge — never promise the turn WILL fail.
     // v1.329.0 (K1): the sentence now starts with a capital, so match either.
     expect(note.textContent).not.toMatch(/this turn will fail/i);

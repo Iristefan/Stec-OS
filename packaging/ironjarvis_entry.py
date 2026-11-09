@@ -1,4 +1,4 @@
-"""Frozen entry point for the Iron Jarvis daemon.
+"""Frozen entry point for the STEC OS daemon.
 
 PyInstaller targets THIS file. A frozen app has no console-script shim, so we
 import the Typer ``app`` and invoke it directly. Every CLI subcommand

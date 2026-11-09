@@ -197,7 +197,7 @@ function pickPosture(mode: string): void {
 }
 
 async function sendOnThePaint(): Promise<void> {
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   fireEvent.change(box, { target: { value: ASK } });
   fireEvent.keyDown(box, { key: "Enter" });
   await waitFor(() => expect(H.run.bodies.length).toBe(1));
@@ -468,7 +468,7 @@ describe("the TTS feed rewinds on the stream's reset signal (W3-1)", () => {
       return { reply: "Hello friend" };
     };
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "hola" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await screen.findByText("Hello friend");
@@ -491,7 +491,7 @@ describe("the TTS feed rewinds on the stream's reset signal (W3-1)", () => {
       return { reply: "Hello friend" };
     };
     render(<ChatPage />);
-    const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(box, { target: { value: "hola" } });
     fireEvent.keyDown(box, { key: "Enter" });
     await screen.findByText("Hello friend");

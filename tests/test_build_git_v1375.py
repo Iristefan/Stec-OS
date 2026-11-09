@@ -483,7 +483,7 @@ async def test_commit_takes_a_drafted_message_the_user_edits_and_nothing_to_comm
     assert status == 200, done
     assert done["committed"] is True and done["subject"] == "Set x to five (edited)"
     assert git("log", "-1", "--format=%s%n%b", cwd=wt).splitlines()[0] == "Set x to five (edited)"
-    # As the user's own git identity (the repo's config), never "Iron Jarvis".
+    # As the user's own git identity (the repo's config), never "STEC OS".
     assert git("log", "-1", "--format=%an <%ae>", cwd=wt) == "Dev <dev@example.com>"
     assert "note" not in done
     status, again = await asgi(app, "POST", f"/build/sessions/{sid}/git/commit", {"message": "again"})

@@ -71,7 +71,7 @@ _FAILED_LEAD = "The run failed: "
 #: name and where a person can look (Status).
 _NO_REASON = (
     "The run failed and gave no reason. "
-    "Iron Jarvis kept the details in its log; Status shows how the app is doing."
+    "STEC OS kept the details in its log; Status shows how the app is doing."
 )
 
 _DETAIL_LIMIT = 200

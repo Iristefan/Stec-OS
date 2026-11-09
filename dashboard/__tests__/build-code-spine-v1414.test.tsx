@@ -3,13 +3,13 @@
  *
  * - Running now lists a Build › Code reply (`surface: "build_app"`) named by
  *   its tool, opened on that session in Build › Code; the orb counts it.
- * - The session's "Iron Jarvis tools" boxes (Memory, Browser): all off until
+ * - The session's "STEC OS tools" boxes (Memory, Browser): all off until
  *   ticked, each says what it gives and who sees it before the press, a
  *   press PATCHes only that box.
  * - The share offer: shown in a new session whose tool's "Share my profile"
  *   switch is off; Share turns the EXISTING setting on through the existing
  *   route; "No thanks" dismisses it for good; never shown when the switch is
- *   on, the tool is not found, or an older Iron Jarvis has no route.
+ *   on, the tool is not found, or an older STEC OS has no route.
  */
 
 import React from "react";
@@ -104,13 +104,13 @@ describe("running work is seen everywhere", () => {
   });
 });
 
-describe("the Iron Jarvis tools boxes", () => {
+describe("the STEC OS tools boxes", () => {
   it("are off until ticked and say what they give and who sees it", () => {
     const s = session();
     expect(s.jarvisTools).toEqual({ memory: false, browser: false });
     render(<JarvisToolsChip session={s} toolName="Codex" onChanged={() => {}} onInfo={() => {}} />);
     const chip = screen.getByTestId("code-jarvis-tools");
-    expect(chip.textContent).toBe("Iron Jarvis tools: off");
+    expect(chip.textContent).toBe("STEC OS tools: off");
     fireEvent.click(chip);
     const panel = screen.getByTestId("code-jarvis-tools-panel");
     expect(panel.textContent).toContain("Off until you tick one");
@@ -133,11 +133,11 @@ describe("the Iron Jarvis tools boxes", () => {
     await waitFor(() => expect(changed).toHaveBeenCalled());
     expect(H.patches).toEqual([{ path, body: { capabilities: { memory: true } } }]);
     expect(changed.mock.calls[0][0].jarvisTools).toEqual({ memory: true, browser: false });
-    expect(info).toHaveBeenCalledWith("The change to Iron Jarvis's tools applies from your next message.");
+    expect(info).toHaveBeenCalledWith("The change to STEC OS's tools applies from your next message.");
   });
 
   it("names what is on", () => {
-    expect(jarvisToolsWords({ memory: true, browser: true })).toBe("Iron Jarvis tools: Memory, Browser");
+    expect(jarvisToolsWords({ memory: true, browser: true })).toBe("STEC OS tools: Memory, Browser");
   });
 
   it("a conversation found on disk (no boxes yet) shows no chip", () => {

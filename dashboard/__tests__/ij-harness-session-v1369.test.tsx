@@ -16,7 +16,7 @@
  *  - a steer note the turn never read goes back in the box — watched (the
  *    done frame's list) AND unwatched (the turn ended while nobody looked);
  *  - a session already answering is rejoined; Stop posts the turn's stop;
- *  - an Iron Jarvis without the account list gets no account chip.
+ *  - a STEC OS without the account list gets no account chip.
  */
 import React from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -207,7 +207,7 @@ describe("the transcript is drawn with the chat page's own pieces", () => {
     fireEvent.click(screen.getByTestId("reply-line-toggle"));
     expect(screen.getByTestId("work-line")).toBeInTheDocument();
     expect(screen.getByTestId("harness-folder")).toHaveTextContent("shop");
-    // No account list on this Iron Jarvis (a 404): no chip; the demo model
+    // No account list on this STEC OS (a 404): no chip; the demo model
     // is named where it runs, in plain words.
     expect(screen.queryByTestId("account-chip")).toBeNull();
     expect(screen.getByTestId("harness-place")).toHaveTextContent("Demo model");
@@ -577,7 +577,7 @@ describe("an account limit", () => {
     expect(screen.getByTestId("account-limit-card")).toBeInTheDocument();
   });
 
-  it("an older Iron Jarvis without the wait says so in words", async () => {
+  it("an older STEC OS without the wait says so in words", async () => {
     api.postAnswers["POST /build/sessions/s1/resume-when-ready"] = new api.ApiError("Not Found", 404);
     await hitLimit();
     fireEvent.click(screen.getByTestId("account-limit-resume"));

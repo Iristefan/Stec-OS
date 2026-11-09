@@ -342,7 +342,7 @@ def test_parse_never_raises_on_hostile_input():
 async def test_guided_success_synthesizes_native_shape_and_suppresses_scaffold():
     inner = _GuidedInner([_CALL_JSON])
     out = await GuidedToolsAdapter(inner).complete(
-        system="You are Iron Jarvis.", messages=list(_MSG), tools=_TOOLS
+        system="You are STEC OS.", messages=list(_MSG), tools=_TOOLS
     )
     # The native shape, indistinguishable downstream.
     assert out.finish_reason == "tool_use"
@@ -356,7 +356,7 @@ async def test_guided_success_synthesizes_native_shape_and_suppresses_scaffold()
     assert rec["tools"] == []
     assert rec["response_format"]["type"] == "json_schema"
     # Guided fragment (not the fenced contract) rides the system prompt.
-    assert rec["system"].startswith("You are Iron Jarvis.")
+    assert rec["system"].startswith("You are STEC OS.")
     assert "guided JSON" in rec["system"]
     assert "```tool_call" not in rec["system"]
 

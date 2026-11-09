@@ -5,8 +5,8 @@
  * follow the app's profile (""), none in this project ("off"), or one profile.
  * The page saves the choice through its own `savePatch({brain_profile})`.
  *
- * Reads `GET /brain` for the list and the app's own choice; an older Iron
- * Jarvis (404, or an answer with no profiles list) renders nothing.
+ * Reads `GET /brain` for the list and the app's own choice; an older STEC
+ * OS (404, or an answer with no profiles list) renders nothing.
  */
 
 import { useEffect, useState } from "react";

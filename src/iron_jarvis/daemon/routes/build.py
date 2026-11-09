@@ -99,7 +99,7 @@ RUNNING_SENTENCE = (
     "This session is still answering. Steer it, queue your message, or stop it first."
 )
 ARCHIVED_SENTENCE = "This session is archived. Bring it back before you continue it."
-#: v1.398.0 (night shift N1): a coding turn Iron Jarvis would start BY ITSELF
+#: v1.398.0 (night shift N1): a coding turn STEC OS would start BY ITSELF
 #: (a night task, Resume when ready, a reply carried on after a restart)
 #: while Emergency stop is on.
 UNATTENDED_REFUSAL = (
@@ -112,7 +112,7 @@ UNATTENDED_REFUSAL = (
 #: turn's match) reads ONLY that record, so a turn that ran without it would
 #: hand the carry-on every command with no card.
 COMMAND_RECORD_SENTENCE = (
-    "Iron Jarvis could not keep this command's shell lines on the session, so it did not start "
+    "STEC OS could not keep this command's shell lines on the session, so it did not start "
     "/{name}. Nothing ran. Try again."
 )
 
@@ -153,9 +153,9 @@ PLAN_RUN_TEXT = (
 #: read something flagged — a page or file that tried to give it orders)
 #: starts at low trust too, with this reason. The flagged words reached the
 #: plan the model wrote and its last lines, which the act turn reads as the
-#: conversation; started at full trust by Iron Jarvis itself it had its
+#: conversation; started at full trust by STEC OS itself it had its
 #: commands back with nobody reading in between (the night shift's rule,
-#: ``harness/night.LOW_TRUST_CARRIED``: a turn Iron Jarvis starts after a
+#: ``harness/night.LOW_TRUST_CARRIED``: a turn STEC OS starts after a
 #: lowered one stays low). The user's own next message runs as before.
 PLAN_RUN_LOW_TRUST = (
     "the planning reply read something flagged earlier, so the plan is carried out at low trust"
@@ -170,7 +170,7 @@ CONTINUE_LOW_TRUST = (
 #: the reply a restart cut off had gone low, and its kept rounds hold what
 #: lowered it.
 RESTART_LOW_TRUST = (
-    "the reply it carries on read something flagged before Iron Jarvis restarted,"
+    "the reply it carries on read something flagged before STEC OS restarted,"
     " so it carries on at low trust"
 )
 #: thread id -> {"from": the plan turn's id, "taken": bool, "low_trust": the
@@ -281,7 +281,7 @@ class BuildAccountChoice(BaseModel):
     model: str = Field(default="", max_length=200)
     #: v1.427.4: with ``continue``, an account Iron-Proxy marked as at its
     #: limit is tried anyway — its mark is cleared first (the user knows it has
-    #: usage left; the mark can be Iron Jarvis's own guess). Never one that
+    #: usage left; the mark can be STEC OS's own guess). Never one that
     #: must sign in again, is turned off, or is the session's own account.
     force: bool = False
     #: v1.434.0 (Wave 2, F review): with ``continue``, the app window's
@@ -1003,7 +1003,7 @@ class _ReplyWatch:
         elif event == "tool_call":
             cid = str(data.get("id") or "")
             name = str(data.get("name") or "")
-            # v1.390.0 review: a step Iron Jarvis ran itself (the finish
+            # v1.390.0 review: a step STEC OS ran itself (the finish
             # check's test run, a project check) says so — on its frames and
             # its saved step — so the Timeline never draws it as the model's.
             from ...harness.timeline import check_kind
@@ -1692,7 +1692,7 @@ def limit_words(limit: "dict[str, Any] | None") -> str:
     """The account's own sentence for a limit card: why it cannot serve and
     what to do (wait for the reset, sign it in, or choose another account) —
     the SAME words the pinned lease refused with (``accounts.pinned_words``).
-    "" when the card names no provider Iron Jarvis knows."""
+    "" when the card names no provider STEC OS knows."""
     from ...iron_proxy import accounts as _acc
 
     if not isinstance(limit, dict):
@@ -1708,7 +1708,7 @@ def limit_words(limit: "dict[str, Any] | None") -> str:
 
 def _with_limit_words(chunk: str, limit: "dict[str, Any]") -> str:
     """An ``error`` frame for an account that could not serve, worded by
-    Iron Jarvis: ``title`` = :func:`limit_words`, ``fix`` = nothing is lost.
+    STEC OS: ``title`` = :func:`limit_words`, ``fix`` = nothing is lost.
     The generic "pick another model" fix — and Iron-Proxy's "pick without a
     profile id" — would be the wrong advice inside a session the user pinned.
     ``detail`` (the technical text) is unchanged. Any other chunk passes."""
@@ -2777,7 +2777,7 @@ def _resume_inputs(platform: Any, row: Any, turn_id: str, *,
         "origin_at": question.get("at"),
         "spent_usd": spent_since(messages, idx),
         # v1.392.0 review: and how long those part(s) RAN — the time cap
-        # counts the reply's own running time, never the hours Iron Jarvis
+        # counts the reply's own running time, never the hours STEC OS
         # was off between the cut-off and this boot.
         "ran_s": ran_since(messages, idx),
     }
@@ -2937,9 +2937,9 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
     keep ``accountMove``.
 
     v1.398.0 (night shift N1): ``started_by`` — who started this turn: a
-    person (``"person"``, every route), or Iron Jarvis by itself (``"night"``
+    person (``"person"``, every route), or STEC OS by itself (``"night"``
     a night task, ``"wait"`` Resume when ready / a move within a group,
-    ``"restart"`` a reply carried on after a restart). A turn Iron Jarvis
+    ``"restart"`` a reply carried on after a restart). A turn STEC OS
     starts by itself is refused while Emergency stop is on
     (:data:`UNATTENDED_REFUSAL`), and is listed while it runs so Emergency
     stop stops it (``harness/night.note_unattended_turn``). A turn of a
@@ -2966,7 +2966,7 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
     v1.434.0 (Wave 2, F): ``device_id`` — the app window's device id, from
     the person's own message (``BuildTurnBody.device_id``); it rides the
     turn's ``ChatBody`` so a per-device setting changed in this turn lands on
-    that screen. "" (every turn Iron Jarvis starts by itself, an older
+    that screen. "" (every turn STEC OS starts by itself, an older
     dashboard): the ``ChatBody`` carries none, exactly as before. The review
     added the two other presses that start a turn: "Choose account" with
     ``continue`` (``BuildAccountChoice.device_id``) and Allow on the plan door
@@ -3147,7 +3147,7 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
                 )
             playbook = got
         setup = _setup_of(row)
-        # v1.398.0 (night shift N1, decision 4): a turn Iron Jarvis started
+        # v1.398.0 (night shift N1, decision 4): a turn STEC OS started
         # by itself in a session whose night task is running runs under the
         # night posture — "Approve for me" with the command tools granted, the
         # night's allow-list, and what is left of the TASK's time limit as the
@@ -3169,7 +3169,7 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
         if night_task is not None:
             setup = _night.posture_setup(setup, platform.config, night_task)
         # v1.406.0 part 3 follow-ups: a FIX of a pull request's failing checks
-        # (``routes/ci_watch``) is Iron Jarvis starting work by itself while
+        # (``routes/ci_watch``) is STEC OS starting work by itself while
         # reading a log an attacker may influence — it runs under the NIGHT's
         # guarded posture whatever the session's own (yolo and Auto included):
         # the night allow-list runs unasked, everything else is carded and,
@@ -3301,7 +3301,7 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
             provider=account_provider or str(setup.get("provider") or ""),
             model=str(setup.get("model") or ""),
             reasoning=str(setup.get("reasoning") or ""),
-            # v1.406.0 part 2 follow-ups: a turn Iron Jarvis carries on BY
+            # v1.406.0 part 2 follow-ups: a turn STEC OS carries on BY
             # ITSELF (restart resume, Resume when ready, an account move, an
             # approved plan's act turn, the night) runs Accept edits / Auto as
             # Ask first — nobody is watching it start (core/auto_approve).
@@ -3352,7 +3352,7 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
                 resume_tail=[*resume["tail"], LLMMessage(
                     role="user",
                     # v1.422.0 (B1): a failed reply's continue says what
-                    # stopped it (an error), never "Iron Jarvis restarted".
+                    # stopped it (an error), never "STEC OS restarted".
                     content=RR.FAILED_RESUME_NOTE if resume_failed else RR.RESUME_NOTE,
                 )],
                 resumed_from=resume_turn,
@@ -3385,8 +3385,8 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
                     _cap["usd"] = round(room, 2)
                 setup = {**setup, RC.SETUP_KEY: _cap}
         # v1.392.0 review: the cap's clock counts the time the reply RAN —
-        # its cut-off part(s), then this one from now — never the time Iron
-        # Jarvis was off in between (a reply cut off ten minutes in by a crash
+        # its cut-off part(s), then this one from now — never the time STEC
+        # OS was off in between (a reply cut off ten minutes in by a crash
         # the night before used to be capped the moment it carried on).
         reply_cap = RC.from_setup(
             setup,
@@ -3468,7 +3468,7 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
                     # v1.414.0: a correction the USER typed in a coding
                     # session ("stop explaining every step" … again) becomes
                     # the one-press Keep line under the reply, as in chat —
-                    # never for a turn Iron Jarvis started by itself (a
+                    # never for a turn STEC OS started by itself (a
                     # carry-on, the night, a check fix, a restart).
                     # (v1.414.0 review: nor a Retry of a failed question —
                     # `retries_failed_question`.)
@@ -3568,7 +3568,7 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
                     ),
                     context=caller_ctx,
                 )
-            # v1.398.0: a turn Iron Jarvis started by itself is listed while
+            # v1.398.0: a turn STEC OS started by itself is listed while
             # it runs (Emergency stop reaches it), and the night loop looks
             # again the moment it ends.
             if started_by != _night.BY_PERSON:
@@ -3919,7 +3919,7 @@ def resume_refusal(engine: Any, thread_id: str, turn_id: str, waiting: bool) -> 
     from ...core.models import ChatTurnRecord
 
     if waiting:
-        return "it was waiting on you when Iron Jarvis stopped"
+        return "it was waiting on you when STEC OS stopped"
     with session_scope(engine) as db:
         rec = db.get(ChatTurnRecord, turn_id)
         status = str(rec.status) if rec is not None else ""
@@ -4052,7 +4052,7 @@ async def _resume_after_restart(d: Any) -> list[str]:
                 if task is not None:
                     await asyncio.to_thread(
                         _night.add_note, engine, task["id"], "restart",
-                        "Cut off when Iron Jarvis restarted. "
+                        "Cut off when STEC OS restarted. "
                         + ("The night window had closed" if exc.detail == _night.WINDOW_CLOSED
                            else "Its time limit was used up")
                         + ", so it was not carried on by itself.",

@@ -20,7 +20,7 @@ one quiet line only when they apply (see AUDIT §4.5–4.6).
 
 ```
 ┌──────────────┬──────────────────────────────────────────────────────────────────┐
-│ ◉ Iron Jarvis│                                              ●  [🔔]   [⌘K]        │
+│ ◉ STEC OS│                                              ●  [🔔]   [⌘K]        │
 │              │                                                                  │
 │ ( + New chat)│                                                                  │
 │              │                                                                  │
@@ -77,7 +77,7 @@ model, sees **no** line: the model is chosen automatically on first launch
 
 ```
 ┌──────────────────────────────────┐
-│ ☰  Iron Jarvis          🔔   ⌘K │
+│ ☰  STEC OS          🔔   ⌘K │
 │                                  │
 │                                  │
 │      What can I help with?       │

@@ -1,4 +1,4 @@
-# Iron Jarvis daemon / API (FastAPI + uv).
+# STEC OS daemon / API (FastAPI + uv).
 #
 # Build:   docker build -t iron-jarvis .
 # Run:     docker run -p 8787:8787 -v ./data:/data -e IRONJARVIS_TOKEN=... iron-jarvis

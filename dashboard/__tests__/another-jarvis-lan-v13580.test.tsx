@@ -5,7 +5,7 @@
  * Before: the card showed the daemon's sentence telling a desktop-app user to
  * run `ironjarvis serve --host` and set IRONJARVIS_HOST_ALLOWLIST, which the
  * app cannot do. Now the sentence names "Let other computers on my network
- * reach this Iron Jarvis" (Settings › Connections), and right under it the
+ * reach this STEC OS" (Settings › Connections), and right under it the
  * card offers the one press that opens that row (Settings reads ?focus= on
  * mount). Nothing turns on from the card. When the address CAN be reached,
  * one quiet grey line says so.
@@ -55,9 +55,9 @@ import {
 const DOOR_URL = `http://192.168.1.20:8787${TASK_DOOR_PATH}`;
 // The daemon's own sentence (routes/agents.reachability, v1.358.0).
 const NOTE =
-  "Iron Jarvis on this computer accepts requests from this computer only, so the other computer " +
+  "STEC OS on this computer accepts requests from this computer only, so the other computer " +
   "cannot reach it yet. To allow it, turn on “Let other computers on my network reach this Iron " +
-  "Jarvis” in Settings › Connections and restart Iron Jarvis. Every request still needs its token.";
+  "Jarvis” in Settings › Connections and restart STEC OS. Every request still needs its token.";
 
 const ROOT = path.join(__dirname, "..");
 const read = (rel: string) => readFileSync(path.join(ROOT, rel), "utf-8").replace(/\r\n/g, "\n");
@@ -112,7 +112,7 @@ describe("the task door's card points at the setting, not a command line (v1.358
 
   it("the key is the daemon's and the look stays calm (a ghost link, no boxed card, no literal hue)", () => {
     const schema = read("../src/iron_jarvis/settings/schema.py");
-    expect(schema).toContain(`S("${LAN_SETTING_KEY}", "Let other computers on my network reach this Iron Jarvis"`);
+    expect(schema).toContain(`S("${LAN_SETTING_KEY}", "Let other computers on my network reach this STEC OS"`);
     const card = read("components/agents/AnotherJarvisCard.tsx");
     const block = card.slice(card.indexOf('data-testid="another-jarvis-lan-setting"') - 200, card.indexOf("{LAN_SETTING_LINK}"));
     expect(block).toContain("className={GHOST_BTN}");

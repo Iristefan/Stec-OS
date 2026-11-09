@@ -314,7 +314,7 @@ export function IjHarnessView({
     } catch (e) {
       setListError(
         e && typeof e === "object" && "status" in e && (e as { status?: number }).status === 404
-          ? "This version of Iron Jarvis has no coding sessions yet."
+          ? "This version of STEC OS has no coding sessions yet."
           : e instanceof Error
             ? e.message
             : String(e),
@@ -345,7 +345,7 @@ export function IjHarnessView({
 
   // v1.418.0 (fix plan C2.8): the ARCHIVED sessions — read at mount and
   // after anything that can archive or bring one back (never on the poll).
-  // An Iron Jarvis that cannot list them (or any failure) shows no fold.
+  // A STEC OS that cannot list them (or any failure) shows no fold.
   const [archived, setArchived] = useState<BuildFolder[] | null>(null);
   const refreshArchived = useCallback(async () => {
     try {

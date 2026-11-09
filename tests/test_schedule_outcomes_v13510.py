@@ -220,7 +220,7 @@ def test_a_failed_run_reads_the_run_failed_with_no_class_name(tmp_path, monkeypa
     # Readiness 12A (G28), moved on purpose: never the raw text on the row —
     # what failed and what to do next (the raw text is the run's Details).
     assert body["last_detail"] == ro.failure_detail(
-        "The run failed: Iron Jarvis couldn't finish this task. Run it again. If it happens "
+        "The run failed: STEC OS couldn't finish this task. Run it again. If it happens "
         "again, open the run to see the details."
     ), body
     assert "office is not answering" not in body["last_detail"]

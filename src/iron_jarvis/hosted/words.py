@@ -21,7 +21,7 @@ from .events import clip, make
 #: harness id -> how a person names it.
 LABELS: dict[str, str] = {"claude-code": "Claude Code", "codex": "Codex", "pi": "Pi", "opencode": "OpenCode",
                           "grok": "Grok", "antigravity": "Antigravity"}
-#: harness id -> the Iron Jarvis provider whose CLI it is.
+#: harness id -> the STEC OS provider whose CLI it is.
 #: v1.426.0 (E5): read from THE table (``providers/subscription_clis``).
 PROVIDERS: dict[str, str] = dict(_SUBS.HARNESS_TO_PROVIDER)
 #: harness id -> the Iron-Proxy provider of its accounts. Pi has none: it
@@ -161,7 +161,7 @@ PI_FOLDER_LOADED = "This folder's own Pi {things} load in this session."
 PI_FOLDER_TITLE = (
     "A folder's Pi extensions run as programs on this PC. Load them only if you trust this folder. "
     "This applies to this session only and saves nothing in Pi's trust list. If one of your own Pi "
-    "extensions decides trust itself, Pi may already load them; Iron Jarvis cannot see that."
+    "extensions decides trust itself, Pi may already load them; STEC OS cannot see that."
 )
 PI_FOLDER_LOAD_NOW = "Pi will load this folder's own {things} from your next message."
 PI_FOLDER_SKIP_NOW = "Pi will skip this folder's own {things} again from your next message."
@@ -172,7 +172,7 @@ PI_FOLDER_DECLINED = (
     "You told Pi not to trust this folder. To change that, open Pi in a Build terminal and type /trust."
 )
 PI_FOLDER_CANNOT_TELL = (
-    "Iron Jarvis cannot read this folder's Pi settings safely, so it will not load them from here."
+    "STEC OS cannot read this folder's Pi settings safely, so it will not load them from here."
 )
 #: v1.413.0: OpenCode signs in by itself, per provider (`opencode auth login`).
 OPENCODE_OWN_SIGN_IN = (
@@ -207,11 +207,11 @@ GROK_CONTINUE = (
 #: chip's title on the page says THIS tool's way, never Pi's for OpenCode).
 SIGN_IN_HINTS: dict[str, str] = {
     "pi": ("Pi signs in by itself, per model provider: to change it, open Pi in a Build terminal and "
-           "type /login there. Iron Jarvis's accounts do not apply."),
+           "type /login there. STEC OS's accounts do not apply."),
     "opencode": ("OpenCode signs in by itself, per provider: to change it, run opencode auth login in a "
-                 "Build terminal. Iron Jarvis's accounts do not apply."),
+                 "Build terminal. STEC OS's accounts do not apply."),
     "antigravity": ("Antigravity signs in by itself, with its own Google sign-in: to change it, run agy in a "
-                    "Build terminal and sign in there. Iron Jarvis's accounts do not apply."),
+                    "Build terminal and sign in there. STEC OS's accounts do not apply."),
 }
 #: v1.439.0: Antigravity signs in by itself (its own Google sign-in); it is no
 #: Iron-Proxy vendor, so a session has no account to choose or move to.
@@ -242,7 +242,7 @@ ANTIGRAVITY_NOTE_REFUSED = (
     "Antigravity did not take your note while it waited for your answer — "
     "it goes back in the box when this reply ends."
 )
-#: v1.441.0 (review A3): a question form with no question Iron Jarvis can
+#: v1.441.0 (review A3): a question form with no question STEC OS can
 #: show (no ``q1``…): declined, and said — never silent.
 ANTIGRAVITY_QUESTION_UNSHOWN = (
     "Antigravity asked something this view cannot show, so the question was skipped — "
@@ -332,7 +332,7 @@ OPEN_IN_TERMINAL = (
     "then send your message here."
 )
 CANNOT_TELL = (
-    "Iron Jarvis cannot tell which {label} conversation this terminal ran — open it from the "
+    "STEC OS cannot tell which {label} conversation this terminal ran — open it from the "
     "folder's saved sessions instead."
 )
 #: v1.426.0 (Wave 6, E3): Open in terminal pressed while the conversation is
@@ -348,10 +348,10 @@ CLAIM_TERMINAL = "being opened in a terminal"
 STOPPED_BECAUSE = "Stopped because the session is {why}."
 STOPPED_PLAIN = "Stopped: the coding tool was closed."
 #: v1.427.2: steps a coding tool was running ON ITS OWN (after its reply ended:
-#: helpers, a reply it started itself) when it or Iron Jarvis stopped. Each
+#: helpers, a reply it started itself) when it or STEC OS stopped. Each
 #: step's row says "did not finish" (status ``stopped``); this says why, once.
 STEPS_CUT_RESTART = (
-    "Iron Jarvis closed while {label} was working on its own, so {steps} did not finish. "
+    "STEC OS closed while {label} was working on its own, so {steps} did not finish. "
     "Send a message to carry on."
 )
 STEPS_CUT_STOPPED = (
@@ -403,13 +403,13 @@ def label(harness: str) -> str:
     return LABELS.get(harness, harness or "The harness")
 
 
-#: v1.414.0 (fix): Iron Jarvis's OWN server's tools (``jarvis_tools.SERVER_NAME``)
+#: v1.414.0 (fix): STEC OS's OWN server's tools (``jarvis_tools.SERVER_NAME``)
 #: in plain words on a card — ``{q}`` is the call's ``query``. Any other
 #: server's tool reads "Use <server> › <tool>" (the tool row's own words).
 JARVIS_TOOL_TITLES: dict[str, tuple[str, str]] = {
     # tool -> (with a query, without one)
-    "memory_search": ('Search Iron Jarvis memory for "{q}"', "Search Iron Jarvis memory"),
-    "memory_read": ("Read a note from Iron Jarvis memory", "Read a note from Iron Jarvis memory"),
+    "memory_search": ('Search STEC OS memory for "{q}"', "Search STEC OS memory"),
+    "memory_read": ("Read a note from STEC OS memory", "Read a note from STEC OS memory"),
     "ltm_search": ('Search your memory bases for "{q}"', "Search your memory bases"),
     "brain_search": ('Search your memory base for "{q}"', "Search your memory base"),
     "brain_read": ("Read a note from your memory base", "Read a note from your memory base"),
@@ -425,7 +425,7 @@ MCP_FORM_DECLINED = (
 
 
 def mcp_call_title(server: str, tool: str, args: Any) -> str:
-    """A card's one line for an MCP tool call: Iron Jarvis's own tools in
+    """A card's one line for an MCP tool call: STEC OS's own tools in
     words, any other server's as "Use <server> › <tool>"."""
     from .events import one_line
     from .jarvis_tools import SERVER_NAME
@@ -436,7 +436,7 @@ def mcp_call_title(server: str, tool: str, args: Any) -> str:
         q = one_line((args or {}).get("query") if isinstance(args, dict) else "", 80)
         return with_q.format(q=q) if q else plain
     if server == SERVER_NAME:
-        return f"Use Iron Jarvis › {tool}" if tool else "Use an Iron Jarvis tool"
+        return f"Use STEC OS › {tool}" if tool else "Use a STEC OS tool"
     if not tool:
         return f"Use a {server} tool" if server else "Use an app's tool"
     return f"Use {server} › {tool}" if server else f"Use {tool}"
@@ -489,7 +489,7 @@ def could_not_start(harness: str, program: str, exc: BaseException) -> str:
         return f"The folder this session works in is missing, so {label(harness)} could not start there."
     else:
         why = clip(getattr(exc, "strerror", None) or type(exc).__name__, 120)
-    return (f"Iron Jarvis could not start {label(harness)} from {clip(name, 80)}: {why}. "
+    return (f"STEC OS could not start {label(harness)} from {clip(name, 80)}: {why}. "
             f"Check that {label(harness)} runs in a Build terminal.")
 
 
@@ -562,7 +562,7 @@ def failure_for(harness: str, text: Any) -> dict[str, Any]:
 class HostedToolError(RuntimeError):
     """A coding tool's failure, carrying the tool's NAME (``tool_label``) so
     ``providers.failure_words`` heads it "<Claude Code> couldn't finish this
-    answer" — never "Iron Jarvis", whose fault it is not (C4.9)."""
+    answer" — never "STEC OS", whose fault it is not (C4.9)."""
 
     def __init__(self, tool_label: str, text: str = "") -> None:
         super().__init__(text)
@@ -612,7 +612,7 @@ QUEUE_FULL = "{n} messages are already waiting — send this one once {label} ha
 #: C4.8: a queued message the daemon could not send when the reply ended.
 QUEUE_NOT_SENT = "Your waiting message was not sent: {why} It is back in your message box."
 #: C4.6: a "Load earlier" cursor this daemon did not write.
-BAD_CURSOR = "That place in the conversation is not one Iron Jarvis knows — load the session again."
+BAD_CURSOR = "That place in the conversation is not one STEC OS knows — load the session again."
 #: C4.6: the item asked for is not in this session's record.
 NO_SUCH_ITEM = "That step is not in this session's record any more."
 
@@ -647,9 +647,9 @@ SYS_TASK_DONE = {
 SYS_REFUSED = "Claude Code refused {tool}: {why}"
 #: C4.3: a model-service error Claude Code is retrying.
 SYS_API_ERROR = "Claude Code got an error from the model service ({error}) and is trying again{attempt}."
-#: C4.3: a request Claude Code sends that Iron Jarvis does not answer — it is
+#: C4.3: a request Claude Code sends that STEC OS does not answer — it is
 #: refused, and the screen says what was asked.
-CONTROL_REFUSED = "Claude Code asked Iron Jarvis to {what}; Iron Jarvis does not answer that here, so it was refused."
+CONTROL_REFUSED = "Claude Code asked STEC OS to {what}; STEC OS does not answer that here, so it was refused."
 CONTROL_ASKS = {
     "hook_callback": "answer one of its hooks",
     "mcp_message": "pass a message to one of its added tools",
@@ -658,7 +658,7 @@ CONTROL_ASKS = {
 }
 CONTROL_ASK_OTHER = "answer a request it calls {subtype}"
 #: v1.420.0 (C1.10): an "Allow for this session" answer given before a mode
-#: change started a new OpenCode, applied again by Iron Jarvis (said once).
+#: change started a new OpenCode, applied again by STEC OS (said once).
 OPENCODE_ALWAYS_CARRIED = (
     "Your earlier \"Allow for this session\" answers still apply in this conversation, so OpenCode "
     "was not asked again for those."

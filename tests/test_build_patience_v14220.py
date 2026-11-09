@@ -267,7 +267,7 @@ async def test_out_of_tries_the_reply_fails_and_says_how_long_it_tried(env, wait
     assert err, frames[-3:]
     assert waits == [5.0, 15.0, 30.0, 60.0]
     assert len(model.calls) == 5
-    assert "Iron Jarvis tried 5 times over 1 min 50 s." in err[0]["fix"]
+    assert "STEC OS tried 5 times over 1 min 50 s." in err[0]["fix"]
 
 
 async def test_plain_chat_is_unchanged_a_passing_failure_ends_the_turn(env, waits):

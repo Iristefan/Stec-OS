@@ -18,7 +18,7 @@ The silent failure each assertion catches, in order of how expensive it would be
 
 1. ``test_the_install_bearer_is_refused_at_browser_ws`` — if the socket reused
    ``_ws_token_ok``, the install bearer would open it. That token is on disk in
-   ``%APPDATA%/Iron Jarvis/token.txt`` and is handed to every local surface; a
+   ``%APPDATA%/STEC OS/token.txt`` and is handed to every local surface; a
    browser add-on holding it holds the whole daemon. The failure is invisible:
    everything WORKS, just with the wrong credential.
 2. ``test_no_credential_and_no_pairing_flag_is_refused`` and
@@ -857,7 +857,7 @@ def test_a_pairing_token_on_the_socket_url_never_reaches_the_log(tmp_path):
     This is the leak D06A forbids, verified on the user's OWN ``daemon.log`` before it
     was closed: uvicorn writes ``'%s - "WebSocket %s" [accepted]'`` with
     ``get_path_with_query_string(scope)`` on ``uvicorn.error``, and the desktop tees
-    that logger into ``%APPDATA%/Iron Jarvis/logs/daemon.log`` — a 5 MB rotation any
+    that logger into ``%APPDATA%/STEC OS/logs/daemon.log`` — a 5 MB rotation any
     local process can read WITHOUT holding a credential, and the file a user pastes
     into a bug report. A WebSocket handshake cannot carry an ``Authorization`` header,
     so the token has nowhere to ride but the URL; the redaction therefore has to

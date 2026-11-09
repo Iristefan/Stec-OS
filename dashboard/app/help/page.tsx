@@ -147,7 +147,7 @@ const SUBSYSTEMS: Subsystem[] = [
     href: "/channels",
     title: "Notifications",
     icon: Megaphone,
-    desc: "Where alerts go — and a destination can be two-way, so you chat with Iron Jarvis from your phone.",
+    desc: "Where alerts go — and a destination can be two-way, so you chat with STEC OS from your phone.",
   },
   {
     href: "/computeruse",
@@ -162,7 +162,7 @@ const SUBSYSTEMS: Subsystem[] = [
     // v1.316.0: "throwaway worktree" said in words. The review gate stays in
     // the sentence — it is the safety promise of this page (self-dev/page.tsx:
     // "every change is review-gated and never merges on its own").
-    desc: "Let a Maintainer agent improve Iron Jarvis's own code in a separate copy — every change waits for your review and never merges on its own.",
+    desc: "Let a Maintainer agent improve STEC OS's own code in a separate copy — every change waits for your review and never merges on its own.",
   },
   {
     // v1.353.0 (G66): self-care was never mentioned anywhere a new user looks.
@@ -228,11 +228,11 @@ const GLOSSARY: GlossaryTerm[] = [
   },
   {
     term: "Autonomy",
-    def: "Lets Iron Jarvis act on its own within limits you set. Off by default.",
+    def: "Lets STEC OS act on its own within limits you set. Off by default.",
   },
   {
     term: "Browser",
-    def: "Your own Chrome, paired with Iron Jarvis so it can see your open tabs and read the page in front of you — and opt-in agent control of a separate browser, gated by your approvals.",
+    def: "Your own Chrome, paired with STEC OS so it can see your open tabs and read the page in front of you — and opt-in agent control of a separate browser, gated by your approvals.",
   },
   {
     term: "Connections",
@@ -240,7 +240,7 @@ const GLOSSARY: GlossaryTerm[] = [
   },
   {
     term: "Two-way destination",
-    def: "A Notifications destination you can talk back to — messages you send it become real conversations with Iron Jarvis, shared with the desktop Chat page.",
+    def: "A Notifications destination you can talk back to — messages you send it become real conversations with STEC OS, shared with the desktop Chat page.",
   },
   {
     term: "Terminals",
@@ -592,7 +592,7 @@ const TROUBLE: { symptom: string; fix: ReactNode }[] = [
         The desktop app supervises and restarts its background service automatically, and the
         banner needs two missed polls before it shows — give it a moment. Your chats and files
         are saved. If it stays: quit from the tray and relaunch. (The tray adds a{" "}
-        <Kbd>Restart Iron Jarvis</Kbd> item only once its own automatic restarts have given
+        <Kbd>Restart STEC OS</Kbd> item only once its own automatic restarts have given
         up; when you see it, use it instead.) Then{" "}
         <Link href="/settings" className="text-accent-soft hover:text-accent">
           Settings → Maintenance
@@ -603,7 +603,7 @@ const TROUBLE: { symptom: string; fix: ReactNode }[] = [
   },
   {
     symptom: "“Port 8787 already in use” on launch",
-    fix: "Another program (or a second Iron Jarvis) owns the port; close it and relaunch.",
+    fix: "Another program (or a second STEC OS) owns the port; close it and relaunch.",
   },
   {
     symptom: "Windows SmartScreen on install",
@@ -619,7 +619,7 @@ const TROUBLE: { symptom: string; fix: ReactNode }[] = [
     symptom: "Where is my data?",
     fix: (
       <>
-        In <Code>%APPDATA%\Iron Jarvis</Code> — config, the database, encrypted secrets,
+        In <Code>%APPDATA%\STEC OS</Code> — config, the database, encrypted secrets,
         memory, and backups. It survives every update and reinstall; delete that folder for a
         full wipe.
       </>
@@ -656,7 +656,7 @@ interface GuideStatus {
   live_sections: number;
 }
 
-/** Ask the Iron Jarvis Guide (v1.224.0): one box that opens a Talk with the
+/** Ask the STEC OS Guide (v1.224.0): one box that opens a Talk with the
  *  built-in Guide AGENT (since v1.308.0 in chat, as an @guide mention), the question prefilled (never
  *  auto-sent — the consent rule: side effects wait for Enter in the
  *  composer). The Guide answers grounded in the app's docs + this install's
@@ -681,7 +681,7 @@ function AskGuideCard() {
   return (
     <Card title="Ask the Guide" icon={<Bot size={15} />}>
       <p className="text-[13px] text-zinc-400">
-        The Guide is a built-in agent — the expert on Iron Jarvis itself — and it
+        The Guide is a built-in agent — the expert on STEC OS itself — and it
         answers in chat. Ask how anything here works, or where something of yours is (a
         project, a workflow, a schedule): it looks it up in the app’s own docs and in
         this install, and says when it doesn’t know.
@@ -749,8 +749,8 @@ export default function HelpPage() {
     <PageShell>
       <Reveal>
         <PageHeader
-          title="What can Iron Jarvis do?"
-          subtitle="Iron Jarvis is a local-first AI operating system: you give it a goal, an agent does the work on an isolated workspace, and you stay in control by reviewing what it changes."
+          title="What can STEC OS do?"
+          subtitle="STEC OS is a local-first AI operating system: you give it a goal, an agent does the work on an isolated workspace, and you stay in control by reviewing what it changes."
         />
       </Reveal>
 
@@ -839,7 +839,7 @@ export default function HelpPage() {
       </Reveal>
 
       {/* On your phone or another device. v1.353.0 (G58): the supported way
-          leads — message Iron Jarvis through a two-way destination, and answer
+          leads — message STEC OS through a two-way destination, and answer
           its asks there. The dashboard on a phone is marked Advanced and says
           what it really takes: the desktop app keeps the daemon and this
           dashboard on 127.0.0.1 (desktop/main.js) and the dashboard calls
@@ -848,9 +848,9 @@ export default function HelpPage() {
       <Reveal>
         <Card title="On your phone or another device" icon={<Smartphone size={15} />}>
           <p className="text-[13px] leading-relaxed text-zinc-400" data-testid="help-phone-lead">
-            The way to use Iron Jarvis from your phone is to{" "}
+            The way to use STEC OS from your phone is to{" "}
             <span className="text-zinc-300">message it</span>: a Telegram bot becomes a two-way
-            conversation with the same Iron Jarvis, and when a task needs your OK it asks you there.
+            conversation with the same STEC OS, and when a task needs your OK it asks you there.
             Opening this dashboard itself on a phone is an advanced setup, further down.
           </p>
 
@@ -894,7 +894,7 @@ export default function HelpPage() {
               <li>
                 <span className="text-zinc-300">2.</span> Tick{" "}
                 <span className="text-zinc-200">
-                  &ldquo;Chat with Iron Jarvis from this destination&rdquo;
+                  &ldquo;Chat with STEC OS from this destination&rdquo;
                 </span>{" "}
                 right under the chat ID. Your detected chat ID goes into the allowed senders list
                 for you.
@@ -917,8 +917,8 @@ export default function HelpPage() {
                 <span className="font-semibold text-amber-200">
                   The allowed senders list fails closed.
                 </span>{" "}
-                An empty list allows nobody — only the Telegram user ids on it can talk to Iron
-                Jarvis, and everyone else is silently ignored.
+                An empty list allows nobody — only the Telegram user ids on it can talk to STEC
+                OS, and everyone else is silently ignored.
               </div>
             </div>
           </div>
@@ -942,13 +942,13 @@ export default function HelpPage() {
               </div>
             </div>
             <p className="mt-3 text-[13px] leading-relaxed text-zinc-400">
-              The desktop app keeps both of its servers on this PC only: Iron Jarvis&apos;s
+              The desktop app keeps both of its servers on this PC only: STEC OS&apos;s
               background service listens on <Code>127.0.0.1:8787</Code> and this dashboard on{" "}
               <Code>127.0.0.1:8788</Code>, and the dashboard calls that service at{" "}
               <Code>http://127.0.0.1:8787</Code> — which, on a
               phone, is the phone itself. (Turning on &ldquo;Let other computers on my network
-              reach this Iron Jarvis&rdquo; in Settings › Connections opens only the background
-              service on your network, for another computer running Iron Jarvis, and every request
+              reach this STEC OS&rdquo; in Settings › Connections opens only the background
+              service on your network, for another computer running STEC OS, and every request
               still needs its token; it never opens this dashboard.) So the
               installed app cannot be opened from a phone, over Wi-Fi or a VPN, until all of this
               is in place (nothing here is applied for you):
@@ -957,7 +957,7 @@ export default function HelpPage() {
               <li>
                 <span className="text-zinc-300">1.</span>{" "}
                 <span className="text-zinc-200">Both servers listening beyond 127.0.0.1.</span> Run
-                Iron Jarvis from source (<Code>ironjarvis serve --host 0.0.0.0</Code>, and the
+                STEC OS from source (<Code>ironjarvis serve --host 0.0.0.0</Code>, and the
                 dashboard started with <Code>-H 0.0.0.0</Code>), or put a tunnel or reverse proxy
                 in front of both.
               </li>
@@ -969,19 +969,19 @@ export default function HelpPage() {
               </li>
               <li>
                 <span className="text-zinc-300">3.</span>{" "}
-                <span className="text-zinc-200">Iron Jarvis letting the phone in.</span> Add the
+                <span className="text-zinc-200">STEC OS letting the phone in.</span> Add the
                 PC&apos;s name or address to <Kbd>IRONJARVIS_HOST_ALLOWLIST</Kbd> and the phone&apos;s
                 page address to <Kbd>IRONJARVIS_CORS_ORIGINS</Kbd>.
               </li>
               <li>
                 <span className="text-zinc-300">4.</span>{" "}
                 <span className="text-zinc-200">A token.</span> Set <Kbd>IRONJARVIS_TOKEN</Kbd>{" "}
-                before you start Iron Jarvis and enter it on the phone: started without one, it
+                before you start STEC OS and enter it on the phone: started without one, it
                 answers anyone who can reach it.
               </li>
             </ol>
             <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.06] bg-black/40 p-3 font-mono text-[11px] leading-relaxed text-zinc-300">
-              <span className="text-zinc-500"># set these, then start Iron Jarvis</span>
+              <span className="text-zinc-500"># set these, then start STEC OS</span>
               {"\n"}IRONJARVIS_HOST_ALLOWLIST=my-pc.local,192.168.1.42
               {"\n"}IRONJARVIS_CORS_ORIGINS=http://192.168.1.42:8788
               {"\n"}IRONJARVIS_TOKEN=&lt;a long random string&gt;
@@ -999,7 +999,7 @@ export default function HelpPage() {
             <ShieldCheck size={18} className="mt-0.5 shrink-0 text-amber-300" aria-hidden="true" />
             <div className="text-[13px] leading-relaxed text-amber-100/90">
               <span className="font-semibold text-amber-200">Only over a trusted network.</span>{" "}
-              Iron Jarvis can run tools on your machine, so expose it only over a network or VPN
+              STEC OS can run tools on your machine, so expose it only over a network or VPN
               you trust — never the open internet. When in doubt, message your bot instead.
             </div>
           </div>

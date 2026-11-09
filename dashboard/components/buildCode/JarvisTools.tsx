@@ -3,11 +3,11 @@
 /**
  * v1.414.0: Build › Code knows the user — with consent.
  *
- * `JarvisToolsChip` — the session's "Iron Jarvis tools" boxes: Memory and
- * Browser, the two Capabilities Iron Jarvis serves to a coding tool (the
+ * `JarvisToolsChip` — the session's "STEC OS tools" boxes: Memory and
+ * Browser, the two Capabilities STEC OS serves to a coding tool (the
  * same two a Build terminal's Capabilities give it). ALL OFF until the user
  * ticks one; a ticked box hands the REAL Claude Code / Codex / Pi / OpenCode
- * Iron Jarvis's own MCP connection for this session (the daemon's
+ * STEC OS's own MCP connection for this session (the daemon's
  * `hosted/jarvis_tools`). Each box says what it gives and who sees it BEFORE
  * the press. A box turned on (or the last one off) reaches the tool from the
  * next message; a box turned off is refused on the tool's very next call.
@@ -116,12 +116,12 @@ export function JarvisToolsChip({
         <div
           id={`${id}-panel`}
           role="dialog"
-          aria-label="Iron Jarvis tools for this session"
+          aria-label="STEC OS tools for this session"
           data-testid="code-jarvis-tools-panel"
           className="absolute right-0 top-full z-20 mt-1 w-80 max-w-[calc(100vw-2rem)] rounded-xl bg-ink-800 p-3 shadow-card"
         >
           <p className="mb-2 text-[12px] text-zinc-400">
-            Let {toolName} use Iron Jarvis&apos;s own tools in this session. Off until you tick one.
+            Let {toolName} use STEC OS&apos;s own tools in this session. Off until you tick one.
           </p>
           <ul className="space-y-2">
             {JARVIS_TOOL_KEYS.map((key) => (
@@ -182,7 +182,7 @@ export function ProfileShareOffer({ tool, toolName }: { tool: string; toolName: 
         setRow(view?.find((c) => c.cli === cli) ?? null);
       })
       .catch(() => {
-        // An older Iron Jarvis (404) or none answering: no offer.
+        // An older STEC OS (404) or none answering: no offer.
         if (live) setRow(null);
       });
     return () => {

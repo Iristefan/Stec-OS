@@ -499,7 +499,7 @@ def _isolate_antigravity_home():
     """v1.439.0: the Code view reads Antigravity's own saved conversations from
     its folder (``hosted.antigravity.default_home``). A test must never read the
     developer's real ``~/.gemini``: the folder is an empty scratch one for the
-    session. Only Iron Jarvis's READS follow it; an Antigravity process is never
+    session. Only STEC OS's READS follow it; an Antigravity process is never
     told."""
     import tempfile
 
@@ -538,7 +538,7 @@ def _isolate_grok_home():
     """v1.416.0: the Code view reads Grok's own saved sessions, model list and
     sign-in file from its home (``hosted.grok.default_home``). A test must
     never read the developer's real ``~/.grok``: the folder is an empty
-    scratch one for the session. Only Iron Jarvis's READS follow it; a Grok
+    scratch one for the session. Only STEC OS's READS follow it; a Grok
     process is never told."""
     import tempfile
 

@@ -11,7 +11,7 @@ __pycache__
 .pytest_cache
 .ruff_cache
 
-# Iron Jarvis runtime state (local-first; disposable)
+# STEC OS runtime state (local-first; disposable)
 .ironjarvis
 .scratch-ltm-notes
 data/

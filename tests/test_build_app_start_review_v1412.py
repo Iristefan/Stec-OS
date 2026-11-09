@@ -154,7 +154,7 @@ async def test_a_chosen_folder_that_went_missing_says_so_not_the_tool(app, tmp_p
         said = errors[0]["title"] + " " + errors[0]["fix"]
         assert "missing" in said and str(work) in said, said
         assert "could not start" not in said and "directory name is invalid" not in said.lower()
-        # A folder the user CHOSE is never made by Iron Jarvis.
+        # A folder the user CHOSE is never made by STEC OS.
         assert not work.exists()
     await stop_all(app)
 

@@ -410,7 +410,7 @@ export async function activateTab(
     updated = await chrome.tabs.update(tabId, { active: true });
     // The WINDOW too. `tabs.update({active:true})` makes the tab current inside its
     // own window and leaves that window behind whichever one is on screen, so the
-    // user would be told Iron Jarvis switched to a tab they still cannot see.
+    // user would be told STEC OS switched to a tab they still cannot see.
     await chrome.windows.update(tab.windowId, { focused: true });
   } catch (err) {
     throw new BridgeError("EXTENSION_ERROR", {

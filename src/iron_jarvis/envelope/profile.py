@@ -1,9 +1,9 @@
 """CapabilityProfile: what a model can actually do, measured not assumed.
 
 Ported from the user's own IronCore project (ironcore/envelope/profile.py),
-adapted to Iron Jarvis: plain dataclass instead of pydantic (this package is
+adapted to STEC OS: plain dataclass instead of pydantic (this package is
 consulted on hot paths and has no validation-on-assignment needs), no
-edit-format ladder (Iron Jarvis edits through structured tools, not diff
+edit-format ladder (STEC OS edits through structured tools, not diff
 negotiation), no text-protocol rung (strict_json via constrained decoding is
 the floor here; callers treat ``"none"`` as decompose-heavily), and a NEW
 ``"trusted"`` provenance for cloud/CLI providers — frontier models see ZERO
@@ -63,7 +63,7 @@ SOURCES: tuple[str, ...] = (
     "trusted",
 )
 
-#: Ladder order: most efficient first. Iron Jarvis has no text-protocol rung —
+#: Ladder order: most efficient first. STEC OS has no text-protocol rung —
 #: the floor below strict_json is ``"none"`` (decompose heavily, verify
 #: everything), returned by ``select_tool_protocol`` when nothing clears a bar.
 TOOL_PROTOCOL_LADDER: tuple[str, ...] = ("native", "strict_json")

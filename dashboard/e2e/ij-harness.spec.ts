@@ -799,7 +799,7 @@ test("Phase 6: the keys inside the harness only, the search, and Branch from her
 
   // Ctrl+K with the focus on the app's own control (the title bar's search):
   // the palette's, as everywhere else in the app.
-  await page.getByLabel("Search Iron Jarvis (Ctrl K)").focus();
+  await page.getByLabel("Search STEC OS (Ctrl K)").focus();
   await page.keyboard.press("Control+k");
   await expect(palette).toBeVisible({ timeout: 10_000 });
   await expect(page.getByTestId("model-filter")).toHaveCount(0);

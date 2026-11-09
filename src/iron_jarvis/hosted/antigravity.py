@@ -1,12 +1,12 @@
 """Google Antigravity in the Code view (v1.439.0): ``agy acp`` — the Agent
 Client Protocol (the JSON-RPC core OpenCode and Grok speak, :mod:`hosted.acp`)
 — with ALL of Antigravity's own tools, skills, MCP servers and settings on.
-The same Antigravity the user runs in a terminal; Iron Jarvis only starts it,
+The same Antigravity the user runs in a terminal; STEC OS only starts it,
 draws what it does, relays messages and turns every question Antigravity asks
 into a card.
 
 NOT AN IRON JARVIS PROVIDER: Antigravity is no row of
-``providers/subscription_clis.py`` — it is no model provider Iron Jarvis calls
+``providers/subscription_clis.py`` — it is no model provider STEC OS calls
 and no Iron-Proxy vendor (Iron-Proxy holds no Antigravity accounts). It signs
 in by ITSELF (its own Google sign-in, ``agy`` in a terminal), like Pi and
 OpenCode; an account named at create is refused in words.
@@ -21,12 +21,12 @@ Google and no sign-in was used; masked recordings in
 * ``agy acp [--dangerously-skip-permissions] [--log-file F]
   [--disable-telemetry]``: newline JSON-RPC on stdio, the folder is the
   process's working folder. With ``--log-file`` its own log goes THERE (none
-  is written under ``~/.gemini/antigravity-cli/log``) — Iron Jarvis gives each
+  is written under ``~/.gemini/antigravity-cli/log``) — STEC OS gives each
   session ``<home>/hosted/<sid>/agy-acp.log`` and reads a failure's reason from
   it (:func:`log_reason`).
 * ``initialize`` answers ``agentCapabilities`` {loadSession,
   promptCapabilities {image: true}, sessionCapabilities {resume, close, load,
-  list}} (no ``mcpCapabilities``: Iron Jarvis's own tools are not taken, said
+  list}} (no ``mcpCapabilities``: STEC OS's own tools are not taken, said
   once) and ``authMethods`` (oauth-personal, oauth-business, gemini-api-key,
   agent-platform).
 * SIGN-IN: at start the server tries a SILENT sign-in with the method it
@@ -37,8 +37,8 @@ Google and no sign-in was used; masked recordings in
   Even an API key in the environment (``GEMINI_API_KEY``) is not used until a
   client calls ``authenticate {methodId: "gemini-api-key"}`` — and Antigravity
   then KEEPS that choice (``cache/acp-auth-state.json``
-  ``{"methodId": "gemini-api-key"}``, measured) for every later start. So Iron
-  Jarvis NEVER calls ``authenticate``: choosing a sign-in method is the user's,
+  ``{"methodId": "gemini-api-key"}``, measured) for every later start. So STEC
+  OS NEVER calls ``authenticate``: choosing a sign-in method is the user's,
   in Antigravity's own screen.
 * ``session/new`` {cwd, mcpServers} answers ``sessionId`` (a UUID),
   ``models`` {availableModels [{modelId "<base>-<level>"}], currentModelId},
@@ -49,14 +49,14 @@ Google and no sign-in was used; masked recordings in
   model brings ITS levels. ``session/set_mode`` answers ``{}``; the mode
   applies from the next prompt (``current_mode_update`` comes with it).
   Reopened, a session is back on Antigravity's default model (measured on
-  load and resume): Iron Jarvis sets the session's own model again.
+  load and resume): STEC OS sets the session's own model again.
 * PERMISSIONS: a command asks ``session/request_permission`` with ONLY
   ``allow`` (allow_once) / ``deny`` (reject_once) — no "for this session"
   answer, so every card is Allow once / Deny. In Antigravity's default mode
   with no settings of the user's, ``write_file`` / ``edit_file`` ran WITHOUT a
   card, inside and outside the folder; only the user's own
   ``toolPermission: "strict"`` (Antigravity's settings) makes a write ask.
-  Iron Jarvis never writes that file. Plan mode is NOT read-only (under strict
+  STEC OS never writes that file. Plan mode is NOT read-only (under strict
   it asked before a write and wrote after Allow).
 * QUESTIONS: the model's ``ask_question`` arrives as ``elicitation/create``
   {mode: form, requestedSchema {properties {q1: {title, oneOf [{const,
@@ -143,7 +143,7 @@ MODE_ABOUT: dict[str, str] = {
 }
 HIDDEN_MODES: dict[str, str] = {
     "ask": ("Antigravity asks before every file change only when your own Antigravity settings say "
-            "toolPermission \"strict\" — Iron Jarvis never changes Antigravity's settings."),
+            "toolPermission \"strict\" — STEC OS never changes Antigravity's settings."),
     "auto": "Antigravity's auto mode is not offered over its agent protocol.",
 }
 #: Full access: started with this flag (a new process before the next message).
@@ -162,7 +162,7 @@ LOG_TAIL_BYTES = 256 * 1024
 #: into every backup and grew for the session's whole life).
 LOG_MAX_BYTES = 2 * 1024 * 1024
 
-#: When set (non-blank), the ONLY Antigravity folder Iron Jarvis READS for its
+#: When set (non-blank), the ONLY Antigravity folder STEC OS READS for its
 #: own listings (saved sessions) — the test suite points it at an empty
 #: folder: a test must never read the developer's real ``~/.gemini``. The
 #: Antigravity PROCESS is not told.
@@ -256,7 +256,7 @@ def log_reason(path: str | os.PathLike[str] | None) -> str:
 # Where Antigravity keeps things (read-only)
 # --------------------------------------------------------------------------- #
 def default_home(environ: Any = None) -> Path:
-    """The Antigravity folder Iron Jarvis reads: :data:`HOME_ENV`, else
+    """The Antigravity folder STEC OS reads: :data:`HOME_ENV`, else
     ``~/.gemini/antigravity-cli``."""
     env = os.environ if environ is None else environ
     override = str(env.get(HOME_ENV) or "").strip()
@@ -418,7 +418,7 @@ def save_models(path: Path, rows: list[dict[str, Any]], default: str = "") -> No
 
 def cached_models(path: Path | None) -> tuple[list[dict[str, Any]], str]:
     """BLOCKING-light: ``(the models Antigravity last listed, its default)`` —
-    memory, else Iron Jarvis's own copy. Never a start."""
+    memory, else STEC OS's own copy. Never a start."""
     if LAST_MODELS:
         return list(LAST_MODELS), (LAST_DEFAULT[0] if LAST_DEFAULT else "")
     try:
@@ -656,7 +656,7 @@ class AntigravityDriver(AcpDriver):
         return failure_event(said)
 
     def client_capabilities(self) -> dict[str, Any]:
-        """Iron Jarvis answers Antigravity's question FORM (measured: without
+        """STEC OS answers Antigravity's question FORM (measured: without
         ``elicitation`` declared, Antigravity prints the question as text and
         ends the turn)."""
         return {**super().client_capabilities(), "elicitation": {"form": {}}}
@@ -664,7 +664,7 @@ class AntigravityDriver(AcpDriver):
     def acp_servers(self, caps: dict[str, Any]) -> list[dict[str, Any]]:
         """v1.441.0 (review A5): what THIS Antigravity said about taking an
         HTTP MCP server is kept (``jarvis_tools.note_takes``) — agy 1.5.2 says
-        no ``mcpCapabilities``, so the Iron Jarvis tools chip is hidden for it
+        no ``mcpCapabilities``, so the STEC OS tools chip is hidden for it
         and ticking a box never restarts it for nothing."""
         from . import jarvis_tools as JT
 

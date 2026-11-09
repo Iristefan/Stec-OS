@@ -1,4 +1,4 @@
-// Iron Jarvis — desktop window-state persistence (CommonJS).
+// STEC OS — desktop window-state persistence (CommonJS).
 //
 // Small, dependency-free helpers (fs + path only, NO electron) so the desktop
 // window remembers its size/position across launches. The caller (main.js)

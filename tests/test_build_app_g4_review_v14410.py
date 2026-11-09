@@ -2,7 +2,7 @@
 
 Each one was red on the builder's commit (952ca189):
 
-1. A Pi ``!`` command running when Iron Jarvis restarted (the code host keeps
+1. A Pi ``!`` command running when STEC OS restarted (the code host keeps
    Pi alive, ``hosted/adopt.py``) could never end: the waiter for Pi's ``bash``
    answer has no JSON form and was not re-armed, so neither the answer nor
    Stop ended the turn — the session refused every later message as busy.
@@ -94,7 +94,7 @@ async def test_stop_on_a_bang_command_kept_across_a_restart_ends_the_turn():
     try:
         task = asyncio.ensure_future(e.interrupt())
         await asyncio.sleep(0.01)
-        # Pi answers the abort; its ``bash`` answer was lost while Iron Jarvis
+        # Pi answers the abort; its ``bash`` answer was lost while STEC OS
         # was down — the turn still ends.
         abort = next(x for x in written if x.get("type") == "abort_bash")
         e.on_message({"id": abort["id"], "type": "response", "command": "abort_bash", "success": True})
@@ -146,7 +146,7 @@ def test_a_cut_bang_turn_is_never_carried_on_by_itself():
         {"type": "user", "turn": "t1", "text": "!npm run build", "command": True, "at": "2026-11-06T10:00:00Z"},
         {"type": "tool", "turn": "t1", "item": "x-bash1", "status": "running", "at": "2026-11-06T10:00:01Z"},
     ]
-    rec = CO.analyse_tail(events, stopped_title="Stopped when Iron Jarvis stopped")
+    rec = CO.analyse_tail(events, stopped_title="Stopped when STEC OS stopped")
     assert rec is not None and rec["command"] is True
     # An ordinary message is still carried on.
     events[0].pop("command")

@@ -56,7 +56,7 @@ export function shellKnowsDown(d: ShellDaemonState | null): boolean {
  *  main.js changes nothing on a refusal, so the tray item it names is still
  *  there; quitting and reopening is the way back that always exists. */
 export const RESTART_REFUSED_NOTE =
-  "This window could not restart it. Use Restart Iron Jarvis in the tray menu instead (the Iron Jarvis icon by the clock — it may be under the ^ arrow), or quit Iron Jarvis and open it again.";
+  "This window could not restart it. Use Restart STEC OS in the tray menu instead (the STEC OS icon by the clock — it may be under the ^ arrow), or quit STEC OS and open it again.";
 
 /** The port the dashboard is pointed at, surfaced in the "start it" hint. */
 function apiPort(): string {
@@ -102,7 +102,7 @@ function DesktopOfflineWords({
     // rarely lives to read this. If one does, it must not say "restarting".
     return (
       <>
-        Iron Jarvis found that its install is damaged, so it stopped restarting its service.
+        STEC OS found that its install is damaged, so it stopped restarting its service.
         Follow the repair window, or reinstall the latest version — your data is untouched.
       </>
     );
@@ -173,7 +173,7 @@ export function DaemonBanner() {
         : requestError
           ? "error"
           : null;
-  // v1.406.0 (part 6 follow-up): a START is calm ("Starting Iron Jarvis…")
+  // v1.406.0 (part 6 follow-up): a START is calm ("Starting STEC OS…")
   // — but not over a service the DESKTOP already knows is down. While
   // starting, the banner asks the shell (below), and a crash it is restarting
   // from, a cap, a stall or a damaged install wins at once: the page is a
@@ -309,7 +309,7 @@ export function DaemonBanner() {
 
   return (
     <AnimatePresence>
-      {/* v1.354.0 (G31): one quiet line for a few seconds when Iron Jarvis
+      {/* v1.354.0 (G31): one quiet line for a few seconds when STEC OS
           answers again after an outage — no box, the theme's success tone on
           the icon only. A screen reader hears it (role=status, polite). */}
       {back && !problem && (
@@ -331,7 +331,7 @@ export function DaemonBanner() {
           </div>
         </m.div>
       )}
-      {/* v1.406.0 (part 6): a START is not an outage. Before Iron Jarvis has
+      {/* v1.406.0 (part 6): a START is not an outage. Before STEC OS has
           answered this page once (and only while the page is young —
           lib/daemon STARTING_GRACE_MS) the banner says the splash's own calm
           words, no warn tone, no Retry, nothing to dismiss. */}
@@ -403,7 +403,7 @@ export function DaemonBanner() {
                   aria-hidden="true"
                   className={restartPending ? "animate-spin" : undefined}
                 />
-                Restart Iron Jarvis
+                Restart STEC OS
               </button>
             )}
             {canOpenLogs && (
@@ -463,7 +463,7 @@ export function DaemonBanner() {
               <span className="text-rose-100/70">
                 {isDesktopShell() ? (
                   <>
-                    Iron Jarvis is running, but this window&apos;s access token is missing or
+                    STEC OS is running, but this window&apos;s access token is missing or
                     out of date — data below may look empty. Re-enter it to reconnect.
                   </>
                 ) : (
@@ -472,9 +472,9 @@ export function DaemonBanner() {
                      hunting. Name the way out and the file. */
                   <>
                     This page was opened in a browser, so it has no token — data below may look
-                    empty. Open it in the Iron Jarvis app instead, or paste the token from{" "}
+                    empty. Open it in the STEC OS app instead, or paste the token from{" "}
                     <code className="rounded bg-rose-500/10 px-1 py-0.5 font-mono text-[11px]">
-                      %APPDATA%\Iron Jarvis\token.txt
+                      %APPDATA%\STEC OS\token.txt
                     </code>
                     .
                   </>
@@ -487,7 +487,7 @@ export function DaemonBanner() {
                 data-testid="open-in-app"
                 className="flex shrink-0 items-center gap-1.5 rounded-lg border border-rose-500/30 px-2.5 py-1 text-xs font-medium text-rose-200 transition-colors hover:bg-rose-500/15"
               >
-                Open in the Iron Jarvis app
+                Open in the STEC OS app
               </a>
             )}
             <Link

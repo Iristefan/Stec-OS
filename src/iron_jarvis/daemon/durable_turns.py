@@ -135,7 +135,7 @@ MAX_STORED_CHARS = 8_000_000
 KEEP_RECORDS_DAYS = 7
 #: The error a turn cut off by a restart ends with.
 INTERRUPTED_DETAIL = (
-    "Iron Jarvis stopped while answering (a restart or a crash). What it had"
+    "STEC OS stopped while answering (a restart or a crash). What it had"
     " written so far is kept; press Retry to ask again."
 )
 

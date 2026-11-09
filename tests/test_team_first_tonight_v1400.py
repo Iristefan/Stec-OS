@@ -184,7 +184,7 @@ def test_tonights_two_invocations_end_to_end(tmp_path, monkeypatch, gateway):
     alone_key = str(alone[0][0]["key"])[:12]
     for part in (plain_part, first_part):
         assert f"| {alone_key} | jarvis · coding session |" in part
-        assert (f"The answer compares with {alone_key} (jarvis · coding session, Iron Jarvis "
+        assert (f"The answer compares with {alone_key} (jarvis · coding session, STEC OS "
                 f"{alone[0][0]['version']}).") in part
     assert "**The team at work:** The planner handed at least one piece to a team member in 0 of 6 runs." \
         in plain_part
@@ -199,7 +199,7 @@ def test_tonights_two_invocations_end_to_end(tmp_path, monkeypatch, gateway):
     # changed files to the team's reviewer at the finish (harness/finish) —
     # said apart, never counted as the planner's piece (team_report review).
     assert [ln for ln in b_out.splitlines() if ln.startswith("The planner handed")] == [
-        "The planner handed at least one piece to a team member in 6 of 6 runs. Iron Jarvis's own finish "
+        "The planner handed at least one piece to a team member in 6 of 6 runs. STEC OS's own finish "
         "check handed the change to the team's reviewer in 3 of 6 runs."]
 
 
@@ -242,6 +242,6 @@ def test_b_first_a_killed_after_its_team_then_a_again(tmp_path, monkeypatch, gat
     alone_key = str(alone[0][0]["key"])[:12]
     for config, handed in ((team[0][0], "0 of 6"), (first[0][0], "6 of 6")):
         part = _section(report, config)
-        assert f"The answer compares with {alone_key} (jarvis · coding session, Iron Jarvis" in part
+        assert f"The answer compares with {alone_key} (jarvis · coding session, STEC OS" in part
         assert f"to a team member in {handed} runs." in part
     assert f"**The answer:** {TRP.NO_MEMBER_WORK}" in _section(report, team[0][0])

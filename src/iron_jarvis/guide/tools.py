@@ -1,4 +1,4 @@
-"""The Guide agent's tools (v1.224.0) — how the built-in Iron Jarvis expert
+"""The Guide agent's tools (v1.224.0) — how the built-in STEC OS expert
 LOOKS THINGS UP instead of guessing.
 
 Three read-only tools, all default ``allow``:
@@ -91,12 +91,12 @@ def _score(query_tokens: list[str], *fields: Any) -> float:
 class GuideSearchTool(Tool):
     name = "guide_search"
     description = (
-        "Search the Iron Jarvis reference — the app's own docs (Handbook, "
+        "Search the STEC OS reference — the app's own docs (Handbook, "
         "settings guides, vocabulary, spec, architecture) and live catalogs of "
         "THIS install (version, connected models, every tool, skill, persona, "
         "agent type and API route). Returns ranked sections with a label to "
         "pass to guide_read for the full text. Use it before answering any "
-        "question about how Iron Jarvis works."
+        "question about how STEC OS works."
     )
     input_schema = {
         "type": "object",
@@ -202,7 +202,7 @@ class GuideReadTool(Tool):
 class AppSearchTool(Tool):
     name = "app_search"
     description = (
-        "Find the user's OWN things inside this Iron Jarvis install by name or "
+        "Find the user's OWN things inside this STEC OS install by name or "
         "topic: projects, saved workflows, schedules, reflex rules, goals, "
         "skills, custom agents, chat threads, recent sessions, memory bases, "
         "custom tools, personas. Each hit carries the dashboard path that "
@@ -376,7 +376,7 @@ class AppSearchTool(Tool):
 class AppStatusTool(Tool):
     name = "app_status"
     description = (
-        "One-screen overview of THIS Iron Jarvis install: version, whether it "
+        "One-screen overview of THIS STEC OS install: version, whether it "
         "is the packaged app, the state folder, default model, connected model "
         "providers, the active project, and counts of projects, workflows, "
         "schedules, reflex rules, goals, skills, custom agents, memory bases. "
@@ -418,7 +418,7 @@ class AppStatusTool(Tool):
                 counts[kind] = "unreadable"
         data["counts"] = counts
         lines = [
-            f"Iron Jarvis {data['version']} ({'packaged app' if data['frozen'] else 'running from source'})",
+            f"STEC OS {data['version']} ({'packaged app' if data['frozen'] else 'running from source'})",
             f"state home: {data['home']}",
             f"default model: {data['default_provider']} / {data['default_model'] or '(provider default)'}",
             f"active project: {data['active_project_id'] or 'none'}",

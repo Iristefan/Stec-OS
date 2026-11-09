@@ -2,9 +2,9 @@
 
 The dashboard scan (dashboard/__tests__/vocabulary.test.ts) reads only
 dashboard/app, components and lib. The re-audit (v1.357.0) found the words
-Iron Jarvis and its desktop shell write THEMSELVES outside it: "the daemon
+STEC OS and its desktop shell write THEMSELVES outside it: "the daemon
 log has the details" (scheduling/run_outcome.py), "the daemon keeps
-stalling" and "Iron Jarvis — daemon did not start" (desktop/main.js), and the
+stalling" and "STEC OS — daemon did not start" (desktop/main.js), and the
 G76 acceptance "fails on any new user-visible daemon/pack" was not true end
 to end.
 
@@ -46,7 +46,7 @@ PY_FILES = (
     SRC / "comm" / "notifier.py",
     SRC / "agents" / "task_door.py",
     # v1.358.0 (integrate): the reworded 503s ("… is not available right
-    # now. Restart Iron Jarvis …", never "this daemon"), the Pixio key
+    # now. Restart STEC OS …", never "this daemon"), the Pixio key
     # sentences and the parked-workflow store. v1.360.0 (lane 10C): every
     # route module (routes/assignments.py included, its refusals now say
     # "task"), the extension failure words, the import door, the queue and
@@ -345,14 +345,14 @@ def test_the_readers_reach_what_they_must():
     """Anti-vacuity: each reader finds the sentences it exists for."""
     js = js_user_strings(MAIN_JS.read_text(encoding="utf-8").replace("\r\n", "\n"))
     texts = [t for _l, t in js]
-    assert "Iron Jarvis keeps stalling (Restart from the tray)" in texts
-    assert "Iron Jarvis did not start" in texts
+    assert "STEC OS keeps stalling (Restart from the tray)" in texts
+    assert "STEC OS did not start" in texts
     assert any(t.startswith("A chat is waiting for your OK") for t in texts)
     assert len(texts) > 150, len(texts)
     run_outcome = [t for _l, t in py_user_strings(PY_FILES[0].read_text(encoding="utf-8"))]
-    assert any("Iron Jarvis kept the details in its log" in t for t in run_outcome), run_outcome
+    assert any("STEC OS kept the details in its log" in t for t in run_outcome), run_outcome
     schema_texts = schema_user_strings()
-    assert ("lan_access", "Let other computers on my network reach this Iron Jarvis") in schema_texts
+    assert ("lan_access", "Let other computers on my network reach this STEC OS") in schema_texts
     assert ("voice_vosk_model_path", "Voice: offline speech model folder") in schema_texts
     assert len(schema_texts) > 200, len(schema_texts)
 
@@ -365,7 +365,7 @@ def test_the_readers_reach_what_they_must():
 def test_the_js_reader_finds_a_shown_word_and_skips_logs_ids_and_comments():
     planted = "\n".join(
         [
-            'tray.setToolTip("Iron Jarvis — the daemon died");',
+            'tray.setToolTip("STEC OS — the daemon died");',
             "new Notification({ title: \"x\", body: `The ${label} keeps crashing in the pane` });",
             'desktopLog("warn", `[daemon] the daemon died ${x}`);',
             'fileLogger("daemon")(`[main] the daemon died\\n`);',
@@ -373,7 +373,7 @@ def test_the_js_reader_finds_a_shown_word_and_skips_logs_ids_and_comments():
             'if (label === "daemon") startService("daemon", fn);',
             "// the daemon died (a comment)",
             "const re = /daemon died/i;",
-            'dialog.showErrorBox("Iron Jarvis", `Lost the mission: ${a ? "Job done" : "x"}`);',
+            'dialog.showErrorBox("STEC OS", `Lost the mission: ${a ? "Job done" : "x"}`);',
         ]
     )
     found = sorted({(line, word) for line, text in js_user_strings(planted) for word in _hits(text)})
@@ -454,5 +454,5 @@ def test_an_agents_inbox_without_its_queue_says_so_in_the_canons_words(tmp_path)
     res = TestClient(app).get("/agents/builder/inbox")
     assert res.status_code == 503, res.text
     detail = res.json()["detail"]
-    assert detail == "Queued tasks are not available right now. Restart Iron Jarvis to bring them back."
+    assert detail == "Queued tasks are not available right now. Restart STEC OS to bring them back."
     assert not _hits(detail), detail

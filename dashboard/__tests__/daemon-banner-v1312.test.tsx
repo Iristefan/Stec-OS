@@ -18,11 +18,11 @@
  *    data-shell-state = "restarting" | "capped" | "unknown" (unknown = browser,
  *    an older shell, or getState refused).
  *  - restarting → the restarting wording + "attempt N" when N ≥ 1.
- *  - capped → "Iron Jarvis's service stopped after N crashes …", a
- *    [Restart Iron Jarvis] button (only when restartDaemon exists) and an
+ *  - capped → "STEC OS's service stopped after N crashes …", a
+ *    [Restart STEC OS] button (only when restartDaemon exists) and an
  *    [Open logs] button (shell.openLogs). A refused restart shows a note with
  *    data-testid="daemon-restart-note" pointing at the tray.
- *  - DESKTOP_OFFLINE_HINT points at the tray's "Restart Iron Jarvis", not Quit.
+ *  - DESKTOP_OFFLINE_HINT points at the tray's "Restart STEC OS", not Quit.
  *  - A browser tab (no shell) is unchanged: the CLI line, no restart button.
  */
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
@@ -131,7 +131,7 @@ afterEach(() => {
 describe("desktop offline banner tells the truth (v1.312.0)", () => {
   it("the hint points at the tray's Restart item, not Quit", () => {
     expect(DESKTOP_OFFLINE_HINT).toMatch(/restarting its local service/);
-    expect(DESKTOP_OFFLINE_HINT).toMatch(/Restart Iron Jarvis/);
+    expect(DESKTOP_OFFLINE_HINT).toMatch(/Restart STEC OS/);
     expect(DESKTOP_OFFLINE_HINT).not.toMatch(/Quit/);
     // Second review round: the tray item exists only once restarts stop, so the
     // hint says it WILL appear — never "use" an item that is not there yet.
@@ -145,7 +145,7 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     await waitFor(() => expect(banner()).toHaveAttribute("data-shell-state", "restarting"));
     expect(banner()).toHaveTextContent(/restarting its local service/);
     expect(banner()).toHaveTextContent(/attempt 2\b/i);
-    expect(screen.queryByRole("button", { name: /Restart Iron Jarvis/ })).toBeNull();
+    expect(screen.queryByRole("button", { name: /Restart STEC OS/ })).toBeNull();
     expect(getState).toHaveBeenCalled();
   });
 
@@ -163,7 +163,7 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     expect(openLogs).toHaveBeenCalledTimes(1);
     expect(restartDaemon).not.toHaveBeenCalled();
 
-    fireEvent.click(screen.getByRole("button", { name: /Restart Iron Jarvis/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Restart STEC OS/ }));
     await waitFor(() => expect(restartDaemon).toHaveBeenCalledTimes(1));
   });
 
@@ -175,12 +175,12 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     await waitFor(() => expect(banner()).toHaveAttribute("data-shell-state", "capped"));
     const readsBefore = getState.mock.calls.length;
 
-    fireEvent.click(screen.getByRole("button", { name: /Restart Iron Jarvis/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Restart STEC OS/ }));
     await waitFor(() => expect(banner()).toHaveAttribute("data-shell-state", "restarting"));
     expect(getState.mock.calls.length).toBeGreaterThan(readsBefore);
     expect(banner()).toHaveTextContent(/restarting its local service/);
     expect(banner()).not.toHaveTextContent(/stopped after/);
-    expect(screen.queryByRole("button", { name: /Restart Iron Jarvis/ })).toBeNull();
+    expect(screen.queryByRole("button", { name: /Restart STEC OS/ })).toBeNull();
   });
 
   it("a refused restart says so and points at the tray", async () => {
@@ -191,7 +191,7 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     // Anti-vacuity: no note before the press.
     expect(screen.queryByTestId("daemon-restart-note")).toBeNull();
 
-    fireEvent.click(screen.getByRole("button", { name: /Restart Iron Jarvis/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Restart STEC OS/ }));
     await waitFor(() => expect(screen.getByTestId("daemon-restart-note")).toHaveTextContent(/tray/i));
     expect(restartDaemon).toHaveBeenCalledTimes(1);
   });
@@ -202,7 +202,7 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     await waitFor(() => expect(banner()).toHaveAttribute("data-shell-state", "capped"));
     expect(banner()).toHaveTextContent(/stopped after 10 crashes/);
     expect(screen.getByRole("button", { name: /Open logs/ })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /Restart Iron Jarvis/ })).toBeNull();
+    expect(screen.queryByRole("button", { name: /Restart STEC OS/ })).toBeNull();
   });
 
   it("polls the shell while offline: a ladder that gives up shows up within 5 s", async () => {
@@ -243,7 +243,7 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     await waitFor(() => expect(getState).toHaveBeenCalled());
     expect(banner()).toHaveAttribute("data-shell-state", "unknown");
     expect(banner()).toHaveTextContent(/restarting its local service/);
-    expect(screen.queryByRole("button", { name: /Restart Iron Jarvis/ })).toBeNull();
+    expect(screen.queryByRole("button", { name: /Restart STEC OS/ })).toBeNull();
     cleanup();
 
     // The v1.226.0 shape: a shell whose preload has no `shell` bridge at all.
@@ -295,7 +295,7 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     expect(banner()).not.toHaveTextContent(/restarting its local service/);
     expect(banner()).not.toHaveTextContent(/attempt/i);
     // Not stopped: the supervisor still owns it, so no Restart yet.
-    expect(screen.queryByRole("button", { name: /Restart Iron Jarvis/ })).toBeNull();
+    expect(screen.queryByRole("button", { name: /Restart STEC OS/ })).toBeNull();
   });
 
   it("stalled (the watchdog's breaker): says restarts are paused and offers Restart + Open logs", async () => {
@@ -320,7 +320,7 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     fireEvent.click(screen.getByRole("button", { name: /Open logs/ }));
     expect(openLogs).toHaveBeenCalledTimes(1);
 
-    fireEvent.click(screen.getByRole("button", { name: /Restart Iron Jarvis/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Restart STEC OS/ }));
     await waitFor(() => expect(banner()).toHaveAttribute("data-shell-state", "restarting"));
     expect(restartDaemon).toHaveBeenCalledTimes(1);
   });
@@ -331,7 +331,7 @@ describe("desktop offline banner tells the truth (v1.312.0)", () => {
     expect(banner()).toHaveAttribute("data-shell-state", "unknown");
     expect(banner()).toHaveTextContent(/uv run ironjarvis serve/);
     expect(banner()).not.toHaveTextContent(/restarting its local service/);
-    expect(screen.queryByRole("button", { name: /Restart Iron Jarvis/ })).toBeNull();
+    expect(screen.queryByRole("button", { name: /Restart STEC OS/ })).toBeNull();
     expect(screen.queryByRole("button", { name: /Open logs/ })).toBeNull();
   });
 });

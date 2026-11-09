@@ -27,7 +27,7 @@ def _split(names: str | None) -> list[str] | None:
 def run_command(
     runner: str = typer.Option(
         ..., "--runner",
-        help="jarvis, jarvis-team, claude or codex. jarvis-team runs Iron Jarvis with a model team "
+        help="jarvis, jarvis-team, claude or codex. jarvis-team runs STEC OS with a model team "
         "(--team names its file)."),
     provider: str = typer.Option(
         "", "--provider", help="Jarvis only, and required for it: the provider to answer with."),
@@ -71,7 +71,7 @@ def run_command(
     dialect: str = typer.Option(
         "auto", "--dialect",
         help="Jarvis only: auto (the model family's own tool dialect, the default), generic "
-        "(Iron Jarvis's own tool names), or a dialect to force: claude, gpt, qwen.",
+        "(STEC OS's own tool names), or a dialect to force: claude, gpt, qwen.",
     ),
     team: str = typer.Option(
         "", "--team",
@@ -121,7 +121,7 @@ def run_command(
         # sources (PyInstaller collects data without .py), and has no Python
         # to grade with: a run there would grade broken copies.
         typer.echo(
-            "The harness benchmark runs from a source checkout of Iron Jarvis "
+            "The harness benchmark runs from a source checkout of STEC OS "
             "(uv run ironjarvis bench-harness run ...), not from the installed app."
         )
         raise typer.Exit(code=2)
@@ -134,7 +134,7 @@ def run_command(
         typer.echo("--refine runs on --path lane (it tries candidate harness layers on the bare chat lane).")
         raise typer.Exit(code=2)
     if refine and runner != "jarvis":
-        typer.echo("--refine improves Iron Jarvis's own harness: run it with --runner jarvis.")
+        typer.echo("--refine improves STEC OS's own harness: run it with --runner jarvis.")
         raise typer.Exit(code=2)
     if team and runner != "jarvis-team":
         typer.echo("--team applies to --runner jarvis-team only.")
@@ -260,7 +260,7 @@ def _refine(*, runner: str, provider: str, model: str, tasks: str, seed: int | N
     from .tripwire import HiddenCheckLeak
 
     if runner != "jarvis":
-        typer.echo("--refine improves Iron Jarvis's own harness: run it with --runner jarvis.")
+        typer.echo("--refine improves STEC OS's own harness: run it with --runner jarvis.")
         raise typer.Exit(code=2)
     settings = RefineSettings(
         provider=provider, model=model, dialect=dialect or "auto", rounds=rounds, tier=tier,

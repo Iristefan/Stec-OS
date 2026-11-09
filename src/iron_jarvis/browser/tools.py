@@ -82,7 +82,7 @@ reaches it because every acting tool goes through the one ``execute`` above.
 
 Vocabulary (§7.1, mandatory): no user- or model-facing string in this module may
 call the Chrome add-on an "extension" — ``VOCABULARY.md`` already assigns that
-word to an MCP server. It is "your browser", or "the Iron Jarvis browser add-on".
+word to an MCP server. It is "your browser", or "the STEC OS browser add-on".
 """
 
 from __future__ import annotations
@@ -614,8 +614,8 @@ class BrowserListTabsTool(_BrowserTool):
         if blocked:
             lines.append(
                 f"{blocked} tab(s) could not report a title or URL: site access has "
-                "not been granted to the Iron Jarvis browser add-on. Ask the user to "
-                "open the Browser page in Iron Jarvis and press Grant site access."
+                "not been granted to the STEC OS browser add-on. Ask the user to "
+                "open the Browser page in STEC OS and press Grant site access."
             )
         output, security = fence_page_text("\n".join(lines))
         data["security"] = security
@@ -651,8 +651,8 @@ class BrowserGetActiveTabTool(_BrowserTool):
         if row["needs_host_permission"]:
             output = (
                 f"{output}\nThe title and URL are not readable: site access has not "
-                "been granted to the Iron Jarvis browser add-on. Ask the user to open "
-                "the Browser page in Iron Jarvis and press Grant site access."
+                "been granted to the STEC OS browser add-on. Ask the user to open "
+                "the Browser page in STEC OS and press Grant site access."
             )
         output, security = fence_page_text(output)
         # ``data`` here IS the tab row (§8.6's shape). The verdict is added as
@@ -1337,7 +1337,7 @@ class _ActingTool(_BrowserTool):
                 await asyncio.to_thread(queue.deny, req.id)
             text = (
                 f"approval required: {decision.reason}. Nothing has been done to "
-                f"the page. Ask the user to approve it in Iron Jarvis, then make "
+                f"the page. Ask the user to approve it in STEC OS, then make "
                 f"the identical call again. Pending approval id={req.id}."
             )
             return ToolResult(
@@ -1371,7 +1371,7 @@ async def _consult_resolver(resolver: Any, req: Any, ctx: Any, *, name: str, arg
     The original contract was ``resolver(req) -> bool``, synchronous, and only
     tests ever supplied one — production had none, so the risk door's card was
     a queue row nobody in the sidebar could see, and the tool refused with
-    "approve it in Iron Jarvis, then make the identical call again": a dead
+    "approve it in STEC OS, then make the identical call again": a dead
     end from the sidebar. The panel's resolver needs the tool context (to
     answer only for its own turn), the words for the card, and time — it is
     ``async``. A one-argument resolver is still called as before; a failure
@@ -2199,7 +2199,7 @@ class BrowserFillFormTool(_BrowserTool):
             tool = FORM_STEP_TOOLS.get(str(step.get("action") or ""), "")
             if tool and str(table.get(tool) or "").strip().lower() == "deny":
                 return (
-                    f"step {n} uses {tool}, which you set to Deny in Iron Jarvis's "
+                    f"step {n} uses {tool}, which you set to Deny in STEC OS's "
                     "permissions. Nothing was done to the page."
                 )
         return ""
@@ -2325,7 +2325,7 @@ def _batch_waiting_words(said: str) -> str:
     checkbox turned back off). So that sentence and the approval id are cut,
     and the batch says what to send instead.
     """
-    text = re.sub(r"\s*Ask the user to approve it in Iron Jarvis,[^.]*\.", "", said)
+    text = re.sub(r"\s*Ask the user to approve it in STEC OS,[^.]*\.", "", said)
     text = re.sub(r"\s*Pending approval id=\S+", "", text).strip()
     if text and not text.endswith("."):
         text += "."

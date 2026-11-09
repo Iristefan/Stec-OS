@@ -1,7 +1,7 @@
 /**
  * A coding session's pull-request watch, said in ONE quiet line (v1.439.0,
  * chat-first Wave 6). `GET /build/sessions/{id}/ci` (daemon/routes/ci_watch.py)
- * answers `{watch, on}`: `watch` is null until Iron Jarvis has seen the
+ * answers `{watch, on}`: `watch` is null until STEC OS has seen the
  * session's pull request, else `{state, rounds, max_rounds, failed, words,
  * next_check_at, …}`. No GitHub call is made by that read.
  *
@@ -96,7 +96,7 @@ export function ciWatchWords(view: CiView, now: Date = new Date()): string {
   if (!w || w.state === "closed") return "";
   const active = w.state === "watching" || w.state === "fix_due" || w.state === "fixing" || w.state === "reviewing";
   if (active && !view.on) {
-    return "Fixing failed checks is turned off in Settings, so Iron Jarvis is not watching this pull request.";
+    return "Fixing failed checks is turned off in Settings, so STEC OS is not watching this pull request.";
   }
   // The daemon's own sentence for a stop it explains; the lead only when it said none.
   const own = (lead: string) => w.words || lead;
@@ -107,18 +107,18 @@ export function ciWatchWords(view: CiView, now: Date = new Date()): string {
           ? ` Next look at ${clock(w.nextCheckAt)}.`
           : "";
       const left = w.rounds > 0 ? ` ${roundsLeft(w)}.` : "";
-      return `Iron Jarvis is watching its checks.${next}${left}`;
+      return `STEC OS is watching its checks.${next}${left}`;
     }
     case "fix_due":
-      return `A check failed. Iron Jarvis starts a fix when this session is free (${roundsLeft(w)}).`;
+      return `A check failed. STEC OS starts a fix when this session is free (${roundsLeft(w)}).`;
     case "fixing":
-      return `Iron Jarvis is fixing a failed check (round ${Math.max(1, w.rounds)} of ${w.maxRounds}).`;
+      return `STEC OS is fixing a failed check (round ${Math.max(1, w.rounds)} of ${w.maxRounds}).`;
     case "reviewing":
       return `A reviewer is reading the fix (round ${Math.max(1, w.rounds)} of ${w.maxRounds}).`;
     case "passing":
-      return "Its checks pass. Iron Jarvis watches again after the next push.";
+      return "Its checks pass. STEC OS watches again after the next push.";
     case "gave_up":
-      return own("Iron Jarvis stopped fixing its checks.");
+      return own("STEC OS stopped fixing its checks.");
     case "asking":
       return own("A fix is waiting for you.");
     case "stopped":

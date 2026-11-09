@@ -1,4 +1,4 @@
-"""The animated backgrounds Iron Jarvis knows about (v1.410.0).
+"""The animated backgrounds STEC OS knows about (v1.410.0).
 
 THIS LIST IS ALL THE INSTALLER CARRIES. The backgrounds themselves live in the
 repository (``backgrounds/<id>/index.html``) and are downloaded from the

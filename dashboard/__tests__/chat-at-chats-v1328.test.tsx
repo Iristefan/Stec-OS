@@ -227,7 +227,7 @@ afterEach(() => {
 });
 
 async function box(): Promise<HTMLTextAreaElement> {
-  return (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  return (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
 }
 
 /** A chat row's title (v1.328.0 fix round: the row also shows the chat's

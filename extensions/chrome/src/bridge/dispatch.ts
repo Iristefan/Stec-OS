@@ -81,7 +81,7 @@ export class Dispatcher {
       return fail(
         id,
         browserError("EXTENSION_ERROR", {
-          detail: `the Iron Jarvis browser add-on does not implement ${method || "(no method)"} yet`,
+          detail: `the STEC OS browser add-on does not implement ${method || "(no method)"} yet`,
         }),
       );
     }

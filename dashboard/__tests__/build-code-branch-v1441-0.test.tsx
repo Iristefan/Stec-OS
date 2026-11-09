@@ -9,7 +9,7 @@
  *     reads the session again, puts the message back in the box and says the
  *     daemon's line;
  *   - "Branch" in the session row's ⋯ only where `can_branch` says so;
- *   - an older Iron Jarvis (no `branch`, no `can_branch`) shows none of it.
+ *   - an older STEC OS (no `branch`, no `can_branch`) shows none of it.
  */
 
 import React from "react";
@@ -167,7 +167,7 @@ describe("the user's own messages", () => {
     expect(screen.queryByTestId("code-user-more")).toBeNull();
   });
 
-  it("an older Iron Jarvis (no branch facts) shows no menu", () => {
+  it("an older STEC OS (no branch facts) shows no menu", () => {
     expect(decodeBranch({ events: [] })).toBeNull();
     render(<CodeConversation items={items()} folder="C:\\work" tool="claude-code" />);
     expect(screen.queryByTestId("code-user-more")).toBeNull();
@@ -262,7 +262,7 @@ describe("in the Code view", () => {
     expect(H.posts.find((p) => p.path === "/build/app/sessions/a1/fork")!.body).toEqual({});
   });
 
-  it("an older Iron Jarvis (no can_branch, no branch) shows neither", async () => {
+  it("an older STEC OS (no can_branch, no branch) shows neither", async () => {
     open("a1", undefined);
     render(<BuildCodeView initialSession="a1" onOpenedTerminal={() => {}} />);
     await screen.findAllByTestId("code-user", {}, { timeout: 10_000 });

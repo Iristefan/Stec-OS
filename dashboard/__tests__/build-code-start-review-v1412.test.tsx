@@ -104,7 +104,7 @@ const made = (id: string, over: Record<string, unknown> = {}) => ({
   harness: "claude-code",
   folder: "",
   no_folder: true,
-  work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis",
+  work_root: "C:\\Users\\VR\\Documents\\STEC OS",
   title: "",
   account: "",
   model: "",
@@ -121,7 +121,7 @@ const made = (id: string, over: Record<string, unknown> = {}) => ({
 function seed(accounts = TWO) {
   H.gets = {
     "/build/app/harnesses": { harnesses: [claude(accounts)] },
-    "/build/app/sessions": { sessions: [], work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis" },
+    "/build/app/sessions": { sessions: [], work_root: "C:\\Users\\VR\\Documents\\STEC OS" },
     "/editor/options": { editors: [], preferred: "" },
   };
 }

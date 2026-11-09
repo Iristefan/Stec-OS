@@ -596,7 +596,7 @@ def test_a_team_is_answered_against_the_planner_alone_on_its_own_path():
     assert found is not None and found[0]["key"] == product["key"]
     assert TRP.run_path(lane) == PATH_LANE and TRP.run_path(product) == PATH_PRODUCT
     assert TRP.run_path({"runner": "claude"}) == ""
-    assert TRP.compares_line(team, product).endswith("Iron Jarvis 1).")
+    assert TRP.compares_line(team, product).endswith("STEC OS 1).")
     only_lane = TRP.compares_line(team, lane)
     assert "which ran each task on the bare chat lane (this team as a coding session)" in only_lane
     assert TRP.runner_label(lane) == "jarvis" and TRP.runner_label(product) == "jarvis · coding session"

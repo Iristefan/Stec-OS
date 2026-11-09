@@ -1292,7 +1292,7 @@ def test_a_reconnect_while_access_is_off_never_becomes_authoritative(tmp_path):
 
 
 def test_an_inert_socket_publishes_no_browser_events(tmp_path):
-    """Access off means no page data enters Iron Jarvis, not even ambiently.
+    """Access off means no page data enters STEC OS, not even ambiently.
 
     A ``browser.event`` from a held socket would cache the user's active tab and
     publish their page title on the bus -- reading their browser, which is exactly what

@@ -365,7 +365,7 @@ async def test_with_team_notes_off_an_accept_suggests_no_role_brief(tmp_path):
 
 def test_a_team_notes_file_larger_than_any_iron_jarvis_writes_is_never_read_whole(plat, monkeypatch):
     """TEAM-NOTES.md is read on every team piece's start (once a reply), on
-    GET /team and on each render. A file far larger than any Iron Jarvis
+    GET /team and on each render. A file far larger than any STEC OS
     writes (a helper's shell can write there) is not read whole: it is the
     user's (kept, never rewritten) and no section is built from it."""
     import json as _json

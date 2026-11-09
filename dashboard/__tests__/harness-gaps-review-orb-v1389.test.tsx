@@ -4,11 +4,11 @@
  *
  * Fix 1 made the orb turn "Working — something is running" while /health
  * counts a chat's or a coding session's reply (`replies`). lib/daemon KEEPS
- * the last /health it got while Iron Jarvis is offline (the banner says
+ * the last /health it got while STEC OS is offline (the banner says
  * offline; `health` is not cleared), so a crash in the middle of a coding
- * session's reply left the orb spinning "Working" for as long as Iron Jarvis
+ * session's reply left the orb spinning "Working" for as long as STEC OS
  * stayed down — a count of replies on a process that is not there. The
- * count is read only while Iron Jarvis answers.
+ * count is read only while STEC OS answers.
  *
  * Only the network, the daemon hook and the /events socket are doubles.
  */
@@ -95,7 +95,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-describe("the orb never counts replies on an Iron Jarvis that is not answering", () => {
+describe("the orb never counts replies on a STEC OS that is not answering", () => {
   it("CONTROL: a coding session's reply counted by a daemon that answers turns it 'working'", () => {
     expect(orb().getAttribute("data-mood")).toBe("thinking");
   });

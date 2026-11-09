@@ -166,7 +166,7 @@ describe("R1. a merged session's frozen watch is never read or said", () => {
     primeBranch();
     render(<BranchView sessionId="t1" git={GIT} refreshKey={0} />);
     const line = await screen.findByTestId("branch-ci-watch", undefined, LONG);
-    expect(line.textContent).toContain("Iron Jarvis is watching its checks.");
+    expect(line.textContent).toContain("STEC OS is watching its checks.");
   });
 });
 

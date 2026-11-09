@@ -489,7 +489,7 @@ describe("on the chat page (calm chat W1-5)", () => {
       ],
     };
     render(<ChatPage />);
-    const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+    const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
     fireEvent.change(el, { target: { value: "compare them" } });
     fireEvent.keyDown(el, { key: "Enter" });
     const live = await screen.findByTestId("live-work");

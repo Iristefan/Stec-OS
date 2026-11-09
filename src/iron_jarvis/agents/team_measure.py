@@ -69,7 +69,7 @@ runs the team tier with team notes on and off — ``[planner] team_notes``).
 The flag is SHOWN, never acted on: ``GET /team`` carries each accepted
 habit's ``measure`` and Settings › Model team says "This habit may be making
 things worse — consider removing it" beside the habit's own two-press Remove.
-NOTHING in Iron Jarvis removes a habit because of a measure — removing it is
+NOTHING in STEC OS removes a habit because of a measure — removing it is
 the owner's press (``team_notes.remove``), pinned.
 
 Every reader here is BLOCKING (SQLite) and never raises; the route reads it

@@ -78,6 +78,6 @@ def register(app: FastAPI, d: Any) -> None:
             label = code_editor.LABELS[editor]
             raise HTTPException(
                 status_code=422,
-                detail=f"Iron Jarvis could not open {label}. Open {label} once by itself, then try again.",
+                detail=f"STEC OS could not open {label}. Open {label} once by itself, then try again.",
             ) from None
         return {"ok": True, "editor": editor, "label": code_editor.LABELS[editor], "line": line or 1}

@@ -274,7 +274,7 @@ def test_a_pane_being_created_keeps_its_token_when_another_pane_closes(
     during a spawn — ordinary, since every /terminals handler is a sync ``def``
     on Starlette's threadpool and a real ConPTY spawn is the slowest thing in
     ``create`` — revoked the credential the child was about to be handed. The
-    harness's first call then answered "the pane token expired when Iron Jarvis
+    harness's first call then answered "the pane token expired when STEC OS
     restarted", naming a restart that never happened, with relaunching the only
     remedy.
 

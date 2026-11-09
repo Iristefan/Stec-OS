@@ -172,7 +172,7 @@ afterEach(() => {
 });
 
 async function send(text: string, reply: string, extra: Record<string, unknown> = {}) {
-  const el = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const el = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   H.stream.replies.push(reply);
   H.stream.extras.push(extra);
   fireEvent.change(el, { target: { value: text } });

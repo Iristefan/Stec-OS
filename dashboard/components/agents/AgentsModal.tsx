@@ -261,7 +261,7 @@ export function AgentsPanel({
           >
             {entries.length === 0 ? (
               <p className="p-3 text-[12px] leading-relaxed text-zinc-500">
-                This version of Iron Jarvis lists no agents, so there is nobody to show here.
+                This version of STEC OS lists no agents, so there is nobody to show here.
                 The New &amp; manage tab still works.
               </p>
             ) : (
@@ -621,7 +621,7 @@ export function AgentDetail({
           />
         ) : (
           <p className="text-[12px] leading-relaxed text-zinc-500">
-            This version of Iron Jarvis predates chosen faces, so every face is drawn from the
+            This version of STEC OS predates chosen faces, so every face is drawn from the
             agent&rsquo;s name. A portrait still works.
           </p>
         )}

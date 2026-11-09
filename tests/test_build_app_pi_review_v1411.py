@@ -151,7 +151,7 @@ async def test_1_a_program_windows_cannot_start_is_said_in_one_plain_sentence(ap
     await stop_all(app)
     err = next(e for e in evs if e["type"] == "error")
     if os.name == "nt":
-        assert err["title"] == ("Iron Jarvis could not start Pi from pi: that file is not a program Windows can run. "
+        assert err["title"] == ("STEC OS could not start Pi from pi: that file is not a program Windows can run. "
                                 "Check that Pi runs in a Build terminal.")
     assert "OSError" not in json.dumps(evs) and "WinError" not in err["title"]
     assert evs[-1]["type"] == "done" and evs[-1]["stop"] == "failed"

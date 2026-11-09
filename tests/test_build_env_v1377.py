@@ -129,8 +129,8 @@ def test_every_name_the_desktop_gives_the_daemon_of_its_own_is_dropped():
 
 
 def test_the_dev_daemons_own_virtual_environment_is_not_on_the_childs_path(monkeypatch, tmp_path):
-    """``uv run`` puts the daemon's venv Scripts first: ``python`` would be Iron
-    Jarvis's (with its packages), not the user's."""
+    """``uv run`` puts the daemon's venv Scripts first: ``python`` would be STEC
+    OS's (with its packages), not the user's."""
     venv = tmp_path / "ij-venv"
     scripts = venv / ("Scripts" if WIN else "bin")
     scripts.mkdir(parents=True)

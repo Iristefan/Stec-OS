@@ -2,9 +2,9 @@
 
 Each pin was red on the change as first committed (89feefdd):
 
-1. A8 — Settings › Maintenance's "Restart Iron Jarvis" with an ADOPTED
+1. A8 — Settings › Maintenance's "Restart STEC OS" with an ADOPTED
    daemon (exit 75: one of ours already held the port, so the shell has no
-   child of its own) was refused ("Quit Iron Jarvis from the tray menu…"),
+   child of its own) was refused ("Quit STEC OS from the tray menu…"),
    where the old plain ``/shutdown`` had brought it back through the watchdog.
    The tidy restart now asks the adopted daemon to stop as a restart, waits
    for its port to close, and starts our own.
@@ -119,7 +119,7 @@ def _adopted(scenario: str, tmp_path) -> dict:
 def test_settings_restart_of_an_adopted_daemon_asks_it_to_stop_then_starts_our_own(tmp_path):
     out = _adopted("restart", tmp_path)
     assert out["adoptedBefore"] is True, out
-    assert out["ret"] is True, "the desktop app refused to restart an adopted Iron Jarvis"
+    assert out["ret"] is True, "the desktop app refused to restart an adopted STEC OS"
     assert [p["path"] for p in out["posts"]] == ["/shutdown"], out["posts"]
     assert out["posts"][0]["body"] == '{"restart":true}', out["posts"]  # the code host keeps running
     assert out["waits"] and out["waits"][0] >= 5000, out["waits"]
@@ -292,10 +292,10 @@ const ours = { senderFrame: { url: "http://127.0.0.1:8788/chat" } };
 const evil = { senderFrame: { url: "https://evil.example/x" } };
 (async () => {
   const out = {};
-  out.evil = await handlers["notify:show"](evil, { title: "Iron Jarvis", body: "Sign in again at evil.example" });
+  out.evil = await handlers["notify:show"](evil, { title: "STEC OS", body: "Sign in again at evil.example" });
   out.gone = await handlers["notify:show"]({}, { title: "x", body: "y" });
   out.shownByOthers = shown.length;
-  out.ours = await handlers["notify:show"](ours, { title: "Iron Jarvis", body: "Your task finished" });
+  out.ours = await handlers["notify:show"](ours, { title: "STEC OS", body: "Your task finished" });
   out.shown = shown;
   process.stdout.write(JSON.stringify(out) + "\n");
 })().catch((e) => { process.stderr.write(String(e && e.stack)); process.exit(1); });
@@ -304,13 +304,13 @@ const evil = { senderFrame: { url: "https://evil.example/x" } };
 
 @requires_node
 def test_a_desktop_notice_is_shown_only_for_the_dashboard(tmp_path):
-    """A toast titled "Iron Jarvis" is a trusted voice: a frame that is not the
+    """A toast titled "STEC OS" is a trusted voice: a frame that is not the
     dashboard must not be able to make one say "sign in again at …"."""
     out = _run(_NOTIFY.replace("__EXTRACT__", _EXTRACT), tmp_path, "notify")
     assert out["evil"] is False and out["gone"] is False, out
     assert out["shownByOthers"] == 0, out["shown"]
     # Control: the dashboard still gets its notice.
-    assert out["ours"] is True and out["shown"] == [{"title": "Iron Jarvis", "body": "Your task finished"}], out
+    assert out["ours"] is True and out["shown"] == [{"title": "STEC OS", "body": "Your task finished"}], out
 
 
 # --------------------------------------------------------------------------
@@ -327,7 +327,7 @@ def test_the_webhook_refusal_says_the_webhook_would_never_receive_it():
     known = known_event_types()
     one = unknown_event_types_sentence(["sesion.completed"], known)
     assert one.startswith(
-        "Iron Jarvis never sends an event called “sesion.completed”, so this webhook would never "
+        "STEC OS never sends an event called “sesion.completed”, so this webhook would never "
         "receive it. Did you mean session.completed"
     ), one
     many = unknown_event_types_sentence(["zzz.qqq", "yyy.ppp"], known)
@@ -383,7 +383,7 @@ const rec = _services.daemon;
 const now = Date.now();
 rec.restarts = 3; rec.restartTimes = Array.from({ length: 9 }, (_, i) => now - i * 1000);
 _dwKills = [now, now, now]; _dwBreakerTripped = true;
-markTrayDegraded("daemon", "Iron Jarvis keeps stalling (Restart from the tray)");
+markTrayDegraded("daemon", "STEC OS keeps stalling (Restart from the tray)");
 const ret = restartDaemonTidy();
 realSetTimeout(() => {
   process.stdout.write(JSON.stringify({
@@ -396,7 +396,7 @@ realSetTimeout(() => {
 
 @requires_node
 def test_settings_restart_is_a_fresh_start_like_the_tray_and_the_window(tmp_path):
-    """The tray's and the window's "Restart Iron Jarvis" reset the crash
+    """The tray's and the window's "Restart STEC OS" reset the crash
     ladder and the watchdog's breaker: the user asked for a fresh start.
     Settings' tidy restart left them, so one more crash after it hit the
     10-in-15-minutes cap, and a daemon that stalled again was never killed."""

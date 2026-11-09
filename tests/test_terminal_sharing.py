@@ -77,5 +77,5 @@ def test_context_endpoint_clean_text(tmp_path, monkeypatch):
     r = client.get(f"/terminals/{a['id']}/context")
     assert r.status_code == 200
     assert "hello ctx" in r.json()["text"]
-    assert "Iron Jarvis terminal" in r.json()["text"]
+    assert "STEC OS terminal" in r.json()["text"]
     assert client.get("/terminals/term_nope/context").status_code == 404

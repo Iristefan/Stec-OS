@@ -90,7 +90,7 @@ GUARDRAILS_HEADING = "## Guardrails"
 BRIEF_HEADING = "## Your brief from this folder ({rel})"
 BRIEF_CUT = "(Shortened here: read the whole brief at {rel}.)"
 CHECKS_HEADING = "## How the session's work is checked"
-CHECKS_LEAD = "Before the session's reply ends, Iron Jarvis checks the change once:"
+CHECKS_LEAD = "Before the session's reply ends, STEC OS checks the change once:"
 CHECKS_CLOSE = "In your report, say what you checked."
 #: The parts the cut line can name.
 PART_NAMES = {

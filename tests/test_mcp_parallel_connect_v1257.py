@@ -1,6 +1,6 @@
 """S-01 (v1.257.0): MCP packs connect AT ONCE, not one after another.
 
-Plain words: if you have several tool packs installed, opening Iron Jarvis used
+Plain words: if you have several tool packs installed, opening STEC OS used
 to wait for each one to say hello in turn. Now it greets them all together, so
 the wait is about as long as the slowest single pack instead of all of them
 added up.

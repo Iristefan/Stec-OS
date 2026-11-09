@@ -1,4 +1,4 @@
-# Iron Jarvis — VPS deployment.
+# STEC OS — VPS deployment.
 #
 #   IRONJARVIS_TOKEN=$(openssl rand -hex 32) \
 #   PUBLIC_API_URL=https://api.your-host.tld \

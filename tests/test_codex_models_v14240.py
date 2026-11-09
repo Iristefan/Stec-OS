@@ -90,7 +90,7 @@ def test_the_reader_keeps_codexs_names_order_levels_and_the_plans_default(codex_
     astra = CM.lookup("gpt-6-astra")
     assert astra["label"] == "GPT-6-Astra" and astra["window"] == 258_400
     assert astra["efforts"] == ["low", "medium", "high", "xhigh", "max", "ultra"]
-    # Iron Jarvis offers its own words only, in its order (no max / ultra).
+    # STEC OS offers its own words only, in its order (no max / ultra).
     assert CM.effort_levels("gpt-6-astra") == ("low", "medium", "high", "xhigh")
     # No config.toml model: the first OFFERED row by priority starts.
     assert CM.default_model() == "gpt-6-astra"

@@ -1,6 +1,6 @@
 """v1.427.0 (D4): ONE ``claude`` process across a coding reply's steps.
 
-The product-path benchmark (12 hard tasks x 3, Sonnet): Iron Jarvis 36/36 =
+The product-path benchmark (12 hard tasks x 3, Sonnet): STEC OS 36/36 =
 Claude Code 36/36, but 50.9 s against 40.1 s a task and 1.6 M against 0.6 M
 uncached input tokens — every step started a new ``claude`` and replayed the
 conversation. Inside an OPEN turn scope a claude-cli call now keeps its process:

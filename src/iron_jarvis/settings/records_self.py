@@ -479,7 +479,7 @@ class _SelfTool(R._RecordTool):  # noqa: SLF001 — the records module's own bas
 class PreferenceListTool(Tool):
     name = PREFERENCE_READER
     description = (
-        "List the preferences and lessons the user kept (what Iron Jarvis remembers about how "
+        "List the preferences and lessons the user kept (what STEC OS remembers about how "
         "to answer them), each with the id preference_edit and preference_forget take. Read-only."
     )
     input_schema = {"type": "object", "properties": {"query": {"type": "string"}}}
@@ -984,7 +984,7 @@ def _last_word(span: str) -> str:
 #: SOMEONE ELSE's ("forget the client's preference for paper statements",
 #: "update Mrs. Lopez's mailing preference") — never the user's own kept one.
 _POSSESSIVE = re.compile(r"[a-z0-9]['’]s?(?=\s|$)", re.IGNORECASE)
-_OURS_POSSESSIVE = re.compile(r"\b(?:jarvis|iron\s+jarvis)['’]s?(?=\s|$)", re.IGNORECASE)
+_OURS_POSSESSIVE = re.compile(r"\b(?:jarvis|(?:stec\s+os|iron\s+jarvis))['’]s?(?=\s|$)", re.IGNORECASE)
 
 
 def _someone_elses(span: str) -> bool:

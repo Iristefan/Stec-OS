@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Reproducibly freeze the Iron Jarvis daemon into a standalone Windows exe.
+    Reproducibly freeze the STEC OS daemon into a standalone Windows exe.
 
 .DESCRIPTION
     Builds packaging/dist/ironjarvis/ironjarvis.exe (PyInstaller onedir) from

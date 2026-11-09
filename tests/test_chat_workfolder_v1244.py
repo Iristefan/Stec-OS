@@ -13,7 +13,7 @@ and reported "Task failed" beside a file nobody could find.
 
 This file pins the daemon half: POST /documents/workfolder makes a dated,
 visible, writable folder (``config.chat_files_root``, default
-``Documents\\Iron Jarvis``), copies the conversation's uploads into it, keeps a
+``Documents\\STEC OS``), copies the conversation's uploads into it, keeps a
 folder the chat can already work in, and refuses to become a general
 file-copy primitive.
 """
@@ -63,7 +63,7 @@ def test_folder_title_is_capped():
 def test_the_folder_is_dated_and_never_reused(tmp_path):
     uploads = tmp_path / "uploads"
     uploads.mkdir()
-    root = tmp_path / "Iron Jarvis"
+    root = tmp_path / "STEC OS"
     first = make_chat_workfolder(root, "Expenses.pdf", [], uploads, today=date(2026, 9, 11))
     second = make_chat_workfolder(root, "Expenses.pdf", [], uploads, today=date(2026, 9, 11))
     assert Path(first["path"]).name == "2026-09-11 Expenses"
@@ -122,7 +122,7 @@ def test_the_default_root_is_documents_iron_jarvis(tmp_path, monkeypatch):
     cfg = client.app.state.platform.config
     monkeypatch.setattr(userdirs, "documents_dir", lambda: tmp_path / "Docs")
     assert cfg.chat_files_root == ""
-    assert cfg.chat_files_dir == tmp_path / "Docs" / "Iron Jarvis"
+    assert cfg.chat_files_dir == tmp_path / "Docs" / "STEC OS"
     cfg.chat_files_root = str(tmp_path / "Elsewhere")
     assert cfg.chat_files_dir == tmp_path / "Elsewhere"
 
@@ -133,8 +133,8 @@ def test_the_default_root_is_documents_iron_jarvis(tmp_path, monkeypatch):
 @pytest.fixture()
 def app_client(tmp_path):
     client = TestClient(create_app(str(tmp_path / "root")))
-    client.app.state.platform.config.chat_files_root = str(tmp_path / "Iron Jarvis")
-    return client, tmp_path / "Iron Jarvis"
+    client.app.state.platform.config.chat_files_root = str(tmp_path / "STEC OS")
+    return client, tmp_path / "STEC OS"
 
 
 def _upload(client, name: str, data: bytes) -> str:
@@ -243,7 +243,7 @@ def test_a_root_that_cannot_be_created_is_refused_by_name(app_client, tmp_path):
     client, _ = app_client
     blocker = tmp_path / "blocker"
     blocker.write_text("a FILE where the root folder should be")
-    client.app.state.platform.config.chat_files_root = str(blocker / "Iron Jarvis")
+    client.app.state.platform.config.chat_files_root = str(blocker / "STEC OS")
 
     res = client.post("/documents/workfolder", json={"files": [], "title": "x"})
 

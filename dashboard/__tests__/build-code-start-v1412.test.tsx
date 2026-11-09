@@ -129,7 +129,7 @@ const made = (id: string, over: Record<string, unknown> = {}) => ({
   harness: "claude-code",
   folder: "",
   no_folder: true,
-  work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis",
+  work_root: "C:\\Users\\VR\\Documents\\STEC OS",
   title: "",
   account: "",
   model: "",
@@ -146,7 +146,7 @@ const made = (id: string, over: Record<string, unknown> = {}) => ({
 function seed() {
   H.gets = {
     "/build/app/harnesses": TOOLS,
-    "/build/app/sessions": { sessions: [], work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis" },
+    "/build/app/sessions": { sessions: [], work_root: "C:\\Users\\VR\\Documents\\STEC OS" },
     "/editor/options": { editors: [], preferred: "" },
   };
 }
@@ -372,8 +372,8 @@ describe("Choose… for the folder", () => {
     // v1.412.0 review (moved on purpose): the daemon NAMES the chip.
     H.postFail["/build/app/sessions"] = {
       status: 400,
-      message: "Iron Jarvis may not work in C:\\Windows.",
-      body: { detail: "Iron Jarvis may not work in C:\\Windows.", field: "folder" },
+      message: "STEC OS may not work in C:\\Windows.",
+      body: { detail: "STEC OS may not work in C:\\Windows.", field: "folder" },
     };
     await ready();
     fireEvent.click(screen.getByTestId("code-start-folder-choose"));
@@ -381,7 +381,7 @@ describe("Choose… for the folder", () => {
     type("go");
     fireEvent.click(screen.getByTestId("code-start-send"));
     const problem = await screen.findByTestId("code-start-folder-problem");
-    expect(problem.textContent).toBe("Iron Jarvis may not work in C:\\Windows.");
+    expect(problem.textContent).toBe("STEC OS may not work in C:\\Windows.");
     expect(screen.getByTestId("code-start-folder").dataset.problem).toBe("true");
     expect(screen.queryByTestId("code-session")).toBeNull();
     expect(H.streams).toHaveLength(0);

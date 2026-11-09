@@ -1,4 +1,4 @@
-"""The memory GRAPH — one connected view of everything Iron Jarvis remembers.
+"""The memory GRAPH — one connected view of everything STEC OS remembers.
 
 Nodes come from the three memory surfaces (learned lessons, layered working
 memory, long-term markdown notes); edges are cosine SIMILARITY over the shared

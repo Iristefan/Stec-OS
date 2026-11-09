@@ -26,7 +26,7 @@ a marker file), a skill, a command, an agent, and an installed plugin:
 * ``--mcp-config <file>`` + ``--settings <file>``: the server connects with its
   NAME unchanged, ``${VAR}`` references in ``args`` AND ``env`` expanded from
   the child's environment; the settings file's hook fires. Flags only reach a
-  process Iron Jarvis starts itself, never a ``claude`` the user TYPES into a
+  process STEC OS starts itself, never a ``claude`` the user TYPES into a
   Build terminal — so they were not used.
 * ``--add-dir <folder>`` whose ``.claude/{skills,commands,agents}`` are
   junctions to the owner's: listed with their own names — but an added
@@ -40,7 +40,7 @@ a marker file), a skill, a command, an agent, and an installed plugin:
   (``plugin:command``).
 * ``CLAUDE_CODE_PLUGIN_DIRS`` (an ENVIRONMENT variable, read from the binary:
   ``split`` on the path delimiter, absolute local paths only) naming a plugin
-  folder of Iron Jarvis's own that holds ``.mcp.json``, ``hooks/hooks.json`` and
+  folder of STEC OS's own that holds ``.mcp.json``, ``hooks/hooks.json`` and
   ``skills``/``commands``/``agents`` (measured with junctions to the owner's
   folders AND with copies of them — the shipped layout, see THE FOLDER; the
   real-CLI pin measures copies), plus an
@@ -73,9 +73,9 @@ terminal or a Build › Code process starts on a non-default Claude account
 (``terminals.manager._with_pane_env`` — the one place both get their
 environment), and this feature is on (``Config.accounts_share_claude_setup``,
 read live), the child environment gains ``CLAUDE_CODE_PLUGIN_DIRS`` naming
-Iron Jarvis's own plugin folder ``my`` (plus the owner's installed, enabled
+STEC OS's own plugin folder ``my`` (plus the owner's installed, enabled
 user-scope plugins and plugins kept in the skills folder). It works for a
-``claude`` the user types as much as for one Iron Jarvis starts, and writes
+``claude`` the user types as much as for one STEC OS starts, and writes
 NOTHING into the account's home. The price is the names: Claude Code shows a
 plugin's things under its name, so the owner's ``/pixio-story`` is
 ``/my:pixio-story`` and the server ``spark-worker`` is ``plugin:my:spark-worker``
@@ -115,14 +115,14 @@ downloaded backgrounds; a dev or test home keeps it at ``<home>/claude-setup``
 and ``create_backup`` / the storage report leave it out: copies of the owner's
 own files, remade when needed). The skills, commands and agents are COPIES,
 NEVER LINKS (v1.424.0 review). The first cut linked them with directory
-junctions, and a junction in a folder Iron Jarvis does not delete itself is
+junctions, and a junction in a folder STEC OS does not delete itself is
 only as safe as EVERY program that may one day delete that folder. MEASURED on
 this PC (2026-11-02, scratch junctions to scratch folders, never a real home):
 Python 3.12 ``shutil.rmtree``, Windows PowerShell 5.1 and PowerShell 7
 ``Remove-Item -Recurse -Force``, ``rd /s /q``, Git's ``rm -rf`` and Node 20's
 ``fs.rmSync`` remove the junction and leave its target — but NSIS 3.0.4.1
-``RMDir /r`` (the installed app's uninstaller runs it over ``%APPDATA%\\Iron
-Jarvis`` when given ``--delete-app-data``, electron-builder's
+``RMDir /r`` (the installed app's uninstaller runs it over ``%APPDATA%\\STEC
+OS`` when given ``--delete-app-data``, electron-builder's
 ``uninstaller.nsh``) and Electron 42's Node 24.17 ``fs.rmSync(dir,
 {recursive: true})`` (the desktop shell's, the dashboard server's and
 Iron-Proxy's runtime) FOLLOWED the junctions and deleted the owner's real
@@ -132,15 +132,15 @@ A copy is refreshed when its source's files, sizes or times change (a
 signature in ``state.json``; an unchanged source reads nothing); its walk is
 by hand (Python 3.12's ``os.walk`` descends into a junction) and never follows
 or copies a link inside the owner's folder; bounded per file, per folder and
-per start (said on the card). Iron Jarvis's files are written only when their
+per start (said on the card). STEC OS's files are written only when their
 bytes change, with each sha256 kept in ``state.json``; a file whose bytes are
-not the ones Iron Jarvis wrote (a hand edit) is never overwritten or removed;
-nothing is written or removed THROUGH a link in Iron Jarvis's folder (a link
+not the ones STEC OS wrote (a hand edit) is never overwritten or removed;
+nothing is written or removed THROUGH a link in STEC OS's folder (a link
 it did not make is left alone and said); a folder is removed only when empty
 (``os.rmdir``) and nothing is ever deleted recursively. A junction the first
 cut made (recorded in ``state.json``) is removed with ``os.rmdir`` — which
 never touches its target — and replaced by a copy. Turning the setting off, or
-an owner setup that became empty, takes Iron Jarvis's files and copies away,
+an owner setup that became empty, takes STEC OS's files and copies away,
 so a terminal started earlier finds no folder (measured: Claude Code starts
 normally) — off is today exactly for the next start.
 
@@ -176,7 +176,7 @@ log = logging.getLogger("ironjarvis.iron_proxy")
 #: The plugin's name — what Claude Code puts in front of everything it brings
 #: (``/my:pixio-story``, ``plugin:my:spark-worker``).
 PLUGIN_NAME = "my"
-#: Iron Jarvis's folder (beside the state home, or in it for a dev/test home).
+#: STEC OS's folder (beside the state home, or in it for a dev/test home).
 FOLDER = "claude-setup"
 #: The plugin root inside the folder.
 PLUGIN_DIR = PLUGIN_NAME
@@ -185,7 +185,7 @@ STATE_FILE = "state.json"
 PLUGIN_DIRS_ENV = "CLAUDE_CODE_PLUGIN_DIRS"
 #: The variables that carry the owner's values into the child.
 PLACEHOLDER_PREFIX = "IJ_MY_SETUP_"
-#: TESTS / Iron Jarvis's own reads only: the owner's config folder (its
+#: TESTS / STEC OS's own reads only: the owner's config folder (its
 #: ``.claude.json`` read from inside it). The suite points it at an empty folder.
 OWNER_DIR_ENV = "IRONJARVIS_CLAUDE_OWNER_DIR"
 #: The setting (``Config`` field and schema row).
@@ -355,7 +355,7 @@ class OwnerSetup:
 
     @property
     def plugin_needed(self) -> bool:
-        """Does Iron Jarvis's own ``my`` plugin have anything to carry?"""
+        """Does STEC OS's own ``my`` plugin have anything to carry?"""
         return bool(self.servers or self.hooks or self.skills or self.commands or self.agents)
 
 
@@ -399,7 +399,7 @@ def _server(name: str, spec: Mapping[str, Any]) -> tuple[dict[str, Any] | None, 
             out[k] = hold("url", v)
         else:
             if _secretish(v):
-                return None, {}, "holds a value that looks like a key in a place Iron Jarvis does not copy"
+                return None, {}, "holds a value that looks like a key in a place STEC OS does not copy"
             out[k] = v
     return out, values, ""
 
@@ -503,7 +503,7 @@ def _skills(cfg: Path, setup: OwnerSetup) -> None:
     """Each skill folder of the owner's, ONE COPY EACH (the first cut's review:
     the whole folder carried would bring ``synced/<account>/…`` — claude.ai's
     skills of the owner's ACCOUNT — into another account the day Claude Code
-    reads one level deeper; one per skill makes that Iron Jarvis's guarantee,
+    reads one level deeper; one per skill makes that STEC OS's guarantee,
     not a measured habit). Never a dot folder (``.trash``), never ``synced``; a
     plugin kept here is passed on as a plugin."""
     base = cfg / "skills"
@@ -561,7 +561,7 @@ def _installed_plugins(cfg: Path, settings: Any, setup: OwnerSetup) -> None:
             if on is not True:
                 continue
             if str(manifest.get("name") or pid.split("@", 1)[0]) == PLUGIN_NAME:
-                setup.left_out.append(f"the plugin {pid} (it has the same name Iron Jarvis uses)")
+                setup.left_out.append(f"the plugin {pid} (it has the same name STEC OS uses)")
                 continue
             setup.plugins.append(path)
             break
@@ -689,7 +689,7 @@ def sideload_forbidden(account_home: str, env: Mapping[str, str] | None = None) 
 
 
 # --------------------------------------------------------------------------- #
-# Iron Jarvis's folder
+# STEC OS's folder
 # --------------------------------------------------------------------------- #
 _LOCK = threading.Lock()
 
@@ -783,12 +783,12 @@ _SKIP_DIRS = frozenset({"__pycache__"})
 
 
 def _wanted(setup: OwnerSetup) -> tuple[dict[str, bytes | None], dict[str, Path | None]]:
-    """``(files, trees)``: Iron Jarvis's own three files, and each folder of the
+    """``(files, trees)``: STEC OS's own three files, and each folder of the
     owner's that is COPIED (``skills/<name>``, ``commands``, ``agents``)."""
     plugin = {
         "name": PLUGIN_NAME,
         "version": "1.0.0",
-        "description": "Your own Claude Code setup, added by Iron Jarvis on your other accounts.",
+        "description": "Your own Claude Code setup, added by STEC OS on your other accounts.",
     }
     files: dict[str, bytes | None] = {
         ".claude-plugin/plugin.json": json.dumps(plugin, indent=2).encode("utf-8"),
@@ -925,7 +925,7 @@ def _prune_empty(root: Path, top: Path) -> None:
 
 
 def _remove_copy(root: Path, unit: str, files: Mapping[str, str], said: list[str]) -> None:
-    """Take Iron Jarvis's copy of ``unit`` away: each file it wrote whose bytes
+    """Take STEC OS's copy of ``unit`` away: each file it wrote whose bytes
     are still its own is unlinked (one file at a time — never a recursive
     delete); a hand edit stays (said); then the empty folders go."""
     top = root / unit
@@ -945,17 +945,17 @@ def _remove_copy(root: Path, unit: str, files: Mapping[str, str], said: list[str
         else:
             edited = True
     if edited:
-        said.append(f"{unit} in Iron Jarvis's folder was changed by hand, so it was left as it is")
+        said.append(f"{unit} in STEC OS's folder was changed by hand, so it was left as it is")
     _prune_empty(root, top)
 
 
 def _copy_tree(
     root: Path, unit: str, src: Path, rec: Mapping[str, Any], said: list[str], budget: list[int]
 ) -> dict[str, Any]:
-    """Bring Iron Jarvis's copy of ``src`` at ``root/unit`` up to date and
+    """Bring STEC OS's copy of ``src`` at ``root/unit`` up to date and
     return the unit's new record. An unchanged source (same files, sizes and
     times) whose copied files are all still there reads and writes nothing. A
-    file in the copy whose bytes are not the ones Iron Jarvis wrote is a hand
+    file in the copy whose bytes are not the ones STEC OS wrote is a hand
     edit: never overwritten, never removed."""
     entries, left, fits = _plan_tree(src)
     old = rec.get("files") if isinstance(rec.get("files"), dict) else {}
@@ -994,7 +994,7 @@ def _copy_tree(
             continue
         files[rel] = _sha(data)
         budget[0] += len(data)
-    # Iron Jarvis's files the owner's folder no longer has (or no longer gives).
+    # STEC OS's files the owner's folder no longer has (or no longer gives).
     for rel, sha in old.items():
         if rel in files:
             continue
@@ -1010,7 +1010,7 @@ def _copy_tree(
         else:
             edited = True
     if edited:
-        said.append(f"{unit} in Iron Jarvis's folder was changed by hand, so it was left as it is")
+        said.append(f"{unit} in STEC OS's folder was changed by hand, so it was left as it is")
     _prune_empty(root, root / unit)
     # A copy changed by hand keeps no signature: it is looked at again at the
     # next start, so the owner's newer file arrives once the edit is gone.
@@ -1021,7 +1021,7 @@ def _copy_tree(
 def _sync(
     folder: Path, files: dict[str, bytes | None], trees: dict[str, Path | None], *, write: bool = True
 ) -> list[str]:
-    """Make Iron Jarvis's files and copies in ``folder/my`` what ``files`` and
+    """Make STEC OS's files and copies in ``folder/my`` what ``files`` and
     ``trees`` say (None = not there), by the module docstring's rules. Returns
     plain words for what was left alone or left out. ``write=False``: only the
     words (the card's read; nothing on disk changes, nothing is copied — the
@@ -1033,13 +1033,13 @@ def _sync(
         path = root / rel
         on_the_way = _link_on_the_way(root, path)
         if on_the_way:
-            said.append(f"{rel} in Iron Jarvis's folder is a link, so it was left alone")
+            said.append(f"{rel} in STEC OS's folder is a link, so it was left alone")
             continue
         cur = _read(path)
         mine = doc["files"].get(rel)
         if cur is not None and cur != data and (mine is None or _sha(cur) != mine):
-            # Not the bytes Iron Jarvis wrote (or never wrote): a hand edit.
-            said.append(f"{rel} in Iron Jarvis's folder was changed by hand, so it was left as it is")
+            # Not the bytes STEC OS wrote (or never wrote): a hand edit.
+            said.append(f"{rel} in STEC OS's folder was changed by hand, so it was left as it is")
             doc["files"].pop(rel, None)
             continue
         if not write:
@@ -1063,8 +1063,8 @@ def _sync(
             on_the_way = _link_on_the_way(root, root / unit)
             if on_the_way and on_the_way not in blocked and not (on_the_way == unit and unit in doc["links"]):
                 blocked.add(on_the_way)
-                said.append(f"{on_the_way if on_the_way != '.' else PLUGIN_DIR} in Iron Jarvis's "
-                            "folder is a link Iron Jarvis did not make, so it was left alone")
+                said.append(f"{on_the_way if on_the_way != '.' else PLUGIN_DIR} in STEC OS's "
+                            "folder is a link STEC OS did not make, so it was left alone")
             rec = doc["trees"].get(unit)
             if isinstance(rec, dict) and isinstance(rec.get("left"), list):
                 said += [w for w in rec["left"] if isinstance(w, str)]
@@ -1072,7 +1072,7 @@ def _sync(
             said += [w for w in doc["said"] if isinstance(w, str) and "changed by hand" in w]
         return list(dict.fromkeys(said))
     tree_said: list[str] = []
-    # A unit Iron Jarvis copied — or, before this review, LINKED (a dev or test
+    # A unit STEC OS copied — or, before this review, LINKED (a dev or test
     # home that ran the first cut) — that is no longer wanted goes; removals
     # first. Such a junction is removed with ``os.rmdir``, never its target.
     trees = dict(trees)
@@ -1093,8 +1093,8 @@ def _sync(
         if on_the_way:
             if on_the_way not in blocked:
                 blocked.add(on_the_way)
-                tree_said.append(f"{on_the_way if on_the_way != '.' else PLUGIN_DIR} in Iron Jarvis's "
-                                 "folder is a link Iron Jarvis did not make, so it was left alone")
+                tree_said.append(f"{on_the_way if on_the_way != '.' else PLUGIN_DIR} in STEC OS's "
+                                 "folder is a link STEC OS did not make, so it was left alone")
             continue
         rec = doc["trees"].get(unit)
         rec = rec if isinstance(rec, dict) else {}
@@ -1123,7 +1123,7 @@ def _sync(
 
 
 def folder_words(home: str | os.PathLike[str], setup: OwnerSetup) -> list[str]:
-    """READ-ONLY: what the last start left alone or left out in Iron Jarvis's
+    """READ-ONLY: what the last start left alone or left out in STEC OS's
     folder (a hand edit, a link it did not make, a file holding a key). Never
     raises."""
     try:
@@ -1138,7 +1138,7 @@ def folder_words(home: str | os.PathLike[str], setup: OwnerSetup) -> list[str]:
 
 
 def sync(home: str | os.PathLike[str], setup: OwnerSetup) -> tuple[Path | None, list[str]]:
-    """BLOCKING: Iron Jarvis's ``my`` plugin brought up to ``setup``. Returns
+    """BLOCKING: STEC OS's ``my`` plugin brought up to ``setup``. Returns
     ``(plugin folder or None when there is nothing to carry, words)``."""
     folder = folder_for(home)
     with _LOCK:
@@ -1154,13 +1154,13 @@ def _retire_locked(folder: Path) -> list[str]:
     if not folder.exists():
         return []
     files = {rel: None for rel in (".claude-plugin/plugin.json", ".mcp.json", "hooks/hooks.json")}
-    # Every copy Iron Jarvis made goes (``_sync`` adds each one it recorded).
+    # Every copy STEC OS made goes (``_sync`` adds each one it recorded).
     return _sync(folder, files, {})
 
 
 def retire(home: str | os.PathLike[str]) -> list[str]:
-    """BLOCKING: take Iron Jarvis's files and links away (the setting is off).
-    A hand-edited file or a link Iron Jarvis did not make stays."""
+    """BLOCKING: take STEC OS's files and links away (the setting is off).
+    A hand-edited file or a link STEC OS did not make stays."""
     try:
         with _LOCK:
             return _retire_locked(folder_for(home))

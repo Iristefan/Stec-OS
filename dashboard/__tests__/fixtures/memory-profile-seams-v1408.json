@@ -898,9 +898,9 @@
   "test_save_ok": {
     "body": {
       "ok": true,
-      "ref": "concepts/iron-jarvis-test-note.md",
+      "ref": "concepts/stec-os-test-note.md",
       "verified": true,
-      "words": "Saved “Iron Jarvis test note” to hermes-brain (read back and confirmed). You can delete it there."
+      "words": "Saved “STEC OS test note” to hermes-brain (read back and confirmed). You can delete it there."
     },
     "status": 200
   }

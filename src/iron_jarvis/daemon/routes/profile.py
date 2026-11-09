@@ -182,7 +182,7 @@ def register(app: FastAPI, d) -> None:
 
     @app.get("/profile/training")
     def training_status() -> dict[str, Any]:
-        """What Iron Jarvis has to work with, counted from the subsystems that
+        """What STEC OS has to work with, counted from the subsystems that
         ALREADY own each kind of input. This endpoint deliberately stores
         nothing: /train is an on-ramp to the existing doorways, not a sixth
         place your knowledge can live."""

@@ -41,7 +41,7 @@ GROUPS: tuple[tuple[str, str, str], ...] = (
     ("automation", "Agents & automation", "Limits for agent runs and the work that runs by itself."),
     ("memory", "Memory & you", "Who you are, how you like answers, and what is shared."),
     ("permissions", "Permissions & ledger", "What may run without asking, and the record of changes."),
-    ("appearance", "Appearance", "How Iron Jarvis looks on this device."),
+    ("appearance", "Appearance", "How STEC OS looks on this device."),
     ("system", "System", "Updates, backups, storage and power-user options."),
 )
 GROUP_IDS = tuple(g[0] for g in GROUPS)
@@ -365,7 +365,7 @@ SETTINGS: tuple[SettingDef, ...] = (
     # time (no grant lifts it). Read live by the team router.
     S("team_paid_cap_usd", "Pay-per-use limit for your model team ($ a month)", "models", "number",
       "The most your model team's pay-per-use members may spend in a calendar month, in "
-      "dollars. Iron Jarvis and its agents hand work to a pay-per-use member, or ask it a "
+      "dollars. STEC OS and its agents hand work to a pay-per-use member, or ask it a "
       "question, only while this month's spend is under this limit. 0 means never. Work you "
       "start yourself (on the Agents page, a schedule, a task you queue) is not stopped by "
       "it, but what it spends counts. Members on your own hardware and on your Claude Code "
@@ -376,12 +376,12 @@ SETTINGS: tuple[SettingDef, ...] = (
     # the team (agents/model_team.team_section). Turning it ON moves work and
     # usage onto other models and accounts, so from chat it asks every time
     # (no grant lifts it); turning it off applies at once. Read live.
-    # v1.401.0: it also makes Iron Jarvis ITSELF hand each coding reply that
+    # v1.401.0: it also makes STEC OS ITSELF hand each coding reply that
     # changed files to the team's reviewer at the finish (harness/finish).
     S("team_first", "Hand work to my team first", "models", "bool",
       "When this is on, a coding session is asked to hand reading, test runs, first drafts and "
       "reviews to your model team by role, and to keep the planning and the final check on its own "
-      "model. Iron Jarvis also hands each coding reply that changed files to the team member with "
+      "model. STEC OS also hands each coding reply that changed files to the team member with "
       "the Review role before the reply ends: the reviewer reads the change on the model you set "
       "for it, cannot change files, and the session answers what it found. A review adds up to "
       "ten minutes to the reply. "
@@ -468,17 +468,17 @@ SETTINGS: tuple[SettingDef, ...] = (
       aliases=("computer use", "agent browser")),
     # v1.358.0 (G61): ANOTHER COMPUTER can reach this one only when the user
     # turns this on. Off by default; asks every time from chat (a model must
-    # never widen who can reach this PC); takes effect when Iron Jarvis
+    # never widen who can reach this PC); takes effect when STEC OS
     # restarts, because the DESKTOP SHELL reads it from config.toml at every
     # daemon spawn (desktop/main.js readDaemonNetwork) and only then listens
     # on the network with the host allowlist set to this PC's own private
     # addresses. Every request still needs a token. The doors' reachability
     # sentence (routes/agents.reachability) names THIS row.
-    S("lan_access", "Let other computers on my network reach this Iron Jarvis", "connections", "bool",
-      "Off unless you turn it on. When on, Iron Jarvis also listens on this PC's address on your "
-      "network after it restarts, so another computer running Iron Jarvis can hand it tasks "
+    S("lan_access", "Let other computers on my network reach this STEC OS", "connections", "bool",
+      "Off unless you turn it on. When on, STEC OS also listens on this PC's address on your "
+      "network after it restarts, so another computer running STEC OS can hand it tasks "
       "(Agents, Your team, Another computer running Jarvis). Every request still needs that "
-      "door's token. Windows may ask once whether to allow Iron Jarvis on your network.",
+      "door's token. Windows may ask once whether to allow STEC OS on your network.",
       tier="ask-floor", restart=True, section="Another computer",
       aliases=("lan access", "network access", "another computer", "other computers",
                "reach from another computer", "local network")),
@@ -573,22 +573,22 @@ SETTINGS: tuple[SettingDef, ...] = (
       aliases=("resume when ready", "auto resume", "account limit", "carry on after a limit")),
     # v1.406.0 part 3 (daemon/routes/ci_watch): a coding session's pull
     # request — its failing checks fixed by the session itself, a cloud
-    # reviewer's approval before Iron Jarvis pushes. Turning it ON from chat
+    # reviewer's approval before STEC OS pushes. Turning it ON from chat
     # is carded every time (floor_when): a push with no card is the user's
     # decision. Off applies at once.
     S("ci_autofix", "Fix my pull requests' failing checks", "automation", "bool",
-      "When a coding session has opened a pull request, Iron Jarvis watches its checks. When one "
+      "When a coding session has opened a pull request, STEC OS watches its checks. When one "
       "fails, the session fixes it by itself (its own model, account and approval setting), Claude "
       "Code or Codex reviews the fix, and only an approved fix is pushed to the pull request's own "
       "branch, never its base and never with force. A fix the reviewer does not approve is kept on a "
-      "side branch and worked on again, at most 3 rounds; then Iron Jarvis stops and tells you. A Local "
+      "side branch and worked on again, at most 3 rounds; then STEC OS stops and tells you. A Local "
       "only session is never reviewed in the cloud, so its fix waits for you. Merging stays yours. "
       "Off: the checks are only shown.",
       tier="allow", floor_when=(True,),
       aliases=("fix failing checks", "ci autofix", "auto fix ci", "fix ci", "pull request checks",
                "watch my pull requests")),
     S("ci_reviewer", "Who reviews a check fix", "automation", "enum",
-      "The cloud model that reviews a fix of a pull request's failing checks before Iron Jarvis "
+      "The cloud model that reviews a fix of a pull request's failing checks before STEC OS "
       "pushes it. Automatic: Claude Code or Codex, whichever is connected, the one that did not write "
       "the fix first. Neither connected: the fix waits for you.",
       options=(("auto", "Automatic"), ("claude-cli", "Claude Code"), ("codex-cli", "Codex")),
@@ -639,7 +639,7 @@ SETTINGS: tuple[SettingDef, ...] = (
       "the work starts at once.",
       tier="allow", floor_when=(False,), aliases=("plan approval", "approve the plan", "approve plans")),
     S("autonomy_enabled", "Work on my goals by itself", "automation", "bool",
-      "Let Iron Jarvis think about your goals in the background and suggest next steps "
+      "Let STEC OS think about your goals in the background and suggest next steps "
       "(or, within the limits below, take them).",
       tier="ask-floor", section="Autonomy", aliases=("autonomy", "the pulse")),
     S("autonomy_level", "Autonomy ceiling", "automation", "enum",
@@ -761,7 +761,7 @@ SETTINGS: tuple[SettingDef, ...] = (
     # v1.370.0 (IJ harness Phase 7): the Build experience library.
     S("build_reflect", "Learn from Build sessions", "memory", "bool",
       "When a Build session has been idle for 10 minutes after replies that changed files or ran "
-      "commands, Iron Jarvis may suggest one lesson for that folder, and sometimes a small edit to "
+      "commands, STEC OS may suggest one lesson for that folder, and sometimes a small edit to "
       "the folder's coding-session instructions. It sends one request, cut to a fixed size, to the session's own "
       "model on the session's own account, so on a Claude Code or Codex plan it counts toward that "
       "plan's limits. It waits while that account is at or near its limit. Nothing is kept until "
@@ -786,7 +786,7 @@ SETTINGS: tuple[SettingDef, ...] = (
     S("memory_steward_enabled", "Memory steward", "memory", "bool",
       "Tidy and de-duplicate long-term memory in the background.", tier="ask", advanced=True),
     S("chat_files_root", "Chat files folder", "memory", "string",
-      "Where files you hand to chat are kept. Empty = Documents\\Iron Jarvis.", tier="ask", advanced=True),
+      "Where files you hand to chat are kept. Empty = Documents\\STEC OS.", tier="ask", advanced=True),
     S("search_roots", "Extra folders for file search", "memory", "list",
       "More folders File search looks in.", tier="ask", advanced=True),
     S("obsidian_vault", "Obsidian vault", "memory", "string", "A vault used as long-term memory.",
@@ -834,10 +834,10 @@ SETTINGS: tuple[SettingDef, ...] = (
       options=(("native", "On this PC (no container)"), ("docker", "Inside Docker")),
       tier="ask-floor", restart=True, advanced=True),
     S("self_dev_enabled", "Self-development", "system", "bool",
-      "Let Iron Jarvis edit its own source code (always review-gated).", tier="ask-floor",
+      "Let STEC OS edit its own source code (always review-gated).", tier="ask-floor",
       restart=True, advanced=True, section="Self-development"),
     S("self_dev_root", "Self-development repo folder", "system", "string",
-      "Path to the Iron Jarvis repo.", tier="ask-floor", restart=True, advanced=True,
+      "Path to the STEC OS repo.", tier="ask-floor", restart=True, advanced=True,
       section="Self-development"),
     S("backup_mirror_dir", "Backup copy folder", "system", "string",
       "Also copy every backup to this folder (another drive, a synced folder).", tier="ask",
@@ -878,8 +878,8 @@ SETTINGS: tuple[SettingDef, ...] = (
     # disagree for long. Starting with Windows widens what runs by itself
     # after a restart (schedules, messages, tasks), so turning it ON from
     # chat asks every time; off applies at once.
-    S("start_with_windows", "Start Iron Jarvis with Windows", "system", "bool",
-      "Iron Jarvis starts by itself, quietly in the tray, when you sign in to Windows, so "
+    S("start_with_windows", "Start STEC OS with Windows", "system", "bool",
+      "STEC OS starts by itself, quietly in the tray, when you sign in to Windows, so "
       "schedules, messages and tasks waiting for you keep working after Windows restarts. "
       "Only the installed desktop app on this PC reads this. The tray's Start at login is "
       "the same switch.",
@@ -890,8 +890,8 @@ SETTINGS: tuple[SettingDef, ...] = (
                "start when i sign in to windows")),
     S("keep_running_in_background", "Keep running in the background when I close the window",
       "system", "bool",
-      "On: closing the window keeps Iron Jarvis running in the tray, so schedules, rules and "
-      "webhooks stay active. Off: closing the window quits Iron Jarvis. Not set: it asks when "
+      "On: closing the window keeps STEC OS running in the tray, so schedules, rules and "
+      "webhooks stay active. Off: closing the window quits STEC OS. Not set: it asks when "
       "you close the window. The tray's Keep running in background is the same switch.",
       tier="allow", section="Desktop app", unset_ok=True,
       applies="The desktop app on this PC picks this up within about 15 seconds (or when it next starts).",

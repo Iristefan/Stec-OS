@@ -35,7 +35,7 @@ OTHER = "dev_desk00123456"
 SET_READ_ALOUD = [ToolCall(id="c1", name="config_set", arguments={"key": "device.read_aloud", "value": True})]
 PER_DEVICE_REFUSAL = "Read replies aloud is set per device; open this chat in the app to change it."
 SIDEBAR_REFUSAL = (
-    "Read replies aloud belongs to one screen of the Iron Jarvis app; change it there "
+    "Read replies aloud belongs to one screen of the STEC OS app; change it there "
     "(Settings, or a chat in the app)."
 )
 

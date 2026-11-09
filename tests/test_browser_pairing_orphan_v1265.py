@@ -1,7 +1,7 @@
 """v1.265.0 — a Pair press never mints a credential for nobody, and never dead-ends.
 
 THE REPORT: "AUTHENTICATION_FAILED: This install is already paired with a browser.
-Press Forget on the Browser page in Iron Jarvis before pairing another." on every
+Press Forget on the Browser page in STEC OS before pairing another." on every
 Pair press, on a PC where no browser was paired at all.
 
 WHAT THE DAEMON LOG SHOWED (2026-09-14 19:40:00-05). The add-on opened a pairing

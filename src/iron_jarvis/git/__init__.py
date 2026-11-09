@@ -1,6 +1,6 @@
 """Git-native sessions & review system (§27 Git Integration, §28 Review System).
 
-Every Iron Jarvis session is git-native: Create Branch → Perform Work →
+Every STEC OS session is git-native: Create Branch → Perform Work →
 Generate Diff → User Review → Approve → Merge. Agents are PROHIBITED from
 merging automatically; a merge happens only on an explicit review approval.
 """

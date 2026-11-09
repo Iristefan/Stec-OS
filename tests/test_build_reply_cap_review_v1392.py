@@ -6,7 +6,7 @@ reviewer found in the doer's cut, each pinned red first.
    typed, ``{"minutes": 2.5}`` became 2 minutes and ``{"minutes": 30,
    "hours": 2}`` lost the hours — all answered 200. A cap the PATCH cannot
    keep exactly as sent is now the 400 sentence, and nothing changes.
-2. A reply carried on after a restart counted the time Iron Jarvis was NOT
+2. A reply carried on after a restart counted the time STEC OS was NOT
    running: the cap measured from the original question's wall-clock time,
    so a reply cut off ten minutes in by a crash the night before was capped
    the moment the next boot carried it on ("This reply stopped at this
@@ -94,7 +94,7 @@ def test_the_strict_reading_is_the_whitelists_on_a_good_cap():
 
 
 # --------------------------------------------------------------------------- #
-# 2. a carried-on reply counts the time it RAN, never the time Iron Jarvis
+# 2. a carried-on reply counts the time it RAN, never the time STEC OS
 #    was off
 # --------------------------------------------------------------------------- #
 

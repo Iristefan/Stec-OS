@@ -4,7 +4,7 @@ A Store install of PowerShell puts ``pwsh.exe`` in
 ``%LOCALAPPDATA%\\Microsoft\\WindowsApps`` as an *App Execution Alias*: a
 zero-byte reparse point (tag ``IO_REPARSE_TAG_APPEXECLINK``) naming the real
 program under ``C:\\Program Files\\WindowsApps\\<package>``. The USER BUG
-("Build gets stuck at attaching to sessions and then Iron Jarvis isn't
+("Build gets stuck at attaching to sessions and then STEC OS isn't
 responding"): restored panes parked in ``CreateProcessW`` and the daemon
 stopped answering until the desktop watchdog killed it.
 

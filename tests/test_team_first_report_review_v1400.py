@@ -1,10 +1,10 @@
 """v1.400.0 review of TEAM-FIRST: the combined report, as tonight's root
 will hold it.
 
-``C:\\ijb`` already holds last night's two setups (Iron Jarvis 1.396.1: the
+``C:\\ijb`` already holds last night's two setups (STEC OS 1.396.1: the
 team and Sonnet alone, same planner, model and effort); tonight adds three.
-Each team setup must be answered against the alone row of its OWN Iron
-Jarvis, the table must show the row its answer compares with (and say which
+Each team setup must be answered against the alone row of its OWN STEC
+OS, the table must show the row its answer compares with (and say which
 it is), and "The team at work" — the first number the user looks for — must
 count every run in which the planner handed a piece out.
 """
@@ -73,8 +73,8 @@ def test_each_team_is_answered_against_the_alone_row_of_its_own_iron_jarvis():
     """C:\\ijb already holds last night's team and Sonnet-alone rows (1.396.1).
     Tonight's rows share every task and repeat with them, and the alone row
     the answer used was picked by runs in common, then the NEWEST — so last
-    night's team was re-answered against TONIGHT's alone row (another Iron
-    Jarvis, another harness), and its numbers changed overnight. The same
+    night's team was re-answered against TONIGHT's alone row (another STEC
+    OS, another harness), and its numbers changed overnight. The same
     version comes first; the numbers decide only among those."""
     night_team, night_alone, team, alone, first = _last_night_and_tonight()
     pairs = [(c, r) for c, r in (night_team, night_alone, team, alone, first)]
@@ -104,7 +104,7 @@ def test_the_table_shows_the_alone_row_its_answer_compares_with_and_names_it():
     plain_part = _section(report, team[0])
     assert "| cccccccccccc | jarvis |" in first_part
     for part in (first_part, plain_part):
-        assert "The answer compares with cccccccccccc (jarvis, Iron Jarvis 1.400.0)." in part
+        assert "The answer compares with cccccccccccc (jarvis, STEC OS 1.400.0)." in part
     assert first_part.index("The answer compares with") < first_part.index("**The answer:**")
     # Its numbers are its own runs' (3 repeats); the answer's are the runs both made.
     assert "Claude alone 4 of 4 (the 4 runs both made" in first_part
@@ -115,12 +115,12 @@ def test_a_comparison_across_versions_says_so():
     # B before A's alone: team-first is answered against last night's alone.
     report = combined_report([night_team, night_alone, first])
     part = _section(report, first[0])
-    assert ("The answer compares with 22222222bbbb (jarvis, Iron Jarvis 1.396.1), which ran on another "
-            "Iron Jarvis than this team (1.400.0).") in part
+    assert ("The answer compares with 22222222bbbb (jarvis, STEC OS 1.396.1), which ran on another "
+            "STEC OS than this team (1.400.0).") in part
     # The only alone row at another effort: said too.
     high = ({**night_alone[0], "version": "1.400.0", "effort": "high"}, night_alone[1])
     part = _section(combined_report([high, first]), first[0])
-    assert ("The answer compares with 22222222bbbb (jarvis, Iron Jarvis 1.400.0), at effort high "
+    assert ("The answer compares with 22222222bbbb (jarvis, STEC OS 1.400.0), at effort high "
             "(this team's planner: medium).") in part
 
 

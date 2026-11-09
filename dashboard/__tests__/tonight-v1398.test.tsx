@@ -6,7 +6,7 @@
  *    table's words (Queued / Working / Done / Failed / Needs you / Stopped),
  *    what happened folded under a row;
  *  - add (folder, words, how it runs: a model, the team, try on 2–3 models);
- *    a refusal shows Iron Jarvis's own words;
+ *    a refusal shows STEC OS's own words;
  *  - move up / down, edit, cancel (never starts), remove (two presses), stop
  *    a running task (two presses), open its session;
  *  - Emergency stop said once above the list;
@@ -158,7 +158,7 @@ describe("Tonight", () => {
     expect(within(screen.getByTestId("tonight-task-t1")).getByText(/ij\/fix-tests-1a2b/)).toBeTruthy();
   });
 
-  it("adds a task with the team, and shows a refusal in Iron Jarvis's own words", async () => {
+  it("adds a task with the team, and shows a refusal in STEC OS's own words", async () => {
     await shown();
     expect(screen.getByTestId("tonight-empty")).toBeTruthy();
     fireEvent.click(screen.getByTestId("tonight-add"));

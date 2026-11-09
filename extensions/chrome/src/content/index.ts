@@ -1,8 +1,8 @@
-// The injected half: the only Iron Jarvis code that ever touches a page.
+// The injected half: the only STEC OS code that ever touches a page.
 //
 // THERE IS NO `content_scripts` BLOCK IN THE MANIFEST AND THERE MUST NOT BE ONE
 // (plan section 6). A declared content script runs in every tab the user opens, for
-// the life of the browser, whether or not Iron Jarvis is doing anything — which is
+// the life of the browser, whether or not STEC OS is doing anything — which is
 // exactly the ambient presence the pairing model exists to avoid. This file is
 // injected by `chrome.scripting.executeScript` at the moment a read tool runs, and
 // it is gone when the tab navigates.
@@ -107,7 +107,7 @@ function handle(request: PageRequest): Record<string, unknown> {
   // instead of waiting out its timeout and reporting that the browser never
   // answered.
   throw new BridgeError("EXTENSION_ERROR", {
-    detail: `the Iron Jarvis browser add-on's page reader does not implement ${
+    detail: `the STEC OS browser add-on's page reader does not implement ${
       request.op || "(no operation)"
     } yet`,
   });

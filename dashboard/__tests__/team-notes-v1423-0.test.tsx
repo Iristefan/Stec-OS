@@ -248,7 +248,7 @@ describe("the coach card renders a working habit", () => {
     hooks.api[PATH] = coachView([habit()]);
     hooks.postResults["/coach/proposals/h1/accept"] = {
       proposal: habit({ status: "accepted" }),
-      note: "TEAM-NOTES.md was changed by hand, so Iron Jarvis kept your file as it is.",
+      note: "TEAM-NOTES.md was changed by hand, so STEC OS kept your file as it is.",
     };
     render(<AgentCoach name="qwen" />);
     fireEvent.click(screen.getByTestId("coach-accept-h1"));

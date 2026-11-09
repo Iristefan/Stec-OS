@@ -50,7 +50,7 @@ import { PASSWORD_AUTOCOMPLETE, PAYMENT_AUTOCOMPLETE, SENSITIVE_AUTOCOMPLETE } f
  * The autocomplete tokens that make a field sensitive, as a set for lookup.
  *
  * Generated from `computeruse/policy.py` through `protocol.ts`, so the browser and
- * the desktop halves of Iron Jarvis cannot disagree about what counts as a
+ * the desktop halves of STEC OS cannot disagree about what counts as a
  * credential. `PASSWORD_AUTOCOMPLETE` and `PAYMENT_AUTOCOMPLETE` are named in this
  * import only to make the two halves of that vocabulary visible to a reader here;
  * `SENSITIVE_AUTOCOMPLETE` is their union and is what the check uses.

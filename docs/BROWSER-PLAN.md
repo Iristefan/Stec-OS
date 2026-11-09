@@ -209,7 +209,7 @@ Browser extension authentication uses a dedicated **pairing token**.
 
 It must NEVER use:
 
-* the Iron Jarvis per-install bearer token
+* the STEC OS per-install bearer token
 * a Build pane token
 * an MCP token
 
@@ -697,7 +697,7 @@ If these workflows succeed, the BrowserService architecture is proven.
 
 ### D17 [APPROVE]
 
-Iron Jarvis gains an outward-facing MCP server.
+STEC OS gains an outward-facing MCP server.
 
 Primary transport:
 
@@ -779,7 +779,7 @@ Do not make Browser capability depend on a third-party Pi MCP package.
 
 If Pi's installed version later gains verified native MCP support, the launch recipe may prefer that route, but the canonical Browser architecture must not depend on it.
 
-The implementation plan must inspect how Iron Jarvis currently launches/configures Pi and identify the least invasive adapter point.
+The implementation plan must inspect how STEC OS currently launches/configures Pi and identify the least invasive adapter point.
 
 ---
 
@@ -1173,7 +1173,7 @@ The implementation plan must include the exact permission flow and failure state
 
 ### D27 [APPROVE]
 
-Ship the built extension inside the Iron Jarvis installer/package.
+Ship the built extension inside the STEC OS installer/package.
 
 MVP installation mode:
 
@@ -1193,7 +1193,7 @@ Do not implement Chrome Web Store publishing in these ships.
 
 The unpacked extension must use a deterministic/pinned Chrome extension ID.
 
-The extension manifest/build must contain the appropriate deterministic identity mechanism so the ID remains stable across supported Iron Jarvis installations.
+The extension manifest/build must contain the appropriate deterministic identity mechanism so the ID remains stable across supported STEC OS installations.
 
 The daemon's `/browser/ws` origin allowlist must reference this pinned ID.
 
@@ -1278,7 +1278,7 @@ Start from:
 v1.233.0
 ```
 
-The implementation plan must propose the next five version numbers following existing Iron Jarvis versioning conventions.
+The implementation plan must propose the next five version numbers following existing STEC OS versioning conventions.
 
 Do not assume semantic version increments without first inspecting repository history/conventions.
 
@@ -2017,7 +2017,7 @@ Return the implementation plan in this order:
 
 ```text
 1. Repository findings
-2. Architectural fit with current Iron Jarvis
+2. Architectural fit with current STEC OS
 3. Final route map
 4. Final schema/model changes
 5. Final BrowserService/backend design
@@ -2067,7 +2067,7 @@ Do not optimize toward:
 Optimize toward:
 
 ```text
-"Make the user's browser a native input/output surface for Iron Jarvis."
+"Make the user's browser a native input/output surface for STEC OS."
 ```
 
 Jarvis remains the orchestration and policy layer.

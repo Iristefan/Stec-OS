@@ -1,5 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
-"""PyInstaller spec — freeze the Iron Jarvis daemon into a STANDALONE Windows
+"""PyInstaller spec — freeze the STEC OS daemon into a STANDALONE Windows
 onedir application (`ironjarvis.exe`) that runs with NO Python/uv installed.
 
 Build:
@@ -52,7 +52,7 @@ datas += collect_data_files("iron_jarvis")
 
 # --- Help-page guides (v1.198.0) + the Guide's corpus (v1.223.0) ------------
 # routes/helpdocs.py serves the first three to the dashboard's Help page and
-# guide/corpus.py retrieves over ALL of them for the built-in Iron Jarvis
+# guide/corpus.py retrieves over ALL of them for the built-in STEC OS
 # Guide persona, both reading from sys._MEIPASS/ijdocs when frozen — a frozen
 # build without them would 404 every guide forever and leave the Guide
 # answering from nothing (it says so, but it is a worse product). The list is

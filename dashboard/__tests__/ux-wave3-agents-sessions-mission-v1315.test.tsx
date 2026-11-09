@@ -156,7 +156,7 @@ beforeEach(() => {
       roster: [
         { name: "memory", kind: "builtin", description: "curates and tidies the platform's stored knowledge", delegable: true, healthy: true },
         { name: "builder", kind: "builtin", description: "builds things end to end", delegable: true, healthy: true },
-        { name: "maintainer", kind: "builtin", description: "carefully edits and tests Iron Jarvis's own code", delegable: true, healthy: true },
+        { name: "maintainer", kind: "builtin", description: "carefully edits and tests STEC OS's own code", delegable: true, healthy: true },
         {
           name: "researcher",
           kind: "builtin",

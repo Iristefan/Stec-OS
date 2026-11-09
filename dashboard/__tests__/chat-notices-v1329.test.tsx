@@ -218,7 +218,7 @@ describe("Retry beside the refusal line is a calm ghost, still clearly a button"
 const MODEL_FACING: Record<string, string> = {
   // toRequestMessages labels an agent's reply for the model; the daemon's
   // agent_line_label spells the same sentence (chat-sticky-agent-v1284 pins it).
-  agentReplyLabel: ", on the agent panel — not Iron Jarvis]",
+  agentReplyLabel: ", on the agent panel — not STEC OS]",
   // The task text a skill-directed agent run is handed.
   skillTask: "skill for this — load it with skill_load first.",
   // The task text "Have <agent> do this" hands the agent run.

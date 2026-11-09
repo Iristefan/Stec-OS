@@ -609,7 +609,7 @@ def test_the_take_never_moves_a_list_parked_on_the_user_and_the_pass_refuses_one
     assert not RR.has_record(engine, "t-x") and RR.has_record(engine, "t-new")
     assert RR.claim(engine, "t-x", "t-other") is False, "taken once"
     assert build_routes.resume_refusal(engine, "s", "t-w", True) == (
-        "it was waiting on you when Iron Jarvis stopped"
+        "it was waiting on you when STEC OS stopped"
     )
 
 

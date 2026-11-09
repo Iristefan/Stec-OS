@@ -597,7 +597,7 @@ describe("a waiting message keeps its own skill and files", () => {
       files: [{ path: NOTES, rel: "docs/notes.md", name: "notes.md" }],
       attachments: [{ name: "a.png", path: "C:/ij/uploads/a.png", bytes: 4, label: "Pasted picture" }],
     });
-    // An older Iron Jarvis kept words only; nothing at all is not a message.
+    // An older STEC OS kept words only; nothing at all is not a message.
     expect(decodeQueuedItem({ text: "hi" })).toEqual({ text: "hi" });
     expect(decodeQueuedItem({ text: "  " })).toBeNull();
   });

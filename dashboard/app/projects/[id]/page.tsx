@@ -887,7 +887,7 @@ function ProjectWorkspaceInner({
 
                   {/* v1.406.0: which memory base this project searches and
                       saves to — follow the app, none here, or one profile.
-                      Renders nothing on an Iron Jarvis without profiles. */}
+                      Renders nothing on a STEC OS without profiles. */}
                   <ProjectBrainSelect
                     value={typeof project.brain_profile === "string" ? project.brain_profile : ""}
                     disabled={savingField === "brain"}
@@ -975,7 +975,7 @@ function ProjectWorkspaceInner({
                     onConfirm={removeProject}
                     label="Delete"
                     confirmLabel="Delete from app?"
-                    title={`Remove "${project.name}" from Iron Jarvis only — your files and folders on this computer are NOT touched`}
+                    title={`Remove "${project.name}" from STEC OS only — your files and folders on this computer are NOT touched`}
                   />
                   </div>
                 </div>

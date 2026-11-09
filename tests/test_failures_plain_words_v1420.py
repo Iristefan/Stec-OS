@@ -64,7 +64,7 @@ def test_a_worded_refusal_about_no_account_keeps_the_chats_fix():
 
 def test_control_an_unworded_failure_still_gets_the_generic_words():
     words = friendly_error(RuntimeError("boom"), provider="claude-cli")
-    assert words["title"] == "Iron Jarvis couldn't finish this answer"
+    assert words["title"] == "STEC OS couldn't finish this answer"
     assert words["fix"] == GENERIC_FIX
 
 

@@ -226,7 +226,7 @@ def test_the_budget_clock_starts_at_the_first_checker_not_at_hand_out(tmp_path, 
 
 
 async def test_local_only_cards_the_checker_once_only_even_under_dont_ask(env, monkeypatch):
-    """Local only: every command cards ("Allow once"), Iron Jarvis's own
+    """Local only: every command cards ("Allow once"), STEC OS's own
     checker run too — Don't ask does not skip it."""
     platform, ws, log = env
     who = ("mock", "mock-local")

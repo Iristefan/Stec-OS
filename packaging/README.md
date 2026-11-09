@@ -1,6 +1,6 @@
-# Freezing the Iron Jarvis daemon (standalone Windows exe)
+# Freezing the STEC OS daemon (standalone Windows exe)
 
-This directory freezes the Iron Jarvis daemon into a **standalone Windows
+This directory freezes the STEC OS daemon into a **standalone Windows
 application** with [PyInstaller]. The result runs with **no Python and no uv
 installed** — ideal for bundling inside an Electron shell or shipping to a
 machine without a dev toolchain.
@@ -52,7 +52,7 @@ packaging\dist\ironjarvis\ironjarvis.exe serve --port 8799 --root C:\path\to\sta
 
 - `serve` starts FastAPI + uvicorn (the long-running daemon).
 - `--port` HTTP port (CLI default 8787).
-- `--root` project root; Iron Jarvis writes its state under `<root>\.ironjarvis`.
+- `--root` project root; STEC OS writes its state under `<root>\.ironjarvis`.
   Use a writable, app-owned directory.
 
 Any other CLI subcommand works too, e.g. `ironjarvis.exe status`,

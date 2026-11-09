@@ -29,7 +29,7 @@
       "failed": "tried an app disconnect and it failed"
     },
     "app_health": {
-      "ok": "checked how Iron Jarvis is doing",
+      "ok": "checked how STEC OS is doing",
       "failed": "tried a health check and it failed"
     },
     "app_import": {
@@ -37,11 +37,11 @@
       "failed": "tried an app import and it failed"
     },
     "app_search": {
-      "ok": "searched your Iron Jarvis setup",
+      "ok": "searched your STEC OS setup",
       "failed": "tried a setup search and it failed"
     },
     "app_status": {
-      "ok": "checked your Iron Jarvis setup",
+      "ok": "checked your STEC OS setup",
       "failed": "tried a setup check and it failed"
     },
     "app_switch": {
@@ -161,7 +161,7 @@
       "failed": "tried a folder team and it failed"
     },
     "capability_propose": {
-      "ok": "suggested a new ability for Iron Jarvis",
+      "ok": "suggested a new ability for STEC OS",
       "failed": "tried an ability suggestion and it failed"
     },
     "change_undo": {
@@ -313,11 +313,11 @@
       "failed": "tried an always-allow removal and it failed"
     },
     "guide_read": {
-      "ok": "read the Iron Jarvis guide",
+      "ok": "read the STEC OS guide",
       "failed": "tried a guide read and it failed"
     },
     "guide_search": {
-      "ok": "searched the Iron Jarvis guide",
+      "ok": "searched the STEC OS guide",
       "failed": "tried a guide search and it failed"
     },
     "history_search": {

@@ -68,16 +68,16 @@ class BrowserErrorCode(str, Enum):
 #: than raising, because a formatting mistake on an error path would replace a
 #: useful failure with a ``KeyError`` traceback — the exact opaque outcome D15
 #: forbids. The §7.1 vocabulary rule applies to these strings: the surface is
-#: always "the Browser page in Iron Jarvis", and the Chrome add-on is named only
+#: always "the Browser page in STEC OS", and the Chrome add-on is named only
 #: where Chrome's own UI already uses that word.
 REMEDIES: dict[BrowserErrorCode, str] = {
     BrowserErrorCode.BROWSER_NOT_CONNECTED: (
-        "Your browser is not connected to Iron Jarvis. Ask the user to open the "
-        "Browser page in Iron Jarvis and pair their browser, then retry."
+        "Your browser is not connected to STEC OS. Ask the user to open the "
+        "Browser page in STEC OS and pair their browser, then retry."
     ),
     BrowserErrorCode.BROWSER_ACCESS_OFF: (
         "Browser access is off. Ask the user to set Browser access to Read only "
-        "or Interactive on the Browser page in Iron Jarvis, then retry."
+        "or Interactive on the Browser page in STEC OS, then retry."
     ),
     BrowserErrorCode.READ_ONLY_MODE: (
         "Browser access is Read only, so this tool cannot change the page. The "
@@ -109,8 +109,8 @@ REMEDIES: dict[BrowserErrorCode, str] = {
     ),
     # Verbatim from the implementation plan, section 6 (host permission absent).
     BrowserErrorCode.PERMISSION_DENIED: (
-        "Site access has not been granted to the Iron Jarvis browser add-on. "
-        "Open the Browser page in Iron Jarvis and press Grant site access."
+        "Site access has not been granted to the STEC OS browser add-on. "
+        "Open the Browser page in STEC OS and press Grant site access."
     ),
     BrowserErrorCode.ACTION_TIMEOUT: (
         "Your browser did not answer in time. Call browser_get_status to check "
@@ -139,12 +139,12 @@ REMEDIES: dict[BrowserErrorCode, str] = {
         "it persists, ask the user to reload the add-on from chrome://extensions."
     ),
     BrowserErrorCode.PAIRING_REQUIRED: (
-        "This browser is not paired with Iron Jarvis. Ask the user to open the "
-        "Browser page in Iron Jarvis and press Pair."
+        "This browser is not paired with STEC OS. Ask the user to open the "
+        "Browser page in STEC OS and press Pair."
     ),
     BrowserErrorCode.AUTHENTICATION_FAILED: (
         "Your browser's pairing was refused. Ask the user to press Forget on "
-        "the Browser page in Iron Jarvis and pair the browser again."
+        "the Browser page in STEC OS and pair the browser again."
     ),
     BrowserErrorCode.CONNECTION_REPLACED: (
         "Another browser connected and replaced this one, so this call was "

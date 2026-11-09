@@ -1,6 +1,6 @@
 """v1.416.0 — Grok in Build's Code view: the user's REAL Grok (``grok agent
 --no-leader stdio``, the Agent Client Protocol over stdio), with its own
-tools, MCP servers, skills, hooks and config ON; Iron Jarvis only hosts it and
+tools, MCP servers, skills, hooks and config ON; STEC OS only hosts it and
 turns every permission question Grok asks into a card.
 
 Every turn replays a RECORDED grok 1.0.70 session
@@ -597,7 +597,7 @@ def test_descendants_and_kill_left_end_only_the_same_processes():
 
 def test_a_stop_ends_a_process_the_tool_started_outside_its_job(tmp_path, monkeypatch):
     """Measured: Grok runs each command as its own `pwsh -Command …` that is
-    NOT a member of the Job Iron Jarvis puts Grok in, so a `ping` outlived the
+    NOT a member of the Job STEC OS puts Grok in, so a `ping` outlived the
     Job's close. The stop reads what the tool started FIRST and ends it after."""
     import psutil
 

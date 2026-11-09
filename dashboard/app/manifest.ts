@@ -4,9 +4,9 @@ import type { MetadataRoute } from "next";
 // Colors mirror the dark crimson/cyan arc-reactor theme (ink-950 + accent).
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Iron Jarvis",
+    name: "STEC OS",
     short_name: "Jarvis",
-    description: "Iron Jarvis, your local-first AI assistant.",
+    description: "STEC OS, your local-first AI assistant.",
     start_url: "/",
     scope: "/",
     display: "standalone",

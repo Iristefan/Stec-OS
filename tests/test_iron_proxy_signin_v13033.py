@@ -1,5 +1,5 @@
-"""An account that signs in is SEEN to be signed in; an old Iron-Proxy an Iron
-Jarvis started is replaced (v1.303.3, two LIVE bugs + the review).
+"""An account that signs in is SEEN to be signed in; an old Iron-Proxy an STEC
+OS started is replaced (v1.303.3, two LIVE bugs + the review).
 
 1. The user added a Claude account, pressed Sign in, logged in in the Build
    pane — the login landed in the account's home — and the card said "Needs
@@ -17,12 +17,12 @@ Jarvis started is replaced (v1.303.3, two LIVE bugs + the review).
      capped per pane); ``signed_in: true`` on its rows once confirmed;
    * ``POST /iron-proxy/accounts/{id}/check`` re-checks on demand.
    Never on availability or a list route.
-2. The daemon REUSED an Iron-Proxy an earlier Iron Jarvis had started from an
+2. The daemon REUSED an Iron-Proxy an earlier STEC OS had started from an
    older bundle (no "pick-profile"). Now a located proxy that lacks a feature
    the bundle has is stopped and replaced — ONLY when its command line runs an
-   Iron Jarvis bundle (THIS repo's, or an install's); never a pid twice, never
-   the same (bundle, version) twice, at most twice in 10 minutes (two Iron
-   Jarvis copies sharing one data dir), and never when the kill did not take.
+   STEC OS bundle (THIS repo's, or an install's); never a pid twice, never
+   the same (bundle, version) twice, at most twice in 10 minutes (two STEC
+   OS copies sharing one data dir), and never when the kill did not take.
 
 Driven through the REAL app factory and the fake Iron-Proxy; process command
 lines and kills are faked (nothing real is ever killed).
@@ -419,17 +419,17 @@ def test_an_ordinary_pane_has_no_sign_in_keys(client):
 
 
 # --------------------------------------------------------------------------- #
-# 5. an outdated Iron-Proxy that an Iron Jarvis started is replaced
+# 5. an outdated Iron-Proxy that a STEC OS started is replaced
 # --------------------------------------------------------------------------- #
 REPO_BUNDLE = str(svc_mod._repo_bundle_dir() / "iron-proxy.mjs")
 
 
 @pytest.fixture
 def install(tmp_path):
-    """An Iron Jarvis install: ``Iron Jarvis.exe`` beside ``resources/``."""
-    root = tmp_path / "Programs" / "Iron Jarvis"
+    """A STEC OS install: ``STEC OS.exe`` beside ``resources/``."""
+    root = tmp_path / "Programs" / "STEC OS"
     (root / "resources" / "iron-proxy").mkdir(parents=True)
-    (root / "Iron Jarvis.exe").write_bytes(b"MZ")
+    (root / "STEC OS.exe").write_bytes(b"MZ")
     return root
 
 
@@ -444,13 +444,13 @@ def test_only_an_iron_jarvis_bundle_command_line_is_ours(tmp_path, install):
     ours = [
         ["node", REPO_BUNDLE, "serve", "--port", "0"],
         ["node", "--no-warnings", REPO_BUNDLE, "serve"],
-        [str(install / "Iron Jarvis.exe"), packaged, "serve"],
+        [str(install / "STEC OS.exe"), packaged, "serve"],
     ]
     not_ours = [
         [r"C:\Program Files\Iron-Proxy\Iron-Proxy.exe"],  # the tray app
         ["node", r"C:\src\Iron-Proxy\packages\cli\dist-bundle\iron-proxy.mjs", "serve"],
         ["node", r"C:\other\Iron-Jarvis\desktop\vendor\iron-proxy\iron-proxy.mjs", "serve"],
-        ["node", str(no_exe / "iron-proxy.mjs"), "serve"],  # no Iron Jarvis.exe there
+        ["node", str(no_exe / "iron-proxy.mjs"), "serve"],  # no STEC OS.exe there
         ["node", r"C:\tools\wrap.js", REPO_BUNDLE, "serve"],  # not the FIRST script
         ["iron-proxy", "serve"],
         [],
@@ -559,7 +559,7 @@ def test_a_proxy_that_does_not_die_is_left_and_said_once(
         st = svc.status()
         assert procs.killed == [700002] and started == []
         assert st["running"] is True
-        assert st["error"].startswith("Iron Jarvis could not stop the older Iron-Proxy (pid 700002)")
+        assert st["error"].startswith("STEC OS could not stop the older Iron-Proxy (pid 700002)")
         assert (tmp_path / "ipd" / "proxy.json").is_file()
         for _ in range(3):
             svc.check()
@@ -572,13 +572,13 @@ def test_a_proxy_that_does_not_die_is_left_and_said_once(
 def test_two_iron_jarvis_copies_never_fight_forever(
     tmp_path, monkeypatch, bundle_with_pick_profile, started, install
 ):
-    """Review 4: the other Iron Jarvis restarts ITS older proxy after we
+    """Review 4: the other STEC OS restarts ITS older proxy after we
     replaced it. The same (bundle, version) is not replaced twice, and after
     two replacements in 10 minutes we stop — said, naming the other copy.
     MUTATION: no per-(bundle, version) guard -> red. MUTATION: no window
     limit -> red."""
     other = str(install / "resources" / "iron-proxy" / "iron-proxy.mjs")
-    procs = _Procs(monkeypatch, [str(install / "Iron Jarvis.exe"), other, "serve"])
+    procs = _Procs(monkeypatch, [str(install / "STEC OS.exe"), other, "serve"])
     svc = IronProxyService(_cfg(tmp_path), register=False)
     fakes = []
     try:
@@ -597,13 +597,13 @@ def test_two_iron_jarvis_copies_never_fight_forever(
         other_restarts(700011, "0.1.0")  # the SAME bundle and version again
         assert procs.killed == [700010] and len(started) == 1
         err = svc.status()["error"]
-        assert err.startswith("Another Iron Jarvis on this PC (") and str(install) in err
+        assert err.startswith("Another STEC OS on this PC (") and str(install) in err
 
         other_restarts(700012, "0.1.1")  # a newer old one: replaced (2nd in the window)
         assert procs.killed == [700010, 700012] and len(started) == 2
         other_restarts(700013, "0.1.2")  # a third within 10 minutes: refused
         assert procs.killed == [700010, 700012] and len(started) == 2
-        assert svc.status()["error"].startswith("Another Iron Jarvis on this PC (")
+        assert svc.status()["error"].startswith("Another STEC OS on this PC (")
     finally:
         for f in fakes:
             f.stop()
@@ -636,7 +636,7 @@ def test_an_old_proxy_someone_else_runs_is_never_stopped_and_says_so(
 
             what = cmdline[1] if len(cmdline) > 1 else cmdline[0]
             assert st["error"] == OUTDATED_NAMED.format(pid=700020, what=what)
-            assert "older than this Iron Jarvis needs" in st["error"]  # the card's banner keys on this
+            assert "older than this STEC OS needs" in st["error"]  # the card's banner keys on this
         else:
             assert st["error"] == OUTDATED
     finally:
@@ -646,7 +646,7 @@ def test_an_old_proxy_someone_else_runs_is_never_stopped_and_says_so(
 def test_a_current_proxy_is_never_replaced(tmp_path, monkeypatch, bundle_with_pick_profile, started, fake):
     """MUTATION: replace whenever the command line is ours -> red."""
     procs = _Procs(monkeypatch, ["node", REPO_BUNDLE, "serve"])
-    procs.stale.add(os.getpid())  # the fake's pid reads as an Iron Jarvis bundle
+    procs.stale.add(os.getpid())  # the fake's pid reads as a STEC OS bundle
     svc = IronProxyService(_cfg(tmp_path), register=False)
     svc.start()
     svc.check()

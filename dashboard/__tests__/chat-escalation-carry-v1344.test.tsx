@@ -212,7 +212,7 @@ afterEach(() => {
 
 async function startTurn(text: string) {
   const expected = wires.length + 1;
-  const box = (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  const box = (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
   await waitFor(() => expect(box).toBeEnabled());
   fireEvent.change(box, { target: { value: text } });
   fireEvent.keyDown(box, { key: "Enter" });

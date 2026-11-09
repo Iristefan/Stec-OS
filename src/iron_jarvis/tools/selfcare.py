@@ -236,7 +236,7 @@ def _model_label(provider: str, model: str) -> str:
 class AppHealthTool(Tool):
     name = "app_health"
     description = (
-        "How Iron Jarvis itself is doing, in plain words plus data: the version, "
+        "How STEC OS itself is doing, in plain words plus data: the version, "
         "the default model and whether it is reachable, providers in cooldown, "
         "failing background loops, every tool pack by state with the reason and "
         "the fix, the last recent errors, disk space, interrupted jobs and the "
@@ -265,7 +265,7 @@ class AppHealthTool(Tool):
         platform = self._platform
         d = daemon_deps(platform)
         data: dict[str, Any] = {"version": __version__, "unreadable": []}
-        lines: list[str] = [f"Iron Jarvis {__version__}."]
+        lines: list[str] = [f"STEC OS {__version__}."]
 
         def broken(section: str, exc: BaseException) -> None:
             data["unreadable"].append({"section": section, "error": _err(exc)})

@@ -46,13 +46,13 @@ import { VoiceCommandListener } from "@/components/VoiceCommandListener";
 export const metadata: Metadata = {
   // Base title; NotificationBell mutates document.title at runtime to surface
   // pending review/approval counts.
-  title: "Iron Jarvis",
-  description: "Iron Jarvis, your local-first AI assistant.",
+  title: "STEC OS",
+  description: "STEC OS, your local-first AI assistant.",
   manifest: "/manifest.webmanifest",
-  applicationName: "Iron Jarvis",
+  applicationName: "STEC OS",
   appleWebApp: {
     capable: true,
-    title: "Iron Jarvis",
+    title: "STEC OS",
     statusBarStyle: "black-translucent",
   },
 };

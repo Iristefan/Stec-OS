@@ -197,7 +197,7 @@ export default function OverviewPage({ embedded = false }: { embedded?: boolean 
         <Reveal>
           <PageHeader
             title="Overview"
-            subtitle="What Iron Jarvis has set up, what it has been doing, and what it is doing right now."
+            subtitle="What STEC OS has set up, what it has been doing, and what it is doing right now."
             actions={
               health.data ? (
                 <span className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-zinc-300">
@@ -297,7 +297,7 @@ export default function OverviewPage({ embedded = false }: { embedded?: boolean 
             <div className="absolute -bottom-24 -right-20 h-72 w-72 rounded-full bg-accent/[0.06] blur-3xl" />
           </div>
           <div className="relative px-5 pt-6 sm:px-8 sm:pt-7">
-            <div className="text-[11px] font-medium uppercase tracking-[0.22em] text-accent-soft/70">Iron Jarvis</div>
+            <div className="text-[11px] font-medium uppercase tracking-[0.22em] text-accent-soft/70">STEC OS</div>
             {/* A live status line, not a second <h1> — PageHeader owns it. */}
             <p role="status" className="text-gradient mt-1.5 text-2xl font-semibold leading-tight tracking-tight sm:text-[2rem]">
               {statusLine}
@@ -379,7 +379,7 @@ export default function OverviewPage({ embedded = false }: { embedded?: boolean 
             />
             <HeroStat
               label="Disk space free"
-              hint="Free disk — space left on the drive Iron Jarvis keeps its data on"
+              hint="Free disk — space left on the drive STEC OS keeps its data on"
               icon={<HardDrive size={12} />}
               value={freeDisk != null ? fmtBytes(freeDisk) : map.loading ? <Skeleton className="h-4 w-16" /> : "—"}
             />

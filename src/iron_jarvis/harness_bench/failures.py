@@ -90,8 +90,8 @@ INFRA_WORDS: tuple[tuple[str, str], ...] = (
      "the model server could not be reached"),
 )
 
-_RUNNER_NAMES = {"claude": "Claude Code", "codex": "Codex", "jarvis": "Iron Jarvis",
-                 "jarvis-team": "Iron Jarvis with its team"}
+_RUNNER_NAMES = {"claude": "Claude Code", "codex": "Codex", "jarvis": "STEC OS",
+                 "jarvis-team": "STEC OS with its team"}
 
 #: v1.396.0 review: a failed HELPER's row says why in one of two voices — the
 #: raw provider error (a run that raised: "delegated agent 'codex' crashed:

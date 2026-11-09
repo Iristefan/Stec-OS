@@ -279,7 +279,7 @@ def test_iron_jarvis_own_server_entries_are_dropped():
     block = json.dumps(
         {
             "mcpServers": {
-                "iron-jarvis": {"command": "C:/Apps/Iron Jarvis/resources/daemon/ironjarvis.exe", "args": ["mcp-stdio"]},
+                "iron-jarvis": {"command": "C:/Apps/STEC OS/resources/daemon/ironjarvis.exe", "args": ["mcp-stdio"]},
                 "shim": {"command": "python", "args": ["-m", "iron_jarvis.mcpserver.stdio_shim"]},
                 "inert": {"command": "ironjarvis", "args": ["claude-inert-mcp", "m.json"]},
                 "keep": {"command": "npx", "args": ["-y", "pkg"]},

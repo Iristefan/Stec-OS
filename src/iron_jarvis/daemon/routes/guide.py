@@ -1,4 +1,4 @@
-"""The Iron Jarvis Guide routes (v1.223.0).
+"""The STEC OS Guide routes (v1.223.0).
 
 The Guide itself is a chat persona (``guide``) grounded at both chat seams;
 these routes are its INSPECTION surface — what it knows (``/guide/status``),

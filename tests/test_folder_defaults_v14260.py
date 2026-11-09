@@ -79,7 +79,7 @@ def test_only_what_was_chosen_is_kept(client, work):
 @pytest.mark.parametrize("view, defaults, words", [
     ("code", {"approval_mode": "yolo"}, "\"Don't ask\" is chosen per session"),
     ("tool", {"harness": "claude-code", "mode": "full"}, "Full access is chosen per session"),
-    ("tool", {"harness": "vim"}, "not one Iron Jarvis knows"),
+    ("tool", {"harness": "vim"}, "not one STEC OS knows"),
     ("tool", {"model": "x"}, "Say which coding tool"),
     ("tool", {"harness": "codex", "mode": "sideways"}, "That mode is not"),
     ("code", {"model": "gpt"}, "needs the provider"),

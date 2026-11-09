@@ -1110,7 +1110,7 @@ class ModelRouter:
                 text += f": {detail.rstrip(' .')}"
             # v1.354.0 (G28): the policy in plain words, never its config key.
             text += (
-                ". Iron Jarvis won't switch to a different AI without asking."
+                ". STEC OS won't switch to a different AI without asking."
                 " You can allow that in Settings."
             )
             if pinned:
@@ -1425,7 +1425,7 @@ class ModelRouter:
             " connection",
             "interrupted": "the connection dropped mid-request",
             # v1.354.0 (G28): the policy in plain words, not its config key.
-            "answered_error": "answered with an error, and Iron Jarvis won't switch"
+            "answered_error": "answered with an error, and STEC OS won't switch"
             " to a different AI without asking",
             # v1.232.0 (audit R4): the breaker's own word, seconds included.
             "cooldown": (

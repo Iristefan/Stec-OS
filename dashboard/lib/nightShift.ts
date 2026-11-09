@@ -35,7 +35,7 @@ export interface NightTask {
   team: boolean;
   tryOn: NightPick[];
   /** v1.424.0 (D6): the account its session runs on ("" = its vendor's
-   *  Default; an older Iron Jarvis sends none). */
+   *  Default; an older STEC OS sends none). */
   account: string;
   state: NightState;
   threadId: string;
@@ -168,8 +168,8 @@ function draftBody(d: NightDraft, edit = false): Record<string, unknown> {
     team: !!d.team,
     try_on: (d.tryOn ?? []).map((p) => ({ provider: p.provider, model: p.model })),
     // v1.424.0 (D6): an account rides when one is chosen; an edit also sends
-    // "" (a cleared choice), a new task none at all (the body an older Iron
-    // Jarvis already took).
+    // "" (a cleared choice), a new task none at all (the body an older STEC
+    // OS already took).
     ...(d.account || (edit && d.account !== undefined) ? { account: d.account } : {}),
   };
 }
@@ -440,7 +440,7 @@ export async function openNightPullRequest(threadId: string): Promise<string> {
 }
 
 /** Throw the task's branch folder away (the session's own Discard, after
- *  the row's two presses): the folder to Iron Jarvis's trash, the branch
+ *  the row's two presses): the folder to STEC OS's trash, the branch
  *  KEPT. Answers the daemon's own sentence. */
 export async function throwAwayNightFolder(threadId: string): Promise<string> {
   const done = rec(

@@ -1,7 +1,7 @@
 /**
  * v1.422.0 (Wave 2, B3 + B5) REVIEW FOLLOW-UP: Retry on a carry-on that
  * FAILED. The page's Retry sent the newest user message's words again — for
- * a carry-on, those are Iron Jarvis's own words to the tool ("Iron Jarvis
+ * a carry-on, those are STEC OS's own words to the tool ("STEC OS
  * restarted while you were working…"), which then showed as the user's own
  * message. Retry on a carry-on now asks the daemon to run the carry-on again,
  * hidden (POST …/continue); its line says the user pressed Retry. Driven
@@ -69,7 +69,7 @@ const sess = {
   updated_at: "2026-11-01T09:00:00Z", archived_at: null, last_error: "",
 };
 
-const CARRY_WORDS = "Iron Jarvis restarted while you were working on my last message, so your reply was cut off.";
+const CARRY_WORDS = "STEC OS restarted while you were working on my last message, so your reply was cut off.";
 
 function seed(lastUser: Record<string, unknown>) {
   H.gets = {
@@ -103,7 +103,7 @@ describe("Retry", () => {
     render(<BuildCodeView initialSession="a1" onOpenedTerminal={() => {}} />);
     fireEvent.click(await screen.findByTestId("code-retry"));
     await waitFor(() => expect(H.posts.map((p) => p.path)).toContain("/build/app/sessions/a1/continue"));
-    const sentWords = [...H.posts, ...H.streams].some((p) => JSON.stringify(p.body ?? "").includes("Iron Jarvis restarted"));
+    const sentWords = [...H.posts, ...H.streams].some((p) => JSON.stringify(p.body ?? "").includes("STEC OS restarted"));
     expect(sentWords).toBe(false);
   });
 

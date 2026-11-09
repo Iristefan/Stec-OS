@@ -10,7 +10,7 @@ unavailable"); "add to a note" picked ``append_section`` without the
 
 So a ROLE is now an explicit mapping the USER confirms:
 ``{"tool": "<name>", "args": {"<param>": <source>}}`` where a source is one of
-:data:`SOURCES` (the value Iron Jarvis fills in) or ``{"const": "<text>"}`` (a
+:data:`SOURCES` (the value STEC OS fills in) or ``{"const": "<text>"}`` (a
 fixed value the user typed — ``type: concept``, ``tags: inbox``). The app
 PROPOSES a mapping from the server's own schemas (:func:`propose`); nothing is
 used to save, add to or change a note until the user confirms it

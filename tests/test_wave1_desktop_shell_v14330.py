@@ -4,7 +4,7 @@ House idiom (test_desktop_offline_banner_v1312.py): the shipped function text
 is lifted out of ``desktop/main.js`` with a brace-matching extractor and run
 against stubs, so these pins prove behaviour, not the presence of a string.
 
-* A8 — Settings › Maintenance's "Restart Iron Jarvis" used to post
+* A8 — Settings › Maintenance's "Restart STEC OS" used to post
   ``/shutdown`` with no body (the daemon's QUIT) and the supervisor counted the
   exit as a crash. ``restartDaemonTidy`` marks the exit as asked for FIRST,
   then posts ``{"restart": true}``; the exit then respawns at once and counts

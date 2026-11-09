@@ -36,7 +36,7 @@ Code's box — the Pi way (``hosted/pi.py`` ``typed_builtin`` /
   Code as typed (v1.438.0's behaviour), never refused here.
 * Grok: ``/always-approve`` and ``/auto`` (Grok advertises the first over ACP,
   ``tests/fixtures/build_app_v1416/g_read.json``) would change what Grok runs
-  without asking, outside Iron Jarvis's cards while the mode chip still said
+  without asking, outside STEC OS's cards while the mode chip still said
   Ask first. They are dropped from the menu and refused typed, before
   anything is sent.
 """
@@ -84,12 +84,12 @@ CLAUDE_TERMINAL_ONLY: dict[str, str] = {
                "the conversation."),
     "rewind": _MOVES,
     "resume": "Your Claude Code conversations are listed with your sessions — open one there.",
-    "exit": "There is nothing to quit here: Iron Jarvis stops Claude Code after the session has been idle a while.",
-    "quit": "There is nothing to quit here: Iron Jarvis stops Claude Code after the session has been idle a while.",
+    "exit": "There is nothing to quit here: STEC OS stops Claude Code after the session has been idle a while.",
+    "quit": "There is nothing to quit here: STEC OS stops Claude Code after the session has been idle a while.",
 }
 #: Grok's own commands that change what it runs without asking.
 GROK_APPROVAL: tuple[str, ...] = ("always-approve", "auto")
-GROK_APPROVAL_REFUSAL = ("That would change what Grok runs without asking, outside Iron Jarvis's cards — "
+GROK_APPROVAL_REFUSAL = ("That would change what Grok runs without asking, outside STEC OS's cards — "
                          "choose how Grok asks with the mode chip under the box.")
 #: The rows Grok's ``/`` menu gains (it advertises neither over ACP).
 GROK_SETTING_ROWS: tuple[dict[str, str], ...] = (

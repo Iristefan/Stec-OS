@@ -213,7 +213,7 @@ function MemberRow({
           </p>
           {m.notes.handEdited ? (
             <p data-testid={`team-notes-hand-${m.name}`} className="text-[12px] text-zinc-500">
-              Its TEAM-NOTES.md was changed by hand, so Iron Jarvis keeps your text as it is.
+              Its TEAM-NOTES.md was changed by hand, so STEC OS keeps your text as it is.
             </p>
           ) : null}
           {m.notes.accepted.length ? (
@@ -500,7 +500,7 @@ export function ModelTeam() {
   }
 
   if (team.error && team.error.status === 404) {
-    return <p className="text-sm text-zinc-500">This version of Iron Jarvis has no model team yet.</p>;
+    return <p className="text-sm text-zinc-500">This version of STEC OS has no model team yet.</p>;
   }
 
   return (

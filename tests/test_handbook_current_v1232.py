@@ -85,7 +85,7 @@ def test_handbook_ends_with_the_audit_waves_section():
     [
         "two missed polls",
         "quit from the tray and relaunch",
-        "Restart Iron Jarvis",
+        "Restart STEC OS",
         "Copy diagnostics",
         "Open logs folder",
     ],

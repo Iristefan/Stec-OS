@@ -51,7 +51,7 @@ from iron_jarvis.providers.adapters.base import (
 from iron_jarvis.providers.router import ModelRouter
 
 SENTENCE_OPENAI = (
-    "Iron Jarvis didn't switch to OpenAI, which bills per use, because you "
+    "STEC OS didn't switch to OpenAI, which bills per use, because you "
     "didn't choose a pay-per-use model for this."
 )
 
@@ -504,7 +504,7 @@ def test_the_stream_lane_says_it_was_not_moved_to_a_paid_key(tmp_path, monkeypat
 
 def test_the_sentence_names_every_left_out_key_by_its_plain_name():
     assert billing.not_moved_sentence(["openai", "google"]) == (
-        "Iron Jarvis didn't switch to OpenAI or Google Gemini, which bill per use, "
+        "STEC OS didn't switch to OpenAI or Google Gemini, which bill per use, "
         "because you didn't choose a pay-per-use model for this."
     )
     assert billing.not_moved_sentence(["openai", "openai"]) == SENTENCE_OPENAI

@@ -100,7 +100,7 @@ interface Connector {
   reason?: string | null;
   fix?: string | null;
   stderr_tail?: string | null;
-  /** v1.353.0 (G45): a one-time setup it needs outside Iron Jarvis ("" none;
+  /** v1.353.0 (G45): a one-time setup it needs outside STEC OS ("" none;
    *  an OAuth app's is "" once its OAuth client is registered). */
   needs?: string | null;
   /** v1.353.0 (G45): would this PC start the pack's helper program now?
@@ -649,7 +649,7 @@ function ConnectorCard({ c, onChanged }: { c: Connector; onChanged: () => void }
       )}
 
       {/* v1.353.0 (G45): what it needs, said BEFORE Connect — a one-time
-          setup outside Iron Jarvis (Gmail; a drive with no OAuth client yet)
+          setup outside STEC OS (Gmail; a drive with no OAuth client yet)
           and the helper program this PC lacks ("Needs Node.js"). Words in
           the warn tone with a dot, never colour alone. */}
       {!c.connected && (setupNeeds || runtimeMissing) && (
@@ -1405,7 +1405,7 @@ export default function MarketplacePage() {
       <Reveal>
         <PageHeader
           title="Directory"
-          subtitle="Connect Iron Jarvis to the apps you already use. Keys are stored encrypted; nothing is sent anywhere but the service you connect."
+          subtitle="Connect STEC OS to the apps you already use. Keys are stored encrypted; nothing is sent anywhere but the service you connect."
           actions={
             /* Users arrive from the chat "+" menu (the Directory has no nav
                row) — give them the door back so a collapsed sidebar never
@@ -1622,7 +1622,7 @@ export default function MarketplacePage() {
               Separate versions of built-in tools ({extrasVisible.length})
             </summary>
             <p className="mt-2 text-[12px] text-zinc-500">
-              Iron Jarvis already does these with nothing to connect. Add one only if you want a
+              STEC OS already does these with nothing to connect. Add one only if you want a
               separate version for an advanced setup.
             </p>
             <div className="mt-3.5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">

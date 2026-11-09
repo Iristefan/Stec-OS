@@ -1,6 +1,6 @@
 """Memory Fabric — one unified ``recall`` across every memory store (§21/§22).
 
-Iron Jarvis accumulates knowledge in *seven* places, each with its own index:
+STEC OS accumulates knowledge in *seven* places, each with its own index:
 
 1. **files**     — the indexed file roots (semantic file search)
 2. **notes**     — long-term memory (brain / Obsidian / Notion / cloud RAG)
@@ -11,7 +11,7 @@ Iron Jarvis accumulates knowledge in *seven* places, each with its own index:
 7. **chats**     — the CONVERSATIONS themselves (v1.142.0): desktop chat
    threads, phone/comm threads, and Agents-page round tables, ranked by the
    FTS5 history index. Until now the single largest store of what the user
-   actually told Iron Jarvis was the one store recall could not reach.
+   actually told STEC OS was the one store recall could not reach.
 
 Before the Fabric, an agent had to know WHICH store to ask and call a different
 tool for each. :class:`MemoryFabric` federates them behind a single
@@ -198,7 +198,7 @@ def _clip(text: str, n: int = _SNIPPET_CHARS) -> str:
 
 
 class MemoryFabric:
-    """Federated recall over every Iron Jarvis memory store.
+    """Federated recall over every STEC OS memory store.
 
     Built from the individual store handles (all optional) rather than the whole
     platform, so it is cheap, testable, and tolerant of a partially-wired setup

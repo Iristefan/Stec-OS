@@ -4,8 +4,8 @@
  * Iron-Proxy on the Connections page (v1.301.0).
  *
  * Iron-Proxy is the ACCOUNT MANAGER: which Claude / Codex / Grok accounts
- * exist, the order they are tried in, which one is parked until when. Iron
- * Jarvis keeps its own adapters and runs each call AS the first usable account
+ * exist, the order they are tried in, which one is parked until when. STEC
+ * OS keeps its own adapters and runs each call AS the first usable account
  * of that provider; a limit moves to the next account of the SAME provider,
  * never to another provider. The Iron-Proxy token never reaches this page —
  * every call goes through the daemon's `/iron-proxy` routes.
@@ -16,8 +16,8 @@
  * v1.393.0 (the long-jobs plan's Phase 4): each Claude Code / Codex account
  * row has a GROUP choice. Accounts in one group can take over a coding
  * session from each other when one reaches its limit (same vendor only);
- * work and personal accounts belong in different groups. The groups are Iron
- * Jarvis's own setting (`account_groups`, saved through the one settings
+ * work and personal accounts belong in different groups. The groups are STEC
+ * OS's own setting (`account_groups`, saved through the one settings
  * writer — `PUT /settings/values`), never Iron-Proxy's. No groups by default.
  */
 
@@ -369,7 +369,7 @@ function IronProxyBody({
       const res = await post<{ terminal_id?: string; name?: string }>(
         `/iron-proxy/accounts/${enc(id)}/signin`,
       );
-      if (!res?.terminal_id) throw new Error("Iron Jarvis did not open a sign-in terminal.");
+      if (!res?.terminal_id) throw new Error("STEC OS did not open a sign-in terminal.");
       // v1.303.3: watch a signed-out account so its chip flips to Ready on
       // its own (an account that is already usable has nothing to wait for).
       const acc = accounts.find((a) => a.id === id);
@@ -398,7 +398,7 @@ function IronProxyBody({
     await run(`${id}:open`, async () => {
       const res = await post<unknown>(`/iron-proxy/accounts/${enc(id)}/open`);
       const paneId = openedPaneId(res);
-      if (!paneId) throw new Error("Iron Jarvis did not open a Build terminal.");
+      if (!paneId) throw new Error("STEC OS did not open a Build terminal.");
       router.push(terminalsHref(paneId));
     });
   }
@@ -484,7 +484,7 @@ function IronProxyBody({
               <span className="h-1.5 w-1.5 rounded-full bg-tone-success" />
               <span className="font-medium text-tone-success">Running</span>
               <span className="text-zinc-500">
-                · {status.owned ? "started by Iron Jarvis" : "already running on this PC"}
+                · {status.owned ? "started by STEC OS" : "already running on this PC"}
                 {status.version ? ` · v${status.version.replace(/^v/, "")}` : ""}
               </span>
             </span>
@@ -507,7 +507,7 @@ function IronProxyBody({
             <div>
               <div className="font-medium text-tone-warn">{status.error}</div>
               <div className="mt-0.5 text-xs text-zinc-400">
-                Until then Iron Jarvis cannot pick accounts through it: Build&apos;s “as &lt;account&gt;”
+                Until then STEC OS cannot pick accounts through it: Build&apos;s “as &lt;account&gt;”
                 launches and account switching are refused.
               </div>
             </div>
@@ -573,8 +573,8 @@ function IronProxyBody({
                     </span>
                     <span className="text-[11px] text-zinc-600">
                       {usedBy[g.provider]
-                        ? `Iron Jarvis's ${usedBy[g.provider]} runs as these, top first`
-                        : "Not used by Iron Jarvis"}
+                        ? `STEC OS's ${usedBy[g.provider]} runs as these, top first`
+                        : "Not used by STEC OS"}
                     </span>
                   </div>
                   {g.provider === "anthropic" && setupLine ? (
@@ -741,10 +741,10 @@ function IronProxyBody({
         )}
 
         <p className="mt-4 text-[11px] leading-relaxed text-zinc-600">
-          When this is on, Iron Jarvis&apos;s Claude, Codex and Grok calls run as the first usable
+          When this is on, STEC OS&apos;s Claude, Codex and Grok calls run as the first usable
           account of that provider. A limit moves the call to the next account of the SAME
           provider, never to another provider. API-key accounts are managed in Iron-Proxy, but
-          Iron Jarvis keeps using its own keys.
+          STEC OS keeps using its own keys.
         </p>
         <p id="iron-proxy-build-help" className="mt-1.5 text-[11px] leading-relaxed text-zinc-600">
           How accounts work in Build: a terminal keeps the account it started on. Read
@@ -789,7 +789,7 @@ function AccountRow({
   /** v1.439.0: a "Check usage now" read ended: read the card again. */
   onUsageRead?: () => void;
   /** v1.393.0: the account's group ("" = none); null = no Group choice (an
-   *  account a coding session never runs on, or an older Iron Jarvis). */
+   *  account a coding session never runs on, or an older STEC OS). */
   group?: string | null;
   groupNames?: readonly string[];
   onGroup?: (name: string | null) => void;
@@ -828,7 +828,7 @@ function AccountRow({
         </div>
         {!isCli && (
           <div className="mt-0.5 text-[11px] text-zinc-500">
-            API key, managed in Iron-Proxy. Iron Jarvis uses its own keys.
+            API key, managed in Iron-Proxy. STEC OS uses its own keys.
           </div>
         )}
         {usage && (

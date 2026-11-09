@@ -108,7 +108,7 @@ _EXTENDERS = frozenset(
 )
 #: v1.438.0 (Wave 4 group C): after "…windows", a word that names one of
 #: WINDOWS' own things — "start Windows Update", "start Windows Defender" —
-#: is never "start Iron Jarvis with Windows".
+#: is never "start STEC OS with Windows".
 _WINDOWS_THINGS = frozenset(
     {
         "update", "updates", "defender", "explorer", "firewall", "terminal", "security", "store",
@@ -220,7 +220,7 @@ _EXTRA_REFERENCES: tuple[re.Pattern[str], ...] = tuple(
         r"|reply\s+(?:with|in)|write\s+(?:with|in))\s+" + _FORMATS + r"\b",
         # v1.438.0 review: the app named, then it starting by itself at
         # sign-in — "make Jarvis open automatically when I log in".
-        r"\b(?:iron\s+jarvis|jarvis|the\s+desktop\s+app)\s+(?:to\s+)?(?:open|start|launch|run)s?\b"
+        r"\b(?:(?:stec\s+os|iron\s+jarvis)|jarvis|the\s+desktop\s+app)\s+(?:to\s+)?(?:open|start|launch|run)s?\b"
         r"[^.?!\n]{0,24}?\b(?:when\s+i\s+(?:log|sign)\s+(?:in|on)|at\s+(?:login|log\s*in|sign\s*in|startup)"
         r"|on\s+startup|with\s+windows)\b",
         # "open files in Cursor", "use VS Code for files".
@@ -228,7 +228,7 @@ _EXTRA_REFERENCES: tuple[re.Pattern[str], ...] = tuple(
         r"\b(?:use|switch\s+to|set|pick|choose)\s+(?:cursor|vs\s*code|vscode)\b",
         # v1.434.0 review: "make the app dark", "turn Jarvis light" (the theme
         # with no theme word).
-        r"\b(?:make|turn|switch|set)\s+(?:the\s+)?(?:app|jarvis|iron\s+jarvis|dashboard|screen"
+        r"\b(?:make|turn|switch|set)\s+(?:the\s+)?(?:app|jarvis|(?:stec\s+os|iron\s+jarvis)|dashboard|screen"
         r"|interface)\s+(?:look\s+)?(?:dark|darker|light|lighter)\b",
         # "turn off web search", "disable the file search tool", "never run
         # the shell tool" — a tool's permission.

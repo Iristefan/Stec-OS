@@ -52,7 +52,7 @@ afterEach(() => {
 describe("TitleBar — chrome", () => {
   it("renders the brand", () => {
     renderAt("/");
-    expect(screen.getByText("Iron Jarvis")).toBeInTheDocument();
+    expect(screen.getByText("STEC OS")).toBeInTheDocument();
   });
 
   it("is exactly 40px tall (h-10) to match titleBarOverlay.height in desktop/main.js", () => {

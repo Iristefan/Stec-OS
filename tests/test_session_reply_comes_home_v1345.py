@@ -388,7 +388,7 @@ async def test_the_failure_path_appends_the_failure_sentence(tmp_path):
     # v1.354.0 (G28): plain words, never the exception class. Readiness 12A
     # (moved on purpose): nor the raw text, which rides ``failure_detail``.
     assert line["content"] == row.summary == (
-        "The run failed: Iron Jarvis couldn't finish this task. Run it again. If it happens "
+        "The run failed: STEC OS couldn't finish this task. Run it again. If it happens "
         "again, open the run to see the details."
     )
     assert row.failure_detail == "the provider blew up"
@@ -470,7 +470,7 @@ def test_the_boot_reconcile_tells_the_chat_the_run_was_interrupted(tmp_path):
     msgs = _row(p.engine, tid)["messages"]
     assert len(msgs) == 3, msgs
     by_session = {m["sessionId"]: m for m in msgs[1:]}
-    assert by_session[cut_id]["content"] == "Stopped when Iron Jarvis restarted."  # v1.354.0 G30: no "daemon" in a chat line
+    assert by_session[cut_id]["content"] == "Stopped when STEC OS restarted."  # v1.354.0 G30: no "daemon" in a chat line
     assert by_session[kept_id]["content"] == "half done"
     for line in by_session.values():
         assert line["panelWho"] == "builtin:builder" and line["receipt"]["status"] == "failed"

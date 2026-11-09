@@ -78,7 +78,7 @@ These are proven with scripted model calls through the real lanes, gate and undo
 - **The old settings form's tests** (path-updated to `components/settings/pages/LegacySettingsForm.tsx`) now exercise a form that renders only for a daemon without `/settings/schema`. Converting them to the schema form is beyond a path update.
 - **AppGrid and the rest of the Overview** still render inside Everything › Status: pre-existing tests pin them inside the Overview. So Q1's "retire the tile grid" is done for the home, but the grid remains on the Status tab. Removing it needs approval to remove those pins.
 - **The first-run wizard component** remains in the tree, unmounted, because its own tests render it. Deleting it needs the same approval.
-- **The title-bar brand link** is still labelled "Iron Jarvis — Overview" (a pinned test); it now opens the chat home.
+- **The title-bar brand link** is still labelled "STEC OS — Overview" (a pinned test); it now opens the chat home.
 - **The Tools split (Q4d)** is partial: Tools is one section (Settings › Permissions & ledger › Tools & permissions) holding per-tool approval and extensions, and the Directory sits under Connections › Apps & tools. The Tools page itself was not split.
 - **Inline setup cards beyond the model:** the mic stays disabled with its reason when no speech engine exists (no new inline card). "Email this" with no mail channel and the document-tool arm chip keep their existing behaviour.
 - **Store limits:** from chat, sentinels can only be paused or resumed (the store has no edit), and a dropped goal is marked `abandoned` (the engine keeps no delete).

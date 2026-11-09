@@ -31,7 +31,7 @@ lost runs themselves, and what the review found past them — or is a GUARD
     session's folder, so it can prove a write, never its absence. Both
     lanes, lock-step.
 2.  WHAT COUNTS AS A CHANGE: every nested ``.gitignore`` is read (past the
-    64th folder none was — on this PC's own Iron Jarvis checkout the snapshot
+    64th folder none was — on this PC's own STEC OS checkout the snapshot
     always fell back as "more than 5000 files"); ``.github`` and the other
     source dot-folders are walked, every other dot-folder is not; a
     ``.gitignore`` that ignores everything hides every change (decided); a
@@ -368,7 +368,7 @@ def test_a_nested_gitignore_is_read_however_many_folders_the_walk_saw(tmp_path):
     ``.gitignore`` (enough for the few files the new-files list asks about),
     and the snapshot asks about EVERY folder — so past the 64th, a nested
     ``.gitignore`` was never read and the folder it ignores was walked.
-    Measured on this PC's Iron Jarvis checkout: ``desktop/.gitignore`` names
+    Measured on this PC's STEC OS checkout: ``desktop/.gitignore`` names
     ``release/`` (3,696 files), the walk reached it after 64 folders and the
     snapshot said "more than 5000 files" — the finish check fell back to the
     journal alone on the user's main project, every reply (3,853 files, 63 ms
@@ -605,7 +605,7 @@ async def test_files_put_in_a_folder_the_request_names_are_listed_with_the_keep_
 async def test_a_carry_on_whose_first_snapshot_was_let_go_never_blames_a_restart(env, monkeypatch):  # noqa: F811 — the fixture
     """The first snapshot of a cut-off reply is kept for the newest replies of
     a few sessions only: a carry-on hours later, after work in four other
-    Build sessions, finds it gone with NO restart. OLD WORDS: "(Iron Jarvis
+    Build sessions, finds it gone with NO restart. OLD WORDS: "(STEC OS
     restarted after the reply was cut off)" — said as fact either way."""
     from tests.test_finish_shell_writes_v1387 import _cut_then_carry_on
 
@@ -618,7 +618,7 @@ async def test_a_carry_on_whose_first_snapshot_was_let_go_never_blames_a_restart
                                            carry_moves=[_write_call("notes.md"), "Done.", "1. met."])
     files = _files(model.notes()[0])
     assert F.FinishCheck.CANNOT_COMPARE.format(why=FC.PROBLEM_NOT_KEPT) in files
-    assert "Iron Jarvis restarted" not in files
+    assert "STEC OS restarted" not in files
 
 
 def _write_call(path: str) -> list[ToolCall]:

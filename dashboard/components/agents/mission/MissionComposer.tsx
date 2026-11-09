@@ -58,7 +58,7 @@ export function preflightProblem(
     return {
       provider,
       // v1.354.0 (G59): the app's name, never "the daemon".
-      text: `Iron Jarvis isn't responding, so it could not check your default model, ${name}. The model looked unavailable at the last check. If a task fails, check it on Connections.`,
+      text: `STEC OS isn't responding, so it could not check your default model, ${name}. The model looked unavailable at the last check. If a task fails, check it on Connections.`,
     };
   }
   if (row.available === false) {
@@ -144,11 +144,11 @@ export function MissionComposer({
         ...(projectId ? { project_id: projectId } : {}),
       });
       if (row && typeof row.id === "string" && row.id) onStarted(row.id, projectId);
-      else setError("The objective may have started, but Iron Jarvis did not say which one. Check your objectives before starting it again.");
+      else setError("The objective may have started, but STEC OS did not say which one. Check your objectives before starting it again.");
     } catch (e) {
       setError(
         e instanceof ApiError && (e.status === 404 || e.status === 405)
-          ? "Restart Iron Jarvis to finish updating."
+          ? "Restart STEC OS to finish updating."
           : e instanceof Error
             ? e.message
             : "Could not start the objective.",

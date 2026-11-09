@@ -196,7 +196,7 @@ def register(app: FastAPI, d: Any) -> None:
     @app.get("/build/git/folder")
     def git_folder(path: str = "") -> dict[str, Any]:
         """New session's question about a folder (``branches.inspect_folder``).
-        A folder Iron Jarvis may not read answers "not in a repository"."""
+        A folder STEC OS may not read answers "not in a repository"."""
         from ...core.fs_policy import fs_read_ok
 
         folder = S.resolved_folder(path) if path.strip() else ""
@@ -336,7 +336,7 @@ def register(app: FastAPI, d: Any) -> None:
             done["branch"] = branch
             done["archived"] = True
             done["note"] = (
-                f"The worktree is in Iron Jarvis's trash and the branch {branch} is kept."
+                f"The worktree is in STEC OS's trash and the branch {branch} is kept."
                 if done["moved"] else f"The worktree was already gone; the branch {branch} is kept."
             )
             if done.get("leftover"):
@@ -351,7 +351,7 @@ def register(app: FastAPI, d: Any) -> None:
 
 #: v1.399.0 (night shift N2): a night task's own commit could not run because
 #: its session was busy (a turn, a rewind, Compact or another git action).
-NIGHT_COMMIT_BUSY = "Its session was busy, so Iron Jarvis did not commit its work; it is still in its branch folder."
+NIGHT_COMMIT_BUSY = "Its session was busy, so STEC OS did not commit its work; it is still in its branch folder."
 
 
 async def commit_for_night(d: Any, thread_id: str, message: str) -> dict[str, Any]:
@@ -382,12 +382,12 @@ async def commit_for_night(d: Any, thread_id: str, message: str) -> dict[str, An
       commit is bounded by :data:`NIGHT_COMMIT_S` (not the Commit button's
       five minutes — the night loop waits for it) and EMERGENCY STOP ends it:
       a watcher kills the commit's process tree the moment the switch is on,
-      and a cancelled settle (Iron Jarvis stopping) kills it too (measured:
+      and a cancelled settle (STEC OS stopping) kills it too (measured:
       git leaves no index lock behind a commit killed in its hook, so the
       morning's Commit button works — pinned, never "cleaned up" here).
     * A CRASH between git making the commit and the record saying so: the
       settle runs again and finds nothing to commit — the branch's newest
-      commit carrying Iron Jarvis's own night trailer is still the task's
+      commit carrying STEC OS's own night trailer is still the task's
       (``recovered``)."""
     from ...harness import night_commit as NC
     from .build import _COMPACTING, _STARTING, _running_turn, _setup_of
@@ -442,7 +442,7 @@ async def commit_for_night(d: Any, thread_id: str, message: str) -> dict[str, An
                     if _emergency_on(d) and not box["stop"]:
                         await asyncio.to_thread(kill)
             except asyncio.CancelledError:
-                # Iron Jarvis is stopping: the commit (and its hooks) end with it.
+                # STEC OS is stopping: the commit (and its hooks) end with it.
                 await asyncio.shield(asyncio.to_thread(kill))
                 with contextlib.suppress(BaseException):
                     await asyncio.shield(job)
@@ -475,7 +475,7 @@ async def commit_for_night(d: Any, thread_id: str, message: str) -> dict[str, An
                     out.update(recovered=recovered)
             return out
         detail = next((ln.strip() for ln in str(exc.details or "").splitlines() if ln.strip()), "")
-        words = f"Iron Jarvis could not commit its work: {exc}"
+        words = f"STEC OS could not commit its work: {exc}"
         if detail:
             words += f" ({detail[:200]})"
         out["note"] = words + " Its changes are still in its branch folder."
@@ -483,7 +483,7 @@ async def commit_for_night(d: Any, thread_id: str, message: str) -> dict[str, An
         return out
     except Exception as exc:  # noqa: BLE001 — a commit never breaks the settle
         log.warning("a night task's commit failed (%s)", thread_id, exc_info=True)
-        out["note"] = (f"Iron Jarvis could not commit its work ({type(exc).__name__}); its changes are still in "
+        out["note"] = (f"STEC OS could not commit its work ({type(exc).__name__}); its changes are still in "
                        "its branch folder.")
         return out
 
@@ -497,7 +497,7 @@ NIGHT_COMMIT_S = 120.0
 NIGHT_STOP_POLL_S = 0.25
 #: The note when Emergency stop ended (or came before) the night's commit.
 NIGHT_COMMIT_EMERGENCY = (
-    "Emergency stop was on, so Iron Jarvis did not commit its work (a commit already running, and its "
+    "Emergency stop was on, so STEC OS did not commit its work (a commit already running, and its "
     "hooks, were stopped); it is still in its branch folder."
 )
 
@@ -512,7 +512,7 @@ def _emergency_on(d: Any) -> bool:
 
 
 def _night_commit_on_branch(facts: "dict[str, str] | None") -> "dict[str, Any] | None":
-    """The branch's newest commit when it is Iron Jarvis's own night commit
+    """The branch's newest commit when it is STEC OS's own night commit
     (its message carries ``night_morning.TRAILER``) — the settle's record of a
     commit a crash kept it from writing down. BLOCKING; never raises."""
     if not facts:

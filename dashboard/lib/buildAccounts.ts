@@ -96,7 +96,7 @@ export interface BuildAccount {
   /** The window nearest its limit, when the vendor sent a percent. */
   usage: AccountUsage | null;
   /** v1.439.0: when its usage was last read now ("Check usage now"; ISO).
-   *  Absent from an older Iron Jarvis. */
+   *  Absent from an older STEC OS. */
   usageReadAt?: string | null;
   /** v1.439.0: the account's usage can be read now (a Claude Code / Codex
    *  login that is on and signed in). Absent = no button. */
@@ -234,7 +234,7 @@ export function decodeAccounts(raw: unknown): AccountsView | null {
   const r = rec(raw);
   if (!r) return null;
   if (!Array.isArray(r.claude) && !Array.isArray(r.codex)) return null;
-  // v1.424.0: an older Iron Jarvis sends no "grok" group — it reads empty.
+  // v1.424.0: an older STEC OS sends no "grok" group — it reads empty.
   const groups: AccountGroups = { claude: [], codex: [], grok: [] };
   for (const v of ACCOUNT_VENDORS) {
     for (const row of Array.isArray(r[v]) ? (r[v] as unknown[]) : []) {
@@ -245,7 +245,7 @@ export function decodeAccounts(raw: unknown): AccountsView | null {
   return { groups, ironProxy: decodeIronProxy(r.iron_proxy) };
 }
 
-/** The accounts, or null when this Iron Jarvis has no account list (a 404:
+/** The accounts, or null when this STEC OS has no account list (a 404:
  *  the chip and the list are hidden). Other failures throw. */
 export async function fetchAccounts(): Promise<AccountsView | null> {
   try {

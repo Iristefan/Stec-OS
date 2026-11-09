@@ -39,7 +39,7 @@ vi.mock("@/lib/api", () => {
 import { ApiError } from "@/lib/api";
 import { MaintenanceTools, mirrorLine, type MirrorStatus } from "@/components/settings/MaintenanceTools";
 
-const DIR = "D:\\Iron Jarvis backups";
+const DIR = "D:\\STEC OS backups";
 
 function mirror(over: Partial<MirrorStatus> = {}): MirrorStatus {
   return { dir: DIR, media: true, configured: true, missing: false, last: null, ...over };

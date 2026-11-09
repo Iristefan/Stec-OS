@@ -1,8 +1,8 @@
-"""Iron-Proxy in Iron Jarvis (v1.301.0) — shared subscription accounts.
+"""Iron-Proxy in STEC OS (v1.301.0) — shared subscription accounts.
 
 Iron-Proxy (RealDealCPA-VR/Iron-Proxy, MIT) is the ACCOUNT MANAGER: which
 accounts exist, their order, who is parked until when, sign-in and usage.
-Iron Jarvis keeps its own provider adapters and runs each CLI call AS the
+STEC OS keeps its own provider adapters and runs each CLI call AS the
 account Iron-Proxy picks, then reports the outcome back.
 
 * ``client``   — ``IronProxyClient`` / ``IronProxyError``: the ``/iron/*`` HTTP API.

@@ -56,7 +56,7 @@ export interface PreviewRow {
   key_app?: string | null;
   /** v1.360.0 (G49): the program a server that runs on this PC starts
    *  (mcp/import_config.program_of, never a masked piece); "" / absent from
-   *  an older Iron Jarvis. */
+   *  an older STEC OS. */
   program?: string | null;
   /** v1.360.0 (G49): the host of a server reached at a web address. */
   host?: string | null;

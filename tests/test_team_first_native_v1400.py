@@ -138,7 +138,7 @@ async def test_codex_reads_the_instruction_and_its_spawn_agents_first_sentence(t
     assert (params["baseInstructions"].count(WORDS) == 1) is team_first
     tools = {t["name"]: t["description"] for t in params["dynamicTools"]}
     led = sorted(name for name, text in tools.items() if text.startswith("Your model team is listed under"))
-    # Codex's own spawn_agent is a name Codex keeps for itself: Iron Jarvis's
+    # Codex's own spawn_agent is a name Codex keeps for itself: STEC OS's
     # rides as ij_spawn_agent, with the sentence first.
     if team_first:
         assert led == ["ij_spawn_agent"]

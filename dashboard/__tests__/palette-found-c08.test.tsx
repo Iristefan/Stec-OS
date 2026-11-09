@@ -27,8 +27,8 @@ const api = vi.hoisted(() => ({
     files: [
       {
         title: "Smith_2024 summary.xlsx",
-        path: "C:\\Users\\VR\\Documents\\Iron Jarvis\\Smith\\Smith_2024 summary.xlsx",
-        folder: "C:\\Users\\VR\\Documents\\Iron Jarvis\\Smith",
+        path: "C:\\Users\\VR\\Documents\\STEC OS\\Smith\\Smith_2024 summary.xlsx",
+        folder: "C:\\Users\\VR\\Documents\\STEC OS\\Smith",
         at: new Date().toISOString(),
       },
     ] as unknown[],
@@ -87,7 +87,7 @@ describe("the files & memory lane", () => {
 
     await screen.findByText("In your files & memory");
     expect(screen.getByText("Smith_2024 summary.xlsx")).toBeTruthy();
-    expect(screen.getByText(/Documents\\Iron Jarvis\\Smith$/)).toBeTruthy();
+    expect(screen.getByText(/Documents\\STEC OS\\Smith$/)).toBeTruthy();
     expect(screen.getAllByText("File").length).toBe(1);
   });
 

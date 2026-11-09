@@ -45,7 +45,7 @@ EMPTY_EVENT_TYPES = (
 
 
 def unknown_event_types(event_types: Iterable[Any], known: Iterable[str]) -> list[str]:
-    """The listed names Iron Jarvis never publishes (v1.433.0, W1), in the
+    """The listed names STEC OS never publishes (v1.433.0, W1), in the
     order given, each once. Delivery matches a type EXACTLY, so one of these
     would be saved and then never sent anything."""
     have = set(known)
@@ -57,7 +57,7 @@ def unknown_event_types(event_types: Iterable[Any], known: Iterable[str]) -> lis
     return out
 
 
-#: the words people use for the end of an event name, mapped to Iron Jarvis's
+#: the words people use for the end of an event name, mapped to STEC OS's
 #: own ("workflow.finished" → workflow.completed) for the refusal's suggestion.
 _SAME_WORDS = {
     "finished": "completed",
@@ -83,7 +83,7 @@ def unknown_event_types_sentence(bad: list[str], known: Iterable[str]) -> str:
     them = "it" if len(bad) == 1 else "them"
     close: list[str] = []
     for b in bad[:5]:
-        # A word people use for the one Iron Jarvis uses ("finished" for
+        # A word people use for the one STEC OS uses ("finished" for
         # "completed") first; then names that are spelt alike.
         family, _, tail = b.partition(".")
         same = f"{family}.{_SAME_WORDS.get(tail, tail)}"
@@ -98,7 +98,7 @@ def unknown_event_types_sentence(bad: list[str], known: Iterable[str]) -> str:
         if close
         else "Use names like session.completed or workflow.completed."
     )
-    return f"Iron Jarvis never sends {noun} {names}, so this webhook would never receive {them}. {tip}"
+    return f"STEC OS never sends {noun} {names}, so this webhook would never receive {them}. {tip}"
 #: resolves a persisted ``secret_name`` (vault key) to its live secret value.
 SecretResolver = Callable[[str], Optional[str]]
 
@@ -282,7 +282,7 @@ class OutboundWebhooks:
         or if ``event_types`` is empty: ``on_event`` delivers only when the
         event's type is IN the list, so an empty list would match nothing and
         the webhook would silently receive no events (v1.292.0, platform-06).
-        v1.433.0 (W1): or if it names a type Iron Jarvis never publishes
+        v1.433.0 (W1): or if it names a type STEC OS never publishes
         (:meth:`known_types`) — matching is exact, so a misspelt name saved
         fine and then never fired. Names are saved trimmed.
         """

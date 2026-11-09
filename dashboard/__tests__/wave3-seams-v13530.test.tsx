@@ -137,7 +137,7 @@ describe("(a) one place for the apps a new user connects — the Directory", () 
       next_step: checklist[1],
     } satisfies Onboarding;
     render(<OnboardingWelcome />);
-    await screen.findByText("Welcome to Iron Jarvis");
+    await screen.findByText("Welcome to STEC OS");
     const row = screen.getByText("Connect the apps you use (optional)").closest("li");
     const link = row!.querySelector("a")!;
     // Not the generic "/sessions · Get started" fallback any more.

@@ -745,9 +745,9 @@ def test_the_inert_server_lists_and_refuses(tmp_path, door):
 
 def test_the_frozen_command_is_the_hidden_subcommand(monkeypatch):
     monkeypatch.setattr(sys, "frozen", True, raising=False)
-    monkeypatch.setattr(sys, "executable", r"C:\Program Files\Iron Jarvis\ironjarvis.exe")
+    monkeypatch.setattr(sys, "executable", r"C:\Program Files\STEC OS\ironjarvis.exe")
     assert inert_mcp.inert_mcp_command("m.json") == [
-        r"C:\Program Files\Iron Jarvis\ironjarvis.exe", "claude-inert-mcp", "m.json"]
+        r"C:\Program Files\STEC OS\ironjarvis.exe", "claude-inert-mcp", "m.json"]
     monkeypatch.setattr(sys, "frozen", False)
     assert inert_mcp.inert_mcp_command("m.json")[1:] == ["-m", inert_mcp.MODULE, "m.json"]
 

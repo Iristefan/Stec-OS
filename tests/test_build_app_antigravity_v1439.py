@@ -1,6 +1,6 @@
 """v1.439.0 — Google Antigravity (``agy``) in Build's Code view: the user's REAL
 Antigravity (``agy acp``, the Agent Client Protocol over stdio), with its own
-tools, skills and settings ON; Iron Jarvis only hosts it, turns every question
+tools, skills and settings ON; STEC OS only hosts it, turns every question
 it asks into a card and reads its failures out of its own words and log.
 
 Every turn replays a RECORDED agy 1.5.2 session
@@ -214,7 +214,7 @@ async def test_antigravity_starts_its_own_acp_with_its_own_log_and_no_telemetry(
     assert msgs[0]["params"]["clientCapabilities"] == {
         "fs": {"readTextFile": False, "writeTextFile": False}, "terminal": False, "elicitation": {"form": {}}}, \
         "its question form is declared (without it Antigravity prints the question and ends the turn)"
-    assert not any(m.get("method") == "authenticate" for m in msgs), "Iron Jarvis never chooses its sign-in"
+    assert not any(m.get("method") == "authenticate" for m in msgs), "STEC OS never chooses its sign-in"
     assert msgs[1]["params"] == {"cwd": str(work), "mcpServers": []}
     sess = next(e for e in evs if e["type"] == "session")
     assert sess["harness"] == "antigravity" and sess["model"] == "gemini-3.1-pro" and sess["mode"] == "own"
@@ -268,7 +268,7 @@ async def test_the_model_and_its_level_are_set_live_and_each_model_keeps_its_own
     levels = {r["id"]: r["efforts"] for r in kept["models"]}
     assert levels["gemini-3.1-pro"] == ["low", "high"] and levels["gemini-3.8-flash"] == ["low", "medium", "high"]
     assert kept["default"] == "gemini-3.1-pro"
-    # The chip has the list before any process runs (Iron Jarvis's own copy).
+    # The chip has the list before any process runs (STEC OS's own copy).
     A.LAST_MODELS.clear()
     svc = S.service_for(app.state.platform)
     rows = svc._models_with_efforts("antigravity")

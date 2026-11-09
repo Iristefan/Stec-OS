@@ -1,7 +1,7 @@
 # One Claude Code program per coding reply (D4, v1.427.0)
 
 The owner's decision of 2026-11-03, after the product-path benchmark (frozen
-v1.426.2, 12 frontier tasks x 3, Sonnet medium): Iron Jarvis passed 36 of 36,
+v1.426.2, 12 frontier tasks x 3, Sonnet medium): STEC OS passed 36 of 36,
 the same as Claude Code, but took 50.9 s a task against 40.1 s and sent 1.6 M
 uncached input tokens against 0.6 M ($7.88 against $4.66 at list price). Each
 step of a reply started a new `claude` (about 0.5 s) and replayed the whole
@@ -114,7 +114,7 @@ a new one replays the conversation. A miss is never an error.
 
 ## Measured on the product path (frozen v1.427.0, 12 frontier tasks x 3, Sonnet medium)
 
-| | Claude Code | Iron Jarvis v1.426.2 | Iron Jarvis v1.427.0 |
+| | Claude Code | STEC OS v1.426.2 | STEC OS v1.427.0 |
 |---|---|---|---|
 | Passed | 36 / 36 | 36 / 36 | 36 / 36 |
 | Time a task, mean | 40.1 s | 50.9 s | 45.8 s |
@@ -130,7 +130,7 @@ runs them).
 
 ## What stays the same
 
-* Iron Jarvis executes every tool; the CLI only emits `tool_use`.
+* STEC OS executes every tool; the CLI only emits `tool_use`.
 * One upstream request per model step: the relay admits the first request,
   each held follow-up once it is filled, and one request per stdin message;
   everything else is refused locally, as today.

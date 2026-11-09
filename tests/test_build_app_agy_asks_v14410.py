@@ -12,9 +12,9 @@ A2. A multi-select question (``type: "array"``, ``items.anyOf``) shows its
     choices and is answered with a LIST of consts (measured on agy 1.5.2 with
     the stand-in model: ``{q1: ["1", "3"], q1_other: "Purple"}`` reached the
     model as "A1: Blue, Green, Purple").
-A3. A question form Iron Jarvis cannot show is declined AND said.
+A3. A question form STEC OS cannot show is declined AND said.
 A4. The sign-in refusal says "send your message again" once.
-A5. Antigravity 1.5.2 takes no Iron Jarvis tools (no ``mcpCapabilities``):
+A5. Antigravity 1.5.2 takes no STEC OS tools (no ``mcpCapabilities``):
     the view says so (``jarvis_tools: false``), ticking a box never restarts it
     and no token is minted for it.
 A6. An effort the model does not take leaves the row too.
@@ -277,7 +277,7 @@ def test_the_card_for_a_multi_select_question_offers_its_choices():
 
 
 # --------------------------------------------------------------------------- #
-# A3. a form Iron Jarvis cannot show
+# A3. a form STEC OS cannot show
 # --------------------------------------------------------------------------- #
 def test_a_form_with_no_question_is_declined_and_said():
     async def go() -> None:
@@ -309,7 +309,7 @@ def test_the_sign_in_refusal_says_send_your_message_again_once():
 
 
 # --------------------------------------------------------------------------- #
-# A5. Iron Jarvis's own tools
+# A5. STEC OS's own tools
 # --------------------------------------------------------------------------- #
 @pytest.fixture
 def takes_reset():

@@ -1,7 +1,7 @@
-"""Self-development support — locate Iron Jarvis's OWN source repository.
+"""Self-development support — locate STEC OS's OWN source repository.
 
-The goal: an Iron Jarvis agent (the Maintainer) can read, edit, test, and fix
-the Iron Jarvis source tree itself — safely, on a git worktree, with the same
+The goal: a STEC OS agent (the Maintainer) can read, edit, test, and fix
+the STEC OS source tree itself — safely, on a git worktree, with the same
 review/approve gate (never auto-merge). This module answers "where is my own
 repo?" so the orchestrator can root a self-dev session's worktree there.
 
@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 def _is_iron_jarvis_repo(p: Path) -> bool:
-    """True if *p* is a git checkout of the Iron Jarvis project itself."""
+    """True if *p* is a git checkout of the STEC OS project itself."""
     if not (p / ".git").exists():
         return False
     pyproject = p / "pyproject.toml"
@@ -30,13 +30,13 @@ def _is_iron_jarvis_repo(p: Path) -> bool:
 
 
 def iron_jarvis_repo_root(config: object | None = None) -> Path | None:
-    """Return the Iron Jarvis git repo root, or ``None`` if it can't be found.
+    """Return the STEC OS git repo root, or ``None`` if it can't be found.
 
     Resolution order:
     1. ``config.self_dev_root`` (an explicit override) — used only if it is a
-       real Iron Jarvis git checkout (held to the SAME identity check as
+       real STEC OS git checkout (held to the SAME identity check as
        auto-detection, so a stray ``.git`` dir can't redirect the Maintainer).
-    2. Walk up from this module's location looking for the Iron Jarvis repo.
+    2. Walk up from this module's location looking for the STEC OS repo.
     """
     override = getattr(config, "self_dev_root", None) if config is not None else None
     if override:
@@ -62,7 +62,7 @@ def self_dev_status(config: object) -> dict:
             "self-dev disabled (set self_dev_enabled = true)"
             if not enabled
             else (
-                "Iron Jarvis git repo not found (set self_dev_root)"
+                "STEC OS git repo not found (set self_dev_root)"
                 if root is None
                 else "ready"
             )

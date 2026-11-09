@@ -2,10 +2,10 @@
 
 MEASURED (codex 0.157.0; ``hosted.codex`` holds the reading): ``turn/start``
 takes ``collaborationMode: {mode: "plan", settings: {model, …}}`` (the
-experimental API Iron Jarvis already opts into), the thread keeps it across
+experimental API STEC OS already opts into), the thread keeps it across
 turns, and the plan arrives as its own ``plan`` item (``item/plan/delta``,
 ``item/completed``) before ``turn/completed``. Codex's plan mode is
-instructions only: read-only is Iron Jarvis's (Ask first's posture, and every
+instructions only: read-only is STEC OS's (Ask first's posture, and every
 file change declined at once in Plan). The plan card is the one every tool's
 plan uses; Allow leaves Plan for Ask first and sends Codex's own
 "Implement the plan." in the same reply.

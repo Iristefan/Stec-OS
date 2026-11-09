@@ -34,7 +34,7 @@ describe("the Resume strip", () => {
       />,
     );
     expect(screen.getByTestId("resume-strip")).toHaveTextContent(
-      "Claude Code was running here before Iron Jarvis restarted.",
+      "Claude Code was running here before STEC OS restarted.",
     );
     const resume = screen.getByRole("button", { name: "Resume" });
     expect(resume.getAttribute("title")).toContain("claude --continue");

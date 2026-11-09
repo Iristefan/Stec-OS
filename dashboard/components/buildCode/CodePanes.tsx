@@ -369,7 +369,7 @@ function ChangesPane({
             </p>
           ) : null}
           {/* The v1.405.0 review: every diff inline, Reviewed marks, Open in
-              VS Code / Cursor — and no Undo (Iron Jarvis did not write these). */}
+              VS Code / Cursor — and no Undo (STEC OS did not write these). */}
           <ChangesReview changes={data.changes} sessionId={`code:${sessionId}`} more={data.more} />
           {data.noUndo ? (
             <p data-testid="code-changes-no-undo" className={QUIET}>

@@ -17,7 +17,7 @@ service or the network:
   in ``extra["rate_limits"]`` (``codex_native/adapter``'s shape);
 * ``fleet-spark`` — a LOCAL member on the user's network (its endpoint is a
   loopback address nothing listens on; the router never probes a double: it
-  has no ``_client``), writing code with Iron Jarvis's own tool names.
+  has no ``_client``), writing code with STEC OS's own tool names.
 
 The usage windows move the way they move in life: each answer reports the
 account's percent AFTER the call, a little higher every time, inside one

@@ -41,7 +41,7 @@ export const PANEL_ROUND_ENDED_DETAIL = "That round isn't running.";
 /** Did a stop answer say the round had ALREADY ended on its own (v1.420.0
  *  review)? Then its replies are on their way — the page must let them land,
  *  never write "Stopped." over them. Read by shape (status + the daemon's own
- *  words), never by class: a missing route (an older Iron Jarvis) is a 404
+ *  words), never by class: a missing route (an older STEC OS) is a 404
  *  too, with other words, and still stops the wait. */
 export function panelRoundEnded(e: unknown): boolean {
   const err = e as { status?: unknown; message?: unknown } | null;

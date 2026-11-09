@@ -498,7 +498,7 @@ export function ConnectDoors({
       {door === "subscription" && (
         <div className="mt-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3.5">
           <p className="text-xs leading-relaxed text-zinc-400">
-            Iron Jarvis can use your plan through each company&apos;s own command-line tool,
+            STEC OS can use your plan through each company&apos;s own command-line tool,
             signed in on this PC: Claude Code (the command-line tool) for a Claude Pro or Max
             plan, or Codex (OpenAI&apos;s command-line tool) for ChatGPT Plus or Pro. Nothing to
             paste, and it never signs in for you.
@@ -506,7 +506,7 @@ export function ConnectDoors({
           {anyNotInstalled && (
             <p className="mt-2 text-xs leading-relaxed text-zinc-400">
               A subscription you use in the desktop app or on the web can&apos;t be shared with
-              other apps — only these command-line tools can lend it to Iron Jarvis.
+              other apps — only these command-line tools can lend it to STEC OS.
             </p>
           )}
 
@@ -614,7 +614,7 @@ export function ConnectDoors({
                 Rescan now
               </button>
               <p className="mt-2 text-[11px] text-zinc-600">
-                Iron Jarvis also re-checks by itself every few seconds — this step turns green on
+                STEC OS also re-checks by itself every few seconds — this step turns green on
                 its own once it finds a signed-in Claude Code or Codex.
               </p>
             </>
@@ -677,7 +677,7 @@ export function ConnectDoors({
                 </span>
               )}
             </li>
-            <li>3. Tell Iron Jarvis to use it:</li>
+            <li>3. Tell STEC OS to use it:</li>
           </ol>
           <button
             type="button"
@@ -702,7 +702,7 @@ export function ConnectDoors({
           )}
           {ollamaSaved && !ollamaError && !ollamaUp && (
             <p className="mt-2 text-[11px] text-zinc-600">
-              Iron Jarvis re-checks by itself every few seconds — this step turns green on its own
+              STEC OS re-checks by itself every few seconds — this step turns green on its own
               once Ollama is reachable. If it stays grey, check that Ollama is actually running.
             </p>
           )}

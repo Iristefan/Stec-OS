@@ -490,14 +490,14 @@ def test_the_stream_reply_gains_the_image_line_once_even_when_the_model_shows_it
 
 
 def test_append_inline_media_never_doubles_a_path_the_reply_shows():
-    p = r"C:\Users\x\Iron Jarvis\media\fake\mj_1.png"
+    p = r"C:\Users\x\STEC OS\media\fake\mj_1.png"
     res = ToolResult(ok=True, output="x", data={"media": [p, p, "relative.png"], "kind": "image"})
     media = media_from_result(TOOL, res)
     assert media == [("image", p)]
     line = media_markdown("image", p)
     assert append_inline_media("Done.", media) == f"Done.\n\n{line}"
     assert append_inline_media(f"See {line}", media) == f"See {line}"
-    assert append_inline_media("See C:/Users/x/Iron Jarvis/media/fake/mj_1.png", media).count("mj_1.png") == 1
+    assert append_inline_media("See C:/Users/x/STEC OS/media/fake/mj_1.png", media).count("mj_1.png") == 1
     assert append_inline_media("", media) == line
     # A failed call or one with no media adds nothing.
     assert media_from_result(TOOL, ToolResult(ok=False, error="no", data={"media": [p]})) == []

@@ -1,6 +1,6 @@
 """The harness benchmark (IJ harness plan, Phase 0).
 
-A fixed set of small coding tasks (``tasks/``), three runners — Iron Jarvis's
+A fixed set of small coding tasks (``tasks/``), three runners — STEC OS's
 own chat-thread turn, Claude Code (``claude -p``) and Codex (``codex exec``) —
 each working in a fresh copy of the task, graded afterwards by a HIDDEN check
 in a separate copy, with every model call in a budget ledger and every

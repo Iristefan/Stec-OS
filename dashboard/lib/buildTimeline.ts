@@ -64,7 +64,7 @@ export interface TimelineStep {
   detail: StepDetail | null;
   /** This call STARTED a helper: the helper's own row stands in for it. */
   helper: boolean;
-  /** v1.390.0 review: a step Iron Jarvis ran ITSELF, not the model — the
+  /** v1.390.0 review: a step STEC OS ran ITSELF, not the model — the
    *  finish check's test run ("finish") or a project check ("project")
    *  (the daemon's `check`, harness/timeline check_kind); null for the
    *  model's own step. */
@@ -209,7 +209,7 @@ function replyLength(m: Record<string, unknown>): number | null {
 
 /** Why a saved reply has no timeline: "early" — written since the Timeline,
  *  it ended before any work started (an error or a Stop before the model
- *  was first asked); "cut" — Iron Jarvis itself stopped while answering (a
+ *  was first asked); "cut" — STEC OS itself stopped while answering (a
  *  crash), and the line rebuilt at boot (harness/sessions
  *  reconcile_interrupted_turns) keeps what was streamed and no times at all;
  *  "before" — a reply made before the Timeline. */
@@ -722,9 +722,9 @@ export interface TimelineTotals {
   durationMs: number;
   usage?: TurnUsage;
   calls: number;
-  /** The model's OWN steps (a check Iron Jarvis ran is counted apart). */
+  /** The model's OWN steps (a check STEC OS ran is counted apart). */
   steps: number;
-  /** The checks Iron Jarvis ran itself (finish check, project checks). */
+  /** The checks STEC OS ran itself (finish check, project checks). */
   checks: number;
   failed: number;
   helpers: number;

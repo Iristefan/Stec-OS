@@ -3,7 +3,7 @@
 // Jobs a RESTART cut off (v1.249.0, R-02).
 //
 // An update (or a crash) ends every running session, and the boot reconcile
-// marks them FAILED with "Stopped when Iron Jarvis restarted." (before v1.354.0: "interrupted by a daemon restart"). Until now that was
+// marks them FAILED with "Stopped when STEC OS restarted." (before v1.354.0: "interrupted by a daemon restart"). Until now that was
 // the end of it: the work was gone, nothing offered to pick it up, and the
 // user had to find the session and press Continue themselves — if they even
 // knew it had been running.
@@ -36,7 +36,7 @@ export const INTERRUPTED_PATH = "/sessions/interrupted";
  *  when the message equals it (orchestrator.continue_session /
  *  routes/sessions._stamp_continuation compare against this exact text). */
 export const CONTINUE_AFTER_RESTART =
-  "Continue where you left off — Iron Jarvis restarted while this was running.";
+  "Continue where you left off — STEC OS restarted while this was running.";
 
 export interface InterruptedJob {
   id: string;
@@ -245,7 +245,7 @@ export function InterruptedJobRow({
         </span>
         <div className="min-w-0 flex-1">
           <span className="block text-sm font-medium text-zinc-100">
-            A task stopped when Iron Jarvis restarted
+            A task stopped when STEC OS restarted
           </span>
           <p className="mt-0.5 line-clamp-2 text-[12px] leading-snug text-amber-200">{job.task}</p>
           <InterruptedJobActions job={job} onGone={onGone} />
@@ -278,7 +278,7 @@ export function InterruptedJobsNote({ intervalMs = 30000 }: { intervalMs?: numbe
       <div className="flex items-center gap-2">
         <History size={14} className="shrink-0" />
         <span className="font-medium">
-          {jobs.length} task{jobs.length === 1 ? "" : "s"} stopped when Iron Jarvis restarted
+          {jobs.length} task{jobs.length === 1 ? "" : "s"} stopped when STEC OS restarted
         </span>
       </div>
       <ul className="mt-2 space-y-2">

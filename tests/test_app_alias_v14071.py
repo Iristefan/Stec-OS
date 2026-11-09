@@ -1,8 +1,8 @@
 """v1.407.1 (a USER BUG): a terminal pane starts a Microsoft Store app's REAL
 program, never its App Execution Alias.
 
-On the user's PC, Build stuck at "Attaching to sessions…" and then "Iron
-Jarvis isn't responding": both restored panes were parked in
+On the user's PC, Build stuck at "Attaching to sessions…" and then "STEC
+OS isn't responding": both restored panes were parked in
 ``CreateProcessW`` on ``WindowsApps\\pwsh.EXE`` (the Store alias, whose
 package activation sometimes never returns), and the daemon stopped answering
 until the desktop watchdog killed it. ``terminals/app_alias`` reads the

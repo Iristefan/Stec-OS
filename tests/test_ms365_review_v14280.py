@@ -2,7 +2,7 @@
 Microsoft 365 card, each closed and pinned here (``tests/test_ms365_locked_
 v14280.py`` pins the card itself):
 
-* (b) the program gets its settings from Iron Jarvis ONLY: a daemon started
+* (b) the program gets its settings from STEC OS ONLY: a daemon started
   with ``MS365_MCP_*`` (an OAuth token that skips the account lock, a command
   that stores the sign-in), a wider ``ENABLED_TOOLS`` or ``NODE_OPTIONS`` never
   hands them on — not to the pack, not to its Sign in terminal;

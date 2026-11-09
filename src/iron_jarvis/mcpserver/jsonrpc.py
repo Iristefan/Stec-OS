@@ -40,7 +40,7 @@ PROTOCOL_VERSION: str = _CLIENT_PROTOCOL_VERSION
 
 #: What ``initialize`` reports about this server. The name is the app's, the
 #: version is the real installed one — a harness that logs it should be able to
-#: tell the user which Iron Jarvis answered.
+#: tell the user which STEC OS answered.
 SERVER_INFO: dict[str, str] = {"name": "iron-jarvis", "version": __version__}
 
 #: Content types. Streamable HTTP allows either body; the client accepts both

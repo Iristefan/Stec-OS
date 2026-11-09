@@ -1,4 +1,4 @@
-// Build the Iron Jarvis browser add-on: four TypeScript entry points plus the
+// Build the STEC OS browser add-on: four TypeScript entry points plus the
 // two HTML surfaces, all into dist/, which is what manifest.json points at.
 //
 // Why the HTML files are COPIED rather than left in src/: the manifest's

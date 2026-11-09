@@ -21,7 +21,7 @@ MEASURED on this PC (each without a model call unless said):
   newest leaf), but before a message is sent it still loads the old one — so
   a rewind is kept here until the next message lands (:data:`PENDING_NAME`).
   ``rewind_files`` (dry run) answers ``canRewind: false``, "File rewinding is
-  not enabled." — Iron Jarvis does not start Claude Code with file
+  not enabled." — STEC OS does not start Claude Code with file
   checkpoints, so a rewind never restores files.
 * **Codex 0.157.0** (``app-server`` against a stand-in Responses server in a
   scratch ``CODEX_HOME``; no model): ``thread/fork {threadId, beforeTurnId?,
@@ -59,7 +59,7 @@ version (or one that came from the tool's own transcript) offers no
 per-message action; "Branch" from the end still works.
 
 The log and the view agree after a rewind: the session's log is cut before the
-message (the whole old log is moved to Iron Jarvis's trash first), and for a
+message (the whole old log is moved to STEC OS's trash first), and for a
 session whose history came from the tool's transcript the merged history up
 to the message is written into the log and the transcript is no longer
 merged (``outside.json`` removed), so nothing that was rewound away comes back.
@@ -102,7 +102,7 @@ NONE = {"fork": False, "fork_at": False, "rewind": False}
 REFS_NAME = "refs.json"
 PENDING_NAME = "branch.json"
 #: Review (v1.441.0): when a rewind was made. The tool's own file can still
-#: hold what it dropped (Claude Code keeps the old branch; Iron Jarvis's Codex
+#: hold what it dropped (Claude Code keeps the old branch; STEC OS's Codex
 #: reader does not read a revert), so a transcript merged in later (the
 #: conversation went outside the view again, or the log is empty) leaves out
 #: every entry from before it — what was kept is in the log already.
@@ -117,8 +117,8 @@ _LOCK = threading.Lock()
 # -- words ------------------------------------------------------------------
 LABELS = {CLAUDE: "Claude Code", CODEX: "Codex", PI: "Pi", OPENCODE: "OpenCode",
           "grok": "Grok", "antigravity": "Antigravity"}
-NOT_OFFERED_FORK = "{label} cannot branch a conversation, so Iron Jarvis does not offer it."
-NOT_OFFERED_REWIND = "{label} cannot rewind a conversation, so Iron Jarvis does not offer it."
+NOT_OFFERED_FORK = "{label} cannot branch a conversation, so STEC OS does not offer it."
+NOT_OFFERED_REWIND = "{label} cannot rewind a conversation, so STEC OS does not offer it."
 NOTHING_YET = "There is no conversation to branch yet: send a message first."
 NOTHING_TO_REWIND = "There is no conversation to rewind yet."
 REPLY_RUNS = "A reply is running: wait until it ends (or stop it) first."
@@ -129,7 +129,7 @@ ARCHIVED = "This session is archived: bring it back first."
 PENDING_FIRST = ("Send a message in this branch first: {label} makes the branch with your next message, "
                  "and only then can it be branched or rewound.")
 GONE_MESSAGE = "That message is not in this session any more."
-NO_REF = ("Iron Jarvis did not record {label}'s own reference for that message (it was sent before this "
+NO_REF = ("STEC OS did not record {label}'s own reference for that message (it was sent before this "
           "version, or came from the tool's own saved history), so it cannot branch or rewind from it.")
 NOT_IN_TRANSCRIPT = "{label}'s saved conversation does not hold that message, so nothing was changed."
 PI_LIST_DIFFERS = ("Pi's own list of your messages does not match this view, so nothing was changed. "
@@ -144,8 +144,8 @@ PENDING_TERMINAL = ("Send a message here first: {label} makes this branch with y
 #: (re-measured on 2.1.316: the model got the rewound-away message back).
 PENDING_REWIND_TERMINAL = ("This conversation was rewound here: send a message first, so {label} goes back "
                            "with it. A terminal now would open it as it was before the rewind.")
-NOT_KEPT = "Iron Jarvis could not keep a copy of this conversation's log first, so nothing was changed."
-NO_ANSWER = "{label} did not answer, so Iron Jarvis stopped it. Try again."
+NOT_KEPT = "STEC OS could not keep a copy of this conversation's log first, so nothing was changed."
+NO_ANSWER = "{label} did not answer, so STEC OS stopped it. Try again."
 
 FILES_SAME = "Your files were not changed: put a file back with Revert in the Changes pane."
 FORK_MADE = "A branch of this conversation, on the same tool, model and account."
@@ -377,7 +377,7 @@ def _write_events(home: Any, sid: str, events: list[dict[str, Any]], dropped: in
 
 
 def _trash_log(home: Any, sid: str) -> str:
-    """BLOCKING: a copy of the whole log (and its references) in Iron Jarvis's
+    """BLOCKING: a copy of the whole log (and its references) in STEC OS's
     own trash before a rewind cuts it — never deleted."""
     src = session_dir(home, sid)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S-%f")
@@ -528,7 +528,7 @@ async def _programs_of(live: Any) -> list[Any]:
 
 
 async def _keep_log_first(svc: Any, row: Any) -> None:
-    """Review: the whole old log is in Iron Jarvis's trash BEFORE anything is
+    """Review: the whole old log is in STEC OS's trash BEFORE anything is
     changed — when it cannot be, nothing is."""
     from .service import Refused
 

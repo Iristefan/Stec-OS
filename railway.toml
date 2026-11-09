@@ -1,7 +1,7 @@
-# Iron Jarvis on Railway — config-as-code
+# STEC OS on Railway — config-as-code
 # Docs: https://docs.railway.com/reference/config-as-code
 #
-# Railway builds ONE service per Dockerfile, so deploy Iron Jarvis as TWO services
+# Railway builds ONE service per Dockerfile, so deploy STEC OS as TWO services
 # inside the same Railway project:
 #
 #   1. daemon     — build ./Dockerfile            (this file configures it)

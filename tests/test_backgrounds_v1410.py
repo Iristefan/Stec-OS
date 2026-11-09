@@ -219,7 +219,7 @@ def test_delete_frees_the_space(home, fetched):
 
 
 def test_the_files_live_beside_the_state_home_on_the_desktop(tmp_path):
-    user_data = tmp_path / "Iron Jarvis"
+    user_data = tmp_path / "STEC OS"
     (user_data / "logs").mkdir(parents=True)
     h = user_data / ".ironjarvis"
     h.mkdir()

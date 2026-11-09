@@ -272,7 +272,7 @@ describe("Troubleshooting card (v1.198.0)", () => {
     // Daemon offline: quit from the tray and relaunch (the app supervises).
     // v1.354.0 (G30, on purpose): named by the banner's words, no "daemon".
     const daemonRow = screen
-      .getByText(/“Iron Jarvis isn't responding” in the dashboard/)
+      .getByText(/“STEC OS isn't responding” in the dashboard/)
       .closest("li");
     expect(daemonRow).not.toBeNull();
     expect(daemonRow!.textContent).toMatch(/Quit from the tray and relaunch/i);
@@ -289,7 +289,7 @@ describe("Troubleshooting card (v1.198.0)", () => {
 
     // The other README claims ride along: port conflict, data home.
     expect(screen.getByText(/“Port 8787 already in use”/)).toBeInTheDocument();
-    expect(screen.getByText(/%APPDATA%\\Iron Jarvis/)).toBeInTheDocument();
+    expect(screen.getByText(/%APPDATA%\\STEC OS/)).toBeInTheDocument();
   });
 
   it("'Something else?' points at Everything › Status, where problems are shown (readiness 12A)", () => {

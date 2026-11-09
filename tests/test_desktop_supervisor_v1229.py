@@ -10,7 +10,7 @@ helpers are interleaved with functions the harness must stub.
 D1  The crash ladder restarted a child forever, every 60 s. Now: three deaths
     within 3 s of spawn verify the install (damaged → the Repair dialog); a
     clean install caps at 10 restarts / 15 min, toasts once more, and the tray
-    gains "Restart Iron Jarvis" (resets the counters, respawns). The dashboard
+    gains "Restart STEC OS" (resets the counters, respawns). The dashboard
     reload wait loops while the window sits on the error page and is re-armed
     by every dashboard spawn.
     Review: a tray Restart must cancel a PENDING backoff timer, or two
@@ -19,7 +19,7 @@ D3  A child dying every six minutes ran "healthy" by the 5-minute rule and was
     restarted forever with no toast. A second window (deaths in 24 h) toasts
     at the third death regardless of uptime.
 D4  The tray tooltip said "restarting repeatedly" forever: it returns to
-    "Iron Jarvis — running" in the healthy-reset branch and on the watchdog's
+    "STEC OS — running" in the healthy-reset branch and on the watchdog's
     next healthy /health.
 D5  A crash and a kill looked alike in the child's log: every output chunk is
     ISO-stamped and killChild writes "[main] <iso> killed pid=… reason=…".
@@ -166,7 +166,7 @@ realSetTimeout(() => {
     menuCapped: buildTrayContextMenu().map((i) => i.label),
   };
   if (scenario === "damaged") { process.stdout.write(JSON.stringify(out) + "\\n"); return; }
-  // click "Restart Iron Jarvis": counters reset, child respawned and now stays alive
+  // click "Restart STEC OS": counters reset, child respawned and now stays alive
   keepAlive = true;
   restartServicesFromTray();
   out.afterRestart = {
@@ -198,11 +198,11 @@ def test_a_clean_install_caps_the_ladder_toasts_once_more_and_offers_a_tray_rest
     assert out["spawns"] == 1 + out["capMax"] == 11, f"ladder not capped at 10 restarts: {out['spawns']} spawns"
     assert out["capped"] is True
     assert len(out["toasts"]) == 2, f"toast at #3 and once more at the cap: {out['toasts']}"
-    assert "no longer being restarted" in out["toasts"][1] and "Restart Iron Jarvis" in out["toasts"][1]
+    assert "no longer being restarted" in out["toasts"][1] and "Restart STEC OS" in out["toasts"][1]
     assert "stopped" in out["tooltips"][-1], out["tooltips"]
     assert any("giving up" in l for l in out["logs"]), "the child's log does not say the supervisor gave up"
     assert any("install verified intact (5 files)" in l for l in out["logs"]), out["logs"]
-    assert out["refreshTray"] >= 1 and "Restart Iron Jarvis" in out["menuCapped"], "no tray item while capped"
+    assert out["refreshTray"] >= 1 and "Restart STEC OS" in out["menuCapped"], "no tray item while capped"
 
 
 @requires_node
@@ -211,8 +211,8 @@ def test_the_tray_restart_resets_the_counters_respawns_and_hides_itself(tmp_path
     after = out["afterRestart"]
     assert after["spawns"] == 12, f"tray Restart did not respawn the capped child: {after}"
     assert after["restarts"] == 0 and after["capped"] is False and after["restartTimes"] == 0, after
-    assert after["lastNote"] == "tooltip:Iron Jarvis — running", "the tooltip must read running again after Restart"
-    assert "Restart Iron Jarvis" not in after["menu"], "the item must disappear once nothing is capped"
+    assert after["lastNote"] == "tooltip:STEC OS — running", "the tooltip must read running again after Restart"
+    assert "Restart STEC OS" not in after["menu"], "the item must disappear once nothing is capped"
     live = out["afterLiveRestart"]
     assert "dashboard:restart" in live["killed"], "a live child restarted from the tray must be killed with reason=restart"
     assert live["spawns"] == 13 and live["restarts"] == 0, f"a manual restart counted as a crash: {live}"
@@ -341,7 +341,7 @@ def test_a_child_dying_every_six_minutes_is_restarted_but_the_user_is_told_at_th
 def test_the_tooltip_is_degraded_by_the_toast_and_reset_by_the_next_healthy_run(tmp_path):
     out = _run(_PERIODIC.replace("__EXTRACT__", _EXTRACT), tmp_path, "periodic_tooltip")
     assert out["tooltips"] and "restarting repeatedly" in out["tooltips"][0], out["tooltips"]
-    assert out["tooltips"][-1] == "Iron Jarvis — running", f"D4: the healthy-reset branch must put the tooltip back: {out['tooltips']}"
+    assert out["tooltips"][-1] == "STEC OS — running", f"D4: the healthy-reset branch must put the tooltip back: {out['tooltips']}"
 
 
 # --------------------------------------------------------------------------
@@ -418,7 +418,7 @@ def test_shutdown_forwards_its_reason_and_the_exit_hook_normalises_to_quit(tmp_p
 def test_the_watchdogs_next_healthy_probe_puts_the_tooltip_back_to_running(tmp_path):
     out = _run(_KILL.replace("__EXTRACT__", _EXTRACT), tmp_path, "kill_tooltip")
     assert "keeps stalling" in out["afterExhausted"], out
-    assert out["afterHealthy"] == "Iron Jarvis — running", f"D4: the watchdog's healthy branch did not reset the tooltip: {out}"
+    assert out["afterHealthy"] == "STEC OS — running", f"D4: the watchdog's healthy branch did not reset the tooltip: {out}"
 
 
 def test_every_kill_site_names_its_reason():
@@ -500,12 +500,12 @@ def test_the_reload_wait_loops_on_the_error_page_pauses_when_capped_and_rearms_o
 
 def test_the_handbook_troubleshooting_bullet_names_the_cap_and_the_tray_restart():
     hb = (_ROOT / "docs" / "HANDBOOK.md").read_text(encoding="utf-8")
-    # v1.354.0 (G30): the banner, and so the bullet, says "Iron Jarvis isn't
+    # v1.354.0 (G30): the banner, and so the bullet, says "STEC OS isn't
     # responding" (it said "Daemon offline"); the bullet grew the back-online
     # words, so the window grew with it.
-    m = re.search(r'\*\*"Iron Jarvis isn\'t responding"\*\*(.{0,2200}?)\n- \*\*', hb, re.S)
-    assert m, "the 'Iron Jarvis isn't responding' troubleshooting bullet moved"
+    m = re.search(r'\*\*"STEC OS isn\'t responding"\*\*(.{0,2200}?)\n- \*\*', hb, re.S)
+    assert m, "the 'STEC OS isn't responding' troubleshooting bullet moved"
     bullet = m.group(1)
-    assert "Restart Iron Jarvis" in bullet, "the tray Restart item is not documented"
+    assert "Restart STEC OS" in bullet, "the tray Restart item is not documented"
     assert "10" in bullet and "15 minutes" in bullet, "the cap is not documented"
     assert "reason=quit|update|watchdog|restart" in bullet, "the killed line is not documented"

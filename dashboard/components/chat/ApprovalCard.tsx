@@ -91,8 +91,8 @@
 //     in their `title`). Without `why` (an older daemon, a listing row) the
 //     card is the one above, byte for byte (pinned by
 //     __tests__/approval-card-why-v1417).
-//   - `asker === "iron_jarvis"` (Iron Jarvis's own finish-check re-run, a
-//     project's checker): "Iron Jarvis wants to …", in either layout.
+//   - `asker === "iron_jarvis"` (STEC OS's own finish-check re-run, a
+//     project's checker): "STEC OS wants to …", in either layout.
 //   - lib/approvalWords.answersOnlyOnce: a card the daemon answers ONCE
 //     whatever the button (once-only, a plan door, a PRICED call) offers
 //     Allow once and Deny only. A priced card used to offer "Allow for this
@@ -479,10 +479,10 @@ export function ApprovalCard({
           whatever your approval setting.
         </p>
       ) : onceOnly && !planAsk && !buildPlanAsk && approval.onceReason === "guarded" ? (
-        // v1.407.2: an edit of Git's own files or of Iron Jarvis's or Claude
+        // v1.407.2: an edit of Git's own files or of STEC OS's or Claude
         // Code's own rules (src/iron_jarvis/core/auto_approve.py guarded_edit).
         <p data-testid="approval-guarded-once" className="text-[11px] leading-relaxed text-zinc-400">
-          Edits to Git&apos;s own files and to Iron Jarvis&apos;s or Claude Code&apos;s own rules ask
+          Edits to Git&apos;s own files and to STEC OS&apos;s or Claude Code&apos;s own rules ask
           you every time, unless approvals are set to Don&apos;t ask.
         </p>
       ) : onceOnly && !planAsk && !buildPlanAsk && approval.onceReason === "privacy" ? (

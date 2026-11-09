@@ -27,7 +27,7 @@ Inbound today is a COMMAND surface, not a CONVERSATION surface:
    no continuity ("what about the second one?" means nothing).
 2. Replies bypass the chat lane — no memory recall, no skills, no project
    spine, no attachment/document machinery. The phone talks to a lesser
-   Iron Jarvis.
+   STEC OS.
 3. Phone conversations are invisible on the desktop and vice versa — the
    opposite of Hermes's single unified history.
 4. A parked workflow (v1.121 ask-gate) can notify the phone but the phone
@@ -120,7 +120,7 @@ commit-to-memory, crystallize-to-workflow, and Add-to-project work unchanged.
 ### 9. Vocabulary
 
 Two-way is a per-destination upgrade, not a new noun: the toggle reads
-"Chat with Iron Jarvis from this destination". No "gateway", no new concept
+"Chat with STEC OS from this destination". No "gateway", no new concept
 word. Add the line to VOCABULARY.md in the shipping PR.
 
 ## Phasing

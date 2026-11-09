@@ -2,7 +2,7 @@
  * v1.259.0 — the browser add-on says WHICH browser it is, and the card says it.
  *
  * Plain words: Chrome and Edge load the very same add-on with the very same
- * identity, so until now Iron Jarvis could not tell an Edge user from a Chrome
+ * identity, so until now STEC OS could not tell an Edge user from a Chrome
  * one — and every setup step was written for Chrome. Now the add-on reports its
  * browser when it greets the daemon, and the Browser card prints it.
  *

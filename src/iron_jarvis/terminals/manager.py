@@ -107,7 +107,7 @@ _PTY_VERIFY_SECONDS = 0.7
 #: WHAT THIS COSTS, honestly. ``daemon/client.py`` documents that an in-pane
 #: ``ironjarvis`` CLI inherits ``IRONJARVIS_TOKEN``. On the PACKAGED install —
 #: the shipped product — it keeps working unchanged: ``daemon_token()`` falls
-#: back to ``%APPDATA%/Iron Jarvis/token.txt``, which the pane can still read.
+#: back to ``%APPDATA%/STEC OS/token.txt``, which the pane can still read.
 #: In a dev shell that exported the variable, an in-pane ``ironjarvis`` command
 #: now needs ``--token`` (and fails LOUDLY, since v1.187's client raises on 401,
 #: rather than silently doing nothing).
@@ -122,7 +122,7 @@ _PTY_VERIFY_SECONDS = 0.7
 #: secrets this daemon reads from the environment. Those are the USER's own
 #: keys, present in the user's own shell, and a Build pane is meant to be that
 #: shell — removing them would break the user's own tooling for no gain, since
-#: they were never handed to the pane BY Iron Jarvis. The secrets vault's Fernet
+#: they were never handed to the pane BY STEC OS. The secrets vault's Fernet
 #: key is a file and never appears in the environment at all.
 _DAEMON_ONLY_ENV = ("IRONJARVIS_TOKEN", "IRONJARVIS_MCP_TOKEN")
 
@@ -160,7 +160,7 @@ def _with_pane_env(
     adds `CLAUDE_CODE_PLUGIN_DIRS` (+ the MCP values it references) when the
     setting is on. This is the ONE place a Build terminal AND a Build › Code
     process get their environment, so both start with it. It BLOCKS (small
-    reads and writes in Iron Jarvis's own folder; the review's copies of the
+    reads and writes in STEC OS's own folder; the review's copies of the
     owner's skills, commands and agents are re-made only when they changed,
     bounded): every caller is already off the event loop (a pane's spawn, a
     restore thread; `hosted.service` hops before `build_env`).
@@ -313,8 +313,8 @@ class TerminalManager:
         # this set, a concurrent close (`purge_dead` runs `sync_panes(live)`,
         # and every /terminals handler is a sync `def` on Starlette's
         # threadpool) revoked the in-flight pane's brand-new token, and the
-        # harness's first call answered "the pane token expired when Iron
-        # Jarvis restarted" — naming a restart that never happened.
+        # harness's first call answered "the pane token expired when STEC
+        # OS restarted" — naming a restart that never happened.
         self._pending_panes: set[str] = set()
         #: create() calls that passed the cap check and have not yet registered
         #: (or put their id in `_pending_panes`) -- counted by the cap (v1.303.3).

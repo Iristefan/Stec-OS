@@ -6,7 +6,7 @@ Code). Each test pins one defect the review found, red on the builder's commit
    plain ``claude --resume H`` loads the OLD leaf (re-measured on 2.1.316 with
    a stand-in server: the model got the rewound-away message back).
 2. What a rewind dropped came back later: the tool's own file still holds it
-   (Claude Code keeps the old branch; Iron Jarvis's Codex reader does not read
+   (Claude Code keeps the old branch; STEC OS's Codex reader does not read
    a revert), and the next time the conversation lives outside the view (a
    terminal, ``mark_outside``) the transcript was merged in again.
 3. A message the tool never received (its send raised) was recorded as sent,
@@ -58,7 +58,7 @@ from tests.test_build_app_branch_v14410 import (  # noqa: F401 — fixtures
 
 def _claude_transcript_at(home: Path, hid: str, uuids: list[str], ats: list[str]) -> Path:
     """Claude Code's file, each record stamped with the log's own time (as
-    the real tool stamps it a moment after Iron Jarvis does)."""
+    the real tool stamps it a moment after STEC OS does)."""
     path = home / "projects" / "C--work" / f"{hid}.jsonl"
     path.parent.mkdir(parents=True, exist_ok=True)
     parent = None

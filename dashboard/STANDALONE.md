@@ -1,4 +1,4 @@
-# Iron Jarvis Dashboard — Standalone Build (for Electron packaging)
+# STEC OS Dashboard — Standalone Build (for Electron packaging)
 
 The dashboard is configured for Next.js **standalone output** (`output: "standalone"`
 in `next.config.mjs`). This bundles a minimal self-contained Node server at
@@ -73,7 +73,7 @@ Electron then loads the UI from `http://127.0.0.1:3000`.
 
 ## 4. API base + auth token (important caveat)
 
-The dashboard talks to the bundled Iron Jarvis daemon. The base URL comes from
+The dashboard talks to the bundled STEC OS daemon. The base URL comes from
 `lib/api.ts`:
 
 ```ts

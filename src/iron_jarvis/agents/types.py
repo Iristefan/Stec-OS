@@ -167,7 +167,7 @@ _PANE_TOOLS = ["pane_list", "pane_read", "pane_spawn", "pane_send", "pane_wait"]
 # this prompt at runtime (see LearningEngine.apply_to_prompt), so it improves
 # every time the user interacts.
 _VOICE = (
-    "You are Iron Jarvis — a sharp, friendly teammate, not a faceless bot. Talk "
+    "You are STEC OS — a sharp, friendly teammate, not a faceless bot. Talk "
     "like a trusted colleague: warm, concise, plain-spoken, and proactive. You "
     "can read and write real documents (PDF, Word, Excel, PowerPoint, CSV, "
     "Markdown, text) as naturally as a person. Narrate briefly what you're doing "
@@ -290,7 +290,7 @@ _DEFINITIONS: dict[AgentType, AgentDefinition] = {
     AgentType.MEMORY: AgentDefinition(
         type=AgentType.MEMORY,
         system_prompt=(
-            _VOICE + " As the Memory agent, you curate what Iron Jarvis knows — "
+            _VOICE + " As the Memory agent, you curate what STEC OS knows — "
             "organize the layered + long-term memory, summarize, and keep knowledge tidy."
         ),
         tools=(
@@ -316,7 +316,7 @@ _DEFINITIONS: dict[AgentType, AgentDefinition] = {
         type=AgentType.MAINTAINER,
         system_prompt=(
             _VOICE + " As the Maintainer, you improve and fix IRON JARVIS ITSELF — "
-            "your workspace is a git worktree of Iron Jarvis's own source. Read the "
+            "your workspace is a git worktree of STEC OS's own source. Read the "
             "code (read_file/grep/list_files/file_search) and make focused edits "
             "(write_file/edit_file). To VERIFY, you may run the test suite with "
             "`shell` (e.g. `python -m pytest -q`) — note `shell` requires explicit "
@@ -330,8 +330,8 @@ _DEFINITIONS: dict[AgentType, AgentDefinition] = {
             "what you changed and why."
         ),
         tools=(
-            # v1.173.0: `ltm_search` joins `recall`. The maintainer edits Iron
-            # Jarvis's own source, and the decisions behind that source (why a
+            # v1.173.0: `ltm_search` joins `recall`. The maintainer edits STEC
+            # OS's own source, and the decisions behind that source (why a
             # seam exists, what a past wave ruled out) live in the shared brain,
             # not in the tree. No `mcp:*`: an agent that edits code and runs
             # `shell` gets no extra external reach for a brain it can already
@@ -379,10 +379,10 @@ _DEFINITIONS: dict[AgentType, AgentDefinition] = {
         # file writes, no shell, no spawning — it explains and finds, it does
         # not act.
         system_prompt=(
-            _VOICE + " As the Guide, you are the built-in expert on Iron Jarvis "
+            _VOICE + " As the Guide, you are the built-in expert on STEC OS "
             "itself — every page, setting, tool, skill, agent and word in this "
             "app, and the user's own projects, workflows, schedules and rules "
-            "inside it. Answer questions about how Iron Jarvis works and find "
+            "inside it. Answer questions about how STEC OS works and find "
             "things for the user. ALWAYS look before you answer: guide_search "
             "for how something works (then guide_read for the exact wording), "
             "app_search for 'where is my…' / 'do I have a…', app_status for "

@@ -1,6 +1,6 @@
 /**
  * v1.439.0 review — the Markdown export's two rules the builder's pins left
- * open: a message Iron Jarvis sent BY ITSELF to carry a reply on (after a
+ * open: a message STEC OS sent BY ITSELF to carry a reply on (after a
  * restart, a reset, an account move) is not the user's and is left out; a
  * note the user typed while the tool worked IS theirs and is kept.
  */
@@ -11,7 +11,7 @@ import { conversationMarkdown, type CodeEvent } from "@/lib/buildApp";
 const at = "2026-11-06T09:00:00Z";
 
 describe("export as Markdown: whose words are in the file", () => {
-  it("leaves out a message Iron Jarvis sent by itself to carry a reply on", () => {
+  it("leaves out a message STEC OS sent by itself to carry a reply on", () => {
     const events = [
       { type: "user", at, text: "Fix the build", files: [] },
       { type: "text_done", at, id: "m1", text: "Working on it." },

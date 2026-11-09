@@ -1,4 +1,4 @@
-# Iron Jarvis — Production Red-Team & Wiring Audit (multi-agent, looped)
+# STEC OS — Production Red-Team & Wiring Audit (multi-agent, looped)
 
 A swarm of read-only auditor agents red-teamed the entire project across **four
 iterations**; every candidate finding was **adversarially verified against the
@@ -73,12 +73,12 @@ The count fell 24 → 6 → 2, i.e. the audit converged.
 
 ## New capability — Self-development (the agents can fix the project itself)
 
-A gated, opt-in way for an Iron Jarvis agent to read/edit/test/fix **Iron Jarvis's own
+A gated, opt-in way for a STEC OS agent to read/edit/test/fix **STEC OS's own
 source**, safely:
 
 - **`AgentType.MAINTAINER`** with a focused, honest prompt.
 - `Orchestrator.create_session(self_dev=True)` roots the session's **git worktree at the
-  Iron Jarvis repo itself** (`core/self_dev.py` locates it; `self_dev_root` override is
+  STEC OS repo itself** (`core/self_dev.py` locates it; `self_dev_root` override is
   held to the same identity check). **OFF by default** (`config.self_dev_enabled`);
   refused otherwise.
 - Changes land **only via the existing review/approve gate — never auto-merge**; an

@@ -1,4 +1,4 @@
-"""v1.360.0 lane 10C (3), G76 — ONE vocabulary in everything Iron Jarvis ANSWERS.
+"""v1.360.0 lane 10C (3), G76 — ONE vocabulary in everything STEC OS ANSWERS.
 
 The v1.358.0 scan (tests/test_vocabulary_beyond_dashboard_v13580.py) read a
 FIXED list of daemon files, so sentences outside it still reached people in
@@ -163,7 +163,7 @@ ALLOW: list[tuple[str, str, str]] = [
     # Readiness 12A: tools/selfcare.py is read in full now; its tools'
     # descriptions and argument help are what the MODEL reads (the tool names
     # pack_status / pack_restart are the wire).
-    ("src/iron_jarvis/tools/selfcare.py", "How Iron Jarvis itself is doing, in plain words plus data", _MODEL + " (app_health's description)"),
+    ("src/iron_jarvis/tools/selfcare.py", "How STEC OS itself is doing, in plain words plus data", _MODEL + " (app_health's description)"),
     ("src/iron_jarvis/tools/selfcare.py", "The state of one tool pack (an MCP server)", _MODEL + " (pack_status's description)"),
     ("src/iron_jarvis/tools/selfcare.py", "The pack's name as listed under Settings > Tools.", _MODEL + " (the pack argument's help)"),
     ("src/iron_jarvis/tools/selfcare.py", "Restart ONE tool pack (an MCP server)", _MODEL + " (pack_restart's description)"),
@@ -286,7 +286,7 @@ def _rel(p: Path) -> str:
 
 #: v1.383.0: the harness benchmark's task data — standalone projects handed to
 #: a coding agent and their hidden checks — speaks the PROJECT's words ("nothing
-#: to pack" in a shipping package), never Iron Jarvis's. Only that subtree.
+#: to pack" in a shipping package), never STEC OS's. Only that subtree.
 TASK_DATA = SRC / "harness_bench" / "tasks"
 
 

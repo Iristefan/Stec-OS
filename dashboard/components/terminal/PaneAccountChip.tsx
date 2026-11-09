@@ -104,7 +104,7 @@ export function LaunchAccountRows({
     try {
       const res = await post<unknown>("/terminals/launch", launchBody(cliId, choiceId, paneId));
       const id = openedPaneId(res);
-      if (!id) throw new Error("Iron Jarvis did not open a new terminal.");
+      if (!id) throw new Error("STEC OS did not open a new terminal.");
       onOpened({ ...(res as object), id } as OpenedPane);
     } catch (err) {
       // The daemon's one plain sentence (409: parked / needs sign-in / missing).

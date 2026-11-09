@@ -250,6 +250,6 @@ describe("a model that draws usage credits says pay per use", () => {
     const chip = screen.getByTestId("model-credits");
     expect(chip.textContent).toBe("pay per use");
     expect(CREDITS_CHIP).toBe("pay per use");
-    expect(chip.getAttribute("title")).toMatch(/each message is billed\. Iron Jarvis counts it as pay per use/);
+    expect(chip.getAttribute("title")).toMatch(/each message is billed\. STEC OS counts it as pay per use/);
   });
 });

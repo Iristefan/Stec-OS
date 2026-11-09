@@ -1494,7 +1494,7 @@ def _needs_words(needs: str) -> str:
 
 #: Readiness 12B (G39): where a connected app's tools CAN be used, said to the
 #: model and to the user from the phone's conversation.
-PHONE_APPS_PLACE = "Chat in Iron Jarvis on the PC"
+PHONE_APPS_PLACE = "Chat in STEC OS on the PC"
 
 
 def phone_unreachable(text: str, rows: list[dict[str, Any]]) -> list[dict[str, str]]:
@@ -1541,7 +1541,7 @@ def phone_apps_note(names: "list[str] | tuple[str, ...]") -> str:
     return (
         f"\n\n_Note: I can't use {apps} in a quick reply on your phone. To have {it} used,"
         " ask me to hand this to an agent (it asks you here before each use), or ask in"
-        " Chat in Iron Jarvis on your PC._"
+        " Chat in STEC OS on your PC._"
     )
 
 

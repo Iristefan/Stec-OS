@@ -4,7 +4,7 @@
   "type": "approval",
   "request_id": "ask-1",
   "kind": "tool",
-  "title": "Search Iron Jarvis memory for \"project codename\"",
+  "title": "Search STEC OS memory for \"project codename\"",
   "detail": "query: project codename",
   "can_session": true,
   "tool": "iron-jarvis-code.memory_search"

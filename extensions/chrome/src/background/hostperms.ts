@@ -8,7 +8,7 @@
 // The grant CANNOT be requested from here. `chrome.permissions.request()` requires
 // a user gesture and throws "This function must be called during a user gesture"
 // in a service worker — Chrome's own words are "Permissions must be requested from
-// inside a user gesture, like a button's click handler." Iron Jarvis is a page on
+// inside a user gesture, like a button's click handler." STEC OS is a page on
 // another origin and cannot make the call either. So the daemon sends a
 // `request_host_permissions` directive, this module opens the bundled setup page,
 // and the one button there makes the call (plan section 6, DEVIATION 1).

@@ -137,7 +137,7 @@ NOT_YET = "{tool} says which of its own MCP servers started when it starts — t
 NONE_REPORTED = "{tool} reported no MCP servers of its own."
 
 #: How each tool signs in to one of its own MCP servers (ITS OWN way; never a
-#: press of Iron Jarvis's). "Open in terminal" opens this session's
+#: press of STEC OS's). "Open in terminal" opens this session's
 #: conversation in a Build terminal on the session's own account, so the
 #: sign-in lands in the account the session uses.
 SIGN_IN_WORDS: dict[str, str] = {
@@ -291,7 +291,7 @@ def note_servers(driver: Any, servers: list[dict[str, str]] | None, attr: str = 
     the list is known and differs from the last one said (a tool restating
     the same list every turn writes nothing). Never raises. v1.441.0:
     ``attr`` names where the list is kept — an ACP driver's own
-    ``mcp_servers`` holds the servers Iron Jarvis HANDS it (``acp_servers``),
+    ``mcp_servers`` holds the servers STEC OS HANDS it (``acp_servers``),
     so Grok keeps its reported list as ``reported_mcp``."""
     if servers is None:
         return

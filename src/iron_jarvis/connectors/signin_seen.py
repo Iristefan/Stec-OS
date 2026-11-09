@@ -272,7 +272,7 @@ def seen_settled(
     spawn: Callable[[Callable[[], None]], None] | None = None,
 ) -> Verdict | None:
     """:func:`seen`, but when this app has NO verdict yet — the first read
-    since Iron Jarvis started, or since the app was saved again — wait up to
+    since STEC OS started, or since the app was saved again — wait up to
     ``wait_s`` for the check that read just started (v1.358.0 re-review).
 
     For the chat's grounding (``app_names.app_states``, already off the

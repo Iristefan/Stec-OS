@@ -1,6 +1,6 @@
 /**
  * v1.411.0 — Pi in Build's Code view: the user's REAL Pi (`pi --mode rpc`),
- * its own tools and extensions on; Iron Jarvis turns every question Pi or an
+ * its own tools and extensions on; STEC OS turns every question Pi or an
  * extension asks into a card. Driven through the real view and lib/buildApp;
  * only the network (lib/api), the stream reader and the folder tree are
  * stand-ins.

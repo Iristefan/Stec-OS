@@ -151,7 +151,7 @@ DID_NOT_START_NOTE = "Saved, but it didn't start. Press Retry."
 #: A saved memory source that is not live: it loads at start-up (no Retry).
 MEMORY_NOT_LIVE_NOTE = (
     "Saved, but it isn't live yet. Check its settings on the Memory page, "
-    "then restart Iron Jarvis."
+    "then restart STEC OS."
 )
 
 
@@ -271,7 +271,7 @@ def _locked_rules(connector):
 
 
 def locked_body(platform, connector, values: dict[str, Any]):
-    """The pack a locked card saves: the program from Iron Jarvis's own lock
+    """The pack a locked card saves: the program from STEC OS's own lock
     (installed first when it is not in place — BLOCKING, seconds), run as
     ``node <entry>`` from its own folder, with the card's rules' settings and
     ``local_only``. Raises ``ValueError`` in plain words."""
@@ -282,7 +282,7 @@ def locked_body(platform, connector, values: dict[str, Any]):
     pkg = locked_pack.PACKAGES[connector.locked]
     home = getattr(getattr(platform, "config", None), "home", None)
     if not home:
-        raise ValueError(f"{connector.name} could not find Iron Jarvis's own folder, so nothing was installed.")
+        raise ValueError(f"{connector.name} could not find STEC OS's own folder, so nothing was installed.")
     try:
         env = env_for(values, locked_pack.signin_dir(pkg, home))
     except ValueError as exc:
@@ -1004,7 +1004,7 @@ def pack_body(connector, values: dict[str, Any]):
 
     if getattr(connector, "locked", ""):
         # v1.428.0: a locked app is built by `locked_body` (it installs the
-        # program from Iron Jarvis's lock first) — never the generic way.
+        # program from STEC OS's lock first) — never the generic way.
         raise ValueError(LOCKED_ELSEWHERE.format(name=connector.name))
     if is_remote(connector):
         url = connector.url

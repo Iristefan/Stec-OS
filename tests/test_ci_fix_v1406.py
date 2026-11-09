@@ -1,6 +1,6 @@
 """v1.406.0 part 3: a coding session's pull request — its failing checks are
 FIXED by the session itself, a CLOUD reviewer approves the fix, and only then
-does Iron Jarvis push it (``harness/ci_fix``, ``daemon/routes/ci_watch``).
+does STEC OS push it (``harness/ci_fix``, ``daemon/routes/ci_watch``).
 
 Driven with REAL ``git`` (a scratch repository, its session's ``ij/`` branch
 in a worktree, a local BARE remote the pushes really land in — its fetch
@@ -19,7 +19,7 @@ Pinned, each guarantee mutation-checked:
 * a Local only session is never reviewed in the cloud and never pushed;
 * Emergency stop: nothing starts, a fix turn is stopped, a review in flight is
   cancelled and nothing is pushed;
-* at most 3 rounds per failing streak, then Iron Jarvis gives up (news);
+* at most 3 rounds per failing streak, then STEC OS gives up (news);
 * rejected work goes to a side branch and never reaches the PR branch (local
   or remote) until a review approves it;
 * a running reply blocks a new fix turn (and nothing is read meanwhile).
@@ -348,7 +348,7 @@ async def test_a_failed_check_is_fixed_by_the_session_reviewed_then_pushed(app, 
     await _to_review(w)
     assert w.rec()["state"] == CI.REVIEWING
     await w.settle_review()
-    # The fix turn was Iron Jarvis's own ("ci": Emergency stop covers it), on
+    # The fix turn was STEC OS's own ("ci": Emergency stop covers it), on
     # the session's hidden continuation question, with the log fenced and
     # MASKED for the model only.
     assert seen_ci == [N.BY_CI]
@@ -381,7 +381,7 @@ async def test_a_failed_check_is_fixed_by_the_session_reviewed_then_pushed(app, 
     assert [p["kind"] for p in done] == [CI.KIND_PASSING]
     steps = [p["kind"] for t, p in w.events if t == EventType.BUILD_CI_STEP]
     assert steps == [CI.KIND_FAILED, CI.KIND_REVIEW, CI.KIND_PUSHED]
-    # The PR is never merged by Iron Jarvis.
+    # The PR is never merged by STEC OS.
     assert git("rev-parse", "refs/heads/main", cwd=w.wt) == git(
         "--git-dir", str(w.bare), "rev-parse", "refs/heads/main", cwd=w.bare)
     assert not fake.calls("pr", "merge")
@@ -491,7 +491,7 @@ async def test_three_rounds_then_it_gives_up_and_nothing_reaches_the_pr(app, tmp
 
 async def test_checks_that_keep_failing_after_approved_pushes_stop_after_three_rounds(
         app, tmp_path, fake, model, monkeypatch):
-    """The streak counts across Iron Jarvis's OWN pushes: a fix that keeps
+    """The streak counts across STEC OS's OWN pushes: a fix that keeps
     failing CI never gets three more rounds after every push of its own."""
     reviewer = FakeReviewer(["good"] * 5)
     monkeypatch.setattr(W, "REVIEWER", reviewer)
@@ -692,12 +692,12 @@ def test_the_settings_and_the_notices():
     assert EventType.BUILD_CI_DONE in DEFAULT_ALERT_EVENTS
     assert EventType.BUILD_CI_STEP not in DEFAULT_ALERT_EVENTS
     done = {"type": EventType.BUILD_CI_DONE, "session_id": "build:t", "payload": {
-        "thread_id": "t", "kind": "gave_up", "title": "Iron Jarvis stopped fixing your pull request's checks",
-        "body": "Fix the parser · Iron Jarvis stopped after 3 rounds."}}
+        "thread_id": "t", "kind": "gave_up", "title": "STEC OS stopped fixing your pull request's checks",
+        "body": "Fix the parser · STEC OS stopped after 3 rounds."}}
     step = {**done, "type": EventType.BUILD_CI_STEP}
     assert bell_pings(done) is True and bell_pings(step) is False
-    assert format_event(done) == ("Iron Jarvis stopped fixing your pull request's checks — Fix the parser · "
-                                  "Iron Jarvis stopped after 3 rounds.")
+    assert format_event(done) == ("STEC OS stopped fixing your pull request's checks — Fix the parser · "
+                                  "STEC OS stopped after 3 rounds.")
 
 
 def test_the_loop_has_words_and_the_line_key_is_kept_on_both_sides():

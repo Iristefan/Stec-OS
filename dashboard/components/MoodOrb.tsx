@@ -74,8 +74,8 @@ const LABEL: Record<Mood, string> = {
  * durable turn registry's counts). The orb used to key ONLY on session /
  * agent events, so it sat "Idle — nothing running" through a chat turn and
  * through a Build reply that ran for an hour. Read from the ONE shared
- * /health poll (lib/daemon) — no request of its own. 0 for an older Iron
- * Jarvis (no field) or before the first poll.
+ * /health poll (lib/daemon) — no request of its own. 0 for an older STEC
+ * OS (no field) or before the first poll.
  */
 export function repliesRunning(health: Health | null | undefined): number {
   const r = health?.replies;
@@ -88,7 +88,7 @@ export function repliesRunning(health: Health | null | undefined): number {
 /**
  * How many of those replies are PARKED on the user (v1.420.0, C6.9): an
  * approval card or a question nobody has answered yet — /health's
- * `replies.waiting`. Read defensively: an Iron Jarvis that does not send it
+ * `replies.waiting`. Read defensively: a STEC OS that does not send it
  * yet (absent, not a number) counts 0, so the orb behaves exactly as before.
  */
 export function repliesWaiting(health: Health | null | undefined): number {
@@ -162,7 +162,7 @@ export function MoodOrb({
 } = {}) {
   const { events, connected } = useEvents(100, { types: MOOD_EVENT_TYPES });
   // Harness gaps (fix 1): a chat or a Build coding session answering. Review:
-  // only while Iron Jarvis answers — lib/daemon keeps the LAST /health while
+  // only while STEC OS answers — lib/daemon keeps the LAST /health while
   // it is offline, and a reply counted before a crash is not being written.
   const daemon = useDaemon();
   const replies = daemon.online ? repliesRunning(daemon.health) : 0;

@@ -28,7 +28,7 @@
  *    constructing a modal around a fixture.
  *
  *  - NO AGENT-FACING STRING REACHES THE USER (F3). `/browser/request-host-permission`
- *    answers 409 with "…Ask the user to open the Browser page in Iron Jarvis
+ *    answers 409 with "…Ask the user to open the Browser page in STEC OS
  *    and pair their browser, then retry." — copy written for a tool, telling
  *    the user who is standing on that page to go to that page. The dialog maps
  *    failures to human sentences, and the raw text is asserted ABSENT.
@@ -150,7 +150,7 @@ const base: Status = {
   active_tab: null,
   pending_pairing: null,
   paired: false,
-  addon_dir: "C:\\Users\\vr\\AppData\\Local\\Programs\\Iron Jarvis\\resources\\browser-addon",
+  addon_dir: "C:\\Users\\vr\\AppData\\Local\\Programs\\STEC OS\\resources\\browser-addon",
   last_error: null,
 };
 
@@ -541,7 +541,7 @@ describe("a browser waiting to pair is offered Pair, right here (F2)", () => {
     await pollWith(CARD_STATES.waiting);
 
     const identity = await screen.findByTestId("browser-setup-pair-identity");
-    expect(identity.textContent).toContain("Identified as the Iron Jarvis browser add-on");
+    expect(identity.textContent).toContain("Identified as the STEC OS browser add-on");
     expect(identity.textContent).toContain("lgihfomaieifpnemakmpadmggjnoojmm");
   });
 
@@ -592,7 +592,7 @@ describe("a browser waiting to pair is offered Pair, right here (F2)", () => {
     // the card behind the dialog — so the words must say Forget, not "give it a
     // moment", which would have the user wait for a state that never comes.
     api.postErrors["/browser/pair"] = [
-      "AUTHENTICATION_FAILED: Another browser is paired and connected right now. Press Forget on the Browser page in Iron Jarvis to end that pairing, then press Pair for this one.",
+      "AUTHENTICATION_FAILED: Another browser is paired and connected right now. Press Forget on the Browser page in STEC OS to end that pairing, then press Pair for this one.",
       409,
     ];
     await openModal(CARD_STATES.waiting);
@@ -771,13 +771,13 @@ describe("the guided window ends on the sidebar (v1.242.0)", () => {
 describe("failures are told in the user's words, never the tool's (F3)", () => {
   /** The daemon's real 409 body for this route, verbatim. */
   const TOOL_REMEDY =
-    "the browser add-on is not connected. Ask the user to open the Browser page in Iron Jarvis and pair their browser, then retry.";
+    "the browser add-on is not connected. Ask the user to open the Browser page in STEC OS and pair their browser, then retry.";
 
   it("a 409 from the grant nudge is rewritten for the person reading it", async () => {
     api.postErrors["/browser/request-host-permission"] = [TOOL_REMEDY, 409];
     await openModal(NO_SITE_ACCESS);
     fireEvent.click(screen.getByTestId("browser-setup-reopen-grant"));
-    await waitFor(() => expect(modalText()).toContain("not connected to Iron Jarvis right now"));
+    await waitFor(() => expect(modalText()).toContain("not connected to STEC OS right now"));
 
     const text = modalText();
     // THE FINDING: this told the user, who is standing on the Browser page, to

@@ -1,6 +1,6 @@
 """Memory steward — the agent that curates its own long-term memory (v1.143.0).
 
-Iron Jarvis has been WRITE-ONCE about memory: a note lands when someone thinks
+STEC OS has been WRITE-ONCE about memory: a note lands when someone thinks
 to write one, and nothing ever revisits it. Curated memory beats write-once
 memory — but only if curation can never silently destroy anything. So the
 steward is split down that line and this module owns the safe half:
@@ -609,7 +609,7 @@ class StewardWindow:
 #:   has just been told NEVER to delete a note reads "file a deletion" as a
 #:   contradiction and quietly does neither.
 TASK_PREAMBLE = """\
-You are Iron Jarvis' memory steward. Everything listed below is conversation \
+You are STEC OS' memory steward. Everything listed below is conversation \
 history that has never been reviewed for long-term memory. Read it and write \
 down what is worth remembering permanently.
 

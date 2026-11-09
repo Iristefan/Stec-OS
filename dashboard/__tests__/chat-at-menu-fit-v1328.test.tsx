@@ -180,7 +180,7 @@ afterEach(() => {
 });
 
 async function box(): Promise<HTMLTextAreaElement> {
-  return (await screen.findByPlaceholderText(/Message Iron Jarvis/)) as HTMLTextAreaElement;
+  return (await screen.findByPlaceholderText(/Message STEC OS/)) as HTMLTextAreaElement;
 }
 
 /** Give the composer card and the chat section their measured boxes, and

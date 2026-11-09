@@ -235,7 +235,7 @@ describe("modelRowName: every live row reads in words, from the words lib/onboar
 /* ------------------------------------------------------ the real menu */
 
 async function openComposerMenu() {
-  await screen.findByPlaceholderText(/Message Iron Jarvis/);
+  await screen.findByPlaceholderText(/Message STEC OS/);
   fireEvent.click(await screen.findByTitle("Switch model"));
   return (await screen.findByTestId("model-filter")) as HTMLInputElement;
 }

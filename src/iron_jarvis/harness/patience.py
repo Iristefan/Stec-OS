@@ -309,7 +309,7 @@ def waiting_words(why: str, seconds: float, attempt: int, of: int, *,
 
 
 def tried_words(exc: BaseException | None) -> str:
-    """"Iron Jarvis tried 5 times over 1 min 50 s." for a failure that was
+    """"STEC OS tried 5 times over 1 min 50 s." for a failure that was
     waited out (``patience_tries`` ≥ 2), else "". Read by ``chat_turn.
     error_payload`` (both lanes) and put before the fix. Never raises."""
     try:
@@ -319,7 +319,7 @@ def tried_words(exc: BaseException | None) -> str:
         return ""
     if tries < 2:
         return ""
-    return f"Iron Jarvis tried {tries} times over {seconds_words(waited)}."
+    return f"STEC OS tried {tries} times over {seconds_words(waited)}."
 
 
 # --------------------------------------------------------------------------- #

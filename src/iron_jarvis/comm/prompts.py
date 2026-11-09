@@ -9,7 +9,7 @@ credentialed channel gets the question appended to its thread and sent to the
 phone. If no such identity exists, no prompt is registered — answering from
 the phone requires an established conversation (the identity row IS the trust
 anchor; it only exists for allowlisted senders who have already talked to
-Iron Jarvis).
+STEC OS).
 
 THE RESOLUTION RULE (implemented in ``comm/inbound.py``, pinned by tests):
 while a prompt is open for an identity, a bare inbound message resolves it
@@ -496,7 +496,7 @@ def question_destinations(notifier: Any, run_id: Any) -> set[str]:
     at the very address their own lines go to (readiness 12B, 0e.4).
 
     THE DUPLICATE: a scheduled workflow parked on a question sent the same
-    phone chat three lines — the answerable question (``Iron Jarvis:
+    phone chat three lines — the answerable question (``STEC OS:
     Workflow 'x' is waiting: … reply with /answer …``, from
     :func:`handle_workflow_waiting`), the engine's park line ("needs you …
     answer it in chat or on the Workflows page") and the schedule's own
@@ -611,7 +611,7 @@ def handle_approval_requested(
 
             question = build_ask_words(payload)[:_QUESTION_CAP]
             thread_line = (
-                f"⏸ {question} — reply approve or deny (or 1 / 2), or answer in Iron Jarvis."
+                f"⏸ {question} — reply approve or deny (or 1 / 2), or answer in STEC OS."
             )
 
         out: list[dict[str, Any]] = []
@@ -690,7 +690,7 @@ def handle_workflow_waiting(
     store: PendingPromptStore,
     notifier: Any,
     thread_store: Any,
-    reply_prefix: str = "Iron Jarvis: ",
+    reply_prefix: str = "STEC OS: ",
 ) -> list[dict[str, Any]]:
     """Register pending prompts for a just-parked workflow run.
 

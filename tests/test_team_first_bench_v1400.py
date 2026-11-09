@@ -370,7 +370,7 @@ def test_the_command_line_says_the_number_after_a_team_setup(tmp_path, monkeypat
     # Once: the team's; the planner alone gets no such line.
     # v1.401.0 (moved on purpose): the finish check's own review is said apart
     # (never counted as the planner's piece — team_report review).
-    assert said == ["The planner handed at least one piece to a team member in 1 of 1 run. Iron Jarvis's own "
+    assert said == ["The planner handed at least one piece to a team member in 1 of 1 run. STEC OS's own "
                     "finish check handed the change to the team's reviewer in 1 of 1 run."], out.output
     assert lines.index(said[0]) < next(i for i, ln in enumerate(lines) if "jarvis-claude-cli-" in ln)
     (runner,) = made

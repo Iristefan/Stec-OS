@@ -79,7 +79,7 @@ const SLACK_FIELDS = [
   { key: "channel", label: "Channel (option B)", secret: false },
   { key: "app_token", label: "App-level token (two-way, no exposure)", secret: true },
   { key: "inbound_enabled", label: "Enable two-way (true/false)", secret: false },
-  { key: "chat_enabled", label: "Chat with Iron Jarvis (true/false)", secret: false },
+  { key: "chat_enabled", label: "Chat with STEC OS (true/false)", secret: false },
   { key: "allowed_senders", label: "Allowlist (Slack member IDs)", secret: false },
 ];
 

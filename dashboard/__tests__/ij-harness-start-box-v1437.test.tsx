@@ -205,7 +205,7 @@ beforeEach(() => {
   api.calls = [];
   turnBodies.length = 0;
   api.gets = {
-    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\Iron Jarvis" },
+    "/build/sessions": { folders: [], work_root: "C:\\Users\\VR\\Documents\\STEC OS" },
     "/build/sessions?archived=1": { folders: [] },
     "/build/accounts": ACCOUNTS,
     [teamPath("")]: { folder: "", team: null },

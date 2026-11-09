@@ -6,7 +6,7 @@
  * Markdown for the replies, the work rows (components/chat/WorkLine) that
  * open to a step's input and output, the inline diff (DiffView's body) for a
  * change, Open in VS Code / Cursor beside a file step, the plan checklist,
- * and the thinking disclosure. Nothing here talks to Iron Jarvis.
+ * and the thinking disclosure. Nothing here talks to STEC OS.
  */
 
 import { memo, useCallback, useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
@@ -113,7 +113,7 @@ export const COPIED_MS = 1500;
  *  finished text of the turn from the user's message to the next one (a
  *  reply with tool steps between its words used to copy one piece), keyed by
  *  the LAST finished text of that turn: the one row that shows the button.
- *  A message Iron Jarvis sent by itself to carry the reply on is not a new
+ *  A message STEC OS sent by itself to carry the reply on is not a new
  *  turn. Steps' own words, thinking and notes are not the reply. Only the
  *  conversation's top-level rows are read (a helper's text is its own). */
 export function replyCopyTexts(items: readonly ConvItem[]): Map<string, string> {
@@ -198,7 +198,7 @@ export const codeRowDraws = { items: 0, tools: 0 };
 export type ExpandStep = (item: string) => Promise<ItemText | null>;
 
 /** v1.441.0: what the user's own messages offer (BuildCodeView supplies it
- *  from the view's `branch`; absent = an older Iron Jarvis, nothing shown). */
+ *  from the view's `branch`; absent = an older STEC OS, nothing shown). */
 export interface MessageActions {
   facts: BranchFacts;
   /** A reply runs (or a press is out): the menu's actions are refused. */
@@ -484,7 +484,7 @@ const Item = memo(function Item({
   switch (item.kind) {
     case "user":
       if (item.carry) {
-        // v1.422.0: a message Iron Jarvis sent BY ITSELF to carry the reply
+        // v1.422.0: a message STEC OS sent BY ITSELF to carry the reply
         // on — one quiet line, never the user's bubble (its words are the
         // app's, written for the tool).
         return (

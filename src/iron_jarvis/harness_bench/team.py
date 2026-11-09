@@ -72,7 +72,7 @@ before.
 TEAM MODE (v1.403.0). ``team = true`` under ``[planner]`` runs the planner as
 a CODING SESSION's team LEAD (``harness/team``): it holds no tool that changes
 a file or runs a command — enforced, not asked — and hands each piece to its
-WORKERS (the members with the ``code`` role, one or two) while Iron Jarvis
+WORKERS (the members with the ``code`` role, one or two) while STEC OS
 hands every change to its REVIEWER (the member with ``review`` and not
 ``code``) before the reply ends. The runner arms the session's team around
 every task's turn exactly as a Build session with a team does
@@ -294,7 +294,7 @@ def parse_team(data: Any, *, source: str = "") -> TeamSpec:
             raise _refused(f"The team file's {where}: a name is 1 to 40 lowercase letters, digits, "
                            "'-' or '_', starting with a letter.")
         if name in reserved:
-            raise _refused(f"The team file's {where}: {name} is the name of one of Iron Jarvis's own "
+            raise _refused(f"The team file's {where}: {name} is the name of one of STEC OS's own "
                            "agents; pick another.")
         if name in seen:
             raise _refused(f"The team file names {name!r} twice.")
@@ -309,7 +309,7 @@ def parse_team(data: Any, *, source: str = "") -> TeamSpec:
             raise _refused(f"The team file's {where} needs roles, a list such as [\"read\", \"code\"].")
         bad = MT.unknown_roles(roles)
         if bad:
-            raise _refused(f"The team file's {where} has roles Iron Jarvis does not know: "
+            raise _refused(f"The team file's {where} has roles STEC OS does not know: "
                            + ", ".join(bad) + " (the roles are " + ", ".join(MT.ROLE_IDS) + ").")
         description = _text(row.get("description"), where, "description", required=False)
         account = _text(row.get("account"), where, "account", required=False)

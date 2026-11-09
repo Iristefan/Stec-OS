@@ -1,4 +1,4 @@
-# Iron Jarvis — Wiring Audit: Required Fixes (verified)
+# STEC OS — Wiring Audit: Required Fixes (verified)
 
 A read-only auditor swept the project for missing/broken connections (registry
 ↔ agents ↔ permissions, daemon ↔ dashboard routes, events, and end-to-end

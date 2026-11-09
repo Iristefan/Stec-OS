@@ -16,7 +16,7 @@ import type { ImportSource } from "@/lib/mcpImport";
 export interface Discovery {
   /** Distinct tools found in every readable app. */
   found: number;
-  /** Of those, the ones not added to Iron Jarvis yet. */
+  /** Of those, the ones not added to STEC OS yet. */
   fresh: number;
   /** The apps that hold at least one tool not added yet, in scan order. */
   freshApps: string[];

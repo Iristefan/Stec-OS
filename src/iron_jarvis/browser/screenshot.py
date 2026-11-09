@@ -250,7 +250,7 @@ def filename_for(media_type: str, label: str = DEFAULT_LABEL) -> str:
         raise BrowserError(
             BrowserErrorCode.EXTENSION_ERROR,
             detail=(
-                f"the capture arrived as {media_type!r}, and Iron Jarvis stores "
+                f"the capture arrived as {media_type!r}, and STEC OS stores "
                 f"page captures as {', '.join(sorted(MEDIA_SUFFIXES))}"
             ),
         )
@@ -496,7 +496,7 @@ async def save_capture(
     except (OSError, binascii.Error, ValueError) as exc:
         raise ScreenshotSaveFailed(
             f"the screenshot could not be saved ({type(exc).__name__}: {exc}) — "
-            "check that Iron Jarvis's data folder is writable, then retry"
+            "check that STEC OS's data folder is writable, then retry"
         ) from exc
     except Exception as exc:  # noqa: BLE001 — never a traceback to a model
         raise ScreenshotSaveFailed(

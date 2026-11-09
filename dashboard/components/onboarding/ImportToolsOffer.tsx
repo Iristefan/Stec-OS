@@ -4,7 +4,7 @@
  * "Import your tools" on the first-run checklist (v1.420.0, C6.12).
  *
  * A new user who already set up tools in Claude Code, Claude Desktop, Codex,
- * Cursor or VS Code was never told, at first run, that Iron Jarvis can bring
+ * Cursor or VS Code was never told, at first run, that STEC OS can bring
  * them over: the door existed only on the Tools page and in the Directory.
  * The checklist's optional "Connect the apps you use" step now reads the SAME
  * answer those doors read (GET /mcp/import/sources, read-only, names only)

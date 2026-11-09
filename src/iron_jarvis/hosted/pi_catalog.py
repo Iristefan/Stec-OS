@@ -2,7 +2,7 @@
 session has run — so a Pi session in Build › Code offers what Pi's own
 ``/model`` picker offers from the first look, not "Pi's default" alone.
 
-WHY (measured on the user's live install, read-only): Iron Jarvis kept Pi's
+WHY (measured on the user's live install, read-only): STEC OS kept Pi's
 list only from a Pi process the Code view had started (v1.411.0's rule,
 ``hosted/pi_models.json``), and that file did not exist there — no Pi session
 had run — so the model menu held one row and the ``/`` menu nothing.
@@ -14,7 +14,7 @@ three and exits by itself at end of input, in under a second; it writes no
 session file, makes no network call (``--offline``) and starts none of the
 user's MCP servers (``--no-mcp``). No model is called. The user's own
 extensions, templates and skills load, as they do whenever Pi starts. It runs
-in an empty folder of Iron Jarvis's own, so no project's ``.pi`` is read —
+in an empty folder of STEC OS's own, so no project's ``.pi`` is read —
 a session's own process later lists that project's commands too.
 
 WHEN: in the background (never on a request's path), one read at a time,
