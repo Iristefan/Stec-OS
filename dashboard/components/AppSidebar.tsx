@@ -56,38 +56,14 @@ const COLLAPSE_KEY = "ij_sidebar_collapsed";
 /** Routes that render the chat surface (S8: home is a chat). */
 export const CHAT_PATHS = ["/", "/chat"];
 
-/** The arc-reactor brand mark. */
+/** The brand mark: the STEC OS logo the user chose (v1.445.0; it was an
+ *  arc-reactor glyph). The same picture as the app icon, served by Next from
+ *  `app/icon.svg`, so the sidebar, the tab and the taskbar all match. */
 export function ArcMark({ size = "h-8 w-8" }: { size?: string }) {
   return (
     <span className={`relative grid ${size} place-items-center`}>
-      <span className="absolute inset-0 rounded-xl bg-accent/15 blur-[6px]" />
-      <svg
-        viewBox="0 0 24 24"
-        className={`relative ${size} drop-shadow-[0_0_6px_rgb(var(--accent-rgb)/0.55)]`}
-        fill="none"
-        stroke="currentColor"
-      >
-        <circle cx="12" cy="12" r="9.2" className="stroke-accent/30" strokeWidth="1.2" />
-        <g className="stroke-accent">
-          {Array.from({ length: 8 }).map((_, i) => {
-            const a = (i * Math.PI) / 4;
-            return (
-              <line
-                key={i}
-                x1={12 + Math.cos(a) * 4.4}
-                y1={12 + Math.sin(a) * 4.4}
-                x2={12 + Math.cos(a) * 7.6}
-                y2={12 + Math.sin(a) * 7.6}
-                strokeWidth="1.1"
-                strokeLinecap="round"
-                opacity={0.7}
-              />
-            );
-          })}
-        </g>
-        <circle cx="12" cy="12" r="3.4" className="fill-accent/20 stroke-accent" strokeWidth="1.3" />
-        <circle cx="12" cy="12" r="1.2" className="fill-accent-soft" stroke="none" />
-      </svg>
+      {/* eslint-disable-next-line @next/next/no-img-element -- a local 128px mark */}
+      <img src="/icon.svg" alt="" aria-hidden="true" draggable={false} className={`relative ${size} rounded-lg`} />
     </span>
   );
 }

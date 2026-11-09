@@ -1,7 +1,7 @@
 # STEC OS — The Handbook
 
 *The user guide. What this app is, how to work it daily, and the rules it
-holds itself to. Current as of v1.444.0 (2026-11-06).*
+holds itself to. Current as of v1.445.0 (2026-11-06).*
 
 ---
 
@@ -2008,6 +2008,11 @@ old folders, so after it you add your API keys and settings again. The old
 folders stay on disk until you delete them. The installer file keeps its old
 name, `Iron-Jarvis-Setup-<version>.exe`. The assistant still answers to
 "Jarvis" in voice commands.
+
+From v1.445.0 the app, its taskbar button, the tray,
+the installer, the browser add-on, the browser tab and the sidebar all show
+the STEC OS "S" logo. Windows may keep showing the old icon on a desktop
+shortcut until it refreshes its icon cache (signing out and back in does it).
 
 ## Voice commands: Ctrl+Shift+V (v1.443.0)
 
