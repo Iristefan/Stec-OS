@@ -1,7 +1,7 @@
 # STEC OS — The Handbook
 
 *The user guide. What this app is, how to work it daily, and the rules it
-holds itself to. Current as of v1.446.0 (2026-11-06).*
+holds itself to. Current as of v1.446.1 (2026-11-06).*
 
 ---
 
