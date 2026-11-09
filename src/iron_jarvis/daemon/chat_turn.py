@@ -9732,8 +9732,8 @@ async def run_chat_turn(
     # MIRROR NOTE (lock-step): routes/chat.py joins the same object.
     system += _grounding.stable()
     _query_tail += _grounding.query()
-    # v1.436.0 (Wave 5, B3): a step only a page can do, or something Iron
-    # Jarvis does not offer, is said to the model in one plain line ("" when
+    # v1.436.0 (Wave 5, B3): a step only a page can do, or something STEC
+    # OS does not offer, is said to the model in one plain line ("" when
     # the message names none — byte-identical). MIRROR NOTE (lock-step):
     # routes/chat.py adds the same block at the same seam.
     _query_tail += page_steps_block(body)

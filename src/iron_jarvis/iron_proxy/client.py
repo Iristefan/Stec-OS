@@ -122,8 +122,8 @@ class IronProxyClient:
     missing or wrong bearer token that way, and an account that needs to sign
     in WITH a profileId). It returns the ``(url, token)`` proxy.json names now,
     or ``None``; when that differs (the proxy restarted) the client rebinds and
-    retries ONCE. Otherwise the call fails with "Iron-Proxy refused Iron
-    Jarvis's access token." — never read as an account needing sign-in.
+    retries ONCE. Otherwise the call fails with "Iron-Proxy refused STEC
+    OS's access token." — never read as an account needing sign-in.
     """
 
     def __init__(

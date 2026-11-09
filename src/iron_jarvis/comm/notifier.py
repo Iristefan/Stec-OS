@@ -70,8 +70,8 @@ DEFAULT_ALERT_EVENTS: frozenset[str] = frozenset(
         # summary with a short line per task (never one per task). On this PC
         # the bell / the tray say it, so "This PC" stays quiet for it.
         EventType.BUILD_NIGHT_SUMMARY,
-        # v1.406.0 part 3: a pull request's check fix — ONLY its news (Iron
-        # Jarvis stopped fixing, or the checks pass after its reviewed push);
+        # v1.406.0 part 3: a pull request's check fix — ONLY its news (STEC
+        # OS stopped fixing, or the checks pass after its reviewed push);
         # every other step (``build.ci_step``) is a quiet bell row. On this PC
         # the bell / the tray say it, so "This PC" stays quiet for it.
         EventType.BUILD_CI_DONE,

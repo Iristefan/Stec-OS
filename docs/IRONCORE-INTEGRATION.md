@@ -76,8 +76,8 @@ IronCore is the user's own Codex-style CLI for open-source models. Its thesis
 
 ## Deliberately NOT ported (recorded so nobody re-files these as gaps)
 
-- **Edit-format ladders** (unified_diff→search_replace→whole_file): Iron
-  Jarvis edits through structured tools, not diff negotiation with the
+- **Edit-format ladders** (unified_diff→search_replace→whole_file): STEC
+  OS edits through structured tools, not diff negotiation with the
   model. No socket, no need.
 - **Per-model sampling defaults**: the router owns parameters; revisit only
   with evidence.

@@ -956,8 +956,8 @@ def _run_generic_words(
 ) -> "tuple[str, str]":
     """``(title, fix)`` for a RUN's failure nothing recognised (readiness 12A,
     G28): WHAT failed — the provider by its plain name when a provider's
-    error is in the chain ("Codex couldn't finish this task"), else Iron
-    Jarvis itself — and what to do next: choose another model when a model
+    error is in the chain ("Codex couldn't finish this task"), else STEC
+    OS itself — and what to do next: choose another model when a model
     failed, else where the details are. Never the failure's own text (that is
     the technical detail, kept apart). ``started`` False (12A review): no run
     existed, so STEC OS's own fault never says "open the run" (there is

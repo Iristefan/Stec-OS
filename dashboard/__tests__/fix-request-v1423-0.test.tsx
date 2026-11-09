@@ -1,6 +1,6 @@
 /**
- * v1.423.0 (Wave 3 lane B) — "Copy as a fix request": the problems Iron
- * Jarvis's coding sessions and model team ran into, copied as a report the
+ * v1.423.0 (Wave 3 lane B) — "Copy as a fix request": the problems STEC
+ * OS's coding sessions and model team ran into, copied as a report the
  * owner can paste to the coding agent that fixes STEC OS
  * (components/team/FixRequestButton; the daemon's GET /team/fix-request).
  *

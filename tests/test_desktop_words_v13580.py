@@ -7,8 +7,8 @@ the daemon keeps stalling", the watchdog toast "The daemon stopped answering
 repeatedly…", the crash-loop tooltip "STEC OS — daemon is restarting
 repeatedly" and toast "The daemon keeps crashing…", and the startup dialog's
 window title "STEC OS — daemon did not start". VOCABULARY.md: the program
-the window talks to is **STEC OS**; the window's own server is "the Iron
-Jarvis dashboard".
+the window talks to is **STEC OS**; the window's own server is "the STEC
+OS dashboard".
 
 THE TOAST: desktop/main.js kept its own six-entry table, so `edit_file` read
 "use edit file" (the card: "change a file") and `mcp__github__create_issue`

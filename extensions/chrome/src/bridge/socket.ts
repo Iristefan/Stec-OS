@@ -270,8 +270,8 @@ export class BridgeSocket {
       // information), so the only honest words are that the socket failed.
       // `close` follows and drives the retry; this handler exists so the popup
       // has something true to show meanwhile.
-      // v1.264.0: in words that say what to DO. The old "could not reach Iron
-      // Jarvis on 127.0.0.1:8787" read as a broken add-on; the usual cause is
+      // v1.264.0: in words that say what to DO. The old "could not reach STEC
+      // OS on 127.0.0.1:8787" read as a broken add-on; the usual cause is
       // the app not running yet (it restarts during an update).
       this.lastError =
         this.lastError ||
@@ -493,8 +493,8 @@ export class BridgeSocket {
       return;
     }
     // The plaintext arrives exactly once, ever. Storing it before anything else
-    // can throw is deliberate: losing it means the user must press Forget in Iron
-    // Jarvis and pair again, and nothing in the add-on can recover it.
+    // can throw is deliberate: losing it means the user must press Forget in STEC
+    // OS and pair again, and nothing in the add-on can recover it.
     this.token = token;
     await chrome.storage.local.set({ [STORAGE_TOKEN_KEY]: token });
     this.backoffMs = BACKOFF_MIN_MS;

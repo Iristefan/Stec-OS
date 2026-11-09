@@ -37,8 +37,8 @@ Google and no sign-in was used; masked recordings in
   Even an API key in the environment (``GEMINI_API_KEY``) is not used until a
   client calls ``authenticate {methodId: "gemini-api-key"}`` — and Antigravity
   then KEEPS that choice (``cache/acp-auth-state.json``
-  ``{"methodId": "gemini-api-key"}``, measured) for every later start. So Iron
-  Jarvis NEVER calls ``authenticate``: choosing a sign-in method is the user's,
+  ``{"methodId": "gemini-api-key"}``, measured) for every later start. So STEC
+  OS NEVER calls ``authenticate``: choosing a sign-in method is the user's,
   in Antigravity's own screen.
 * ``session/new`` {cwd, mcpServers} answers ``sessionId`` (a UUID),
   ``models`` {availableModels [{modelId "<base>-<level>"}], currentModelId},

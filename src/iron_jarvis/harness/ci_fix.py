@@ -1,6 +1,6 @@
 """A coding session's pull request: its CHECKS are watched, a failure is FIXED
-by the session itself, and a CLOUD REVIEWER approves the fix before Iron
-Jarvis pushes it (v1.406.0 part 3, the user's decision of 2026-10-29).
+by the session itself, and a CLOUD REVIEWER approves the fix before STEC
+OS pushes it (v1.406.0 part 3, the user's decision of 2026-10-29).
 
 What lives here (BLOCKING helpers and pure words; the loop that drives them is
 ``daemon/routes/ci_watch.py``):
@@ -930,8 +930,8 @@ FOREIGN_COMMITS_WORDS = (
 
 
 def foreign_commits(wt: Path, base_sha: str, own: "list[str]", tip: str = "HEAD") -> "list[str] | None":
-    """The commits between ``base_sha`` and ``tip`` that are NOT Iron
-    Jarvis's own (``own``, full SHAs), as ``<short> <subject>``; None when git
+    """The commits between ``base_sha`` and ``tip`` that are NOT STEC
+    OS's own (``own``, full SHAs), as ``<short> <subject>``; None when git
     could not list them (never "none"). BLOCKING."""
     if not base_sha:
         return None

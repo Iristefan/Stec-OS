@@ -469,8 +469,8 @@ def test_sign_in_opens_a_pane_running_the_packs_own_program_with_its_settings(
 
 def test_the_sign_in_terminal_never_inherits_the_daemons_microsoft_settings(client, monkeypatch):
     """v1.428.0 review (b): the Sign in terminal starts from the daemon's
-    environment WITHOUT the settings the program must only get from Iron
-    Jarvis — a stray ``MS365_MCP_*`` (an OAuth token that skips the account
+    environment WITHOUT the settings the program must only get from STEC
+    OS — a stray ``MS365_MCP_*`` (an OAuth token that skips the account
     lock, a command that stores the sign-in), a wider ENABLED_TOOLS or
     NODE_OPTIONS. MUTATION: build the job's base from ``os.environ`` -> red."""
     stray = {"MS365_MCP_OAUTH_TOKEN": "stray", "MS365_MCP_AUTH_CACHE_COMMAND": "calc.exe",

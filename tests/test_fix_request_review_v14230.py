@@ -467,8 +467,8 @@ def test_the_route_is_a_sync_def_so_its_reads_never_run_on_the_event_loop(tmp_pa
 def test_a_helper_that_failed_on_the_users_own_sign_in_key_limit_or_a_safety_refusal_is_left_out(tmp_path):
     """The module's rule ("a sign-in or key the user has to fix, an account's
     limit, a provider's safety refusal" are left out) held for the lead's
-    replies only — a HELPER that failed the same way was listed as an Iron
-    Jarvis problem."""
+    replies only — a HELPER that failed the same way was listed as an STEC
+    OS problem."""
     engine = _engine(tmp_path)
     summaries = (
         "The run failed: Claude Code isn't signed in. Press Sign in beside Claude Code in Settings › Connections.",

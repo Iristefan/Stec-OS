@@ -5702,8 +5702,8 @@ async def chat_stream(
                     # the same kind of call: the APP's command, running a
                     # program the PROJECT supplies. Never on auto-approve's
                     # per-call grant either.
-                    # v1.417.0 (C1.3, decision D1): under "Don't ask" Iron
-                    # Jarvis's own checker runs with no card (the posture is
+                    # v1.417.0 (C1.3, decision D1): under "Don't ask" STEC
+                    # OS's own checker runs with no card (the posture is
                     # the person's standing answer); the folder's own check
                     # above keeps its card in every posture.
                     _cks = getattr(_harness, "checkers", None) if _harness is not None else None

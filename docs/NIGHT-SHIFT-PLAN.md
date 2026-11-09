@@ -71,8 +71,8 @@ Missing or unsafe for work nobody watches:
    The alternatives:
    - the task waits until morning (it stops there);
    - approve everything (unsafe).
-2. **Committing overnight work.** Recommended: when a task finishes, Iron
-   Jarvis itself commits it to the task's own branch, the way the Commit
+2. **Committing overnight work.** Recommended: when a task finishes, STEC
+   OS itself commits it to the task's own branch, the way the Commit
    button does, with the task's words as the message. It never pushes and
    never merges. The agent still asks before its own commits. Alternative:
    leave the work uncommitted for you.

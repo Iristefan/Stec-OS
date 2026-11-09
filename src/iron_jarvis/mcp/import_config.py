@@ -643,8 +643,8 @@ def _str_map(value: Any) -> dict[str, str]:
 
 
 def _spec_from_entry(raw_name: str, entry: dict[str, Any], *, source: str, origin: str) -> PackSpec | None:
-    """One config-dialect server entry → a spec, or ``None`` for Iron
-    Jarvis's own server / an entry with neither a command nor a URL."""
+    """One config-dialect server entry → a spec, or ``None`` for STEC
+    OS's own server / an entry with neither a command nor a URL."""
     command = str(entry.get("command") or "").strip()
     args = _str_list(entry.get("args"))
     # Codex's `command = "npx -y pkg"` and VS Code's "command": "npx" both

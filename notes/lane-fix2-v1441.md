@@ -24,8 +24,8 @@ Review findings U1-U7, X1, X2, X5 (per-account usage refresh) and D1-D4
   - backs off after answers with no numbers (doubling, at most 1 h; a no-plan
     login waits the hour at once). A press is never held back by it.
 - A usage read never inherits an API key (Iron-Proxy's `COMMON_STRIP` names
-  plus `CODEX_API_KEY` / `CODEX_ACCESS_TOKEN`), and no Claude child of Iron
-  Jarvis inherits a parent Claude Code session's account
+  plus `CODEX_API_KEY` / `CODEX_ACCESS_TOKEN`), and no Claude child of STEC
+  OS inherits a parent Claude Code session's account
   (`CLAUDE_CODE_ACCOUNT_UUID` / `_USER_EMAIL` / `_ORGANIZATION_UUID`).
 - The "Check usage now" note: a failed read's words wrap (no more cut on a
   phone) and the note's text is its tooltip; "as of N min ago" redraws itself

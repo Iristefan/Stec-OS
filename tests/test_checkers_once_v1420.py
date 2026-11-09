@@ -17,8 +17,8 @@ and a card per round. Now:
 (d) the findings reach the finish note, and the record carries
     ``checkers {ran, skipped, late}``;
 (e) the Wave 1 card rules hold: Don't ask or a session grant on the carrier
-    → no card; else ONE card for the finish round's own calls, Iron
-    Jarvis's.
+    → no card; else ONE card for the finish round's own calls, STEC
+    OS's.
 
 Driven through the REAL stream and POST lanes (registry, permission engine,
 cards, ledger, the shell tool — the checker programs are real scripts on the

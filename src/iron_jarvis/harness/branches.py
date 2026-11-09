@@ -1124,8 +1124,8 @@ def clean_message(text: str) -> str:
 def commit(facts: dict[str, str], message: str, *, screen: Any = None, timeout: float = START_S,
            on_spawn: Any = None, recheck: Any = None) -> dict[str, Any]:
     """Commit everything in the worktree on the session's branch (``git add
-    -A`` then ``git commit -F -``) as the user (their own git identity; Iron
-    Jarvis's default name only when git names no one — said in ``note``).
+    -A`` then ``git commit -F -``) as the user (their own git identity; STEC
+    OS's default name only when git names no one — said in ``note``).
     Never amends. :class:`GitRefused` for no message, nothing to commit, or a
     commit git refused (a hook, …).
 

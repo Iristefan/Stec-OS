@@ -61,8 +61,8 @@ _WHAT: dict[str, str] = {
     "stash": "its stash changed",
     "refs": "a branch or tag of the repository changed",
     "env": "the packages in its .venv changed (something was installed or removed)",
-    # v1.399.0 review (night shift N2): a hook runs on every commit — Iron
-    # Jarvis's own commit of the night's work and every one the user makes.
+    # v1.399.0 review (night shift N2): a hook runs on every commit — STEC
+    # OS's own commit of the night's work and every one the user makes.
     "hooks": "its git hooks changed (a hook runs on every commit you make)",
     "config": "its git settings changed (.git/config)",
 }
@@ -174,8 +174,8 @@ def changes(before: "dict[str, str] | None", after: "dict[str, str] | None") -> 
         return None
     if before.get("error") or after.get("error"):
         return None
-    # v1.399.0 review: a key one side does not hold (a snapshot an older Iron
-    # Jarvis took before the task started, or settings it could not read) is
+    # v1.399.0 review: a key one side does not hold (a snapshot an older STEC
+    # OS took before the task started, or settings it could not read) is
     # never a change.
     return [words for key, words in _WHAT.items()
             if (key in before) == (key in after) and str(before.get(key, "")) != str(after.get(key, ""))]

@@ -33,8 +33,8 @@ record tools are (``settings.records``):
   "Start new chats local only"): changed through the settings tools (off is
   ask-floor), read by the chat page when it starts a new chat.
 
-* UNDO AND HISTORY (D4). ``changes_list`` reads the undo journal — what Iron
-  Jarvis changed recently: settings, records, files, memory notes — names and
+* UNDO AND HISTORY (D4). ``changes_list`` reads the undo journal — what STEC
+  OS changed recently: settings, records, files, memory notes — names and
   plain words only, never a value or a file's contents. ``change_undo``
   reverses one through THE code ``POST /undo/{id}`` runs
   (``routes.undo.perform_undo``, the one ``config_undo`` already shares);

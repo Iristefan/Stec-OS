@@ -1,5 +1,5 @@
-"""An account that signs in is SEEN to be signed in; an old Iron-Proxy an Iron
-Jarvis started is replaced (v1.303.3, two LIVE bugs + the review).
+"""An account that signs in is SEEN to be signed in; an old Iron-Proxy an STEC
+OS started is replaced (v1.303.3, two LIVE bugs + the review).
 
 1. The user added a Claude account, pressed Sign in, logged in in the Build
    pane — the login landed in the account's home — and the card said "Needs
@@ -21,8 +21,8 @@ Jarvis started is replaced (v1.303.3, two LIVE bugs + the review).
    older bundle (no "pick-profile"). Now a located proxy that lacks a feature
    the bundle has is stopped and replaced — ONLY when its command line runs an
    STEC OS bundle (THIS repo's, or an install's); never a pid twice, never
-   the same (bundle, version) twice, at most twice in 10 minutes (two Iron
-   Jarvis copies sharing one data dir), and never when the kill did not take.
+   the same (bundle, version) twice, at most twice in 10 minutes (two STEC
+   OS copies sharing one data dir), and never when the kill did not take.
 
 Driven through the REAL app factory and the fake Iron-Proxy; process command
 lines and kills are faked (nothing real is ever killed).

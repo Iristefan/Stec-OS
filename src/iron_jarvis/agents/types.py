@@ -330,8 +330,8 @@ _DEFINITIONS: dict[AgentType, AgentDefinition] = {
             "what you changed and why."
         ),
         tools=(
-            # v1.173.0: `ltm_search` joins `recall`. The maintainer edits Iron
-            # Jarvis's own source, and the decisions behind that source (why a
+            # v1.173.0: `ltm_search` joins `recall`. The maintainer edits STEC
+            # OS's own source, and the decisions behind that source (why a
             # seam exists, what a past wave ruled out) live in the shared brain,
             # not in the tree. No `mcp:*`: an agent that edits code and runs
             # `shell` gets no extra external reach for a brain it can already

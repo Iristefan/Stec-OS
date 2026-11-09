@@ -3,8 +3,8 @@ will hold it.
 
 ``C:\\ijb`` already holds last night's two setups (STEC OS 1.396.1: the
 team and Sonnet alone, same planner, model and effort); tonight adds three.
-Each team setup must be answered against the alone row of its OWN Iron
-Jarvis, the table must show the row its answer compares with (and say which
+Each team setup must be answered against the alone row of its OWN STEC
+OS, the table must show the row its answer compares with (and say which
 it is), and "The team at work" — the first number the user looks for — must
 count every run in which the planner handed a piece out.
 """
@@ -73,8 +73,8 @@ def test_each_team_is_answered_against_the_alone_row_of_its_own_iron_jarvis():
     """C:\\ijb already holds last night's team and Sonnet-alone rows (1.396.1).
     Tonight's rows share every task and repeat with them, and the alone row
     the answer used was picked by runs in common, then the NEWEST — so last
-    night's team was re-answered against TONIGHT's alone row (another Iron
-    Jarvis, another harness), and its numbers changed overnight. The same
+    night's team was re-answered against TONIGHT's alone row (another STEC
+    OS, another harness), and its numbers changed overnight. The same
     version comes first; the numbers decide only among those."""
     night_team, night_alone, team, alone, first = _last_night_and_tonight()
     pairs = [(c, r) for c, r in (night_team, night_alone, team, alone, first)]

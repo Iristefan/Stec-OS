@@ -1,7 +1,7 @@
 """Execution truth (v1.149.0) — what the agent DID, not what it said it would.
 
-The report: "agents must stop only describing what they intend to do." Iron
-Jarvis was never guessing — every tool call and every file mutation has been in
+The report: "agents must stop only describing what they intend to do." STEC
+OS was never guessing — every tool call and every file mutation has been in
 ``ToolInvocation`` + ``UndoJournal`` since TX-01. Nothing summarised it back, so
 the only thing a user saw was the model's own closing paragraph, which is
 exactly the sentence that can claim work that never happened.

@@ -37,8 +37,8 @@ the agent — no model call). Recorded in
   are only ever read).
 * An AGENT's own ``permission`` in the user's config is placed AFTER the
   config's (and the environment's) rules: ``agent.build.permission.bash =
-  "allow"`` beat every deny above. So the call runs as an agent of Iron
-  Jarvis's OWN, defined for that process only in ``OPENCODE_CONFIG_CONTENT``
+  "allow"`` beat every deny above. So the call runs as an agent of STEC
+  OS's OWN, defined for that process only in ``OPENCODE_CONFIG_CONTENT``
   (merged into an inline config of the user's, never replacing it) and named
   with ``--agent``: its own all-``deny`` permission is the LAST rule for every
   tool. The name is FRESH per call (``iron-jarvis-text-<hex>``): a user agent

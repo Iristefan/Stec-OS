@@ -304,8 +304,8 @@ with 4 undecided commands waits ≤ 3 s total in a fake-router test; the
 judge prompt test shows the request text present.
 
 **C1.6 Accept edits and Auto survive a resume, an approved plan's act turn and an account move · S** (Decision D2)
-Problem: `unwatched_mode` maps them to approve_for_me for every turn Iron
-Jarvis starts itself (`auto_approve.py:143-156`, `routes/build.py:2221,
+Problem: `unwatched_mode` maps them to approve_for_me for every turn STEC
+OS starts itself (`auto_approve.py:143-156`, `routes/build.py:2221,
 3027-3030`); "Don't ask" does not fall back, so the strictest easing is the
 only one kept. Fix: keep the fallback for night/CI/restart resumes (nobody
 is watching), but NOT for the approved plan's act turn and Resume-when-ready

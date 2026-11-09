@@ -2694,8 +2694,8 @@ _RULES: list[tuple[re.Pattern[str], dict[str, int]]] = [
     # branch (named ``guide_howdo``) armed the Handbook for ANY how-to — "how
     # do I connect my printer to wifi", "how do I send a wire transfer", "how
     # do I install node" — so a real model could spend a round on the
-    # Handbook. That branch now counts only when its sentence is about Iron
-    # Jarvis (:func:`_how_to_is_about_jarvis`: its name, "you" as the one
+    # Handbook. That branch now counts only when its sentence is about STEC
+    # OS (:func:`_how_to_is_about_jarvis`: its name, "you" as the one
     # asked, "here" / "this app", a feature word of the Handbook / Everything
     # list, or a catalog app beside a connect verb). The other branches name
     # the app or ask it about itself, and stay as they were.

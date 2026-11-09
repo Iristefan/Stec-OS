@@ -6,8 +6,8 @@
  * (re-enter WHAT, from WHERE?) and the Browser card announcing "This daemon
  * does not have the Browser surface yet — restart STEC OS" over what was
  * really its own 401. Both now say the true thing and name the way out:
- *   - the token banner, outside the desktop shell, offers "Open in the Iron
- *     Jarvis app" (an ironjarvis:// link to THIS page) and names token.txt;
+ *   - the token banner, outside the desktop shell, offers "Open in the STEC
+ *     OS app" (an ironjarvis:// link to THIS page) and names token.txt;
  *     inside the shell it keeps its old sentence and no link;
  *   - the Browser card tells a 401/403 (this page is not signed in) from a
  *     404 (an older daemon), and only the latter says "restart".

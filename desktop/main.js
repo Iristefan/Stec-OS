@@ -237,8 +237,8 @@ function readDaemonNetwork(homeDir, ifaces) {
 // 127.0.0.1:8787, so the bundled daemon MUST listen on 8787.
 const DAEMON_PORT = parseInt(process.env.IJ_DAEMON_PORT || "8787", 10);
 // 8788 (next to the daemon's 8787), NOT 3000: every Next/CRA dev server on the
-// machine defaults to 3000, and a foreign app squatting there would break Iron
-// Jarvis. The daemon's Host/Origin guard + CORS trust any loopback origin, so
+// machine defaults to 3000, and a foreign app squatting there would break STEC
+// OS. The daemon's Host/Origin guard + CORS trust any loopback origin, so
 // the port choice needs no daemon-side allowlist change.
 const DASHBOARD_PORT = parseInt(process.env.IJ_DASHBOARD_PORT || "8788", 10);
 
@@ -549,8 +549,8 @@ function setKeepRunningPref(value) {
   writeDesktopSetting("keepRunningInBackground", keepRunningPref);
   refreshMenus(); // reflect the new state in the tray + app-menu checkboxes
   // v1.438.0 (Wave 4 group C): every caller is the USER's choice (the tray,
-  // the app menu, the close question's "Remember my choice"), so Iron
-  // Jarvis's own setting says it too.
+  // the app menu, the close question's "Remember my choice"), so STEC
+  // OS's own setting says it too.
   noteDesktopSwitchByUser(KEEP_IN_BACKGROUND_KEY, keepRunningPref);
 }
 
@@ -1356,8 +1356,8 @@ function startService(label, spawnFn) {
     else if (rec.deaths.length === DEATHS_DAY_TOAST_AT) {
       notifyCrashLoop(label, (who) => `${who} has crashed ${rec.deaths.length} times in the last 24 hours and is being restarted each time. Logs: ${path.join(userDataDir || "", "logs")}`);
     }
-    // The handle lives on the record (review of D1): the tray "Restart Iron
-    // Jarvis" spawns a dead child at once and must cancel this pending spawn,
+    // The handle lives on the record (review of D1): the tray "Restart STEC
+    // OS" spawns a dead child at once and must cancel this pending spawn,
     // or two dashboards race for :8788 and the ladder supervises the loser.
     const seq = (rec.restartSeq = (rec.restartSeq || 0) + 1);
     rec.restartTimer = setTimeout(() => {
@@ -2345,8 +2345,8 @@ function verifyInstallIntegrity() {
 
 // Orphaned frozen daemons (a crashed session's child that never died) hold
 // file locks inside resources/daemon — NSIS then can't replace those files and
-// the next boot comes up half-installed. The image name is unique to Iron
-// Jarvis, so force-killing every instance is safe. Best-effort, synchronous
+// the next boot comes up half-installed. The image name is unique to STEC
+// OS, so force-killing every instance is safe. Best-effort, synchronous
 // (the installer must not start until the locks are gone).
 function sweepOrphanDaemons(opts = {}) {
   if (process.platform !== "win32") return;
@@ -2796,8 +2796,8 @@ function createMainWindow() {
 
 // A dashboard-child outage used to strand the window on Chromium's error page
 // for good (v1.226.0, F-E-7): a reload during the 1-60s restart window failed
-// and nothing ever retried. Wait for the dashboard to answer with the Iron
-// Jarvis app again, then load it. -3 is ERR_ABORTED — a navigation superseded
+// and nothing ever retried. Wait for the dashboard to answer with the STEC
+// OS app again, then load it. -3 is ERR_ABORTED — a navigation superseded
 // by another one — not a failure.
 // That wait was ONE-SHOT (v1.229.0, audit D1): after 60 s it gave up and a
 // dashboard the ladder brought back five minutes later never reached the

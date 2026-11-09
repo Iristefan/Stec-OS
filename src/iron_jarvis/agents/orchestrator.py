@@ -416,8 +416,8 @@ def is_unattended_origin(origin: str | None) -> bool:
 #: such doors already have running when the switch is engaged. Chat, a
 #: mission, a project task and a session a person started are attended and
 #: are never touched. v1.357.0 (G76 + G61): in the canon's unit of work
-#: ("task", VOCABULARY.md) and naming a task another computer running Iron
-#: Jarvis sent (``task_door``'s ``remote:<caller>`` origin), which the sender
+#: ("task", VOCABULARY.md) and naming a task another computer running STEC
+#: OS sent (``task_door``'s ``remote:<caller>`` origin), which the sender
 #: reads quoted in the door's 409.
 EMERGENCY_STOP_REFUSAL = (
     "Emergency stop is on, so work that starts on its own (schedules, goals, "

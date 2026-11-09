@@ -4,8 +4,8 @@
  * The desktop shell exposes `window.ironjarvis.popout`; the dashboard offers
  * the door in two places — the title bar (this page) and every nav row (that
  * module) — only inside the desktop shell and never inside a pop-out; a
- * popped-out window wears a badge and is titled by its module so two Iron
- * Jarvis windows never read as one app opened twice. Outside the shell (a
+ * popped-out window wears a badge and is titled by its module so two STEC
+ * OS windows never read as one app opened twice. Outside the shell (a
  * browser tab) nothing changes at all.
  */
 

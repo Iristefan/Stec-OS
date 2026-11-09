@@ -1,7 +1,7 @@
 """Share my profile with Build (v1.306.0; idea from agent-personalizer, MIT).
 
-A Build pane runs a vendor CLI (Claude Code, Codex) that never sees Iron
-Jarvis's prompt seams, so the profile the user set up stops at the pane's
+A Build pane runs a vendor CLI (Claude Code, Codex) that never sees STEC
+OS's prompt seams, so the profile the user set up stops at the pane's
 edge. This module keeps ONE generated block between markers in that CLI's own
 user-level instruction file, so every session the CLI starts reads it:
 

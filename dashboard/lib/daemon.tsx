@@ -196,8 +196,8 @@ export function DaemonProvider({ children }: { children: ReactNode }) {
             !everOnlineRef.current &&
             Date.now() - loadedAtRef.current < STARTING_GRACE_MS
           ) {
-            // v1.406.0 (part 6): never answered yet, page just loaded — Iron
-            // Jarvis is STARTING. `checking` stays true, so nothing says
+            // v1.406.0 (part 6): never answered yet, page just loaded — STEC
+            // OS is STARTING. `checking` stays true, so nothing says
             // "offline"; the banner says "Starting STEC OS…".
             stillStarting = true;
             setStarting(true);

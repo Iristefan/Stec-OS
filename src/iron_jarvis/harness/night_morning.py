@@ -12,8 +12,8 @@ This module is the durable part and the words:
 * THE NIGHT (:func:`night_key`): the LOCAL date the night window OPENED for a
   moment — 01:30 on the 27th belongs to the night of the 26th. A task keeps
   the night it started in (``NightTaskRecord.night``).
-* THE COMMIT MESSAGE (:func:`commit_message`): the task's own words — Iron
-  Jarvis commits each ended task's work to its own branch the way the Commit
+* THE COMMIT MESSAGE (:func:`commit_message`): the task's own words — STEC
+  OS commits each ended task's work to its own branch the way the Commit
   button does (``routes/build_git.commit_for_night``; never a push, never a
   merge).
 * THE FACTS (:func:`usage_by_account`, :func:`summary_row`): read off the

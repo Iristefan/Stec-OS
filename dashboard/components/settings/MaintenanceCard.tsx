@@ -5,8 +5,8 @@
  * backup/restore tools and a daemon restart — the same calls the old Settings
  * page's Maintenance card made, lifted out so the System group can show them.
  *
- * v1.354.0 (G59): the words name the app, never its engine: "Restart Iron
- * Jarvis", which stops tidily and the desktop app starts it again.
+ * v1.354.0 (G59): the words name the app, never its engine: "Restart STEC
+ * OS", which stops tidily and the desktop app starts it again.
  */
 
 import { useEffect, useState } from "react";

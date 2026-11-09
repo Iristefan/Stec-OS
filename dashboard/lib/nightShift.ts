@@ -168,8 +168,8 @@ function draftBody(d: NightDraft, edit = false): Record<string, unknown> {
     team: !!d.team,
     try_on: (d.tryOn ?? []).map((p) => ({ provider: p.provider, model: p.model })),
     // v1.424.0 (D6): an account rides when one is chosen; an edit also sends
-    // "" (a cleared choice), a new task none at all (the body an older Iron
-    // Jarvis already took).
+    // "" (a cleared choice), a new task none at all (the body an older STEC
+    // OS already took).
     ...(d.account || (edit && d.account !== undefined) ? { account: d.account } : {}),
   };
 }

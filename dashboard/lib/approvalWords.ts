@@ -98,8 +98,8 @@ export function answersOnlyOnce(a: {
   return typeof a.costNote === "string" && a.costNote.trim() !== "";
 }
 
-/** v1.417.0 (C1.7): who is asking, as the card's sentence subject. Iron
- *  Jarvis's own checks (the finish check re-running the tests, a project's
+/** v1.417.0 (C1.7): who is asking, as the card's sentence subject. STEC
+ *  OS's own checks (the finish check re-running the tests, a project's
  *  checker) say so; everything else is "The assistant", as before. */
 export function askerSubject(asker: unknown): string {
   return asker === "iron_jarvis" ? "STEC OS" : "The assistant";

@@ -298,8 +298,8 @@ describe("Notifications: Telegram chat on one screen, no Advanced, no typed id",
   // Review (v1.353.0): the list the FORM filled must follow a corrected chat
   // ID. Picking the wrong private chat (a friend who also messaged the bot)
   // and then detecting again used to correct the chat ID but leave the
-  // friend's id as the only allowed sender: the friend could talk to Iron
-  // Jarvis and the user could not.
+  // friend's id as the only allowed sender: the friend could talk to STEC
+  // OS and the user could not.
   it("a corrected chat ID moves the id the form filled, after a wrong pick", async () => {
     api.postResults["/comm/telegram/detect-chat"] = {
       chats: [

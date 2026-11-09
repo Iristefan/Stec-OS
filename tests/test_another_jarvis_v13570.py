@@ -25,8 +25,8 @@ stream: the run itself is real).
      ONCE; a restart-cut run still tells the sender; a stopped run says so.
   D7 the sending side: ``reply_token`` rides only to a task door; "Test" asks
      the door and starts nothing; a door's refusal is said in words; the form
-     refuses a chat dialect for a door; the reachability sentence says "Iron
-     Jarvis", never "daemon", and opens nothing.
+     refuses a chat dialect for a door; the reachability sentence says "STEC
+     OS", never "daemon", and opens nothing.
 """
 
 from __future__ import annotations

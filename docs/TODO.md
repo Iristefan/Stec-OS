@@ -484,8 +484,8 @@ API.
   (the Repair dialog), clean → carries on; a sliding window of
   `RESTART_CAP_MAX` (10) restarts per `RESTART_CAP_WINDOW_MS` (15 min) then
   stops the ladder (`rec.capped`), logs "giving up", toasts once more with
-  the stopped wording and `refreshTrayMenu()` inserts **Restart Iron
-  Jarvis** (`restartServicesFromTray`: resets every counter, respawns a
+  the stopped wording and `refreshTrayMenu()` inserts **Restart STEC
+  OS** (`restartServicesFromTray`: resets every counter, respawns a
   capped child, kills a live one with `reason=restart` and `rec.manualRestart`
   so the ladder respawns it at once without counting a crash; it also
   cancels a PENDING backoff timer — `rec.restartTimer` + `rec.restartSeq`,

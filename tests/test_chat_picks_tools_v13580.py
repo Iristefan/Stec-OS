@@ -15,8 +15,8 @@ only the model is scripted.
 (2) G15/G39: chat armed the first 24 of an app's tools in NAME order, so
     GitHub's pull-request tools were cut. The 24 are now the ones most
     relevant to the message (read-only first on a tie), in both lanes.
-(3) REGRESSION: an unclassified provider failure read an anonymous "Iron
-    Jarvis couldn't finish this answer". The Claude transport's timeout and
+(3) REGRESSION: an unclassified provider failure read an anonymous "STEC
+    OS couldn't finish this answer". The Claude transport's timeout and
     cut-off answers are typed (timeout / interrupted), the generic headline
     names the provider it knows, and "claude-cli:" is never doubled.
 (4) G41: a refused BUILT-IN tool reads in tool words with where to turn it

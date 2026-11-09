@@ -128,8 +128,8 @@ nothing saved, nothing changed):
 * Codex's plan mode is INSTRUCTIONS, not a lock (its prompt says "you must not
   perform mutating actions"). Read-only is STEC OS's: Plan runs on Ask
   first's posture (``untrusted``: Codex asks before EVERY file change and
-  every command), and in Plan every file-change request is declined by Iron
-  Jarvis at once, never shown as a card (:meth:`CodexDriver._decline_in_plan`);
+  every command), and in Plan every file-change request is declined by STEC
+  OS at once, never shown as a card (:meth:`CodexDriver._decline_in_plan`);
   commands still ask the user.
 * The plan arrives as its own item: ``item/started`` {type: "plan", id:
   "<turn>-plan", text: ""}, ``item/plan/delta`` {itemId, delta} (27 of them

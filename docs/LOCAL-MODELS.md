@@ -95,8 +95,8 @@ implement-vs-verify across them.
 
 - **Default:** run **DeepSeek V4-Flash** across the cluster when a task needs
   maximum single-agent intelligence.
-- **Multi-agent work:** run **one powerful model per Spark** and let Iron
-  Jarvis delegate work between them.
+- **Multi-agent work:** run **one powerful model per Spark** and let STEC
+  OS delegate work between them.
 - **Maximum:** use **Qwen3.5 397B-A17B** when the task warrants spending
   nearly the entire cluster on one multimodal frontier agent.
 

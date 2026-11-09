@@ -1161,8 +1161,8 @@ class OpenCodeDriver(AcpDriver):
 
     # -- "Allow for this session", across a new process (v1.420.0, C1.10) ---------
     def _always_key(self) -> str:
-        """The conversation's key in :data:`SESSION_ALWAYS`, scoped to the Iron
-        Jarvis home that started this OpenCode (v1.420.0 review: the map is the
+        """The conversation's key in :data:`SESSION_ALWAYS`, scoped to the STEC
+        OS home that started this OpenCode (v1.420.0 review: the map is the
         whole process's, and a conversation of another home — the test suite
         starts one app per test on the same recorded ``ses_`` ids — took the
         answer and never showed its own card)."""

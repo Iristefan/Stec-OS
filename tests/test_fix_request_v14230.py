@@ -1,5 +1,5 @@
-"""v1.423.0 (Wave 3 lane B): "Copy as a fix request" — the problems Iron
-Jarvis's coding sessions and model team ran into, as a report a coding agent
+"""v1.423.0 (Wave 3 lane B): "Copy as a fix request" — the problems STEC
+OS's coding sessions and model team ran into, as a report a coding agent
 working on STEC OS can act on (``agents/fix_request``,
 ``GET /team/fix-request``).
 

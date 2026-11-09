@@ -10,8 +10,8 @@ archived) and moves its watch (``harness/ci_fix.CiWatchRecord``) one step:
 
 1. **watching** — when it is time (60 s while a check runs, then less often up
    to 10 minutes; at most 6 hours), ``gh pr view`` reads the checks. All
-   passed: the watch rests (``passing``), and when the head is the fix Iron
-   Jarvis pushed, the bell rings "the checks pass now" (one of the two NEWS
+   passed: the watch rests (``passing``), and when the head is the fix STEC
+   OS pushed, the bell rings "the checks pass now" (one of the two NEWS
    kinds). A check failed (and none still runs): a fix is due.
 2. **fix due** — when the session is FREE (no reply running — a running reply
    always blocks a new fix turn, and nothing is read from GitHub meanwhile),

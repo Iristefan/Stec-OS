@@ -43,8 +43,8 @@ the model had run it —
   never cover it — it cards unless a grant wider than one call covers the
   command tool (the permission table, "Allow for this chat" / "for this
   session", a standing grant). v1.417.0 (C1.3, the user's decision D1): EXCEPT
-  under "Don't ask" (yolo) — the user's standing "never ask me", and Iron
-  Jarvis's own checker after an edit is not a new risk — where it runs with no
+  under "Don't ask" (yolo) — the user's standing "never ask me", and STEC
+  OS's own checker after an edit is not a new risk — where it runs with no
   card. (A folder's own ``plugins.toml`` check and a project's command file
   keep their card there: the v1.386.1 and v1.381.0 rules.) The finish
   round's calls share ONE card (v1.247.0) — under Local only each still cards

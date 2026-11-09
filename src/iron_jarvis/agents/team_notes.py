@@ -1382,8 +1382,8 @@ def render_text(habits: Iterable[str]) -> str:
     return "\n".join(lines + body).rstrip("\n") + "\n"
 
 
-#: v1.423.0 review: TEAM-NOTES.md is read at most this many bytes. Iron
-#: Jarvis writes one line per accepted habit (≤ ~210 bytes each); a file
+#: v1.423.0 review: TEAM-NOTES.md is read at most this many bytes. STEC
+#: OS writes one line per accepted habit (≤ ~210 bytes each); a file
 #: larger than this is the user's (or a helper's shell wrote it) — read as
 #: unreadable: kept as it is, never rewritten, no section built from it. It
 #: was read WHOLE on every team piece's start, GET /team and each render.

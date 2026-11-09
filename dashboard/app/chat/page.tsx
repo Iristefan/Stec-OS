@@ -960,8 +960,8 @@ function agentDisplayName(key: string): string {
 }
 
 /** Who a saved conversation is TALKING TO (v1.284.0): the agents of the
- *  trailing panel round (a round may hold several), else nobody — Iron
- *  Jarvis. Trailing user messages (a follow-up not yet answered, a failed
+ *  trailing panel round (a round may hold several), else nobody — STEC
+ *  OS. Trailing user messages (a follow-up not yet answered, a failed
  *  send) keep the addressee: the follow-up is theirs. Read on thread open and
  *  after every round, so a reload keeps the conversation where it was. */
 function addresseeOf(msgs: ChatMessage[]): string[] {
@@ -4168,8 +4168,8 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
   const [signInFor, setSignInFor] = useState<object | null>(null);
   const signInHere = !!errFacts && signInFor === errFacts;
   const [offline, setOffline] = useState(false);
-  // v1.354.0 (G31): the chat's own offline hint clears BY ITSELF when Iron
-  // Jarvis answers again. It used to stay until the user sent, retried or
+  // v1.354.0 (G31): the chat's own offline hint clears BY ITSELF when STEC
+  // OS answers again. It used to stay until the user sent, retried or
   // switched chats, because nothing here read the reconnect edge. The edge
   // alone (lib/daemonEpoch — never the whole /health context, so the page
   // re-renders on a reconnect and on nothing else); the first value is not
@@ -6804,8 +6804,8 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
    *
    * Selecting a project avoids all of it by binding a REAL folder and arming
    * the file essentials, so this does the same for a plain chat the moment it
-   * is handed a file: the daemon makes a dated folder under Documents\Iron
-   * Jarvis (or keeps the folder the chat already points at, when the app can
+   * is handed a file: the daemon makes a dated folder under Documents\STEC
+   * OS (or keeps the folder the chat already points at, when the app can
    * work in it), copies the uploads in, and the chat binds it and arms
    * PROJECT_FILE_TOOLS over an empty set. Everything the project path already
    * does — the folder grounding, the tools, a hand-off carrying the folder —
@@ -10025,8 +10025,8 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
       void sendComm(message);
       return;
     }
-    // @MENTION (v1.150.0): naming agents routes the turn to THEM, not to Iron
-    // Jarvis — "@builder @critic draft this" asks those two, in order, each
+    // @MENTION (v1.150.0): naming agents routes the turn to THEM, not to STEC
+    // OS — "@builder @critic draft this" asks those two, in order, each
     // seeing the previous one's answer. Only fires when a mention resolves to a
     // real agent, so "@ 9am" or an email address is an ordinary message.
     const live = liveMentionsIn(message);
@@ -13271,8 +13271,8 @@ function ChatConversation({ surfaceHidden = false }: { surfaceHidden?: boolean }
                             {addressee.map(agentDisplayName).join(", ")}
                           </span>
                           <span className="text-zinc-500">
-                            . Replies come from {addressee.length > 1 ? "them" : "it"}, not Iron
-                            Jarvis. Use @ to bring in someone else.
+                            . Replies come from {addressee.length > 1 ? "them" : "it"}, not STEC
+                            OS. Use @ to bring in someone else.
                           </span>
                         </span>
                         <button

@@ -1,7 +1,7 @@
 """Another computer running STEC OS can hand THIS one a task (v1.357.0, G61).
 
-The readiness audit's finding: there was no way to connect a second Iron
-Jarvis as a teammate. Remote agents were other systems, fleet nodes were model
+The readiness audit's finding: there was no way to connect a second STEC
+OS as a teammate. Remote agents were other systems, fleet nodes were model
 servers, and STEC OS exposed no task endpoint another STEC OS could
 register. This module is that endpoint's whole contract, and it is built from
 pieces that already existed — nothing on the SENDING side is new except what
@@ -191,8 +191,8 @@ def door_address(url: object) -> str:
 
 
 def valid_reply_to(url: object) -> bool:
-    """Is ``url`` a place this computer may send an answer to — another Iron
-    Jarvis's inbound door over http(s)? Anything else is refused at the door."""
+    """Is ``url`` a place this computer may send an answer to — another STEC
+    OS's inbound door over http(s)? Anything else is refused at the door."""
     try:
         parsed = urlparse(str(url or "").strip())
     except Exception:  # noqa: BLE001

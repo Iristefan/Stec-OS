@@ -2979,8 +2979,8 @@ def register(app: FastAPI, d) -> None:
         return _lan_url_for(request, f"/agents/remote/{quote(name, safe='')}/inbound")
 
     def _lan_access_saved() -> bool:
-        """The SAVED "Let other computers on my network reach this Iron
-        Jarvis" (v1.358.0, G61) — read off the live config object, the one
+        """The SAVED "Let other computers on my network reach this STEC
+        OS" (v1.358.0, G61) — read off the live config object, the one
         the settings writer changes in place. Never raises."""
         try:
             return bool(getattr(d.platform.config, LAN_ACCESS_KEY, False))
@@ -4221,8 +4221,8 @@ def register(app: FastAPI, d) -> None:
         row is ``{source, label, origin, readable, note, servers}`` with the
         same preview rows the paste door answers — names only, never a
         value. A missing file is ``readable: false`` with an empty note; a
-        malformed one names the file in one line, never its contents. Iron
-        Jarvis's own server entries are not listed.
+        malformed one names the file in one line, never its contents. STEC
+        OS's own server entries are not listed.
 
         v1.354.0 (G50): also VS Code's ``User/mcp.json``, a project's
         ``.vscode/mcp.json`` and ``.cursor/mcp.json`` (only while a project

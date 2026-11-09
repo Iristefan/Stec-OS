@@ -82,8 +82,8 @@ setup page. If you granted the earlier pair, the Browser page shows "no site
 access" once; press Grant again.
 
 That page exists because of a hard Chrome rule: `chrome.permissions.request()`
-must be called inside a user gesture and cannot run in a service worker. Iron
-Jarvis is a page on another origin and cannot call it either. So the daemon asks
+must be called inside a user gesture and cannot run in a service worker. STEC
+OS is a page on another origin and cannot call it either. So the daemon asks
 the add-on to open the setup page, and the button there makes the call. The popup
 gains nothing from this: it stays status-only.
 
@@ -191,8 +191,8 @@ the **×** forgets it.
 
 # Working on the add-on's source
 
-*The rest of this file applies to the `extensions/chrome` folder of the Iron
-Jarvis repository. The copy bundled into the installer carries only
+*The rest of this file applies to the `extensions/chrome` folder of the STEC
+OS repository. The copy bundled into the installer carries only
 `manifest.json`, this README and `dist/`, so none of the commands below exist
 there — and none of them are needed there, because `dist/` is already built.*
 

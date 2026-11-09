@@ -81,8 +81,8 @@ defects):
   user has to fix, an account's limit, and a restart that cut a reply off —
   for a helper's run and a helper door's refusal too (:func:`users_to_fix`).
 * ORDINARY WORK: a command that RAN and exited non-zero — a test command
-  that failed because the user's tests fail is the user's code, not Iron
-  Jarvis. Only a command that could NOT RUN AT ALL counts: the shell did not
+  that failed because the user's tests fail is the user's code, not STEC
+  OS. Only a command that could NOT RUN AT ALL counts: the shell did not
   know the program ("is not recognized", "command not found"), it was
   written for another shell ("was unexpected at this time", the ``;``
   guard), a guard refused it (the git guard, a ``cwd`` outside the folder),

@@ -3,8 +3,8 @@ app — and the phone's model and its user are told so.
 
 The lane's Option B told the phone's model a connected app's tools could be
 used "only from Chat in STEC OS on the PC" and to "say in a few words that
-you can't reach it from here", and put "To have me use it, ask in Chat in Iron
-Jarvis on your PC" under the reply. That is not true: the phone's own quick
+you can't reach it from here", and put "To have me use it, ask in Chat in STEC
+OS on your PC" under the reply. That is not true: the phone's own quick
 reply arms no app tool (right — the POST lane grants what it arms and cannot
 show a card), but its ``escalate_to_agent`` exit hands the request to an
 agent session started FROM the phone (origin ``comm:<channel>``, low trust),

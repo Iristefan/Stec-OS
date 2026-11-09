@@ -1025,8 +1025,8 @@ export default function ChannelsPage() {
                   </h3>
                   <p className="mt-1 text-[12px] leading-relaxed text-zinc-400">
                     A destination doesn&apos;t have to be one-way. Turn on chat
-                    and your Telegram bot becomes a real conversation with Iron
-                    Jarvis — the same one you see on the desktop Chat page.
+                    and your Telegram bot becomes a real conversation with STEC
+                    OS — the same one you see on the desktop Chat page.
                   </p>
                 </div>
                 <ol className="space-y-2">

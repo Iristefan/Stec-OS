@@ -313,8 +313,8 @@ class TerminalManager:
         # this set, a concurrent close (`purge_dead` runs `sync_panes(live)`,
         # and every /terminals handler is a sync `def` on Starlette's
         # threadpool) revoked the in-flight pane's brand-new token, and the
-        # harness's first call answered "the pane token expired when Iron
-        # Jarvis restarted" — naming a restart that never happened.
+        # harness's first call answered "the pane token expired when STEC
+        # OS restarted" — naming a restart that never happened.
         self._pending_panes: set[str] = set()
         #: create() calls that passed the cap check and have not yet registered
         #: (or put their id in `_pending_panes`) -- counted by the cap (v1.303.3).

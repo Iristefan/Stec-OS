@@ -2439,8 +2439,8 @@ class HostedService:
         # v1.416.0 review: only Grok's stop ends what it left outside its Job.
         ends_left_behind = bool(getattr(driver, "notes_started_on_stop", False))
         if HL.enabled():
-            # v1.422.0: the tool runs in the CODE HOST, which outlives an Iron
-            # Jarvis restart (hosted/hostlink.py); no host = started as before.
+            # v1.422.0: the tool runs in the CODE HOST, which outlives an STEC
+            # OS restart (hosted/hostlink.py); no host = started as before.
             proc: Any = HL.new_process(argv, env=env, cwd=row.folder, name=f"hosted-{row.id}",
                                        ends_left_behind=ends_left_behind, home=self.home, sid=row.id)
             live.kept = {"rules_note": rules_note, "acp_servers": list(connection.acp_servers)}
@@ -3909,8 +3909,8 @@ class HostedService:
         # (``home_of``) is ANOTHER account's home.
         home = claude_pane_home(pane) if harness == CLAUDE else home_of(harness, acc)
         if harness == CLAUDE and _SID_RX.match(hid):
-            # v1.426.0 (Wave 6, E3): the RECORDED id is the conversation Iron
-            # Jarvis started there; a `/clear` typed in the terminal moved
+            # v1.426.0 (Wave 6, E3): the RECORDED id is the conversation STEC
+            # OS started there; a `/clear` typed in the terminal moved
             # Claude Code to a NEW one, and handing over the recorded one
             # opened the OLDER conversation. The newest the pane wrote since
             # (``claude_later``: never a Code-view row's own conversation or

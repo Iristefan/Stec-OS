@@ -493,7 +493,7 @@
       "attention": true,
       "phone": true,
       "title": "STEC OS stopped fixing your pull request's checks",
-      "body": "Fix the parser · STEC OS stopped after 3 rounds: Claude Code did not approve the fix. The work is on the side branch ij/fix-parser-1a2b…",
+      "body": "Fix the parser · STEC OS stopped after 3 rounds: Claude Code did not approve the fix. The work is on the side branch ij/fix-parser-1a2b-ci-…",
       "href": "/chat?view=code&session=bs_ci"
     },
     {

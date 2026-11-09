@@ -917,8 +917,8 @@ export default function HelpPage() {
                 <span className="font-semibold text-amber-200">
                   The allowed senders list fails closed.
                 </span>{" "}
-                An empty list allows nobody — only the Telegram user ids on it can talk to Iron
-                Jarvis, and everyone else is silently ignored.
+                An empty list allows nobody — only the Telegram user ids on it can talk to STEC
+                OS, and everyone else is silently ignored.
               </div>
             </div>
           </div>

@@ -1,10 +1,10 @@
-"""v1.407.2 — Ask first asks before an edit of Git's own files and of Iron
-Jarvis's (or Claude Code's) own rules.
+"""v1.407.2 — Ask first asks before an edit of Git's own files and of STEC
+OS's (or Claude Code's) own rules.
 
 The user's decision (2026-10-29), found by v1.407.0's review: the file tools
 are allow-tier, so under Ask first (the default) and Ask before every action
-an agent could write ``.git/config`` (a ``core.fsmonitor`` then runs on Iron
-Jarvis's own ``git status``), ``.git/hooks/*``, ``.ironjarvis/**`` (its own
+an agent could write ``.git/config`` (a ``core.fsmonitor`` then runs on STEC
+OS's own ``git status``), ``.git/hooks/*``, ``.ironjarvis/**`` (its own
 permission rules and harness layer) or ``.claude/**`` with NO card. The same
 path check the eased postures use (``core/auto_approve.sensitive_kind``) now
 turns such an edit into a once-only card through ``tools/base.

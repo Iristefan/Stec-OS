@@ -128,8 +128,8 @@
 - Grok also reads `~/.claude/CLAUDE.md` (Claude compatibility, on by default),
   so with both Claude Code's and Grok's share on, Grok sees the profile twice.
   Not guarded; the row does not say it.
-- PRE-EXISTING NAME CLASH: on an ACP driver `mcp_servers` is the list Iron
-  Jarvis HANDS the tool; on the base driver it is the list the tool REPORTED.
+- PRE-EXISTING NAME CLASH: on an ACP driver `mcp_servers` is the list STEC
+  OS HANDS the tool; on the base driver it is the list the tool REPORTED.
   Grok now keeps its reported list as `reported_mcp`; the clash itself is left.
 - Pi `!` runs under Pi's own rules (Pi asks nothing; an extension's `user_bash`
   hook may take it) — STEC OS shows no card, as Pi's terminal shows none.

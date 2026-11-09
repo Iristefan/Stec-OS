@@ -74,8 +74,8 @@ const LABEL: Record<Mood, string> = {
  * durable turn registry's counts). The orb used to key ONLY on session /
  * agent events, so it sat "Idle — nothing running" through a chat turn and
  * through a Build reply that ran for an hour. Read from the ONE shared
- * /health poll (lib/daemon) — no request of its own. 0 for an older Iron
- * Jarvis (no field) or before the first poll.
+ * /health poll (lib/daemon) — no request of its own. 0 for an older STEC
+ * OS (no field) or before the first poll.
  */
 export function repliesRunning(health: Health | null | undefined): number {
   const r = health?.replies;

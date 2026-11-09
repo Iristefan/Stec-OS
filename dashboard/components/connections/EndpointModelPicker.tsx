@@ -456,8 +456,8 @@ export function EndpointModelPicker({
           </p>
           {switchedTo && (
             <p data-testid="endpoint-models-protocol-note" className="px-2 text-[11px] leading-relaxed text-zinc-500">
-              This server answered the {switchedTo === "anthropic" ? "Anthropic" : "OpenAI"} way, so Iron
-              Jarvis will talk to it as {PROTOCOL_LABELS[switchedTo]}.
+              This server answered the {switchedTo === "anthropic" ? "Anthropic" : "OpenAI"} way, so STEC
+              OS will talk to it as {PROTOCOL_LABELS[switchedTo]}.
             </p>
           )}
         </div>

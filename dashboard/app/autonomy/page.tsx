@@ -1775,8 +1775,8 @@ function StarterGoalsCard({
   return (
     <Card title="Starter goals" icon={<Sparkles size={15} />}>
       <p className="text-sm text-zinc-400">
-        Not sure where to start? Add one with a click. A starter only lets Iron
-        Jarvis suggest things when it checks in — nothing runs without your
+        Not sure where to start? Add one with a click. A starter only lets STEC
+        OS suggest things when it checks in — nothing runs without your
         approval, and it does not check in at all until you turn Autonomy on
         above.
       </p>

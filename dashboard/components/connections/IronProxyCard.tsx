@@ -4,8 +4,8 @@
  * Iron-Proxy on the Connections page (v1.301.0).
  *
  * Iron-Proxy is the ACCOUNT MANAGER: which Claude / Codex / Grok accounts
- * exist, the order they are tried in, which one is parked until when. Iron
- * Jarvis keeps its own adapters and runs each call AS the first usable account
+ * exist, the order they are tried in, which one is parked until when. STEC
+ * OS keeps its own adapters and runs each call AS the first usable account
  * of that provider; a limit moves to the next account of the SAME provider,
  * never to another provider. The Iron-Proxy token never reaches this page —
  * every call goes through the daemon's `/iron-proxy` routes.
@@ -16,8 +16,8 @@
  * v1.393.0 (the long-jobs plan's Phase 4): each Claude Code / Codex account
  * row has a GROUP choice. Accounts in one group can take over a coding
  * session from each other when one reaches its limit (same vendor only);
- * work and personal accounts belong in different groups. The groups are Iron
- * Jarvis's own setting (`account_groups`, saved through the one settings
+ * work and personal accounts belong in different groups. The groups are STEC
+ * OS's own setting (`account_groups`, saved through the one settings
  * writer — `PUT /settings/values`), never Iron-Proxy's. No groups by default.
  */
 

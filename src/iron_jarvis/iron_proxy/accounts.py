@@ -11,8 +11,8 @@ account is parked) or :func:`report_success` (usage recorded).
 THE RULES (the shared contract, section 2):
 
 * SAME PROVIDER ONLY. A lease is always for the adapter's own provider; this
-  module never names another provider and never falls back to one (Iron
-  Jarvis rule: never auto-switch providers).
+  module never names another provider and never falls back to one (STEC
+  OS rule: never auto-switch providers).
 * OFF IS OFF, ON IS ON. Iron-Proxy disabled, or with no CLI account for that
   provider (``NO_PROFILE``) -> :func:`lease` returns None and the adapter
   runs EXACTLY as before (the default login). While Iron-Proxy is ON, any

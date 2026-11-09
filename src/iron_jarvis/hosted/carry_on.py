@@ -581,8 +581,8 @@ CARRY_TEXT = {"restart": CONTINUE_AFTER_RESTART, "reset": CONTINUE_AFTER_RESET, 
 
 
 def failed_carry(events: list[dict[str, Any]], turn: str) -> dict[str, Any] | None:
-    """v1.422.0 review: the ``carry`` of ``turn`` when it was a carry-on Iron
-    Jarvis sent and it FAILED (an error that is not an account's limit, and
+    """v1.422.0 review: the ``carry`` of ``turn`` when it was a carry-on STEC
+    OS sent and it FAILED (an error that is not an account's limit, and
     its done), else None. Pure."""
     if not turn:
         return None

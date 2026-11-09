@@ -177,8 +177,8 @@ def _sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-#: v1.428.0 review: settings the program reads from its environment that Iron
-#: Jarvis does not choose — a daemon started with any of them must not hand
+#: v1.428.0 review: settings the program reads from its environment that STEC
+#: OS does not choose — a daemon started with any of them must not hand
 #: them on (an OAuth token that skips the account lock, a command that stores
 #: the sign-in, extra permissions, Node options that load code).
 _STRIPPED_PREFIXES = ("MS365_MCP_",)
@@ -186,8 +186,8 @@ _STRIPPED_NAMES = frozenset({"ENABLED_TOOLS", "READ_ONLY", "NODE_OPTIONS", "NODE
 
 
 def clean_env(base: "dict[str, str] | os._Environ[str]") -> dict[str, str]:
-    """``base`` without the settings a locked program must only get from Iron
-    Jarvis (case-insensitive: Windows keeps one variable per name)."""
+    """``base`` without the settings a locked program must only get from STEC
+    OS (case-insensitive: Windows keeps one variable per name)."""
     out: dict[str, str] = {}
     for key, value in dict(base).items():
         upper = str(key).upper()

@@ -173,8 +173,8 @@ class NightTaskRecord(SQLModel, table=True):
     ran_s: float = 0.0
     #: v1.399.0 (N2, the morning): the night this task ran in — the LOCAL
     #: date its night window opened (``night_morning.night_key``), written
-    #: when it starts. "" (NULL on an upgraded table) on a task an older Iron
-    #: Jarvis started: derived from ``started_at`` then.
+    #: when it starts. "" (NULL on an upgraded table) on a task an older STEC
+    #: OS started: derived from ``started_at`` then.
     night: str = ""
     #: v1.399.0: the commit STEC OS made of the task's work on its own
     #: branch when it ended (decision 2), "" when none.

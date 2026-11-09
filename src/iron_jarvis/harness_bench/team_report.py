@@ -541,8 +541,8 @@ def reviewed_count(records: Iterable[Mapping[str, Any]]) -> tuple[int, int]:
 def handed_line(records: Iterable[Mapping[str, Any]]) -> str:
     """The first number to look for in a team setup (v1.400.0): "The planner
     handed at least one piece to a team member in N of M runs." ("" with no
-    run; "Not known: …" when every run did not run). v1.401.0: when Iron
-    Jarvis's own finish check handed the change to the team's reviewer, a
+    run; "Not known: …" when every run did not run). v1.401.0: when STEC
+    OS's own finish check handed the change to the team's reviewer, a
     second sentence says in how many runs — never counted as the planner's."""
     records = list(records)
     m, n, skipped = handed_count(records)

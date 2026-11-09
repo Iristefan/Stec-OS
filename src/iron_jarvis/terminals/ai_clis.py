@@ -144,8 +144,8 @@ def launch_line(entry: dict[str, str], shell: str | None) -> str:
     byte what the route typed before v1.355.0. A set-up job's line is its
     ``command`` too, UNLESS its program is not on the daemon's PATH but is
     installed where its installer puts it: a shell started by the daemon
-    inherits the daemon's environment, so a program installed after Iron
-    Jarvis started is "not recognized" in the pane even though it is on the
+    inherits the daemon's environment, so a program installed after STEC
+    OS started is "not recognized" in the pane even though it is on the
     PC. Then the program is typed by its full path, quoted for ``shell`` by the
     sign-in pane's own quoting (``routes.iron_proxy.shell_line``). Never
     raises: anything unexpected types the catalog command as it is."""

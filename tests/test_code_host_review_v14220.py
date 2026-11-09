@@ -5,8 +5,8 @@ pinned red first (``iron_jarvis/codehost.py``, ``hosted/adopt.py``).
    adoption raised, the host went away between "what do you keep" and the
    adoption, or the adoption ran out of time — was left with its reply OPEN
    in the log (the boot reconcile skips every kept session) and, on a
-   timeout, with its tool still running in the host under an attached Iron
-   Jarvis that did not know it (the host's orphan rules never run while a
+   timeout, with its tool still running in the host under an attached STEC
+   OS that did not know it (the host's orphan rules never run while a
    daemon is attached): the next message started a SECOND process for the
    same conversation. Now every kept session that is not carried on has its
    tool stopped gracefully and its reply closed in words, once.

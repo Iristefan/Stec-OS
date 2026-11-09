@@ -161,8 +161,8 @@ async def test_a_video_job_runs_in_the_background_delivers_and_comes_home(app, t
     tid = _thread(engine, [{"role": "user", "content": "make me a video", "at": "x"}])
     handle = await _started(provider)
     # A SPACE in the workspace on purpose: the packaged home is
-    # "%APPDATA%/STEC OS/..." and the chat workfolder "Documents/Iron
-    # Jarvis/<date> <title>" — a bare markdown destination with a space is
+    # "%APPDATA%/STEC OS/..." and the chat workfolder "Documents/STEC
+    # OS/<date> <title>" — a bare markdown destination with a space is
     # refused by CommonMark and the chat shows the literal text.
     workspace = tmp_path / "STEC OS ws"
 

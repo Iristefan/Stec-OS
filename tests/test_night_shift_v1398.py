@@ -11,8 +11,8 @@ safe unattended runs — the pieces, one by one.
 * the "Runs at once" governor counts a night task;
 * a branch folder borrows the main folder's .venv / node_modules
   (decision 3) — never a link inside the worktree;
-* Emergency stop: an automatic resume does not start, and a coding turn Iron
-  Jarvis started by itself is stopped (a person's is not);
+* Emergency stop: an automatic resume does not start, and a coding turn STEC
+  OS started by itself is stopped (a person's is not);
 * keep-awake: ``/system/activity`` ``night_shift`` and the desktop's decision.
 
 The whole night, end to end, is ``test_night_shift_run_v1398.py``.

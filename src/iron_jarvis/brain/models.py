@@ -11,8 +11,8 @@ from ..core.ids import new_id, utcnow
 
 
 class BrainProfileRecord(SQLModel, table=True):
-    """One Brain Profile. ``primary`` is a memory base NAME (``brain`` = Iron
-    Jarvis memory), the identity every other surface uses for a base."""
+    """One Brain Profile. ``primary`` is a memory base NAME (``brain`` = STEC
+    OS memory), the identity every other surface uses for a base."""
 
     id: str = Field(default_factory=lambda: new_id("bp"), primary_key=True)
     name: str = ""

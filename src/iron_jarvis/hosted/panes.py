@@ -6,8 +6,8 @@ in the native harness").
 Every reader here is READ-ONLY, BLOCKING (the routes hop it off the loop) and
 never starts a process of the coding tool, a model call or a probe.
 
-CHANGES — the honest source. The REAL tool writes files itself, outside Iron
-Jarvis's undo journal, so the journal knows nothing. Two sources, said by
+CHANGES — the honest source. The REAL tool writes files itself, outside STEC
+OS's undo journal, so the journal knows nothing. Two sources, said by
 name on the pane:
 
 * ``git`` (the folder is inside a repository): every file that differs from

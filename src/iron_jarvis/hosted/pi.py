@@ -1,7 +1,7 @@
 """Pi in the Code view (v1.411.0): ``pi --mode rpc`` (JSON lines both ways),
 with ALL of its own tools, extensions, skills, prompt templates, AGENTS.md /
-CLAUDE.md and settings on — the same Pi the user runs in a terminal. Iron
-Jarvis only starts it, draws what it does, relays messages, and turns every
+CLAUDE.md and settings on — the same Pi the user runs in a terminal. STEC
+OS only starts it, draws what it does, relays messages, and turns every
 question Pi or one of the user's extensions asks into a card.
 
 MEASURED on this PC (pi 1.3.0, live, in scratch folders; the recordings are

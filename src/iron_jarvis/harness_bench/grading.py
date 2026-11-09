@@ -58,8 +58,8 @@ class Grade:
 
 def grading_python() -> str | None:
     """The interpreter a check runs with: this one in a source install; a
-    Python found on PATH in a packaged one (whose own executable is Iron
-    Jarvis, not Python). ``None`` when there is none — every check is then
+    Python found on PATH in a packaged one (whose own executable is STEC
+    OS, not Python). ``None`` when there is none — every check is then
     unscored, never failed."""
     if not getattr(sys, "frozen", False) and sys.executable:
         return sys.executable

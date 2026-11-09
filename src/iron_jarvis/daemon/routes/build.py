@@ -3385,8 +3385,8 @@ async def start_build_turn(d: Any, thread_id: str, text: str, turn_id: str, *,
                     _cap["usd"] = round(room, 2)
                 setup = {**setup, RC.SETUP_KEY: _cap}
         # v1.392.0 review: the cap's clock counts the time the reply RAN —
-        # its cut-off part(s), then this one from now — never the time Iron
-        # Jarvis was off in between (a reply cut off ten minutes in by a crash
+        # its cut-off part(s), then this one from now — never the time STEC
+        # OS was off in between (a reply cut off ten minutes in by a crash
         # the night before used to be capped the moment it carried on).
         reply_cap = RC.from_setup(
             setup,

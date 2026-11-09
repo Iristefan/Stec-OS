@@ -403,8 +403,8 @@ def serve(
     # Pre-flight: if something is already listening on host:port, don't run the
     # whole lifespan startup (auto-backup, rehydration) only to die on bind with a
     # raw WinError 10048. Tell the user plainly and exit cleanly.
-    # v1.358.0 (G61): with "Let other computers on my network reach this Iron
-    # Jarvis" on, the desktop starts serve with --host 0.0.0.0; a wildcard is
+    # v1.358.0 (G61): with "Let other computers on my network reach this STEC
+    # OS" on, the desktop starts serve with --host 0.0.0.0; a wildcard is
     # not an address to dial (connect_ex(("0.0.0.0", p)) misses a listener on
     # Windows), so the preflight probes loopback for it.
     probe = "127.0.0.1" if host in ("0.0.0.0", "", "::") else host
