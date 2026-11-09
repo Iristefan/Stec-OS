@@ -1,8 +1,8 @@
-version: 1.445.0
+version: 1.446.1
 files:
-  - url: https://github.com/Iristefan/Stec-OS/releases/download/v1.445.0/Iron-Jarvis-Setup-1.445.0.exe
-    sha512: 92QhumcYTJpSqwJEvbsuTSMlDXsXSrkz7VN5FXAaFhiOj4Il6TCWX+V4IP4w7JV/zpI9ixWvw+qTrsf+oxV3cw==
-    size: 281604664
-path: https://github.com/Iristefan/Stec-OS/releases/download/v1.445.0/Iron-Jarvis-Setup-1.445.0.exe
-sha512: 92QhumcYTJpSqwJEvbsuTSMlDXsXSrkz7VN5FXAaFhiOj4Il6TCWX+V4IP4w7JV/zpI9ixWvw+qTrsf+oxV3cw==
-releaseDate: '2026-11-09T04:06:16.156Z'
+  - url: https://github.com/Iristefan/Stec-OS/releases/download/v1.446.1/STEC-OS-Setup-1.446.1.exe
+    sha512: kO1fT2kATriSkeZaJ5D3YwZYDeJMfSPuMlIfWzzoGatGFR4u2DWJz2Rmq6NLyYvKOYIG5/jKdcY+ezzjT9LKbA==
+    size: 281604304
+path: https://github.com/Iristefan/Stec-OS/releases/download/v1.446.1/STEC-OS-Setup-1.446.1.exe
+sha512: kO1fT2kATriSkeZaJ5D3YwZYDeJMfSPuMlIfWzzoGatGFR4u2DWJz2Rmq6NLyYvKOYIG5/jKdcY+ezzjT9LKbA==
+releaseDate: '2026-11-09T06:24:45.387Z'
