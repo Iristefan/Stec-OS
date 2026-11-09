@@ -156,7 +156,7 @@ _OTHER_CHATS_RX = re.compile(
 )
 _THIS_CHAT_RX = re.compile(r"\b" + _THIS_CHAT + r"\b", re.IGNORECASE)
 
-_ACTOR = r"(?:you|jarvis|iron\s+jarvis)"
+_ACTOR = r"(?:you|jarvis|(?:stec\s+os|iron\s+jarvis))"
 _CHANGES_LIST_RX = re.compile(
     # "what did you change today?", "what have you edited?"
     r"\bwhat\s+(?:did|have|has)\s+" + _ACTOR + r"\s+(?:just\s+|already\s+)?"
@@ -165,7 +165,7 @@ _CHANGES_LIST_RX = re.compile(
     r"|\b(?:what|which)\s+(?:changes|edits|files|settings)\s+(?:did|have|has)\s+" + _ACTOR + r"\b"
     # "show me the changes you made", "list your recent changes"
     r"|\b(?:show|list|give|tell)\s+(?:me\s+)?(?:about\s+)?(?:(?:the|your|all|recent|latest|last)\s+){0,3}"
-    r"(?:changes|edits)\s+(?:you|jarvis|iron\s+jarvis)\b"
+    r"(?:changes|edits)\s+(?:you|jarvis|(?:stec\s+os|iron\s+jarvis))\b"
     r"|\b(?:show|list|give)\s+(?:me\s+)?(?:(?:your|all|recent|latest|last)\s+){1,3}(?:changes|edits)\b"
     r"|\b(?:show|list|tell)\s+(?:me\s+)?what\s+" + _ACTOR + r"\s+(?:changed|edited|did)\b"
     r"|\bchanges\s+(?:you(?:'ve|\s+have)?\s+made|you\s+did|(?:iron\s+)?jarvis\s+made)\b"

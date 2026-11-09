@@ -984,7 +984,7 @@ def _last_word(span: str) -> str:
 #: SOMEONE ELSE's ("forget the client's preference for paper statements",
 #: "update Mrs. Lopez's mailing preference") — never the user's own kept one.
 _POSSESSIVE = re.compile(r"[a-z0-9]['’]s?(?=\s|$)", re.IGNORECASE)
-_OURS_POSSESSIVE = re.compile(r"\b(?:jarvis|iron\s+jarvis)['’]s?(?=\s|$)", re.IGNORECASE)
+_OURS_POSSESSIVE = re.compile(r"\b(?:jarvis|(?:stec\s+os|iron\s+jarvis))['’]s?(?=\s|$)", re.IGNORECASE)
 
 
 def _someone_elses(span: str) -> bool:

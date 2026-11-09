@@ -1181,7 +1181,7 @@ _THING = (
 #: another noun ("delete the GitHub issue", "remove the slack from the rope").
 _AFTER = (
     r"(?=\s*(?:$|[.,!?;:)]|\b(?:and|then|please|too|now|again|for\s+now|for\s+a\s+(?:bit|while)"
-    r"|until|so|from\s+(?:jarvis|iron\s+jarvis|chat|here|(?:my|the|your)\s+(?:apps?|connections?"
+    r"|until|so|from\s+(?:jarvis|(?:stec\s+os|iron\s+jarvis)|chat|here|(?:my|the|your)\s+(?:apps?|connections?"
     r"|directory|tools?|connectors?|extensions?|list|setup)))\b))"
 )
 _SWITCH = re.compile(

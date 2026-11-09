@@ -1583,7 +1583,7 @@ _BRAND_THING = re.compile(
 )
 _ADDRESS_RX = re.compile(_ADDRESS, re.IGNORECASE)
 _ADD_VERB = re.compile(
-    r"\b(?:add|connect|register|hook\s+up|set\s+up|plug\s+in|point\s+(?:you|jarvis|iron\s+jarvis)\s+(?:at|to))\b",
+    r"\b(?:add|connect|register|hook\s+up|set\s+up|plug\s+in|point\s+(?:you|jarvis|(?:stec\s+os|iron\s+jarvis))\s+(?:at|to))\b",
     re.IGNORECASE,
 )
 _SERVER_THING = re.compile(

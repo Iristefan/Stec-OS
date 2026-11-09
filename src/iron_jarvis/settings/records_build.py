@@ -1371,13 +1371,13 @@ _CODE_THING = re.compile(
 )
 _QUEUE_VERB = re.compile(r"(?:queue(?:\s+up)?|enqueue|line\s+up)\b", re.IGNORECASE)
 _ADD_VERB = re.compile(
-    r"(?:add|put|schedule|set\s+up|have\s+(?:it|jarvis|you|iron\s+jarvis)\s+(?:do|work\s+on|run|handle|take\s+care\s+of)"
+    r"(?:add|put|schedule|set\s+up|have\s+(?:it|jarvis|you|(?:stec\s+os|iron\s+jarvis))\s+(?:do|work\s+on|run|handle|take\s+care\s+of)"
     r"|run|do|work\s+on|handle)\b",
     re.IGNORECASE,
 )
 #: "have it …" / "have Jarvis …" in front of the work ("have it update the
 #: README overnight") — a request, never the question "have it …?".
-_HAVE_IT = re.compile(r"^have\s+(?:it|jarvis|you|iron\s+jarvis)\s+", re.IGNORECASE)
+_HAVE_IT = re.compile(r"^have\s+(?:it|jarvis|you|(?:stec\s+os|iron\s+jarvis))\s+", re.IGNORECASE)
 _CODE_VERB = re.compile(
     r"(?:fix|update|refactor|write|clean\s+up|tidy|implement|migrate|upgrade|rewrite|document|test|lint|format"
     r"|rename|remove\s+dead|add\s+tests|add\s+types|bump|port)\b",

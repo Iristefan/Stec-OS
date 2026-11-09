@@ -218,7 +218,7 @@ _M365_RULES = tuple(
         r"\b" + _M365 + _NOUN_SIGNIN,
         r"\b" + _M365 + _SUBJECT_VERB + _GAP + _STATE,
         r"\b(?:you|jarvis)\b" + _GAP + _ACT + r"\s+" + _PREP + r"outlook\b" + _NOT_ON_A_DEVICE,
-        _ACT + r"\s+" + _PREP + r"outlook\b(?=" + _GAP + r"\b(?:you|jarvis|iron\s+jarvis)\b)",
+        _ACT + r"\s+" + _PREP + r"outlook\b(?=" + _GAP + r"\b(?:you|jarvis|(?:stec\s+os|iron\s+jarvis))\b)",
     )
 )
 
@@ -231,7 +231,7 @@ _MS_APPROVAL = re.compile(
     r"\b(?:admin(?:istrator)?\s+(?:consent|approval)|grant\s+(?:admin\s+)?consent"
     r"|app\s+registrations?|register(?:ing)?\s+(?:the|an|our|a|this)\s+app|conditional\s+access"
     r"|assignment\s+required|enterprise\s+applications?"
-    r"|(?:approve|consent\s+to|allow)\s+(?:the\s+|this\s+|our\s+|my\s+)?(?:iron\s+jarvis(?:\s+app)?|app))\b",
+    r"|(?:approve|consent\s+to|allow)\s+(?:the\s+|this\s+|our\s+|my\s+)?(?:(?:stec\s+os|iron\s+jarvis)(?:\s+app)?|app))\b",
     re.IGNORECASE,
 )
 _ENTRA = re.compile(r"\bentra\b" + _GAP + r"\b(?:apps?|registration|consent|permissions?|approv\w*)\b", re.IGNORECASE)
@@ -270,7 +270,7 @@ _SLACK_SETUP = re.compile(
     # ("send the member ID to the team on Slack"): only Slack's own, or one
     # for Jarvis, or the user's own looked up.
     r"|\bslack\s+member\s+id\b"
-    r"|\bmember\s+id\b(?=[^.!?\n]{0,40}?\bfor\s+(?:you|jarvis|iron\s+jarvis|notifications?)\b)"
+    r"|\bmember\s+id\b(?=[^.!?\n]{0,40}?\bfor\s+(?:you|jarvis|(?:stec\s+os|iron\s+jarvis)|notifications?)\b)"
     r"|\b(?:find|get|copy|where['’]s|where\s+is|where\s+do\s+i\s+find)\s+my\s+member\s+id\b"
     r"|\bsocket\s+mode\b|\bmessages\s+tab\b"
     r"|\b(?:create|make|set\s*up|register)\s+(?:a\s+|an\s+|the\s+|my\s+|our\s+)?(?:new\s+)?slack\s+(?:app|bot)\b"
@@ -298,7 +298,7 @@ _BROWSER_RULES = tuple(
         r"|\b(?:connect|link)\w*\s+(?:the|my|your|this)\s+(?:(?:browser|chrome|edge)\s+)?add[\s-]?on\b",
         r"\bbrowser\s+pairing\b|\bpairing\s+(?:code\s+for\s+)?(?:the|my|your)\s+browser\b",
         r"\b(?:install|set\s*up|setup|add|get|load|download|enable|turn\s+on|reinstall|update)\w*\s+"
-        r"(?:your|iron\s+jarvis['’]?s?|jarvis['’]?s?|its)\s+(?:(?:browser|chrome|edge)\s+" + _ADDON
+        r"(?:your|(?:stec\s+os|iron\s+jarvis)['’]?s?|jarvis['’]?s?|its)\s+(?:(?:browser|chrome|edge)\s+" + _ADDON
         + r"|add[\s-]?on)\b",
         r"\b(?:install|set\s*up|setup|add|get|load|download|enable|turn\s+on|reinstall|update)\w*\s+"
         r"(?:the|a|an)\s+(?:browser\s+add[\s-]?on|(?:browser|chrome|edge)\s+" + _ADDON
@@ -310,7 +310,7 @@ _BROWSER_RULES = tuple(
         + _GAP
         + r"(?:(?:won['’]?t|doesn['’]?t|isn['’]?t|not|can['’]?t|never)\s+(?:pair|connect|work|show|load|install)"
         r"|(?:keeps\s+)?(?:disconnect|dropp)(?:s|ed|ing)\b)",
-        r"\b(?:iron\s+)?jarvis\s+(?:browser\s+)?" + _ADDON + r"\b",
+        r"\b(?:stec\s+os|(?:iron\s+)?jarvis)\s+(?:browser\s+)?" + _ADDON + r"\b",
     )
 )
 
@@ -369,8 +369,8 @@ _DESKTOP_RULES = tuple(
 
 #: Opening STEC OS's screens from another computer (not offered).
 _JARVIS_OBJ = (
-    r"(?:iron\s+jarvis|jarvis|you|this\s+app|the\s+app|the\s+dashboard|my\s+dashboard|this\s+dashboard"
-    r"|the\s+iron\s+jarvis\s+app|your\s+(?:screens?|dashboard|pages?))"
+    r"(?:(?:stec\s+os|iron\s+jarvis)|jarvis|you|this\s+app|the\s+app|the\s+dashboard|my\s+dashboard|this\s+dashboard"
+    r"|the\s+(?:stec\s+os|iron\s+jarvis)\s+app|your\s+(?:screens?|dashboard|pages?))"
 )
 _OPEN_VERB = (
     r"(?:open|use|access|reach|see|view|get\s+to|log\s+in(?:to)?|sign\s+in(?:to)?|connect\s+to"
@@ -387,7 +387,7 @@ _ELSEWHERE_RULES = tuple(
     for r in (
         r"\b" + _OPEN_VERB + r"\s+" + _JARVIS_OBJ + r"\b" + _GAP + r"\b" + _OTHER_COMPUTER,
         r"\b(?:open|use|access|reach|control|get\s+to)\s+" + _JARVIS_OBJ + r"\s+remotely\b",
-        r"\bremote\s+access\s+(?:to\s+)?(?:iron\s+jarvis|jarvis|the\s+dashboard|this\s+app)\b",
+        r"\bremote\s+access\s+(?:to\s+)?(?:(?:stec\s+os|iron\s+jarvis)|jarvis|the\s+dashboard|this\s+app)\b",
         r"\b" + _OPEN_VERB + r"\s+" + _JARVIS_OBJ + r"\b" + _GAP
         + r"\b(?:over|across|from|through)\s+(?:my|the|our)\s+(?:network|lan|wi-?fi|internet|tailscale|vpn)\b",
     )

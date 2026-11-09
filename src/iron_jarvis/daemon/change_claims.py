@@ -1251,7 +1251,7 @@ _PROMISE_FORMAT = re.compile(
     r"(?:short\s+)?(?:bullet(?:\s+points?|ed\s+lists?)?|bullets|headings|numbered\s+lists?|tables"
     r"|short\s+paragraphs|plain\s+prose|prose)\b"
 )
-_APP_NAME = r"(?:iron\s+jarvis|jarvis|the\s+(?:desktop\s+)?app|it)"
+_APP_NAME = r"(?:(?:stec\s+os|iron\s+jarvis)|jarvis|the\s+(?:desktop\s+)?app|it)"
 _PROMISE_START_ON = re.compile(
     r"\b" + _APP_NAME + r"\s+(?:will\s+now\s+|now\s+|will\s+from\s+now\s+on\s+)(?:start|open|launch|run)s?\s+(?:by\s+itself\s+|"
     r"automatically\s+|on\s+its\s+own\s+)?(?:with\s+windows|when\s+(?:you\s+(?:log|sign)\s+in|windows\s+starts)"

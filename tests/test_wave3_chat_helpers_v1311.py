@@ -315,16 +315,18 @@ def _plan_digest(plan) -> str:
 #: the pre-fix plan_history with the pre-fix estimator. Do not re-record to
 #: make a red go green: a changed digest is a changed plan.
 _PLAN_DIGESTS: dict[str, str] = {
+    # v1.444.0: re-pinned once: the recap names the assistant "STEC OS" now
+    # (was "Iron Jarvis"), so every plan with a recap hashes differently.
     "fits": "8d9a3b9388fb82ca",  # dropped=0 trimmed=0 clipped=False used=801
-    "overflow": "d814bc40e90b3ac6",  # dropped=40 trimmed=0 clipped=False used=5181
+    "overflow": "aad977623230650e",  # dropped=40 trimmed=0 clipped=False used=5181
     "tools": "80f9827f5efacbee",  # dropped=0 trimmed=10 clipped=False used=2649
-    "clip": "99eacfeeb6ccd4a1",  # dropped=5 trimmed=0 clipped=True used=3029
+    "clip": "2d45048f7dd42138",  # dropped=5 trimmed=0 clipped=True used=3029
     "capped-fits": "8f5214f0968a816f",  # dropped=0 trimmed=0 clipped=False used=3739
-    "system-eats-window": "016f26e8cd3eda69",  # dropped=4 trimmed=0 clipped=False used=2577
-    "cjk-measured": "7e449fc7ed4e88bf",  # dropped=34 trimmed=0 clipped=False used=8846
+    "system-eats-window": "fb3a85eddc4371c0",  # dropped=4 trimmed=0 clipped=False used=2577
+    "cjk-measured": "06b58f4175306cd5",  # dropped=34 trimmed=0 clipped=False used=8846
     "empty": "58b36e59149473a9",  # dropped=0 trimmed=0 clipped=False used=1
-    "unknown-window": "c270a0a0213bdb2a",  # dropped=10 trimmed=0 clipped=False used=5125
-    "tiny-max": "4e76ef2429442140",  # dropped=23 trimmed=0 clipped=False used=885
+    "unknown-window": "209ea91c85ed6900",  # dropped=10 trimmed=0 clipped=False used=5125
+    "tiny-max": "203965051aa9b1be",  # dropped=23 trimmed=0 clipped=False used=885
 }
 
 
