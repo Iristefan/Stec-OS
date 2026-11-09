@@ -261,7 +261,7 @@ def _installer_state(tmp_path: Path, *, info: dict | None, exe: bytes | None, na
     if info is not None:
         (pending / "update-info.json").write_text(json.dumps(info), encoding="utf-8")
     if exe is not None:
-        (pending / "Iron-Jarvis-Setup-1.249.0.exe").write_bytes(exe)
+        (pending / "STEC-OS-Setup-1.249.0.exe").write_bytes(exe)
     script = _INSTALLER_HARNESS.replace(
         "__LIFTED__", _lift("function cachedInstallerState", "function cachedInstallerState")
     )
@@ -277,7 +277,7 @@ def test_the_cached_installer_is_judged_against_its_own_checksum(tmp_path):
 
     body = b"NSIS installer bytes"
     good = base64.b64encode(hashlib.sha512(body).digest()).decode()
-    name = "Iron-Jarvis-Setup-1.249.0.exe"
+    name = "STEC-OS-Setup-1.249.0.exe"
     assert _installer_state(
         tmp_path, info={"fileName": name, "sha512": good}, exe=body, name="ok"
     ) == "ok"

@@ -1,11 +1,11 @@
 {
   "name": "iron-jarvis-desktop",
   "productName": "STEC OS",
-  "version": "1.445.0",
+  "version": "1.446.0",
   "private": true,
   "description": "Native desktop wrapper for STEC OS. Boots the local Python daemon (uv run ironjarvis serve) and the Next.js dashboard (pnpm start), then opens them in a native window.",
   "main": "main.js",
-  "author": "RealDealCPA",
+  "author": "Stefan (Iristefan)",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "start": "electron .",
@@ -28,7 +28,7 @@
     ]
   },
   "build": {
-    "appId": "com.realdealcpa.ironjarvis",
+    "appId": "com.iristefan.stecos",
     "productName": "STEC OS",
     "directories": {
       "output": "release"
@@ -62,7 +62,7 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "artifactName": "Iron-Jarvis-Setup-${version}.${ext}",
+      "artifactName": "STEC-OS-Setup-${version}.${ext}",
       "include": "installer.nsh"
     },
     "publish": [

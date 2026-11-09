@@ -364,10 +364,10 @@ def test_the_release_job_publishes_the_manifest_after_the_release_is_public_and_
 _SAMPLE = (
     "version: 1.260.0\n"
     "files:\n"
-    "  - url: Iron-Jarvis-Setup-1.260.0.exe\n"
+    "  - url: STEC-OS-Setup-1.260.0.exe\n"
     "    sha512: 7GZ6x0mK3Qh2b7Mu0kq5T8zPq4QG8n7yj0v2p3LZ9x1A==\n"
     "    size: 269477572\n"
-    "path: Iron-Jarvis-Setup-1.260.0.exe\n"
+    "path: STEC-OS-Setup-1.260.0.exe\n"
     "sha512: 7GZ6x0mK3Qh2b7Mu0kq5T8zPq4QG8n7yj0v2p3LZ9x1A==\n"
     "releaseDate: '2026-09-14T16:00:00.000Z'\n"
 )
@@ -386,8 +386,8 @@ def test_the_rewriter_makes_every_installer_url_absolute_and_touches_nothing_els
     mod = _rewriter()
     out = mod.rewrite(_SAMPLE, "RealDealCPA-VR/Iron-Jarvis", "1.260.0")
     base = "https://github.com/RealDealCPA-VR/Iron-Jarvis/releases/download/v1.260.0"
-    assert f"  - url: {base}/Iron-Jarvis-Setup-1.260.0.exe\n" in out
-    assert f"path: {base}/Iron-Jarvis-Setup-1.260.0.exe\n" in out
+    assert f"  - url: {base}/STEC-OS-Setup-1.260.0.exe\n" in out
+    assert f"path: {base}/STEC-OS-Setup-1.260.0.exe\n" in out
     kept = [l for l in _SAMPLE.splitlines() if not l.lstrip().startswith(("- url:", "path:"))]
     for line in kept:
         assert line + "\n" in out, f"changed a line it must not: {line!r}"
@@ -442,7 +442,7 @@ def test_the_real_generic_provider_reads_the_rewritten_manifest_from_the_updates
     out = _run(_PROVIDER_PROBE, tmp_path, "provider", str(_UPDATER_PKG).replace("\\", "/"), str(manifest), url)
     assert out["asked"] == [f"{url}/latest.yml"], out["asked"]
     assert out["version"] == "1.260.0"
-    assert out["files"] == ["https://github.com/RealDealCPA-VR/Iron-Jarvis/releases/download/v1.260.0/Iron-Jarvis-Setup-1.260.0.exe"]
+    assert out["files"] == ["https://github.com/RealDealCPA-VR/Iron-Jarvis/releases/download/v1.260.0/STEC-OS-Setup-1.260.0.exe"]
     assert out["sha512"] == "7GZ6x0mK3Qh2b7Mu0kq5T8zPq4QG8n7yj0v2p3LZ9x1A=="
 
 
@@ -456,7 +456,7 @@ def test_the_rewriter_cli_writes_the_file_and_fails_loudly_on_a_wrong_version(tm
         capture_output=True, text=True, encoding="utf-8",
     )
     assert ok.returncode == 0, ok.stderr
-    assert "releases/download/v1.260.0/Iron-Jarvis-Setup-1.260.0.exe" in dst.read_text(encoding="utf-8")
+    assert "releases/download/v1.260.0/STEC-OS-Setup-1.260.0.exe" in dst.read_text(encoding="utf-8")
     assert b"\r\n" not in dst.read_bytes(), "LF on every machine, like the file electron-builder writes"
     bad = subprocess.run(
         [sys.executable, str(_SCRIPT), str(src), str(tmp_path / "bad.yml"), "--repo", "RealDealCPA-VR/Iron-Jarvis", "--version", "9.9.9"],

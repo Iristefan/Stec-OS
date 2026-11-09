@@ -100,7 +100,7 @@ pnpm run dist:full   # build-installer.ps1: freeze daemon → build dashboard �
 
 The `electron-builder` config lives in `package.json` under `build`:
 
-- `appId`: `com.realdealcpa.ironjarvis` · `productName`: `STEC OS` · `win.target`: `nsis`
+- `appId`: `com.iristefan.stecos` · `productName`: `STEC OS` · `win.target`: `nsis`
 - `extraResources`: the frozen daemon (`packaging/dist/ironjarvis` → `daemon`) and the
   standalone dashboard (`dashboard/.next/standalone` → `dashboard`)
 - `publish`: GitHub Releases with `releaseType: release` — the packaged app

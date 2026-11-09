@@ -62,7 +62,7 @@ def _notes_for(version: str) -> str:
 def test_the_notes_name_the_one_file_to_download_and_the_two_to_ignore():
     notes = _notes_for(VERSION)
     # The exact asset electron-builder publishes (latest.yml names it so).
-    assert f"`Iron-Jarvis-Setup-{VERSION}.exe`" in notes
+    assert f"`STEC-OS-Setup-{VERSION}.exe`" in notes
     assert "Which file to download" in notes
     assert "Ignore the `.blockmap` and `latest.yml` files" in notes
     assert "updater" in notes  # why they are there at all
@@ -158,5 +158,5 @@ def test_each_steps_own_notes_line_run_by_bash_gives_the_versioned_notes(step_na
     assert out.returncode == 0, out.stderr
     got = out.stdout.decode("utf-8").replace("\r\n", "\n")
     assert got.strip() == _notes_for(VERSION).strip()
-    assert f"Iron-Jarvis-Setup-{VERSION}.exe" in got
+    assert f"STEC-OS-Setup-{VERSION}.exe" in got
     assert "@VERSION@" not in got

@@ -99,7 +99,7 @@ does not need a bump, stop and bump it.
    `dry_run == 'false'`, the one job with `contents: write`) makes anything
    public: it re-checks the release (an already-public version is never
    overwritten; one publish per version via job `concurrency`), pre-creates the
-   tag + DRAFT release, uploads `Iron-Jarvis-Setup-X.Y.Z.exe` + blockmap +
+   tag + DRAFT release, uploads `STEC-OS-Setup-X.Y.Z.exe` + blockmap +
    `latest.yml`, publishes, then writes the `updates` manifest. Try a workflow
    change on a branch with `gh workflow run release.yml --ref <branch> -f
    dry_run=true` (builds and tests everything, publishes nothing). Regenerate

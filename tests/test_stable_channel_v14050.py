@@ -111,13 +111,13 @@ _REASONS = [
     # A release turned back into a draft keeps its old publish date.
     ("draft with a date", lambda: _rel("1.404.0", 30, draft=True), "success", "not published yet"),
     ("prerelease", lambda: _rel("1.404.0", 30, prerelease=True), "success", "prerelease"),
-    ("no installer", lambda: _rel("1.404.0", 30, assets=["latest.yml", "Iron-Jarvis-Setup-1.404.0.exe.blockmap"]),
-     "success", "missing Iron-Jarvis-Setup-1.404.0.exe"),
-    ("no manifest", lambda: _rel("1.404.0", 30, assets=["Iron-Jarvis-Setup-1.404.0.exe",
-                                                        "Iron-Jarvis-Setup-1.404.0.exe.blockmap"]),
+    ("no installer", lambda: _rel("1.404.0", 30, assets=["latest.yml", "STEC-OS-Setup-1.404.0.exe.blockmap"]),
+     "success", "missing STEC-OS-Setup-1.404.0.exe"),
+    ("no manifest", lambda: _rel("1.404.0", 30, assets=["STEC-OS-Setup-1.404.0.exe",
+                                                        "STEC-OS-Setup-1.404.0.exe.blockmap"]),
      "success", "missing latest.yml"),
-    ("no blockmap", lambda: _rel("1.404.0", 30, assets=["latest.yml", "Iron-Jarvis-Setup-1.404.0.exe"]),
-     "success", "missing Iron-Jarvis-Setup-1.404.0.exe.blockmap"),
+    ("no blockmap", lambda: _rel("1.404.0", 30, assets=["latest.yml", "STEC-OS-Setup-1.404.0.exe"]),
+     "success", "missing STEC-OS-Setup-1.404.0.exe.blockmap"),
 ]
 
 
@@ -265,14 +265,14 @@ def test_the_api_shape_is_read_honestly():
         "tag_name": "v1.404.0", "draft": False, "prerelease": False,
         "published_at": "2026-10-29T01:18:43Z",
         "assets": [
-            {"name": "Iron-Jarvis-Setup-1.404.0.exe", "state": "uploaded"},
-            {"name": "Iron-Jarvis-Setup-1.404.0.exe.blockmap", "state": "starter"},
+            {"name": "STEC-OS-Setup-1.404.0.exe", "state": "uploaded"},
+            {"name": "STEC-OS-Setup-1.404.0.exe.blockmap", "state": "starter"},
             {"name": "latest.yml", "state": "uploaded"},
         ],
     }
     r = mod.release_from_api(raw)
     assert r.version == "1.404.0" and r.published_at == datetime(2026, 10, 29, 1, 18, 43, tzinfo=timezone.utc)
-    assert "Iron-Jarvis-Setup-1.404.0.exe.blockmap" not in r.assets, "an upload still going is not an asset yet"
+    assert "STEC-OS-Setup-1.404.0.exe.blockmap" not in r.assets, "an upload still going is not an asset yet"
     assert mod.release_from_api({"tag_name": "nightly"}) is None
 
 
@@ -305,10 +305,10 @@ def test_hold_edits_are_validated_and_said():
 _MANIFEST = (
     "version: {v}\n"
     "files:\n"
-    "  - url: Iron-Jarvis-Setup-{v}.exe\n"
+    "  - url: STEC-OS-Setup-{v}.exe\n"
     "    sha512: 7GZ6x0mK3Qh2b7Mu0kq5T8zPq4QG8n7yj0v2p3LZ9x1A==\n"
     "    size: 279526995\n"
-    "path: Iron-Jarvis-Setup-{v}.exe\n"
+    "path: STEC-OS-Setup-{v}.exe\n"
     "sha512: 7GZ6x0mK3Qh2b7Mu0kq5T8zPq4QG8n7yj0v2p3LZ9x1A==\n"
     "releaseDate: '2026-10-28T01:18:43.000Z'\n"
 )
@@ -361,8 +361,8 @@ def test_a_pass_writes_the_manifest_through_the_release_jobs_own_rewrite(tmp_pat
     latest = (tmp_path / "latest.yml").read_bytes()
     assert b"\r\n" not in latest
     base = f"https://github.com/{REPO}/releases/download/v1.404.0"
-    assert f"  - url: {base}/Iron-Jarvis-Setup-1.404.0.exe\n".encode() in latest
-    assert f"path: {base}/Iron-Jarvis-Setup-1.404.0.exe\n".encode() in latest
+    assert f"  - url: {base}/STEC-OS-Setup-1.404.0.exe\n".encode() in latest
+    assert f"path: {base}/STEC-OS-Setup-1.404.0.exe\n".encode() in latest
     assert latest.decode() == mod.rewrite(_MANIFEST.format(v="1.404.0"), REPO, "1.404.0")
     history = json.loads((tmp_path / "promoted.json").read_text(encoding="utf-8"))
     assert history[-1]["version"] == "1.404.0" and history[-1]["published_at"].endswith("Z")
@@ -401,7 +401,7 @@ def test_the_script_reuses_the_rewrite_and_imports_only_the_stdlib():
 
 def test_a_manifest_naming_a_file_the_release_lacks_never_reaches_stable(tmp_path):
     mod = _mod()
-    bad = _MANIFEST.format(v="1.404.0").replace("Iron-Jarvis-Setup-1.404.0.exe", "Iron-Jarvis-Setup-9.exe")
+    bad = _MANIFEST.format(v="1.404.0").replace("STEC-OS-Setup-1.404.0.exe", "STEC-OS-Setup-9.exe")
     gh = FakeGitHub([_api("1.404.0", 30)], {"1.404.0": "success"}, {"1.404.0": bad})
     logs: list[str] = []
     code, message = mod.run(tmp_path, REPO, gh, now=NOW, hold="1.300.0", log=logs.append)
@@ -1072,7 +1072,7 @@ def test_the_real_generic_provider_reads_the_stable_branchs_manifest(tmp_path):
     out = _node(_PROVIDER_PROBE, tmp_path, "provider", str(_UPDATER_PKG).replace("\\", "/"), str(manifest), url)
     assert out["asked"] == [f"{url}/latest.yml"], out["asked"]
     assert out["version"] == "1.404.0"
-    assert out["files"] == [f"https://github.com/{REPO}/releases/download/v1.404.0/Iron-Jarvis-Setup-1.404.0.exe"]
+    assert out["files"] == [f"https://github.com/{REPO}/releases/download/v1.404.0/STEC-OS-Setup-1.404.0.exe"]
 
 
 def test_the_shell_wiring_reads_the_channel_at_every_check():
